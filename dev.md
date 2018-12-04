@@ -15,3 +15,23 @@ CREATE DATABASE hxyframe_activiti DEFAULT CHARACTER SET utf8 COLLATE utf8_genera
 - 修改application-dev.yml文件，更改MySQL账号和密码
 - 启动redis服务,可在官方群下载。
 - 项目访问路径：http://localhost:8080/hxyActiviti/index.html
+
+- - -
+
+Neo4j Tips
+
+1. 查询某节点下游所有节点（不包含该节点）
+
+```
+MATCH (n:Task) WHERE n.name="185017" WITH n 
+MATCH p = (n) - [*] -> (m:Task)
+RETURN m
+```
+
+2. 查询某节点上游所有节点（不包含该节点）
+
+```
+MATCH (n:Task) WHERE n.name="187509" WITH n 
+MATCH p = (m:Task) - [*] ->(n)
+RETURN m
+```
