@@ -78,7 +78,7 @@ public class Neo4jUtil {
 
         try {
 
-            StatementResult createResult  = session.run("CREATE (a:Task {" +
+            StatementResult createResult = session.run("CREATE (a:Task {" +
                             "name: {taskId}" +
                             ", label: {label}" +
                             ", taskId: {taskId}" +
@@ -289,4 +289,24 @@ public class Neo4jUtil {
         return code;
     }
 
+    /**
+     * 溯源
+     *
+     * @param name 节点名称
+     */
+    public static void trace(String name) {
+        Driver driver = createDrive();
+        Session session = driver.session();
+        session.run("MATCH (n:Task) WHERE n.name=\"" + name + "\" WITH n MATCH p = (n) - [*] -> (m:Task) RETURN m");
+    }
+
+    /**
+     * 推理
+     * @param name
+     */
+    public static void inference(String name){
+        Driver driver = createDrive();
+        Session session = driver.session();
+        session.run("MATCH (n:Task) WHERE n.name=\"" + name + "\" WITH n MATCH p = (m:Task) - [*] ->(n) RETURN m");
+    }
 }

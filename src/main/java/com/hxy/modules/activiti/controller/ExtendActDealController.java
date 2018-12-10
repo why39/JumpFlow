@@ -86,6 +86,11 @@ public class ExtendActDealController {
         return "activiti/extendActModelList";
     }
 
+    @RequestMapping("query")
+    public String query() {
+        return "neo.html";
+    }
+
     /**
      * 根据流程key 获取业务可用的流程
      *
