@@ -25,10 +25,12 @@
         /**
 		 * 流程相关信息类
          */
-		function processInfo(busId,actKey,taskId,instanceId,defId,flag) {
+		function processInfo(busId,actKey,taskId,taskName,instanceId,defId,flag) {
 			this.busId=busId;//业务id
 			this.actKey=actKey;//流程key也是业务key
 			this.taskId=taskId;//任务id
+            this.taskName=taskName;//任务id
+
 			this.instanceId=instanceId;//流程实例
 			this.defId=defId;//流程定义Id
         }
@@ -41,6 +43,7 @@
             processInfo.busId='${taskDto.busId}';
             processInfo.actKey='${taskDto.actKey}';
             processInfo.taskId='${taskDto.taskId}';
+            processInfo.taskName='${taskDto.taskName}';
             processInfo.instanceId='${taskDto.instanceId}';
             processInfo.defId='${taskDto.defId}';
             //初始化点击第一个tab
@@ -55,7 +58,8 @@
 			var params = {
 			    'busId':processInfo.busId,
 			    'taskId':processInfo.taskId,
-			    'instanceId':processInfo.instanceId,
+                'taskName':processInfo.taskName,
+                'instanceId':processInfo.instanceId,
 			    'defId':processInfo.defId,
 				'flag':flage
             }

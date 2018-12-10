@@ -42,9 +42,10 @@
     /**
      * 流程相关信息类
      */
-    function processInfo(busId,taskId,instanceId,defId,remark) {
+    function processInfo(busId,taskId,taskName,instanceId,defId,remark) {
         this.busId=busId;//业务id
         this.taskId=taskId;//任务id
+		this.taskName=taskName
         this.instanceId=instanceId;//流程实例
         this.defId=defId;//流程定义id
         this.remark=remark;//审批意见
@@ -53,7 +54,9 @@
 	$(function () {
 		processInfo.busId='${flowbus.busId}';
 		processInfo.taskId='${taskDto.taskId}';
-		processInfo.instanceId='${flowbus.instanceId}';
+        processInfo.taskName='${taskDto.taskName}';
+
+        processInfo.instanceId='${flowbus.instanceId}';
 		processInfo.defId='${flowbus.defid}';
     })
 
@@ -70,6 +73,7 @@
         var params ={
             'busId':processInfo.busId,
             'taskId':processInfo.taskId,
+			'taskName':processInfo.taskName,
             'instanceId':processInfo.instanceId,
             'defId':processInfo.defId,
             'toUserId':toUserId

@@ -34,10 +34,11 @@
     /**
      * 流程相关信息类
      */
-    function processInfo(busId,actKey,taskId,instanceId,changeFields,defId) {
+    function processInfo(busId,actKey,taskId,taskName,instanceId,changeFields,defId) {
         this.busId=busId;//业务id
         this.actKey=actKey;//流程key也是业务key
         this.taskId=taskId;//任务id
+        this.taskName=taskName;
         this.instanceId=instanceId;//流程实例
         this.changeFields=changeFields;//可更改的字段
         this.defId=defId;//流程定义id
@@ -47,6 +48,7 @@
         //获取业务可更改的字段，和流程业务基本信息
         processInfo.busId='${taskDto.busId}';
         processInfo.taskId='${taskDto.taskId}';
+        processInfo.taskName='${taskDto.taskName}';
         processInfo.instanceId='${taskDto.instanceId}';
         processInfo.defId='${taskDto.defId}';
         getChangeFileds();
@@ -61,6 +63,7 @@
         var params ={
             'busId':processInfo.busId,
             'taskId':processInfo.taskId,
+            'taskName':processInfo.taskName,
             'instanceId':processInfo.instanceId,
             'defId':processInfo.defId
         };
@@ -85,7 +88,7 @@
      * 办理
      */
     function clickSubmit() {
-        var params ="busId="+processInfo.busId+"&taskId="+processInfo.taskId+"&defId="+processInfo.defId+"&instanceId="+processInfo.instanceId;
+        var params ="busId="+processInfo.busId+"&taskId="+processInfo.taskId+"&taskName="+processInfo.taskName+"&defId="+processInfo.defId+"&instanceId="+processInfo.instanceId;
         //加入参数可更改的字段数值
         var vars = processInfo.vars;
         var varValue="";
@@ -114,7 +117,7 @@
      * 转办
      */
     function turnToDo() {
-        var params ="busId="+processInfo.busId+"&taskId="+processInfo.taskId+"&defId="+processInfo.defId+"&instanceId="+processInfo.instanceId;
+        var params ="busId="+processInfo.busId+"&taskId="+processInfo.taskId+"&taskName="+processInfo.taskName+"&defId="+processInfo.defId+"&instanceId="+processInfo.instanceId;
         var url="${webRoot}/act/deal/toTurnToDo?"+params;
         //弹框层
         layer.open({
@@ -135,6 +138,7 @@
         var params ={
             'busId':processInfo.busId,
             'taskId':processInfo.taskId,
+            'taskName':processInfo.taskName,
             'instanceId':processInfo.instanceId,
             'defId':processInfo.defId,
         };

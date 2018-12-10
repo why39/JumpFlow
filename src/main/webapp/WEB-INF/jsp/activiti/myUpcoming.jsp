@@ -48,7 +48,7 @@
                         <td><fmt:formatDate value="${task.createTime}" pattern="yyyy-MM-dd HH:mm"/></td>
                         <td>${task.dealName}</td>
                         <td>
-                            <button class="layui-btn layui-btn-small" type="button" onclick="doTaskTab('${task.actKey}','${task.busId}','${task.instanceId}','${task.taskId}','${task.defId}','${task.nodeType}')"><i class="layui-icon">&#xe60a;</i>办理</button>
+                            <button class="layui-btn layui-btn-small" type="button" onclick="doTaskTab('${task.actKey}','${task.busId}','${task.instanceId}','${task.taskId}','${task.taskName}','${task.defId}','${task.nodeType}')"><i class="layui-icon">&#xe60a;</i>办理</button>
                         </td>
                     </tr>
                 </c:forEach>
@@ -64,14 +64,14 @@
     /**
      * 任务办理Tab
      */
-    function doTaskTab(actKey,busId,instanceId,taskId,defid,nodeType) {
-        var url="${webRoot}/act/deal/flowInfoTab?flag=2&actKey="+actKey+"&busId="+busId+"&instanceId="+instanceId+"&taskId="+taskId+"&defId="+defid+"&nodeType="+nodeType ;
+    function doTaskTab(actKey,busId,instanceId,taskId,taskName,defid,nodeType) {
+        var url="${webRoot}/act/deal/flowInfoTab?flag=2&actKey="+actKey+"&busId="+busId+"&instanceId="+instanceId+"&taskId="+taskId+"&taskName="+taskName+"&defId="+defid+"&nodeType="+nodeType ;
         //弹框层
         layer.open({
-            scrollbar: false,
+            scrollbar: true,
             type: 2,
             title : ["办理任务" , true],
-            area: ['90%', '90%'], //宽高
+            area: ['100%', '100%'], //宽高
             content: [url,'yes'],
             shadeClose : false,
         });

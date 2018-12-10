@@ -59,9 +59,10 @@
     /**
      * 流程相关信息类
      */
-    function processInfo(busId,taskId,instanceId,changeFields,defId,vars,varValue,nodeType,remark,isSelectUser) {
+    function processInfo(busId,taskId,taskName,instanceId,changeFields,defId,vars,varValue,nodeType,remark,isSelectUser) {
         this.busId=busId;//业务id
         this.taskId=taskId;//任务id
+		this.taskName=taskName;
         this.instanceId=instanceId;//流程实例
         this.changeFields=changeFields;//可更改的字段
         this.defId=defId;//流程定义id
@@ -75,7 +76,8 @@
 	$(function () {
 		processInfo.busId='${flowbus.busId}';
 		processInfo.taskId='${taskDto.taskId}';
-		processInfo.instanceId='${flowbus.instanceId}';
+        processInfo.taskName='${taskDto.taskName}';
+        processInfo.instanceId='${flowbus.instanceId}';
 		processInfo.changeFiles='${nodeSet.changeFiles}';
 		processInfo.defId='${flowbus.defid}';
 		processInfo.varName='${taskDto.varName}';
@@ -101,6 +103,7 @@
         var params ={
             'busId':processInfo.busId,
             'taskId':processInfo.taskId,
+			'taskName':processInfo.taskName,
             'instanceId':processInfo.instanceId,
             'defId':processInfo.defId,
             'varValue':processInfo.varValue,
@@ -187,7 +190,7 @@
             scrollbar: false,
             type: 2,
             title : ["选择下级审批" , true],
-            area: ['90%', '90%'], //宽高
+            area: ['100%', '100%'], //宽高
             content: [url,'no'],
             shadeClose : false,
         });

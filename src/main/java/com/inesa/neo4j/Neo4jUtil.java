@@ -79,7 +79,7 @@ public class Neo4jUtil {
         try {
 
             StatementResult createResult = session.run("CREATE (a:Task {" +
-                            "name: {taskId}" +
+                            "name: {name}" +
                             ", label: {label}" +
                             ", taskId: {taskId}" +
                             ", taskName:{taskName}" +
@@ -94,7 +94,8 @@ public class Neo4jUtil {
                             ", nextUserId: {nextUserId}" +
                             "})",
                     parameters(
-                            "taskId", processTaskDto.getTaskId()
+                            "name",processTaskDto.getTaskId()+":"+processTaskDto.getTaskName()
+                            ,"taskId", processTaskDto.getTaskId()
                             , "label", "Task"
                             , "taskName", processTaskDto.getTaskName()
                             , "instanceId", processTaskDto.getInstanceId()
@@ -121,19 +122,27 @@ public class Neo4jUtil {
 //            session.close();
 //            driver.close();
 
-            if (!TextUtils.isEmpty(redisUtils.getString("lastCodeId"))) {
-                Code relation = new Code();
-                relation.setNodeFromId(redisUtils.getString("lastCodeId"));
-                relation.setNodeFromLabel(redisUtils.getString("lastCodeLabel"));
-                relation.setNodeToId(code.getId());
-                relation.setNodeToLabel(code.getLabel());
-                relation.setRelation("Relation");
-                relate(relation);
+            /**
+             * 如果已经存在相同instanceId的节点，且存在前置节点，则添加关系
+             */
+            if (!TextUtils.isEmpty(redisUtils.getString("lastCodeId")) && !TextUtils.isEmpty(redisUtils.getString(processTaskDto.getInstanceId()))) {
+
+                if (processTaskDto.getInstanceId().equals(redisUtils.getString(processTaskDto.getInstanceId()))) {
+                    Code relation = new Code();
+                    relation.setNodeFromId(redisUtils.getString("lastCodeId"));
+                    relation.setNodeFromLabel(redisUtils.getString("lastCodeLabel"));
+                    relation.setNodeToId(code.getId());
+                    relation.setNodeToLabel(code.getLabel());
+                    relation.setRelation("next");
+                    relate(relation);
+                }
+
             }
 
 
             redisUtils.setString("lastCodeLabel", code.getLabel());
             redisUtils.setString("lastCodeId", code.getId());
+            redisUtils.setString(processTaskDto.getInstanceId(), processTaskDto.getInstanceId());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -302,9 +311,10 @@ public class Neo4jUtil {
 
     /**
      * 推理
+     *
      * @param name
      */
-    public static void inference(String name){
+    public static void inference(String name) {
         Driver driver = createDrive();
         Session session = driver.session();
         session.run("MATCH (n:Task) WHERE n.name=\"" + name + "\" WITH n MATCH p = (m:Task) - [*] ->(n) RETURN m");
