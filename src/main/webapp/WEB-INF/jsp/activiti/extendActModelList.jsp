@@ -85,10 +85,10 @@
         }
         //弹框层
         layer.open({
-            scrollbar: false,
+            scrollbar: true,
             type: 2,
             title : [titile , true],
-            area: ['30%', '450px'], //宽高
+            area: ['100%', '100%'], //宽高
             content: [url,'no'],
             shadeClose : true,
         });
@@ -103,10 +103,10 @@
         var url="${webRoot}/plugins/process/modeler.html?modelId="+modelId;
         //弹框层
         layer.open({
-            scrollbar: false,
+            scrollbar: true,
             type: 2,
             title : ["流程图设计" , true],
-            area: ['90%', '90%'], //宽高
+            area: ['100%', '100%'], //宽高
             content: [url,'no'],
             shadeClose : false,
         });
@@ -127,10 +127,10 @@
         var url="${webRoot}/act/model/flowTree?modelId="+modelId;
         //弹框层
         layer.open({
-            scrollbar: false,
+            scrollbar: true,
             type: 2,
             title : ["流程节点设置" , true],
-            area: ['80%', '80%'], //宽高
+            area: ['100%', '100%'], //宽高
             content: [url,'no'],
             shadeClose : false,
         });
@@ -145,7 +145,7 @@
         //弹框层
         layer.open({
             type: 1,
-            area: ['70%', '70%'], //宽高
+            area: ['100%', '100%'], //宽高
             content: html,
             title:['查看流程图',true],
             shadeClose: true, //开启遮罩关闭

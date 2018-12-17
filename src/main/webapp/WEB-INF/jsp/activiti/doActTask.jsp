@@ -187,7 +187,7 @@
         var url="${webRoot}/act/deal/userWindow?nodeId="+nodeId+"&nodeAction="+nodeAction;
         //弹框层
         layer.open({
-            scrollbar: false,
+            scrollbar: true,
             type: 2,
             title : ["选择下级审批" , true],
             area: ['100%', '100%'], //宽高

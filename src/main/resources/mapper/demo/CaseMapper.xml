@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.hxy.modules.demo.dao.LeaveDao">
-    <resultMap type="com.hxy.modules.demo.entity.LeaveEntity" id="leaveMap">
+<mapper namespace="com.hxy.modules.demo.dao.CaseDao">
+    <resultMap type="com.hxy.modules.demo.entity.CaseEntity" id="caseMap">
         <result property="id" column="id"/>
         <result property="userId" column="user_id"/>
         <result property="title" column="title"/>
@@ -42,17 +42,17 @@
 		leavewhy
     </sql>
 
-	<select id="queryObject" resultType="com.hxy.modules.demo.entity.LeaveEntity" resultMap="leaveMap">
+	<select id="queryObject" resultType="com.hxy.modules.demo.entity.CaseEntity" resultMap="caseMap">
 		select
 		<include refid="Base_Column_List" />
-		from leaveAply
+		from caseAply
 		where id = #{value}
 	</select>
 
-	<select id="queryList" resultType="com.hxy.modules.demo.entity.LeaveEntity" resultMap="leaveMap">
+	<select id="queryList" resultType="com.hxy.modules.demo.entity.CaseEntity" resultMap="caseMap">
 		select
 			<include refid="Base_Column_List" />,(SELECT user_name FROM sys_user s WHERE s.id=l.user_id)AS leaveUser
-		from leaveAply l
+		from caseAply l
 		WHERE 1=1
 		<if test="title!=null and title!='' ">
 			AND title LIKE concat('%',#{title},'%')
@@ -61,11 +61,11 @@
 	</select>
 	
  	<select id="queryTotal" resultType="int">
-		select count(*) from leaveAply
+		select count(*) from caseAply
 	</select>
 	 
-	<insert id="save" parameterType="com.hxy.modules.demo.entity.LeaveEntity">
-		insert into leaveAply
+	<insert id="save" parameterType="com.hxy.modules.demo.entity.CaseEntity">
+		insert into caseAply
 		(
 			<include refid="Base_Column_List" />
 		)
@@ -91,8 +91,8 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="com.hxy.modules.demo.entity.LeaveEntity">
-		update leaveAply
+	<update id="update" parameterType="com.hxy.modules.demo.entity.CaseEntity">
+		update caseAply
 		<set>
 			<if test="userId != null">`user_id` = #{userId}, </if>
 			<if test="title != null">`title` = #{title}, </if>
@@ -114,11 +114,11 @@
 	</update>
 	
 	<delete id="delete">
-		delete from leaveAply where id = #{value}
+		delete from caseAply where id = #{value}
 	</delete>
 	
 	<delete id="deleteBatch">
-		delete from leaveAply where id in
+		delete from caseAply where id in
 		<foreach item="id" collection="array" open="(" separator="," close=")">
 			#{id}
 		</foreach>

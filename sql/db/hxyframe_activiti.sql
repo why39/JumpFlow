@@ -1170,6 +1170,32 @@ CREATE TABLE `leaveaply` (
   `act_result` varchar(4) DEFAULT NULL COMMENT '审批结果 1为同意,2为不同意,3为审批中'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='请假流程测试';
 
+
+
+-- ----------------------------
+-- Table structure for leaveaply
+-- ----------------------------
+DROP TABLE IF EXISTS `caseaply`;
+CREATE TABLE `caseaply` (
+  `id` varchar(32) DEFAULT NULL,
+  `user_id` varchar(32) DEFAULT NULL COMMENT '办理人',
+  `title` varchar(255) DEFAULT NULL COMMENT '案件环节标题',
+  `day` int(11) DEFAULT NULL COMMENT '案件环节开始时间',
+  `leavewhy` varchar(255) DEFAULT NULL COMMENT '案件环节详情说明',
+  `status` varchar(6) DEFAULT NULL COMMENT '业务流程状态  1=草稿 2=办理中 3=结束',
+  `start_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '案件发起时间',
+  `instance_id` varchar(64) DEFAULT NULL COMMENT '案件实例id',
+  `defid` varchar(64) DEFAULT '' COMMENT '案件定义id',
+  `start_user_id` varchar(32) DEFAULT NULL COMMENT '流程发起人',
+  `code` varchar(50) DEFAULT NULL COMMENT '案件流程单据编号',
+  `create_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '新建时间',
+  `create_id` varchar(32) DEFAULT NULL,
+  `update_id` varchar(32) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  `act_result` varchar(4) DEFAULT NULL COMMENT '审批结果 1为通过,2为不通过,3为办理中'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='办案流程测试';
+
 -- ----------------------------
 -- Records of leaveaply
 -- ----------------------------

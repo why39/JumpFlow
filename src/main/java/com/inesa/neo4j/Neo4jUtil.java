@@ -94,7 +94,7 @@ public class Neo4jUtil {
                             ", nextUserId: {nextUserId}" +
                             "})",
                     parameters(
-                            "name",processTaskDto.getTaskId()+":"+processTaskDto.getTaskName()
+                            "name", processTaskDto.getTaskName()
                             ,"taskId", processTaskDto.getTaskId()
                             , "label", "Task"
                             , "taskName", processTaskDto.getTaskName()

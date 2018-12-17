@@ -11,25 +11,25 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @Auther hxy
  * @Date 2017/7/27
  */
-@ActTable(tableName = "leaveaply",pkName="id")
+@ActTable(tableName = "caseaply",pkName="id")
 public class CaseEntity extends ActivitiBaseEntity {
 
     private String id;
 
     private String userId;
 
-    @ActField(name = "案件标题")
-    @NotEmpty(message = "案件标题不能为空")
+    @ActField(name = "案件环节标题")
+    @NotEmpty(message = "案件环节标题不能为空")
     private String title;
 
-    @NotEmpty(message = "案件开始时间不能为空")
-    @ActField(name = "案件开始时间",isJudg = true)
+    @NotEmpty(message = "案件环节开始时间不能为空")
+    @ActField(name = "案件环节开始时间",isJudg = true)
     private int day;
 
     /**
      * 案件详情
      */
-    @NotEmpty(message = "案件详情")
+    @NotEmpty(message = "案件环节详情说明")
     private String leavewhy;
 
     /**

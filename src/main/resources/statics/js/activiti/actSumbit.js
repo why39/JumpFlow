@@ -2,10 +2,10 @@ function flowSumbit(actKey,busId) {
     var url=webRoot+"/act/deal/queryFlowsByActKey?actKey="+actKey+"&busId="+busId;
     //弹框层
     layer.open({
-        scrollbar: false,
+        scrollbar: true,
         type: 2,
         title : ["流程提交" , true],
-        area: ['70%', '70%'], //宽高
+        area: ['100%', '100%'], //宽高
         content: [url,'yes'],
         shadeClose : false,
     });
@@ -19,7 +19,7 @@ function showFlowImg(instanceId) {
     //弹框层
     layer.open({
         type: 1,
-        area: ['70%', '70%'], //宽高
+        area: ['100%', '100%'], //宽高
         content: html,
         title:['查看流程图',true],
         shadeClose: true, //开启遮罩关闭
@@ -36,7 +36,7 @@ function doTaskTab(actKey,busId,instanceId) {
         scrollbar: true,
         type: 2,
         title : ["审批记录" , true],
-        area: ['90%', '90%'], //宽高
+        area: ['100%', '100%'], //宽高
         content: [url,'yes'],
         shadeClose : false,
     });

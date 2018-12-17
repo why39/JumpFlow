@@ -98,10 +98,10 @@
         var url="${webRoot}/act/deal/turnUserWindow";
         //弹框层
         layer.open({
-            scrollbar: false,
+            scrollbar: true,
             type: 2,
             title : ["选择变更人" , true],
-            area: ['90%', '90%'], //宽高
+            area: ['100%', '100%'], //宽高
             content: [url,'no'],
             shadeClose : false,
         });

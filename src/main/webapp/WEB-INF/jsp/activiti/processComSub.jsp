@@ -104,10 +104,10 @@
         var url="${webRoot}/act/deal/toDoActTaskView?"+params;
         //弹框层
         layer.open({
-            scrollbar: false,
+            scrollbar: true,
             type: 2,
             title : ["选择下一步审批人" , true],
-            area: ['70%', '70%'], //宽高
+            area: ['100%', '100%'], //宽高
             content: [url,'no'],
             shadeClose : false,
         });
@@ -121,10 +121,10 @@
         var url="${webRoot}/act/deal/toTurnToDo?"+params;
         //弹框层
         layer.open({
-            scrollbar: false,
+            scrollbar: true,
             type: 2,
             title : ["转办弹框" , true],
-            area: ['70%', '70%'], //宽高
+            area: ['100%', '100%'], //宽高
             content: [url,'no'],
             shadeClose : false,
         });

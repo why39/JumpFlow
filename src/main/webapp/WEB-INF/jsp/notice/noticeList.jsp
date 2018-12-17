@@ -79,10 +79,10 @@
                     html+=' <p style="text-align: right;margin-top: 50px;">发布时间：'+result.time+'</p>';
                     html+='</div>';
                 layer.open({
-                    scrollbar: false,
+                    scrollbar: true,
                     type: 1,
                     title : ["查阅通知" , true],
-                    area: ['70%', '70%'], //宽高
+                    area: ['100%', '100%'], //宽高
                     content: html,
                     shadeClose : false,
                 });

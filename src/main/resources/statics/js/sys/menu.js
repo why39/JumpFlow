@@ -188,7 +188,7 @@ var vm = new Vue({
                 type: 2,
                 skin: 'layui-layer-molv',
                 title: "选择菜单图片",
-                area: ['90%', '70%'],
+                area: ['100%', '100%'],
                 shade: 0,
                 shadeClose: false,
                 content: [url,'no'],

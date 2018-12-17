@@ -1,6 +1,8 @@
 package com.hxy.modules.demo.controller;
 import com.hxy.modules.activiti.dto.ProcessTaskDto;
+import com.hxy.modules.demo.entity.CaseEntity;
 import com.hxy.modules.demo.entity.LeaveEntity;
+import com.hxy.modules.demo.service.CaseService;
 import com.hxy.modules.demo.service.LeaveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,14 +21,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ActBusInfoController {
 
     @Autowired
-    LeaveService leaveService;
+    CaseService caseService;
 
-    @RequestMapping(value ="leave",method = RequestMethod.POST)
+    @RequestMapping(value ="case",method = RequestMethod.POST)
     public String leave(ProcessTaskDto processTaskDto, Model model, String flag){
-        LeaveEntity leaveEntity = leaveService.queryObject(processTaskDto.getBusId());
-        model.addAttribute("leave",leaveEntity);
+        CaseEntity caseEntity = caseService.queryObject(processTaskDto.getBusId());
+        model.addAttribute("caseEntity",caseEntity);
         model.addAttribute("taskDto",processTaskDto);
         model.addAttribute("flag",flag);
-        return "/demo/leaveActInfo";
+        return "/demo/caseActInfo";
     }
 }

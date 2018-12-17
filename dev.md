@@ -35,3 +35,20 @@ MATCH (n:Task) WHERE n.name="187509" WITH n
 MATCH p = (m:Task) - [*] ->(n)
 RETURN m
 ```
+
+- - -
+
+开发新模型
+
+1. com.hxy.modules.demo 目录下的:
+
+- XXXEntity
+- XXXDao
+- XXXService,XXXServiceImpl
+- XXXController
+
+2. WEB-INF/demo 目录下的:
+
+- xxx.jsp : 实例主页
+- xxxEdit.jsp : 新建实例页面
+- xxxActInfo.jsp : 审批环节的页面

@@ -79,7 +79,7 @@
                     offset: '0px',
                     skin: 'layui-layer-molv',
                     title: "选择菜单",
-                    area: ['250px', '350px'],
+                    area: ['100%', '100%'],
                     shade: 0,
                     shadeClose: false,
                     content: $("#busTree"),
