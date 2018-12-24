@@ -88,7 +88,7 @@ public class ExtendActDealController {
 
     @RequestMapping("query")
     public String query() {
-        return "neo.html";
+        return "neod.html";
     }
 
     /**

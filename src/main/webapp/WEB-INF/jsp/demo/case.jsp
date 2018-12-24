@@ -14,9 +14,9 @@
         <div class="col-md-12">
             <form class="layui-form" id="search-from" action="${webRoot}/demo/case/list">
                 <div class="layui-form-item">
-                    <label class="layui-form-label" style="width:6%;">请假标题:</label>
+                    <label class="layui-form-label" style="width:10%;">案件标题:</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="title" value="${leave.title}"  placeholder="请输入请假标题"  class="layui-input" >
+                        <input type="text" name="title" value="${leave.title}"  placeholder="请输入案件标题"  class="layui-input" >
                     </div>
                     <button class="layui-btn" id="searchSubmit"><i class="layui-icon">&#xe615;</i>搜 索</button>
                     <button class="layui-btn layui-btn-warm" type="button" id="refresh">重 置</button>
@@ -31,13 +31,13 @@
                 <thead>
                 <tr>
                     <th>序号</th>
-                    <th>标题</th>
-                    <th>请假人</th>
-                    <th>请假天数</th>
-                    <th>请假原因</th>
-                    <th>审批结果</th>
-                    <th>流程状态</th>
-                    <th>创建时间</th>
+                    <th>案件标题</th>
+                    <th>案件发起人</th>
+                    <th>是否有罪</th>
+                    <th>案件详情说明</th>
+                    <th>案件执行结果</th>
+                    <th>案件执行状态</th>
+                    <th>案件创建时间</th>
                     <th>操作</th>
                 </tr>
                 </thead>
@@ -47,7 +47,7 @@
                         <td>${i.index+1 }</td>
                         <td>${leave.title}</td>
                         <td>${leave.leaveUser}</td>
-                        <td>${leave.day}</td>
+                        <td>${leave.guilty}</td>
                         <td>${leave.leavewhy}</td>
                         <td>${fns:getCodeName("act_result",leave.actResult)}</td>
                         <td>${fns:getCodeName("act_process_status",leave.status)}</td>
@@ -60,13 +60,13 @@
                                     <button class="layui-btn layui-btn-danger layui-btn-small" type="button" onclick="deleteById('${leave.id}')"><i class="layui-icon">&#xe640;</i>删除</button>
                                 </c:if>
                                 <c:if test="${(leave.status == 2 || leave.status == 3) && leave.actResult !=2}">
-                                    <button class="layui-btn layui-btn-small" type="button" onclick="doTaskTab('case','${leave.id}','${leave.instanceId}')"><i class="layui-icon">&#xe705;</i>审批记录</button>
+                                    <button class="layui-btn layui-btn-small" type="button" onclick="doTaskTab('case','${leave.id}','${leave.instanceId}')"><i class="layui-icon">&#xe705;</i>案件环节操作记录</button>
                                     <button class="layui-btn layui-btn-small layui-btn-warm" type="button" onclick="showFlowImg('${leave.instanceId}')"><i class="layui-icon">&#xe60d;</i>查看流程图</button>
                                 </c:if>
                                 <c:if test="${(leave.status == 2 || leave.status == 3) && leave.actResult == 2}">
                                     <a class="layui-btn layui-btn-small" href="${webRoot}/demo/case/info?id=${leave.id}" ><i class="layui-icon">&#xe642;</i>编辑</a>
                                     <button class="layui-btn layui-btn-small" type="button" onclick="flowSumbit('case','${leave.id}')"><i class="layui-icon">&#xe604;</i>提交</button>
-                                    <button class="layui-btn layui-btn-small" type="button" onclick="doTaskTab('case','${leave.id}','${leave.instanceId}')"><i class="layui-icon">&#xe705;</i>审批记录</button>
+                                    <button class="layui-btn layui-btn-small" type="button" onclick="doTaskTab('case','${leave.id}','${leave.instanceId}')"><i class="layui-icon">&#xe705;</i>案件环节操作记录</button>
                                     <button class="layui-btn layui-btn-small layui-btn-warm" type="button" onclick="showFlowImg('${leave.instanceId}')"><i class="layui-icon">&#xe60d;</i>查看流程图</button>
                                 </c:if>
                             </div>

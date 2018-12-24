@@ -12,10 +12,10 @@
             </div>
         </div>
         <div class="form-group col-sm-6 col-md-5 ">
-            <label class="col-sm-3 control-label no-padding-right">案件环节开始时间:</label>
+            <label class="col-sm-3 control-label no-padding-right">是否有罪:</label>
             <div class="col-sm-9">
             <span class="col-xs-11 block input-icon input-icon-right">
-                <input id="day" name="day" type="text"  class="form-control" value="${caseEntity.day}" readonly/>
+                <input id="guilty" name="guilty" type="text"  class="form-control" value="${caseEntity.guilty}" readonly/>
             </span>
             </div>
         </div>

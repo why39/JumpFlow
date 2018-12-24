@@ -1,0 +1,149 @@
+<html>
+<head>
+    <link rel="stylesheet" href="${rc.contextPath}/styles/codemirror.css">
+    <link rel="stylesheet" href="${rc.contextPath}/styles/codemirror-neo.css">
+    <link rel="stylesheet" href="${rc.contextPath}/styles/cy2neo.css">
+    <link rel="stylesheet" href="${rc.contextPath}/styles/neod3.css">
+    <link rel="stylesheet" href="${rc.contextPath}/styles/datatable.css">
+    <link rel="stylesheet" href="${rc.contextPath}/styles/vendor.css"> <!-- bootstrap-->
+    <link rel="stylesheet" href="${rc.contextPath}/styles/sweet-alert.css">
+    <link rel="stylesheet" href="${rc.contextPath}/styles/gh-fork-ribbon.css">
+    <title>Cy2NeoD3 - Tiny Neo4j Cypher Workbench</title>
+</head>
+<body>
+<div>
+    <!--<input class="form-control" type="url" value="http://10.131.233.173:7474" id="neo4jUrl"/><br/>-->
+    <!--<input class="form-control" type="text" size="8" value="neo4j" id="neo4jUser"/>-->
+    <!--<input class="form-control" type="password" size="8" placeholder="password" value="test" id="neo4jPass"/><br/>-->
+    <textarea name="cypher" id="cypher" rows="4" cols="120" data-lang="cypher" class="code form-control">
+  MATCH (n)-[r]->(m)
+  RETURN n,r,m
+  </textarea>
+    <a href="#" title="Execute" id="execute"><i class="fa fa-play-circle-o"></i></a>
+</div>
+
+<div>
+    <input class="form-control" type="text" value="0" id="actionContent" placeholder="请输入案件环节ID"/>
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary" id="inference" onclick="inference()">推理</button>
+        <button type="button" class="btn btn-primary" id="trace" onclick="trace()">溯源</button>
+    </div>
+</div>
+
+<div role="tabpanel">
+
+    <!-- Nav tabs -->
+    <!--<ul class="nav nav-tabs" role="tablist">-->
+    <!--<li role="presentation" class="active"><a href="#graph" aria-controls="home" role="tab" data-toggle="tab">Graph</a></li>-->
+    <!--<li role="presentation"><a href="#table" aria-controls="table" role="tab" data-toggle="tab">Table</a></li>-->
+    <!--</ul>-->
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="graph">
+            <div class="tab-pane active" id="graph">&nbsp;</div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="table">
+            <div id="datatable"></div>
+        </div>
+    </div>
+
+    <!--<div class="github-fork-ribbon-wrapper right-bottom">-->
+    <!--<div class="github-fork-ribbon">-->
+    <!--<a href="https://github.com/jexp/cy2neo">{{selectnode.name}}</a>-->
+    <!--</div>-->
+    <!--</div>-->
+
+</div>
+
+<script src="${rc.contextPath}/scripts/codemirror.js"></script>
+<script src="${rc.contextPath}/scripts/codemirror-cypher.js"></script>
+<script src="${rc.contextPath}/scripts/vendor.js"></script>
+<script src="${rc.contextPath}/scripts/sweet-alert.min.js"></script>
+<script src="${rc.contextPath}/scripts/neod3.js"></script>
+<script src="${rc.contextPath}/scripts/neod3-visualization.js"></script>
+<script src="${rc.contextPath}/scripts/neo4d3.js"></script>
+<script src="${rc.contextPath}/scripts/cy2neod3.js"></script>
+<script src="${rc.contextPath}/scripts/jquery.dataTables.min.js"></script>
+<script src="${rc.contextPath}/scripts/cypher.datatable.js"></script>
+
+
+<script type="text/javascript">
+    var connection = function () {
+        return {url: "http://10.131.233.173:7474", user: "neo4j", pass: "1992"};
+    }
+    function trace(){
+        var neod3 = new Neod3Renderer();
+
+        var neo = new Neo(connection);
+        try {
+            var query = $("#actionContent").val();
+            console.log("Executing Query",query);
+            neo.executeQuery(query,{},function(err,res) {
+                res = res || {}
+                var graph=res.graph;
+                if (graph) {
+                    var c=$("#graph");
+                    c.empty();
+                    neod3.render("graph", c ,graph);
+                } else {
+                    if (err) {
+                        console.log(err);
+                        if (err.length > 0) {
+                            sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
+                        } else {
+                            sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
+                        }
+                    }
+                }
+            });
+        } catch(e) {
+            console.log(e);
+            sweetAlert("Catched error", e, "error");
+        }
+    }
+
+    function inference(){
+        var neod3 = new Neod3Renderer();
+        var neo = new Neo(connection);
+        try {
+            var query = $("#actionContent").val();
+            console.log("Executing Query",query);
+            neo.executeQuery(query,{},function(err,res) {
+                res = res || {}
+                var graph=res.graph;
+                if (graph) {
+                    var c=$("#graph");
+                    c.empty();
+                    neod3.render("graph", c ,graph);
+                } else {
+                    if (err) {
+                        console.log(err);
+                        if (err.length > 0) {
+                            sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
+                        } else {
+                            sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
+                        }
+                    }
+                }
+            });
+        } catch(e) {
+            console.log(e);
+            sweetAlert("Catched error", e, "error");
+        }
+    }
+
+    $(document).ready(function () {
+        //todo dynamic configuration
+        var config = {}
+        var connection = function () {
+            return {url: "http://10.131.233.173:7474", user: "neo4j", pass: "1992"};
+        }
+        new Cy2NeoD3(config, "graph", "datatable", "cypher", "execute", connection, true);
+        // new Cy2NeoD3(config, "graph", "datatable", "action", "inference", connection, true);
+        // new Cy2NeoD3(config, "graph", "datatable", "action", "trace", connection, true);
+
+    });
+</script>
+</body>
+</html>

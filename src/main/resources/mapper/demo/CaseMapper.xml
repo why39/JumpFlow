@@ -6,7 +6,7 @@
         <result property="id" column="id"/>
         <result property="userId" column="user_id"/>
         <result property="title" column="title"/>
-        <result property="day" column="day"/>
+        <result property="guilty" column="guilty"/>
         <result property="leavewhy" column="leavewhy"/>
         <result property="status" column="status"/>
         <result property="startTime" column="start_time"/>
@@ -26,7 +26,7 @@
 		id, 
 		user_id, 
 		title, 
-		day, 
+		guilty, 
 		status,
 		start_time,
 		instance_id,
@@ -74,7 +74,7 @@
 			#{id},
 			#{userId}, 
 			#{title}, 
-			#{day}, 
+			#{guilty}, 
 			#{status},
 			#{startTime},
 			#{instanceId},
@@ -96,7 +96,7 @@
 		<set>
 			<if test="userId != null">`user_id` = #{userId}, </if>
 			<if test="title != null">`title` = #{title}, </if>
-			<if test="day != null">`day` = #{day}, </if>
+			<if test="guilty != null">`guilty` = #{guilty}, </if>
 			<if test="status != null">`status` = #{status},</if>
 			<if test="startTime != null">`start_time` = #{startTime},</if>
 			<if test="instanceId != null">`instance_id` = #{instanceId},</if>

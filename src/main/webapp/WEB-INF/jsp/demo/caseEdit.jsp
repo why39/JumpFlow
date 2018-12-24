@@ -15,7 +15,7 @@
 				</div>
 				<div class="row">
 					<div class="form-group col-xs-12 ">
-						<label class="col-xs-3 control-label no-padding-right"><i class="red"> * </i>案件环节标题:</label>
+						<label class="col-xs-3 control-label no-padding-right"><i class="red"> * </i>案件标题:</label>
 						<div class="col-xs-9">
 							<span class="col-xs-11 block input-icon input-icon-right">
 								<input id="title" name="title" type="text" class="form-control" value="${leave.title}"/>
@@ -25,17 +25,17 @@
 				</div>
 				<div class="row">
 					<div class="form-group col-xs-12 ">
-						<label class="col-xs-3 control-label no-padding-right"><i class="red"> * </i>案件环节开始时间:</label>
+						<label class="col-xs-3 control-label no-padding-right"><i class="red"> * </i>是否有罪:</label>
 						<div class="col-xs-9">
 							<span class="col-xs-11 block input-icon input-icon-right">
-								<input id="day" name="day" type="text" class="form-control" value="${leave.day}"/>
+								<input id="guilty" name="guilty" type="text" class="form-control" value="${leave.guilty}"/>
 							</span>
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group col-xs-12">
-						<label class="col-xs-3 control-label no-padding-right">案件环节详情说明:</label>
+						<label class="col-xs-3 control-label no-padding-right">案件详情说明:</label>
 						<div class="col-xs-9">
 							<span class="col-xs-11 block input-icon input-icon-right">
 								<textarea id="leavewhy" name="leavewhy" class="form-control" rows="3">${leave.leavewhy}</textarea>

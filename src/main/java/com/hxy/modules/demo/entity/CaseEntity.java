@@ -22,14 +22,14 @@ public class CaseEntity extends ActivitiBaseEntity {
     @NotEmpty(message = "案件环节标题不能为空")
     private String title;
 
-    @NotEmpty(message = "案件环节开始时间不能为空")
-    @ActField(name = "案件环节开始时间",isJudg = true)
-    private int day;
+    @NotEmpty(message = "是否有罪")
+    @ActField(name = "是否有罪",isJudg = true)
+    private int guilty;
 
     /**
      * 案件详情
      */
-    @NotEmpty(message = "案件环节详情说明")
+    @NotEmpty(message = "案件详情说明")
     private String leavewhy;
 
     /**
@@ -62,12 +62,12 @@ public class CaseEntity extends ActivitiBaseEntity {
         this.title = title;
     }
 
-    public int getDay() {
-        return day;
+    public int getGuilty() {
+        return guilty;
     }
 
-    public void setDay(int day) {
-        this.day = day;
+    public void setGuilty(int guilty) {
+        this.guilty = guilty;
     }
 
     public String getLeavewhy() {
