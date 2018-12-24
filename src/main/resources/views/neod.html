@@ -11,23 +11,39 @@
     <title>Cy2NeoD3 - Tiny Neo4j Cypher Workbench</title>
 </head>
 <body>
-<div>
-    <!--<input class="form-control" type="url" value="http://10.131.233.173:7474" id="neo4jUrl"/><br/>-->
-    <!--<input class="form-control" type="text" size="8" value="neo4j" id="neo4jUser"/>-->
-    <!--<input class="form-control" type="password" size="8" placeholder="password" value="test" id="neo4jPass"/><br/>-->
-    <textarea name="cypher" id="cypher" rows="4" cols="120" data-lang="cypher" class="code form-control">
-  MATCH (n)-[r]->(m)
-  RETURN n,r,m
-  </textarea>
-    <a href="#" title="Execute" id="execute"><i class="fa fa-play-circle-o"></i></a>
-</div>
+<!--<div>-->
+<!--&lt;!&ndash;<input class="form-control" type="url" value="http://10.131.233.173:7474" id="neo4jUrl"/><br/>&ndash;&gt;-->
+<!--&lt;!&ndash;<input class="form-control" type="text" size="8" value="neo4j" id="neo4jUser"/>&ndash;&gt;-->
+<!--&lt;!&ndash;<input class="form-control" type="password" size="8" placeholder="password" value="test" id="neo4jPass"/><br/>&ndash;&gt;-->
+<!--<textarea name="cypher" id="cypher" rows="4" cols="120" data-lang="cypher" class="code form-control">-->
+<!--MATCH (n)-[r]->(m)-->
+<!--RETURN n,r,m-->
+<!--</textarea>-->
+<!--<a href="#" title="Execute" id="execute"><i class="fa fa-play-circle-o"></i></a>-->
+<!--</div>-->
 
 <div>
-    <input class="form-control" type="text" value="0" id="actionContent" placeholder="请输入案件环节ID"/>
-    <div class="btn-group">
-        <button type="button" class="btn btn-primary" id="inference" onclick="inference()">推理</button>
-        <button type="button" class="btn btn-primary" id="trace" onclick="trace()">溯源</button>
+    <div style="margin-top: 6px" class="col-lg-6">
+        <div class="input-group">
+            <input class="form-control" type="text" style="width: 160px" id="caseTaskId" placeholder="案件环节ID"/>
+            <input class="form-control" type="number" style="width: 160px" id="actionLength" placeholder="推理/溯源路径长度"/>
+            <div style="margin-left: 6px" class="btn-group">
+                <button type="button" class="btn btn-primary" id="inference" onclick="inference()">推理</button>
+                <button type="button" class="btn btn-primary" id="trace" onclick="trace()">溯源</button>
+            </div>
+        </div>
     </div>
+
+    <div style="margin-top: 6px" class="col-lg-6">
+        <div class="input-group">
+            <input class="form-control" type="text" style="width: 160px" id="caseId" placeholder="案件ID"/>
+            <button style="margin-left: 6px" type="button" class="btn btn-primary" id="filter" onclick="filterCase()">筛选案件
+            </button>
+        </div><!-- /input-group -->
+    </div>
+
+
+
 </div>
 
 <div role="tabpanel">
@@ -39,6 +55,14 @@
     <!--</ul>-->
 
     <!-- Tab panes -->
+    <div style="margin-top: 6px">
+        <span class="nodeId label label-success"></span>
+        <span class="nodeInstanceId label label-default"></span>
+        <span class="nodeTaskId label label-default"></span>
+        <span class="nodeName label label-default"></span>
+
+    </div>
+
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="graph">
             <div class="tab-pane active" id="graph">&nbsp;</div>
@@ -48,11 +72,6 @@
         </div>
     </div>
 
-    <!--<div class="github-fork-ribbon-wrapper right-bottom">-->
-    <!--<div class="github-fork-ribbon">-->
-    <!--<a href="https://github.com/jexp/cy2neo">{{selectnode.name}}</a>-->
-    <!--</div>-->
-    <!--</div>-->
 
 </div>
 
@@ -72,20 +91,21 @@
     var connection = function () {
         return {url: "http://10.131.233.173:7474", user: "neo4j", pass: "1992"};
     }
-    function trace(){
+
+    function execute(content) {
         var neod3 = new Neod3Renderer();
 
         var neo = new Neo(connection);
         try {
-            var query = $("#actionContent").val();
-            console.log("Executing Query",query);
-            neo.executeQuery(query,{},function(err,res) {
+            var query = content;
+            console.log("Executing Query", query);
+            neo.executeQuery(query, {}, function (err, res) {
                 res = res || {}
-                var graph=res.graph;
+                var graph = res.graph;
                 if (graph) {
-                    var c=$("#graph");
+                    var c = $("#graph");
                     c.empty();
-                    neod3.render("graph", c ,graph);
+                    neod3.render("graph", c, graph);
                 } else {
                     if (err) {
                         console.log(err);
@@ -97,52 +117,52 @@
                     }
                 }
             });
-        } catch(e) {
+        } catch (e) {
             console.log(e);
             sweetAlert("Catched error", e, "error");
         }
     }
 
-    function inference(){
-        var neod3 = new Neod3Renderer();
-        var neo = new Neo(connection);
-        try {
-            var query = $("#actionContent").val();
-            console.log("Executing Query",query);
-            neo.executeQuery(query,{},function(err,res) {
-                res = res || {}
-                var graph=res.graph;
-                if (graph) {
-                    var c=$("#graph");
-                    c.empty();
-                    neod3.render("graph", c ,graph);
-                } else {
-                    if (err) {
-                        console.log(err);
-                        if (err.length > 0) {
-                            sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
-                        } else {
-                            sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
-                        }
-                    }
-                }
-            });
-        } catch(e) {
-            console.log(e);
-            sweetAlert("Catched error", e, "error");
+    function trace() {
+        var query = null;
+        if ($("#caseTaskId").val()) {
+            query = "MATCH (n) WHERE n.taskId=\'" + $("#caseTaskId").val() + "\' WITH n MATCH p = (m) - [*1.." + $("#actionLength").val() + "] -> (n) RETURN n,p";//$("#caseTaskId").val();
+        } else {
+            query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
         }
+        console.log("$(\"#caseTaskId\").val()---->" + $("#caseTaskId").val());
+
+        execute(query);
     }
 
-    $(document).ready(function () {
+    function inference() {
+        var query = null;
+        if ($("#caseTaskId").val()) {
+            query = "MATCH (n) WHERE n.taskId=\'" + $("#caseTaskId").val() + "\' WITH n MATCH p = (n) - [*1.." + $("#actionLength").val() + "] -> (m) RETURN n,p";//$("#caseTaskId").val();
+        } else {
+            query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
+        }
+        console.log("$(\"#caseTaskId\").val()---->" + $("#caseTaskId").val());
+
+        execute(query);
+    }
+
+    function filterCase() {
+        var query = null;
+        if ($("#caseId").val()) {
+            query = "MATCH (n) WHERE n.instanceId=\'" + $("#caseId").val() + "\' WITH n MATCH p = (m) - [*] -> (n) RETURN n,p";
+        } else {
+            query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
+        }
+        console.log("$(\"#caseId\").val()---->" + $("#caseId").val());
+
+        execute(query);
+    }
+
+    window.onload = (function () {
         //todo dynamic configuration
-        var config = {}
-        var connection = function () {
-            return {url: "http://10.131.233.173:7474", user: "neo4j", pass: "1992"};
-        }
-        new Cy2NeoD3(config, "graph", "datatable", "cypher", "execute", connection, true);
-        // new Cy2NeoD3(config, "graph", "datatable", "action", "inference", connection, true);
-        // new Cy2NeoD3(config, "graph", "datatable", "action", "trace", connection, true);
-
+        var query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
+        execute(query);
     });
 </script>
 </body>

@@ -47,11 +47,16 @@ function Neod3Renderer() {
 
     function clickNode(node) {
         selectNode = JSON.parse(JSON.stringify(node));
-        sweetAlert("案件环节信息"
-            , "所属案件ID：" + selectNode.instanceId + "\n"
-            + "案件环节ID：" + selectNode.taskId + "\n"
-            + "案件环节名称：" + selectNode.name
-            , "info");
+        $(".nodeId").text("<id> : "+node.id);
+        $(".nodeInstanceId").text("所属案件ID : "+selectNode.instanceId);
+        $(".nodeTaskId").text("案件环节ID : "+selectNode.taskId);
+        $(".nodeName").text("环节名称 : "+selectNode.name);
+
+        // sweetAlert("案件环节信息"
+        //     , "所属案件ID：" + selectNode.instanceId + "\n"
+        //     + "案件环节ID：" + selectNode.taskId + "\n"
+        //     + "案件环节名称：" + selectNode.name
+        //     , "info");
     }
 
     function dummyFunc(node) {
