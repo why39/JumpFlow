@@ -131,7 +131,7 @@
             query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
         }
         console.log("$(\"#caseTaskId\").val()---->" + $("#caseTaskId").val());
-
+        clearNodeInfo();
         execute(query);
     }
 
@@ -143,7 +143,7 @@
             query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
         }
         console.log("$(\"#caseTaskId\").val()---->" + $("#caseTaskId").val());
-
+        clearNodeInfo();
         execute(query);
     }
 
@@ -155,10 +155,16 @@
             query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
         }
         console.log("$(\"#caseId\").val()---->" + $("#caseId").val());
-
+        clearNodeInfo();
         execute(query);
     }
 
+    function clearNodeInfo(){
+        $(".nodeId").text("");
+        $(".nodeInstanceId").text("");
+        $(".nodeTaskId").text("");
+        $(".nodeName").text("");
+    }
     window.onload = (function () {
         //todo dynamic configuration
         var query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
