@@ -1,5 +1,4 @@
-
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/WEB-INF/jsp/include/taglib.jsp" %>
 <div id="actBusFields">
     <div class="row">
@@ -7,15 +6,17 @@
             <label class="col-sm-3 control-label no-padding-right">标题:</label>
             <div class="col-sm-9">
                 <span class="col-xs-11 block input-icon input-icon-right">
-                    <input id="title" name="title" type="text"  class="form-control" value="${caseEntity.title}" readonly/>
+                    <input id="title" name="title" type="text" class="form-control" value="${caseEntity.title}"
+                           readonly/>
                 </span>
             </div>
         </div>
         <div class="form-group col-sm-6 col-md-5 ">
-            <label class="col-sm-3 control-label no-padding-right">是否有罪:</label>
+            <label class="col-sm-3 control-label no-padding-right">属于本院管辖:</label>
             <div class="col-sm-9">
             <span class="col-xs-11 block input-icon input-icon-right">
-                <input id="guilty" name="guilty" type="text"  class="form-control" value="${caseEntity.guilty}" readonly/>
+                <input id="guilty" name="guilty" type="text" class="form-control" value="${caseEntity.guilty}"
+                       readonly/>
             </span>
             </div>
         </div>
@@ -25,7 +26,7 @@
             <label class="col-sm-3 control-label no-padding-right">案件环节详情说明:</label>
             <div class="col-sm-9">
             <span class="col-xs-11 block input-icon input-icon-right">
-                <input id="leavewhy" name="leavewhy" type="text"  class="form-control" value="${caseEntity.leavewhy}" readonly/>
+                <input id="leavewhy" name="leavewhy" type="text" class="form-control" value="${caseEntity.leavewhy}"/>
             </span>
             </div>
         </div>
@@ -33,13 +34,25 @@
             <label class="col-sm-3 control-label no-padding-right">编号:</label>
             <div class="col-sm-9">
             <span class="col-xs-11 block input-icon input-icon-right">
-                <input id="code" name="code" type="text"  class="form-control" value="${caseEntity.code}" readonly/>
+                <input id="code" name="code" type="text" class="form-control" value="${caseEntity.code}" readonly/>
             </span>
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="form-group col-sm-6 col-md-5 ">
+            <label class="col-sm-3 control-label no-padding-right">文书材料:</label>
+            <div class="col-sm-12">
+                <span class="col-xs-11 block input-icon input-icon-right">
+                    <input placeholder="(文件链接，多个文件之间以空格相隔)" id="files" name="files" type="text" class="form-control"
+                           value="${caseEntity.files}"/>
+                </span>
+            </div>
+        </div>
+    </div>
+
 </div>
 <c:if test="${flag == 2}">
-    <%@include file="../activiti/processComSub.jsp"%>
+    <%@include file="../activiti/processComSub.jsp" %>
 </c:if>
 

@@ -51,6 +51,7 @@ function Neod3Renderer() {
         $(".nodeInstanceId").text("所属案件ID : "+selectNode.instanceId);
         $(".nodeTaskId").text("案件环节ID : "+selectNode.taskId);
         $(".nodeName").text("环节名称 : "+selectNode.name);
+        //$(".nodeFile").text("文案材料 : "+selectNode.file);
 
         // sweetAlert("案件环节信息"
         //     , "所属案件ID：" + selectNode.instanceId + "\n"

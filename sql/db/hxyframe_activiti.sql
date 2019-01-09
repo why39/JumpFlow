@@ -1181,6 +1181,7 @@ CREATE TABLE `caseaply` (
   `user_id` varchar(32) DEFAULT NULL COMMENT '办理人',
   `title` varchar(255) DEFAULT NULL COMMENT '案件环节标题',
   `guilty` int(1) DEFAULT 0 COMMENT '是否有罪',
+  `files` varchar(255) DEFAULT NULL,
   `leavewhy` varchar(255) DEFAULT NULL COMMENT '案件环节详情说明',
   `status` varchar(6) DEFAULT NULL COMMENT '业务流程状态  1=草稿 2=办理中 3=结束',
   `start_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '案件发起时间',

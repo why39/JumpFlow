@@ -8,7 +8,8 @@
         <result property="title" column="title"/>
         <result property="guilty" column="guilty"/>
         <result property="leavewhy" column="leavewhy"/>
-        <result property="status" column="status"/>
+		<result property="files" column="files"/>
+		<result property="status" column="status"/>
         <result property="startTime" column="start_time"/>
         <result property="instanceId" column="instance_id"/>
         <result property="defid" column="defid"/>
@@ -26,7 +27,8 @@
 		id, 
 		user_id, 
 		title, 
-		guilty, 
+		guilty,
+		files,
 		status,
 		start_time,
 		instance_id,
@@ -74,7 +76,8 @@
 			#{id},
 			#{userId}, 
 			#{title}, 
-			#{guilty}, 
+			#{guilty},
+		    #{files},
 			#{status},
 			#{startTime},
 			#{instanceId},
@@ -97,6 +100,7 @@
 			<if test="userId != null">`user_id` = #{userId}, </if>
 			<if test="title != null">`title` = #{title}, </if>
 			<if test="guilty != null">`guilty` = #{guilty}, </if>
+			<if test="files != null">`guilty` = #{files}, </if>
 			<if test="status != null">`status` = #{status},</if>
 			<if test="startTime != null">`start_time` = #{startTime},</if>
 			<if test="instanceId != null">`instance_id` = #{instanceId},</if>

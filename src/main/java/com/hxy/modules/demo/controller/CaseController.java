@@ -91,9 +91,9 @@ public class CaseController {
     @ResponseBody
     public Result edit(String id){
        if(caseService.delete(id)<1){
-           return Result.error("删除请假条失败");
+           return Result.error("删除失败");
        }
-        return Result.ok("删除请假条成功");
+        return Result.ok("删除成功");
     }
 
 

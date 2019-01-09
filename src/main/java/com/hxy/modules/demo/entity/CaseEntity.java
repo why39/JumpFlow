@@ -8,10 +8,11 @@ import org.hibernate.validator.constraints.NotEmpty;
 /**
  * 类的功能描述.
  * 请假demo
+ *
  * @Auther hxy
  * @Date 2017/7/27
  */
-@ActTable(tableName = "caseaply",pkName="id")
+@ActTable(tableName = "caseaply", pkName = "id")
 public class CaseEntity extends ActivitiBaseEntity {
 
     private String id;
@@ -22,9 +23,12 @@ public class CaseEntity extends ActivitiBaseEntity {
     @NotEmpty(message = "案件环节标题不能为空")
     private String title;
 
-    @NotEmpty(message = "是否有罪")
-    @ActField(name = "是否有罪",isJudg = true)
+    @NotEmpty(message = "属于本院管辖")
+    @ActField(name = "属于本院管辖", isJudg = true)
     private int guilty;
+
+    @ActField(name = "案件环节文书材料")
+    private String files;
 
     /**
      * 案件详情
@@ -84,5 +88,13 @@ public class CaseEntity extends ActivitiBaseEntity {
 
     public void setLeaveUser(String leaveUser) {
         this.leaveUser = leaveUser;
+    }
+
+    public String getFiles() {
+        return files;
+    }
+
+    public void setFiles(String files) {
+        this.files = files;
     }
 }

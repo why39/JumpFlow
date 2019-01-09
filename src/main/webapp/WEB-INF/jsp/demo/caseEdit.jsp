@@ -26,7 +26,7 @@
 				</div>
 				<div class="row">
 					<div class="form-group col-xs-12 ">
-						<label class="col-xs-3 control-label no-padding-right"><i class="red"> * </i>是否有罪:</label>
+						<label class="col-xs-3 control-label no-padding-right">属于本院管辖:</label>
 						<div class="col-xs-9">
 							<span class="col-xs-11 block input-icon input-icon-right">
 								<input id="guilty" name="guilty" type="text" class="form-control" value="${leave.guilty}"/>
@@ -47,10 +47,10 @@
 
 				<div class="row">
 					<div class="form-group col-xs-12 ">
-						<label class="col-xs-3 control-label no-padding-right"><i class="red"> * </i>文书材料（填写文件链接，多个文件之间以空格相隔）:</label>
+						<label class="col-xs-3 control-label no-padding-right">文书材料:</label>
 						<div class="col-xs-9">
 							<span class="col-xs-11 block input-icon input-icon-right">
-								<input id="files" name="files" type="text" class="form-control" value="${leave.files}"/>
+								<input placeholder="（填写文件链接，多个文件之间以空格相隔)" id="files" name="files" type="text" class="form-control" value="${leave.files}"/>
 							</span>
 						</div>
 					</div>

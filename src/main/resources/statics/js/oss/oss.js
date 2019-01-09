@@ -122,35 +122,13 @@ var vm = new Vue({
                             });
                         } else {
                             alert(r.msg);
+                            vm.reload();
                         }
                     }
                 });
             });
         },
-        down: function () {
-            var ossIds = getSelectedRows();
-            if (ossIds == null) {
-                return;
-            }
 
-            confirm('确定要下载选中的文件？', function () {
-                $.ajax({
-                    type: "POST",
-                    url: "../sys/oss/filedownload",
-                    contentType: "application/json",
-                    data: JSON.stringify(ossIds),
-                    success: function (r) {
-                        if (r.code === 0) {
-                            alert('操作成功', function () {
-                                vm.reload();
-                            });
-                        } else {
-                            alert(r.msg);
-                        }
-                    }
-                });
-            });
-        },
         reload: function () {
             vm.showList = true;
             var page = $("#jqGrid").jqGrid('getGridParam', 'page');

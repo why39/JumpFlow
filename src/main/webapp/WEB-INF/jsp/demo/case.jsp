@@ -33,7 +33,6 @@
                     <th>序号</th>
                     <th>案件标题</th>
                     <th>案件发起人</th>
-                    <th>是否有罪</th>
                     <th>案件详情说明</th>
                     <th>案件执行结果</th>
                     <th>案件执行状态</th>
@@ -47,7 +46,6 @@
                         <td>${i.index+1 }</td>
                         <td>${leave.title}</td>
                         <td>${leave.leaveUser}</td>
-                        <td>${leave.guilty}</td>
                         <td>${leave.leavewhy}</td>
                         <td>${fns:getCodeName("act_result",leave.actResult)}</td>
                         <td>${fns:getCodeName("act_process_status",leave.status)}</td>
