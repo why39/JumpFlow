@@ -288,5 +288,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-test:4.3.12.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-test:1.5.8.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:1.5.8.RELEASE" level="project" />
+    <orderEntry type="library" name="fastdfs-client-java-1.27-RELEASE" level="project" />
   </component>
 </module>

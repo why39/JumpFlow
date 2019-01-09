@@ -7,6 +7,11 @@
       "type": "com.hxy.modules.app.utils.JwtUtils"
     },
     {
+      "sourceType": "com.hxy.config.SpringConfig",
+      "name": "spring.http",
+      "type": "com.hxy.config.SpringConfig"
+    },
+    {
       "sourceType": "com.hxy.config.RedisConfig",
       "name": "spring.redis",
       "type": "com.hxy.config.RedisConfig"
@@ -28,6 +33,11 @@
       "sourceType": "com.hxy.modules.app.utils.JwtUtils",
       "name": "jwt.secret",
       "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.hxy.config.SpringConfig",
+      "name": "spring.http.multipart",
+      "type": "java.util.Map<java.lang.String,java.lang.String>"
     },
     {
       "sourceType": "com.hxy.config.RedisConfig",

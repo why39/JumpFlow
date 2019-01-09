@@ -10,9 +10,9 @@
 	<div v-show="showList">
 		<div class="grid-btn">
 			#if($shiro.hasPermission("sys:oss:all"))
-				<button class="layui-btn" @click="addConfig" type="button"><i class="layui-icon">&#xe614;</i> 云存储配置 </button>
-				<button class="layui-btn" id="upload" type="button"><i class="layui-icon">&#xe67c;</i> 上传文件 </button>
-				<button class="layui-btn layui-btn-danger" @click="del" type="button" @click="del"><i class="layui-icon">&#xe640;</i>删除</button>
+				<!--<button class="layui-btn" @click="addConfig" type="button"><i class="layui-icon">&#xe614;</i> 云存储配置 </button>-->
+				<button class="layui-btn" id="upload" type="button">上传文件</button>
+				<button class="layui-btn layui-btn-danger" @click="del" type="button" @click="del">删除</button>
 			#end
 		</div>
 	    <table id="jqGrid"></table>

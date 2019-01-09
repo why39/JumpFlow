@@ -18,6 +18,11 @@ CREATE DATABASE hxyframe_activiti DEFAULT CHARACTER SET utf8 COLLATE utf8_genera
 
 - - -
 
+Neo4j 可视化：
+
+[https://github.com/jexp/cy2neo](https://github.com/jexp/cy2neo)
+- - -
+
 Neo4j Tips
 
 1. 查询某节点下游所有节点（不包含该节点）
@@ -54,7 +59,13 @@ RETURN m
 - xxxActInfo.jsp : 审批环节的页面
 
 - - -
-TODO
-1. 根据id推理溯源
-2. 推理溯源距离可选
-3. 根据案件ID过滤
+
+docker install fastdfs : https://blog.csdn.net/Odyssues_lee/article/details/80863189
+
+配置下载url
+statics/js/oss/oss.js editLink()
+
+- - -
+Activiti
+
+1. 控制组件的显示：statics/plugins/process/editor-app/stencil-controller.js

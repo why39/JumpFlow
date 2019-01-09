@@ -68,20 +68,27 @@ angular.module('activitiModeler')
             	                           'CatchTimerEvent', 'ThrowNoneEvent', 'TextAnnotation',
             	                           'SequenceFlow', 'Association'];*/
 
-                var quickMenuDefinition = ['UserTask','EndNoneEvent', 'ExclusiveGateway', 'SequenceFlow'];
-
-            	//var ignoreForPaletteDefinition = ['SequenceFlow', 'MessageFlow', 'Association', 'DataAssociation', 'DataStore', 'SendTask'];
-                //var ignoreForPaletteDefinition = ['MessageFlow', 'Association', 'DataAssociation', 'DataStore', 'SendTask'];
-
-                var ignoreForPaletteDefinition = ['StartTimerEvent', 'StartSignalEvent', 'StartMessageEvent', 'StartErrorEvent',
+                var quickMenuDefinition = ['UserTask','EndNoneEvent', 'ExclusiveGateway', 'SequenceFlow','StartTimerEvent',
+                    'StartSignalEvent', 'StartMessageEvent', 'StartErrorEvent',
                     'ServiceTask', 'ScriptTask', 'BusinessRule', 'ReceiveTask', 'ManualTask', 'MailTask', 'CamelTask',
                     'MuleTask', 'SendTask', 'SubProcess', 'EventSubProcess', 'CallActivity', 'ParallelGateway', 'InclusiveGateway',
                     'EventGateway', 'BoundaryErrorEvent', 'BoundaryTimerEvent', 'BoundarySignalEvent', 'BoundaryMessageEvent',
                     'BoundaryCancelEvent', 'BoundaryCompensationEvent', 'CatchTimerEvent', 'CatchSignalEvent', 'CatchMessageEvent',
                     'ThrowNoneEvent', 'ThrowSignalEvent', 'EndErrorEvent', 'EndCancelEvent', 'EndTerminateEvent', 'Pool',
-                    'Lane', 'MessageFlow', 'Association', 'DataAssociation', 'TextAnnotation', 'DataStore'
-                ];
-                //var ignoreForPaletteDefinition=[];
+                    'Lane', 'MessageFlow', 'Association', 'DataAssociation', 'TextAnnotation', 'DataStore'];
+
+            	//var ignoreForPaletteDefinition = ['SequenceFlow', 'MessageFlow', 'Association', 'DataAssociation', 'DataStore', 'SendTask'];
+                //var ignoreForPaletteDefinition = ['MessageFlow', 'Association', 'DataAssociation', 'DataStore', 'SendTask'];
+
+                // var ignoreForPaletteDefinition = ['StartTimerEvent', 'StartSignalEvent', 'StartMessageEvent', 'StartErrorEvent',
+                //     'ServiceTask', 'ScriptTask', 'BusinessRule', 'ReceiveTask', 'ManualTask', 'MailTask', 'CamelTask',
+                //     'MuleTask', 'SendTask', 'SubProcess', 'EventSubProcess', 'CallActivity', 'ParallelGateway', 'InclusiveGateway',
+                //     'EventGateway', 'BoundaryErrorEvent', 'BoundaryTimerEvent', 'BoundarySignalEvent', 'BoundaryMessageEvent',
+                //     'BoundaryCancelEvent', 'BoundaryCompensationEvent', 'CatchTimerEvent', 'CatchSignalEvent', 'CatchMessageEvent',
+                //     'ThrowNoneEvent', 'ThrowSignalEvent', 'EndErrorEvent', 'EndCancelEvent', 'EndTerminateEvent', 'Pool',
+                //     'Lane', 'MessageFlow', 'Association', 'DataAssociation', 'TextAnnotation', 'DataStore'
+                // ];
+                var ignoreForPaletteDefinition=[];
 
                 var quickMenuItems = [];
             	
