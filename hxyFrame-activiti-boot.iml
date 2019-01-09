@@ -25,6 +25,15 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="Maven: org.csource:fastdfs-client-java:1.27-SNAPSHOT">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/fastdfs-client-java-1.27-RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="library" name="Maven: org.neo4j.driver:neo4j-java-driver:1.5.0" level="project" />
     <orderEntry type="library" name="Maven: org.neo4j:neo4j:3.3.4" level="project" />
     <orderEntry type="library" name="Maven: org.neo4j:neo4j-kernel:3.3.4" level="project" />
@@ -288,6 +297,5 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-test:4.3.12.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-test:1.5.8.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:1.5.8.RELEASE" level="project" />
-    <orderEntry type="library" name="fastdfs-client-java-1.27-RELEASE" level="project" />
   </component>
 </module>
