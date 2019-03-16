@@ -41,6 +41,11 @@ MATCH p = (m:Task) - [*] ->(n)
 RETURN m
 ```
 
+3. 清空关系和节点
+MATCH (n)-[r]-()
+DELETE n,r
+match (n)
+delete n
 - - -
 
 开发新模型
@@ -61,6 +66,19 @@ RETURN m
 - - -
 
 docker install fastdfs : https://blog.csdn.net/Odyssues_lee/article/details/80863189
+
+运行tracker：
+
+```
+docker run -dti --network=host --name tracker -v /var/fdfs/tracker:/var/fdfs delron/fastdfs tracker
+```
+
+运行storage：
+
+```
+docker run -dti --network=host --name storage -e TRACKER_SERVER=10.131.233.173:22122 -v /var/fdfs/storage:/var/fdfs delron/fastdfs storage
+```
+
 
 配置下载url
 statics/js/oss/oss.js editLink()
