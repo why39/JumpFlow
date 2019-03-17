@@ -47,17 +47,22 @@ function Neod3Renderer() {
 
     function clickNode(node) {
         selectNode = JSON.parse(JSON.stringify(node));
-        $(".nodeId").text("<id> : "+node.id);
-        $(".nodeInstanceId").text("所属案件ID : "+selectNode.instanceId);
-        $(".nodeTaskId").text("案件环节ID : "+selectNode.taskId);
-        $(".nodeName").text("环节名称 : "+selectNode.name);
+
+        if (selectNode.label == "Task") {
+            $(".nodeId").text("<id> : "+node.id);
+            $(".nodeInstanceId").text("<所属案件ID> : "+selectNode.instanceId);
+            $(".nodeTaskId").text("<案件环节ID> : "+selectNode.taskId);
+            $(".nodeName").text("<环节名称> : "+selectNode.name);
+        } else {
+            sweetAlert("taskIds"
+                , "所属环节IDs：" + selectNode.taskIds + "\n"
+                + "审批意见：" + selectNode.remark + "\n"
+                , "info");
+        }
+
         //$(".nodeFile").text("文案材料 : "+selectNode.file);
 
-        // sweetAlert("案件环节信息"
-        //     , "所属案件ID：" + selectNode.instanceId + "\n"
-        //     + "案件环节ID：" + selectNode.taskId + "\n"
-        //     + "案件环节名称：" + selectNode.name
-        //     , "info");
+
     }
 
     function dummyFunc(node) {
