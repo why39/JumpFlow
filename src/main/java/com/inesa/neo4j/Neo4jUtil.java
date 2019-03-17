@@ -69,6 +69,7 @@ public class Neo4jUtil {
         return restfulResult;
     }
 
+    // 创建审批(Remark)数据节点
     public static Code createDataNode(ProcessTaskDto processTaskDto) {
         Code code = new Code();
         code.setLabel(processTaskDto.getTaskId());
@@ -78,71 +79,95 @@ public class Neo4jUtil {
 
         try {
 
-            // 创建流程节点
-            StatementResult createResult = session.run("CREATE (a:Mark {" +
-                            "name: {name}" +
-                            ", label: {label}" +
-                            ", taskId: {taskId}" +
-                            ", taskName:{taskName}" +
-                            ", instanceId: {instanceId}" +
-                            ", busId: {busId}" +
-                            ", busName: {busName}" +
-                            ", status: {status}" +
-                            ", dealId: {dealId}" +
-                            ", dealTime: {dealTime}" +
-                            ", startUserName: {startUserName}" +
-                            ", nextUserName: {nextUserName}" +
-                            ", nextUserId: {nextUserId}" +
-                            ", remark: {remark}" +
-                            "})",
-                    parameters(
-                            "name", processTaskDto.getTaskName()
-                            ,"taskId", processTaskDto.getTaskId()
-                            , "label", "Task"
-                            , "taskName", processTaskDto.getTaskName()
-                            , "instanceId", (processTaskDto.getInstanceId()+"_mark")
-                            , "busId", processTaskDto.getBusId()
-                            , "busName", processTaskDto.getBusName()
-                            , "status", processTaskDto.getStatus()
-                            , "dealId", processTaskDto.getDealId()
-                            , "dealTime", (new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date())
-                            , "startUserName", processTaskDto.getStartUserName()
-                            , "nextUserName", processTaskDto.getGetNextUserNames()
-                            , "nextUserId", processTaskDto.getNextUserIds()
-                            , "remark", processTaskDto.getRemark()
-                    ));
+            //如果上一个mark相同，则把当前节点taskid加入到上一个数据节点中。不存在mark相同的则创建新节点。
+            if (!TextUtils.isEmpty(redisUtils.getString("lastRemark")) && redisUtils.getString("lastRemark").equals(processTaskDto.getRemark())) {
+                //先找到上一个相同的Remark节点
+                StatementResult result = session.run("MATCH (a:Remark) WHERE a.taskId = {taskId} RETURN a", parameters("taskId", redisUtils.getString("lastTaskId")));
 
-            StatementResult result = session.run("MATCH (a:Mark) WHERE a.taskId = {taskId} " +
-                            "RETURN a",
-                    parameters("taskId", processTaskDto.getTaskId()));
+                while (result.hasNext()) {
+                    Record record = result.next();
+                    String taskIds = record.fields().get(0).value().get("taskIds").asString();
 
-            while (result.hasNext()) {
-                Record record = result.next();
-                code.setId(record.fields().get(0).value().toString().replace("node<", "").replace(">", ""));
-                code.setLabel("Mark");
-            }
+                    String newTaskIds = (taskIds + "," + processTaskDto.getTaskId());
 
-            /**
-             * 如果已经存在相同instanceId的节点，且存在前置节点，则添加关系
-             */
-            if (!TextUtils.isEmpty(redisUtils.getString("lastMarkLabel")) && !TextUtils.isEmpty(redisUtils.getString((processTaskDto.getInstanceId()+"_mark")))) {
+                    StatementResult updateResult = session.run("MATCH (a:Remark) WHERE a.taskId = {taskId} SET a.taskIds = {taskIds} RETURN a", parameters("taskId", redisUtils.getString("lastTaskId"), "taskIds", newTaskIds));
 
-                if ((processTaskDto.getInstanceId()+"_mark").equals(redisUtils.getString(processTaskDto.getInstanceId()+"_mark"))) {
-                    Code relation = new Code();
-                    relation.setNodeFromId(redisUtils.getString("lastMarkId"));
-                    relation.setNodeFromLabel(redisUtils.getString("lastMarkLabel"));
-                    relation.setNodeToId(code.getId());
-                    relation.setNodeToLabel(code.getLabel());
-                    relation.setRelation("next");
-                    relate(relation);
+                    logger.info(updateResult.hasNext() + "");
+
+
+                }
+            } else {
+
+
+                StatementResult createResult = session.run("CREATE (a:Remark {" +
+                                "name: {name}" +
+                                ", nodeName: {nodeName}" +
+                                ", label: {label}" +
+                                ", taskId: {taskId}" +
+                                ", taskIds: {taskIds}" +
+                                ", taskName:{taskName}" +
+                                ", instanceId: {instanceId}" +
+                                ", busId: {busId}" +
+                                ", busName: {busName}" +
+                                ", status: {status}" +
+                                ", dealId: {dealId}" +
+                                ", dealTime: {dealTime}" +
+                                ", startUserName: {startUserName}" +
+                                ", nextUserName: {nextUserName}" +
+                                ", nextUserId: {nextUserId}" +
+                                ", remark: {remark}" +
+                                "})",
+                        parameters(
+                                "name", processTaskDto.getRemark()
+                                , "nodeName", processTaskDto.getTaskName()
+                                , "taskId", processTaskDto.getTaskId()
+                                , "taskIds", processTaskDto.getTaskId()
+                                , "label", "Remark"
+                                , "taskName", processTaskDto.getTaskName()
+                                , "instanceId", (processTaskDto.getInstanceId() + "_remark")
+                                , "busId", processTaskDto.getBusId()
+                                , "busName", processTaskDto.getBusName()
+                                , "status", processTaskDto.getStatus()
+                                , "dealId", processTaskDto.getDealId()
+                                , "dealTime", (new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date())
+                                , "startUserName", processTaskDto.getStartUserName()
+                                , "nextUserName", processTaskDto.getGetNextUserNames()
+                                , "nextUserId", processTaskDto.getNextUserIds()
+                                , "remark", processTaskDto.getRemark()
+                        ));
+
+                StatementResult result = session.run("MATCH (a:Remark) WHERE a.taskId = {taskId} " +
+                                "RETURN a",
+                        parameters("taskId", processTaskDto.getTaskId()));
+
+                while (result.hasNext()) {
+                    Record record = result.next();
+                    code.setId(record.fields().get(0).value().toString().replace("node<", "").replace(">", ""));
+                    code.setLabel("Remark");
                 }
 
+                /**
+                 * 如果已经存在相同instanceId的节点，且存在前置节点，则添加关系
+                 */
+                if (!TextUtils.isEmpty(redisUtils.getString("lastRemarkLabel")) && !TextUtils.isEmpty(redisUtils.getString((processTaskDto.getInstanceId() + "_remark")))) {
+
+                    if ((processTaskDto.getInstanceId() + "_remark").equals(redisUtils.getString(processTaskDto.getInstanceId() + "_remark"))) {
+                        Code relation = new Code();
+                        relation.setNodeFromId(redisUtils.getString("lastRemarkId"));
+                        relation.setNodeFromLabel(redisUtils.getString("lastRemarkLabel"));
+                        relation.setNodeToId(code.getId());
+                        relation.setNodeToLabel(code.getLabel());
+                        relation.setRelation("next");
+                        relate(relation);
+                    }
+
+                }
+                redisUtils.setString("lastTaskId", processTaskDto.getTaskId());
+                redisUtils.setString("lastRemarkId", code.getId());
+                redisUtils.setString("lastRemarkLabel", code.getLabel());
             }
-
-
-            redisUtils.setString("lastMarkLabel", code.getLabel());
-            redisUtils.setString("lastMarkId", code.getId());
-            redisUtils.setString(processTaskDto.getInstanceId()+"_mark", processTaskDto.getInstanceId()+"_mark");
+            redisUtils.setString("lastRemark", processTaskDto.getRemark());
+            redisUtils.setString(processTaskDto.getInstanceId() + "_remark", processTaskDto.getInstanceId() + "_remark");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -179,7 +204,7 @@ public class Neo4jUtil {
                             "})",
                     parameters(
                             "name", processTaskDto.getTaskName()
-                            ,"taskId", processTaskDto.getTaskId()
+                            , "taskId", processTaskDto.getTaskId()
                             , "label", "Task"
                             , "taskName", processTaskDto.getTaskName()
                             , "instanceId", processTaskDto.getInstanceId()

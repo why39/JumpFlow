@@ -44,6 +44,7 @@ RETURN m
 3. 清空关系和节点
 MATCH (n)-[r]-()
 DELETE n,r
+
 match (n)
 delete n
 - - -
