@@ -76,7 +76,7 @@
 								</div>
 								<div class="row">
 									<div class="form-group col-sm-12 " isHide="2">
-										<label class="col-sm-2"><i class="red"> * </i>可修改信息:</label>
+										<label class="col-sm-2"><i class="red"> * </i>规则和条件:</label>
 										<div class="col-sm-10">
 											<span class="col-xs-11" style='margin-left: -50px'>
 												<tag:checkbox name="changeFiles" isJXdata="true" data="${writes }"/>
@@ -84,6 +84,15 @@
 										</div>
 									</div>
 								</div>
+
+
+								<div>
+									<button class="layui-btn layui-btn-small" type="button" onclick="addNewMaterial()"><i class="layui-icon">&#xe61f;</i>添加新材料</button>
+								</div>
+
+								<br/>
+								<br/>
+
 								<div isHide="2">
 									<button class="layui-btn layui-btn-small" type="button" onclick="userWindow()"><i class="layui-icon">&#xe612;</i>审批范围</button>
 								</div>
@@ -244,6 +253,11 @@
         //条件增加 待开发
         function addActRule() {
 			$("#actRules").append();
+        }
+
+        //添加新材料。待开发
+        function addNewMaterial() {
+			
         }
 
          /**

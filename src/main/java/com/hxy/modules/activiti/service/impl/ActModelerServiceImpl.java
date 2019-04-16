@@ -1,5 +1,6 @@
 package com.hxy.modules.activiti.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -534,10 +535,14 @@ public class ActModelerServiceImpl implements ActModelerService {
             processNodeDto.setNodeId(pvm.getId());
             processNodeDto.setNodeName((String) pvm.getProperty("name"));
             ExtendActNodesetEntity nodeSet = nodesetService.queryByNodeId(pvm.getId());
-            processNodeDto.setNodeTypeName(CodeUtils.getCodeName("act_node_type",nodeSet.getNodeType()));
-            processNodeDto.setNodeActionName(CodeUtils.getCodeName("act_node_action",nodeSet.getNodeAction()));
-            processNodeDto.setNodeAction(nodeSet.getNodeAction());
-            processNodeDto.setNodeType(nodeSet.getNodeType());
+            if (nodeSet != null) {
+                processNodeDto.setNodeTypeName(CodeUtils.getCodeName("act_node_type",nodeSet.getNodeType()));
+                processNodeDto.setNodeActionName(CodeUtils.getCodeName("act_node_action",nodeSet.getNodeAction()));
+                processNodeDto.setNodeAction(nodeSet.getNodeAction());
+                processNodeDto.setNodeType(nodeSet.getNodeType());
+            } else {
+                processNodeDto.setNodeTypeName("5");
+            }
             listNode.add(processNodeDto);
         }
         return listNode;
@@ -664,7 +669,7 @@ public class ActModelerServiceImpl implements ActModelerService {
                     }
                 } else if (Constant.ActAction.APPROVE.getValue().equals(nodesetEntity.getNodeAction())) {
                     //当前节点为普通审批节点
-                    Map<String, Object> updateMap = new HashMap<>();
+                    Map<String, Object> updateMap = new HashMap<> ();
                     updateMap.put(TableInfo.TAB_TABLENAME, actTable.tableName());
                     updateMap.put(TableInfo.TAB_PKNAME, actTable.pkName());
                     updateMap.put(TableInfo.TAB_ID, processTaskDto.getBusId());
@@ -839,6 +844,8 @@ public class ActModelerServiceImpl implements ActModelerService {
         String[] changeFields = changeFieldNames.split(",");
         //业务可更改的字段和对应更改后的值
         List<TableInfo> fields = new ArrayList<>();
+        Map<String, Object> filedsContent = new HashMap<>();
+
         for (int i =0;i<changeFields.length;i++){
             if(StringUtils.isEmpty(changeFields[i])){
                 continue;
@@ -858,6 +865,7 @@ public class ActModelerServiceImpl implements ActModelerService {
                     filedText.append(text+"的原值为【"+o+"】,更改为【"+o1+"】;");
                 }
             }
+            filedsContent.put(changeFields[i], map.get(changeFields[i]));
             fields.add(new TableInfo(changeFields[i],map.get(changeFields[i])));
         }
         //保存业务更改后的值
@@ -865,8 +873,10 @@ public class ActModelerServiceImpl implements ActModelerService {
         params.put(TableInfo.TAB_TABLENAME,actTable.tableName());
         params.put(TableInfo.TAB_PKNAME,actTable.pkName());
         params.put(TableInfo.TAB_ID,busId);
-        params.put(TableInfo.TAB_FIELDS,fields);
-        int count = actExtendDao.updateChangeBusInfo(params);
+        //将fields以json存放到files列中。
+
+        params.put(TableInfo.TAB_FIELDS,JSON.toJSONString(filedsContent));//params.put(TableInfo.TAB_FIELDS,fields);
+        int count = actExtendDao.updateChangeBusInfoBatch(params);//actExtendDao.updateChangeBusInfo(params);
         if(count<1){
             throw new MyException("更新业务信息失败");
         }

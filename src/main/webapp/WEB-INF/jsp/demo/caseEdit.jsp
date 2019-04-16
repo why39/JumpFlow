@@ -24,16 +24,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="form-group col-xs-12 ">
-						<label class="col-xs-3 control-label no-padding-right">属于本院管辖:</label>
-						<div class="col-xs-9">
-							<span class="col-xs-11 block input-icon input-icon-right">
-								<input id="guilty" name="guilty" type="text" class="form-control" value="${leave.guilty}"/>
-							</span>
-						</div>
-					</div>
-				</div>
+
 				<div class="row">
 					<div class="form-group col-xs-12">
 						<label class="col-xs-3 control-label no-padding-right">案件详情说明:</label>
@@ -45,16 +36,6 @@
 					</div>
 				</div>
 
-				<div class="row">
-					<div class="form-group col-xs-12 ">
-						<label class="col-xs-3 control-label no-padding-right">文书材料:</label>
-						<div class="col-xs-9">
-							<span class="col-xs-11 block input-icon input-icon-right">
-								<input placeholder="（填写文件链接，多个文件之间以空格相隔)" id="files" name="files" type="text" class="form-control" value="${leave.files}"/>
-							</span>
-						</div>
-					</div>
-				</div>
 				<div class="row" style="margin-left: 40%;padding-bottom: 28px;margin-top: 25px;">
 					<button class="layui-btn" type="button" id="submitBtn">保 存</button>
 					<a class="layui-btn layui-btn-normal" href="${webRoot}/demo/case/list">返 回</a>

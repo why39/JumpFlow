@@ -88,3 +88,9 @@ statics/js/oss/oss.js editLink()
 Activiti
 
 1. 控制组件的显示：statics/plugins/process/editor-app/stencil-controller.js
+
+- - -
+操作说明：
+
+1. 节点设置第一个审批人要和当前部署模型的人一样，不然不能提交实例。
+2. 业务树德每个流程key都不能一样。

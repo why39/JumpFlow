@@ -86,6 +86,16 @@
 		where  ${pkName} =#{id}
 	</update>
 
+	<!--不设置具体的列名，保存在每个业务表的一个统一的 fields 列中，和changeFiles对应一一对应-->
+	<update id="updateChangeBusInfoBatch" parameterType="java.util.Map">
+		update ${tableName}
+		<set>
+			<if test="fields != null">fields= #{fields}, </if>
+			<if test="instanceId != null">instance_id= #{instanceId}, </if>
+		</set>
+		where  ${pkName} =#{id}
+	</update>
+
 	<!--我的待办列表-->
 	<select id="findMyUpcomingPage" resultType="com.hxy.modules.activiti.dto.ProcessTaskDto">
 		select  a.name_ AS taskName,a.CREATE_TIME_ AS createTime, a.id_ AS taskId,  a.proc_inst_id_ AS instanceId,fb.defid AS defId,

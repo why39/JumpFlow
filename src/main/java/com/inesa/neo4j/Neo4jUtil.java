@@ -12,6 +12,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -153,6 +155,7 @@ public class Neo4jUtil {
 
                     if ((processTaskDto.getInstanceId() + "_remark").equals(redisUtils.getString(processTaskDto.getInstanceId() + "_remark"))) {
                         Code relation = new Code();
+
                         relation.setNodeFromId(redisUtils.getString("lastRemarkId"));
                         relation.setNodeFromLabel(redisUtils.getString("lastRemarkLabel"));
                         relation.setNodeToId(code.getId());
@@ -183,6 +186,7 @@ public class Neo4jUtil {
         Driver driver = createDrive();
         Session session = driver.session();
 
+        String curTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         try {
 
             // 创建流程节点
@@ -212,7 +216,7 @@ public class Neo4jUtil {
                             , "busName", processTaskDto.getBusName()
                             , "status", processTaskDto.getStatus()
                             , "dealId", processTaskDto.getDealId()
-                            , "dealTime", (new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date())
+                            , "dealTime", curTime
                             , "startUserName", processTaskDto.getStartUserName()
                             , "nextUserName", processTaskDto.getGetNextUserNames()
                             , "nextUserId", processTaskDto.getNextUserIds()
@@ -240,7 +244,22 @@ public class Neo4jUtil {
                     relation.setNodeFromLabel(redisUtils.getString("lastCodeLabel"));
                     relation.setNodeToId(code.getId());
                     relation.setNodeToLabel(code.getLabel());
-                    relation.setRelation("next");
+
+                    String lastTime = redisUtils.getString("lastTime");
+                    DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    String next = "next";
+                    try {
+                        Date d1 = df.parse(curTime);
+                        Date d2 = df.parse(lastTime);
+                        long diff = d1.getTime() - d2.getTime();//这样得到的差值是毫秒级别
+                        long days = diff / (1000 * 60 * 60 * 24);
+
+                        long hours = (diff - days * (1000 * 60 * 60 * 24)) / (1000 * 60 * 60);
+                        long minutes = (diff - days * (1000 * 60 * 60 * 24) - hours * (1000 * 60 * 60)) / (1000 * 60);
+                        next = ("" + days + "天" + hours + "小时" + minutes + "分");
+                    } catch (Exception e) {
+                    }
+                    relation.setRelation(next);
                     relate(relation);
                 }
 
@@ -249,9 +268,10 @@ public class Neo4jUtil {
 
             redisUtils.setString("lastCodeLabel", code.getLabel());
             redisUtils.setString("lastCodeId", code.getId());
+            redisUtils.setString("lastTime", curTime);
             redisUtils.setString(processTaskDto.getInstanceId(), processTaskDto.getInstanceId());
 
-            createDataNode(processTaskDto);
+//            createDataNode(processTaskDto);
         } catch (Exception e) {
             e.printStackTrace();
         }

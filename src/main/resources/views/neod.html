@@ -23,6 +23,24 @@
 <!--</div>-->
 
 <div>
+
+    <div style="margin-top: 6px" class="col-lg-6">
+        <div class="input-group">
+            <input class="form-control" type="text" style="width: 160px" id="caseName" placeholder="输入内容"/>
+            <button style="margin-left: 6px" type="button" class="btn btn-primary" id="caseName" onclick="findCase()">查找案件
+            </button>
+        </div><!-- /input-group -->
+    </div>
+
+    <div style="margin-top: 6px" class="col-lg-6">
+        <div class="input-group">
+            <input class="form-control" type="text" style="width: 160px" id="caseId" placeholder="案件ID"/>
+            <button style="margin-left: 6px" type="button" class="btn btn-primary" id="caseId" onclick="filterCase()">筛选案件
+            </button>
+        </div><!-- /input-group -->
+    </div>
+
+
     <div style="margin-top: 6px" class="col-lg-6">
         <div class="input-group">
             <input class="form-control" type="text" style="width: 160px" id="caseTaskId" placeholder="案件环节ID"/>
@@ -34,13 +52,7 @@
         </div>
     </div>
 
-    <div style="margin-top: 6px" class="col-lg-6">
-        <div class="input-group">
-            <input class="form-control" type="text" style="width: 160px" id="caseId" placeholder="案件ID"/>
-            <button style="margin-left: 6px" type="button" class="btn btn-primary" id="filter" onclick="filterCase()">筛选案件
-            </button>
-        </div><!-- /input-group -->
-    </div>
+
 
 
 
@@ -153,6 +165,18 @@
             query = "MATCH (n) WHERE n.instanceId=\'" + $("#caseId").val() + "\' WITH n MATCH p = (m) - [*] -> (n) RETURN n,p";
         } else {
             query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
+        }
+        console.log("$(\"#caseId\").val()---->" + $("#caseId").val());
+        clearNodeInfo();
+        execute(query);
+    }
+
+    function findCase(){
+        var query = null;
+        if ($("#caseName").val()) {
+            query = "MATCH (a:Task) WHERE a.name=~ '.*"+$("#caseName").val()+".*' RETURN a";
+        } else {
+            query = "MATCH (n)-[r]->(m) RETURN n,r,m";
         }
         console.log("$(\"#caseId\").val()---->" + $("#caseId").val());
         clearNodeInfo();

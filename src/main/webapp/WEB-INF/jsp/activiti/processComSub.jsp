@@ -52,6 +52,21 @@
         processInfo.instanceId='${taskDto.instanceId}';
         processInfo.defId='${taskDto.defId}';
         getChangeFileds();
+
+        console.log('${djb}');
+
+        <%--var filedsJsonObj = JSON.parse('${caseEntity.fields}');--%>
+        <%--console.log(filedsJsonObj);--%>
+        <%--var length = filedsJsonObj.length;--%>
+        <%--for (var i = 0; i < length; i++) {--%>
+            <%--for(var key in filedsJsonObj[i]){--%>
+                <%--var value = filedsJsonObj[i][key];--%>
+                <%--console.log(key+" ： "+value);--%>
+                <%--console.log($("#"+key))--%>
+                <%--$("#"+key).val(value)--%>
+            <%--}--%>
+        <%--}--%>
+
     });
     
 
@@ -96,7 +111,15 @@
         if(vars!=null){
             for(var i=0;i<vars.length;i++){
                 var val=$("#"+vars[i]+"").val();
-                varValue+=val+",";
+
+                console.log(">>>>>>>>>>>>>>" + val);
+
+                if (vars[i] == "isAgree") {
+                    varValue+="1,";
+                } else {
+                    varValue+=val+",";
+                }
+
                 varName+=vars[i]+",";
             }
         }

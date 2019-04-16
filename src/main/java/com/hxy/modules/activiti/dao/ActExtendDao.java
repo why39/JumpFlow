@@ -71,4 +71,6 @@ public interface ActExtendDao {
      */
     int updateChangeBusInfo(Map<String, Object> params);
 
+    int updateChangeBusInfoBatch(Map<String, Object> params);
+
 }
