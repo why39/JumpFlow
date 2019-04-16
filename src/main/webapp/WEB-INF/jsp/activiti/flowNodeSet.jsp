@@ -76,10 +76,27 @@
 								</div>
 								<div class="row">
 									<div class="form-group col-sm-12 " isHide="2">
-										<label class="col-sm-2"><i class="red"> * </i>规则和条件:</label>
+										<label class="col-sm-2"><i class="red"> * </i>必需文件:</label>
 										<div class="col-sm-10">
 											<span class="col-xs-11" style='margin-left: -50px'>
-												<tag:checkbox name="changeFiles" isJXdata="true" data="${writes }"/>
+												<tag:checkbox name="changeFiles" isJXdata="true" data="${file_writes}"/>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div>
+									<button id="addNewMaterial" class="layui-btn layui-btn-small" type="button" onclick="addNewMaterial()"><i class="layui-icon">&#xe61f;</i>添加新材料</button>
+								</div>
+
+								<br/>
+								<br/>
+
+								<div class="row">
+									<div class="form-group col-sm-12 " isHide="2">
+										<label class="col-sm-2"><i class="red"> * </i>规则条件:</label>
+										<div class="col-sm-10">
+											<span class="col-xs-11" style='margin-left: -50px'>
+												<tag:checkbox name="changeFiles" isJXdata="true" data="${rule_writes}"/>
 											</span>
 										</div>
 									</div>
@@ -87,7 +104,7 @@
 
 
 								<div>
-									<button class="layui-btn layui-btn-small" type="button" onclick="addNewMaterial()"><i class="layui-icon">&#xe61f;</i>添加新材料</button>
+									<button id="addNewRule" class="layui-btn layui-btn-small" type="button" onclick="addNewMaterial()"><i class="layui-icon">&#xe61f;</i>添加新规则</button>
 								</div>
 
 								<br/>
@@ -124,42 +141,42 @@
 											<div class="col-sm-2">
 												<tag:select name="judgList[1].elOperator" clazz="form-control" nameKey="act_el_operator" isAddDefaltOption="true" />
 											</div>
-											<%--<button class="layui-btn" onclick="addActRule()">
+											<button class="layui-btn" onclick="addActRule()">
                                                 <i class="layui-icon">&#xe608;</i> 添加
-                                            </button>--%>
+                                            </button>
 										</div>
 									</div>
-									<div class="form-group col-sm-12 ">
-										<div class="form-group">
-											<label class="control-label col-sm-1">条件2</label>
-											<div class="col-sm-3">
-												<tag:select name="judgList[1].fieldName" clazz="form-control" isJXdata="true" data="${judgs }" isAddDefaltOption="true"/>
-											</div>
-											<div class="col-sm-2" style="padding: 0px;">
-												<tag:select name="judgList[1].rule" clazz="form-control" nameKey="act_judg"  isAddDefaltOption="true"/>
-											</div>
-											<div class="col-sm-3">
-												<input name="judgList[1].fieldVal" class="form-control" placeholder="" >
-											</div>
-											<div class="col-sm-2">
-												<tag:select name="judgList[2].elOperator" clazz="form-control" nameKey="act_el_operator" isAddDefaltOption="true" />
-											</div>
-										</div>
-									</div>
-									<div class="form-group col-sm-12">
-										<div class="form-group">
-											<label class="control-label col-md-1">条件3</label>
-											<div class="col-md-3">
-												<tag:select name="judgList[2].fieldName" clazz="form-control" isJXdata="true" data="${judgs }" isAddDefaltOption="true"/>
-											</div>
-											<div class="col-md-2" style="padding: 0px;">
-												<tag:select name="judgList[2].rule" clazz="form-control" nameKey="act_judg"  isAddDefaltOption="true"/>
-											</div>
-											<div class="col-md-3">
-												<input name="judgList[2].fieldVal" class="form-control"  >
-											</div>
-										</div>
-									</div>
+									<%--<div class="form-group col-sm-12 ">--%>
+										<%--<div class="form-group">--%>
+											<%--<label class="control-label col-sm-1">条件2</label>--%>
+											<%--<div class="col-sm-3">--%>
+												<%--<tag:select name="judgList[1].fieldName" clazz="form-control" isJXdata="true" data="${judgs }" isAddDefaltOption="true"/>--%>
+											<%--</div>--%>
+											<%--<div class="col-sm-2" style="padding: 0px;">--%>
+												<%--<tag:select name="judgList[1].rule" clazz="form-control" nameKey="act_judg"  isAddDefaltOption="true"/>--%>
+											<%--</div>--%>
+											<%--<div class="col-sm-3">--%>
+												<%--<input name="judgList[1].fieldVal" class="form-control" placeholder="" >--%>
+											<%--</div>--%>
+											<%--<div class="col-sm-2">--%>
+												<%--<tag:select name="judgList[2].elOperator" clazz="form-control" nameKey="act_el_operator" isAddDefaltOption="true" />--%>
+											<%--</div>--%>
+										<%--</div>--%>
+									<%--</div>--%>
+									<%--<div class="form-group col-sm-12">--%>
+										<%--<div class="form-group">--%>
+											<%--<label class="control-label col-md-1">条件3</label>--%>
+											<%--<div class="col-md-3">--%>
+												<%--<tag:select name="judgList[2].fieldName" clazz="form-control" isJXdata="true" data="${judgs }" isAddDefaltOption="true"/>--%>
+											<%--</div>--%>
+											<%--<div class="col-md-2" style="padding: 0px;">--%>
+												<%--<tag:select name="judgList[2].rule" clazz="form-control" nameKey="act_judg"  isAddDefaltOption="true"/>--%>
+											<%--</div>--%>
+											<%--<div class="col-md-3">--%>
+												<%--<input name="judgList[2].fieldVal" class="form-control"  >--%>
+											<%--</div>--%>
+										<%--</div>--%>
+									<%--</div>--%>
 								</div>
 								<div class="row" style="margin-left: 180px;padding-bottom: 28px;margin-top: 25px;">
 									<button class="layui-btn" type="button" id="submitBtn">保 存</button>
@@ -181,6 +198,20 @@
                  $("[isHide]").hide();
                  $("[isHide*='"+$(this).val()+"'").show();
              });
+
+             if('${file_writes}') {
+                 $("#addNewMaterial").show();
+             } else {
+                 $("#addNewMaterial").hide();
+             }
+
+             if('${rule_writes}') {
+                 $("#addNewRule").show();
+             } else {
+                 $("#addNewRule").hide();
+             }
+
+
          });
 		
         var setting = {

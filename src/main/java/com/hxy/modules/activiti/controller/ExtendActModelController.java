@@ -8,6 +8,7 @@ import com.hxy.modules.common.page.Page;
 import com.hxy.modules.common.utils.JsonUtil;
 import com.hxy.modules.common.utils.Result;
 import com.hxy.modules.common.utils.Utils;
+import com.hxy.modules.demo.entity.CaseEntity;
 import com.hxy.modules.sys.entity.UserWindowDto;
 import com.hxy.modules.sys.service.OrganService;
 import com.hxy.modules.sys.service.RoleService;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -157,6 +159,28 @@ public class ExtendActModelController {
         model.addAttribute("calBacks", JsonUtil.getJsonByObj(callBacks));
         model.addAttribute("writes", JsonUtil.getJsonByObj(businessEntity.getWrites()));
         model.addAttribute("judgs", JsonUtil.getJsonByObj(businessEntity.getJudgs()));
+
+        //wxp:区分文件和规则
+        //writes:[{"name":"《补充移送材料通知书》","value":"bccl"},{"name":"《人民监督员表决意见通知书》","value":"bjyj"},{"name":"《人民监督员监督案件处理结果通知书》","value":"cljg"},{"name":"《人民监督员监督案件受理登记表》","value":"djb"},{"name":"《人民监督员监督案件审批表》","value":"spb"},{"name":"《人民监督员监督案件通知书》","value":"tzs"},{"name":"《移送函》","value":"ysh"}]
+        List<Map<String, Object>> file_writes = new ArrayList<>();
+        List<Map<String, Object>> rules_writes = new ArrayList<>();
+        for (Map map : businessEntity.getWrites()) {
+            String value = (String) map.get("value");
+            if (!StringUtils.isEmpty(value) && value.startsWith(CaseEntity.FILE_PRIX)) {
+                file_writes.add(map);
+            } else if (!StringUtils.isEmpty(value) && value.startsWith(CaseEntity.RULE_PRIX)) {
+                rules_writes.add(map);
+            }
+        }
+
+        if (file_writes.size() > 0) {
+            model.addAttribute("file_writes", JsonUtil.getJsonByObj(file_writes));
+        }
+
+        if (rules_writes.size() > 0) {
+            model.addAttribute("rule_writes", JsonUtil.getJsonByObj(rules_writes));
+        }
+
         return "activiti/flowNodeSet";
     }
 

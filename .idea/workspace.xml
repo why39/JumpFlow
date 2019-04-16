@@ -2,24 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2744b1fb-8595-47eb-8862-905e3a590b61" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev.md" beforeDir="false" afterPath="$PROJECT_DIR$/dev.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/dao/ActExtendDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/dao/ActExtendDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ActModelerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ActModelerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/modules/demo/controller/ActBusInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/modules/demo/controller/ActBusInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/modules/demo/entity/CaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/modules/demo/entity/CaseEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/inesa/neo4j/Neo4jUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inesa/neo4j/Neo4jUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/activiti/ActExtendService.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/activiti/ActExtendService.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/demo/CaseMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/demo/CaseMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/neod.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/neod.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/flowNodeSet.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/flowNodeSet.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/processComSub.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/processComSub.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/demo/caseActInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/demo/caseActInfo.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/demo/caseEdit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/demo/caseEdit.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hxy/modules/activiti/dao/ActExtendDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hxy/modules/activiti/dao/ActExtendDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hxy/modules/activiti/service/impl/ActModelerServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hxy/modules/demo/entity/CaseEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hxy/modules/demo/entity/CaseEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/activiti/ActExtendService.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/activiti/ActExtendService.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,11 +15,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Neo4jUtil.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/inesa/neo4j/Neo4jUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="412" selection-start-line="412" selection-end-line="412" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ExtendActDealController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="366" selection-start-line="366" selection-end-line="366" />
+            <state relative-caret-position="273">
+              <caret line="331" selection-start-line="331" selection-end-line="331" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2887#2888#0" expanded="true" />
@@ -48,8 +41,8 @@
       <file leaf-file-name="ActBusInfoController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/demo/controller/ActBusInfoController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="38" selection-start-line="38" selection-end-line="38" />
+            <state relative-caret-position="247">
+              <caret line="45" selection-start-line="45" selection-end-line="45" />
             </state>
           </provider>
         </entry>
@@ -57,26 +50,41 @@
       <file leaf-file-name="caseActInfo.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/demo/caseActInfo.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1088">
-              <caret line="106" column="69" selection-start-line="106" selection-start-column="69" selection-end-line="106" selection-end-column="69" />
+            <state relative-caret-position="182">
+              <caret line="17" column="59" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="59" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="processComSub.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="processComSub.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/processComSub.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="90" selection-start-line="90" selection-end-line="90" />
+            <state relative-caret-position="217">
+              <caret line="124" column="13" lean-forward="true" selection-start-line="124" selection-start-column="13" selection-end-line="124" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CaseEntity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/demo/entity/CaseEntity.java">
+      <file leaf-file-name="dev.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dev.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="190">
+                <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="doActTask.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/doActTask.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="134">
+              <caret line="187" column="13" lean-forward="true" selection-start-line="187" selection-start-column="13" selection-end-line="187" selection-end-column="13" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -84,8 +92,30 @@
       <file leaf-file-name="ActModelerServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ActModelerServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="877" selection-start-line="877" selection-end-line="877" />
+            <state relative-caret-position="112">
+              <caret line="529" selection-start-line="529" selection-end-line="529" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExtendActModelController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActModelController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="160" selection-start-line="160" selection-end-line="160" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExtendActBusinessServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ExtendActBusinessServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="103">
+              <caret line="129" selection-start-line="129" selection-end-line="129" />
+              <folding>
+                <element signature="e#5103#5104#0" expanded="true" />
+                <element signature="e#5168#5169#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -101,24 +131,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>gu</find>
-      <find>guilty</find>
-      <find>getChangeFileds</find>
-      <find>file</find>
-      <find>fil</find>
-      <find>doActTas</find>
-      <find>isagree</find>
-      <find>getNextActNodes</find>
-      <find>nextVarNams</find>
-      <find>flowbus</find>
-      <find>toDoActTaskView</find>
-      <find>processComS</find>
-      <find>guil</find>
-      <find>varName</find>
-      <find>doAc</find>
-      <find>ag</find>
-      <find>agree</find>
-      <find>isAgree</find>
       <find>vars</find>
       <find>com.hxy.modules.demo.callBack</find>
       <find>ge</find>
@@ -130,7 +142,25 @@
       <find>queryByNodeId</find>
       <find>fields</find>
       <find>caseAct</find>
+      <find>添加新材料</find>
+      <find>writes</find>
+      <find>guilty</find>
       <find>caseEn</find>
+      <find>是否通过</find>
+      <find>files_</find>
+      <find>judgs</find>
+      <find>isJudg</find>
+      <find>file_djb</find>
+      <find>rule_ourcase</find>
+      <find>getChangeFileds</find>
+      <find>材料</find>
+      <find>file_tzs</find>
+      <find>temMap</find>
+      <find>设置下一步审批人</find>
+      <find>搜索</find>
+      <find>选择</find>
+      <find>选择审批</find>
+      <find>isAgree</find>
     </findStrings>
     <replaceStrings>
       <replace>.</replace>
@@ -150,6 +180,7 @@
       <replace>caseId</replace>
       <replace>caseTaskId</replace>
       <replace>160px</replace>
+      <replace>file_</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -168,7 +199,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/flowSubmit.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/modelInfo.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/myDoneList.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/trunTask.jsp" />
@@ -206,19 +236,20 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/statics/scripts/neod3-visualization.js" />
         <option value="$PROJECT_DIR$/src/main/resources/views/neod.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/inesa/neo4j/Neo4jUtil.java" />
         <option value="$PROJECT_DIR$/dev.md" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/demo/caseEdit.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/flowNodeSet.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/dao/ActExtendDao.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/activiti/ActExtendService.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/demo/entity/CaseEntity.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/demo/CaseMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/doActTask.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ActModelerServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/demo/caseActInfo.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/demo/controller/ActBusInfoController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActModelController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/flowNodeSet.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/demo/entity/CaseEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/demo/caseActInfo.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/processComSub.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/inesa/neo4j/Neo4jUtil.java" />
       </list>
     </option>
   </component>
@@ -510,12 +541,12 @@
       <workItem from="1552805072222" duration="11343000" />
       <workItem from="1552883513727" duration="2986000" />
       <workItem from="1552956009847" duration="984000" />
-      <workItem from="1555311988209" duration="38356000" />
+      <workItem from="1555311988209" duration="44907000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="220436000" />
+    <option name="totallyTimeSpent" value="226987000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -540,7 +571,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3897059" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.43529412" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32941177" />
       <window_info anchor="bottom" id="Messages" order="9" weight="0.32794118" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
@@ -548,7 +579,7 @@
       <window_info anchor="bottom" id="Java Enterprise" order="10" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.43823528" />
-      <window_info anchor="bottom" id="Version Control" order="12" weight="0.32941177" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.5" />
       <window_info anchor="bottom" id="Spring" order="7" weight="0.32794118" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.31176472" />
       <window_info content_ui="combo" id="Project" order="0" weight="0.26258388" />
@@ -586,7 +617,7 @@
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.32941177" />
       <window_info anchor="right" id="Maven Projects" order="9" weight="0.329863" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32794118" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26258388" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.26258388" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info id="Web" order="6" side_tool="true" />
@@ -594,7 +625,7 @@
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.3897059" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.40441176" />
       <window_info anchor="right" id="Bean Validation" order="8" />
     </layout-to-restore>
   </component>
@@ -609,6 +640,32 @@
         <option value="3" />
         <option value="1" />
       </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
     </option>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -661,15 +718,15 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/inesa/neo4j/Neo4jUtil.java</url>
-          <line>312</line>
+          <line>313</line>
           <properties />
           <option name="timeStamp" value="125" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java</url>
-          <line>366</line>
+          <url>file://$PROJECT_DIR$/src/main/java/com/inesa/neo4j/Neo4jUtil.java</url>
+          <line>422</line>
           <properties />
-          <option name="timeStamp" value="173" />
+          <option name="timeStamp" value="190" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/resources/statics/js/activiti/actSumbit.js</url>
@@ -682,17 +739,43 @@
           <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="176" />
+      <option name="time" value="191" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
-        <watch expression="JSON.toJSONString(filedsContent)" language="JAVA" />
-        <watch expression="map.get(key)" language="JAVA" />
+        <watch expression="judgs" language="JAVA" />
+        <watch expression="e" language="JAVA" />
+        <watch expression="next" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>next</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>e</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>judgs</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>businessEntity.getWrites()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>JsonUtil.getJsonByObj(businessEntity.getWrites())</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>map.get(key)</expression-string>
         <language-id>JAVA</language-id>
@@ -718,43 +801,9 @@
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>task.getTaskDefinitionKey()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>pvm.getId()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>actField.name()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>JSON.toJSONString(fields)</expression-string>
-        <language-id>JAVA</language-id>
-        <custom-info>com.alibaba.fastjson.JSON</custom-info>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>new JSON(fields).toJSONString()</expression-string>
-        <language-id>JAVA</language-id>
-        <custom-info>com.alibaba.fastjson.JSON</custom-info>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/statics/scripts/sweet-alert.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret column="6338" selection-start-column="6338" selection-end-column="6338" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/statics/plugins/ztree/jquery.ztree.all.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="157">
@@ -801,17 +850,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/inesa/neo4j/Neo4jUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="261" column="45" selection-start-line="261" selection-start-column="45" selection-end-line="261" selection-end-column="45" />
-          <folding>
-            <element signature="e#14321#14329#0" expanded="true" />
-            <element signature="e#15088#15096#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/org/activiti/JsonpCallbackFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
@@ -823,16 +861,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
           <caret line="111" column="12" lean-forward="true" selection-start-line="111" selection-start-column="12" selection-end-line="111" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dev.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="311">
-            <caret line="95" column="3" selection-start-line="95" selection-start-column="3" selection-end-line="95" selection-end-column="3" />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -882,18 +910,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="60" selection-start-line="3" selection-start-column="60" selection-end-line="3" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/flowNodeSet.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="289" column="51" selection-start-line="289" selection-start-column="43" selection-end-line="289" selection-end-column="51" />
-          <folding>
-            <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#3;n#form#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -961,13 +977,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="99" column="33" selection-start-line="99" selection-start-column="31" selection-end-line="99" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/utils/ActUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="275" selection-start-line="275" selection-end-line="275" />
         </state>
       </provider>
     </entry>
@@ -1068,35 +1077,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ExtendActBusinessServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="110" selection-start-line="110" selection-end-line="110" />
-          <folding>
-            <element signature="e#5103#5104#0" expanded="true" />
-            <element signature="e#5168#5169#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/demo/caseEdit.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="23" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/doActTask.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="61" column="119" lean-forward="true" selection-start-line="61" selection-start-column="119" selection-end-line="61" selection-end-column="119" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/demo/entity/CaseEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
@@ -1107,13 +1091,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActModelController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="188" column="23" selection-start-line="188" selection-start-column="23" selection-end-line="188" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/common/entity/TableInfo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="83">
@@ -1121,17 +1098,119 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/annotation/ActField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="24" column="18" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/utils/ActUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="269" selection-start-line="269" selection-end-line="269" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/demo/entity/CaseEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="47" column="22" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
+          <folding>
+            <element signature="e#1791#1792#0" expanded="true" />
+            <element signature="e#1822#1823#0" expanded="true" />
+            <element signature="e#1870#1871#0" expanded="true" />
+            <element signature="e#1910#1911#0" expanded="true" />
+            <element signature="e#1946#1947#0" expanded="true" />
+            <element signature="e#1978#1979#0" expanded="true" />
+            <element signature="e#2028#2029#0" expanded="true" />
+            <element signature="e#2070#2071#0" expanded="true" />
+            <element signature="e#2105#2106#0" expanded="true" />
+            <element signature="e#2136#2137#0" expanded="true" />
+            <element signature="e#2184#2185#0" expanded="true" />
+            <element signature="e#2224#2225#0" expanded="true" />
+            <element signature="e#2259#2260#0" expanded="true" />
+            <element signature="e#2290#2291#0" expanded="true" />
+            <element signature="e#2338#2339#0" expanded="true" />
+            <element signature="e#2378#2379#0" expanded="true" />
+            <element signature="e#2413#2414#0" expanded="true" />
+            <element signature="e#2444#2445#0" expanded="true" />
+            <element signature="e#2492#2493#0" expanded="true" />
+            <element signature="e#2532#2533#0" expanded="true" />
+            <element signature="e#2568#2569#0" expanded="true" />
+            <element signature="e#2600#2601#0" expanded="true" />
+            <element signature="e#2650#2651#0" expanded="true" />
+            <element signature="e#2692#2693#0" expanded="true" />
+            <element signature="e#2728#2729#0" expanded="true" />
+            <element signature="e#2760#2761#0" expanded="true" />
+            <element signature="e#2810#2811#0" expanded="true" />
+            <element signature="e#2852#2853#0" expanded="true" />
+            <element signature="e#2891#2892#0" expanded="true" />
+            <element signature="e#2926#2927#0" expanded="true" />
+            <element signature="e#2982#2983#0" expanded="true" />
+            <element signature="e#3030#3031#0" expanded="true" />
+            <element signature="e#3063#3064#0" expanded="true" />
+            <element signature="e#3092#3093#0" expanded="true" />
+            <element signature="e#3136#3137#0" expanded="true" />
+            <element signature="e#3172#3173#0" expanded="true" />
+            <element signature="e#3213#3214#0" expanded="true" />
+            <element signature="e#3244#3245#0" expanded="true" />
+            <element signature="e#3298#3299#0" expanded="true" />
+            <element signature="e#3338#3339#0" expanded="true" />
+            <element signature="e#3370#3371#0" expanded="true" />
+            <element signature="e#3398#3399#0" expanded="true" />
+            <element signature="e#3440#3441#0" expanded="true" />
+            <element signature="e#3474#3475#0" expanded="true" />
+            <element signature="e#3509#3510#0" expanded="true" />
+            <element signature="e#3540#3541#0" expanded="true" />
+            <element signature="e#3588#3589#0" expanded="true" />
+            <element signature="e#3628#3629#0" expanded="true" />
+            <element signature="e#3664#3665#0" expanded="true" />
+            <element signature="e#3696#3697#0" expanded="true" />
+            <element signature="e#3746#3747#0" expanded="true" />
+            <element signature="e#3788#3789#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/flowNodeSet.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1651">
+          <caret line="132" column="139" selection-start-line="132" selection-start-column="134" selection-end-line="132" selection-end-column="139" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#3;n#form#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#5;n#form#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#8;n#form#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ActModelerServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="877" selection-start-line="877" selection-end-line="877" />
+        <state relative-caret-position="112">
+          <caret line="529" selection-start-line="529" selection-end-line="529" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/demo/caseActInfo.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="17" column="59" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/demo/controller/ActBusInfoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="366" selection-start-line="366" selection-end-line="366" />
+        <state relative-caret-position="273">
+          <caret line="331" selection-start-line="331" selection-end-line="331" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2887#2888#0" expanded="true" />
@@ -1140,24 +1219,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/demo/caseActInfo.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ExtendActBusinessServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="106" column="69" selection-start-line="106" selection-start-column="69" selection-end-line="106" selection-end-column="69" />
+        <state relative-caret-position="103">
+          <caret line="129" selection-start-line="129" selection-end-line="129" />
+          <folding>
+            <element signature="e#5103#5104#0" expanded="true" />
+            <element signature="e#5168#5169#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/demo/controller/ActBusInfoController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActModelController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        <state relative-caret-position="112">
+          <caret line="160" selection-start-line="160" selection-end-line="160" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dev.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="190">
+            <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/doActTask.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="187" column="13" lean-forward="true" selection-start-line="187" selection-start-column="13" selection-end-line="187" selection-end-column="13" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/processComSub.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="90" selection-start-line="90" selection-end-line="90" />
+        <state relative-caret-position="217">
+          <caret line="124" column="13" lean-forward="true" selection-start-line="124" selection-start-column="13" selection-end-line="124" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/inesa/neo4j/Neo4jUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="412" selection-start-line="412" selection-end-line="412" />
         </state>
       </provider>
     </entry>

@@ -258,8 +258,9 @@ public class Neo4jUtil {
                         long minutes = (diff - days * (1000 * 60 * 60 * 24) - hours * (1000 * 60 * 60)) / (1000 * 60);
                         next = ("" + days + "天" + hours + "小时" + minutes + "分");
                     } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                    relation.setRelation(next);
+                    relation.setRelation("next");//next
                     relate(relation);
                 }
 

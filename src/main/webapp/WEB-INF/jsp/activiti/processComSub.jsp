@@ -84,6 +84,7 @@
         };
         $.post(url,params,function (result) {
             if(result.code == '0'){
+                console.log(result);
                 processInfo.changeFields= result.changeFields;
                 processInfo.vars=result.vars;
                 for (var i=0;i<processInfo.changeFields.length;i++){
@@ -113,12 +114,12 @@
                 var val=$("#"+vars[i]+"").val();
 
                 console.log(">>>>>>>>>>>>>>" + val);
-
-                if (vars[i] == "isAgree") {
-                    varValue+="1,";
-                } else {
-                    varValue+=val+",";
-                }
+                varValue+=val+",";
+                // if (vars[i] == "isAgree") {
+                //     varValue+="1,";
+                // } else {
+                //
+                // }
 
                 varName+=vars[i]+",";
             }
