@@ -89,7 +89,7 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-md-12 ">
-                        <label class="col-md-2 control-label no-padding-right">类路径:</label>
+                        <label class="col-md-2 control-label no-padding-right">业务模板:</label>
                         <div class="col-md-10">
                             <span class="col-xs-11 block input-icon input-icon-right">
                                 <input id="classurl" name="classurl" type="text" class="form-control"/>
