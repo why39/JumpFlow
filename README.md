@@ -53,27 +53,9 @@
 - 创建数据库hxyframe_activiti，数据库编码为UTF-8,项目sql/db/hxyframe.sql脚本
 - 修改application-dev.yml文件，更改MySQL账号和密码
 - 启动redis服务,可在官方群下载。
-- 项目访问路径：http://localhost:8080/hxyActiviti/index.html
+- 项目访问路径：http://localhost:8083/hxyActiviti/index.html
+- 账号：root
+- 密码：a
 
 
- **捐赠测试**
-- 开源不易，维护更新更不容易，如果项目帮助到了你，给作者一点动力吧，项目才能更加完善强大。请捐赠时请备注捐赠信息！谢谢支持
- ![图片说明](http://osaowv4s0.bkt.clouddn.com/upload/20170829/59da2d5b80464f67a035f529b6eb0dad "图片说明")
-
-
-**项目图片：**
-
-![图片说明]( http://osaowv4s0.bkt.clouddn.com/upload/20171214/ea35e2f3e3d2417d911e0245e8f59f8c "图片说明")
-![图片说明]( http://osaowv4s0.bkt.clouddn.com/upload/20171214/a5763c56c6dc474b918992867ccc60c3 "图片说明")
-![图片说明]( http://osaowv4s0.bkt.clouddn.com/upload/20171214/f44860f9d19141b882c73daabadafbd6 "图片说明")
-![图片说明]( http://osaowv4s0.bkt.clouddn.com/upload/20171214/bd5165dc6df14497a508023b28b237f3 "图片说明")
-![图片说明]( http://osaowv4s0.bkt.clouddn.com/upload/20171214/9f8564d5e11e4c1f9c9e5cf52ad2bd50 "图片说明")
-![图片说明](http://osaowv4s0.bkt.clouddn.com/upload/20171214/6d4eaab348f7483f9af7661e4c1890b7 "图片说明")
-![图片说明](http://osaowv4s0.bkt.clouddn.com/upload/20171214/61b2c782a5d747cd922be922e97f9b1d "图片说明")
-![图片说明](http://osaowv4s0.bkt.clouddn.com/upload/20171214/6dca83d4070649ecb5468baea4819433 "图片说明")
-![图片说明](http://osaowv4s0.bkt.clouddn.com/upload/20171214/afc3db6415eb463186358920a7dc0240 "图片说明")
-![图片说明](http://osaowv4s0.bkt.clouddn.com/upload/20171214/a49f42f188a14b4aac9ac405d26dfa03 "图片说明")
-![图片说明](http://osaowv4s0.bkt.clouddn.com/upload/20171214/4d2e611ac4694dcea1b3597c3de58b1d "图片说明")
-
-
-
+ 
