@@ -57,5 +57,9 @@
 - 账号：root
 - 密码：a
 
+此外注意：关闭mysql大小写敏感：
+修改mysqld配置
+lower_case_table_names=1
+
 
  
