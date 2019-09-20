@@ -77,7 +77,7 @@ docker run -dti --network=host --name tracker -v /var/fdfs/tracker:/var/fdfs del
 运行storage：
 
 ```
-docker run -dti --network=host --name storage -e TRACKER_SERVER=10.131.233.173:22122 -v /var/fdfs/storage:/var/fdfs delron/fastdfs storage
+docker run -dti --network=host --name storage -e TRACKER_SERVER=127.0.0.1:22122 -v /var/fdfs/storage:/var/fdfs delron/fastdfs storage
 ```
 
 

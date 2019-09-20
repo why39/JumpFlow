@@ -3,6 +3,7 @@ package com.inesa.neo4j;
 import com.hxy.modules.activiti.dto.ProcessTaskDto;
 import com.hxy.modules.common.utils.RedisUtil;
 import com.hxy.modules.common.utils.SpringContextUtils;
+import com.hxy.modules.common.utils.UserUtils;
 import com.inesa.common.utils.Constants;
 import com.inesa.neo4j.entity.Code;
 import org.apache.http.util.TextUtils;
@@ -32,7 +33,7 @@ public class Neo4jUtil {
         if (driver == null) {
             synchronized (Neo4jUtil.class) {
                 if (driver == null) {
-                    driver = GraphDatabase.driver("bolt://10.131.233.173:7687", AuthTokens.basic("neo4j", "1992"));
+                    driver = GraphDatabase.driver("bolt://10.141.208.60:7687", AuthTokens.basic("neo4j", "1992"));
                     return driver;
                 }
             }
@@ -40,23 +41,20 @@ public class Neo4jUtil {
         return driver;
     }
 
-    public static Code test() {
+    public static List<Record> test() {
         Code restfulResult = new Code();
-
+        List<Record> records = null;
         try {
             Driver driver = createDrive();
             Session session = driver.session();
 
-            session.run("CREATE (a:Person {name: {name}, title: {title}})",
-                    parameters("name", "Arthur001", "title", "King001"));
+            StatementResult result = session.run("match (n:Task) where n.instanceId=\"387501\" with n match p=(n)- [*] ->(m) return p");
 
-            StatementResult result = session.run("MATCH (a:Person) WHERE a.name = {name} " +
-                            "RETURN a.name AS name, a.title AS title",
-                    parameters("name", "Arthur001"));
+            records = result.list();
 
             while (result.hasNext()) {
                 Record record = result.next();
-                System.out.println(record.get("title").asString() + " " + record.get("name").asString() + " " + record.get("id").asString());
+                System.out.println(record.get("name").asString());
             }
 
             session.close();
@@ -68,7 +66,7 @@ public class Neo4jUtil {
         }
 
         logger.debug("restfulResult.getResult() : " + restfulResult.getResult());
-        return restfulResult;
+        return records;
     }
 
     // 创建审批(Remark)数据节点
@@ -114,9 +112,7 @@ public class Neo4jUtil {
                                 ", status: {status}" +
                                 ", dealId: {dealId}" +
                                 ", dealTime: {dealTime}" +
-                                ", startUserName: {startUserName}" +
-                                ", nextUserName: {nextUserName}" +
-                                ", nextUserId: {nextUserId}" +
+                                ", dealUserName: {dealUserName}" +
                                 ", remark: {remark}" +
                                 "})",
                         parameters(
@@ -132,9 +128,7 @@ public class Neo4jUtil {
                                 , "status", processTaskDto.getStatus()
                                 , "dealId", processTaskDto.getDealId()
                                 , "dealTime", (new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date())
-                                , "startUserName", processTaskDto.getStartUserName()
-                                , "nextUserName", processTaskDto.getGetNextUserNames()
-                                , "nextUserId", processTaskDto.getNextUserIds()
+                                , "dealUserName", UserUtils.getCurrentUser().getLoginName()
                                 , "remark", processTaskDto.getRemark()
                         ));
 
@@ -195,15 +189,15 @@ public class Neo4jUtil {
                             ", label: {label}" +
                             ", taskId: {taskId}" +
                             ", taskName:{taskName}" +
+                            ", fileName:{fileName}" +
+                            ", formName:{formName}" +
                             ", instanceId: {instanceId}" +
                             ", busId: {busId}" +
                             ", busName: {busName}" +
                             ", status: {status}" +
                             ", dealId: {dealId}" +
                             ", dealTime: {dealTime}" +
-                            ", startUserName: {startUserName}" +
-                            ", nextUserName: {nextUserName}" +
-                            ", nextUserId: {nextUserId}" +
+                            ", dealUserName: {dealUserName}" +
                             ", remark: {remark}" +
                             "})",
                     parameters(
@@ -211,15 +205,15 @@ public class Neo4jUtil {
                             , "taskId", processTaskDto.getTaskId()
                             , "label", "Task"
                             , "taskName", processTaskDto.getTaskName()
+                            , "fileName", processTaskDto.getTaskName()+"文书材料"
+                            , "formName", processTaskDto.getTaskName()+"案卡数据"
                             , "instanceId", processTaskDto.getInstanceId()
                             , "busId", processTaskDto.getBusId()
                             , "busName", processTaskDto.getBusName()
                             , "status", processTaskDto.getStatus()
                             , "dealId", processTaskDto.getDealId()
                             , "dealTime", curTime
-                            , "startUserName", processTaskDto.getStartUserName()
-                            , "nextUserName", processTaskDto.getGetNextUserNames()
-                            , "nextUserId", processTaskDto.getNextUserIds()
+                            , "dealUserName", UserUtils.getCurrentUser().getUserName()
                             , "remark", processTaskDto.getRemark()
                     ));
 
