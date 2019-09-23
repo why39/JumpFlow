@@ -53,6 +53,13 @@
                                 <button class="layui-btn layui-btn-small" type="button" onclick="designFlow('${model.modelId}')"><i class="layui-icon">&#xe631;</i>设计流程图</button>
                                 <button class="layui-btn layui-btn-small layui-btn-normal" type="button" onclick="flowNodeSet('${model.modelId}')"><i class="layui-icon">&#xe614;</i>节点设置</button>
                                 <button class="layui-btn layui-btn-small layui-btn-warm" type="button" onclick="showFlowImg('${model.modelId}')"><i class="layui-icon">&#xe60d;</i>查看流程图</button>
+
+                                <form id="deploy-form" action="${webRoot}/act/model/deployFile" enctype="multipart/form-data" method="post">
+                                    <input type="file" name="bpmnfile" id='check'>
+                                    <input type="text" name="modelId" value="${model.modelId}" hidden/>
+                                    <input class="layui-btn layui-btn-small" type="submit" value="上传本地模型">
+                                </form>
+
                                 <c:if test="${model.status == 1}">
                                     <button class="layui-btn layui-btn-small" type="button" onclick="deploy('${model.modelId}','部署')"><i class="layui-icon">&#xe609;</i>部署</button>
                                     <button class="layui-btn layui-btn-small layui-btn-danger" id="" type="button" onclick="delModel('${model.id}')"><i class="layui-icon">&#xe640;</i>删除</button>
@@ -93,7 +100,7 @@
             shadeClose : true,
         });
     }
-    
+
     /**
      * 设计流程图
      * @param modelId 模型id
@@ -187,6 +194,7 @@
             });
         })
     }
+
 </script>
 
 </html>

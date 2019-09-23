@@ -22,7 +22,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -34,6 +37,7 @@ import java.util.Map;
 /**
  * 类的功能描述.
  * 流程模型相关操作
+ *
  * @Auther hxy
  * @Date 2017/7/11
  */
@@ -71,6 +75,7 @@ public class ExtendActModelController {
 
     /**
      * 列表
+     *
      * @param model
      * @param actModelEntity
      * @param request
@@ -78,25 +83,26 @@ public class ExtendActModelController {
      */
     @RequestMapping("list")
     @RequiresPermissions("act:model:all")
-    public String list(Model model, ExtendActModelEntity actModelEntity, HttpServletRequest request){
+    public String list(Model model, ExtendActModelEntity actModelEntity, HttpServletRequest request) {
         int pageNum = Utils.parseInt(request.getParameter("pageNum"), 1);
         Page<ExtendActModelEntity> page = extendActModelService.findPage(actModelEntity, pageNum);
-        model.addAttribute("page",page);
-        model.addAttribute("model",actModelEntity);
+        model.addAttribute("page", page);
+        model.addAttribute("model", actModelEntity);
         return "activiti/extendActModelList";
     }
 
     /**
      * 编辑弹框
+     *
      * @param model
      * @return
      */
     @RequestMapping("info")
     @RequiresPermissions("act:model:all")
-    public String info(Model model, String id){
-        if(StringUtils.isNotEmpty(id)){
+    public String info(Model model, String id) {
+        if (StringUtils.isNotEmpty(id)) {
             ExtendActModelEntity extendActModelEntity = extendActModelService.queryObject(id);
-            model.addAttribute("model",extendActModelEntity);
+            model.addAttribute("model", extendActModelEntity);
             List<ExtendActBusinessEntity> businessEntityList = businessService.queryBusTree();
             model.addAttribute("busTree", JsonUtil.getJsonByObj(businessEntityList));
         }
@@ -105,18 +111,19 @@ public class ExtendActModelController {
 
     /**
      * 保存
+     *
      * @param modelEntity
      * @return
      */
     @RequestMapping("save")
     @ResponseBody
     @RequiresPermissions("act:model:all")
-    public Result save(ExtendActModelEntity modelEntity){
+    public Result save(ExtendActModelEntity modelEntity) {
         try {
             String modelId = extendActModelService.save(modelEntity);
-            if(StringUtils.isEmpty(modelId)){
+            if (StringUtils.isEmpty(modelId)) {
                 return Result.error();
-            }else{
+            } else {
                 return Result.ok();
             }
         } catch (Exception e) {
@@ -127,27 +134,29 @@ public class ExtendActModelController {
 
     /**
      * 更新
+     *
      * @param modelEntity
      * @return
      */
     @RequestMapping("update")
     @ResponseBody
     @RequiresPermissions("act:model:all")
-    public Result update(ExtendActModelEntity modelEntity){
+    public Result update(ExtendActModelEntity modelEntity) {
         int count = extendActModelService.update(modelEntity);
-        if(count>0){
-            return Result.ok("更新"+modelEntity.getName()+"成功!");
-        }else {
-            return Result.error("更新"+modelEntity.getName()+"失败!");
+        if (count > 0) {
+            return Result.ok("更新" + modelEntity.getName() + "成功!");
+        } else {
+            return Result.error("更新" + modelEntity.getName() + "失败!");
         }
     }
 
     /**
      * 获取流程图所有节点和连线
+     *
      * @param modelId 模型id
      */
     @RequestMapping("flowTree")
-    public String flowTree(String modelId,Model model) throws Exception {
+    public String flowTree(String modelId, Model model) throws Exception {
         //所有节点
         List<Map<String, String>> flows = actModelerService.getflows(modelId);
         model.addAttribute("flows", JsonUtil.getJsonByObj(flows));
@@ -186,92 +195,96 @@ public class ExtendActModelController {
 
     /**
      * 获取节点的扩展设置信息
+     *
      * @return
      */
     @RequestMapping("flowSetInfo")
     @ResponseBody
-    public Result flowSetInfo(String nodeId,String type){
-        if(StringUtils.isEmpty(nodeId)){
+    public Result flowSetInfo(String nodeId, String type) {
+        if (StringUtils.isEmpty(nodeId)) {
             throw new MyException("未获取节点id");
         }
         Result result = new Result();
         ExtendActNodesetEntity query = new ExtendActNodesetEntity();
         query.setNodeId(nodeId);
         ExtendActNodesetEntity nodesetEntity = nodesetService.queryByNodeId(nodeId);
-        result.put("nodeSet",nodesetEntity);
+        result.put("nodeSet", nodesetEntity);
         //如果节点类型为审批节点
-        if(Constant.NodeType.EXAMINE.getValue().equals(type)){
+        if (Constant.NodeType.EXAMINE.getValue().equals(type)) {
             List<ExtendActNodeuserEntity> userLists = nodeuserService.getNodeUserByNodeId(nodeId);
-            result.put("userList",userLists);
+            result.put("userList", userLists);
         }
         //节点类型为连线
-        if(Constant.NodeType.LINE.getValue().equals(type)){
-            Map<String,Object> params = new HashMap<>();
-            params.put("nodeId",nodeId);
+        if (Constant.NodeType.LINE.getValue().equals(type)) {
+            Map<String, Object> params = new HashMap<>();
+            params.put("nodeId", nodeId);
 //            params.put("fieldType","2");
             List<ExtendActNodefieldEntity> fields = fieldService.queryList(params);
-            result.put("fields",fields);
+            result.put("fields", fields);
         }
         return result;
     }
 
     /**
      * 选择审批范围弹框
+     *
      * @param request
      * @param model
      * @param userWindowDto
      * @return
      */
     @RequestMapping(value = "userAreaSelect")
-    public String userAreaSelect(HttpServletRequest request, Model model, UserWindowDto userWindowDto, String type){
+    public String userAreaSelect(HttpServletRequest request, Model model, UserWindowDto userWindowDto, String type) {
         int pageNum = Utils.parseInt(request.getParameter("pageNum"), 1);
-        Page<UserWindowDto> page =null;
-        if(StringUtils.isEmpty(type)){
+        Page<UserWindowDto> page = null;
+        if (StringUtils.isEmpty(type)) {
             //默认审批类型为用户级别的
-            type=Constant.ExamineType.USER.getValue();
+            type = Constant.ExamineType.USER.getValue();
         }
         //类型为用户
-        if(Constant.ExamineType.USER.getValue().equals(type)){
+        if (Constant.ExamineType.USER.getValue().equals(type)) {
             page = userService.findPage(userWindowDto, pageNum);
-        }else if(Constant.ExamineType.ROLE.getValue().equals(type)){
+        } else if (Constant.ExamineType.ROLE.getValue().equals(type)) {
             //角色
-            page = roleService.queryPageByDto(userWindowDto,pageNum);
-        }else {
+            page = roleService.queryPageByDto(userWindowDto, pageNum);
+        } else {
             //组织
-            page = organService.queryPageByDto(userWindowDto,pageNum);
+            page = organService.queryPageByDto(userWindowDto, pageNum);
         }
-        model.addAttribute("page",page);
-        model.addAttribute("userWindow",userWindowDto);
-        model.addAttribute("type",type);
+        model.addAttribute("page", page);
+        model.addAttribute("userWindow", userWindowDto);
+        model.addAttribute("type", type);
         return "activiti/userAreaSelect";
     }
 
     /**
      * 查看流程图片
+     *
      * @param modelId
      * @return
      */
     @RequestMapping(value = "showFlowImg")
     @RequiresPermissions("act:model:all")
-    public ResponseEntity<byte[]> showFlowImg(String modelId){
+    public ResponseEntity<byte[]> showFlowImg(String modelId) {
         return actModelerService.showFlowImg(modelId);
     }
 
 
     /**
      * 删除模型
+     *
      * @param id
      * @return
      */
     @RequestMapping("del")
     @ResponseBody
     @RequiresPermissions("act:model:all")
-    public Result del(String id){
+    public Result del(String id) {
         try {
             int count = extendActModelService.delete(id);
-            if(count<1){
+            if (count < 1) {
                 return Result.error("删除失败!");
-            }else{
+            } else {
                 return Result.ok("删除成功!");
             }
         } catch (Exception e) {
@@ -282,16 +295,17 @@ public class ExtendActModelController {
 
     /**
      * 保存节点设置
+     *
      * @param nodesetEntity 流程节点配置
      * @return
      */
-    @RequestMapping(value = "saveNode",method = RequestMethod.POST)
+    @RequestMapping(value = "saveNode", method = RequestMethod.POST)
     @ResponseBody
     @RequiresPermissions("act:model:all")
-    public Result saveNode(ExtendActNodesetEntity nodesetEntity){
+    public Result saveNode(ExtendActNodesetEntity nodesetEntity) {
         try {
             ExtendActNodesetEntity nodeSet = nodesetService.saveNode(nodesetEntity);
-            return Result.ok("保存成功!").put("nodeSet",nodeSet);
+            return Result.ok("保存成功!").put("nodeSet", nodeSet);
         } catch (IOException e) {
             e.printStackTrace();
             return Result.ok("保存失败!");
@@ -300,13 +314,14 @@ public class ExtendActModelController {
 
     /**
      * 部署流程
+     *
      * @param modelId 模型id
      * @return
      */
-    @RequestMapping(value = "deploy",method = RequestMethod.POST)
+    @RequestMapping(value = "deploy", method = RequestMethod.POST)
     @ResponseBody
     @RequiresPermissions("act:model:all")
-    public Result deploy(String modelId){
+    public Result deploy(String modelId) {
         try {
             extendActModelService.deploy(modelId);
             return Result.ok();
@@ -317,10 +332,23 @@ public class ExtendActModelController {
     }
 
 
+    @RequestMapping(value = "deployFile")
+    @ResponseBody
+    @RequiresPermissions("act:model:all")
+    public ModelAndView deployFile(String modelId, @RequestParam("bpmnfile") MultipartFile bpmnfile, HttpServletRequest request) {
+        try {
+            extendActModelService.deployFile(modelId, bpmnfile);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
+        ModelAndView mv = new ModelAndView();
+        //手动显式指定使用转发，此时springmvc.xml配置文件中的视图解析器将会失效
+        mv.setViewName("forward:list");
+//        mv.setViewName("forward:/WEB-INF/jsp/activiti/extendActModelList.jsp");
+        return mv;
 
-
-
+    }
 
 
 }

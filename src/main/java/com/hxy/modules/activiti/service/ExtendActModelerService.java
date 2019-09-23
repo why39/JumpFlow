@@ -2,8 +2,10 @@ package com.hxy.modules.activiti.service;
 
 import com.hxy.modules.activiti.entity.ExtendActModelEntity;
 import com.hxy.modules.common.page.Page;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -43,6 +45,8 @@ public interface ExtendActModelerService {
 	 * @param modelId 模型id
 	 */
 	void deploy(String modelId) throws IOException;
+
+	void deployFile(String modelId, MultipartFile bpmnfile);
 
 
 
