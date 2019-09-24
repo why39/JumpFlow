@@ -42,6 +42,10 @@ spring:
             prefix: /WEB-INF/jsp/
             suffix: .jsp
 
+
+    velocity:
+        enabled=false:
+
 # Mybatis配置
 mybatis:
     mapperLocations: classpath:mapper/**/*.xml
@@ -58,5 +62,7 @@ jwt:
 security:
     basic:
         enabled: false
+
+
 
 

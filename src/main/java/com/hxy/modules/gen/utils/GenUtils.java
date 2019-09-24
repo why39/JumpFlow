@@ -105,7 +105,7 @@ public class GenUtils {
 		Properties prop = new Properties();
 		prop.put("file.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");  
 		Velocity.init(prop);
-		
+
 		//封装模板数据
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", Utils.uuid());

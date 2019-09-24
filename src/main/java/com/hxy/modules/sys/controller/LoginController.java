@@ -47,26 +47,26 @@ public class LoginController extends BaseController {
         response.setHeader("Pragma", "no-cache");
 
         // return a jpeg
-        response.setContentType("image/jpeg");
-
-        // create the text for the image
-        String capText = captchaProducer.createText();
-
-        // store the text in the session
-        request.getSession().setAttribute(Constants.KAPTCHA_SESSION_KEY, capText);
-
-        // create the image with the text
-        BufferedImage bi = captchaProducer.createImage(capText);
-
-        ServletOutputStream out = response.getOutputStream();
-
-        // write the data out
-        ImageIO.write(bi, "jpg", out);
-        try {
-            out.flush();
-        } finally {
-            out.close();
-        }
+//        response.setContentType("image/jpeg");
+//
+//        // create the text for the image
+//        String capText = captchaProducer.createText();
+//
+//        // store the text in the session
+//        request.getSession().setAttribute(Constants.KAPTCHA_SESSION_KEY, capText);
+//
+//        // create the image with the text
+//        BufferedImage bi = captchaProducer.createImage(capText);
+//
+//        ServletOutputStream out = response.getOutputStream();
+//
+//        // write the data out
+//        ImageIO.write(bi, "jpg", out);
+//        try {
+//            out.flush();
+//        } finally {
+//            out.close();
+//        }
 
     }
 

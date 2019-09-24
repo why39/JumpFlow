@@ -379,6 +379,9 @@ var SaveModelCtrl = [ '$rootScope', '$scope', '$http', '$route', '$location',
             name: $scope.saveDialog.name,
             description: $scope.saveDialog.description
         };
+        console.log("模型数据》》》》》》》")
+
+        console.log(json,$scope.saveDialog.name,$scope.saveDialog.description)
 
         // Update
         $http({    method: 'PUT',

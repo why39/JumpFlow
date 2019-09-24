@@ -28,10 +28,10 @@
             <input type="password" class="form-control" v-model="password" placeholder="密码">
             <span class="fa fa-lock form-control-feedback"></span>
           </div>
-          <div class="form-group has-feedback">
-            <input type="text"style="width: 50%;display: inline-block" class="form-control" v-model="captcha" @keyup.enter="login" placeholder="验证码">
-            <img alt="如果看不清楚，请单击图片刷新！" style="width: 45%;display: inline-block" class="pointer" :src="src" @click="refreshCode">
-          </div>
+<!--          <div class="form-group has-feedback">-->
+<!--            <input type="text"style="width: 50%;display: inline-block" class="form-control" v-model="captcha" @keyup.enter="login" placeholder="验证码">-->
+<!--            <img alt="如果看不清楚，请单击图片刷新！" style="width: 45%;display: inline-block" class="pointer" :src="src" @click="refreshCode">-->
+<!--          </div>-->
           <div class="checkbox">
               <label>
                 <input type="checkbox"  name="isRememberMe" v-model="isRememberMe">记住我,下次免登陆

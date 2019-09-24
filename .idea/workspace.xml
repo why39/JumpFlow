@@ -3,10 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="2744b1fb-8595-47eb-8862-905e3a590b61" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActModelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/ExtendActModelerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/ExtendActModelerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ExtendActModelServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ExtendActModelServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/extendActModelList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/extendActModelList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hxyFrame-activiti-boot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hxyFrame-activiti-boot.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/modules/gen/utils/GenUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/modules/gen/utils/GenUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/modules/sys/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/modules/sys/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/plugins/process/editor-app/configuration/toolbar-default-actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/plugins/process/editor-app/configuration/toolbar-default-actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/plugins/process/modeler.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/plugins/process/modeler.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/spring-configuration-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/spring-configuration-metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hxy/modules/sys/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hxy/modules/sys/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/toolbar-default-actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/toolbar-default-actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/modeler.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/modeler.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,63 +43,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActModelController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="346" column="36" selection-start-line="346" selection-start-column="36" selection-end-line="346" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/views/login.html">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/HxyFrameBootApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="77" column="40" lean-forward="true" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="40" />
+            <state relative-caret-position="75">
+              <caret line="12" column="67" selection-start-line="12" selection-start-column="67" selection-end-line="12" selection-end-column="67" />
               <folding>
-                <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#858#859#0" expanded="true" />
+                <element signature="e#923#924#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/sys/controller/LoginController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="114" column="24" selection-start-line="114" selection-start-column="16" selection-end-line="114" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/views/modules/oss/oss.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1883">
-              <caret line="15" column="16" lean-forward="true" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/extendActModelList.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="27" column="23" lean-forward="true" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/oss/controller/SysOssController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="126" column="65" selection-start-line="126" selection-start-column="25" selection-end-line="126" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -98,8 +59,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ExtendActModelServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="240" column="82" selection-start-line="240" selection-start-column="82" selection-end-line="240" selection-end-column="82" />
+            <state relative-caret-position="111">
+              <caret line="208" column="53" selection-start-line="208" selection-start-column="53" selection-end-line="208" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ActModelerServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="601" selection-start-line="601" selection-end-line="601" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/utils/ActUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="275" column="34" selection-start-line="275" selection-start-column="34" selection-end-line="275" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/views/login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="141">
+              <caret line="30" column="12" lean-forward="true" selection-start-line="30" selection-start-column="12" selection-end-line="33" selection-end-column="20" />
+              <folding>
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -115,36 +106,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>流程图设计</find>
-      <find>127.0.0.1:7687</find>
-      <find>提交</find>
-      <find>流程定义选择</find>
-      <find>act/deal/startFlow</find>
-      <find>/startFlow</find>
-      <find>startFlow</find>
-      <find>Result</find>
-      <find>neo</find>
-      <find>doActTask</find>
-      <find>欢迎</find>
-      <find>index.html</find>
-      <find>&quot;user&quot;</find>
-      <find>user</find>
-      <find>127.0.0.1</find>
-      <find>7687</find>
-      <find>部署</find>
-      <find>升级版本</find>
-      <find>upload</find>
-      <find>上传文件</find>
-      <find>hidFileName</find>
-      <find>input</find>
-      <find>hid</find>
-      <find>modelId</find>
-      <find>redirec</find>
-      <find>getRequestDispatcher</find>
-      <find>.jsp&quot;</find>
       <find>request</find>
+      <find>doReadSession</find>
+      <find>LoginController</find>
+      <find>velocity</find>
+      <find>host</find>
+      <find>java.vm</find>
+      <find>ClasspathResourceLoader</find>
+      <find>保存</find>
+      <find>extModel</find>
+      <find>spring.velocity.enabled=false</find>
+      <find>successCallback</find>
+      <find>lys_fun_modeler</find>
+      <find>tomcat</find>
+      <find>swagger2</find>
+      <find>WebMvcConfigurerAdapter</find>
+      <find>spring-boot-configuration-processor</find>
+      <find>VelocityConfig</find>
+      <find>.vm</find>
+      <find>template</find>
+      <find>Velocity</find>
+      <find>Velocity.ini</find>
+      <find>tem</find>
+      <find>getTemplate</find>
+      <find>Resource_Loader_path</find>
+      <find>addResourceHandlers</find>
+      <find>template/</find>
+      <find>Configure</find>
+      <find>classpath.resource.loader.class</find>
+      <find>init</find>
       <find>extendActModelList</find>
-      <find>submit</find>
     </findStrings>
     <replaceStrings>
       <replace>.</replace>
@@ -167,6 +158,9 @@
       <replace>file_</replace>
       <replace>127.0.0.1</replace>
     </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/src/main/webapp/WEB-INF</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -174,14 +168,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/statics/scripts/cy2neod3.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/stencilset_cn.json" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/org/activiti/rest/editor/main/StencilsetRestResource.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/stencilset_zh-cn.json" />
-        <option value="$PROJECT_DIR$/src/main/resources/statics/plugins/process/editor-app/stencil-controller.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hxy/config/SpringConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hxy/config/ShiroConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/utils/FastDFSFile.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/utils/FastDFSClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/oss/service/SysOssService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/fdfs_client.conf" />
@@ -192,7 +178,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/demo/controller/CaseController.java" />
         <option value="$PROJECT_DIR$/sql/db/hxyframe_activiti.sql" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/demo/case.jsp" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/statics/scripts/neod3-visualization.js" />
         <option value="$PROJECT_DIR$/src/main/resources/views/neod.html" />
         <option value="$PROJECT_DIR$/dev.md" />
@@ -208,23 +193,32 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/demo/caseActInfo.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/processComSub.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/views/index1.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/views/login.html" />
         <option value="$PROJECT_DIR$/src/main/resources/views/index.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/busTree.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/inesa/neo4j/casedata/CaseDataMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/inesa/neo4j/casedata/CaseDataController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/inesa/common/DataController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application-dev.yml" />
         <option value="$PROJECT_DIR$/src/main/resources/application-pro.yml" />
         <option value="$PROJECT_DIR$/src/main/resources/application-test.yml" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/src/main/java/com/inesa/neo4j/Neo4jUtil.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/ExtendActModelerService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ExtendActModelServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/extendActModelList.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActModelController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/sys/controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hxy/component/redis/CachingShiroSessionDao.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/src/main/resources/statics/plugins/process/editor-app/configuration/toolbar-default-actions.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/statics/plugins/process/modeler.html" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/app/config/MvcConfiguration.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ExtendActModelServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/gen/utils/GenUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/app/config/WebMvcConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hxy/HxyFrameBootApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/views/login.html" />
       </list>
     </option>
   </component>
@@ -246,6 +240,11 @@
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
           <item name="hxyFrame-activiti-boot" type="9519ce18:MavenProjectsStructure$ProjectNode" />
           <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="hxyFrame-activiti-boot" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
         </path>
       </expand>
       <select />
@@ -276,163 +275,7 @@
             <path>
               <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
               <item name="cscwflow" type="462c0819:PsiDirectoryNode" />
-              <item name="libs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cscwflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cscwflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cscwflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cscwflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cscwflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="hxy" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cscwflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="hxy" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cscwflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="hxy" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="activiti" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cscwflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="hxy" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-              <item name="activiti" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cscwflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cscwflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cscwflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cscwflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cscwflow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="jsp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-            <path>
-              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: org.activiti:activiti-bpmn-converter:5.22.0" type="70bed36:NamedLibraryElementNode" />
-            </path>
-            <path>
-              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: org.activiti:activiti-bpmn-converter:5.22.0" type="70bed36:NamedLibraryElementNode" />
-              <item name="activiti-bpmn-converter-5.22.0.jar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: org.activiti:activiti-bpmn-converter:5.22.0" type="70bed36:NamedLibraryElementNode" />
-              <item name="activiti-bpmn-converter-5.22.0.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="activiti" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: org.activiti:activiti-bpmn-converter:5.22.0" type="70bed36:NamedLibraryElementNode" />
-              <item name="activiti-bpmn-converter-5.22.0.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="activiti" type="462c0819:PsiDirectoryNode" />
-              <item name="bpmn" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: org.activiti:activiti-bpmn-converter:5.22.0" type="70bed36:NamedLibraryElementNode" />
-              <item name="activiti-bpmn-converter-5.22.0.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="activiti" type="462c0819:PsiDirectoryNode" />
-              <item name="bpmn" type="462c0819:PsiDirectoryNode" />
-              <item name="converter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: org.activiti:activiti-bpmn-converter:5.22.0" type="70bed36:NamedLibraryElementNode" />
-              <item name="activiti-bpmn-converter-5.22.0.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="activiti" type="462c0819:PsiDirectoryNode" />
-              <item name="bpmn" type="462c0819:PsiDirectoryNode" />
-              <item name="converter" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
+              <item name="sql" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -460,8 +303,12 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/sql/db" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/inesa/neo4j" />
+      <recent name="$PROJECT_DIR$/libs" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/src/main/resources/statics" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.inesa.neo4j.casedata" />
@@ -470,12 +317,8 @@
       <recent name="com.hxy.modules.demo.controller" />
       <recent name="com.hxy.modules.demo.dao" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/sql/db" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/inesa/neo4j" />
-      <recent name="$PROJECT_DIR$/libs" />
-      <recent name="$PROJECT_DIR$/src/main/resources" />
-      <recent name="$PROJECT_DIR$/src/main/resources/statics" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -568,12 +411,12 @@
       <workItem from="1568164376458" duration="3276000" />
       <workItem from="1568251001398" duration="5520000" />
       <workItem from="1568596965493" duration="11105000" />
-      <workItem from="1569201948349" duration="14762000" />
+      <workItem from="1569201948349" duration="38075000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="288003000" />
+    <option name="totallyTimeSpent" value="311316000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -588,7 +431,7 @@
     <frame x="56" y="23" width="1224" height="777" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2715736" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2715736" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -598,17 +441,17 @@
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.45555556" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23211679" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.44233575" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.24963504" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32941177" />
       <window_info anchor="bottom" id="Spring" order="7" weight="0.32794118" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.2189781" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.35036495" />
       <window_info anchor="bottom" id="Messages" order="9" weight="0.3270073" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="12" weight="0.5" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.5927007" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -634,17 +477,17 @@
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.45555556" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.24233577" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.24963504" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30656934" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.24963504" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32941177" />
       <window_info anchor="bottom" id="Spring" order="7" weight="0.32794118" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.2189781" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.28759125" />
       <window_info anchor="bottom" id="Messages" order="9" weight="0.3270073" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="12" weight="0.5" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.5927007" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -858,176 +701,10 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/statics/plugins/process/editor-app/configuration/toolbar-default-actions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6105">
-          <caret line="424" column="16" selection-start-line="424" selection-start-column="16" selection-end-line="424" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/common/utils/Result.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-112">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/ActModelerService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="80" column="18" selection-start-line="80" selection-start-column="9" selection-end-line="80" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ActModelerServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3960">
-          <caret line="321" column="16" selection-start-line="321" selection-start-column="16" selection-end-line="321" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1350">
-          <caret line="90" column="27" selection-start-line="90" selection-start-column="24" selection-end-line="90" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/inesa/common/DataController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/statics/js/activiti/actSumbit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/demo/controller/LeaveController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-956">
-          <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/flowSubmit.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="166" column="52" selection-start-line="166" selection-start-column="43" selection-end-line="166" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/dto/ProcessTaskDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-59">
-          <caret line="94" column="30" selection-start-line="94" selection-start-column="19" selection-end-line="94" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/doActTask.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-646">
-          <caret line="93" column="38" selection-start-line="93" selection-start-column="38" selection-end-line="93" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/sys/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-915">
-          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.3.2/shiro-core-1.3.2-sources.jar!/org/apache/shiro/subject/support/DelegatingSubject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4">
-          <caret line="253" column="16" selection-start-line="253" selection-start-column="16" selection-end-line="253" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.3.2/shiro-core-1.3.2-sources.jar!/org/apache/shiro/subject/Subject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="332" column="14" selection-start-line="332" selection-start-column="9" selection-end-line="332" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/app/service/ApiUserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/views/neod.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="103" column="46" selection-start-line="103" selection-start-column="46" selection-end-line="103" selection-end-column="46" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/utils/ActUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="84" column="52" selection-start-line="84" selection-start-column="52" selection-end-line="84" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/common/common/Constant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/app/controller/ApiUserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="24" column="18" lean-forward="true" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/app/service/impl/ApiUserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-25">
-          <caret line="21" column="31" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/views/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1450">
-          <caret line="127" column="73" selection-start-line="127" selection-start-column="69" selection-end-line="127" selection-end-column="73" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/sys/entity/UserEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="78" column="29" selection-start-line="78" selection-start-column="18" selection-end-line="78" selection-end-column="29" />
-          <folding>
-            <element signature="e#1320#1321#0" expanded="true" />
-            <element signature="e#1343#1344#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sql/gen/gentest_menu.sql">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/velocity-toolbox.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/stencilset_zh-cn.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2207" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/rebel.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/inesa/neo4j/Neo4jUtil.java">
@@ -1040,30 +717,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="57" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/logback-spring.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/generator.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application-test.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="114" selection-start-line="5" selection-start-column="114" selection-end-line="5" selection-end-column="114" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/fdfs_client.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -1095,13 +752,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="114" selection-start-line="5" selection-start-column="114" selection-end-line="5" selection-end-column="114" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/utils/FastDFSClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
@@ -1116,13 +766,6 @@
             <caret line="59" column="7" selection-start-line="59" selection-start-column="7" selection-end-line="59" selection-end-column="7" />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -1147,17 +790,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ExtendActModelServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="240" column="82" selection-start-line="240" selection-start-column="82" selection-end-line="240" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/views/modules/oss/oss.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1883">
-          <caret line="15" column="16" lean-forward="true" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -1168,17 +804,171 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/logback-spring.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/stencilset_zh-cn.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/rebel.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/fdfs_client.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActModelController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="346" column="36" selection-start-line="346" selection-start-column="36" selection-end-line="346" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/config/RedisConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/generator.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-150" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/demo/case.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/sys/controller/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="114" column="24" selection-start-line="114" selection-start-column="16" selection-end-line="114" selection-end-column="24" />
+        <state relative-caret-position="94">
+          <caret line="48" column="24" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/component/redis/CachingShiroSessionDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="74" column="13" selection-start-line="74" selection-start-column="13" selection-end-line="74" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ExtendActNodesetServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="88" column="26" selection-start-line="88" selection-start-column="26" selection-end-line="88" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="57" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/extendActModelList.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="124" column="20" selection-start-line="124" selection-start-column="20" selection-end-line="124" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/statics/plugins/process/editor-app/configuration/toolbar-default-actions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="427" column="27" selection-start-line="427" selection-start-column="27" selection-end-line="427" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/statics/plugins/process/modeler.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="148" column="23" selection-start-line="148" selection-start-column="23" selection-end-line="148" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="118" column="35" selection-start-line="118" selection-start-column="35" selection-end-line="118" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/app/config/MvcConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="29" lean-forward="true" selection-end-line="46" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/config/VelocityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="22" column="29" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/template/Dao.java.vm">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/template/Dao.xml.vm">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/template/list.html.vm">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/template/list.js.vm">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/template/ServiceImpl.java.vm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-232" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/gen/service/impl/SysGeneratorServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="52" column="31" lean-forward="true" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/template/Controller.java.vm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-907" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/gen/controller/SysGeneratorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-315">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-929">
-          <caret line="378" selection-start-line="378" selection-end-line="378" />
+        <state relative-caret-position="195">
+          <caret line="85" column="43" lean-forward="true" selection-start-line="85" selection-start-column="43" selection-end-line="85" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2887#2888#0" expanded="true" />
@@ -1187,31 +977,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/gen/utils/GenUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="37" column="32" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="32" />
+          <folding>
+            <element signature="e#1213#1221#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/app/config/WebMvcConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/HxyFrameBootApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="12" column="67" selection-start-line="12" selection-start-column="67" selection-end-line="12" selection-end-column="67" />
+          <folding>
+            <element signature="e#858#859#0" expanded="true" />
+            <element signature="e#923#924#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ExtendActModelServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="208" column="53" selection-start-line="208" selection-start-column="53" selection-end-line="208" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ActModelerServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="601" selection-start-line="601" selection-end-line="601" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/utils/ActUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="275" column="34" selection-start-line="275" selection-start-column="34" selection-end-line="275" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/views/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="77" column="40" lean-forward="true" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="40" />
+        <state relative-caret-position="141">
+          <caret line="30" column="12" lean-forward="true" selection-start-line="30" selection-start-column="12" selection-end-line="33" selection-end-column="20" />
           <folding>
             <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/extendActModelList.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="27" column="23" lean-forward="true" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#div#0;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActModelController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="346" column="36" selection-start-line="346" selection-start-column="36" selection-end-line="346" selection-end-column="36" />
         </state>
       </provider>
     </entry>
