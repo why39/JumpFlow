@@ -10,8 +10,8 @@ import com.hxy.modules.activiti.service.ExtendActNodesetService;
 import com.hxy.modules.activiti.utils.ActUtils;
 import com.hxy.modules.common.common.Constant;
 import com.hxy.modules.common.exception.MyException;
+import com.hxy.modules.common.utils.CommUtils;
 import com.hxy.modules.common.utils.StringUtils;
-import com.hxy.modules.common.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -91,7 +91,7 @@ public class ExtendActNodesetServiceImpl implements ExtendActNodesetService {
 			}
 			if(StringUtils.isEmpty(actNodeset.getId())){
 				//保存节点信息
-                actNodeset.setId(Utils.uuid());
+                actNodeset.setId(CommUtils.uuid());
 				extendActNodesetDao.save(actNodeset);
 			}else {
 				//更新
@@ -122,7 +122,7 @@ public class ExtendActNodesetServiceImpl implements ExtendActNodesetService {
 			//保存
 			if(StringUtils.isEmpty(actNodeset.getId())){
 				//保存节点信息
-                actNodeset.setId(Utils.uuid());
+                actNodeset.setId(CommUtils.uuid());
 				extendActNodesetDao.save(actNodeset);
 			}else {
 				//更新
@@ -141,13 +141,13 @@ public class ExtendActNodesetServiceImpl implements ExtendActNodesetService {
 						continue;
 					}
 					Map<String, Object> map = tranceCode(nodefield);
-					nodefield.setId(Utils.uuid());
+					nodefield.setId(CommUtils.uuid());
 					if(!StringUtils.isEmpty(nodefield.getElOperator())){
 						condition.append(" "+map.get("elOperator")+" ");
 					}
 					condition.append(nodefield.getFieldName()).append(map.get("rule")).append(nodefield.getFieldVal());
 					nodefield.setNodeId(actNodeset.getNodeId());
-					nodefield.setId(Utils.uuid());
+					nodefield.setId(CommUtils.uuid());
 					nodefield.setSort(sort+"");
 					sort++;
 					judgList.add(nodefield);
@@ -162,7 +162,7 @@ public class ExtendActNodesetServiceImpl implements ExtendActNodesetService {
 		if(actNodeset.getNodeType().equals(Constant.NodeType.END.getValue())){
 			if(StringUtils.isEmpty(actNodeset.getId())){
 				//保存节点信息
-				actNodeset.setId(Utils.uuid());
+				actNodeset.setId(CommUtils.uuid());
 				extendActNodesetDao.save(actNodeset);
 			}else {
 				//更新

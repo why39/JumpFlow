@@ -5,7 +5,7 @@ import com.hxy.modules.common.common.Constant;
 import com.hxy.modules.common.exception.MyException;
 import com.hxy.modules.common.page.Page;
 import com.hxy.modules.common.page.PageHelper;
-import com.hxy.modules.common.utils.Utils;
+import com.hxy.modules.common.utils.CommUtils;
 import com.hxy.modules.sys.dao.OrganDao;
 import com.hxy.modules.sys.entity.OrganEntity;
 import com.hxy.modules.sys.entity.UserEntity;
@@ -45,7 +45,7 @@ public class OrganServiceImpl implements OrganService {
 	public String save(OrganEntity organ){
         UserEntity currentUser = UserUtils.getCurrentUser();
         setPublicSaveUpdate(organ);
-	    organ.setId(Utils.uuid());
+	    organ.setId(CommUtils.uuid());
 	    organ.setIsDel(Constant.YESNO.NO.getValue());
 	    organ.setCreateTime(new Date());
 	    organ.setCreateId(currentUser.getId());
@@ -122,7 +122,7 @@ public class OrganServiceImpl implements OrganService {
         List<OrganEntity> organEntities = organDao.queryListByBean(organEntity);
         if(organEntities == null || organEntities.size()<1){
             OrganEntity organ = new OrganEntity();
-            organ.setId(Utils.uuid());
+            organ.setId(CommUtils.uuid());
             organ.setCreateId(UserUtils.getCurrentUserId());
             organ.setCreateTime(new Date());
             organ.setRemark("根节点");

@@ -18,7 +18,7 @@ import javax.annotation.Resource;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = HxyFrameBootApplication.class)
-public class GenLocalUtils {
+public class GenLocalCommUtils {
     @Resource
     private SysGeneratorService generatorService;
 

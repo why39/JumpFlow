@@ -20,9 +20,9 @@ import com.hxy.modules.common.exception.MyException;
 import com.hxy.modules.common.page.Page;
 import com.hxy.modules.common.page.PageHelper;
 import com.hxy.modules.common.utils.CodeUtils;
+import com.hxy.modules.common.utils.CommUtils;
 import com.hxy.modules.common.utils.Result;
 import com.hxy.modules.common.utils.UserUtils;
-import com.hxy.modules.common.utils.Utils;
 import com.hxy.modules.sys.entity.UserEntity;
 import org.activiti.bpmn.model.*;
 import org.activiti.bpmn.model.Process;
@@ -372,7 +372,7 @@ public class ActModelerServiceImpl implements ActModelerService {
         actExtendDao.updateBusInfo(busParams);
         //保存任务日志表
         ExtendActTasklogEntity tasklog = new ExtendActTasklogEntity();
-        tasklog.setId(Utils.uuid());
+        tasklog.setId(CommUtils.uuid());
         tasklog.setBusId(processTaskDto.getBusId());
         tasklog.setDefId(processTaskDto.getDefId());
         tasklog.setInstanceId(processTaskDto.getInstanceId());
@@ -383,7 +383,7 @@ public class ActModelerServiceImpl implements ActModelerService {
         tasklog.setAppOpinion(processTaskDto.getRemark());
         //保存流程业务关系表
         ExtendActFlowbusEntity flowBus = new ExtendActFlowbusEntity();
-        flowBus.setId(Utils.uuid());
+        flowBus.setId(CommUtils.uuid());
         flowBus.setBusId(processTaskDto.getBusId());
         flowBus.setDefid(processTaskDto.getDefId());
         flowBus.setInstanceId(processTaskDto.getInstanceId());
@@ -404,7 +404,7 @@ public class ActModelerServiceImpl implements ActModelerService {
                 taskService.setAssignee(task.getId(),processTaskDto.getNextUserIds());
                 //记录任务日志
                 ExtendActTasklogEntity tasklogEntity = new ExtendActTasklogEntity();
-                tasklogEntity.setId(Utils.uuid());
+                tasklogEntity.setId(CommUtils.uuid());
                 tasklogEntity.setBusId(processTaskDto.getBusId());
                 tasklogEntity.setDefId(processTaskDto.getDefId());
                 tasklogEntity.setInstanceId(processTaskDto.getInstanceId());
@@ -711,7 +711,7 @@ public class ActModelerServiceImpl implements ActModelerService {
                     for (Task t:taskList){
                         //记录任务日志
                         ExtendActTasklogEntity tasklogEntity = new ExtendActTasklogEntity();
-                        tasklogEntity.setId(Utils.uuid());
+                        tasklogEntity.setId(CommUtils.uuid());
                         tasklogEntity.setBusId(processTaskDto.getBusId());
                         tasklogEntity.setDefId(processTaskDto.getDefId());
                         tasklogEntity.setInstanceId(processTaskDto.getInstanceId());
@@ -742,7 +742,7 @@ public class ActModelerServiceImpl implements ActModelerService {
                             // TODO: 2017/8/10 如果是下个节点是并行结果，那么这里需要处理下 待开发
                             taskService.setAssignee(t.getId(), processTaskDto.getNextUserIds());
                             ExtendActTasklogEntity tasklogEntity = new ExtendActTasklogEntity();
-                            tasklogEntity.setId(Utils.uuid());
+                            tasklogEntity.setId(CommUtils.uuid());
                             tasklogEntity.setBusId(processTaskDto.getBusId());
                             tasklogEntity.setDefId(processTaskDto.getDefId());
                             tasklogEntity.setInstanceId(processTaskDto.getInstanceId());
@@ -781,10 +781,10 @@ public class ActModelerServiceImpl implements ActModelerService {
         noticeEntity.setIsUrgent(Constant.YESNO.YES.getValue());
         noticeEntity.setReleaseTimee(new Date());
         noticeEntity.setSoucre(Constant.noticeType.ACT_NOTICE.getValue());
-        noticeEntity.setId(Utils.uuid());
+        noticeEntity.setId(CommUtils.uuid());
         noticeEntity.setStatus(Constant.YESNO.YES.getValue());
         NoticeUserEntity noticeUserEntity = new NoticeUserEntity();
-        noticeUserEntity.setId(Utils.uuid());
+        noticeUserEntity.setId(CommUtils.uuid());
         noticeUserEntity.setNoticeId(noticeEntity.getId());
         noticeUserEntity.setStatus(Constant.YESNO.NO.getValue());
         noticeUserEntity.setUserId(userId);
@@ -976,7 +976,7 @@ public class ActModelerServiceImpl implements ActModelerService {
         tasklogService.updateByTaskIdOpinion(updateLog);
         //为置办任务新增一条任务日志
         ExtendActTasklogEntity tasklogEntity = new ExtendActTasklogEntity();
-        tasklogEntity.setId(Utils.uuid());
+        tasklogEntity.setId(CommUtils.uuid());
         tasklogEntity.setBusId(processTaskDto.getBusId());
         tasklogEntity.setDefId(processTaskDto.getDefId());
         tasklogEntity.setInstanceId(processTaskDto.getInstanceId());

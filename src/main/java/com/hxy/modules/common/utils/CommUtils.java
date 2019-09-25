@@ -2,7 +2,6 @@ package com.hxy.modules.common.utils;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import org.apache.commons.lang3.*;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
@@ -17,7 +16,7 @@ import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Utils {
+public class CommUtils {
 	/**
 	 * 获取专利授权年度
 	 * @param apply_date
@@ -28,12 +27,12 @@ public class Utils {
 		if (!apply_date.matches("\\d{4}-\\d{2}-\\d{2}") || !auth_date.matches("\\d{4}-\\d{2}-\\d{2}")) {
 			return 0;
 		}
-		int apply_year = Utils.parseInt(apply_date.substring(0,4));
-		int apply_month = Utils.parseInt(apply_date.substring(5,7));
-		int apply_day = Utils.parseInt(apply_date.substring(8,10));
-		int auth_year = Utils.parseInt(auth_date.substring(0,4));
-		int auth_month = Utils.parseInt(auth_date.substring(5,7));
-		int auth_day = Utils.parseInt(auth_date.substring(8,10));
+		int apply_year = CommUtils.parseInt(apply_date.substring(0,4));
+		int apply_month = CommUtils.parseInt(apply_date.substring(5,7));
+		int apply_day = CommUtils.parseInt(apply_date.substring(8,10));
+		int auth_year = CommUtils.parseInt(auth_date.substring(0,4));
+		int auth_month = CommUtils.parseInt(auth_date.substring(5,7));
+		int auth_day = CommUtils.parseInt(auth_date.substring(8,10));
 		
 		if (apply_year == auth_year) {
 			return 1;
@@ -1007,7 +1006,7 @@ public class Utils {
 	 * @return
 	 */
 	public static String getDecimalFormat(String amount) {
-		double formatAmount = Utils.parseDouble(amount);
+		double formatAmount = CommUtils.parseDouble(amount);
 		DecimalFormat decimalFormat = new DecimalFormat();
 		decimalFormat.applyPattern("##,###");
 		return decimalFormat.format(formatAmount);

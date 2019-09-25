@@ -7,7 +7,7 @@ import com.hxy.modules.common.exception.MyException;
 import com.hxy.modules.common.page.Page;
 import com.hxy.modules.common.utils.JsonUtil;
 import com.hxy.modules.common.utils.Result;
-import com.hxy.modules.common.utils.Utils;
+import com.hxy.modules.common.utils.CommUtils;
 import com.hxy.modules.demo.entity.CaseEntity;
 import com.hxy.modules.sys.entity.UserWindowDto;
 import com.hxy.modules.sys.service.OrganService;
@@ -84,7 +84,7 @@ public class ExtendActModelController {
     @RequestMapping("list")
     @RequiresPermissions("act:model:all")
     public String list(Model model, ExtendActModelEntity actModelEntity, HttpServletRequest request) {
-        int pageNum = Utils.parseInt(request.getParameter("pageNum"), 1);
+        int pageNum = CommUtils.parseInt(request.getParameter("pageNum"), 1);
         Page<ExtendActModelEntity> page = extendActModelService.findPage(actModelEntity, pageNum);
         model.addAttribute("page", page);
         model.addAttribute("model", actModelEntity);
@@ -235,7 +235,7 @@ public class ExtendActModelController {
      */
     @RequestMapping(value = "userAreaSelect")
     public String userAreaSelect(HttpServletRequest request, Model model, UserWindowDto userWindowDto, String type) {
-        int pageNum = Utils.parseInt(request.getParameter("pageNum"), 1);
+        int pageNum = CommUtils.parseInt(request.getParameter("pageNum"), 1);
         Page<UserWindowDto> page = null;
         if (StringUtils.isEmpty(type)) {
             //默认审批类型为用户级别的

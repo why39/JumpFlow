@@ -1,15 +1,13 @@
 package com.hxy.modules.sys.service.impl;
 
 
-import com.hxy.modules.common.annotation.DataAuth;
-import com.hxy.modules.common.annotation.SysLog;
 import com.hxy.modules.common.utils.ShiroUtils;
 import com.hxy.modules.common.utils.UserUtils;
 import com.hxy.modules.common.common.Constant;
 import com.hxy.modules.common.exception.MyException;
 import com.hxy.modules.common.page.Page;
 import com.hxy.modules.common.page.PageHelper;
-import com.hxy.modules.common.utils.Utils;
+import com.hxy.modules.common.utils.CommUtils;
 import com.hxy.modules.sys.dao.UserDao;
 import com.hxy.modules.sys.dao.UserRoleDao;
 import com.hxy.modules.sys.entity.OrganEntity;
@@ -67,7 +65,7 @@ public class UserServiceImpl implements UserService {
             ////md5加密，加盐
             user.setPassWord(ShiroUtils.EncodeSalt(user.getPassWord(),salt));
         }
-		user.setId(Utils.uuid());
+		user.setId(CommUtils.uuid());
         //保存用户与角色关系
         UserEntity currentUser = UserUtils.getCurrentUser();
         user.setCreateId(currentUser.getId());

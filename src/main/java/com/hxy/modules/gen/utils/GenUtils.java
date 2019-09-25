@@ -2,8 +2,8 @@ package com.hxy.modules.gen.utils;
 
 import com.hxy.modules.common.common.Constant;
 import com.hxy.modules.common.common.RRException;
+import com.hxy.modules.common.utils.CommUtils;
 import com.hxy.modules.common.utils.DateUtils;
-import com.hxy.modules.common.utils.Utils;
 import com.hxy.modules.gen.entity.ColumnEntity;
 import com.hxy.modules.gen.entity.TableEntity;
 import org.apache.commons.configuration.Configuration;
@@ -108,11 +108,11 @@ public class GenUtils {
 
 		//封装模板数据
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("id", Utils.uuid());
-		map.put("rid", Utils.uuid());
-		map.put("cid", Utils.uuid());
-		map.put("uid", Utils.uuid());
-		map.put("did", Utils.uuid());
+		map.put("id", CommUtils.uuid());
+		map.put("rid", CommUtils.uuid());
+		map.put("cid", CommUtils.uuid());
+		map.put("uid", CommUtils.uuid());
+		map.put("did", CommUtils.uuid());
 		map.put("tableName", tableEntity.getTableName());
 		map.put("comments", tableEntity.getComments());
 		map.put("pk", tableEntity.getPk());

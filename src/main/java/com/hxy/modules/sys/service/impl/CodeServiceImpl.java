@@ -5,7 +5,7 @@ import com.hxy.modules.common.utils.UserUtils;
 import com.hxy.modules.common.common.Constant;
 import com.hxy.modules.common.exception.MyException;
 import com.hxy.modules.common.utils.RedisUtil;
-import com.hxy.modules.common.utils.Utils;
+import com.hxy.modules.common.utils.CommUtils;
 import com.hxy.modules.sys.dao.CodeDao;
 import com.hxy.modules.sys.entity.CodeEntity;
 import com.hxy.modules.sys.entity.UserEntity;
@@ -54,7 +54,7 @@ public class CodeServiceImpl implements CodeService {
         code.setBaid(currentUser.getBaid());
 	    code.setCreateTime(new Date());
 	    code.setCreateId(currentUser.getId());
-	    code.setId(Utils.uuid());
+	    code.setId(CommUtils.uuid());
 	    codeDao.save(code);
         try {
             updateCodeCahce(code,true);
@@ -176,7 +176,7 @@ public class CodeServiceImpl implements CodeService {
         UserEntity currentUser = getCurrentUser();
         if(codeList == null || codeList.size()<1){
             CodeEntity code = new CodeEntity();
-            code.setId(Utils.uuid());
+            code.setId(CommUtils.uuid());
             code.setMark("初始化");
             code.setRemark("字典根据结点");
             code.setType("1");

@@ -6,7 +6,7 @@ import com.hxy.modules.common.page.Page;
 import com.hxy.modules.common.page.PageHelper;
 import com.hxy.modules.common.utils.StringUtils;
 import com.hxy.modules.common.utils.UserUtils;
-import com.hxy.modules.common.utils.Utils;
+import com.hxy.modules.common.utils.CommUtils;
 import com.hxy.modules.demo.dao.CaseDao;
 import com.hxy.modules.demo.entity.CaseEntity;
 import com.hxy.modules.demo.service.CaseService;
@@ -45,11 +45,11 @@ public class CaeServiceImpl implements CaseService {
     @Override
     public void save(CaseEntity leave) {
         UserEntity currentUser = UserUtils.getCurrentUser();
-        leave.setCode(Utils.getCode("D"));
+        leave.setCode(CommUtils.getCode("D"));
         leave.setStatus(Constant.ActStauts.DRAFT.getValue());
         leave.setCreateId(currentUser.getId());
         leave.setCreateTime(new Date());
-        leave.setId(Utils.uuid());
+        leave.setId(CommUtils.uuid());
         leave.setStatus(Constant.ActStauts.DRAFT.getValue());
         leave.setUserId(UserUtils.getCurrentUserId());
         leave.setBapid(currentUser.getBapid());

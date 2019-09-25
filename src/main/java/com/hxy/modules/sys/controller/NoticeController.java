@@ -5,7 +5,7 @@ import com.hxy.modules.common.controller.BaseController;
 import com.hxy.modules.common.page.Page;
 import com.hxy.modules.common.utils.DateUtils;
 import com.hxy.modules.common.utils.Result;
-import com.hxy.modules.common.utils.Utils;
+import com.hxy.modules.common.utils.CommUtils;
 import com.hxy.modules.sys.entity.NoticeEntity;
 import com.hxy.modules.sys.service.NoticeService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -38,7 +38,7 @@ public class NoticeController extends BaseController {
 	@RequestMapping("/myList")
 	@RequiresPermissions("sys:notice:all")
 	public String list(Model model, NoticeEntity noticeEntity, HttpServletRequest request){
-		int pageNum = Utils.parseInt(request.getParameter("pageNum"), 1);
+		int pageNum = CommUtils.parseInt(request.getParameter("pageNum"), 1);
 		Page<NoticeEntity> page = noticeService.findMyNoticePage(noticeEntity, pageNum);
 		model.addAttribute("page",page);
 		model.addAttribute("notice",noticeEntity);

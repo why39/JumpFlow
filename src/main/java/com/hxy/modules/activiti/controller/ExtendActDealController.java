@@ -12,10 +12,9 @@ import com.hxy.modules.common.exception.MyException;
 import com.hxy.modules.common.page.Page;
 import com.hxy.modules.common.utils.Result;
 import com.hxy.modules.common.utils.StringUtils;
-import com.hxy.modules.common.utils.Utils;
+import com.hxy.modules.common.utils.CommUtils;
 import com.hxy.modules.sys.entity.UserEntity;
 import com.inesa.neo4j.Neo4jUtil;
-import com.inesa.neo4j.entity.Code;
 import okhttp3.*;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.task.Task;
@@ -28,7 +27,6 @@ import org.springframework.util.LinkedCaseInsensitiveMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -79,7 +77,7 @@ public class ExtendActDealController {
      */
     @RequestMapping("list")
     public String list(Model model, ExtendActModelEntity actModelEntity, HttpServletRequest request) {
-        int pageNum = Utils.parseInt(request.getParameter("pageNum"), 1);
+        int pageNum = CommUtils.parseInt(request.getParameter("pageNum"), 1);
         Page<ExtendActModelEntity> page = extendActModelService.findPage(actModelEntity, pageNum);
         model.addAttribute("page", page);
         model.addAttribute("model", actModelEntity);
@@ -153,7 +151,7 @@ public class ExtendActDealController {
      */
     @RequestMapping(value = "userWindow")
     public String userWindow(String nodeId, String nodeAction, HttpServletRequest request, UserEntity user, Model model) {
-        int pageNum = Utils.parseInt(request.getParameter("pageNum"), 1);
+        int pageNum = CommUtils.parseInt(request.getParameter("pageNum"), 1);
         Page<UserEntity> mapPage = actModelerService.userWindowPage(nodeId, pageNum, user.getUserName());
         model.addAttribute("page", mapPage);
         model.addAttribute("url", "/act/deal/userWindow");
@@ -170,7 +168,7 @@ public class ExtendActDealController {
      */
     @RequestMapping(value = "turnUserWindow")
     public String turnUserWindow(UserEntity user, HttpServletRequest request, Model model) {
-        int pageNum = Utils.parseInt(request.getParameter("pageNum"), 1);
+        int pageNum = CommUtils.parseInt(request.getParameter("pageNum"), 1);
         Page<UserEntity> mapPage = actModelerService.turnWindowPage(pageNum, user);
         model.addAttribute("page", mapPage);
         //1 为单选 2为复选
@@ -236,7 +234,7 @@ public class ExtendActDealController {
     @RequestMapping("myUpcoming")
     @RequiresPermissions("act:model:myUpcoming")
     public String myUpcoming(Model model, String code, String busId, HttpServletRequest request) {
-        int pageNum = Utils.parseInt(request.getParameter("pageNum"), 1);
+        int pageNum = CommUtils.parseInt(request.getParameter("pageNum"), 1);
         Map<String, Object> params = new HashMap<>();
         params.put("code", code);
         params.put("busId", busId);
@@ -259,7 +257,7 @@ public class ExtendActDealController {
     @RequestMapping("myDoneList")
     @RequiresPermissions("act:model:myUpcoming")
     public String myDoneList(Model model, String code, String busId, HttpServletRequest request) {
-        int pageNum = Utils.parseInt(request.getParameter("pageNum"), 1);
+        int pageNum = CommUtils.parseInt(request.getParameter("pageNum"), 1);
         Map<String, Object> params = new HashMap<>();
         params.put("code", code);
         params.put("busId", busId);

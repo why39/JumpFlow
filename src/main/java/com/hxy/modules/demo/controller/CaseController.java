@@ -1,9 +1,9 @@
 package com.hxy.modules.demo.controller;
 
 import com.hxy.modules.common.page.Page;
+import com.hxy.modules.common.utils.CommUtils;
 import com.hxy.modules.common.utils.Result;
 import com.hxy.modules.common.utils.StringUtils;
-import com.hxy.modules.common.utils.Utils;
 import com.hxy.modules.demo.entity.CaseEntity;
 import com.hxy.modules.demo.service.CaseService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -39,7 +39,7 @@ public class CaseController {
     @RequestMapping("list")
     @RequiresPermissions("act:model:all")
     public String list(Model model , CaseEntity caseEntity, HttpServletRequest request){
-        int pageNum = Utils.parseInt(request.getParameter("pageNum"), 1);
+        int pageNum = CommUtils.parseInt(request.getParameter("pageNum"), 1);
         Page<CaseEntity> page = caseService.findPage(caseEntity, pageNum);
         model.addAttribute("page",page);
         model.addAttribute("case",caseEntity);

@@ -4,9 +4,9 @@ import com.hxy.modules.common.common.Constant;
 import com.hxy.modules.common.exception.MyException;
 import com.hxy.modules.common.page.Page;
 import com.hxy.modules.common.page.PageHelper;
+import com.hxy.modules.common.utils.CommUtils;
 import com.hxy.modules.common.utils.StringUtils;
 import com.hxy.modules.common.utils.UserUtils;
-import com.hxy.modules.common.utils.Utils;
 import com.hxy.modules.demo.dao.LeaveDao;
 import com.hxy.modules.demo.entity.LeaveEntity;
 import com.hxy.modules.demo.service.LeaveService;
@@ -45,11 +45,11 @@ public class LeaveServiceImpl implements LeaveService {
 	@Override
 	public void save(LeaveEntity leave){
 		UserEntity currentUser = UserUtils.getCurrentUser();
-		leave.setCode(Utils.getCode("D"));
+		leave.setCode(CommUtils.getCode("D"));
 		leave.setStatus(Constant.ActStauts.DRAFT.getValue());
 		leave.setCreateId(currentUser.getId());
 		leave.setCreateTime(new Date());
-		leave.setId(Utils.uuid());
+		leave.setId(CommUtils.uuid());
 		leave.setStatus(Constant.ActStauts.DRAFT.getValue());
 		leave.setUserId(UserUtils.getCurrentUserId());
 		leave.setBapid(currentUser.getBapid());

@@ -5,7 +5,7 @@ import com.hxy.modules.common.utils.UserUtils;
 import com.hxy.modules.common.common.Constant;
 import com.hxy.modules.common.page.Page;
 import com.hxy.modules.common.page.PageHelper;
-import com.hxy.modules.common.utils.Utils;
+import com.hxy.modules.common.utils.CommUtils;
 import com.hxy.modules.sys.dao.RoleDao;
 import com.hxy.modules.sys.dao.RoleMenuDao;
 import com.hxy.modules.sys.dao.UserRoleDao;
@@ -58,7 +58,7 @@ public class RoleServiceImpl implements RoleService {
 		role.setBapid(currentUser.getBapid());
 		role.setBaid(currentUser.getBaid());
 		role.setCreateId(currentUser.getId());
-        role.setId(Utils.uuid());
+        role.setId(CommUtils.uuid());
         role.setCreateTime(new Date());
 		roleDao.save(role);
 		saveRtable(role);

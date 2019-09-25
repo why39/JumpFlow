@@ -14,7 +14,7 @@ import org.apache.commons.lang3.time.DateFormatUtils;
  * @author ThinkGem
  * @version 2014-4-15
  */
-public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
+public class InesaDateUtils extends org.apache.commons.lang3.time.DateUtils {
 	
 	private static String[] parsePatterns = {
 		"yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", "yyyy-MM", 

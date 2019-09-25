@@ -1,9 +1,8 @@
 package com.hxy.modules.sys.service.impl;
 
-import com.hxy.modules.common.utils.StringUtils;
+import com.hxy.modules.common.utils.CommUtils;
 import com.hxy.modules.common.utils.UserUtils;
 import com.hxy.modules.common.common.Constant;
-import com.hxy.modules.common.utils.Utils;
 import com.hxy.modules.sys.dao.MenuDao;
 import com.hxy.modules.sys.entity.MenuEntity;
 import com.hxy.modules.sys.entity.UserEntity;
@@ -41,7 +40,7 @@ public class MenuServiceImpl implements MenuService {
 	@Override
 	public String save(MenuEntity menu){
         UserEntity currentUser = UserUtils.getCurrentUser();
-        menu.setId(Utils.uuid());
+        menu.setId(CommUtils.uuid());
         menu.setCreateId(currentUser.getId());
         menu.setStatus(Constant.YESNO.NO.getValue());
         menu.setCreateTime(new Date());

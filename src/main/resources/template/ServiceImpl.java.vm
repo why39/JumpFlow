@@ -1,12 +1,12 @@
 package ${package}.service.impl;
 
+import com.hxy.modules.common.utils.CommUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 
-import com.hxy.modules.common.utils.Utils;
 import ${package}.dao.${className}Dao;
 import ${package}.entity.${className}Entity;
 import ${package}.service.${className}Service;
@@ -40,7 +40,7 @@ public class ${className}ServiceImpl implements ${className}Service {
 	
 	@Override
 	public int save(${className}Entity ${classname}){
-        ${classname}.set${pk.attrName}(Utils.uuid());
+        ${classname}.set${pk.attrName}(CommUtils.uuid());
 		return ${classname}Dao.save(${classname});
 	}
 	

@@ -9,7 +9,7 @@ import com.hxy.modules.common.common.Constant;
 import com.hxy.modules.common.exception.MyException;
 import com.hxy.modules.common.utils.StringUtils;
 import com.hxy.modules.common.utils.UserUtils;
-import com.hxy.modules.common.utils.Utils;
+import com.hxy.modules.common.utils.CommUtils;
 import com.hxy.modules.sys.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,7 +56,7 @@ public class ExtendActBusinessServiceImpl implements ExtendActBusinessService {
         UserEntity currentUser = UserUtils.getCurrentUser();
         if(busList ==null || busList.size()<1){
             ExtendActBusinessEntity bus = new ExtendActBusinessEntity();
-            bus.setId(Utils.uuid());
+            bus.setId(CommUtils.uuid());
             bus.setName("业务树根目录");
             bus.setOpen("true");
             bus.setActKey("root");
@@ -85,7 +85,7 @@ public class ExtendActBusinessServiceImpl implements ExtendActBusinessService {
             //保存
             bus.setCreateTime(new Date());
             bus.setCreateId(currentUser.getId());
-            bus.setId(Utils.uuid());
+            bus.setId(CommUtils.uuid());
             return extendActBusinessDao.save(bus);
         }else {
 	        //更新
