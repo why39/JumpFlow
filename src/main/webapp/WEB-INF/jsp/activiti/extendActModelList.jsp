@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>流程设计</title>
+    <title>检务流程设计</title>
     <%@include file="/common/commonCSS.jsp" %>
     <%@include file="/common/commonJS.jsp" %>
     <%@include file="/WEB-INF/jsp/include/taglib.jsp" %>
