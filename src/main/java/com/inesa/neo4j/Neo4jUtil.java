@@ -33,7 +33,7 @@ public class Neo4jUtil {
         if (driver == null) {
             synchronized (Neo4jUtil.class) {
                 if (driver == null) {
-                    driver = GraphDatabase.driver("bolt://10.141.208.60:7687", AuthTokens.basic("neo4j", "1992"));
+                    driver = GraphDatabase.driver("bolt://127.0.0.1:7687", AuthTokens.basic("neo4j", "1992"));
                     return driver;
                 }
             }

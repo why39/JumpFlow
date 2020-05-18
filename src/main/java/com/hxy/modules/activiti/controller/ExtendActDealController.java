@@ -8,16 +8,21 @@ import com.hxy.modules.activiti.entity.ExtendActModelEntity;
 import com.hxy.modules.activiti.entity.ExtendActNodesetEntity;
 import com.hxy.modules.activiti.entity.ExtendActTasklogEntity;
 import com.hxy.modules.activiti.service.*;
+import com.hxy.modules.activiti.service.impl.JumpServiceImpl;
 import com.hxy.modules.common.exception.MyException;
 import com.hxy.modules.common.page.Page;
 import com.hxy.modules.common.utils.Result;
 import com.hxy.modules.common.utils.StringUtils;
 import com.hxy.modules.common.utils.CommUtils;
+import com.hxy.modules.common.utils.UserUtils;
 import com.hxy.modules.sys.entity.UserEntity;
 import com.inesa.neo4j.Neo4jUtil;
 import okhttp3.*;
+import org.activiti.bpmn.model.FlowElement;
 import org.activiti.engine.TaskService;
+import org.activiti.engine.impl.pvm.process.ActivityImpl;
 import org.activiti.engine.task.Task;
+import org.activiti.engine.task.TaskQuery;
 import org.apache.log4j.Logger;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,10 +37,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 类的功能描述.
@@ -66,6 +68,9 @@ public class ExtendActDealController {
 
     @Autowired
     ExtendActFlowbusService flowbusService;
+
+    @Autowired
+    JumpService jumpService;
 
     /**
      * 列表
@@ -381,14 +386,47 @@ public class ExtendActDealController {
             for (String key : parameterMap.keySet()) {
                 params.put(key, parameterMap.get(key)[0]);
             }
-            actModelerService.doActTask(processTaskDto, params);
+
+           // Collection<FlowElement> flowElements = jumpService.getActIdCollection(processTaskDto.getDefId());
+            jumpService.jumpEndActivity(processTaskDto.getDefId(),processTaskDto,processTaskDto.getInstanceId(),"sid-33BCE5B3-845D-412C-857F-DC24E63599D5");
+
+            // actModelerService.doActTask(processTaskDto, params);
+            //why
+//            taskService.complete(processTaskDto.getTaskId());
+//            List<Task> tasks2 = taskService.createTaskQuery().processInstanceId(processTaskDto.getInstanceId()).list();
+//            for(Task task : tasks2){
+//                taskService.setAssignee(task.getId(), processTaskDto.getNextUserIds());
+//            }
+//            List<ProcessNodeDto> t = actModelerService.getNextActNodes(processTaskDto);
+//            if(processTaskDto.getNextUserIds() == UserUtils.getCurrentUserId()){
+//                int aaa = 1;
+//            }
+//            TaskQuery taskQuery = taskService.createTaskQuery();
+//            taskQuery.taskAssignee(processTaskDto.getNextUserIds());
+//            taskQuery.processDefinitionId(processTaskDto.getDefId());
+//            List<Task> tasks =taskQuery.list();
+//            for(Task task :tasks){
+//                taskService.complete(task.getId());
+//            }
+                //跳过相同办案人
+//            if(processTaskDto.getNextUserIds().equals(UserUtils.getCurrentUserId())){
+//                List<Task> tasks2 = taskService.createTaskQuery().processInstanceId(processTaskDto.getInstanceId()).list();
+//                for(Task task : tasks2){
+//                    taskService.complete(task.getId());
+//                }
+//                List<Task> tasks3 = taskService.createTaskQuery().processInstanceId(processTaskDto.getInstanceId()).list();
+//                for(Task task : tasks3){
+//                    taskService.setAssignee(task.getId(), "a20a19e46419416c9ca4d46517258dae");
+//                }
+//            }
+
             result = Result.ok("办理任务成功");
         } catch (Exception e) {
             e.printStackTrace();
             result = Result.error("办理任务失败");
         }
 
-        Neo4jUtil.createNode(processTaskDto);
+    //    Neo4jUtil.createNode(processTaskDto);
         return result;
     }
 
@@ -486,5 +524,47 @@ public class ExtendActDealController {
         return result;
     }
 
+    /**
+     * 转到跳转节点选择页面(why)
+     *
+     * @param processTaskDto
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "toDoJump")
+    public String toDoJump(ProcessTaskDto processTaskDto, Model model) {
+        ExtendActFlowbusEntity flowbus = flowbusService.queryByBusIdInsId(processTaskDto.getInstanceId(), processTaskDto.getBusId());
+        List<ActivityImpl> actList = jumpService.getActIdCollection(processTaskDto.getDefId());
+        model.addAttribute("taskDto", processTaskDto);
+        model.addAttribute("actList",actList);
+        model.addAttribute("flowbus", flowbus);
+        return "activiti/jumpSelect";
+    }
 
+    /**
+     * 根据选择的跳转环节执行跳转(why)
+     *
+     * @param processTaskDto
+     * @return
+     */
+    @RequestMapping(value = "doJump", method = RequestMethod.POST)
+    @ResponseBody
+    public Result doJump(ProcessTaskDto processTaskDto, HttpServletRequest request) {
+        Result result = null;
+        try {
+            Map<String, String[]> parameterMap = request.getParameterMap();
+            Map<String, Object> params = new LinkedCaseInsensitiveMap<>();
+            for (String key : parameterMap.keySet()) {
+                params.put(key, parameterMap.get(key)[0]);
+            }
+            String actId =(String)params.get("actId");
+            jumpService.jumpEndActivity(processTaskDto.getDefId(),processTaskDto,processTaskDto.getInstanceId(),actId);
+            result = Result.ok("办理任务成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = Result.error("办理任务失败");
+        }
+
+        return result;
+    }
 }

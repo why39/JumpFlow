@@ -196,7 +196,31 @@
      * 退回到上一步
      */
     function backPrevious() {
-        alertMsg("该功能开发中,请后续关注");
+        var params ="busId="+processInfo.busId+"&taskId="+processInfo.taskId+"&taskName="+processInfo.taskName+"&defId="+processInfo.defId+"&instanceId="+processInfo.instanceId;
+        //加入参数可更改的字段数值
+        var vars = processInfo.vars;
+        var varValue="";
+        var varName="";
+        if(vars!=null){
+            for(var i=0;i<vars.length;i++){
+                var val=$("#"+vars[i]+"").val();
+
+                console.log(">>>>>>>>>>>>>>" + val);
+                varValue+=val+",";
+                varName+=vars[i]+",";
+            }
+        }
+        params+="&varName="+varName+"&varValue="+varValue;
+        var url="${webRoot}/act/deal/toDoJump?"+params;
+        //弹框层
+        layer.open({
+            scrollbar: true,
+            type: 2,
+            title : ["选择跳转环节" , true],
+            area: ['100%', '100%'], //宽高
+            content: [url,'no'],
+            shadeClose : false,
+        });
     }
 </script>
 
