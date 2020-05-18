@@ -559,10 +559,10 @@ public class ExtendActDealController {
             }
             String actId =(String)params.get("actId");
             jumpService.jumpEndActivity(processTaskDto.getDefId(),processTaskDto,processTaskDto.getInstanceId(),actId);
-            result = Result.ok("办理任务成功");
+            result = Result.ok("任务跳转成功");
         } catch (Exception e) {
             e.printStackTrace();
-            result = Result.error("办理任务失败");
+            result = Result.error("任务跳转失败");
         }
 
         return result;

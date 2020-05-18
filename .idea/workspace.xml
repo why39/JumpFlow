@@ -3,64 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2744b1fb-8595-47eb-8862-905e3a590b61" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hxyFrame-activiti-boot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hxyFrame-activiti-boot.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/db/hxyframe_activiti.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/db/hxyframe_activiti.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inesa/common/entity/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inesa/common/entity/BaseEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inesa/common/utils/CommMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inesa/common/utils/CommMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inesa/common/utils/CommUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inesa/common/utils/CommUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inesa/common/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inesa/common/utils/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inesa/common/utils/CookieUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inesa/common/utils/CookieUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inesa/common/utils/Encodes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inesa/common/utils/Encodes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inesa/common/utils/Exceptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inesa/common/utils/Exceptions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inesa/common/utils/IdGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inesa/common/utils/IdGen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inesa/common/utils/InesaDateUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inesa/common/utils/InesaDateUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inesa/common/utils/PropertyUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inesa/common/utils/PropertyUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inesa/common/utils/StringUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inesa/common/utils/StringUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inesa/neo4j/Neo4jUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inesa/neo4j/Neo4jUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/inesa/neo4j/entity/Code.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/inesa/neo4j/entity/Code.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/scripts/codemirror-cypher.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/scripts/codemirror-cypher.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/scripts/codemirror.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/scripts/codemirror.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/scripts/cy2neod3.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/scripts/cy2neod3.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/scripts/cypher.datatable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/scripts/cypher.datatable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/scripts/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/scripts/data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/scripts/jquery.dataTables.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/scripts/jquery.dataTables.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/scripts/neo4d3.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/scripts/neo4d3.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/scripts/neod3-visualization.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/scripts/neod3-visualization.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/scripts/neod3.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/scripts/neod3.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/scripts/sweet-alert.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/scripts/sweet-alert.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/scripts/vendor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/scripts/vendor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/styles/codemirror-neo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/styles/codemirror-neo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/styles/codemirror.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/styles/codemirror.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/styles/cy2neo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/styles/cy2neo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/styles/datatable.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/styles/datatable.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/styles/fonts/FontAwesome.otf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/styles/fonts/FontAwesome.otf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/styles/fonts/fontawesome-webfont.eot" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/styles/fonts/fontawesome-webfont.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/styles/fonts/fontawesome-webfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/styles/fonts/fontawesome-webfont.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/styles/fonts/fontawesome-webfont.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/styles/fonts/fontawesome-webfont.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/styles/fonts/fontawesome-webfont.woff" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/styles/fonts/fontawesome-webfont.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/styles/gh-fork-ribbon.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/styles/gh-fork-ribbon.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/styles/images/maze-black.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/styles/images/maze-black.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/styles/neod3.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/styles/neod3.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/styles/sweet-alert.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/styles/sweet-alert.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/styles/vendor.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/styles/vendor.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/neod.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/neod.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/processComSub.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/processComSub.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hxy/config/SwaggerConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hxy/config/SwaggerConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hxy/modules/activiti/controller/ExtendActDealController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hxy/modules/activiti/controller/ExtendActDealController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hxy/modules/activiti/org/activiti/rest/diagram/services/BaseProcessDefinitionDiagramLayoutResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hxy/modules/activiti/org/activiti/rest/diagram/services/BaseProcessDefinitionDiagramLayoutResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hxy/modules/app/utils/JwtUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hxy/modules/app/utils/JwtUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hxy/modules/common/cache/ehcache/UCacheManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hxy/modules/common/cache/ehcache/UCacheManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hxy/modules/common/page/Page.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hxy/modules/common/page/Page.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hxy/modules/common/page/PageHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hxy/modules/common/page/PageHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hxy/modules/common/utils/PropertiesLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hxy/modules/common/utils/PropertiesLoader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hxy/modules/common/utils/RedisUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hxy/modules/common/utils/RedisUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hxy/modules/common/utils/SerializeUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hxy/modules/common/utils/SerializeUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hxy/modules/gen/utils/GenUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hxy/modules/gen/utils/GenUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hxy/modules/quartz/utils/ScheduleJob.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hxy/modules/quartz/utils/ScheduleJob.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -103,6 +46,7 @@
           <entry key="project.open.time.2" value="5" />
           <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.23" value="1" />
+          <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.26" value="1" />
           <entry key="project.open.time.3" value="2" />
           <entry key="project.open.time.33" value="1" />
@@ -113,7 +57,7 @@
           <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.8" value="2" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="63" />
+          <entry key="project.opened" value="64" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -153,7 +97,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1538" />
+          <entry key="java" value="1542" />
           <entry key="jsp" value="416" />
           <entry key="xml" value="19" />
           <entry key="yml" value="7" />
@@ -161,7 +105,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1538" />
+          <entry key="JAVA" value="1542" />
           <entry key="JSP" value="416" />
           <entry key="XML" value="19" />
           <entry key="YAML" value="7" />
@@ -174,17 +118,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/JumpService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="276">
               <caret line="50" selection-start-line="50" selection-end-line="50" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="560" selection-start-line="560" selection-end-line="560" />
+            <state relative-caret-position="345">
+              <caret line="564" column="44" lean-forward="true" selection-start-line="564" selection-start-column="44" selection-end-line="564" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -192,11 +136,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/jumpSelect.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="158" column="30" lean-forward="true" selection-start-line="158" selection-start-column="30" selection-end-line="158" selection-end-column="30" />
+            <state relative-caret-position="230">
+              <caret line="158" column="30" selection-start-line="158" selection-start-column="30" selection-end-line="158" selection-end-column="30" />
               <folding>
                 <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
               </folding>
@@ -208,7 +152,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/doActTask.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="338">
-              <caret line="129" column="56" lean-forward="true" selection-start-line="129" selection-start-column="56" selection-end-line="129" selection-end-column="56" />
+              <caret line="129" column="56" selection-start-line="129" selection-start-column="56" selection-end-line="129" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -216,7 +160,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/userWindow.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1611">
+            <state relative-caret-position="2737">
               <caret line="119" column="65" selection-start-line="119" selection-start-column="58" selection-end-line="119" selection-end-column="65" />
             </state>
           </provider>
@@ -346,8 +290,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/utils/ActUtils.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/processComSub.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/userWindow.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/jumpSelect.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java" />
       </list>
     </option>
   </component>
@@ -420,9 +364,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -595,6 +536,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -790,11 +734,12 @@
       <workItem from="1589720630293" duration="36000" />
       <workItem from="1589722794210" duration="629000" />
       <workItem from="1589760422447" duration="17296000" />
+      <workItem from="1589803681372" duration="1313000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="596297000" />
+    <option name="totallyTimeSpent" value="597610000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -807,8 +752,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1455" height="935" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.34359342" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.34860414" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -818,7 +764,7 @@
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.45547447" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3856041" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3856041" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3714653" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1408,13 +1354,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/JumpService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/4.3.12.RELEASE/spring-core-4.3.12.RELEASE.jar!/org/springframework/cglib/proxy/MethodProxy.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -1429,36 +1368,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/doActTask.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="129" column="56" lean-forward="true" selection-start-line="129" selection-start-column="56" selection-end-line="129" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/userWindow.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1611">
+        <state relative-caret-position="2737">
           <caret line="119" column="65" selection-start-line="119" selection-start-column="58" selection-end-line="119" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="560" selection-start-line="560" selection-end-line="560" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/jumpSelect.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="158" column="30" lean-forward="true" selection-start-line="158" selection-start-column="30" selection-end-line="158" selection-end-column="30" />
+        <state relative-caret-position="230">
+          <caret line="158" column="30" selection-start-line="158" selection-start-column="30" selection-end-line="158" selection-end-column="30" />
           <folding>
             <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/JumpService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/doActTask.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="129" column="56" selection-start-line="129" selection-start-column="56" selection-end-line="129" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="564" column="44" lean-forward="true" selection-start-line="564" selection-start-column="44" selection-end-line="564" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
