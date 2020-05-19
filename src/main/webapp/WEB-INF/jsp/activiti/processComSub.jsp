@@ -28,6 +28,7 @@
         <button class="layui-btn layui-btn-warm" type="button" onclick="turnToDo()">转办</button>
         <button class="layui-btn layui-btn-danger" type="button" onclick="backPrevious()">跳转</button>
         <button class="layui-btn layui-btn-primary" type="button" onclick="closeThisWindow()">关 闭</button>
+        <button class="layui-btn layui-btn-primary" type="button" onclick="filebook()">文 书</button>
     </div>
 </form>
 <script>
@@ -193,7 +194,7 @@
     }
 
     /**
-     * 退回到上一步
+     * 跳转
      */
     function backPrevious() {
         var params ="busId="+processInfo.busId+"&taskId="+processInfo.taskId+"&taskName="+processInfo.taskName+"&defId="+processInfo.defId+"&instanceId="+processInfo.instanceId;
@@ -217,6 +218,21 @@
             scrollbar: true,
             type: 2,
             title : ["选择跳转环节" , true],
+            area: ['100%', '100%'], //宽高
+            content: [url,'no'],
+            shadeClose : false,
+        });
+    }
+    /**
+     * 文书相关
+     */
+    function filebook() {
+        var url="${webRoot}/the/greeting";
+        //弹框层
+        layer.open({
+            scrollbar: true,
+            type: 2,
+            title : ["文书" , true],
             area: ['100%', '100%'], //宽高
             content: [url,'no'],
             shadeClose : false,
