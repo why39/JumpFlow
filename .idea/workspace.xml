@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2744b1fb-8595-47eb-8862-905e3a590b61" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/jumpSelect.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/jumpSelect.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,7 +33,7 @@
     <session id="-1578375792">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="61" />
+          <entry key="project.closed" value="64" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="13" />
           <entry key="project.open.time.11" value="4" />
@@ -47,7 +47,8 @@
           <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.24" value="1" />
-          <entry key="project.open.time.26" value="1" />
+          <entry key="project.open.time.25" value="1" />
+          <entry key="project.open.time.26" value="2" />
           <entry key="project.open.time.3" value="2" />
           <entry key="project.open.time.33" value="1" />
           <entry key="project.open.time.34" value="1" />
@@ -56,8 +57,9 @@
           <entry key="project.open.time.45" value="1" />
           <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.8" value="2" />
+          <entry key="project.open.time.87" value="1" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="64" />
+          <entry key="project.opened" value="67" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -98,7 +100,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="java" value="1542" />
-          <entry key="jsp" value="416" />
+          <entry key="jsp" value="460" />
           <entry key="xml" value="19" />
           <entry key="yml" value="7" />
         </counts>
@@ -106,7 +108,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="1542" />
-          <entry key="JSP" value="416" />
+          <entry key="JSP" value="460" />
           <entry key="XML" value="19" />
           <entry key="YAML" value="7" />
         </counts>
@@ -118,17 +120,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/JumpService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
+            <state relative-caret-position="1035">
               <caret line="50" selection-start-line="50" selection-end-line="50" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="564" column="44" lean-forward="true" selection-start-line="564" selection-start-column="44" selection-end-line="564" selection-end-column="44" />
+            <state relative-caret-position="12075">
+              <caret line="564" column="44" selection-start-line="564" selection-start-column="44" selection-end-line="564" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -136,14 +138,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/jumpSelect.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="158" column="30" selection-start-line="158" selection-start-column="30" selection-end-line="158" selection-end-column="30" />
-              <folding>
-                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="-1541">
+              <caret line="14" column="41" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -151,7 +150,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/doActTask.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
+            <state relative-caret-position="2967">
               <caret line="129" column="56" selection-start-line="129" selection-start-column="56" selection-end-line="129" selection-end-column="56" />
             </state>
           </provider>
@@ -290,8 +289,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/utils/ActUtils.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/processComSub.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/userWindow.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/jumpSelect.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/jumpSelect.jsp" />
       </list>
     </option>
   </component>
@@ -334,7 +333,7 @@
       <path value="$PROJECT_DIR$/src/main/resources/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="72" />
     <option name="width" value="2100" />
     <option name="height" value="1290" />
@@ -364,6 +363,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -536,9 +538,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -734,12 +733,15 @@
       <workItem from="1589720630293" duration="36000" />
       <workItem from="1589722794210" duration="629000" />
       <workItem from="1589760422447" duration="17296000" />
-      <workItem from="1589803681372" duration="1313000" />
+      <workItem from="1589803681372" duration="1593000" />
+      <workItem from="1589806042353" duration="250000" />
+      <workItem from="1589806585941" duration="278000" />
+      <workItem from="1589808426531" duration="1697000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="597610000" />
+    <option name="totallyTimeSpent" value="600115000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -752,9 +754,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1455" height="935" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.34860414" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.36363637" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -764,7 +765,7 @@
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.45547447" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3856041" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3856041" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3714653" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1368,6 +1369,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/JumpService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1035">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12075">
+          <caret line="564" column="44" selection-start-line="564" selection-start-column="44" selection-end-line="564" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/doActTask.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2967">
+          <caret line="129" column="56" selection-start-line="129" selection-start-column="56" selection-end-line="129" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/userWindow.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2737">
@@ -1377,35 +1402,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/jumpSelect.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="158" column="30" selection-start-line="158" selection-start-column="30" selection-end-line="158" selection-end-column="30" />
-          <folding>
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/JumpService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/doActTask.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="129" column="56" selection-start-line="129" selection-start-column="56" selection-end-line="129" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="564" column="44" lean-forward="true" selection-start-line="564" selection-start-column="44" selection-end-line="564" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-1541">
+          <caret line="14" column="41" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
         </state>
       </provider>
     </entry>
