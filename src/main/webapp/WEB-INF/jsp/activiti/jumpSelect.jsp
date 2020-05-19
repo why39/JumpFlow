@@ -13,13 +13,6 @@
     <div class="row" style="margin-top: 20px;">
         <form class="layui-form" id="search-from" action="${webRoot}${url}">
             <div class="layui-form-item">
-                <label class="layui-form-label" style="width:10%;">姓名：</label>
-                <div class="layui-input-inline layui-input-inline">
-                    <input type="text" name="userName" value="${user.userName}"  placeholder="请输入搜索内容"  class="layui-input" >
-                    <input name="nodeAction" type="hidden" value="${flag }" />
-                </div>
-                <button class="layui-btn" id="searchSubmit"><i class="layui-icon">&#xe615;</i>搜 索</button>
-                <button class="layui-btn layui-btn-warm" type="button" id="refresh">重 置</button>
                 <button class="layui-btn" type="button" id="submitBtn">确 定</button>
                 <button class="layui-btn" type="button" id="submitJup">建 立 跳 转 </button>
             </div>
@@ -157,17 +150,22 @@
         //var actId =  $("#userTab tr:eq(1) td:nth-child(2)").find("td").val();
         var actId = $("#userTab tr:eq(1) td:eq(2)").text();
         params["actId"]=actId;
-        $.post(url,params,function (result) {
-            if(result.code == '0'){
-                alert(result,function () {
-                    //父级搜索 刷新待办列表
-                    $(parent.parent.document.getElementById("main-container")).find("#search-from").submit();
-                    //closeThisWindow();
-                });
-            }else {
-                alertMsg(result.msg);
-            }
-        });
+        if(actId == ''){
+            alertMsg("请选择跳转的环节并点击确定！");
+        }
+        else{
+            $.post(url,params,function (result) {
+                if(result.code == '0'){
+                    alert(result,function () {
+                        //父级搜索 刷新待办列表
+                        $(parent.parent.document.getElementById("main-container")).find("#search-from").submit();
+                        //closeThisWindow();
+                    });
+                }else {
+                    alertMsg(result.msg);
+                }
+            });
+        }
     });
 </script>
 </html>
