@@ -1,0 +1,121 @@
+/*-------------------------
+	ZZZY POBrowser ModalDialog
+--------------------------*/
+/* Hide the arrows dispayed in number inputs in webkit */
+
+.pobmodal-overlay{
+	display:none;
+	position:fixed;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	background-color:rgba(0,0,0,0.5);
+	z-index:999;
+}
+
+#pobmodal-dialog{
+	width:500px;
+	height:375px;
+	background-color:#fff;
+	border-radius:2px;
+	box-shadow: 0 0 8px rgba(0,0,0,0.5);
+	position:fixed;
+	top:200px;
+	left:50%;
+	margin-left:-250px;
+	text-align:center;
+	border:solid 1px #0099CC;
+	padding:0 20px;
+}
+
+#pobmodal-dialog h2{
+	text-transform: uppercase;
+	font-size:18px;
+	color:#5e6268;
+	padding: 50px 0;
+}
+
+#pobmodal-dialog label{
+	text-transform: uppercase;
+	background-color: #f4f4f4;
+	width: 80px;
+	height: 62px;
+	font-size: 11px;
+	display: inline-block;
+	padding: 10px;
+	margin: 4px;
+}
+
+#pobmodal-dialog label input{
+	display: block;
+	border: 0;
+	font: inherit;
+	font-size: 17px;
+	padding: 6px;
+	outline: none;
+	text-align: center;
+	width: 59px;
+	margin: 10px auto;
+	background-color:#fff;
+}
+
+#pobmodal-dialog .button-holder{
+	padding-top: 50px;
+	padding-bottom:0;
+}
+
+#pobmodal-dialog .button-holder .button{
+	box-shadow:0 2px 2px #eee;
+	padding:13px 22px;
+	margin:3px;
+}
+
+#pobmodal-dialog .button{
+	background-color:#82cddd;
+
+	background-image:-webkit-linear-gradient(top, #86d3e4, #82cddd);
+	background-image:-moz-linear-gradient(top, #86d3e4, #82cddd);
+	background-image:linear-gradient(top, #86d3e4, #82cddd);
+
+	border-color:#72c1d2;
+}
+
+/* blue */ 
+#pobmodal-dialog .blue { 
+color: #d9eef7; 
+border: solid 1px #0076a3; 
+background: #0095cd; 
+background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5)); 
+background: -moz-linear-gradient(top, #00adee, #0078a5); 
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00adee', endColorstr='#0078a5'); 
+} 
+#pobmodal-dialog .blue:hover { 
+background: #007ead; 
+background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e)); 
+background: -moz-linear-gradient(top, #0095cc, #00678e); 
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0095cc', endColorstr='#00678e'); 
+} 
+#pobmodal-dialog .blue:active { 
+color: #80bed6; 
+background: -webkit-gradient(linear, left top, left bottom, from(#0078a5), to(#00adee)); 
+background: -moz-linear-gradient(top, #0078a5, #00adee); 
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0078a5', endColorstr='#00adee'); 
+} 
+
+#pobmodal-dialog a{
+	text-decoration:none;
+}
+/*
+#pobmodal-dialog .close{
+	width: 36px;
+	height: 36px;
+	background: url('close.png');
+	position: absolute;
+	top: -18px;
+	right: -18px;
+	cursor:pointer;
+}
+*/
+
+

@@ -227,7 +227,7 @@
      * 文书相关
      */
     function filebook() {
-        var url="${webRoot}/the/greeting";
+        var url="${webRoot}/pageIndex";
         //弹框层
         layer.open({
             scrollbar: true,

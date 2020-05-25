@@ -388,9 +388,9 @@ public class ExtendActDealController {
             }
 
            // Collection<FlowElement> flowElements = jumpService.getActIdCollection(processTaskDto.getDefId());
-            jumpService.jumpEndActivity(processTaskDto.getDefId(),processTaskDto,processTaskDto.getInstanceId(),"sid-33BCE5B3-845D-412C-857F-DC24E63599D5");
+            //jumpService.jumpEndActivity(processTaskDto.getDefId(),processTaskDto,processTaskDto.getInstanceId(),"sid-33BCE5B3-845D-412C-857F-DC24E63599D5");
 
-            // actModelerService.doActTask(processTaskDto, params);
+             actModelerService.doActTask(processTaskDto, params);
             //why
 //            taskService.complete(processTaskDto.getTaskId());
 //            List<Task> tasks2 = taskService.createTaskQuery().processInstanceId(processTaskDto.getInstanceId()).list();

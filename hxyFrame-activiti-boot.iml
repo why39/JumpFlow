@@ -2,7 +2,26 @@
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="Spring" name="Spring">
-      <configuration />
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/main/java/com/hxy/modules/activiti/config/Cfg_Activiti.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/hxy/modules/activiti/config/Cfg_PageOffice.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/hxy/modules/activiti/config/Cfg_Util.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/hxy/modules/activiti/config/Cfg_View.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/hxy/config/FilterConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/hxy/HxyFrameBootApplication.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/hxy/config/KaptchaConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/hxy/config/MybatisConf.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/hxy/config/RedisConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/hxy/modules/activiti/config/RestConfiguration.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/hxy/modules/quartz/config/ScheduleConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/hxy/config/ShiroConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/hxy/config/SpringConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/hxy/config/SwaggerConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/hxy/config/VelocityConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/hxy/modules/app/config/WebMvcConfig.java</file>
+        </fileset>
+      </configuration>
     </facet>
     <facet type="web" name="Web">
       <configuration>
@@ -300,13 +319,7 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:1.5.8.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-configuration-processor:1.5.8.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-thymeleaf:1.5.8.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.thymeleaf:thymeleaf-spring4:2.1.5.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.thymeleaf:thymeleaf:2.1.5.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: ognl:ognl:3.0.8" level="project" />
-    <orderEntry type="library" name="Maven: org.javassist:javassist:3.21.0-GA" level="project" />
-    <orderEntry type="library" name="Maven: org.unbescape:unbescape:1.1.0.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:1.4.0" level="project" />
-    <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy:2.4.12" level="project" />
+    <orderEntry type="library" name="Maven: org.xerial:sqlite-jdbc:3.7.2" level="project" />
+    <orderEntry type="library" name="Maven: com.zhuozhengsoft:pageoffice:4.6.0.3" level="project" />
   </component>
 </module>
