@@ -5,417 +5,18 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hxyFrame-activiti-boot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hxyFrame-activiti-boot.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/HxyFrameBootApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/HxyFrameBootApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/config/ThymeleafConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/Thymetest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/Thymetest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ActModelerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ActModelerServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/html/greeting.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/processComSub.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/processComSub.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/spring-configuration-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/spring-configuration-metadata.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-pro.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-pro.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-test.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/generator.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/generator.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/logback-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/logback-spring.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/activiti/ActExtendService.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/activiti/ActExtendService.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/activiti/DataAuth.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/activiti/DataAuth.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/activiti/ExtendActBusinessMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/activiti/ExtendActBusinessMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/activiti/ExtendActFlowbusMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/activiti/ExtendActFlowbusMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/activiti/ExtendActModelMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/activiti/ExtendActModelMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/activiti/ExtendActNodefieldMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/activiti/ExtendActNodefieldMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/activiti/ExtendActNodesetMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/activiti/ExtendActNodesetMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/activiti/ExtendActNodeuserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/activiti/ExtendActNodeuserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/activiti/ExtendActTasklogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/activiti/ExtendActTasklogMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/app/ApiUserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/app/ApiUserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/demo/LeaveMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/demo/LeaveMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/gen/SysGeneratorDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/gen/SysGeneratorDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/oss/SysOssDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/oss/SysOssDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/quartz/ScheduleJobDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/quartz/ScheduleJobDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/quartz/ScheduleJobLogDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/quartz/ScheduleJobLogDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/sys/CodeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/sys/CodeMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/sys/MenuMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/sys/MenuMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/sys/NoticeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/sys/NoticeMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/sys/NoticeUserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/sys/NoticeUserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/sys/OrganMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/sys/OrganMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/sys/RoleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/sys/RoleMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/sys/RoleMenuMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/sys/RoleMenuMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/sys/SysConfigDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/sys/SysConfigDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/sys/SysLogDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/sys/SysLogDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/sys/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/sys/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/sys/UserRoleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/sys/UserRoleMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/rebel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/rebel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/css/AdminLTE.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/css/AdminLTE.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/css/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/css/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/css/chosen.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/css/chosen.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/css/font-awesome-ie7.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/css/font-awesome-ie7.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/css/font-awesome.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/css/font-awesome.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/css/font-awesome.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/css/font-awesome.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/css/index1.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/css/index1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/fonts/fontawesome-webfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/fonts/fontawesome-webfont.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/fonts/fontawesome-webfontba72.svg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/fonts/fontawesome-webfontba72.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/fonts/glyphicons-halflings-regular.svg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/activiti/actSumbit.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/activiti/actSumbit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/ajaxupload.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/ajaxupload.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/app.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/app.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/bootstrap.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/chosen.jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/chosen.jquery.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/gen/generator.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/gen/generator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/html5shiv.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/html5shiv.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/index1.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/index1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/jquery-1.10.2.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/jquery-1.10.2.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/jquery-2.0.3.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/jquery-2.0.3.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/jquery.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/navtab.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/navtab.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/oss/oss.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/oss/oss.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/quartz/schedule.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/quartz/schedule.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/quartz/schedule_log.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/quartz/schedule_log.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/respond.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/respond.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/select2.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/select2.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/sys/code.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/sys/code.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/sys/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/sys/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/sys/log.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/sys/log.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/sys/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/sys/menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/sys/notice.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/sys/notice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/sys/organ.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/sys/organ.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/sys/role.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/sys/role.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/sys/rolemenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/sys/rolemenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/sys/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/sys/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/typeahead-bs2.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/typeahead-bs2.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/vue-validator.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/vue-validator.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/vue.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/vue.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/vue.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/wangEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/wangEditor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/js/wangEditor.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/js/wangEditor.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/jqgrid/grid.locale-cn.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/jqgrid/grid.locale-cn.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/jqgrid/jquery.jqGrid.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/jqgrid/jquery.jqGrid.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/jqgrid/ui.jqgrid-bootstrap-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/jqgrid/ui.jqgrid-bootstrap-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/jqgrid/ui.jqgrid-bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/jqgrid/ui.jqgrid-bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/jqgrid/ui.jqgrid.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/jqgrid/ui.jqgrid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layer/extend/layer.ext.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layer/extend/layer.ext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layer/layer.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layer/layer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layer/mobile/layer.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layer/mobile/layer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layer/mylayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layer/mylayer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layer/skin/skin/layer.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layer/skin/skin/layer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layer/skin/skin/layer.ext.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layer/skin/skin/layer.ext.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/layui.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/layui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/code.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/code.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/flat/_all.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/flat/_all.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/flat/aero.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/flat/aero.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/flat/blue.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/flat/blue.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/flat/flat.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/flat/flat.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/flat/green.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/flat/green.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/flat/grey.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/flat/grey.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/flat/orange.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/flat/orange.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/flat/pink.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/flat/pink.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/flat/purple.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/flat/purple.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/flat/red.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/flat/red.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/flat/yellow.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/flat/yellow.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/futurico/futurico.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/futurico/futurico.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/icheck.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/icheck.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/line/_all.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/line/_all.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/line/aero.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/line/aero.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/line/blue.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/line/blue.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/line/green.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/line/green.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/line/grey.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/line/grey.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/line/line.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/line/line.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/line/orange.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/line/orange.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/line/pink.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/line/pink.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/line/purple.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/line/purple.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/line/red.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/line/red.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/line/yellow.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/line/yellow.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/minimal/_all.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/minimal/_all.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/minimal/aero.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/minimal/aero.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/minimal/blue.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/minimal/blue.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/minimal/green.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/minimal/green.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/minimal/grey.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/minimal/grey.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/minimal/minimal.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/minimal/minimal.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/minimal/orange.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/minimal/orange.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/minimal/pink.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/minimal/pink.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/minimal/purple.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/minimal/purple.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/minimal/red.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/minimal/red.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/minimal/yellow.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/minimal/yellow.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/polaris/polaris.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/polaris/polaris.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/square/_all.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/square/_all.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/square/aero.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/square/aero.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/square/blue.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/square/blue.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/square/green.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/square/green.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/square/grey.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/square/grey.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/square/orange.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/square/orange.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/square/pink.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/square/pink.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/square/purple.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/square/purple.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/square/red.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/square/red.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/square/square.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/square/square.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/square/yellow.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/icheck/square/yellow.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/laydate/laydate.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/laydate/laydate.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/layer/default/layer.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/css/modules/layer/default/layer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/font/iconfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/font/iconfont.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/dest/layui.all.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/dest/layui.all.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/dest/layui.mod.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/dest/layui.mod.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/lib/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/lib/jquery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/modules/code.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/modules/code.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/modules/element.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/modules/element.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/modules/flow.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/modules/flow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/modules/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/modules/form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/modules/laydate.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/modules/laydate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/modules/layedit.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/modules/layedit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/modules/layer.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/modules/layer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/modules/laypage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/modules/laypage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/modules/laytpl.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/modules/laytpl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/modules/tree.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/modules/tree.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/modules/upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/modules/upload.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/modules/util.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/lay/modules/util.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/layui.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/layui.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/modules/icheck.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/modules/icheck.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/modules/pjax.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui-v1.0.7/modules/pjax.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui/css/layui.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui/css/layui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui/css/layui.mobile.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui/css/layui.mobile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui/css/modules/code.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui/css/modules/code.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui/css/modules/laydate/default/laydate.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui/css/modules/laydate/default/laydate.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui/css/modules/layer/default/layer.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui/css/modules/layer/default/layer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui/font/iconfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui/font/iconfont.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/carousel.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/carousel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/code.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/code.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/element.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/element.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/flow.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/flow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/jquery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/laydate.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/laydate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/layedit.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/layedit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/layer.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/layer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/laypage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/laypage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/laytpl.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/laytpl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/mobile.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/mobile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/table.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/tree.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/tree.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/upload.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/util.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui/lay/modules/util.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui/layui.all.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui/layui.all.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/layui/layui.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/layui/layui.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/app-cfg.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/app-cfg.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-assignment-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-assignment-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-condition-expression-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-condition-expression-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-custom-controllers.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-custom-controllers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-default-controllers.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-default-controllers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-event-listeners-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-event-listeners-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-execution-listeners-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-execution-listeners-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-fields-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-fields-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-form-properties-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-form-properties-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-in-parameters-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-in-parameters-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-message-definitions-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-message-definitions-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-message-scope-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-message-scope-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-multiinstance-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-multiinstance-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-out-parameters-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-out-parameters-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-sequenceflow-order-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-sequenceflow-order-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-signal-definitions-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-signal-definitions-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-signal-scope-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-signal-scope-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-task-listeners-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties-task-listeners-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/assignment-display-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/assignment-display-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/assignment-popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/assignment-popup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/assignment-write-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/assignment-write-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/boolean-property-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/boolean-property-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/condition-expression-display-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/condition-expression-display-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/condition-expression-popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/condition-expression-popup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/condition-expression-write-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/condition-expression-write-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/default-value-display-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/default-value-display-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/event-listeners-display-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/event-listeners-display-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/event-listeners-popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/event-listeners-popup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/event-listeners-write-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/event-listeners-write-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/execution-listeners-display-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/execution-listeners-display-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/execution-listeners-popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/execution-listeners-popup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/execution-listeners-write-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/execution-listeners-write-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/feedback-popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/feedback-popup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/fields-display-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/fields-display-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/fields-popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/fields-popup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/fields-write-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/fields-write-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/form-properties-display-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/form-properties-display-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/form-properties-popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/form-properties-popup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/form-properties-write-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/form-properties-write-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/in-parameters-display-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/in-parameters-display-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/in-parameters-popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/in-parameters-popup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/in-parameters-write-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/in-parameters-write-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/message-definitions-display-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/message-definitions-display-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/message-definitions-popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/message-definitions-popup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/message-definitions-write-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/message-definitions-write-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/message-property-write-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/message-property-write-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/multiinstance-property-write-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/multiinstance-property-write-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/out-parameters-display-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/out-parameters-display-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/out-parameters-popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/out-parameters-popup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/out-parameters-write-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/out-parameters-write-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/sequenceflow-order-display-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/sequenceflow-order-display-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/sequenceflow-order-popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/sequenceflow-order-popup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/sequenceflow-order-write-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/sequenceflow-order-write-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/signal-definitions-display-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/signal-definitions-display-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/signal-definitions-popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/signal-definitions-popup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/signal-definitions-write-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/signal-definitions-write-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/signal-property-write-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/signal-property-write-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/string-property-write-mode-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/string-property-write-mode-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/subprocess-reference-display-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/subprocess-reference-display-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/subprocess-reference-popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/subprocess-reference-popup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/subprocess-reference-write-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/subprocess-reference-write-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/task-listeners-display-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/task-listeners-display-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/task-listeners-popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/task-listeners-popup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/task-listeners-write-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/task-listeners-write-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/text-popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/text-popup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/text-property-write-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/properties/text-property-write-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/toolbar-custom-actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/toolbar-custom-actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/toolbar-default-actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/toolbar-default-actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/toolbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/toolbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/url-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/configuration/url-config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/css/style-common.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/css/style-common.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/css/style-editor.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/css/style-editor.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/doc/app_all.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/doc/app_all.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/doc/stencil-controller_all.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/doc/stencil-controller_all.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/editor-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/editor-config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/editor-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/editor-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/editor-utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/editor-utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/editor.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/editor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/editor/css/editor.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/editor/css/editor.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/editor/i18n/translation_de.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/editor/i18n/translation_de.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/editor/i18n/translation_en_us.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/editor/i18n/translation_en_us.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/editor/i18n/translation_signavio_de.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/editor/i18n/translation_signavio_de.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/editor/i18n/translation_signavio_en_us.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/editor/i18n/translation_signavio_en_us.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/editor/oryx.debug.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/editor/oryx.debug.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/editor/oryx.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/editor/oryx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/eventbus.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/eventbus.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/fonts/activiti-admin-webfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/fonts/activiti-admin-webfont.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/fonts/glyphicons-halflings-regular.svg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/header-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/header-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/i18n/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/i18n/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/i18n/zh_CN.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/i18n/zh_CN.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-cookies_1.2.13/angular-cookies.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-cookies_1.2.13/angular-cookies.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-cookies_1.2.13/angular-cookies.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-cookies_1.2.13/angular-cookies.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-dragdrop.min-1.0.3.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-dragdrop.min-1.0.3.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-dragdrop_1.0.7/angular-dragdrop.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-dragdrop_1.0.7/angular-dragdrop.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-mocks_1.2.13/angular-mocks.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-mocks_1.2.13/angular-mocks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-resource_1.2.13/angular-resource.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-resource_1.2.13/angular-resource.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-resource_1.2.13/angular-resource.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-resource_1.2.13/angular-resource.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-resource_1.2.13/angular-resource.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-resource_1.2.13/angular-resource.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-route_1.2.13/angular-route.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-route_1.2.13/angular-route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-route_1.2.13/angular-route.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-route_1.2.13/angular-route.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-route_1.2.13/angular-route.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-route_1.2.13/angular-route.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-sanitize_1.2.13/angular-sanitize.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-sanitize_1.2.13/angular-sanitize.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-sanitize_1.2.13/angular-sanitize.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-sanitize_1.2.13/angular-sanitize.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-sanitize_1.2.13/angular-sanitize.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-sanitize_1.2.13/angular-sanitize.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-strap_2.0.5/angular-strap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-strap_2.0.5/angular-strap.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-strap_2.0.5/angular-strap.tpl.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-strap_2.0.5/angular-strap.tpl.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-translate-loader-static-files/.bower.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-translate-loader-static-files/.bower.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-translate-loader-static-files/angular-translate-loader-static-files.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-translate-loader-static-files/angular-translate-loader-static-files.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-translate-storage-cookie/.bower.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-translate-storage-cookie/.bower.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-translate-storage-cookie/angular-translate-storage-cookie.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-translate-storage-cookie/angular-translate-storage-cookie.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-translate-storage-cookie/angular-translate-storage-cookie.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-translate-storage-cookie/angular-translate-storage-cookie.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-translate_2.4.2/angular-translate.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-translate_2.4.2/angular-translate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-translate_2.4.2/angular-translate.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular-translate_2.4.2/angular-translate.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular_1.2.13/angular-animate.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular_1.2.13/angular-animate.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular_1.2.13/angular.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/angular_1.2.13/angular.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/bootstrap-daterangepicker_1.3.7/daterangepicker-bs3.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/bootstrap-daterangepicker_1.3.7/daterangepicker-bs3.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/bootstrap-daterangepicker_1.3.7/daterangepicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/bootstrap-daterangepicker_1.3.7/daterangepicker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/bootstrap_3.1.1/css/bootstrap-theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/bootstrap_3.1.1/css/bootstrap-theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/bootstrap_3.1.1/css/bootstrap-theme.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/bootstrap_3.1.1/css/bootstrap-theme.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/bootstrap_3.1.1/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/bootstrap_3.1.1/css/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/bootstrap_3.1.1/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/bootstrap_3.1.1/css/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/bootstrap_3.1.1/fonts/glyphicons-halflings-regular.svg" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/bootstrap_3.1.1/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/bootstrap_3.1.1/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/bootstrap_3.1.1/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/bootstrap_3.1.1/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/bootstrap_3.1.1/js/bootstrap.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/.bower.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/.bower.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/CHANGES" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/CHANGES" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/CONTRIBUTORS.md" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/CONTRIBUTORS.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/es5-sham.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/es5-sham.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/es5-sham.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/es5-sham.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/es5-shim.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/es5-shim.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/es5-shim.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/es5-shim.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/helpers/h-kill.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/helpers/h-kill.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/helpers/h-matchers.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/helpers/h-matchers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/helpers/h.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/helpers/h.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/index.min.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/index.min.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/lib/jasmine-html.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/lib/jasmine-html.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/lib/jasmine.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/lib/jasmine.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/lib/jasmine.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/lib/jasmine.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/lib/json2.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/lib/json2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/spec/s-array.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/spec/s-array.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/spec/s-date.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/spec/s-date.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/spec/s-function.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/spec/s-function.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/spec/s-number.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/spec/s-number.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/spec/s-object.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/spec/s-object.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/spec/s-string.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/tests/spec/s-string.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/jquery-ui-1.10.3.custom.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/jquery-ui-1.10.3.custom.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/jquery.autogrow-textarea.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/jquery.autogrow-textarea.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/jquery_1.11.0/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/jquery_1.11.0/jquery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/jquery_1.11.0/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/jquery_1.11.0/jquery.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/jquery_1.11.0/jquery.min.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/jquery_1.11.0/jquery.min.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/json3_3.2.6/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/json3_3.2.6/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/json3_3.2.6/lib/json3.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/json3_3.2.6/lib/json3.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/json3_3.2.6/lib/json3.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/json3_3.2.6/lib/json3.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/momentjs_2.5.1/momentjs.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/momentjs_2.5.1/momentjs.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/mousetrap-1.4.5.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/mousetrap-1.4.5.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/ng-grid-2.0.7-min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/ng-grid-2.0.7-min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/path_parser.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/path_parser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/prototype-1.5.1.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/prototype-1.5.1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/ui-utils.min-0.0.4.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/libs/ui-utils.min-0.0.4.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/partials/root-stencil-item-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/partials/root-stencil-item-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/partials/stencil-item-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/partials/stencil-item-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/popups/icon-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/popups/icon-template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/popups/save-model.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/popups/save-model.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/popups/select-shape.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/popups/select-shape.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/popups/unsaved-changes.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/popups/unsaved-changes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/select-shape-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/select-shape-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/stencil-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/stencil-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/toolbar-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/editor-app/toolbar-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/process/modeler.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/process/modeler.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/validator/css/bootstrapValidator.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/validator/css/bootstrapValidator.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/validator/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/validator/js/bootstrap.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/validator/js/bootstrapValidator.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/validator/js/bootstrapValidator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/validator/js/jquery-1.10.2.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/validator/js/jquery-1.10.2.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/validform/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/validform/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/validform/css/wp-syntax.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/validform/css/wp-syntax.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/validform/js/Validform_v5.3.2.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/validform/js/Validform_v5.3.2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/ztree/css/awesomeStyle/awesome.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/ztree/css/awesomeStyle/awesome.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/ztree/css/awesomeStyle/awesome.less" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/ztree/css/awesomeStyle/awesome.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/ztree/css/awesomeStyle/fa.less" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/ztree/css/awesomeStyle/fa.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/ztree/css/metroStyle/metroStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/ztree/css/metroStyle/metroStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/ztree/css/zTreeStyle/zTreeStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/ztree/css/zTreeStyle/zTreeStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/statics/plugins/ztree/jquery.ztree.all.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/statics/plugins/ztree/jquery.ztree.all.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/stencilset_zh-cn.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/stencilset_zh-cn.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/template/Controller.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/template/Controller.java.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/template/Dao.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/template/Dao.java.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/template/Dao.xml.vm" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/template/Dao.xml.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/template/Entity.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/template/Entity.java.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/template/Service.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/template/Service.java.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/template/ServiceImpl.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/template/ServiceImpl.java.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/template/list.html.vm" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/template/list.html.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/template/list.js.vm" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/template/list.js.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/template/menu.sql.vm" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/template/menu.sql.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/404.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/index1.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/index1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/loginFail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/loginFail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/modules/gen/generator.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/modules/gen/generator.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/modules/oss/oss.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/modules/oss/oss.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/modules/quartz/schedule.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/modules/quartz/schedule.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/modules/quartz/schedule_log.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/modules/quartz/schedule_log.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/modules/sys/code.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/modules/sys/code.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/modules/sys/config.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/modules/sys/config.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/modules/sys/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/modules/sys/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/modules/sys/log.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/modules/sys/log.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/modules/sys/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/modules/sys/menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/modules/sys/menuIcons.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/modules/sys/menuIcons.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/modules/sys/organ.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/modules/sys/organ.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/modules/sys/role.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/modules/sys/role.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/views/modules/sys/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/modules/sys/user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hxy/HxyFrameBootApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hxy/HxyFrameBootApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hxy/modules/activiti/controller/ExtendActDealController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hxy/modules/activiti/controller/ExtendActDealController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/hxy/modules/activiti/service/impl/ActModelerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hxy/modules/activiti/service/impl/ActModelerServiceImpl.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -423,6 +24,11 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/hxyFrame_activiti_boot$HxyFrameBootApplication.ic" NAME="HxyFrameBootApplication Coverage Results" MODIFIED="1590237175051" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.hxy.*</FILTER>
+    </SUITE>
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -445,163 +51,174 @@
     <session id="-1578375792">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="64" />
+          <entry key="project.closed" value="91" />
+          <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="13" />
-          <entry key="project.open.time.11" value="4" />
+          <entry key="project.open.time.11" value="5" />
           <entry key="project.open.time.12" value="6" />
           <entry key="project.open.time.13" value="4" />
           <entry key="project.open.time.14" value="4" />
           <entry key="project.open.time.15" value="2" />
-          <entry key="project.open.time.16" value="3" />
-          <entry key="project.open.time.18" value="2" />
+          <entry key="project.open.time.16" value="7" />
+          <entry key="project.open.time.17" value="1" />
+          <entry key="project.open.time.18" value="4" />
+          <entry key="project.open.time.19" value="3" />
           <entry key="project.open.time.2" value="5" />
-          <entry key="project.open.time.21" value="1" />
-          <entry key="project.open.time.23" value="1" />
+          <entry key="project.open.time.20" value="3" />
+          <entry key="project.open.time.21" value="4" />
+          <entry key="project.open.time.23" value="2" />
           <entry key="project.open.time.24" value="1" />
-          <entry key="project.open.time.25" value="1" />
-          <entry key="project.open.time.26" value="2" />
+          <entry key="project.open.time.25" value="3" />
+          <entry key="project.open.time.26" value="3" />
+          <entry key="project.open.time.27" value="1" />
           <entry key="project.open.time.3" value="2" />
+          <entry key="project.open.time.31" value="1" />
           <entry key="project.open.time.33" value="1" />
           <entry key="project.open.time.34" value="1" />
+          <entry key="project.open.time.38" value="2" />
           <entry key="project.open.time.4" value="5" />
           <entry key="project.open.time.43" value="1" />
           <entry key="project.open.time.45" value="1" />
           <entry key="project.open.time.7" value="2" />
+          <entry key="project.open.time.74" value="1" />
           <entry key="project.open.time.8" value="2" />
           <entry key="project.open.time.87" value="1" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="68" />
+          <entry key="project.opened" value="95" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="544" />
+          <entry key="class" value="576" />
           <entry key="conf" value="2" />
-          <entry key="html" value="21" />
+          <entry key="css" value="2" />
+          <entry key="dtd" value="1" />
+          <entry key="html" value="42" />
           <entry key="iml" value="1" />
-          <entry key="java" value="324" />
-          <entry key="js" value="27" />
-          <entry key="jsp" value="117" />
+          <entry key="java" value="380" />
+          <entry key="js" value="42" />
+          <entry key="jsp" value="134" />
           <entry key="kt" value="1" />
           <entry key="md" value="2" />
-          <entry key="properties" value="3" />
+          <entry key="properties" value="4" />
           <entry key="sql" value="1" />
           <entry key="tag" value="2" />
-          <entry key="xml" value="36" />
-          <entry key="yml" value="21" />
+          <entry key="xml" value="46" />
+          <entry key="yml" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="544" />
-          <entry key="HTML" value="21" />
+          <entry key="CLASS" value="576" />
+          <entry key="CSS" value="2" />
+          <entry key="DTD" value="1" />
+          <entry key="HTML" value="42" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="324" />
-          <entry key="JSP" value="119" />
-          <entry key="JavaScript" value="27" />
+          <entry key="JAVA" value="380" />
+          <entry key="JSP" value="136" />
+          <entry key="JavaScript" value="42" />
           <entry key="Kotlin" value="1" />
           <entry key="Markdown" value="2" />
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Properties" value="3" />
+          <entry key="Properties" value="4" />
           <entry key="SQL" value="1" />
-          <entry key="XML" value="36" />
-          <entry key="YAML" value="21" />
+          <entry key="XML" value="46" />
+          <entry key="YAML" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1639" />
-          <entry key="jsp" value="510" />
-          <entry key="xml" value="24" />
-          <entry key="yml" value="63" />
+          <entry key="html" value="185" />
+          <entry key="java" value="2126" />
+          <entry key="js" value="1" />
+          <entry key="jsp" value="736" />
+          <entry key="xml" value="41" />
+          <entry key="yml" value="114" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1639" />
-          <entry key="JSP" value="510" />
-          <entry key="XML" value="24" />
-          <entry key="YAML" value="63" />
+          <entry key="HTML" value="185" />
+          <entry key="JAVA" value="2126" />
+          <entry key="JSP" value="736" />
+          <entry key="JavaScript" value="1" />
+          <entry key="XML" value="41" />
+          <entry key="YAML" value="114" />
         </counts>
       </usages-collector>
     </session>
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="hxyFrame-activiti-boot" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/Thymetest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="59" column="19" lean-forward="true" selection-start-line="59" selection-start-column="19" selection-end-line="59" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/config/ThymeleafConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="48" column="51" selection-start-line="48" selection-start-column="51" selection-end-line="48" selection-end-column="51" />
+            <state relative-caret-position="139">
+              <caret line="153" lean-forward="true" selection-start-line="153" selection-end-line="153" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2964#2965#0" expanded="true" />
-                <element signature="e#3007#3008#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/Thymetest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/processComSub.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/pageoffice/word.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="230">
-              <caret line="234" column="24" selection-start-line="234" selection-start-column="24" selection-end-line="234" selection-end-column="24" />
+              <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/config/SpringConfig.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+            <state relative-caret-position="386">
+              <caret line="501" column="7" selection-start-line="501" selection-start-column="7" selection-end-line="501" selection-end-column="54" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/config/FilterConfig.java">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/trunTask.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-46">
-              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            <state relative-caret-position="1242">
+              <caret line="54" column="43" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/config/VelocityConfig.java">
+        <entry file="jar://$MAVEN_REPOSITORY$/com/zhuozhengsoft/pageoffice/4.6.0.3/pageoffice-4.6.0.3.jar!/com/zhuozhengsoft/pageoffice/PageOfficeCtrl.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+            <state relative-caret-position="358">
+              <caret line="172" column="18" selection-start-line="172" selection-start-column="18" selection-end-line="172" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/config/SwaggerConfig.java">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/pageoffice/pageIndex.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            <state relative-caret-position="345">
+              <caret line="33" column="7" lean-forward="true" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/com/zhuozhengsoft/pageoffice/4.6.0.3/pageoffice-4.6.0.3.jar!/com/zhuozhengsoft/pageoffice/poserver/pageoffice.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="8050">
+              <caret line="350" column="9" selection-start-line="350" selection-start-column="9" selection-end-line="350" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -620,23 +237,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>taskId</find>
-      <find>page</find>
-      <find>myUp</find>
-      <find>选择下</find>
-      <find>选</find>
-      <find>提交</find>
-      <find>userWindo</find>
-      <find>doAc</find>
-      <find>Neo4j</find>
-      <find>comple</find>
-      <find>task</find>
-      <find>该功能</find>
-      <find>跳</find>
-      <find>taskDto</find>
-      <find>userWindow</find>
-      <find>get</find>
-      <find>toDoActView</find>
       <find>getNextNodeInfo</find>
       <find>toDoActTaskView</find>
       <find>user</find>
@@ -650,6 +250,23 @@
       <find>processInfo</find>
       <find>delUser</find>
       <find>starter</find>
+      <find>meta</find>
+      <find>pageoffice</find>
+      <find>webRoot</find>
+      <find>v-cloak</find>
+      <find>button</find>
+      <find>login</find>
+      <find>password</find>
+      <find>input</find>
+      <find>event</find>
+      <find>POBrowser</find>
+      <find>neo.js</find>
+      <find>po_ajax</find>
+      <find>doActTask</find>
+      <find>Servlet</find>
+      <find>IE</find>
+      <find>无法</find>
+      <find>getHtmlCode</find>
     </findStrings>
     <replaceStrings>
       <replace>.</replace>
@@ -682,13 +299,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/activiti/ActExtendService.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/demo/CaseMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/doActTask.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/demo/controller/ActBusInfoController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/flowNodeSet.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/demo/entity/CaseEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/demo/caseActInfo.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/views/index1.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/inesa/neo4j/casedata/CaseDataMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/inesa/neo4j/casedata/CaseDataController.java" />
@@ -705,8 +315,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ExtendActModelServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/gen/utils/GenUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/app/config/WebMvcConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hxy/HxyFrameBootApplication.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/views/login.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/extendActModelList.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/busTree.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/statics/plugins/process/modeler.html" />
@@ -718,20 +326,29 @@
         <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/common/utils/RedisUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActBusinessController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/inesa/neo4j/Neo4jUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/views/index.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/flowInfoTab.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ActModelerServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/JumpService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/JumpServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/utils/ActUtils.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/userWindow.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/jumpSelect.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/thyTemplates/greeting.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/processComSub.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/html/Word.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/views/index.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/views/login.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/html/index.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/html/login.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hxy/config/ThymeleafConfig.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hxy/config/ThymeleafConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/processComSub.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ActModelerServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hxy/HxyFrameBootApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/config/Cfg_PageOffice.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/pageoffice/word.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/pageoffice/pageIndex.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/Thymetest.java" />
       </list>
     </option>
@@ -775,7 +392,7 @@
       <path value="$PROJECT_DIR$/src/main/resources/statics/plugins/process/editor-app/libs/es5-shim-15.3.4.5/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="72" />
     <option name="width" value="2100" />
     <option name="height" value="1290" />
@@ -786,12 +403,36 @@
         <expanded-state>
           <State />
           <State>
-            <id>General</id>
+            <id>Android</id>
+          </State>
+          <State>
+            <id>CorrectnessLintAndroid</id>
+          </State>
+          <State>
+            <id>Gradle</id>
+          </State>
+          <State>
+            <id>Java EE</id>
+          </State>
+          <State>
+            <id>Kotlin</id>
+          </State>
+          <State>
+            <id>LintAndroid</id>
+          </State>
+          <State>
+            <id>Maven</id>
+          </State>
+          <State>
+            <id>OSGi</id>
+          </State>
+          <State>
+            <id>Probable bugsGradle</id>
           </State>
         </expanded-state>
         <selected-state>
           <State>
-            <id>Duplicates</id>
+            <id>WebProperties</id>
           </State>
         </selected-state>
       </profile-state>
@@ -802,12 +443,13 @@
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
+      <sortByType ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -858,6 +500,16 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="hxy" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cscwflow" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="hxy" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -881,7 +533,7 @@
               <item name="hxy" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
               <item name="activiti" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="activiti" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
@@ -889,6 +541,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cscwflow" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="statics" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
@@ -904,6 +564,54 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cscwflow" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="jsp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: com.zhuozhengsoft:pageoffice:4.6.0.3" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: com.zhuozhengsoft:pageoffice:4.6.0.3" type="70bed36:NamedLibraryElementNode" />
+              <item name="pageoffice-4.6.0.3.jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: com.zhuozhengsoft:pageoffice:4.6.0.3" type="70bed36:NamedLibraryElementNode" />
+              <item name="pageoffice-4.6.0.3.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="zhuozhengsoft" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: com.zhuozhengsoft:pageoffice:4.6.0.3" type="70bed36:NamedLibraryElementNode" />
+              <item name="pageoffice-4.6.0.3.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="zhuozhengsoft" type="462c0819:PsiDirectoryNode" />
+              <item name="pageoffice" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: com.zhuozhengsoft:pageoffice:4.6.0.3" type="70bed36:NamedLibraryElementNode" />
+              <item name="pageoffice-4.6.0.3.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="zhuozhengsoft" type="462c0819:PsiDirectoryNode" />
+              <item name="pageoffice" type="462c0819:PsiDirectoryNode" />
+              <item name="poserver" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -923,18 +631,22 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1589874217137" />
-    <property name="last_opened_file_path" value="D:/workflow/ProsecuteFlow" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1590243763229" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/sql/db" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\hxyframe\cscwflow\src\main\resources\statics\plib" />
+      <recent name="D:\hxyframe\cscwflow\src\main\webapp\WEB-INF\plib" />
+      <recent name="D:\hxyframe\cscwflow\src\main\resources" />
+      <recent name="D:\hxyframe\cscwflow\src\main\webapp\WEB-INF" />
+      <recent name="D:\hxyframe\cscwflow\src\main\resources\statics\js" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.inesa.neo4j.casedata" />
@@ -943,12 +655,10 @@
       <recent name="com.hxy.modules.demo.controller" />
       <recent name="com.hxy.modules.demo.dao" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\hxyframe\cscwflow\src\main\webapp\WEB-INF\html" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\hxyframe\cscwflow\src\main\resources\statics" />
+      <recent name="D:\hxyframe\cscwflow\src\main\webapp\WEB-INF\plib" />
       <recent name="$PROJECT_DIR$/sql/db" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/inesa/neo4j" />
-      <recent name="$PROJECT_DIR$/libs" />
-      <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -963,7 +673,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.HxyFrameBootApplication">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
@@ -975,6 +685,9 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="Unnamed" type="JavascriptDebugType" factoryName="JavaScript Debug" uri="http://localhost:8083/hxyActiviti/login.html">
+      <method v="2" />
     </configuration>
     <configuration name="HxyFrameBootApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="hxyFrame-activiti-boot" />
@@ -998,6 +711,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JavaScript Debug.Unnamed" />
+      <item itemvalue="Spring Boot.HxyFrameBootApplication" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.HxyFrameBootApplication" />
@@ -1109,12 +826,39 @@
       <workItem from="1589806042353" duration="250000" />
       <workItem from="1589806585941" duration="278000" />
       <workItem from="1589808426531" duration="1697000" />
-      <workItem from="1589857155248" duration="5416000" />
+      <workItem from="1589857155248" duration="9368000" />
+      <workItem from="1589878551398" duration="2503000" />
+      <workItem from="1589881096774" duration="89000" />
+      <workItem from="1589881280521" duration="2046000" />
+      <workItem from="1589883982394" duration="1909000" />
+      <workItem from="1589894370030" duration="599000" />
+      <workItem from="1589904494292" duration="2418000" />
+      <workItem from="1589933426457" duration="5830000" />
+      <workItem from="1589943162866" duration="341000" />
+      <workItem from="1589943570610" duration="1005000" />
+      <workItem from="1589945902316" duration="2745000" />
+      <workItem from="1589951712343" duration="335000" />
+      <workItem from="1589954317594" duration="506000" />
+      <workItem from="1589956317558" duration="358000" />
+      <workItem from="1589958992238" duration="890000" />
+      <workItem from="1589962125175" duration="7620000" />
+      <workItem from="1589988370115" duration="4322000" />
+      <workItem from="1590021633153" duration="26032000" />
+      <workItem from="1590077524724" duration="5076000" />
+      <workItem from="1590112263120" duration="2251000" />
+      <workItem from="1590150451816" duration="6866000" />
+      <workItem from="1590201584988" duration="6442000" />
+      <workItem from="1590228051013" duration="1816000" />
+      <workItem from="1590231077210" duration="38000" />
+      <workItem from="1590231164908" duration="10377000" />
+      <workItem from="1590284132959" duration="3268000" />
+      <workItem from="1590330562244" duration="559000" />
+      <workItem from="1590368604779" duration="881000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="605531000" />
+    <option name="totallyTimeSpent" value="706605000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1129,18 +873,18 @@
     <frame x="-7" y="-7" width="1455" height="935" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.36936292" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4981685" visible="true" weight="0.29634932" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="UI Designer" order="4" />
-      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Favorites" order="5" sideWeight="0.50183153" side_tool="true" weight="0.36936292" />
       <window_info id="Web" order="6" side_tool="true" />
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.45547447" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3856041" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3714653" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.45501286" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.38046274" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.281491" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32941177" />
@@ -1161,21 +905,22 @@
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info anchor="right" id="Bean Validation" order="8" weight="0.32994923" />
-      <window_info anchor="right" id="Maven Projects" order="9" weight="0.329863" />
+      <window_info anchor="right" id="Maven Projects" order="9" weight="0.329277" />
       <window_info anchor="right" id="Maven" order="10" weight="0.32994923" />
+      <window_info anchor="right" id="Coverage" order="11" side_tool="true" weight="0.329277" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30565497" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4981685" visible="true" weight="0.29778096" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="UI Designer" order="4" />
-      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Favorites" order="5" sideWeight="0.50183153" side_tool="true" weight="0.36936292" />
       <window_info id="Web" order="6" side_tool="true" />
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.45547447" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3856041" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.45501286" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.22493573" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3714653" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1199,6 +944,7 @@
       <window_info anchor="right" id="Bean Validation" order="8" weight="0.32994923" />
       <window_info anchor="right" id="Maven Projects" order="9" weight="0.329863" />
       <window_info anchor="right" id="Maven" order="10" weight="0.32994923" />
+      <window_info anchor="right" id="Coverage" order="11" side_tool="true" weight="0.32999283" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1266,7 +1012,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ActModelerServiceImpl.java</url>
-          <line>934</line>
+          <line>935</line>
           <properties />
           <option name="timeStamp" value="94" />
         </line-breakpoint>
@@ -1342,6 +1088,30 @@
           <properties />
           <option name="timeStamp" value="247" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/com/zhuozhengsoft/pageoffice/4.6.0.3/pageoffice-4.6.0.3.jar!/com/zhuozhengsoft/pageoffice/PageOfficeCtrl.class</url>
+          <line>714</line>
+          <properties />
+          <option name="timeStamp" value="285" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/com/zhuozhengsoft/pageoffice/4.6.0.3/pageoffice-4.6.0.3.jar!/com/zhuozhengsoft/pageoffice/PageOfficeCtrl.class</url>
+          <line>708</line>
+          <properties />
+          <option name="timeStamp" value="286" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/com/zhuozhengsoft/pageoffice/4.6.0.3/pageoffice-4.6.0.3.jar!/com/zhuozhengsoft/pageoffice/PageOfficeCtrl.class</url>
+          <line>724</line>
+          <properties />
+          <option name="timeStamp" value="293" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/Thymetest.java</url>
+          <line>152</line>
+          <properties />
+          <option name="timeStamp" value="298" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/resources/statics/js/activiti/actSumbit.js</url>
           <line>16</line>
@@ -1351,6 +1121,16 @@
           <url>file://$PROJECT_DIR$/src/main/resources/statics/js/activiti/actSumbit.js</url>
           <line>15</line>
           <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>jar://$MAVEN_REPOSITORY$/com/zhuozhengsoft/pageoffice/4.6.0.3/pageoffice-4.6.0.3.jar!/com/zhuozhengsoft/pageoffice/poserver/pageoffice.js</url>
+          <line>347</line>
+          <option name="timeStamp" value="257" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>jar://$MAVEN_REPOSITORY$/com/zhuozhengsoft/pageoffice/4.6.0.3/pageoffice-4.6.0.3.jar!/com/zhuozhengsoft/pageoffice/poserver/pageoffice.js</url>
+          <line>404</line>
+          <option name="timeStamp" value="281" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -1377,6 +1157,9 @@
         <watch expression="next" language="JAVA" />
         <watch expression="taskQuery" />
         <watch expression="UserUtils.getCurrentUserId()" language="JAVA" />
+        <watch expression="poCtrl.webOpen(&quot;&quot;, OpenModeType.docAdmin, &quot;张三&quot;)" language="JAVA" />
+        <watch expression="poCtrl" language="JAVA" />
+        <watch expression="poCtrl.setTagId(&quot;PageOfficeCtrl1&quot;)" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
@@ -1386,6 +1169,31 @@
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>poCtrl.webOpen(&quot;&quot;, OpenModeType.docAdmin, &quot;张三&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>poCtrl</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>poCtrl.setSaveFilePage(&quot;savefile&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>poCtrl.setTagId(&quot;PageOfficeCtrl1&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>poCtrl.webOpen(&quot;doc/test.doc&quot;, OpenModeType.docAdmin, &quot;张三&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>processTaskDto.getNextUserIds()</expression-string>
         <language-id>JAVA</language-id>
@@ -1411,284 +1219,158 @@
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>bpmnfile.</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>bpmnfile.getInputStream()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>bpmnfile.getOriginalFilename()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>bpmnfile</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.12.RELEASE/spring-web-4.3.12.RELEASE.jar!/org/springframework/web/filter/OncePerRequestFilter.class">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.12.RELEASE/spring-web-4.3.12.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/catalina/core/ApplicationFilterChain.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="74" selection-start-line="74" selection-end-line="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/catalina/core/StandardWrapperValve.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="204" selection-start-line="204" selection-end-line="204" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/catalina/core/StandardContextValve.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/catalina/authenticator/AuthenticatorBase.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="317" selection-start-line="317" selection-end-line="317" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/catalina/core/StandardHostValve.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/catalina/valves/ErrorReportValve.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
+        <state relative-caret-position="275">
           <caret line="59" selection-start-line="59" selection-end-line="59" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/catalina/core/StandardEngineValve.class">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.12.RELEASE/spring-webmvc-4.3.12.RELEASE-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/ServletInvocableHandlerMethod.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        <state relative-caret-position="422">
+          <caret line="121" selection-start-line="121" selection-end-line="121" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/catalina/connector/CoyoteAdapter.class">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.12.RELEASE/spring-webmvc-4.3.12.RELEASE-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="412" selection-start-line="412" selection-end-line="412" />
+        <state relative-caret-position="14628">
+          <caret line="749" selection-start-line="749" selection-end-line="749" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/coyote/http11/Http11Processor.class">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.12.RELEASE/spring-webmvc-4.3.12.RELEASE-sources.jar!/org/springframework/web/servlet/mvc/method/AbstractHandlerMethodAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="493" selection-start-line="493" selection-end-line="493" />
+        <state relative-caret-position="1357">
+          <caret line="84" selection-start-line="84" selection-end-line="84" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/coyote/AbstractProcessorLight.class">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.12.RELEASE/spring-webmvc-4.3.12.RELEASE-sources.jar!/org/springframework/web/servlet/DispatcherServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
+        <state relative-caret-position="21436">
+          <caret line="993" selection-start-line="993" selection-end-line="993" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/coyote/AbstractProtocol.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/ActModelerService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="841" selection-start-line="841" selection-end-line="841" />
+        <state relative-caret-position="222">
+          <caret line="134" column="9" selection-start-line="134" selection-start-column="9" selection-end-line="134" selection-end-column="9" />
         </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/tomcat/util/net/NioEndpoint.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="384" selection-start-line="384" selection-end-line="384" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/org/apache/tomcat/util/net/SocketProcessorBase.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/activiti/activiti-engine/5.22.0/activiti-engine-5.22.0.jar!/org/activiti/engine/impl/pvm/process/TransitionImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/taskLogImg.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-275" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/extendActModelList.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1909">
-          <caret line="83" column="23" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActModelController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/modelInfo.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/flowSubmit.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1173" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/ActModelerServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="529" column="56" lean-forward="true" selection-start-line="529" selection-start-column="56" selection-end-line="529" selection-end-column="56" />
+        <state relative-caret-position="291">
+          <caret line="767" column="21" selection-start-line="767" selection-start-column="21" selection-end-line="767" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActBusinessController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1219">
-          <caret line="26" column="11" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
+        <state relative-caret-position="-854">
+          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/jumpSelect.jsp.kt" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/utils/ActUtils.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/statics/js/pageoffice.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/web.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/processComSub.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="224" column="45" lean-forward="true" selection-start-line="224" selection-start-column="45" selection-end-line="224" selection-end-column="45" />
+        <state relative-caret-position="299">
+          <caret line="145" column="17" selection-start-line="145" selection-start-column="17" selection-end-line="145" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/activiti/activiti-engine/5.22.0/activiti-engine-5.22.0.jar!/org/activiti/engine/impl/pvm/process/ActivityImpl.class">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/views/neo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
+        <state relative-caret-position="184">
+          <caret line="8" column="31" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/config/FilterConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/config/KaptchaConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/sys/entity/UserEntity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/config/RedisConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="851">
-          <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/trunTask.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="56" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/myUpcoming.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1334" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/impl/JumpServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1196">
-          <caret line="73" selection-start-line="73" selection-end-line="73" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/4.3.12.RELEASE/spring-core-4.3.12.RELEASE.jar!/org/springframework/cglib/proxy/MethodProxy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="104" selection-start-line="104" selection-end-line="104" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/service/JumpService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1035">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12075">
-          <caret line="564" column="44" selection-start-line="564" selection-start-column="44" selection-end-line="564" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/doActTask.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2967">
-          <caret line="129" column="56" selection-start-line="129" selection-start-column="56" selection-end-line="129" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/userWindow.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2737">
-          <caret line="119" column="65" selection-start-line="119" selection-start-column="58" selection-end-line="119" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/jumpSelect.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="14" column="41" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
-          <folding>
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/velocity-toolbox.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="480" selection-start-line="480" selection-end-line="480" />
+        <state relative-caret-position="299">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/config/ShiroConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-437">
+        <state relative-caret-position="253">
           <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/zhuozhengsoft/pageoffice/4.6.0.3/pageoffice-4.6.0.3.jar!/com/zhuozhengsoft/pageoffice/OpenModeType.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/statics/plib/pobstyle.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/component/listener/ContextWebListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/zhuozhengsoft/pageoffice/4.6.0.3/pageoffice-4.6.0.3.jar!/com/zhuozhengsoft/pageoffice/poserver/AdminSeal.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1242">
+          <caret line="54" column="24" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/component/listener/WebAppListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-46">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot/1.5.8.RELEASE/spring-boot-1.5.8.RELEASE.jar!/org/springframework/boot/web/servlet/ServletRegistrationBean.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="69" column="16" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -1699,24 +1381,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/config/KaptchaConfig.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/config/Cfg_Activiti.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
+        <state relative-caret-position="-345">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/config/FilterConfig.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/org/activiti/FilterServletOutputStream.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-46">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        <state relative-caret-position="-115">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/config/VelocityConfig.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/config/Cfg_PageOffice.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        <state relative-caret-position="23">
+          <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/HxyFrameBootApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/config/Cfg_Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/config/Cfg_View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="4" column="81" selection-start-line="4" selection-start-column="81" selection-end-line="4" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/config/RestConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1727,53 +1437,135 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/config/SwaggerConfig.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/statics/plib/jquery.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        <state relative-caret-position="92">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/thyTemplates/greeting.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/statics/plib/pageoffice.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" column="7" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
+        <state relative-caret-position="6513">
+          <caret line="294" column="70" lean-forward="true" selection-start-line="294" selection-start-column="70" selection-end-line="294" selection-end-column="70" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/html/greeting.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+    <entry file="jar://$MAVEN_REPOSITORY$/com/zhuozhengsoft/pageoffice/4.6.0.3/pageoffice-4.6.0.3.jar!/com/zhuozhengsoft/pageoffice/poserver/pobstyle.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="59" column="19" lean-forward="true" selection-start-line="59" selection-start-column="19" selection-end-line="59" selection-end-column="19" />
+        <state relative-caret-position="-2139" />
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/zhuozhengsoft/pageoffice/4.6.0.3/pageoffice-4.6.0.3.jar!/com/zhuozhengsoft/pageoffice/poserver/a.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/zhuozhengsoft/pageoffice/4.6.0.3/pageoffice-4.6.0.3.jar!/com/zhuozhengsoft/pageoffice/poserver/c.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/zhuozhengsoft/pageoffice/4.6.0.3/pageoffice-4.6.0.3.jar!/com/zhuozhengsoft/pageoffice/poserver/CrosFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-102">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/zhuozhengsoft/pageoffice/4.6.0.3/pageoffice-4.6.0.3.jar!/com/zhuozhengsoft/pageoffice/poserver/b.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/zhuozhengsoft/pageoffice/4.6.0.3/pageoffice-4.6.0.3.jar!/com/zhuozhengsoft/pageoffice/poserver/Server.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="1264" column="42" selection-start-line="1264" selection-start-column="42" selection-end-line="1264" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/jre/lib/rt.jar!/sun/reflect/NativeMethodAccessorImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="33" column="33" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/pageoffice/word.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/trunTask.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1242">
+          <caret line="54" column="43" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/zhuozhengsoft/pageoffice/4.6.0.3/pageoffice-4.6.0.3.jar!/com/zhuozhengsoft/pageoffice/poserver/pageoffice.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8050">
+          <caret line="350" column="9" selection-start-line="350" selection-start-column="9" selection-end-line="350" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/pageoffice/pageoffice.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11339">
+          <caret line="493" column="17" selection-start-line="493" selection-start-column="17" selection-end-line="493" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/pageoffice/pageIndex.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="33" column="7" lean-forward="true" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/zhuozhengsoft/pageoffice/4.6.0.3/pageoffice-4.6.0.3.jar!/com/zhuozhengsoft/pageoffice/PageOfficeCtrl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="172" column="18" selection-start-line="172" selection-start-column="18" selection-end-line="172" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="501" column="7" selection-start-line="501" selection-start-column="7" selection-end-line="501" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/config/ThymeleafConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="48" column="51" selection-start-line="48" selection-start-column="51" selection-end-line="48" selection-end-column="51" />
+        <state>
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2964#2965#0" expanded="true" />
-            <element signature="e#3007#3008#0" expanded="true" />
+            <element signature="e#0#3321#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/activiti/processComSub.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="234" column="24" selection-start-line="234" selection-start-column="24" selection-end-line="234" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/Thymetest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        <state relative-caret-position="139">
+          <caret line="153" lean-forward="true" selection-start-line="153" selection-end-line="153" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1829,12 +1621,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>hxyFrame-activiti-boot</last-edited>
+          <last-edited>Spring|hxyFrame-activiti-boot</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -1854,7 +1645,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Maven: aopalliance:aopalliance:1.0</last-edited>
+          <last-edited>Maven: com.zhuozhengsoft:pageoffice:4.6.0.3</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

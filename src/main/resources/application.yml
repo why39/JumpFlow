@@ -46,21 +46,27 @@ spring:
     velocity:
         enabled=false:
 
+#    # Thymeleaf
+#    thymeleaf:
+#        #prefix: classpath:/views/
+#        prefix: /WEB-INF/html
+#        suffix: .html
+#        mode: HTML5
+#        encoding: UTF-8
+#        content-type: text/html
+#        cache: false
+#        check-template: false
+
 # Mybatis配置
 mybatis:
     mapperLocations: classpath:mapper/**/*.xml
     configLocation: classpath:mybatis-config.xml
 
-# Thymeleaf
-thymeleaf:
-    #prefix: classpath:thyTemplates/
-    prefix: /WEB-INF/html
-    suffix: .html
-    mode: HTML5
-    encoding: UTF-8
-    content-type: text/html
-    cache: false
-    check-template: false
+
+# Pageoffice
+pageoffice:
+  posyspath: d:/IDE/lic/
+  popassword: 111111
 
 # APP模块
 jwt:
