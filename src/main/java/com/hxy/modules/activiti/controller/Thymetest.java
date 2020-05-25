@@ -14,6 +14,7 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -133,7 +134,6 @@ public class Thymetest {
 
         PageOfficeCtrl poCtrl=new PageOfficeCtrl(request);
 
-
         request.setAttribute("poCtrl", poCtrl);
 
         //设置服务页面
@@ -143,7 +143,8 @@ public class Thymetest {
         //设置保存的action
         poCtrl.setSaveFilePage("savefile");
         //打开word
-        poCtrl.webOpen("d:\\test.wps",OpenModeType.docAdmin,"张三");
+        //poCtrl.webOpen("d:\\test.wps",OpenModeType.docAdmin,"张三");
+        poCtrl.webOpen("doc/test.wps",OpenModeType.docAdmin,"张三");
         poCtrl.setTagId("PageOfficeCtrl1"); //此行必须
         model.addAttribute("poCtrl", poCtrl);
         String res = poCtrl.getHtmlCode("PageOfficeCtrl1");
@@ -154,14 +155,19 @@ public class Thymetest {
 
     }
 
-    @RequestMapping(value = "/save")
+    @RequestMapping(value = "/savefile")
 
     public void saveFile(HttpServletRequest request, HttpServletResponse response){
 
         FileSaver fs = new FileSaver(request, response);
 
-        fs.saveToFile("d:\\" + fs.getFileName());
-
+        //fs.saveToFile("d:\\" + fs.getFileName());
+        try {
+            fs.saveToFile(ResourceUtils.getURL("classpath:").getPath() + "/statics/doc/" + fs.getFileName());
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
         fs.close();
     }
 
