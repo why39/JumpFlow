@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.util.Map;
 
 @Controller
@@ -98,7 +99,7 @@ public class Thymetest {
 
     /**
 
-     * 添加印章管理程序Servlet（可选）
+     * 添加PageOffice的服务器端授权程序Servlet（必须）,第一个配置bean无效
 
      * @return
 
@@ -129,9 +130,17 @@ public class Thymetest {
 
     }
 
-    @RequestMapping(value="/word", method= RequestMethod.GET)
-    public String showWord(HttpServletRequest request, HttpServletResponse response, Model model){
+    /**
 
+     * 打开已有文书模板
+
+     * @return
+
+     */
+
+    @RequestMapping(value="/word", method= RequestMethod.GET)
+    public String showWord(String fileName, HttpServletRequest request, HttpServletResponse response){
+        String fn = fileName;
         PageOfficeCtrl poCtrl=new PageOfficeCtrl(request);
 
         request.setAttribute("poCtrl", poCtrl);
@@ -144,10 +153,8 @@ public class Thymetest {
         poCtrl.setSaveFilePage("savefile");
         //打开word
         //poCtrl.webOpen("d:\\test.wps",OpenModeType.docAdmin,"张三");
-        poCtrl.webOpen("doc/test.wps",OpenModeType.docAdmin,"张三");
+        poCtrl.webOpen("doc/sss.wps",OpenModeType.docAdmin,"张三");   //这里相对路径是读取target/doc下的文件，而不是src/doc下的文件
         poCtrl.setTagId("PageOfficeCtrl1"); //此行必须
-        model.addAttribute("poCtrl", poCtrl);
-        String res = poCtrl.getHtmlCode("PageOfficeCtrl1");
         //--- PageOffice的调用代码 结束 -----
 
 
@@ -155,6 +162,13 @@ public class Thymetest {
 
     }
 
+    /**
+
+     * 保存已有文档模板的修改（更新已有模板）
+
+     * @return
+
+     */
     @RequestMapping(value = "/savefile")
 
     public void saveFile(HttpServletRequest request, HttpServletResponse response){
@@ -163,7 +177,64 @@ public class Thymetest {
 
         //fs.saveToFile("d:\\" + fs.getFileName());
         try {
-            fs.saveToFile(ResourceUtils.getURL("classpath:").getPath() + "/statics/doc/" + fs.getFileName());
+            fs.saveToFile(ResourceUtils.getURL("classpath:").getPath() + "/statics/doc/instances/" + fs.getFileName());
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        fs.close();
+    }
+
+    /**
+
+     * 创建新文书模板
+
+     * @return
+
+     */
+
+    @RequestMapping(value="/createword", method= RequestMethod.GET)
+    public String createWord(String fileName, HttpServletRequest request, HttpServletResponse response){
+        String fn = fileName;
+        PageOfficeCtrl poCtrl=new PageOfficeCtrl(request);
+
+        request.setAttribute("poCtrl", poCtrl);
+
+        //设置服务页面
+        poCtrl.setServerPage(request.getContextPath()+"/plib/poserver.zz");
+        //添加保存按钮
+        poCtrl.addCustomToolButton("保存并关闭","Save",1);
+        //设置保存的action
+        poCtrl.setSaveFilePage("saveCreateFile?fileName="+fn);
+        //创建word
+        poCtrl.webCreateNew("张三", DocumentVersion.Word2007);
+        poCtrl.setFileTitle(fn);
+        poCtrl.setTagId("PageOfficeCtrl1"); //此行必须
+        //--- PageOffice的调用代码 结束 -----
+
+
+        return "pageoffice/word";
+
+    }
+
+    /**
+
+     * 保存新建的文档模板
+
+     * @return
+
+     */
+    @RequestMapping(value = "/saveCreateFile")
+
+    public void saveCreateFile(String fileName, HttpServletRequest request, HttpServletResponse response){
+        String fn = fileName;
+        FileSaver fs = new FileSaver(request, response);
+        //fs.saveToFile("d:\\" + fs.getFileName());
+        try {
+            fs.saveToFile(ResourceUtils.getURL("classpath:").getPath() + "/statics/doc/instances/" + fs.getFileName());
+            File file = new File(ResourceUtils.getURL("classpath:").getPath() + "/statics/doc/" + fs.getFileName());
+            //将文书模板名称从默认的newword.docx改为自定义的名称
+            file.renameTo(new File(ResourceUtils.getURL("classpath:").getPath() + "/statics/doc/" + fn + ".docx"));
         }
         catch (Exception e){
             e.printStackTrace();
