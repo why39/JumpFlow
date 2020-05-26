@@ -29,7 +29,11 @@
 <body>
 <div style="text-align:center;">
     <b>文书在线编辑</b><br>
-    <a href="javascript:POBrowser.openWindowModeless('word' , 'width=1200px;height=800px;');">打开文书</a><br>
+    <a href="javascript:POBrowser.openWindowModeless('word?fileName=aaaa' , 'width=1200px;height=800px;');">打开文书</a><br>
+</div>
+<div style="text-align:center;">
+    <b>新建文书模板</b><br>
+    <a href="javascript:POBrowser.openWindowModeless('createword?fileName=aaaa' , 'width=1200px;height=1200px;');">新建文书</a><br>
 </div>
 </body>
 
