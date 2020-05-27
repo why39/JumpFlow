@@ -20,6 +20,7 @@
                 <button class="layui-btn" type="button" id="write">新 建 文 书</button>
                 <button class="layui-btn" type="button" id="submitFile">文 书 提 交</button>
                 <button class="layui-btn" type="button" id="create">新 建 文 书 模 板 </button>
+                <button class="layui-btn" type="button" id="refresh">刷 新 </button>
             </div>
         </form>
     </div>
@@ -177,9 +178,24 @@
         }
     });
 
-    //新建文书模板
+    /**
+     * 新建文书模板
+     */
     $("#create").click(function () {
-        POBrowser.openWindowModeless('createword?fileName=aaaa' , 'width=1200px;height=1200px;');
+        layer.prompt({
+            formType: 2,
+            value: '',
+            title: '请输入新建文书模板名称',
+            area: ['200px', '35px'] //自定义文本域宽高
+        }, function(value, index, elem){
+            if(value == null){
+                alert("文书名称不能为空！");
+            }
+            else{
+                POBrowser.openWindowModeless('createword?fileName='+value.toString() , 'width=1200px;height=1200px;');
+            }
+            layer.close(index);
+        });
     });
 
     /**
@@ -188,5 +204,12 @@
     function look(fname) {
         POBrowser.openWindowModeless('wordIns?fileName='+fname.toString() , 'width=1200px;height=1200px;');
     }
+
+    /**
+     * 刷新页面
+     */
+    $("#refresh").click(function () {
+        window.location.reload();
+    });
 </script>
 </html>
