@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Map;
 
 @Controller
@@ -153,7 +154,7 @@ public class Thymetest {
         poCtrl.setSaveFilePage("savefile");
         //打开word
         //poCtrl.webOpen("d:\\test.wps",OpenModeType.docAdmin,"张三");
-        poCtrl.webOpen("doc/sss.wps",OpenModeType.docAdmin,"张三");   //这里相对路径是读取target/doc下的文件，而不是src/doc下的文件
+        poCtrl.webOpen("doc/"+fn,OpenModeType.docAdmin,"张三");   //这里相对路径是读取target/doc下的文件，而不是src/doc下的文件
         poCtrl.setTagId("PageOfficeCtrl1"); //此行必须
         //--- PageOffice的调用代码 结束 -----
 
@@ -231,7 +232,7 @@ public class Thymetest {
         FileSaver fs = new FileSaver(request, response);
         //fs.saveToFile("d:\\" + fs.getFileName());
         try {
-            fs.saveToFile(ResourceUtils.getURL("classpath:").getPath() + "/statics/doc/instances/" + fs.getFileName());
+            fs.saveToFile(ResourceUtils.getURL("classpath:").getPath() + "/statics/doc/" + fs.getFileName());
             File file = new File(ResourceUtils.getURL("classpath:").getPath() + "/statics/doc/" + fs.getFileName());
             //将文书模板名称从默认的newword.docx改为自定义的名称
             file.renameTo(new File(ResourceUtils.getURL("classpath:").getPath() + "/statics/doc/" + fn + ".docx"));
@@ -242,9 +243,66 @@ public class Thymetest {
         fs.close();
     }
 
+    /**
+
+     * 打开已有文书模板实例
+
+     * @return
+
+     */
+
+    @RequestMapping(value="/wordIns", method= RequestMethod.GET)
+    public String showWordInstance(String fileName, HttpServletRequest request, HttpServletResponse response){
+        String fn = fileName;
+        PageOfficeCtrl poCtrl=new PageOfficeCtrl(request);
+
+        request.setAttribute("poCtrl", poCtrl);
+
+        //设置服务页面
+        poCtrl.setServerPage(request.getContextPath()+"/plib/poserver.zz");
+        //添加保存按钮
+        poCtrl.addCustomToolButton("保存并关闭","Save",1);
+        //设置保存的action
+        poCtrl.setSaveFilePage("savefile");
+        //打开word
+        //poCtrl.webOpen("d:\\test.wps",OpenModeType.docAdmin,"张三");
+        poCtrl.webOpen("doc/instances/"+fn,OpenModeType.docAdmin,"张三");   //这里相对路径是读取target/doc下的文件，而不是src/doc下的文件
+        poCtrl.setTagId("PageOfficeCtrl1"); //此行必须
+        //--- PageOffice的调用代码 结束 -----
+
+
+        return "pageoffice/word";
+
+    }
+
+    /**
+
+     * 引导页
+
+     * @return
+
+     */
+
     @RequestMapping(value="/pageIndex", method= RequestMethod.GET)
-    public String pageIndex(HttpServletRequest request, Map<String,Object> map){
-        return "pageoffice/pageIndex";
+    public String pageIndex(HttpServletRequest request, Model model){
+        //扫描文书存储目录下的所有文书文件
+        String path = null;
+        try{
+            path = ResourceUtils.getURL("classpath:").getPath() + "/statics/doc/";
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        ArrayList<String> files = new ArrayList<String>();
+        File file = new File(path);
+        File[] tempList = file.listFiles();
+        for (int i = 0; i < tempList.length; i++) {
+            if (tempList[i].isFile()) {
+                files.add(tempList[i].getName());
+            }
+        }
+        model.addAttribute("files",files);
+        return "pageoffice/filebookIndex";
     }
 
 
