@@ -104,14 +104,6 @@
         var count =0;
         $("#table-list tbody input:checkbox:checked,#table-list tbody input:radio:checked").each(function () {
             var id = $(this).val();
-            var flag = true;
-            userTab.find("tr").each(function () {
-                var trid = $(this).attr("id");
-                if(trid == id){
-                    flag =false;
-                }
-            })
-            if(flag){
                 var tds =$(this).parent().siblings();
                 html+="<tr id='"+id+"'>";
                 html+="  <td>"+tds[0].innerText+"</td>";
@@ -122,7 +114,6 @@
                 html+='<td><button type="button" onclick="delUser(this)" class="btn btn-xs btn-white btn-danger"><i class="fa fa-trash-o"></i> 删 除 </button></td>';
                 html+="</tr>";
                 count++;
-            }
         });
         userTab.html(html);
     });

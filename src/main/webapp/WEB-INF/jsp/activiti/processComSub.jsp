@@ -27,8 +27,8 @@
         <button class="layui-btn layui-btn-danger" type="button" onclick="backPrevious()">退回上一步</button>
         <button class="layui-btn layui-btn-warm" type="button" onclick="turnToDo()">转办</button>
         <button class="layui-btn layui-btn-danger" type="button" onclick="backPrevious()">跳转</button>
+        <button class="layui-btn layui-btn-warm" type="button" onclick="filebook()">文 书</button>
         <button class="layui-btn layui-btn-primary" type="button" onclick="closeThisWindow()">关 闭</button>
-        <button class="layui-btn layui-btn-primary" type="button" onclick="filebook()">文 书</button>
     </div>
 </form>
 <script>
