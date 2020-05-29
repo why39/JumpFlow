@@ -28,6 +28,7 @@
         <button class="layui-btn layui-btn-warm" type="button" onclick="turnToDo()">转办</button>
         <button class="layui-btn layui-btn-danger" type="button" onclick="backPrevious()">跳转</button>
         <button class="layui-btn layui-btn-warm" type="button" onclick="filebook()">文 书</button>
+        <button class="layui-btn layui-btn-danger" type="button" onclick="rule()">规 则</button>
         <button class="layui-btn layui-btn-primary" type="button" onclick="closeThisWindow()">关 闭</button>
     </div>
 </form>
@@ -235,6 +236,36 @@
             title : ["文书" , true],
             area: ['100%', '100%'], //宽高
             content: [url,'no'],
+            shadeClose : false,
+        });
+    }
+    /**
+     * 规则相关
+     */
+    function rule() {
+        var params ="busId="+processInfo.busId+"&taskId="+processInfo.taskId+"&taskName="+processInfo.taskName+"&defId="+processInfo.defId+"&instanceId="+processInfo.instanceId;
+        //加入参数可更改的字段数值
+        var vars = processInfo.vars;
+        var varValue="";
+        var varName="";
+        if(vars!=null){
+            for(var i=0;i<vars.length;i++){
+                var val=$("#"+vars[i]+"").val();
+
+                console.log(">>>>>>>>>>>>>>" + val);
+                varValue+=val+",";
+                varName+=vars[i]+",";
+            }
+        }
+        params+="&varName="+varName+"&varValue="+varValue;
+        var url="${webRoot}/ruleIndex?"+params;
+        //弹框层
+        layer.open({
+            scrollbar: true,
+            type: 2,
+            title : ["规则" , true],
+            area: ['100%', '100%'], //宽高
+            content: [url,'yes'],
             shadeClose : false,
         });
     }
