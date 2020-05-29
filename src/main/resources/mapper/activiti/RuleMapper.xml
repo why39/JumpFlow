@@ -5,7 +5,7 @@
     <!--根据流程模型id，流程实例id和活动id 获取当前活动的所有规则-->
         <select id="queryRulesAva" resultType="com.hxy.modules.activiti.entity.RuleEntity">
 		select rule_id AS id, model_id AS model_id, instance_id AS deploymentId, rule_exp AS expression,
-		start_act AS startEvent, end_act AS end_Event
+		start_act AS startEvent, end_act AS end_Event, start_Name AS startName, end_Name AS end_Name
 		from jump_rule
 		where model_id = #{modelId} AND instance_id = #{deploymentId} AND start_act = #{startEvent}
 	</select>
@@ -13,7 +13,7 @@
 	<!--根据流程模型id，流程实例id，获取当前实例的所有规则-->
 	<select id="queryRulesAll" resultType="com.hxy.modules.activiti.entity.RuleEntity">
 		select rule_id AS id, model_id AS model_id, instance_id AS deploymentId, rule_exp AS expression,
-		start_act AS startEvent, end_act AS end_Event
+		start_act AS startEvent, end_act AS end_Event, start_Name AS startName, end_Name AS end_Name
 		from jump_rule
 		where model_id = #{modelId} AND instance_id = #{deploymentId}
 	</select>
@@ -26,7 +26,9 @@
 			instance_id,
 			rule_exp,
 			start_act,
-			end_act
+			end_act,
+			start_Name,
+			end_Name
 		)
 		values
 		(
@@ -35,11 +37,13 @@
 			#{deploymentId},
 			#{expression},
 			#{startEvent},
-			#{endEvent}
+			#{endEvent},
+			#{startName},
+			#{endName}
 		)
 	</insert>
 
-    <delete id="delete">
-		delete from jump_rule where id = #{value}
+    <delete id="delete" parameterType = "java.lang.String">
+		delete from jump_rule where rule_id = #{id}
 	</delete>
 </mapper>
