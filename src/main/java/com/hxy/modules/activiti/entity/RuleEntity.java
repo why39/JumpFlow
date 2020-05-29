@@ -21,10 +21,15 @@ public class RuleEntity  implements Serializable {
     //名称
     @NotBlank(message = "规则内容不能为空")
     private String expression;
-    //规则执行环节
+    //规则执行环节ID
     private String startEvent;
-    //规则跳转环节
+    //规则跳转环节ID
     private String endEvent;
+
+    private String startName;
+    //规则跳转环节名称
+    private String endName;
+
 
     public String getId() {
         return id;
@@ -74,6 +79,21 @@ public class RuleEntity  implements Serializable {
         this.endEvent = endEvent;
     }
 
+    public String getStartName() {
+        return startName;
+    }
+
+    public void setStartName(String startName) {
+        this.startName = startName;
+    }
+
+    public String getEndName() {
+        return endName;
+    }
+
+    public void setEndName(String endName) {
+        this.endName = endName;
+    }
 
 
 

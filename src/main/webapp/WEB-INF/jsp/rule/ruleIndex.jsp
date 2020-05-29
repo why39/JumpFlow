@@ -15,7 +15,6 @@
             <div class="layui-form-item">
                 <button class="layui-btn" type="button" id="refresh">刷 新 </button>
                 <button class="layui-btn" type="button" id="ruleExist">查 看 已 有 规 则</button>
-                <button class="layui-btn" type="button" id="createRule">新 建 规 则</button>
             </div>
         </form>
     </div>
@@ -142,6 +141,7 @@
             </table>
         </div>
     </div>
+    <button class="layui-btn" type="button" id="createRule">新 建 规 则</button>
 </div>
 </body>
 <script>
@@ -286,8 +286,48 @@
     /**
      * 新建规则
      */
-    $("#ruleExist").click(function () {
-        
+    $("#createRule").click(function () {
+        var modelId = '${taskDto.defId}';
+        var instanceId = '${taskDto.instanceId}';
+        var startEvent = $("#showActTable tr:eq(1) td:eq(2)").text();
+        var startName = $("#showActTable tr:eq(1) td:eq(0)").text();
+        var endEvent = $("#showActTable2 tr:eq(1) td:eq(2)").text();
+        var endName = $("#showActTable2 tr:eq(1) td:eq(0)").text();
+        var table = document.getElementById("fileTab");
+        var expression = '';
+        for(var i = 1, rows = table.rows.length; i < rows; i++){
+            expression += table.rows[i].cells[0].innerHTML;
+            if(i != rows - 1){
+                expression += "&";
+            }
+        }
+        if(startEvent == ''){
+            alertMsg("请选择跳转发生环节！");
+        }
+        else if(endEvent == ''){
+            alertMsg("请选择跳转目标环节！");
+        }
+        else if(expression == ''){
+            alertMsg("请选择跳转发生的文书规则！");
+        }
+
+        var url = "${webRoot}/ruleCreate";
+        var params ={
+            'startEvent':startEvent,
+            'endEvent':endEvent,
+            'expression':expression,
+            'modelId':modelId,
+            'instanceId':instanceId,
+            'startName':startName,
+            'endName':endName,
+        };
+        $.post(url,params,function (result) {
+            if(result.code == '0'){
+                alert(result);
+            }else {
+                alertMsg(result.msg);
+            }
+        });
     });
 </script>
 </html>

@@ -37,8 +37,9 @@
                                 <tr id="${rule}" >
                                     <td>${rule.id} </td>
                                     <td>${rule.expression} </td>
-                                    <td>${rule.startEvent} </td>
-                                    <td>${rule.endEvent} </td>
+                                    <td>${rule.startName} </td>
+                                    <td>${rule.endName} </td>
+                                    <td><button type="button" onclick="delRule(${rule.id})" class="btn btn-xs btn-white btn-danger"><i class="fa fa-trash-o"></i> 删 除 规 则</button></td>';
                                 </tr>
                             </c:if>
                         </c:forEach>
@@ -59,5 +60,24 @@
     $("#refresh").click(function () {
         window.location.reload();
     });
+
+
+    /**
+     * 删除规则
+     */
+    function delRule(id) {
+        var url ="${webRoot}/ruleDel";
+        var params ={
+            'id':id
+        }
+        $.post(url,params,function (result) {
+            if(result.code == '0'){
+                alert(result);
+            }else {
+                alertMsg(result.msg);
+            }
+        });
+        window.location.reload();
+    }
 </script>
 </html>
