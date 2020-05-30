@@ -211,5 +211,67 @@
     $("#refresh").click(function () {
         window.location.reload();
     });
+
+    /**
+     * 流程相关信息类
+     */
+    function processInfo(busId,actKey,taskId,taskName,instanceId,changeFields,defId) {
+        this.busId=busId;//业务id
+        this.actKey=actKey;//流程key也是业务key
+        this.taskId=taskId;//任务id
+        this.taskName=taskName;
+        this.instanceId=instanceId;//流程实例
+        this.changeFields=changeFields;//可更改的字段
+        this.defId=defId;//流程定义id
+    }
+    var processInfo=new processInfo();
+    $(function () {
+        //获取业务可更改的字段，和流程业务基本信息
+        processInfo.busId='${taskDto.busId}';
+        processInfo.taskId='${taskDto.taskId}';
+        processInfo.taskName='${taskDto.taskName}';
+        processInfo.instanceId='${taskDto.instanceId}';
+        processInfo.defId='${taskDto.defId}';
+        getChangeFileds();
+
+        console.log('${djb}');
+
+    });
+
+    /**
+     * 提交文书
+     */
+    $("#submitFile").click(function () {
+        var expression = '';
+        var table = document.getElementById("fileTab");
+        for(var i = 1, rows = table.rows.length; i < rows; i++){
+            expression += table.rows[i].cells[0].innerHTML;
+            if(i != rows - 1){
+                expression += "&";
+            }
+        }
+
+
+        var params ={
+            'busId':processInfo.busId,
+            'taskId':processInfo.taskId,
+            'taskName':processInfo.taskName,
+            'instanceId':processInfo.instanceId,
+            'defId':processInfo.defId,
+            'expression':expression,
+        };
+        var url ="${webRoot}/submitFile";
+        $.post(url,params,function (result) {
+            if(result.code == '0'){
+                alert(result,function () {
+                    //父级搜索 刷新待办列表
+                    $(parent.parent.document.getElementById("main-container")).find("#search-from").submit();
+                    //closeThisWindow();
+                });
+            }else {
+                alertMsg(result.msg);
+            }
+        });
+    });
 </script>
 </html>
