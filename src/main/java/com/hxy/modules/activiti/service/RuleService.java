@@ -12,4 +12,6 @@ public interface RuleService {
     void save(RuleEntity rule);
 
     void delete(String id);
+
+    boolean compareRule(String e1, String e2);
 }

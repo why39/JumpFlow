@@ -1,6 +1,13 @@
 package com.hxy.modules.activiti.controller;
 
+import com.hxy.modules.activiti.dto.ProcessTaskDto;
+import com.hxy.modules.activiti.entity.RuleEntity;
+import com.hxy.modules.activiti.service.ActModelerService;
+import com.hxy.modules.activiti.service.JumpService;
+import com.hxy.modules.activiti.service.RuleService;
+import com.hxy.modules.activiti.utils.ActUtils;
 import com.hxy.modules.common.annotation.SysLog;
+import com.hxy.modules.common.utils.Result;
 import com.hxy.modules.common.utils.ShiroUtils;
 import com.hxy.modules.common.utils.UserUtils;
 import com.zhuozhengsoft.pageoffice.DocumentVersion;
@@ -9,24 +16,34 @@ import com.zhuozhengsoft.pageoffice.OpenModeType;
 import com.zhuozhengsoft.pageoffice.PageOfficeCtrl;
 import com.zhuozhengsoft.pageoffice.wordreader.WordDocument;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.LinkedCaseInsensitiveMap;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Controller
 public class Thymetest {
+    @Autowired
+    RuleService ruleService;
+    @Autowired
+    JumpService jumpService;
+    @Autowired
+    ActModelerService actModelerService;
     @Value("${pageoffice.posyspath}")
     private String poSysPath;
     @Value("${pageoffice.popassword}")
@@ -284,7 +301,7 @@ public class Thymetest {
      */
 
     @RequestMapping(value="/pageIndex", method= RequestMethod.GET)
-    public String pageIndex(HttpServletRequest request, Model model){
+    public String pageIndex(ProcessTaskDto processTaskDto, HttpServletRequest request, Model model){
         //扫描文书存储目录下的所有文书文件
         String path = null;
         try{
@@ -302,8 +319,57 @@ public class Thymetest {
             }
         }
         model.addAttribute("files",files);
+        model.addAttribute("taskDto", processTaskDto);
         return "pageoffice/filebookIndex";
     }
+    /**
+     *  提交文书
+     */
+    @RequestMapping(value="/submitFile", method = RequestMethod.POST)
+    @ResponseBody
+    public Result submitFile(javax.servlet.http.HttpServletRequest request, Model model){
+        Result result = null;
+        try{
+            Map<String, String[]> parameterMap = request.getParameterMap();
+            Map<String, Object> params = new LinkedCaseInsensitiveMap<>();
+            for (String key : parameterMap.keySet()) {
+                params.put(key, parameterMap.get(key)[0]);
+            }
+            ProcessTaskDto processTaskDto = new ProcessTaskDto();
+            processTaskDto.setBusId((String)params.get("busId"));
+            processTaskDto.setTaskId((String)params.get("taskId"));
+            processTaskDto.setTaskName((String)params.get("taskName"));
+            processTaskDto.setInstanceId((String)params.get("instanceId"));
+            processTaskDto.setDefId((String)params.get("defId"));
+            String expression = (String)params.get("expression");
+            String actId = ActUtils.findActivitiImpl(processTaskDto.getTaskId(),"").getId();
+            List<RuleEntity> lr = ruleService.queryRulesAva(processTaskDto.getDefId(), processTaskDto.getInstanceId(),actId);
+            String nextAct = "";
+            String nextActName = "";
+            String rId = "";
+            for(RuleEntity re : lr){
+                if(ruleService.compareRule(re.getExpression(), expression) == true){
+                    nextAct = re.getEndEvent();
+                    nextActName = re.getEndName();
+                    rId = re.getId();
+                    break;
+                }
+            }
+            if(nextAct != ""){
+                result = Result.ok("根据规则"+rId+",跳转到"+nextActName);
+                jumpService.jumpEndActivity(processTaskDto.getDefId(),processTaskDto,processTaskDto.getInstanceId(),nextAct);
 
+            }
+            else{
+                result = Result.ok("没有相应规则，将按流程定义执行流程");
+                actModelerService.doActTask(processTaskDto, params);
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            result = Result.error("提交文书并执行流程失败");
+        }
+        return result;
+    }
 
 }

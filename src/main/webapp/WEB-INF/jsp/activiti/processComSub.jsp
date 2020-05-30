@@ -228,7 +228,22 @@
      * 文书相关
      */
     function filebook() {
-        var url="${webRoot}/pageIndex";
+        var params ="busId="+processInfo.busId+"&taskId="+processInfo.taskId+"&taskName="+processInfo.taskName+"&defId="+processInfo.defId+"&instanceId="+processInfo.instanceId;
+        //加入参数可更改的字段数值
+        var vars = processInfo.vars;
+        var varValue="";
+        var varName="";
+        if(vars!=null){
+            for(var i=0;i<vars.length;i++){
+                var val=$("#"+vars[i]+"").val();
+
+                console.log(">>>>>>>>>>>>>>" + val);
+                varValue+=val+",";
+                varName+=vars[i]+",";
+            }
+        }
+        params+="&varName="+varName+"&varValue="+varValue;
+        var url="${webRoot}/pageIndex?"+params;
         //弹框层
         layer.open({
             scrollbar: true,
