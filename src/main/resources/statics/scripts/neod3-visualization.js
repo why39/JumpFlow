@@ -47,16 +47,20 @@ function Neod3Renderer() {
 
     function clickNode(node) {
         selectNode = JSON.parse(JSON.stringify(node));
-
+        console.log(selectNode)
         if (selectNode.label == "Task") {
             $(".nodeId").text("<id> : "+node.id);
-            $(".nodeInstanceId").text("<所属案件ID> : "+selectNode.instanceId);
-            $(".nodeTaskId").text("<案件环节ID> : "+selectNode.taskId);
+            $(".nodeInstanceId").text("<所属案件ID> : "+selectNode.caseId);
+            // $(".nodeTaskId").text("<案件环节ID> : "+selectNode.taskId);
             $(".nodeName").text("<环节名称> : "+selectNode.name);
         } else {
-            sweetAlert("taskIds"
-                , "所属环节IDs：" + selectNode.taskIds + "\n"
-                + "审批意见：" + selectNode.remark + "\n"
+            var alertString ="";
+            for(var k in selectNode){//遍历json对象的每个key/value对,k为key
+                alertString+=k+" : " +selectNode[k]+"\n";
+
+            }
+            sweetAlert("结点"
+                ,alertString
                 , "info");
         }
 
