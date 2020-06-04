@@ -101,8 +101,13 @@
 
 <script type="text/javascript">
     var connection = function () {
-        return {url: "http://127.0.0.1:7474", user: "neo4j", pass: "1992"};
+        configStr = localStorage.getItem("neoconfig");
+        configJSON = JSON.parse(configStr)
+        console.log(configJSON.NEO_SERVER_URL, configJSON.NEO_SERVER_USER,configJSON.NEO_SERVER_PSW)
+        config = {url: "http://"+configJSON.NEO_SERVER_URL+":7474" , user: configJSON.NEO_SERVER_USER , pass: configJSON.NEO_SERVER_PSW};
+        return config;
     }
+
 
     function execute(content) {
         var neod3 = new Neod3Renderer();

@@ -45,6 +45,12 @@ spring:
 
     velocity:
         enabled=false:
+    data:
+        neo4j:
+            uri: 127.0.0.1
+            username: neo4j
+            password: 1992
+
 
 #    # Thymeleaf
 #    thymeleaf:
@@ -65,7 +71,7 @@ mybatis:
 
 # Pageoffice
 pageoffice:
-  posyspath: d:/IDE/lic/
+  posyspath: ./IDE/lic/
   popassword: 111111
 
 # APP模块

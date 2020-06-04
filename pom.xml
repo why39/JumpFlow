@@ -494,6 +494,8 @@
             <groupId>com.zhuozhengsoft</groupId>
             <artifactId>pageoffice</artifactId>
             <version>4.6.0.3</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/pageoffice4.6.0.3.jar</systemPath>
         </dependency>
 
     </dependencies>

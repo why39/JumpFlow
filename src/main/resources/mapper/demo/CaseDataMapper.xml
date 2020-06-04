@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hxy.provenance.neo4j.CaseDataMapper">
+
+    <resultMap type="String" id="CaseProvDataResult">
+        <result property="case_prov_data" column="case_prov_data"/>
+    </resultMap>
+
+    <resultMap type="com.hxy.provenance.neo4j.CaseDataBean" id="CaseDataResult">
+        <result property="case_id" column="case_id"/>
+        <result property="case_name" column="case_name"/>
+        <result property="case_category" column="case_category"/>
+        <result property="user_id" column="user_id"/>
+        <result property="user_name" column="user_name"/>
+        <result property="department_id" column="department_id"/>
+        <result property="department_name" column="department_name"/>
+    </resultMap>
+
+    <insert id="addCase" parameterType="com.hxy.provenance.neo4j.CaseDataBean">
+        insert into case_data (
+        <if test="case_id != null and case_id != '' ">case_id,</if>
+        <if test="case_name != null and case_name != '' ">case_name,</if>
+        <if test="case_category != null and case_category != '' ">case_category,</if>
+        <if test="user_id != null and user_id != '' ">user_id,</if>
+        <if test="user_name != null and user_name != '' ">user_name,</if>
+        <if test="department_id != null and department_id != '' ">department_id,</if>
+        <if test="department_name != null and department_name != '' ">department_name</if>
+        )values(
+        <if test="case_id != null and case_id != '' ">#{case_id},</if>
+        <if test="case_name != null and case_name != '' ">#{case_name},</if>
+        <if test="case_category != null and case_category != '' ">#{case_category},</if>
+        <if test="user_id != null and user_id != '' ">#{user_id},</if>
+        <if test="user_name != null and user_name != '' ">#{user_name},</if>
+        <if test="department_id != null and department_id != '' ">#{department_id},</if>
+        <if test="department_name != null and department_name != '' ">#{department_name}</if>
+        )
+    </insert>
+
+    <insert id="updateCaseProvData" parameterType="com.hxy.provenance.neo4j.CaseProvDataBean">
+        REPLACE INTO case_prov_tb (case_id,case_prov_data) VALUES (#{case_id},#{case_prov_data})
+    </insert>
+
+
+    <select id="queryCaseProvData" parameterType="com.hxy.provenance.neo4j.CaseProvDataBean" resultMap="CaseProvDataResult">
+        select r.case_prov_data from case_prov_tb r where r.case_id=#{case_id}
+    </select>
+
+    <sql id="selectCaseData">
+        select r.case_id, r.case_name, r.case_category, r.user_id, r.user_name,
+             r.department_id, r.department_name
+        from case_data r
+    </sql>
+
+    <select id="queryCaseList" parameterType="com.hxy.provenance.neo4j.CaseDataBean" resultMap="CaseDataResult">
+        <include refid="selectCaseData"/>
+        where r.case_id != ''
+        <if test="case_name != null and case_name != ''">
+            AND r.case_name like concat('%', #{case_name}, '%')
+        </if>
+
+        <if test="case_category != null and case_category != ''">
+            AND r.case_category like concat('%', #{case_category}, '%')
+        </if>
+        <if test="user_name != null and user_name != ''">
+            AND r.user_name = #{user_name}
+        </if>
+        <if test="department_name != null and department_name != ''">
+            AND r.department_name = #{department_name}
+        </if>
+
+    </select>
+</mapper>

@@ -11,11 +11,11 @@ import com.hxy.modules.activiti.service.*;
 import com.hxy.modules.activiti.service.impl.JumpServiceImpl;
 import com.hxy.modules.common.exception.MyException;
 import com.hxy.modules.common.page.Page;
-import com.hxy.modules.common.utils.Result;
-import com.hxy.modules.common.utils.StringUtils;
-import com.hxy.modules.common.utils.CommUtils;
-import com.hxy.modules.common.utils.UserUtils;
+import com.hxy.modules.common.utils.*;
+import com.hxy.modules.demo.entity.CaseEntity;
 import com.hxy.modules.sys.entity.UserEntity;
+import com.hxy.provenance.neo4j.CaseDataNodeBean;
+import com.hxy.provenance.neo4j.Neo4jFinalUtil;
 import com.inesa.neo4j.Neo4jUtil;
 import okhttp3.*;
 import org.activiti.bpmn.model.FlowElement;
@@ -37,6 +37,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -387,10 +388,11 @@ public class ExtendActDealController {
                 params.put(key, parameterMap.get(key)[0]);
             }
 
-           // Collection<FlowElement> flowElements = jumpService.getActIdCollection(processTaskDto.getDefId());
+            // Collection<FlowElement> flowElements = jumpService.getActIdCollection(processTaskDto.getDefId());
             //jumpService.jumpEndActivity(processTaskDto.getDefId(),processTaskDto,processTaskDto.getInstanceId(),"sid-33BCE5B3-845D-412C-857F-DC24E63599D5");
 
-             actModelerService.doActTask(processTaskDto, params);
+            actModelerService.doActTask(processTaskDto, params);
+            createPropertyNode(params);
             //why
 //            taskService.complete(processTaskDto.getTaskId());
 //            List<Task> tasks2 = taskService.createTaskQuery().processInstanceId(processTaskDto.getInstanceId()).list();
@@ -408,7 +410,7 @@ public class ExtendActDealController {
 //            for(Task task :tasks){
 //                taskService.complete(task.getId());
 //            }
-                //跳过相同办案人
+            //跳过相同办案人
 //            if(processTaskDto.getNextUserIds().equals(UserUtils.getCurrentUserId())){
 //                List<Task> tasks2 = taskService.createTaskQuery().processInstanceId(processTaskDto.getInstanceId()).list();
 //                for(Task task : tasks2){
@@ -426,9 +428,50 @@ public class ExtendActDealController {
             result = Result.error("办理任务失败");
         }
 
-    //    Neo4jUtil.createNode(processTaskDto);
+        createCaseNode(processTaskDto);
         return result;
     }
+
+
+    /**
+     * wxp
+     * 添加属性结点
+     *
+     * @param processTaskDto
+     */
+    public void createCaseNode(ProcessTaskDto processTaskDto) {
+        CaseDataNodeBean caseDataNodeBean = new CaseDataNodeBean();
+        caseDataNodeBean.setCaseId(processTaskDto.getBusId());
+        caseDataNodeBean.setNodeCreateUser(new CaseDataNodeBean.NodeUserBean(ShiroUtils.getUserEntity().getId(), ShiroUtils.getUserEntity().getUserName()));
+        caseDataNodeBean.setCaseDetailUrl("null");
+        caseDataNodeBean.setCaseName(processTaskDto.getTaskName());
+        String curTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+        caseDataNodeBean.setNodeCreateTime(curTime);
+        caseDataNodeBean.setNodeName(processTaskDto.getTaskName());
+        caseDataNodeBean.setRemark(processTaskDto.getRemark());
+        caseDataNodeBean.setTaskId(processTaskDto.getTaskId());
+        Neo4jFinalUtil.addCaseNode(caseDataNodeBean);
+    }
+
+
+    /**
+     * wxp
+     * 添加属性结点
+     */
+    public void createPropertyNode(Map<String, Object> params) {
+        String caseId = params.get("busId").toString();
+
+        for (String key : params.keySet()) {
+            if (key.startsWith("prop_") || key.startsWith("file_") || key.startsWith("rule_")) {
+                Map<String, Object> juv = new HashMap<>();
+                juv.put("name", CaseEntity.kvMap.get(key) + " : " + params.get(key).toString());
+                juv.put(CaseEntity.kvMap.get(key), params.get(key).toString());
+                Neo4jFinalUtil.addKVs(caseId, key, "change", false, juv);
+            }
+        }
+
+    }
+
 
     public void sendMessage(ProcessTaskDto processTaskDto) {
 
@@ -536,7 +579,7 @@ public class ExtendActDealController {
         ExtendActFlowbusEntity flowbus = flowbusService.queryByBusIdInsId(processTaskDto.getInstanceId(), processTaskDto.getBusId());
         List<ActivityImpl> actList = jumpService.getActIdCollection(processTaskDto.getDefId());
         model.addAttribute("taskDto", processTaskDto);
-        model.addAttribute("actList",actList);
+        model.addAttribute("actList", actList);
         model.addAttribute("flowbus", flowbus);
         return "activiti/jumpSelect";
     }
@@ -557,8 +600,8 @@ public class ExtendActDealController {
             for (String key : parameterMap.keySet()) {
                 params.put(key, parameterMap.get(key)[0]);
             }
-            String actId =(String)params.get("actId");
-            jumpService.jumpEndActivity(processTaskDto.getDefId(),processTaskDto,processTaskDto.getInstanceId(),actId);
+            String actId = (String) params.get("actId");
+            jumpService.jumpEndActivity(processTaskDto.getDefId(), processTaskDto, processTaskDto.getInstanceId(), actId);
             result = Result.ok("任务跳转成功");
         } catch (Exception e) {
             e.printStackTrace();
