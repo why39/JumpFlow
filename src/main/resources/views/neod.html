@@ -69,7 +69,7 @@
     <!-- Tab panes -->
     <div style="margin-top: 6px">
         <span class="nodeId label label-success"></span>
-        <span class="nodeInstanceId label label-default"></span>
+        <span class="caseId label label-default"></span>
         <span class="nodeTaskId label label-default"></span>
         <span class="nodeName label label-default"></span>
 
@@ -167,7 +167,7 @@
     function filterCase() {
         var query = null;
         if ($("#caseId").val()) {
-            query = "MATCH (n) WHERE n.instanceId=\'" + $("#caseId").val() + "\' WITH n MATCH p = (m) - [*] -> (n) RETURN n,p";
+            query = "MATCH (n) WHERE n.caseId=\'" + $("#caseId").val() + "\' WITH n MATCH p = (m) - [*] -> (n) RETURN n,p";
         } else {
             query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
         }
@@ -190,7 +190,7 @@
 
     function clearNodeInfo(){
         $(".nodeId").text("");
-        $(".nodeInstanceId").text("");
+        $(".caseId").text("");
         $(".nodeTaskId").text("");
         $(".nodeName").text("");
     }

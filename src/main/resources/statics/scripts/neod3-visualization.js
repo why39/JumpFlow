@@ -50,7 +50,7 @@ function Neod3Renderer() {
         console.log(selectNode)
         if (selectNode.label == "Task") {
             $(".nodeId").text("<id> : "+node.id);
-            $(".nodeInstanceId").text("<所属案件ID> : "+selectNode.caseId);
+            $(".caseId").text("<所属案件ID> : "+selectNode.caseId);
             // $(".nodeTaskId").text("<案件环节ID> : "+selectNode.taskId);
             $(".nodeName").text("<环节名称> : "+selectNode.name);
         } else {
