@@ -84,6 +84,18 @@ var vm = new Vue({
 	created: function(){
 		this.getMenuList();
 		this.getUser();
+
+		$.ajax({
+			type: "GET",
+			url: "demo/case/neoconfig",
+			success: function(result){
+				console.log(result)
+				if(result != null){//登录成功
+					localStorage.setItem("neoconfig", result);
+				}
+			}
+		});
+
 	},
 	updated: function(){
 		//路由

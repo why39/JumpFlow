@@ -5,6 +5,7 @@ import com.hxy.modules.activiti.annotation.ActTable;
 import com.hxy.modules.common.entity.ActivitiBaseEntity;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -19,9 +20,10 @@ public class CaseEntity extends ActivitiBaseEntity {
 
     public static final String FILE_PRIX = "file_";
     public static final String RULE_PRIX = "rule_";
+    public static final String PROPERTY_PRIX = "prop";
 
     private String id;
-
+    private String title;
     private String userId;
 
     @ActField(name = "《人民监督员监督案件受理登记表》")
@@ -49,15 +51,54 @@ public class CaseEntity extends ActivitiBaseEntity {
     @ActField(name = "是否属于本院", isJudg = true)
     private int rule_ourcase;//是否属于本院
 
-    private String fields;
-    private List<String> filesUrl;//数据库不可能为每个文件名新建一列。一个List存文书的具体地址，还有个List用来存文书的名称
-    private String title;
+    @ActField(name = "移送案由")
+    private String prop_move_reason;//移送案由
+
+    @ActField(name = "是否共同犯罪")
+    private String prop_is_together;//是否共同犯罪
+
+    @ActField(name = "是否主犯")
+    private String prop_is_main;//是否主犯
+
+    @ActField(name = "是否未成年人")
+    private String prop_is_juveniles;//是否未成年人
+
+    @ActField(name = "是否未单位犯罪")
+    private String prop_is_unit;//是否未单位犯罪
 
     /**
      * 案件详情
      */
-    @NotEmpty(message = "案件详情说明")
+    @ActField(name = "案件详情说明")
     private String leavewhy;
+
+
+    private String fields;
+    private List<String> filesUrl;//数据库不可能为每个文件名新建一列。一个List存文书的具体地址，还有个List用来存文书的名称
+
+
+    public static HashMap<String, String> kvMap = new HashMap<>();
+
+    public void initkvMap(){
+        kvMap.put("leavewhy", "案件详情说明");
+        kvMap.put("prop_is_unit", "是否未单位犯罪");
+        kvMap.put("prop_is_juveniles", "是否未成年人");
+        kvMap.put("prop_is_main", "是否主犯");
+        kvMap.put("prop_is_together", "是否共同犯罪");
+        kvMap.put("prop_move_reason", "移送案由");
+        kvMap.put("rule_ourcase", "是否属于本院");
+        kvMap.put("file_cljg", "《人民监督员监督案件处理结果通知书》");
+        kvMap.put("file_bjyj", "《人民监督员表决意见通知书》");
+        kvMap.put("file_tzs", "《人民监督员监督案件通知书》");
+        kvMap.put("file_ysh", "《移送函》");
+        kvMap.put("file_spb", "《补充移送材料通知书》");
+        kvMap.put("file_djb", "《人民监督员监督案件受理登记表》");
+
+    }
+
+    public CaseEntity(){
+        initkvMap();
+    }
 
     /**
      * 案件开始人员
@@ -182,5 +223,45 @@ public class CaseEntity extends ActivitiBaseEntity {
 
     public void setLeaveUser(String leaveUser) {
         this.leaveUser = leaveUser;
+    }
+
+    public String getProp_move_reason() {
+        return prop_move_reason;
+    }
+
+    public void setProp_move_reason(String prop_move_reason) {
+        this.prop_move_reason = prop_move_reason;
+    }
+
+    public String getProp_is_together() {
+        return prop_is_together;
+    }
+
+    public void setProp_is_together(String prop_is_together) {
+        this.prop_is_together = prop_is_together;
+    }
+
+    public String getProp_is_main() {
+        return prop_is_main;
+    }
+
+    public void setProp_is_main(String prop_is_main) {
+        this.prop_is_main = prop_is_main;
+    }
+
+    public String getProp_is_juveniles() {
+        return prop_is_juveniles;
+    }
+
+    public void setProp_is_juveniles(String prop_is_juveniles) {
+        this.prop_is_juveniles = prop_is_juveniles;
+    }
+
+    public String getProp_is_unit() {
+        return prop_is_unit;
+    }
+
+    public void setProp_is_unit(String prop_is_unit) {
+        this.prop_is_unit = prop_is_unit;
     }
 }
