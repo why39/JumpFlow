@@ -1,8 +1,10 @@
 package com.hxy.modules.activiti.controller;
 
 import com.hxy.modules.activiti.dto.ProcessTaskDto;
+import com.hxy.modules.activiti.entity.ExtendActNodesetEntity;
 import com.hxy.modules.activiti.entity.RuleEntity;
 import com.hxy.modules.activiti.service.ActModelerService;
+import com.hxy.modules.activiti.service.ExtendActNodesetService;
 import com.hxy.modules.activiti.service.JumpService;
 import com.hxy.modules.activiti.service.RuleService;
 import com.hxy.modules.activiti.utils.ActUtils;
@@ -10,11 +12,16 @@ import com.hxy.modules.common.annotation.SysLog;
 import com.hxy.modules.common.utils.Result;
 import com.hxy.modules.common.utils.ShiroUtils;
 import com.hxy.modules.common.utils.UserUtils;
+import com.hxy.modules.demo.entity.CaseEntity;
+import com.hxy.provenance.neo4j.CaseDataNodeBean;
+import com.hxy.provenance.neo4j.Neo4jFinalUtil;
 import com.zhuozhengsoft.pageoffice.DocumentVersion;
 import com.zhuozhengsoft.pageoffice.FileSaver;
 import com.zhuozhengsoft.pageoffice.OpenModeType;
 import com.zhuozhengsoft.pageoffice.PageOfficeCtrl;
 import com.zhuozhengsoft.pageoffice.wordreader.WordDocument;
+import org.activiti.engine.TaskService;
+import org.activiti.engine.task.Task;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,9 +39,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Controller
 public class Thymetest {
@@ -44,6 +50,10 @@ public class Thymetest {
     JumpService jumpService;
     @Autowired
     ActModelerService actModelerService;
+    @Autowired
+    TaskService taskService;
+    @Autowired
+    ExtendActNodesetService nodesetService;
     @Value("${pageoffice.posyspath}")
     private String poSysPath;
     @Value("${pageoffice.popassword}")
@@ -318,8 +328,13 @@ public class Thymetest {
                 files.add(tempList[i].getName());
             }
         }
+
+        Task task = taskService.createTaskQuery().taskId(processTaskDto.getTaskId()).singleResult();
+        //查询可更改字段
+        ExtendActNodesetEntity nodesetEntity = nodesetService.queryByNodeId(task.getTaskDefinitionKey());
         model.addAttribute("files",files);
         model.addAttribute("taskDto", processTaskDto);
+        model.addAttribute("nodeSet", nodesetEntity);
         return "pageoffice/filebookIndex";
     }
     /**
@@ -364,12 +379,53 @@ public class Thymetest {
                 result = Result.ok("没有相应规则，将按流程定义执行流程");
                 actModelerService.doActTask(processTaskDto, params);
             }
+            createPropertyNode(params);
+            createCaseNode(processTaskDto);
         }
         catch (Exception e){
             e.printStackTrace();
             result = Result.error("提交文书并执行流程失败");
         }
         return result;
+    }
+
+    /**
+     * wxp
+     * 添加属性结点
+     *
+     * @param processTaskDto
+     */
+    public void createCaseNode(ProcessTaskDto processTaskDto) {
+        CaseDataNodeBean caseDataNodeBean = new CaseDataNodeBean();
+        caseDataNodeBean.setCaseId(processTaskDto.getBusId());
+        caseDataNodeBean.setNodeCreateUser(new CaseDataNodeBean.NodeUserBean(ShiroUtils.getUserEntity().getId(), ShiroUtils.getUserEntity().getUserName()));
+        caseDataNodeBean.setCaseDetailUrl("null");
+        caseDataNodeBean.setCaseName(processTaskDto.getTaskName());
+        String curTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+        caseDataNodeBean.setNodeCreateTime(curTime);
+        caseDataNodeBean.setNodeName(processTaskDto.getTaskName());
+        caseDataNodeBean.setRemark(processTaskDto.getRemark());
+        caseDataNodeBean.setTaskId(processTaskDto.getTaskId());
+        Neo4jFinalUtil.addCaseNode(caseDataNodeBean);
+    }
+
+
+    /**
+     * wxp
+     * 添加属性结点
+     */
+    public void createPropertyNode(Map<String, Object> params) {
+        String caseId = params.get("busId").toString();
+
+        for (String key : params.keySet()) {
+            if (key.startsWith("prop_") || key.startsWith("file_") || key.startsWith("rule_")) {
+                Map<String, Object> juv = new HashMap<>();
+                juv.put("name", CaseEntity.kvMap.get(key) + " : " + params.get(key).toString());
+                juv.put(CaseEntity.kvMap.get(key), params.get(key).toString());
+                Neo4jFinalUtil.addKVs(caseId, key, "change", false, juv);
+            }
+        }
+
     }
 
 }

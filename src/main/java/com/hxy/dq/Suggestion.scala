@@ -17,7 +17,7 @@ object Suggestion {
     val dF = spark.read
       .option("header", true)
       .option("timestampFormat", "yyyy/MM/dd HH:mm:ss ZZ")
-      .csv("/Users/mac/xp/projects/cscw/NewBpm/JumpFlow/titanic.csv")
+      .csv("d:/hxyframe/JumpFlow/titanic.csv")
 
 
     dF.printSchema()

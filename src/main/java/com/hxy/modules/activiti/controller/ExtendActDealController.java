@@ -576,11 +576,16 @@ public class ExtendActDealController {
      */
     @RequestMapping(value = "toDoJump")
     public String toDoJump(ProcessTaskDto processTaskDto, Model model) {
+        Task task = taskService.createTaskQuery().taskId(processTaskDto.getTaskId()).singleResult();
+        //查询可更改字段
+        ExtendActNodesetEntity nodesetEntity = nodesetService.queryByNodeId(task.getTaskDefinitionKey());
+        //查询流程基本信息
         ExtendActFlowbusEntity flowbus = flowbusService.queryByBusIdInsId(processTaskDto.getInstanceId(), processTaskDto.getBusId());
         List<ActivityImpl> actList = jumpService.getActIdCollection(processTaskDto.getDefId());
         model.addAttribute("taskDto", processTaskDto);
         model.addAttribute("actList", actList);
         model.addAttribute("flowbus", flowbus);
+        model.addAttribute("nodeSet", nodesetEntity);
         return "activiti/jumpSelect";
     }
 
@@ -603,11 +608,12 @@ public class ExtendActDealController {
             String actId = (String) params.get("actId");
             jumpService.jumpEndActivity(processTaskDto.getDefId(), processTaskDto, processTaskDto.getInstanceId(), actId);
             result = Result.ok("任务跳转成功");
+            createPropertyNode(params);
         } catch (Exception e) {
             e.printStackTrace();
             result = Result.error("任务跳转失败");
         }
-
+        createCaseNode(processTaskDto);
         return result;
     }
 }

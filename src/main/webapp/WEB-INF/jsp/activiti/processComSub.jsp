@@ -61,12 +61,12 @@
         <%--console.log(filedsJsonObj);--%>
         <%--var length = filedsJsonObj.length;--%>
         <%--for (var i = 0; i < length; i++) {--%>
-            <%--for(var key in filedsJsonObj[i]){--%>
-                <%--var value = filedsJsonObj[i][key];--%>
-                <%--console.log(key+" ： "+value);--%>
-                <%--console.log($("#"+key))--%>
-                <%--$("#"+key).val(value)--%>
-            <%--}--%>
+        <%--for(var key in filedsJsonObj[i]){--%>
+        <%--var value = filedsJsonObj[i][key];--%>
+        <%--console.log(key+" ： "+value);--%>
+        <%--console.log($("#"+key))--%>
+        <%--$("#"+key).val(value)--%>
+        <%--}--%>
         <%--}--%>
 
     });
@@ -134,7 +134,7 @@
             type: 2,
             title : ["选择下一步审批人" , true],
             area: ['100%', '100%'], //宽高
-            content: [url,'no'],
+            content: [url,'yes'],
             shadeClose : false,
         });
     }
@@ -151,7 +151,7 @@
             type: 2,
             title : ["转办弹框" , true],
             area: ['100%', '100%'], //宽高
-            content: [url,'no'],
+            content: [url,'yes'],
             shadeClose : false,
         });
     }
@@ -220,7 +220,7 @@
             type: 2,
             title : ["选择跳转环节" , true],
             area: ['100%', '100%'], //宽高
-            content: [url,'no'],
+            content: [url,'yes'],
             shadeClose : false,
         });
     }
@@ -250,7 +250,7 @@
             type: 2,
             title : ["文书" , true],
             area: ['100%', '100%'], //宽高
-            content: [url,'no'],
+            content: [url,'yes'],
             shadeClose : false,
         });
     }
