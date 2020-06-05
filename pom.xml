@@ -45,6 +45,9 @@
         <swagger.version>2.2.2</swagger.version>
         <activiti.version>5.22.0</activiti.version>
         <pagehelper>1.1.2</pagehelper>
+        <scala.major.version>2.11</scala.major.version>
+        <scala.version>${scala.major.version}.12</scala.version>
+        <scala-maven-plugin.version>3.4.4</scala-maven-plugin.version>
     </properties>
 
     <!-- 阿里云maven仓库 -->
@@ -496,6 +499,13 @@
             <version>4.6.0.3</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/pageoffice4.6.0.3.jar</systemPath>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.amazon.deequ/deequ -->
+        <dependency>
+            <groupId>com.amazon.deequ</groupId>
+            <artifactId>deequ</artifactId>
+            <version>1.0.1</version>
         </dependency>
 
     </dependencies>
