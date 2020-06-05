@@ -4,6 +4,7 @@ import org.apache.spark.sql.SparkSession
 import java.io._
 import com.amazon.deequ.suggestions.{ConstraintSuggestionRunner, Rules}
 object Suggestion {
+  val path = "/Users/mac/xp/projects/cscw/NewBpm/JumpFlow/"
   def main(args: Array[String]) {
     deal("sample_file1.csv")
   }
@@ -17,7 +18,7 @@ object Suggestion {
     val dF = spark.read
       .option("header", true)
       .option("timestampFormat", "yyyy/MM/dd HH:mm:ss ZZ")
-      .csv("/Users/mac/xp/projects/cscw/NewBpm/JumpFlow/titanic.csv")
+      .csv(path+"titanic.csv")
 
 
     dF.printSchema()
@@ -40,7 +41,7 @@ object Suggestion {
     suggestionDataFrame.coalesce(1).write
       .option("header", "true")
       .option("timestampFormat", "yyyy/MM/dd HH:mm:ss ZZ")
-      .csv("/Users/mac/xp/projects/cscw/NewBpm/JumpFlow/"+outputname)
+      .csv(path+outputname)
     //    suggestionDataFrame.write.csv("test.csv")
     //    suggestionDataFrame.write.json("test.json")
   }
