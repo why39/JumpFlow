@@ -39,6 +39,48 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="form-group col-sm-6 col-md-5 ">
+            <label class="col-sm-3 control-label no-padding-right">是否未单位犯罪:</label>
+            <div class="col-sm-9">
+                <span class="col-xs-11 block input-icon input-icon-right">
+                    <input  id="prop_is_unit" name="prop_is_unit" type="text" class="form-control"
+                           value="${prop_is_unit}" readonly/>
+                </span>
+            </div>
+        </div>
+        <div class="form-group col-sm-6 col-md-5 ">
+            <label class="col-sm-3 control-label no-padding-right">是否共同犯罪》:</label>
+            <div class="col-sm-9">
+                <span class="col-xs-11 block input-icon input-icon-right">
+                    <input  id="prop_is_together" name="prop_is_together" type="text" class="form-control"
+                           value="${prop_is_together}" readonly/>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-sm-6 col-md-5 ">
+            <label class="col-sm-3 control-label no-padding-right">是否主犯:</label>
+            <div class="col-sm-9">
+                <span class="col-xs-11 block input-icon input-icon-right">
+                    <input  id="prop_is_main" name="prop_is_main" type="text" class="form-control"
+                           value="${prop_is_main}" readonly/>
+                </span>
+            </div>
+        </div>
+        <div class="form-group col-sm-6 col-md-5 ">
+            <label class="col-sm-3 control-label no-padding-right">是否未成年人:</label>
+            <div class="col-sm-9">
+                <span class="col-xs-11 block input-icon input-icon-right">
+                    <input  id="prop_is_juveniles" name="prop_is_juveniles" type="text" class="form-control"
+                           value="${prop_is_juveniles}" readonly/>
+                </span>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="form-group col-sm-6 col-md-5 ">
             <label class="col-sm-3 control-label no-padding-right">《人民监督员监督案件受理登记表》:</label>
@@ -118,4 +160,3 @@
 <c:if test="${flag == 2}">
     <%@include file="../activiti/processComSub.jsp" %>
 </c:if>
-
