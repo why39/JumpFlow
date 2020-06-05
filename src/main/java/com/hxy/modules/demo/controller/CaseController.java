@@ -1,5 +1,6 @@
 package com.hxy.modules.demo.controller;
 
+import com.hxy.dq.Suggestion;
 import com.hxy.modules.common.page.Page;
 import com.hxy.modules.common.utils.CommUtils;
 import com.hxy.modules.common.utils.Result;
@@ -19,7 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -36,7 +36,7 @@ public class CaseController {
     CaseService caseService;
 
     /**
-     * 请假列表
+     * 案件列表
      * @param model
      * @param caseEntity
      * @param request
@@ -50,6 +50,30 @@ public class CaseController {
         model.addAttribute("page",page);
         model.addAttribute("case",caseEntity);
         return "demo/case";
+    }
+
+    /**
+     * 案件质量
+     * @param model
+     * @param caseEntity
+     * @param request
+     * @return
+     */
+    @RequestMapping("dataquality")
+    @RequiresPermissions("act:model:all")
+    public String dataquality(Model model , CaseEntity caseEntity, HttpServletRequest request){
+        int pageNum = CommUtils.parseInt(request.getParameter("pageNum"), 1);
+        Page<CaseEntity> page = caseService.findPage(caseEntity, pageNum);
+        model.addAttribute("page",page);
+        model.addAttribute("case",caseEntity);
+        return "demo/dataquality";
+    }
+
+    @RequestMapping("dealquality")
+    @RequiresPermissions("act:model:all")
+    public Result dealquality(String id){
+        Suggestion.deal(id+"");
+        return Result.ok("分析成功");
     }
 
     /**

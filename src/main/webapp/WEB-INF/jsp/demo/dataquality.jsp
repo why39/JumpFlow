@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>案件</title>
+    <title>数据质量</title>
     <%@include file="/common/commonCSS.jsp" %>
     <%@include file="/common/commonJS.jsp" %>
     <%@include file="/WEB-INF/jsp/include/taglib.jsp" %>
@@ -20,7 +20,6 @@
                     </div>
                     <button class="layui-btn" id="searchSubmit"><i class="layui-icon">&#xe615;</i>搜 索</button>
                     <button class="layui-btn layui-btn-warm" type="button" id="refresh">重 置</button>
-                    <a class="layui-btn" href="${webRoot}/demo/case/info"><i class="layui-icon">&#xe61f;</i> 新 增</a>
                 </div>
             </form>
         </div>
@@ -52,21 +51,7 @@
                         <td><fmt:formatDate value="${leave.createTime}" pattern="yyyy-MM-dd"/></td>
                         <td>
                             <div class=" btn-group ">
-                                <c:if test="${leave.status == 1}">
-                                    <a class="layui-btn layui-btn-small" href="${webRoot}/demo/case/info?id=${leave.id}" ><i class="layui-icon">&#xe642;</i>编辑</a>
-                                    <button class="layui-btn layui-btn-small" type="button" onclick="flowSumbit('case','${leave.id}')"><i class="layui-icon">&#xe604;</i>提交</button>
-                                    <button class="layui-btn layui-btn-danger layui-btn-small" type="button" onclick="deleteById('${leave.id}')"><i class="layui-icon">&#xe640;</i>删除</button>
-                                </c:if>
-                                <c:if test="${(leave.status == 2 || leave.status == 3) && leave.actResult !=2}">
-                                    <button class="layui-btn layui-btn-small" type="button" onclick="doTaskTab('case','${leave.id}','${leave.instanceId}')"><i class="layui-icon">&#xe705;</i>案件环节操作记录</button>
-                                    <button class="layui-btn layui-btn-small layui-btn-warm" type="button" onclick="showFlowImg('${leave.instanceId}')"><i class="layui-icon">&#xe60d;</i>查看流程图</button>
-                                </c:if>
-                                <c:if test="${(leave.status == 2 || leave.status == 3) && leave.actResult == 2}">
-                                    <a class="layui-btn layui-btn-small" href="${webRoot}/demo/case/info?id=${leave.id}" ><i class="layui-icon">&#xe642;</i>编辑</a>
-                                    <button class="layui-btn layui-btn-small" type="button" onclick="flowSumbit('case','${leave.id}')"><i class="layui-icon">&#xe604;</i>提交</button>
-                                    <button class="layui-btn layui-btn-small" type="button" onclick="doTaskTab('case','${leave.id}','${leave.instanceId}')"><i class="layui-icon">&#xe705;</i>案件环节操作记录</button>
-                                    <button class="layui-btn layui-btn-small layui-btn-warm" type="button" onclick="showFlowImg('${leave.instanceId}')"><i class="layui-icon">&#xe60d;</i>查看流程图</button>
-                                </c:if>
+                    <button class="layui-btn layui-btn-small" type="button" onclick="dataqualityDeal('${leave.id}')"><i class="layui-icon">&#xe604;</i>数据质量分析</button>
                             </div>
                         </td>
                     </tr>
@@ -80,6 +65,16 @@
 </body>
 <script src="${webRoot}/js/activiti/actSumbit.js"></script>
 <script>
+    function dataqualityDeal(id) {
+      var url ="${webRoot}/demo/case/dealquality";
+      confirm('确定进行数据质量分析？', function(){
+          $.post(url,"id="+id,function (r) {
+              toast(r.msg);
+          });
+      });
+
+    }
+
     function deleteById(id) {
         var url ="${webRoot}/demo/case/delete";
         confirm('确定要删除选中的记录？', function(){
