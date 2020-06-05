@@ -143,7 +143,7 @@
     function trace() {
         var query = null;
         if ($("#caseTaskId").val()) {
-            query = "MATCH (n) WHERE n.taskId=\'" + $("#caseTaskId").val() + "\' WITH n MATCH p = (m) - [*1.." + $("#actionLength").val() + "] -> (n) RETURN n,p";//$("#caseTaskId").val();
+            query = "MATCH (n) WHERE ID(n)=" + $("#caseTaskId").val() + " WITH n MATCH p = (m) - [*1.." + $("#actionLength").val() + "] -> (n) RETURN n,p";//$("#caseTaskId").val();
         } else {
             query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
         }
@@ -155,7 +155,7 @@
     function inference() {
         var query = null;
         if ($("#caseTaskId").val()) {
-            query = "MATCH (n) WHERE n.taskId=\'" + $("#caseTaskId").val() + "\' WITH n MATCH p = (n) - [*1.." + $("#actionLength").val() + "] -> (m) RETURN n,p";//$("#caseTaskId").val();
+            query = "MATCH (n) WHERE ID(n)=" + $("#caseTaskId").val() + " WITH n MATCH p = (n) - [*1.." + $("#actionLength").val() + "] -> (m) RETURN n,p";//$("#caseTaskId").val();
         } else {
             query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
         }
