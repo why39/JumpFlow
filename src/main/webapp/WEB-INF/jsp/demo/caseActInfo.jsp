@@ -42,7 +42,7 @@
 
     <div class="row">
         <div class="form-group col-sm-6 col-md-5 ">
-            <label class="col-sm-3 control-label no-padding-right">是否未单位犯罪:</label>
+            <label class="col-sm-3 control-label no-padding-right">是否为单位犯罪:</label>
             <div class="col-sm-9">
                 <span class="col-xs-11 block input-icon input-icon-right">
                     <input  id="prop_is_unit" name="prop_is_unit" type="text" class="form-control"
