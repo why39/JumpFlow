@@ -138,6 +138,18 @@
             'varValue':'${taskDto.varValue}',
             'varName':'${taskDto.varName}'
         };
+        //可变字段
+        var changefiles ='${nodeSet.changeFiles}';
+        var fileArr=changefiles.split(",");
+        for(var i=0;i<fileArr.length;i++){
+            var fieldName = fileArr[i];
+            if (fieldName == ''){
+                continue;
+            }
+            //父级搜索表单
+            var fieldValue=$(parent.document.getElementById("main-container")).find("#"+fieldName+"").val();
+            params[fieldName]=fieldValue;
+        }
         //var actId =  $("#userTab tr:eq(1) td:nth-child(2)").find("td").val();
         var actId = $("#userTab tr:eq(1) td:eq(2)").text();
         params["actId"]=actId;
