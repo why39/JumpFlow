@@ -1,0 +1,171 @@
+<html>
+<head>
+    <link rel="stylesheet" href="${rc.contextPath}/styles/codemirror.css">
+    <link rel="stylesheet" href="${rc.contextPath}/styles/codemirror-neo.css">
+    <link rel="stylesheet" href="${rc.contextPath}/styles/cy2neo.css">
+    <link rel="stylesheet" href="${rc.contextPath}/styles/neod3.css">
+    <link rel="stylesheet" href="${rc.contextPath}/styles/datatable.css">
+    <link rel="stylesheet" href="${rc.contextPath}/styles/vendor.css"> <!-- bootstrap-->
+    <link rel="stylesheet" href="${rc.contextPath}/styles/sweet-alert.css">
+    <link rel="stylesheet" href="${rc.contextPath}/styles/gh-fork-ribbon.css">
+    <title>Cy2NeoD3 - Tiny Neo4j Cypher Workbench</title>
+</head>
+<body>
+
+<div role="tabpanel">
+
+    <!-- Nav tabs -->
+    <!--<ul class="nav nav-tabs" role="tablist">-->
+    <!--<li role="presentation" class="active"><a href="#graph" aria-controls="home" role="tab" data-toggle="tab">Graph</a></li>-->
+    <!--<li role="presentation"><a href="#table" aria-controls="table" role="tab" data-toggle="tab">Table</a></li>-->
+    <!--</ul>-->
+
+    <!-- Tab panes -->
+    <div style="margin-top: 6px">
+        <span class="nodeId label label-success"></span>
+        <span class="caseId label label-default"></span>
+        <span class="nodeTaskId label label-default"></span>
+        <span class="nodeName label label-default"></span>
+
+    </div>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="graph">
+            <div class="tab-pane active" id="graph">&nbsp;</div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="table">
+            <div id="datatable"></div>
+        </div>
+    </div>
+
+
+</div>
+
+<script src="${rc.contextPath}/scripts/codemirror.js"></script>
+<script src="${rc.contextPath}/scripts/codemirror-cypher.js"></script>
+<script src="${rc.contextPath}/scripts/vendor.js"></script>
+<script src="${rc.contextPath}/scripts/sweet-alert.min.js"></script>
+<script src="${rc.contextPath}/scripts/neod3.js"></script>
+<script src="${rc.contextPath}/scripts/neod3-visualization.js"></script>
+<script src="${rc.contextPath}/scripts/neo4d3.js"></script>
+<script src="${rc.contextPath}/scripts/cy2neod3.js"></script>
+<script src="${rc.contextPath}/scripts/jquery.dataTables.min.js"></script>
+<script src="${rc.contextPath}/scripts/cypher.datatable.js"></script>
+
+
+<script type="text/javascript">
+    var connection = function () {
+        configStr = localStorage.getItem("neoconfig");
+        configJSON = JSON.parse(configStr)
+        console.log(configJSON.NEO_SERVER_URL, configJSON.NEO_SERVER_USER,configJSON.NEO_SERVER_PSW)
+        config = {url: "http://"+configJSON.NEO_SERVER_URL+":7474" , user: configJSON.NEO_SERVER_USER , pass: configJSON.NEO_SERVER_PSW};
+        return config;
+    }
+
+
+    function execute(content) {
+        var neod3 = new Neod3Renderer();
+
+        var neo = new Neo(connection);
+        try {
+            var query = content;
+            console.log("Executing Query", query);
+            neo.executeQuery(query, {}, function (err, res) {
+                res = res || {}
+                var graph = res.graph;
+                if (graph) {
+                    var c = $("#graph");
+                    c.empty();
+                    neod3.render("graph", c, graph);
+                } else {
+                    if (err) {
+                        console.log(err);
+                        if (err.length > 0) {
+                            sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
+                        } else {
+                            sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
+                        }
+                    }
+                }
+            });
+        } catch (e) {
+            console.log(e);
+            sweetAlert("Catched error", e, "error");
+        }
+    }
+
+    function trace() {
+        var query = null;
+        if ($("#caseTaskId").val()) {
+            query = "MATCH (n) WHERE ID(n)=" + $("#caseTaskId").val() + " WITH n MATCH p = (m) - [*1.." + $("#actionLength").val() + "] -> (n) RETURN n,p";//$("#caseTaskId").val();
+        } else {
+            query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
+        }
+        console.log("$(\"#caseTaskId\").val()---->" + $("#caseTaskId").val());
+        clearNodeInfo();
+        execute(query);
+    }
+
+    function inference() {
+        var query = null;
+        if ($("#caseTaskId").val()) {
+            query = "MATCH (n) WHERE ID(n)=" + $("#caseTaskId").val() + " WITH n MATCH p = (n) - [*1.." + $("#actionLength").val() + "] -> (m) RETURN n,p";//$("#caseTaskId").val();
+        } else {
+            query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
+        }
+        console.log("$(\"#caseTaskId\").val()---->" + $("#caseTaskId").val());
+        clearNodeInfo();
+        execute(query);
+    }
+
+    function filterCase() {
+        var query = null;
+        if ($("#caseId").val()) {
+            query = "MATCH (n) WHERE n.caseId=\'" + $("#caseId").val() + "\' WITH n MATCH p = (m) - [*] -> (n) RETURN n,p";
+        } else {
+            query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
+        }
+        console.log("$(\"#caseId\").val()---->" + $("#caseId").val());
+        clearNodeInfo();
+        execute(query);
+    }
+
+    function findCase(){
+        var query = null;
+        if ($("#caseName").val()) {
+            query = "MATCH (a:Task) WHERE a.name=~ '.*"+$("#caseName").val()+".*' RETURN a";
+        } else {
+            query = "MATCH (n)-[r]->(m) RETURN n,r,m";
+        }
+        console.log("$(\"#caseId\").val()---->" + $("#caseId").val());
+        clearNodeInfo();
+        execute(query);
+    }
+
+    function clearNodeInfo(){
+        $(".nodeId").text("");
+        $(".caseId").text("");
+        $(".nodeTaskId").text("");
+        $(".nodeName").text("");
+    }
+
+    function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i=0;i<vars.length;i++) {
+            var pair = vars[i].split("=");
+            if(pair[0] == variable){return pair[1];}
+        }
+        return(false);
+    }
+    window.onload = (function () {
+        //todo dynamic configuration
+        var id = getQueryVariable("id")
+        var prop = getQueryVariable("prop")
+        var query = "match (n) where n.caseId='"+id+"' with n match p = (n) - [*] -> (m:"+prop+") RETURN p";
+        execute(query);
+
+    });
+</script>
+</body>
+</html>
