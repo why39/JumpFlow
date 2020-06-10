@@ -173,12 +173,16 @@ public class ExtendActModelController {
         //writes:[{"name":"《补充移送材料通知书》","value":"bccl"},{"name":"《人民监督员表决意见通知书》","value":"bjyj"},{"name":"《人民监督员监督案件处理结果通知书》","value":"cljg"},{"name":"《人民监督员监督案件受理登记表》","value":"djb"},{"name":"《人民监督员监督案件审批表》","value":"spb"},{"name":"《人民监督员监督案件通知书》","value":"tzs"},{"name":"《移送函》","value":"ysh"}]
         List<Map<String, Object>> file_writes = new ArrayList<>();
         List<Map<String, Object>> rules_writes = new ArrayList<>();
+        List<Map<String, Object>> prop_writes = new ArrayList<>();
+
         for (Map map : businessEntity.getWrites()) {
             String value = (String) map.get("value");
             if (!StringUtils.isEmpty(value) && value.startsWith(CaseEntity.FILE_PRIX)) {
                 file_writes.add(map);
             } else if (!StringUtils.isEmpty(value) && value.startsWith(CaseEntity.RULE_PRIX)) {
                 rules_writes.add(map);
+            } else if (!StringUtils.isEmpty(value) && value.startsWith(CaseEntity.PROPERTY_PRIX)) {
+                prop_writes.add(map);
             }
         }
 
@@ -188,6 +192,10 @@ public class ExtendActModelController {
 
         if (rules_writes.size() > 0) {
             model.addAttribute("rule_writes", JsonUtil.getJsonByObj(rules_writes));
+        }
+
+        if (rules_writes.size() > 0) {
+            model.addAttribute("prop_writes", JsonUtil.getJsonByObj(prop_writes));
         }
 
         return "activiti/flowNodeSet";

@@ -8,7 +8,6 @@ import com.hxy.modules.activiti.entity.ExtendActModelEntity;
 import com.hxy.modules.activiti.entity.ExtendActNodesetEntity;
 import com.hxy.modules.activiti.entity.ExtendActTasklogEntity;
 import com.hxy.modules.activiti.service.*;
-import com.hxy.modules.activiti.service.impl.JumpServiceImpl;
 import com.hxy.modules.common.exception.MyException;
 import com.hxy.modules.common.page.Page;
 import com.hxy.modules.common.utils.*;
@@ -16,13 +15,10 @@ import com.hxy.modules.demo.entity.CaseEntity;
 import com.hxy.modules.sys.entity.UserEntity;
 import com.hxy.provenance.neo4j.CaseDataNodeBean;
 import com.hxy.provenance.neo4j.Neo4jFinalUtil;
-import com.inesa.neo4j.Neo4jUtil;
 import okhttp3.*;
-import org.activiti.bpmn.model.FlowElement;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.impl.pvm.process.ActivityImpl;
 import org.activiti.engine.task.Task;
-import org.activiti.engine.task.TaskQuery;
 import org.apache.log4j.Logger;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -464,7 +460,7 @@ public class ExtendActDealController {
         for (String key : params.keySet()) {
             if (key.startsWith("prop_") || key.startsWith("file_") || key.startsWith("rule_")) {
                 Map<String, Object> juv = new HashMap<>();
-                juv.put("name", CaseEntity.kvMap.get(key) + " : " + params.get(key).toString());
+                juv.put("name", CaseEntity.kvMap.get(key) + "_" + params.get(key).toString());
                 juv.put(CaseEntity.kvMap.get(key), params.get(key).toString());
                 Neo4jFinalUtil.addKVs(caseId, key, "change", false, juv);
             }

@@ -84,8 +84,15 @@
 										</div>
 									</div>
 								</div>
-								<div>
-									<button id="addNewMaterial" class="layui-btn layui-btn-small" type="button" onclick="addNewMaterial()"><i class="layui-icon">&#xe61f;</i>添加新材料</button>
+								<div class="row">
+									<div class="form-group col-sm-12 " isHide="2">
+										<label class="col-sm-2"><i class="red"> * </i>案卡项:</label>
+										<div class="col-sm-10">
+											<span class="col-xs-11" style='margin-left: -50px'>
+												<tag:checkbox name="changeFiles" isJXdata="true" data="${prop_writes}"/>
+											</span>
+										</div>
+									</div>
 								</div>
 
 								<br/>
@@ -211,9 +218,14 @@
                  $("#addNewRule").hide();
              }
 
+						if('${prop_writes}') {
+							$("#addNewRule").show();
+						} else {
+							$("#addNewRule").hide();
+						}
 
          });
-		
+
         var setting = {
             view: {dblClickExpand: false}
             ,data: {key: {name:"treeName"},simpleData: {enable: true,idKey: "treeId",pIdKey: "treePid"}}
@@ -288,7 +300,7 @@
 
         //添加新材料。待开发
         function addNewMaterial() {
-			
+
         }
 
          /**
