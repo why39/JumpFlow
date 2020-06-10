@@ -27,7 +27,7 @@ public class Neo4jFinalUtil {
 
     private static Driver driver = null;
 
-    static Logger logger = LoggerFactory.getLogger(Neo4jUtil.class);
+    static Logger logger = LoggerFactory.getLogger(Neo4jFinalUtil.class);
 
     @Autowired
     public CaseDataMapper caseDataMapper;
@@ -48,7 +48,7 @@ public class Neo4jFinalUtil {
 
     private static Driver createDrive() {
         if (driver == null) {
-            synchronized (Neo4jUtil.class) {
+            synchronized (Neo4jFinalUtil.class) {
                 if (driver == null) {
                     NEO_SERVER_URL = "bolt://"+finalUtil.env.getProperty("spring.data.neo4j.uri")+"/7687";
                     NEO_SERVER_USER = finalUtil.env.getProperty("spring.data.neo4j.username");
