@@ -42,7 +42,7 @@
 
     <div class="row">
         <div class="form-group col-sm-6 col-md-5 ">
-            <label class="col-sm-3 control-label no-padding-right">是否未单位犯罪:</label>
+            <label class="col-sm-3 control-label no-padding-right">是否未单位犯罪:<i class="layui-icon" onclick="traceProp('${caseEntity.id}','prop_is_unit')">&#xe615;</i></label>
             <div class="col-sm-9">
                 <span class="col-xs-11 block input-icon input-icon-right">
                     <input  id="prop_is_unit" name="prop_is_unit" type="text" class="form-control"
@@ -51,7 +51,7 @@
             </div>
         </div>
         <div class="form-group col-sm-6 col-md-5 ">
-            <label class="col-sm-3 control-label no-padding-right">是否共同犯罪》:</label>
+            <label class="col-sm-3 control-label no-padding-right">是否共同犯罪》:<i class="layui-icon" onclick="traceProp('${caseEntity.id}','prop_is_together')">&#xe615;</i></label>
             <div class="col-sm-9">
                 <span class="col-xs-11 block input-icon input-icon-right">
                     <input  id="prop_is_together" name="prop_is_together" type="text" class="form-control"
@@ -62,7 +62,7 @@
     </div>
     <div class="row">
         <div class="form-group col-sm-6 col-md-5 ">
-            <label class="col-sm-3 control-label no-padding-right">是否主犯:</label>
+            <label class="col-sm-3 control-label no-padding-right">是否主犯:<i class="layui-icon" onclick="traceProp('${caseEntity.id}','prop_is_main')">&#xe615;</i></label>
             <div class="col-sm-9">
                 <span class="col-xs-11 block input-icon input-icon-right">
                     <input  id="prop_is_main" name="prop_is_main" type="text" class="form-control"
@@ -71,7 +71,7 @@
             </div>
         </div>
         <div class="form-group col-sm-6 col-md-5 ">
-            <label class="col-sm-3 control-label no-padding-right">是否未成年人:</label>
+            <label class="col-sm-3 control-label no-padding-right">是否未成年人:<i class="layui-icon" onclick="traceProp('${caseEntity.id}','prop_is_juveniles')">&#xe615;</i></label>
             <div class="col-sm-9">
                 <span class="col-xs-11 block input-icon input-icon-right">
                     <input  id="prop_is_juveniles" name="prop_is_juveniles" type="text" class="form-control"
@@ -160,3 +160,21 @@
 <c:if test="${flag == 2}">
     <%@include file="../activiti/processComSub.jsp" %>
 </c:if>
+<script>
+    /**
+     * 新增/编辑模型
+     * @param id 扩展模型id
+     */
+    function traceProp(id,prop) {
+        var url = "${webRoot}/act/deal/traceProp?id="+id+"&prop="+prop;
+        //弹框层
+        layer.open({
+            scrollbar: true,
+            type: 2,
+            title : [prop , true],
+            area: ['100%', '100%'], //宽高
+            content: [url,'no'],
+            shadeClose : true,
+        });
+    }
+</script>

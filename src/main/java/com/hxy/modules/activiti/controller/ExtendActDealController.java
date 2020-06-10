@@ -91,6 +91,17 @@ public class ExtendActDealController {
         return "neod.html";
     }
 
+    @RequestMapping("traceProp")
+    public String traceProp(String id, String prop, HttpServletRequest request) {
+
+        log.info("id:>>>>>" + id);
+        log.info("prop:>>>>>" + prop);
+        request.setAttribute("id", id);
+        request.setAttribute("prop", id);
+
+        return "prop.html";
+    }
+
     /**
      * 根据流程key 获取业务可用的流程
      *
