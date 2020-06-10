@@ -260,6 +260,19 @@
             'defId':processInfo.defId,
             'expression':expression,
         };
+        //可变字段
+        var changefiles ='${nodeSet.changeFiles}';
+        var fileArr=changefiles.split(",");
+        for(var i=0;i<fileArr.length;i++){
+            var fieldName = fileArr[i];
+            if (fieldName == ''){
+                continue;
+            }
+            //父级搜索表单
+            var fieldValue=$(parent.document.getElementById("main-container")).find("#"+fieldName+"").val();
+            params[fieldName]=fieldValue;
+        }
+
         var url ="${webRoot}/submitFile";
         $.post(url,params,function (result) {
             if(result.code == '0'){
