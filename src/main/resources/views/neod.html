@@ -52,7 +52,13 @@
         </div>
     </div>
 
-
+    <div style="margin-top: 6px" class="col-lg-6">
+        <div class="input-group">
+            <input class="form-control" type="text" style="width: 160px" id="logIn" placeholder="案件实例ID"/>
+            <button style="margin-left: 6px" type="button" class="btn btn-primary" id="logIn" onclick="logImport()">导入日志
+            </button>
+        </div><!-- /input-group -->
+    </div>
 
 
 
@@ -186,6 +192,20 @@
         console.log("$(\"#caseId\").val()---->" + $("#caseId").val());
         clearNodeInfo();
         execute(query);
+    }
+
+    function logImport(){
+        var url ="${webRoot}/logImport";
+        var params ={
+            'caseId' : $("#logIn").val(),
+        };
+        $.post(url,params,function (result) {
+            if(result.code == '0'){
+                console.log(result);
+            }else {
+                alertMsg(result.msg);
+            }
+        });
     }
 
     function clearNodeInfo(){
