@@ -114,7 +114,7 @@
             type: 2,
             title : ["流程图设计" , true],
             area: ['100%', '100%'], //宽高
-            content: [url,'no'],
+            content: [url,'yes'],
             shadeClose : false,
         });
     }
@@ -138,7 +138,7 @@
             type: 2,
             title : ["流程节点设置" , true],
             area: ['100%', '100%'], //宽高
-            content: [url,'no'],
+            content: [url,'yes'],
             shadeClose : false,
         });
     }
