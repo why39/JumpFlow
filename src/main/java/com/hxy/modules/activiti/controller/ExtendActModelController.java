@@ -178,7 +178,7 @@ public class ExtendActModelController {
         for (Map map : businessEntity.getWrites()) {
             String value = (String) map.get("value");
             if (!StringUtils.isEmpty(value) && value.startsWith(CaseEntity.FILE_PRIX)) {
-                file_writes.add(map);
+//                file_writes.add(map);
             } else if (!StringUtils.isEmpty(value) && value.startsWith(CaseEntity.RULE_PRIX)) {
                 rules_writes.add(map);
             } else if (!StringUtils.isEmpty(value) && value.startsWith(CaseEntity.PROPERTY_PRIX)) {

@@ -20,10 +20,11 @@ public class CaseEntity extends ActivitiBaseEntity {
 
     public static final String FILE_PRIX = "file_";
     public static final String RULE_PRIX = "rule_";
-    public static final String PROPERTY_PRIX = "prop";
+    public static final String PROPERTY_PRIX = "prop_";
 
     private String id;
     private String title;
+
     private String userId;
 
     @ActField(name = "《人民监督员监督案件受理登记表》")
@@ -66,6 +67,30 @@ public class CaseEntity extends ActivitiBaseEntity {
     @ActField(name = "是否未单位犯罪")
     private String prop_is_unit;//是否未单位犯罪
 
+    @ActField(name = "犯罪嫌疑人姓名/单位名称")
+    private String prop_main_name;//犯罪嫌疑人姓名/单位名称
+
+    @ActField(name = "犯罪嫌疑人作案时年龄")
+    private String prop_main_age;// "犯罪嫌疑人作案时年龄"
+
+    @ActField(name = "犯罪嫌疑人民族")
+    private String prop_main_nation;//"犯罪嫌疑人民族"
+
+    @ActField(name = "受教育状况")
+    private String prop_main_education;// "受教育状况"
+
+    @ActField(name = "住所地")
+    private String prop_main_address;//"住所地"
+
+    @ActField(name = "前科")
+    private String prop_main_history;//"前科"
+
+    @ActField(name = "主要作案地")
+    private String prop_main_exec_address;// "主要作案地"
+
+    @ActField(name = "办案人")
+    private String prop_deal_name;// "办案人"
+
     /**
      * 案件详情
      */
@@ -79,25 +104,51 @@ public class CaseEntity extends ActivitiBaseEntity {
 
     public static HashMap<String, String> kvMap = new HashMap<>();
 
-    public void initkvMap(){
+
+    /**
+     * 犯罪嫌疑人姓名/单位名称
+     * 犯罪嫌疑人作案时年龄
+     * 犯罪嫌疑人民族
+     * 受教育状况
+     * 住所地
+     * 移送意见
+     * 前科
+     * 主要作案地
+     * 办案人
+     */
+    public void initkvMap() {
         kvMap.put("leavewhy", "案件详情说明");
-        kvMap.put("prop_is_unit", "是否未单位犯罪");
-        kvMap.put("prop_is_juveniles", "是否未成年人");
-        kvMap.put("prop_is_main", "是否主犯");
-        kvMap.put("prop_is_together", "是否共同犯罪");
-        kvMap.put("prop_move_reason", "移送案由");
         kvMap.put("rule_ourcase", "是否属于本院");
-        kvMap.put("file_cljg", "《人民监督员监督案件处理结果通知书》");
-        kvMap.put("file_bjyj", "《人民监督员表决意见通知书》");
-        kvMap.put("file_tzs", "《人民监督员监督案件通知书》");
-        kvMap.put("file_ysh", "《移送函》");
-        kvMap.put("file_spb", "《补充移送材料通知书》");
-        kvMap.put("file_djb", "《人民监督员监督案件受理登记表》");
+
+//        kvMap.put("prop_is_unit", "是否未单位犯罪");
+//        kvMap.put("prop_is_juveniles", "是否未成年人");
+//        kvMap.put("prop_is_main", "是否主犯");
+//        kvMap.put("prop_is_together", "是否共同犯罪");
+        kvMap.put("prop_move_reason", "移送意见");
+        kvMap.put("prop_main_name", "犯罪嫌疑人姓名/单位名称");
+        kvMap.put("prop_main_age", "犯罪嫌疑人作案时年龄");
+        kvMap.put("prop_main_nation", "犯罪嫌疑人民族");
+        kvMap.put("prop_main_education", "受教育状况");
+        kvMap.put("prop_main_address", "住所地");
+        kvMap.put("prop_main_history", "前科");
+        kvMap.put("prop_main_exec_address", "主要作案地");
+        kvMap.put("prop_deal_name", "办案人");
+
+//        kvMap.put("file_cljg", "《人民监督员监督案件处理结果通知书》");
+//        kvMap.put("file_bjyj", "《人民监督员表决意见通知书》");
+//        kvMap.put("file_tzs", "《人民监督员监督案件通知书》");
+//        kvMap.put("file_ysh", "《移送函》");
+//        kvMap.put("file_spb", "《补充移送材料通知书》");
+//        kvMap.put("file_djb", "《人民监督员监督案件受理登记表》");
 
     }
 
-    public CaseEntity(){
+    public CaseEntity() {
         initkvMap();
+    }
+
+    public HashMap<String, String> getKvMap() {
+        return kvMap;
     }
 
     /**
@@ -225,43 +276,107 @@ public class CaseEntity extends ActivitiBaseEntity {
         this.leaveUser = leaveUser;
     }
 
-    public String getProp_move_reason() {
+    public String getprop_move_reason() {
         return prop_move_reason;
     }
 
-    public void setProp_move_reason(String prop_move_reason) {
+    public void setprop_move_reason(String prop_move_reason) {
         this.prop_move_reason = prop_move_reason;
     }
 
-    public String getProp_is_together() {
+    public String getprop_is_together() {
         return prop_is_together;
     }
 
-    public void setProp_is_together(String prop_is_together) {
+    public void setprop_is_together(String prop_is_together) {
         this.prop_is_together = prop_is_together;
     }
 
-    public String getProp_is_main() {
+    public String getprop_is_main() {
         return prop_is_main;
     }
 
-    public void setProp_is_main(String prop_is_main) {
+    public void setprop_is_main(String prop_is_main) {
         this.prop_is_main = prop_is_main;
     }
 
-    public String getProp_is_juveniles() {
+    public String getprop_is_juveniles() {
         return prop_is_juveniles;
     }
 
-    public void setProp_is_juveniles(String prop_is_juveniles) {
+    public void setprop_is_juveniles(String prop_is_juveniles) {
         this.prop_is_juveniles = prop_is_juveniles;
     }
 
-    public String getProp_is_unit() {
+    public String getprop_is_unit() {
         return prop_is_unit;
     }
 
-    public void setProp_is_unit(String prop_is_unit) {
+    public void setprop_is_unit(String prop_is_unit) {
         this.prop_is_unit = prop_is_unit;
+    }
+
+    public String getprop_main_name() {
+        return prop_main_name;
+    }
+
+    public void setprop_main_name(String prop_main_name) {
+        this.prop_main_name = prop_main_name;
+    }
+
+    public String getprop_main_age() {
+        return prop_main_age;
+    }
+
+    public void setprop_main_age(String prop_main_age) {
+        this.prop_main_age = prop_main_age;
+    }
+
+    public String getprop_main_nation() {
+        return prop_main_nation;
+    }
+
+    public void setprop_main_nation(String prop_main_nation) {
+        this.prop_main_nation = prop_main_nation;
+    }
+
+    public String getprop_main_education() {
+        return prop_main_education;
+    }
+
+    public void setprop_main_education(String prop_main_education) {
+        this.prop_main_education = prop_main_education;
+    }
+
+    public String getprop_main_address() {
+        return prop_main_address;
+    }
+
+    public void setprop_main_address(String prop_main_address) {
+        this.prop_main_address = prop_main_address;
+    }
+
+    public String getprop_main_history() {
+        return prop_main_history;
+    }
+
+    public void setprop_main_history(String prop_main_history) {
+        this.prop_main_history = prop_main_history;
+    }
+
+    public String getprop_main_exec_address() {
+        return prop_main_exec_address;
+    }
+
+    public void setprop_main_exec_address(String prop_main_exec_address) {
+        this.prop_main_exec_address = prop_main_exec_address;
+    }
+
+    public String getprop_deal_name() {
+        return prop_deal_name;
+    }
+
+    public void setprop_deal_name(String prop_deal_name) {
+        this.prop_deal_name = prop_deal_name;
     }
 }
