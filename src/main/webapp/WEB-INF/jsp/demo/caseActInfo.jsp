@@ -27,8 +27,7 @@
     <label class="col-sm-3 control-label no-padding-right">编号:</label>
     <div class="col-sm-9">
     <span class="col-xs-11 block input-icon input-icon-right">
-    <input  id="prop_move_reason" name="prop_move_reason" type="text" class="form-control"
-    value="${caseEntity.code}" readonly/>
+    <input  id="code" name="code" type="text" class="form-control" value="${caseEntity.code}" readonly/>
     </span>
     </div>
     </div>
