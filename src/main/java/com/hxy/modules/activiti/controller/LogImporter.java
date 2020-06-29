@@ -1,7 +1,7 @@
 package com.hxy.modules.activiti.controller;
 
 import com.hxy.modules.common.utils.Result;
-import com.hxy.provenance.log.caseLogBuilder;
+//import com.hxy.provenance.log.caseLogBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.LinkedCaseInsensitiveMap;
@@ -27,7 +27,7 @@ public class LogImporter {
                 params.put(key, parameterMap.get(key)[0]);
             }
             String caseId = (String)params.get("caseId");
-            caseLogBuilder.caseLogBuild(caseId);
+//            caseLogBuilder.caseLogBuild(caseId);
         }
         catch (Exception e){
             e.printStackTrace();
