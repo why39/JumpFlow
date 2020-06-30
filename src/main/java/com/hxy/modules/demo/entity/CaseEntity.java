@@ -88,8 +88,8 @@ public class CaseEntity extends ActivitiBaseEntity {
     @ActField(name = "主要作案地")
     private String prop_main_exec_address;// "主要作案地"
 
-    @ActField(name = "办案人")
-    private String prop_deal_name;// "办案人"
+//    @ActField(name = "办案人")
+//    private String prop_deal_name;// "办案人"
 
     /**
      * 案件详情
@@ -132,7 +132,7 @@ public class CaseEntity extends ActivitiBaseEntity {
         kvMap.put("prop_main_address", "住所地");
         kvMap.put("prop_main_history", "前科");
         kvMap.put("prop_main_exec_address", "主要作案地");
-        kvMap.put("prop_deal_name", "办案人");
+//        kvMap.put("prop_deal_name", "办案人");
 
 //        kvMap.put("file_cljg", "《人民监督员监督案件处理结果通知书》");
 //        kvMap.put("file_bjyj", "《人民监督员表决意见通知书》");
@@ -372,11 +372,11 @@ public class CaseEntity extends ActivitiBaseEntity {
         this.prop_main_exec_address = prop_main_exec_address;
     }
 
-    public String getprop_deal_name() {
-        return prop_deal_name;
-    }
-
-    public void setprop_deal_name(String prop_deal_name) {
-        this.prop_deal_name = prop_deal_name;
-    }
+//    public String getprop_deal_name() {
+//        return prop_deal_name;
+//    }
+//
+//    public void setprop_deal_name(String prop_deal_name) {
+//        this.prop_deal_name = prop_deal_name;
+//    }
 }
