@@ -399,6 +399,7 @@ public class ExtendActDealController {
             //jumpService.jumpEndActivity(processTaskDto.getDefId(),processTaskDto,processTaskDto.getInstanceId(),"sid-33BCE5B3-845D-412C-857F-DC24E63599D5");
 
             actModelerService.doActTask(processTaskDto, params);
+            params.put("nodeName", processTaskDto.getTaskName());
             createPropertyNode(params);
             //why
 //            taskService.complete(processTaskDto.getTaskId());
@@ -472,6 +473,7 @@ public class ExtendActDealController {
             if (key.startsWith("prop_") || key.startsWith("file_") || key.startsWith("rule_")) {
                 Map<String, Object> juv = new HashMap<>();
                 juv.put("name", CaseEntity.kvMap.get(key) + "_" + params.get(key).toString());
+                juv.put(("dealUserName"), ShiroUtils.getUserEntity().getUserName());
                 juv.put(CaseEntity.kvMap.get(key), params.get(key).toString());
                 Neo4jFinalUtil.addKVs(caseId, key, "change", false, juv);
             }
@@ -615,6 +617,7 @@ public class ExtendActDealController {
             String actId = (String) params.get("actId");
             jumpService.jumpEndActivity(processTaskDto.getDefId(), processTaskDto, processTaskDto.getInstanceId(), actId);
             result = Result.ok("任务跳转成功");
+            params.put("nodeName", processTaskDto.getTaskName());
             createPropertyNode(params);
         } catch (Exception e) {
             e.printStackTrace();

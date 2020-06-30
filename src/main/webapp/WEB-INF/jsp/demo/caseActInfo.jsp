@@ -31,15 +31,15 @@
     </span>
     </div>
     </div>
-    <div class="form-group col-sm-6 col-md-5 ">
-    <label class="col-sm-3 control-label no-padding-right">办案人:<i class="layui-icon" onclick="traceProp('${caseEntity.id}','prop_deal_name')">&#xe615;</i></label>
-    <div class="col-sm-9">
-    <span class="col-xs-11 block input-icon input-icon-right">
-    <input  id="prop_deal_name" name="prop_deal_name" type="text" class="form-control"
-    value="${prop_deal_name}" />
-    </span>
-    </div>
-    </div>
+<%--    <div class="form-group col-sm-6 col-md-5 ">--%>
+<%--    <label class="col-sm-3 control-label no-padding-right">办案人:<i class="layui-icon" onclick="traceProp('${caseEntity.id}','prop_deal_name')">&#xe615;</i></label>--%>
+<%--    <div class="col-sm-9">--%>
+<%--    <span class="col-xs-11 block input-icon input-icon-right">--%>
+<%--    <input  id="prop_deal_name" name="prop_deal_name" type="text" class="form-control"--%>
+<%--    value="${prop_deal_name}" />--%>
+<%--    </span>--%>
+<%--    </div>--%>
+<%--    </div>--%>
     </div>
 
 <%--    <div class="row">--%>
