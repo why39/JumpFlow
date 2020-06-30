@@ -67,7 +67,7 @@ public class CaseEntity extends ActivitiBaseEntity {
     @ActField(name = "是否未单位犯罪")
     private String prop_is_unit;//是否未单位犯罪
 
-    @ActField(name = "犯罪嫌疑人姓名/单位名称")
+    @ActField(name = "犯罪嫌疑人姓名")
     private String prop_main_name;//犯罪嫌疑人姓名/单位名称
 
     @ActField(name = "犯罪嫌疑人作案时年龄")
@@ -125,7 +125,7 @@ public class CaseEntity extends ActivitiBaseEntity {
 //        kvMap.put("prop_is_main", "是否主犯");
 //        kvMap.put("prop_is_together", "是否共同犯罪");
         kvMap.put("prop_move_reason", "移送意见");
-        kvMap.put("prop_main_name", "犯罪嫌疑人姓名/单位名称");
+        kvMap.put("prop_main_name", "犯罪嫌疑人姓名");
         kvMap.put("prop_main_age", "犯罪嫌疑人作案时年龄");
         kvMap.put("prop_main_nation", "犯罪嫌疑人民族");
         kvMap.put("prop_main_education", "受教育状况");

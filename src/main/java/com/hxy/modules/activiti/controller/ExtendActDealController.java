@@ -473,7 +473,8 @@ public class ExtendActDealController {
             if (key.startsWith("prop_") || key.startsWith("file_") || key.startsWith("rule_")) {
                 Map<String, Object> juv = new HashMap<>();
                 juv.put("name", CaseEntity.kvMap.get(key) + "_" + params.get(key).toString());
-                juv.put(("dealUserName"), ShiroUtils.getUserEntity().getUserName());
+                juv.put(("案件节点办理人员"), ShiroUtils.getUserEntity().getUserName());
+                juv.put(("案件节点名称"), params.get("nodeName"));
                 juv.put(CaseEntity.kvMap.get(key), params.get(key).toString());
                 Neo4jFinalUtil.addKVs(caseId, key, "change", false, juv);
             }
