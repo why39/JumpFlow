@@ -483,8 +483,8 @@ public class ExtendActDealController {
                 juv.put(("案件节点名称"), params.get("nodeName"));
                 if(CaseEntity.kvMap.get(key) != null){
                     juv.put(CaseEntity.kvMap.get(key), params.get(key).toString());
+                    Neo4jFinalUtil.addKVs(caseId, key, "change", false, juv);
                 }
-                Neo4jFinalUtil.addKVs(caseId, key, "change", false, juv);
             }
         }
 
