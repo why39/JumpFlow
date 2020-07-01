@@ -86,6 +86,7 @@ public class CaseController {
     @RequestMapping("info")
     @RequiresPermissions("act:model:all")
     public String info(Model model , String id, HttpServletRequest request){
+        System.out.println("wxp>>>>>>>>>>>> : info");
         if(!StringUtils.isEmpty(id)){
             CaseEntity caseEntity = caseService.queryObject(id);
             model.addAttribute("case",caseEntity);
@@ -102,6 +103,7 @@ public class CaseController {
     @RequiresPermissions("act:model:all")
     @ResponseBody
     public Result edit(CaseEntity caseEntity){
+        System.out.println("wxp>>>>>>>>>>>> : edit");
         if(StringUtils.isEmpty(caseEntity.getId())){
             caseService.save(caseEntity);
             addCase(caseEntity);

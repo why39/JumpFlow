@@ -2,6 +2,7 @@ package com.hxy.modules.activiti.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.google.gson.Gson;
 import com.hxy.modules.activiti.dto.ProcessNodeDto;
 import com.hxy.modules.activiti.dto.ProcessTaskDto;
 import com.hxy.modules.activiti.entity.ExtendActFlowbusEntity;
@@ -604,20 +605,6 @@ public class ExtendActDealController {
         model.addAttribute("flowbus", flowbus);
         model.addAttribute("nodeSet", nodesetEntity);
 
-        //whywxp
-        CaseEntity caseEntity = caseService.queryObject(processTaskDto.getBusId());
-        model.addAttribute("caseEntity", caseEntity);
-        model.addAttribute("taskDto", processTaskDto);
-//        model.addAttribute("flag", "");
-        //wxp:添加动态字段的值。
-        if (!StringUtils.isEmpty(caseEntity.getFields())) {
-            JSONObject map = JSON.parseObject(caseEntity.getFields());
-            for (String key : map.keySet()) {
-                System.out.println("wxp>>>>>>>>>>>> : " + key + " | " + map.get(key));
-                model.addAttribute(key, map.get(key));
-            }
-        }
-
 
         return "activiti/jumpSelect";
     }
@@ -632,16 +619,17 @@ public class ExtendActDealController {
     @ResponseBody
     public Result doJump(ProcessTaskDto processTaskDto, HttpServletRequest request, Model model) {
         Result result = null;
-
+        System.out.println("wxp>>>>>>>>>>>> : doJump");
 
         try {
             Map<String, String[]> parameterMap = request.getParameterMap();
             Map<String, Object> params = new LinkedCaseInsensitiveMap<>();
             for (String key : parameterMap.keySet()) {
                 params.put(key, parameterMap.get(key)[0]);
+                model.addAttribute(key, parameterMap.get(key)[0]);//更新案卡信息
             }
             String actId = (String) params.get("actId");
-            jumpService.jumpEndActivity(processTaskDto.getDefId(), processTaskDto, processTaskDto.getInstanceId(), actId);
+            jumpService.jumpEndActivity(params,processTaskDto.getDefId(), processTaskDto, processTaskDto.getInstanceId(), actId);
             result = Result.ok("任务跳转成功");
             params.put("nodeName", processTaskDto.getTaskName());
             createPropertyNode(params);

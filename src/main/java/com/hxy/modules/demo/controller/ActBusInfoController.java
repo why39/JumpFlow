@@ -29,17 +29,17 @@ public class ActBusInfoController {
     CaseService caseService;
 
     @RequestMapping(value = "case", method = RequestMethod.POST)
-    public String leave(ProcessTaskDto processTaskDto, Model model, String flag) {
+    public String doCase(ProcessTaskDto processTaskDto, Model model, String flag) {
         CaseEntity caseEntity = caseService.queryObject(processTaskDto.getBusId());
         model.addAttribute("caseEntity", caseEntity);
         model.addAttribute("taskDto", processTaskDto);
         model.addAttribute("flag", flag);
-
+        System.out.println("wxp>>>>>>>>>>>> : leave");
         //wxp:添加动态字段的值。
         if (!StringUtils.isEmpty(caseEntity.getFields())) {
             JSONObject map = JSON.parseObject(caseEntity.getFields());
             for (String key : map.keySet()) {
-                System.out.println("wxp>>>>>>>>>>>> : " + key + " | " + map.get(key));
+                System.out.println(key + " | " + map.get(key));
                 model.addAttribute(key, map.get(key));
             }
         }

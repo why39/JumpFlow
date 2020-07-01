@@ -60,11 +60,9 @@ public class Thymetest {
     private String poPassWord;
 
     /**
-
      * 添加PageOffice的服务器端授权程序Servlet（必须）
-
+     *
      * @return
-
      */
 
     @Bean
@@ -92,11 +90,9 @@ public class Thymetest {
     }
 
     /**
-
      * 添加印章管理程序Servlet（可选）
-
+     *
      * @return
-
      */
 
     @Bean
@@ -112,7 +108,6 @@ public class Thymetest {
         adminSeal.setSysPath(poSysPath);
 
 
-
         ServletRegistrationBean srb = new ServletRegistrationBean(adminSeal);
 
         srb.addUrlMappings("/adminseal.zz");
@@ -126,11 +121,9 @@ public class Thymetest {
     }
 
     /**
-
      * 添加PageOffice的服务器端授权程序Servlet（必须）,第一个配置bean无效
-
+     *
      * @return
-
      */
 
     @Bean
@@ -141,7 +134,6 @@ public class Thymetest {
 
 
         ps.setSysPath(poSysPath);
-
 
 
         ServletRegistrationBean srb = new ServletRegistrationBean(ps);
@@ -159,29 +151,27 @@ public class Thymetest {
     }
 
     /**
-
      * 打开已有文书模板
-
+     *
      * @return
-
      */
 
-    @RequestMapping(value="/word", method= RequestMethod.GET)
-    public String showWord(String fileName, HttpServletRequest request, HttpServletResponse response){
+    @RequestMapping(value = "/word", method = RequestMethod.GET)
+    public String showWord(String fileName, HttpServletRequest request, HttpServletResponse response) {
         String fn = fileName;
-        PageOfficeCtrl poCtrl=new PageOfficeCtrl(request);
+        PageOfficeCtrl poCtrl = new PageOfficeCtrl(request);
 
         request.setAttribute("poCtrl", poCtrl);
 
         //设置服务页面
-        poCtrl.setServerPage(request.getContextPath()+"/plib/poserver.zz");
+        poCtrl.setServerPage(request.getContextPath() + "/plib/poserver.zz");
         //添加保存按钮
-        poCtrl.addCustomToolButton("保存并关闭","Save",1);
+        poCtrl.addCustomToolButton("保存并关闭", "Save", 1);
         //设置保存的action
         poCtrl.setSaveFilePage("savefile");
         //打开word
         //poCtrl.webOpen("d:\\test.wps",OpenModeType.docAdmin,"张三");
-        poCtrl.webOpen("doc/"+fn,OpenModeType.docAdmin,"张三");   //这里相对路径是读取target/doc下的文件，而不是src/doc下的文件
+        poCtrl.webOpen("doc/" + fn, OpenModeType.docAdmin, "张三");   //这里相对路径是读取target/doc下的文件，而不是src/doc下的文件
         poCtrl.setTagId("PageOfficeCtrl1"); //此行必须
         //--- PageOffice的调用代码 结束 -----
 
@@ -191,49 +181,44 @@ public class Thymetest {
     }
 
     /**
-
      * 保存已有文档模板的修改（更新已有模板）
-
+     *
      * @return
-
      */
     @RequestMapping(value = "/savefile")
 
-    public void saveFile(HttpServletRequest request, HttpServletResponse response){
+    public void saveFile(HttpServletRequest request, HttpServletResponse response) {
 
         FileSaver fs = new FileSaver(request, response);
 
         //fs.saveToFile("d:\\" + fs.getFileName());
         try {
             fs.saveToFile(ResourceUtils.getURL("classpath:").getPath() + "/statics/doc/instances/" + fs.getFileName());
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         fs.close();
     }
 
     /**
-
      * 创建新文书模板
-
+     *
      * @return
-
      */
 
-    @RequestMapping(value="/createword", method= RequestMethod.GET)
-    public String createWord(String fileName, HttpServletRequest request, HttpServletResponse response){
+    @RequestMapping(value = "/createword", method = RequestMethod.GET)
+    public String createWord(String fileName, HttpServletRequest request, HttpServletResponse response) {
         String fn = fileName;
-        PageOfficeCtrl poCtrl=new PageOfficeCtrl(request);
+        PageOfficeCtrl poCtrl = new PageOfficeCtrl(request);
 
         request.setAttribute("poCtrl", poCtrl);
 
         //设置服务页面
-        poCtrl.setServerPage(request.getContextPath()+"/plib/poserver.zz");
+        poCtrl.setServerPage(request.getContextPath() + "/plib/poserver.zz");
         //添加保存按钮
-        poCtrl.addCustomToolButton("保存并关闭","Save",1);
+        poCtrl.addCustomToolButton("保存并关闭", "Save", 1);
         //设置保存的action
-        poCtrl.setSaveFilePage("saveCreateFile?fileName="+fn);
+        poCtrl.setSaveFilePage("saveCreateFile?fileName=" + fn);
         //创建word
         poCtrl.webCreateNew("张三", DocumentVersion.Word2007);
         poCtrl.setFileTitle(fn);
@@ -246,15 +231,13 @@ public class Thymetest {
     }
 
     /**
-
      * 保存新建的文档模板
-
+     *
      * @return
-
      */
     @RequestMapping(value = "/saveCreateFile")
 
-    public void saveCreateFile(String fileName, HttpServletRequest request, HttpServletResponse response){
+    public void saveCreateFile(String fileName, HttpServletRequest request, HttpServletResponse response) {
         String fn = fileName;
         FileSaver fs = new FileSaver(request, response);
         //fs.saveToFile("d:\\" + fs.getFileName());
@@ -263,37 +246,34 @@ public class Thymetest {
             File file = new File(ResourceUtils.getURL("classpath:").getPath() + "/statics/doc/" + fs.getFileName());
             //将文书模板名称从默认的newword.docx改为自定义的名称
             file.renameTo(new File(ResourceUtils.getURL("classpath:").getPath() + "/statics/doc/" + fn + ".docx"));
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         fs.close();
     }
 
     /**
-
      * 打开已有文书模板实例
-
+     *
      * @return
-
      */
 
-    @RequestMapping(value="/wordIns", method= RequestMethod.GET)
-    public String showWordInstance(String fileName, HttpServletRequest request, HttpServletResponse response){
+    @RequestMapping(value = "/wordIns", method = RequestMethod.GET)
+    public String showWordInstance(String fileName, HttpServletRequest request, HttpServletResponse response) {
         String fn = fileName;
-        PageOfficeCtrl poCtrl=new PageOfficeCtrl(request);
+        PageOfficeCtrl poCtrl = new PageOfficeCtrl(request);
 
         request.setAttribute("poCtrl", poCtrl);
 
         //设置服务页面
-        poCtrl.setServerPage(request.getContextPath()+"/plib/poserver.zz");
+        poCtrl.setServerPage(request.getContextPath() + "/plib/poserver.zz");
         //添加保存按钮
-        poCtrl.addCustomToolButton("保存并关闭","Save",1);
+        poCtrl.addCustomToolButton("保存并关闭", "Save", 1);
         //设置保存的action
         poCtrl.setSaveFilePage("savefile");
         //打开word
         //poCtrl.webOpen("d:\\test.wps",OpenModeType.docAdmin,"张三");
-        poCtrl.webOpen("doc/instances/"+fn,OpenModeType.docAdmin,"张三");   //这里相对路径是读取target/doc下的文件，而不是src/doc下的文件
+        poCtrl.webOpen("doc/instances/" + fn, OpenModeType.docAdmin, "张三");   //这里相对路径是读取target/doc下的文件，而不是src/doc下的文件
         poCtrl.setTagId("PageOfficeCtrl1"); //此行必须
         //--- PageOffice的调用代码 结束 -----
 
@@ -303,21 +283,18 @@ public class Thymetest {
     }
 
     /**
-
      * 引导页
-
+     *
      * @return
-
      */
 
-    @RequestMapping(value="/pageIndex", method= RequestMethod.GET)
-    public String pageIndex(ProcessTaskDto processTaskDto, HttpServletRequest request, Model model){
+    @RequestMapping(value = "/pageIndex", method = RequestMethod.GET)
+    public String pageIndex(ProcessTaskDto processTaskDto, HttpServletRequest request, Model model) {
         //扫描文书存储目录下的所有文书文件
         String path = null;
-        try{
+        try {
             path = ResourceUtils.getURL("classpath:").getPath() + "/statics/doc/";
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         ArrayList<String> files = new ArrayList<String>();
@@ -332,57 +309,56 @@ public class Thymetest {
         Task task = taskService.createTaskQuery().taskId(processTaskDto.getTaskId()).singleResult();
         //查询可更改字段
         ExtendActNodesetEntity nodesetEntity = nodesetService.queryByNodeId(task.getTaskDefinitionKey());
-        model.addAttribute("files",files);
+        model.addAttribute("files", files);
         model.addAttribute("taskDto", processTaskDto);
         model.addAttribute("nodeSet", nodesetEntity);
         return "pageoffice/filebookIndex";
     }
+
     /**
-     *  提交文书
+     * 提交文书
      */
-    @RequestMapping(value="/submitFile", method = RequestMethod.POST)
+    @RequestMapping(value = "/submitFile", method = RequestMethod.POST)
     @ResponseBody
-    public Result submitFile(javax.servlet.http.HttpServletRequest request, Model model){
+    public Result submitFile(javax.servlet.http.HttpServletRequest request, Model model) {
         Result result = null;
-        try{
+        try {
             Map<String, String[]> parameterMap = request.getParameterMap();
             Map<String, Object> params = new LinkedCaseInsensitiveMap<>();
             for (String key : parameterMap.keySet()) {
                 params.put(key, parameterMap.get(key)[0]);
             }
             ProcessTaskDto processTaskDto = new ProcessTaskDto();
-            processTaskDto.setBusId((String)params.get("busId"));
-            processTaskDto.setTaskId((String)params.get("taskId"));
-            processTaskDto.setTaskName((String)params.get("taskName"));
-            processTaskDto.setInstanceId((String)params.get("instanceId"));
-            processTaskDto.setDefId((String)params.get("defId"));
-            String expression = (String)params.get("expression");
-            String actId = ActUtils.findActivitiImpl(processTaskDto.getTaskId(),"").getId();
-            List<RuleEntity> lr = ruleService.queryRulesAva(processTaskDto.getDefId(), processTaskDto.getInstanceId(),actId);
+            processTaskDto.setBusId((String) params.get("busId"));
+            processTaskDto.setTaskId((String) params.get("taskId"));
+            processTaskDto.setTaskName((String) params.get("taskName"));
+            processTaskDto.setInstanceId((String) params.get("instanceId"));
+            processTaskDto.setDefId((String) params.get("defId"));
+            String expression = (String) params.get("expression");
+            String actId = ActUtils.findActivitiImpl(processTaskDto.getTaskId(), "").getId();
+            List<RuleEntity> lr = ruleService.queryRulesAva(processTaskDto.getDefId(), processTaskDto.getInstanceId(), actId);
             String nextAct = "";
             String nextActName = "";
             String rId = "";
-            for(RuleEntity re : lr){
-                if(ruleService.compareRule(re.getExpression(), expression) == true){
+            for (RuleEntity re : lr) {
+                if (ruleService.compareRule(re.getExpression(), expression) == true) {
                     nextAct = re.getEndEvent();
                     nextActName = re.getEndName();
                     rId = re.getId();
                     break;
                 }
             }
-            if(nextAct != ""){
-                result = Result.ok("根据规则"+rId+",跳转到"+nextActName);
-                jumpService.jumpEndActivity(processTaskDto.getDefId(),processTaskDto,processTaskDto.getInstanceId(),nextAct);
+            if (nextAct != "") {
+                result = Result.ok("根据规则" + rId + ",跳转到" + nextActName);
+                jumpService.jumpEndActivity(params, processTaskDto.getDefId(), processTaskDto, processTaskDto.getInstanceId(), nextAct);
 
-            }
-            else{
+            } else {
                 result = Result.ok("没有相应规则，将按流程定义执行流程");
                 actModelerService.doActTask(processTaskDto, params);
             }
             createPropertyNode(params);
             createCaseNode(processTaskDto);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             result = Result.error("提交文书并执行流程失败");
         }
