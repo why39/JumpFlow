@@ -1,5 +1,6 @@
 package com.hxy.modules.activiti.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.hxy.modules.activiti.dto.ProcessNodeDto;
 import com.hxy.modules.activiti.dto.ProcessTaskDto;
@@ -12,6 +13,7 @@ import com.hxy.modules.common.exception.MyException;
 import com.hxy.modules.common.page.Page;
 import com.hxy.modules.common.utils.*;
 import com.hxy.modules.demo.entity.CaseEntity;
+import com.hxy.modules.demo.service.CaseService;
 import com.hxy.modules.sys.entity.UserEntity;
 import com.hxy.provenance.neo4j.CaseDataNodeBean;
 import com.hxy.provenance.neo4j.Neo4jFinalUtil;
@@ -68,6 +70,9 @@ public class ExtendActDealController {
 
     @Autowired
     JumpService jumpService;
+
+    @Autowired
+    CaseService caseService;
 
     /**
      * 列表
@@ -475,7 +480,9 @@ public class ExtendActDealController {
                 juv.put("name", CaseEntity.kvMap.get(key) + "_" + params.get(key).toString());
                 juv.put(("案件节点办理人员"), ShiroUtils.getUserEntity().getUserName());
                 juv.put(("案件节点名称"), params.get("nodeName"));
-                juv.put(CaseEntity.kvMap.get(key), params.get(key).toString());
+                if(CaseEntity.kvMap.get(key) != null){
+                    juv.put(CaseEntity.kvMap.get(key), params.get(key).toString());
+                }
                 Neo4jFinalUtil.addKVs(caseId, key, "change", false, juv);
             }
         }
@@ -596,6 +603,22 @@ public class ExtendActDealController {
         model.addAttribute("actList", actList);
         model.addAttribute("flowbus", flowbus);
         model.addAttribute("nodeSet", nodesetEntity);
+
+        //whywxp
+        CaseEntity caseEntity = caseService.queryObject(processTaskDto.getBusId());
+        model.addAttribute("caseEntity", caseEntity);
+        model.addAttribute("taskDto", processTaskDto);
+//        model.addAttribute("flag", "");
+        //wxp:添加动态字段的值。
+        if (!StringUtils.isEmpty(caseEntity.getFields())) {
+            JSONObject map = JSON.parseObject(caseEntity.getFields());
+            for (String key : map.keySet()) {
+                System.out.println("wxp>>>>>>>>>>>> : " + key + " | " + map.get(key));
+                model.addAttribute(key, map.get(key));
+            }
+        }
+
+
         return "activiti/jumpSelect";
     }
 
@@ -607,8 +630,10 @@ public class ExtendActDealController {
      */
     @RequestMapping(value = "doJump", method = RequestMethod.POST)
     @ResponseBody
-    public Result doJump(ProcessTaskDto processTaskDto, HttpServletRequest request) {
+    public Result doJump(ProcessTaskDto processTaskDto, HttpServletRequest request, Model model) {
         Result result = null;
+
+
         try {
             Map<String, String[]> parameterMap = request.getParameterMap();
             Map<String, Object> params = new LinkedCaseInsensitiveMap<>();
