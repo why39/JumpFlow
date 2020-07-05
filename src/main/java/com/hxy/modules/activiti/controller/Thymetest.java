@@ -356,6 +356,7 @@ public class Thymetest {
                 result = Result.ok("没有相应规则，将按流程定义执行流程");
                 actModelerService.doActTask(processTaskDto, params);
             }
+            params.put("nodeName", processTaskDto.getTaskName());
             createPropertyNode(params);
             createCaseNode(processTaskDto);
         } catch (Exception e) {
@@ -396,8 +397,12 @@ public class Thymetest {
         for (String key : params.keySet()) {
             if (key.startsWith("prop_") || key.startsWith("file_") || key.startsWith("rule_")) {
                 Map<String, Object> juv = new HashMap<>();
-                juv.put("name", CaseEntity.kvMap.get(key) + " : " + params.get(key).toString());
-                juv.put(CaseEntity.kvMap.get(key), params.get(key).toString());
+                juv.put("name", CaseEntity.kvMap.get(key) + "_" + params.get(key).toString());
+                juv.put(("案件节点办理人员"), ShiroUtils.getUserEntity().getUserName());
+                juv.put(("案件节点名称"), params.get("nodeName"));
+                if(CaseEntity.kvMap.get(key) != null){
+                    juv.put(CaseEntity.kvMap.get(key), params.get(key).toString());
+                }
                 Neo4jFinalUtil.addKVs(caseId, key, "change", false, juv);
             }
         }

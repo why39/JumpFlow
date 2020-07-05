@@ -55,17 +55,17 @@ public class CaseEntity extends ActivitiBaseEntity {
     @ActField(name = "移送案由")
     private String prop_move_reason;//移送案由
 
-    @ActField(name = "是否共同犯罪")
-    private String prop_is_together;//是否共同犯罪
-
-    @ActField(name = "是否主犯")
-    private String prop_is_main;//是否主犯
-
-    @ActField(name = "是否未成年人")
-    private String prop_is_juveniles;//是否未成年人
-
-    @ActField(name = "是否未单位犯罪")
-    private String prop_is_unit;//是否未单位犯罪
+//    @ActField(name = "是否共同犯罪")
+//    private String prop_is_together;//是否共同犯罪
+//
+//    @ActField(name = "是否主犯")
+//    private String prop_is_main;//是否主犯
+//
+//    @ActField(name = "是否未成年人")
+//    private String prop_is_juveniles;//是否未成年人
+//
+//    @ActField(name = "是否未单位犯罪")
+//    private String prop_is_unit;//是否未单位犯罪
 
     @ActField(name = "犯罪嫌疑人姓名")
     private String prop_main_name;//犯罪嫌疑人姓名/单位名称
@@ -284,37 +284,37 @@ public class CaseEntity extends ActivitiBaseEntity {
         this.prop_move_reason = prop_move_reason;
     }
 
-    public String getprop_is_together() {
-        return prop_is_together;
-    }
-
-    public void setprop_is_together(String prop_is_together) {
-        this.prop_is_together = prop_is_together;
-    }
-
-    public String getprop_is_main() {
-        return prop_is_main;
-    }
-
-    public void setprop_is_main(String prop_is_main) {
-        this.prop_is_main = prop_is_main;
-    }
-
-    public String getprop_is_juveniles() {
-        return prop_is_juveniles;
-    }
-
-    public void setprop_is_juveniles(String prop_is_juveniles) {
-        this.prop_is_juveniles = prop_is_juveniles;
-    }
-
-    public String getprop_is_unit() {
-        return prop_is_unit;
-    }
-
-    public void setprop_is_unit(String prop_is_unit) {
-        this.prop_is_unit = prop_is_unit;
-    }
+//    public String getprop_is_together() {
+//        return prop_is_together;
+//    }
+//
+//    public void setprop_is_together(String prop_is_together) {
+//        this.prop_is_together = prop_is_together;
+//    }
+//
+//    public String getprop_is_main() {
+//        return prop_is_main;
+//    }
+//
+//    public void setprop_is_main(String prop_is_main) {
+//        this.prop_is_main = prop_is_main;
+//    }
+//
+//    public String getprop_is_juveniles() {
+//        return prop_is_juveniles;
+//    }
+//
+//    public void setprop_is_juveniles(String prop_is_juveniles) {
+//        this.prop_is_juveniles = prop_is_juveniles;
+//    }
+//
+//    public String getprop_is_unit() {
+//        return prop_is_unit;
+//    }
+//
+//    public void setprop_is_unit(String prop_is_unit) {
+//        this.prop_is_unit = prop_is_unit;
+//    }
 
     public String getprop_main_name() {
         return prop_main_name;
