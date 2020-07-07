@@ -41,7 +41,7 @@ object Suggestion {
     suggestionDataFrame.coalesce(1).write
       .option("header", "true")
       .option("timestampFormat", "yyyy/MM/dd HH:mm:ss ZZ")
-      .csv(path+outputname)
+      .csv(path+"case/"+outputname)
     //    suggestionDataFrame.write.csv("test.csv")
     //    suggestionDataFrame.write.json("test.json")
   }
