@@ -42,7 +42,9 @@ spring:
             prefix: /WEB-INF/jsp/
             suffix: .jsp
 
-
+    rizhifile:
+        ajlb: ./ajrz/ajlb.xlsx
+        rzlb: ./ajrz/rzlb.xlsx
     velocity:
         enabled=false:
     data:
@@ -71,7 +73,7 @@ mybatis:
 
 # Pageoffice
 pageoffice:
-  posyspath: d:/IDE/lic/
+  posyspath: ./IDE/lic/
   popassword: 111111
 
 # APP模块

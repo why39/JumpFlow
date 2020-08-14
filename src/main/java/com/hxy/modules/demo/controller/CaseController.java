@@ -20,11 +20,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
  * 类的功能描述.
  * 业务树
+ *
  * @Auther hxy
  * @Date 2017/7/25
  */
@@ -37,6 +39,7 @@ public class CaseController {
 
     /**
      * 案件列表
+     *
      * @param model
      * @param caseEntity
      * @param request
@@ -44,16 +47,17 @@ public class CaseController {
      */
     @RequestMapping("list")
     @RequiresPermissions("act:model:all")
-    public String list(Model model , CaseEntity caseEntity, HttpServletRequest request){
+    public String list(Model model, CaseEntity caseEntity, HttpServletRequest request) {
         int pageNum = CommUtils.parseInt(request.getParameter("pageNum"), 1);
         Page<CaseEntity> page = caseService.findPage(caseEntity, pageNum);
-        model.addAttribute("page",page);
-        model.addAttribute("case",caseEntity);
+        model.addAttribute("page", page);
+        model.addAttribute("case", caseEntity);
         return "demo/case";
     }
 
     /**
      * 案件质量
+     *
      * @param model
      * @param caseEntity
      * @param request
@@ -61,23 +65,24 @@ public class CaseController {
      */
     @RequestMapping("dataquality")
     @RequiresPermissions("act:model:all")
-    public String dataquality(Model model , CaseEntity caseEntity, HttpServletRequest request){
+    public String dataquality(Model model, CaseEntity caseEntity, HttpServletRequest request) {
         int pageNum = CommUtils.parseInt(request.getParameter("pageNum"), 1);
         Page<CaseEntity> page = caseService.findPage(caseEntity, pageNum);
-        model.addAttribute("page",page);
-        model.addAttribute("case",caseEntity);
+        model.addAttribute("page", page);
+        model.addAttribute("case", caseEntity);
         return "demo/dataquality";
     }
 
-    @RequestMapping("dealquality")
+    @RequestMapping(value = "dealquality", method = RequestMethod.POST)
     @RequiresPermissions("act:model:all")
-    public Result dealquality(String id){
-        Suggestion.deal(id+"");
+    public Result dealquality(String id) {
+        Suggestion.deal(id + "");
         return Result.ok("分析成功");
     }
 
     /**
      * 请假详情
+     *
      * @param model
      * @param id
      * @param request
@@ -85,29 +90,30 @@ public class CaseController {
      */
     @RequestMapping("info")
     @RequiresPermissions("act:model:all")
-    public String info(Model model , String id, HttpServletRequest request){
+    public String info(Model model, String id, HttpServletRequest request) {
         System.out.println("wxp>>>>>>>>>>>> : info");
-        if(!StringUtils.isEmpty(id)){
+        if (!StringUtils.isEmpty(id)) {
             CaseEntity caseEntity = caseService.queryObject(id);
-            model.addAttribute("case",caseEntity);
+            model.addAttribute("case", caseEntity);
         }
         return "demo/caseEdit";
     }
 
     /**
      * 编辑
+     *
      * @param caseEntity
      * @return
      */
-    @RequestMapping(value = "edit",method = RequestMethod.POST)
+    @RequestMapping(value = "edit", method = RequestMethod.POST)
     @RequiresPermissions("act:model:all")
     @ResponseBody
-    public Result edit(CaseEntity caseEntity){
+    public Result edit(CaseEntity caseEntity) {
         System.out.println("wxp>>>>>>>>>>>> : edit");
-        if(StringUtils.isEmpty(caseEntity.getId())){
+        if (StringUtils.isEmpty(caseEntity.getId())) {
             caseService.save(caseEntity);
             addCase(caseEntity);
-        }else {
+        } else {
             caseService.update(caseEntity);
         }
         return Result.ok();
@@ -116,9 +122,10 @@ public class CaseController {
     /**
      * wxp
      * 添加案件结点
+     *
      * @param caseEntity
      */
-    public void addCase(CaseEntity caseEntity){
+    public void addCase(CaseEntity caseEntity) {
         CaseDataBean caseDataBean = new CaseDataBean();
         caseDataBean.setCase_category("监督办");
         caseDataBean.setCase_id(caseEntity.getId());
@@ -133,14 +140,15 @@ public class CaseController {
 
     /**
      * 删除
+     *
      * @param id
      * @return
      */
-    @RequestMapping(value = "delete",method = RequestMethod.POST)
+    @RequestMapping(value = "delete", method = RequestMethod.POST)
     @RequiresPermissions("act:model:all")
     @ResponseBody
-    public Result edit(String id){
-        if(caseService.delete(id)<1){
+    public Result edit(String id) {
+        if (caseService.delete(id) < 1) {
             return Result.error("删除失败");
         }
         return Result.ok("删除成功");
@@ -152,7 +160,7 @@ public class CaseController {
 
     @RequestMapping(value = "neoconfig", method = RequestMethod.GET)
     @ResponseBody
-    public String getNeoConfig(){
+    public String getNeoConfig() {
         String NEO_SERVER_URL = env.getProperty("spring.data.neo4j.uri");
         String NEO_SERVER_USER = env.getProperty("spring.data.neo4j.username");
         String NEO_SERVER_PSW = env.getProperty("spring.data.neo4j.password");
@@ -165,9 +173,6 @@ public class CaseController {
         return jsonObject.toString();
 
     }
-
-
-
 
 
 }
