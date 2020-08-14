@@ -27,38 +27,45 @@
     <div style="margin-top: 6px" class="col-lg-6">
         <div class="input-group">
             <input class="form-control" type="text" style="width: 160px" id="caseName" placeholder="输入内容"/>
-            <button style="margin-left: 6px" type="button" class="btn btn-primary" id="caseName" onclick="findCase()">查找案件
+            <button style="margin-left: 6px" type="button" class="btn btn-primary"  onclick="findCase()">查找案件
             </button>
         </div><!-- /input-group -->
     </div>
 
     <div style="margin-top: 6px" class="col-lg-6">
         <div class="input-group">
-            <input class="form-control" type="text" style="width: 160px" id="caseId" placeholder="案件ID"/>
-            <button style="margin-left: 6px" type="button" class="btn btn-primary" id="caseId" onclick="filterCase()">筛选案件
+            <input class="form-control" type="text" style="width: 160px" id="caseId" placeholder="部门受案号"/>
+            <button style="margin-left: 6px" type="button" class="btn btn-primary" onclick="filterCase()">筛选案件
             </button>
         </div><!-- /input-group -->
     </div>
 
-
     <div style="margin-top: 6px" class="col-lg-6">
         <div class="input-group">
-            <input class="form-control" type="text" style="width: 160px" id="caseTaskId" placeholder="案件环节ID"/>
-            <input class="form-control" type="number" style="width: 160px" id="actionLength" placeholder="推理/溯源路径长度"/>
-            <div style="margin-left: 6px" class="btn-group">
-                <button type="button" class="btn btn-primary" id="inference" onclick="inference()">推理</button>
-                <button type="button" class="btn btn-primary" id="trace" onclick="trace()">溯源</button>
-            </div>
+            <input class="form-control" type="text" style="width: 160px" id="labelName" placeholder="案卡项名称"/>
+            <button type="button" class="btn btn-primary" id="trace" onclick="traceGJ()">溯源</button>
         </div>
     </div>
 
-    <div style="margin-top: 6px" class="col-lg-6">
-        <div class="input-group">
-            <input class="form-control" type="text" style="width: 160px" id="logIn" placeholder="案件实例ID"/>
-            <button style="margin-left: 6px" type="button" class="btn btn-primary" id="logIn" onclick="logImport()">导入日志
-            </button>
-        </div><!-- /input-group -->
-    </div>
+
+<!--    <div style="margin-top: 6px" class="col-lg-6">-->
+<!--        <div class="input-group">-->
+<!--            <input class="form-control" type="text" style="width: 160px" id="caseTaskId" placeholder="案件环节ID"/>-->
+<!--            <input class="form-control" type="number" style="width: 160px" id="actionLength" placeholder="推理/溯源路径长度"/>-->
+<!--            <div style="margin-left: 6px" class="btn-group">-->
+<!--                <button type="button" class="btn btn-primary" id="inference" onclick="inference()">推理</button>-->
+<!--                <button type="button" class="btn btn-primary" id="trace" onclick="trace()">溯源</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <div style="margin-top: 6px" class="col-lg-6">-->
+<!--        <div class="input-group">-->
+<!--            <input class="form-control" type="text" style="width: 160px" id="logIn" placeholder="案件实例ID"/>-->
+<!--            <button style="margin-left: 6px" type="button" class="btn btn-primary" id="logIn" onclick="logImport()">导入日志-->
+<!--            </button>-->
+<!--        </div>&lt;!&ndash; /input-group &ndash;&gt;-->
+<!--    </div>-->
 
 
 
@@ -185,11 +192,24 @@
     function findCase(){
         var query = null;
         if ($("#caseName").val()) {
-            query = "MATCH (a:Task) WHERE a.name=~ '.*"+$("#caseName").val()+".*' RETURN a";
+            query = "MATCH (a:CASE) WHERE a.name=~ '.*"+$("#caseName").val()+".*' RETURN a";
         } else {
             query = "MATCH (n)-[r]->(m) RETURN n,r,m";
         }
         console.log("$(\"#caseId\").val()---->" + $("#caseId").val());
+        clearNodeInfo();
+        execute(query);
+    }
+
+    //对接高检，案卡项溯源
+    function traceGJ() {
+        var query = null;
+        if ($("#labelName").val()) {
+            query = "MATCH (n) WHERE n.caseId=\'" + $("#caseId").val() + "\' WITH n MATCH p = (n) - [*] -> (m:"+ $("#labelName").val()+") RETURN m,p";
+        } else {
+            query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
+        }
+        console.log("$(\"#labelName\").val()---->" + $("#labelName").val());
         clearNodeInfo();
         execute(query);
     }
