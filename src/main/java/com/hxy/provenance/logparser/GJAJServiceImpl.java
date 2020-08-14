@@ -140,6 +140,7 @@ public class GJAJServiceImpl implements GJAJService {
                         Map<String, Object> map = new HashMap<>();
                         map.put(NeoConstants.KEY_LAST_NODE_ID, caseNodeId);
                         map.put("action", RZMS);
+                        map.put("name", "ACTION");
                         map.put("CZRM", rz.getCZRM());
                         GJNeo4jUtil.addActionNode(BMSAH, "ACTION", "next", false, map);
                     }
