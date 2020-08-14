@@ -490,6 +490,7 @@ public class GJNeo4jUtil {
 
     /**
      * 单个的操作节点
+     *
      * @param BMSAH
      * @param label
      * @param relation
@@ -509,24 +510,32 @@ public class GJNeo4jUtil {
 
     public static String addPropertyNode(String BMSAH, String label, String relation, boolean reverse, Map<String, Object> map) {
         String lastNodeId = null;
-
+        String lastNodeValue = "";
 
         //先查询有没有这个BMSAH的属性节点，没有就插入，有就返回该属性的最后一个节点id，并作为当前插入的lastNode
         Driver driver = createDrive();
         Session session = driver.session();
-        StatementResult findResult = session.run("MATCH (c:CASE) where c.caseId = '" + BMSAH + "' with c MATCH p = (c) - [*] -> (m:"+label+") return m");
+        StatementResult findResult = session.run("MATCH (c:CASE) where c.caseId = '" + BMSAH + "' with c MATCH p = (c) - [*] -> (m:" + label + ") return m");
 
 
         if (findResult != null && findResult.hasNext()) {
             while (findResult.hasNext()) {
                 Record record = findResult.next();
-                lastNodeId = record.fields().get(0).value().toString().replace("node<", "").replace(">", "");
-                logger.debug("已有该属性节点》》》》"+lastNodeId);
+                lastNodeId = record.fields().get(0).value().toString().replace("node<", "").replace(">", ""); //lastNode肯定有，因为有一个CASE Node.
+                logger.debug("已有该属性节点》》》》" + lastNodeId);
+                String lastNodeLable = record.fields().get(0).value().get(label).toString(); //取出来的值前后加了两个双引号
+                lastNodeValue = lastNodeLable.substring(1, lastNodeLable.length() - 1);
             }
         }
 
-        String nodeId = GJNeo4jUtil.createKeyValues(BMSAH, label, lastNodeId, relation, reverse, map);
-        return nodeId;
+
+        if (!map.get(label).equals(lastNodeValue)) {
+            String nodeId = GJNeo4jUtil.createKeyValues(BMSAH, label, lastNodeId, relation, reverse, map);
+            return nodeId;
+        }
+
+        return lastNodeId;
+
     }
 
     public static String addCase(GJAJEntity dataBean) {
@@ -542,7 +551,7 @@ public class GJNeo4jUtil {
             while (findResult.hasNext()) {
                 Record record = findResult.next();
                 caseNodeId = record.fields().get(0).value().toString().replace("node<", "").replace(">", "");
-                logger.debug("已有案件》》》》"+caseNodeId);
+                logger.debug("已有案件》》》》" + caseNodeId);
                 return caseNodeId;
             }
         }
@@ -560,7 +569,6 @@ public class GJNeo4jUtil {
 
         return headId;
     }
-
 
 
     public static void updateCaseProvData(String case_id, String case_prov_data) {
