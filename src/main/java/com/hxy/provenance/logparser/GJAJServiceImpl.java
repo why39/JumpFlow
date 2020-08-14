@@ -11,6 +11,7 @@ import com.hxy.modules.demo.dao.CaseDao;
 import com.hxy.modules.demo.entity.CaseEntity;
 import com.hxy.modules.demo.service.CaseService;
 import com.hxy.modules.sys.entity.UserEntity;
+import com.hxy.provenance.neo4j.Neo4jFinalUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -83,12 +84,29 @@ public class GJAJServiceImpl implements GJAJService {
 
     @Override
     public List<GJRZEntity> parseLog(String BMSAH) {
-        //1. 从RZ_YX_RZ中查询该BMSAH所有的日志
-        List<GJRZEntity> rzlist = logDao.queryList(BMSAH);
-        for (GJRZEntity rz : rzlist) {
-            String RZMS = rz.getRZMS();
+        //1. 创建一个案件头部节点
+        GJAJEntity gjajEntity = caseDao.queryObject(BMSAH);
+        String caseNodeId = GJNeo4jUtil.addCase(gjajEntity);
+
+        //2. 从RZ_YX_RZ中查询该BMSAH所有的日志
+        List<GJRZEntity> rzlist = logDao.queryList(BMSAH); //按时间升序排列
+        try {
+            for (GJRZEntity rz : rzlist) {
+                String RZMS = rz.getRZMS();
+                if (RZMS != null && RZMS.length() > 0) {
+                    if (RZMS.startsWith("[") || RZMS.startsWith("{")) {
+                        //解析json
+                    } else {
+                        //不是json，直接创建节点
 
 
+                    }
+                }
+
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return rzlist;
     }

@@ -75,6 +75,7 @@ public class CaseController {
 
     @RequestMapping(value = "dealquality", method = RequestMethod.POST)
     @RequiresPermissions("act:model:all")
+    @ResponseBody
     public Result dealquality(String id) {
         Suggestion.deal(id + "");
         return Result.ok("分析成功");

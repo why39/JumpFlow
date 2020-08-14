@@ -99,8 +99,8 @@ Activiti
 
 - - -
 数据库对接方案：
-1. 从高检数据库中dump数据到一个xxx.sql
-2. 导入xxx.sql到我们系统中
+1. 从高检数据库中dump数据到一个xxx.sql，或者excel
+2. 导入xxx.sql(Navicat可以导入excel)到我们系统中
 3. 从我们系统中查询AJ_YX_AJ表，得到案件列表
 4. 选择一个案件进行日志分析，从RZ_YX_RZ表充，根据某个案件的BMSAH，查询该案件所有日志
 5. 解析每一条日志，创建neo4j节点。
