@@ -6,13 +6,17 @@
         <result property="BMSAH" column="BMSAH"/>
         <result property="TYSAH" column="TYSAH"/>
         <result property="AJMC" column="AJMC"/>
+		<result property="CBDW_MC" column="CBDW_MC"/>
+		<result property="AJLB_MC" column="AJLB_MC"/>
 
     </resultMap>
 
     <sql id="Base_Column_List" >
 		BMSAH,
 		TYSAH,
-		AJMC
+		AJMC,
+		CBDW_MC,
+		AJLB_MC
     </sql>
 
 	<select id="queryObject" resultType="com.hxy.provenance.logparser.GJAJEntity" resultMap="caseMap">
@@ -31,31 +35,6 @@
  	<select id="queryTotal" resultType="int">
 		select count(*) from AJ_YX_AJ
 	</select>
-	 
-	<insert id="save" parameterType="com.hxy.provenance.logparser.GJAJEntity">
-		insert into AJ_YX_AJ
-		(
-			<include refid="Base_Column_List" />
-		)
-		values
-		(
-			#{BMSAH},
-			#{TYSAH},
-			#{AJMC}
-		)
-	</insert>
-	 
-	<update id="update" parameterType="com.hxy.provenance.logparser.GJAJEntity">
-		update AJ_YX_AJ
-		<set>
-			<if test="TYSAH != null">`TYSAH` = #{TYSAH}, </if>
-			<if test="AJMC != null">`AJMC` = #{AJMC}, </if>
-		</set>
-		where BMSAH = #{BMSAH}
-	</update>
-	
-	<delete id="delete">
-		delete from AJ_YX_AJ where AJ_YX_AJ = #{value}
-	</delete>
+
 
 </mapper>

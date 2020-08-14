@@ -46,6 +46,7 @@ public class GJAJController {
 
     @RequestMapping(value="parselog", method = RequestMethod.POST)
     @RequiresPermissions("act:model:all")
+    @ResponseBody
     public List<GJRZEntity> parselog(String bmsah){
         //解析某个案件的所有日志
         return caseService.parseLog(bmsah);

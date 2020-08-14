@@ -25,6 +25,7 @@
 		<include refid="Base_Column_List" />
 		from RZ_YX_RZ
 		where BMSAH = #{value}
+		ORDER BY ZHXGSJ ASC
 	</select>
 
 </mapper>
