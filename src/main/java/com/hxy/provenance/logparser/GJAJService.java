@@ -2,6 +2,7 @@ package com.hxy.provenance.logparser;
 
 
 import com.hxy.modules.common.page.Page;
+import com.hxy.modules.common.utils.Result;
 import com.hxy.modules.demo.entity.CaseEntity;
 
 import java.util.List;
@@ -25,5 +26,5 @@ public interface GJAJService {
 
     Page<GJAJEntity> findPage(GJAJEntity leaveEntity, int pageNum);
 
-    List<GJRZEntity> parseLog(String BMSAH);
+    Result parseLog(String BMSAH);
 }

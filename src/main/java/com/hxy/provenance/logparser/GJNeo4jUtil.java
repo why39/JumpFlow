@@ -115,8 +115,8 @@ public class GJNeo4jUtil {
         map.put("caseId", caseId);
 
         if (lastNodeId == null || "".equals(lastNodeId)) {
-            if (map.containsKey("lastNodeId")) {
-                lastNodeId = (String) map.get("lastNodeId");
+            if (map.containsKey(NeoConstants.KEY_LAST_NODE_ID)) {
+                lastNodeId = (String) map.get(NeoConstants.KEY_LAST_NODE_ID);
             }
         }
 
@@ -281,7 +281,7 @@ public class GJNeo4jUtil {
                     parameters(
                             "name", nodeBean.getNodeName()
                             , "label", label
-                            , "lastNodeId", lastNodeId
+                            , NeoConstants.KEY_LAST_NODE_ID, lastNodeId
                             , "nodeName", nodeBean.getNodeName()
                             , "caseId", nodeBean.getCaseId()
                             , "caseName", nodeBean.getCaseName()
@@ -488,12 +488,44 @@ public class GJNeo4jUtil {
         session.run("MATCH (n:Task) WHERE n.name=\"" + name + "\" WITH n MATCH p = (m:Task) - [*] ->(n) RETURN m");
     }
 
+    /**
+     * 单个的操作节点
+     * @param caseId
+     * @param label
+     * @param relation
+     * @param reverse
+     * @param map
+     * @return
+     */
+    public static String addActionNode(String BMSAH, String label, String relation, boolean reverse, Map<String, Object> map) {
+        String lastNodeId = null;
+        if (map != null && map.get(NeoConstants.KEY_LAST_NODE_ID) != null) {
+            lastNodeId = (String) map.get(NeoConstants.KEY_LAST_NODE_ID);
+        }
+
+        String nodeId = GJNeo4jUtil.createKeyValues(BMSAH, label, lastNodeId, relation, reverse, map);
+        return nodeId;
+    }
 
     public static String addCase(GJAJEntity dataBean) {
         //同时添加一个neo4j的虚拟头节点，用于存储整个案件的信息，并且所有属性世系数据都从这个案件开始
-        String curTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-        String caseId = dataBean.getBMSAH();
 
+        //先查询有没有这个BMSAH的case，没有就插入，有就返回节点id
+        Driver driver = createDrive();
+        Session session = driver.session();
+        StatementResult findResult = session.run("MATCH (c:CASE) where c.caseId = '" + dataBean.getBMSAH() + "' return c");
+
+        String caseNodeId;
+        if (findResult != null && findResult.hasNext()) {
+            while (findResult.hasNext()) {
+                Record record = findResult.next();
+                caseNodeId = record.fields().get(0).value().toString().replace("node<", "").replace(">", "");
+                logger.debug("已有案件》》》》"+caseNodeId);
+                return caseNodeId;
+            }
+        }
+
+        String caseId = dataBean.getBMSAH();
 
         String createUserName = dataBean.getCBDW_MC();
         Map<String, Object> params = new HashMap<>();
@@ -507,19 +539,7 @@ public class GJNeo4jUtil {
         return headId;
     }
 
-    public static String addCaseNode(CaseDataNodeBean caseDataNodeBean) {
-        String caseId = caseDataNodeBean.getCaseId();
-        JSONObject caseProvData = queryCaseProvData(caseId);
-        if (caseProvData != null) {
-            String lastNodeId = caseProvData.getStr(KEY_CASE_NEW_NODE_ID);
-            String nodeId = GJNeo4jUtil.createNode(caseDataNodeBean, lastNodeId);
-            caseProvData.put(KEY_CASE_NEW_NODE_ID, nodeId);
-            updateCaseProvData(caseDataNodeBean.getCaseId(), caseProvData);
-            return nodeId;
-        } else {
-            return "-1";
-        }
-    }
+
 
     public static void updateCaseProvData(String case_id, String case_prov_data) {
         finalUtil.caseDataMapper.updateCaseProvData(new CaseProvDataBean(case_id, case_prov_data));
@@ -548,15 +568,15 @@ public class GJNeo4jUtil {
         JSONObject caseProvData = queryCaseProvData(caseId);
         if (caseProvData != null) {
             String lastNodeId = null;
-            if (map != null && map.get("lastNodeId") != null) {
-                lastNodeId = (String) map.get("lastNodeId");
+            if (map != null && map.get(NeoConstants.KEY_LAST_NODE_ID) != null) {
+                lastNodeId = (String) map.get(NeoConstants.KEY_LAST_NODE_ID);
             } else {
                 lastNodeId = caseProvData.getStr(label);//如果有相同标签的最新节点id则作为上一个节点id
             }
 
             if (lastNodeId == null || "".equals(lastNodeId)) {
                 lastNodeId = caseProvData.getStr(KEY_CASE_HEAD_ID);//否则以案件虚拟头部节点作为前一个节点
-                map.put("lastNodeId", lastNodeId);
+                map.put(NeoConstants.KEY_LAST_NODE_ID, lastNodeId);
             }
 
             String nodeId = GJNeo4jUtil.createKeyValues(caseId, label, lastNodeId, relation, reverse, map);
