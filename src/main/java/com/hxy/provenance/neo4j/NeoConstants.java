@@ -41,4 +41,6 @@ public class NeoConstants {
      * 案件创建者节点ID
      */
     public static final String KEY_CASE_USER_ID = "CaseUserId";
+
+    public static final String KEY_LAST_NODE_ID = "lastNodeId";
 }

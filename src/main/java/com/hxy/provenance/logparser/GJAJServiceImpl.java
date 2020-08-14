@@ -5,6 +5,7 @@ import com.hxy.modules.common.exception.MyException;
 import com.hxy.modules.common.page.Page;
 import com.hxy.modules.common.page.PageHelper;
 import com.hxy.modules.common.utils.CommUtils;
+import com.hxy.modules.common.utils.Result;
 import com.hxy.modules.common.utils.StringUtils;
 import com.hxy.modules.common.utils.UserUtils;
 import com.hxy.modules.demo.dao.CaseDao;
@@ -12,10 +13,12 @@ import com.hxy.modules.demo.entity.CaseEntity;
 import com.hxy.modules.demo.service.CaseService;
 import com.hxy.modules.sys.entity.UserEntity;
 import com.hxy.provenance.neo4j.Neo4jFinalUtil;
+import com.hxy.provenance.neo4j.NeoConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -83,7 +86,7 @@ public class GJAJServiceImpl implements GJAJService {
 
 
     @Override
-    public List<GJRZEntity> parseLog(String BMSAH) {
+    public Result parseLog(String BMSAH) {
         //1. 创建一个案件头部节点
         GJAJEntity gjajEntity = caseDao.queryObject(BMSAH);
         String caseNodeId = GJNeo4jUtil.addCase(gjajEntity);
@@ -98,8 +101,11 @@ public class GJAJServiceImpl implements GJAJService {
                         //解析json
                     } else {
                         //不是json，直接创建节点
-
-
+                        Map<String, Object> map = new HashMap<>();
+                        map.put(NeoConstants.KEY_LAST_NODE_ID, caseNodeId);
+                        map.put("action", RZMS);
+                        map.put("CZRM", rz.getCZRM());
+                        GJNeo4jUtil.addActionNode(BMSAH, "ACTION", "next", false, map);
                     }
                 }
 
@@ -108,6 +114,6 @@ public class GJAJServiceImpl implements GJAJService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return rzlist;
+        return Result.ok();
     }
 }
