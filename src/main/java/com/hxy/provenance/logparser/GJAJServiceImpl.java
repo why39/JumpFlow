@@ -21,6 +21,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 @Service("GJAJService")
@@ -98,7 +100,41 @@ public class GJAJServiceImpl implements GJAJService {
                 String RZMS = rz.getRZMS();
                 if (RZMS != null && RZMS.length() > 0) {
                     if (RZMS.startsWith("[") || RZMS.startsWith("{")) {
+
                         //解析json
+
+                        //正则匹配键值对，字符型的值
+                        Pattern r1 = Pattern.compile("\"(\\w+)\":\"{1}(.*?)\"{1}");
+                        Matcher m1 = r1.matcher(RZMS);
+                        while (m1.find()) {
+                            String key = m1.group(1);
+                            String value = m1.group(2);
+                            System.out.println("xp>>>>>>>>>Found key: " + m1.group(1));
+                            System.out.println("xp>>>>>>>>>Found value: " + m1.group(2));
+                            Map<String, Object> par = new HashMap<>();
+                            par.put(NeoConstants.KEY_LAST_NODE_ID, caseNodeId);
+                            par.put(key, value);
+                            par.put("name", key);
+                            GJNeo4jUtil.addPropertyNode(BMSAH, key, "next", false, par);
+                        }
+
+                        //正则匹配键值对，整型的值
+                        Pattern r2 = Pattern.compile("\"(\\w+)\":(\\w+)");
+                        Matcher m2 = r2.matcher(RZMS);
+                        while (m1.find()) {
+                            String key = m2.group(1);
+                            String value = m2.group(2);
+                            System.out.println("xp>>>>>>>>>Found key: " + m2.group(1));
+                            System.out.println("xp>>>>>>>>>Found value: " + m2.group(2));
+                            Map<String, Object> par = new HashMap<>();
+                            par.put(NeoConstants.KEY_LAST_NODE_ID, caseNodeId);
+                            par.put(key, value);
+                            par.put("name", key);
+                            GJNeo4jUtil.addPropertyNode(BMSAH, key, "next", false, par);
+
+                        }
+
+
                     } else {
                         //不是json，直接创建节点
                         Map<String, Object> map = new HashMap<>();
