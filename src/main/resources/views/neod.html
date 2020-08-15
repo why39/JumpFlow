@@ -32,6 +32,8 @@
         </div><!-- /input-group -->
     </div>
 
+    <br/>
+
     <div style="margin-top: 6px" class="col-lg-6">
         <div class="input-group">
             <input class="form-control" type="text" style="width: 160px" id="caseId" placeholder="部门受案号"/>
@@ -43,12 +45,29 @@
         </div><!-- /input-group -->
     </div>
 
+    <br/>
+
     <div style="margin-top: 6px" class="col-lg-6">
         <div class="input-group">
             <input class="form-control" type="text" style="width: 160px" id="labelName" placeholder="案卡项名称"/>
             <button style="margin-left: 6px" type="button" class="btn btn-primary" onclick="traceGJ()">溯源</button>
         </div>
     </div>
+
+    <br/>
+
+    <div style="margin-top: 6px" class="col-lg-6">
+        <div class="input-group">
+            <input class="form-control" type="text" style="width: 160px" id="userId" placeholder="操作人名"/>
+            <div style="margin-left: 6px" class="btn-group">
+                <button type="button" class="btn btn-primary" id="relatedCase" onclick="relatedCase()">涉及案件</button>
+                <button type="button" class="btn btn-primary" id="relatedData" onclick="relatedData()">涉及数据</button>
+            </div>
+
+        </div><!-- /input-group -->
+    </div>
+
+    <br/>
 
     <div style="margin-top: 6px" class="col-lg-6">
         <div class="input-group">
@@ -57,6 +76,7 @@
         </div>
     </div>
 
+    <br/>
 
     <!--    <div style="margin-top: 6px" class="col-lg-6">-->
 <!--        <div class="input-group">-->
@@ -192,7 +212,7 @@
         if ($("#caseId").val()) {
             query = "MATCH (m:CASE) WHERE m.caseId=\'" + $("#caseId").val() + "\' WITH m MATCH p = (m) - [*] -> (n:Task) RETURN m,n,p";
         } else {
-            query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
+            query = "match (n:CASE) with n match p=(n)-[*]->(m:Task) return p"; //不指定案件id，也只看所有案件的流程
         }
         console.log("$(\"#caseId\").val()---->" + $("#caseId").val());
         clearNodeInfo();
@@ -204,7 +224,7 @@
         if ($("#caseId").val()) {
             query = "MATCH (n) WHERE n.caseId=\'" + $("#caseId").val() + "\' WITH n MATCH p = (m) - [*] -> (n) RETURN n,p";
         } else {
-            query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
+            query = "MATCH (n)-[r]->(m) RETURN n,r,m";
         }
         console.log("$(\"#caseId\").val()---->" + $("#caseId").val());
         clearNodeInfo();
