@@ -99,7 +99,16 @@ public class GJAJServiceImpl implements GJAJService {
             for (GJRZEntity rz : rzlist) {
                 String RZMS = rz.getRZMS();
                 if (RZMS != null && RZMS.length() > 0) {
-                    if (RZMS.startsWith("[") || RZMS.startsWith("{")) {
+                    if (!rz.getEJFL().isEmpty() && rz.getEJFL().startsWith(GJRZEntity.LC_PREFIX)) {
+                        //流程环节节点
+                        Map<String, Object> map = new HashMap<>();
+                        map.put(NeoConstants.KEY_LAST_NODE_ID, caseNodeId);
+                        map.put("name", RZMS);
+                        map.put("CZRM", rz.getCZRM());
+                        map.put("操作人", RZMS);
+                        GJNeo4jUtil.addTaskNode(BMSAH, "Task", "next", false, map);
+
+                    } else if (RZMS.startsWith("[") || RZMS.startsWith("{")) {
 
                         //解析json
 
@@ -115,6 +124,7 @@ public class GJAJServiceImpl implements GJAJService {
                             par.put(NeoConstants.KEY_LAST_NODE_ID, caseNodeId);
                             par.put(key, value);
                             par.put("name", key);
+                            par.put("操作人", rz.getCZRM());
                             GJNeo4jUtil.addPropertyNode(BMSAH, key, "next", false, par);
                         }
 
@@ -130,6 +140,7 @@ public class GJAJServiceImpl implements GJAJService {
                             par.put(NeoConstants.KEY_LAST_NODE_ID, caseNodeId);
                             par.put(key, value);
                             par.put("name", key);
+                            par.put("操作人", rz.getCZRM());
                             GJNeo4jUtil.addPropertyNode(BMSAH, key, "next", false, par);
 
                         }
@@ -139,9 +150,9 @@ public class GJAJServiceImpl implements GJAJService {
                         //不是json，直接创建节点
                         Map<String, Object> map = new HashMap<>();
                         map.put(NeoConstants.KEY_LAST_NODE_ID, caseNodeId);
-                        map.put("action", RZMS);
+                        map.put("RZMS", RZMS);
                         map.put("name", "ACTION");
-                        map.put("CZRM", rz.getCZRM());
+                        map.put("操作人", rz.getCZRM());
                         GJNeo4jUtil.addActionNode(BMSAH, "ACTION", "next", false, map);
                     }
                 }

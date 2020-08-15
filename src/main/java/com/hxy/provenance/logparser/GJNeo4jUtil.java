@@ -29,9 +29,6 @@ public class GJNeo4jUtil {
 
     static Logger logger = LoggerFactory.getLogger(GJNeo4jUtil.class);
 
-    @Autowired
-    public CaseDataMapper caseDataMapper;
-
     public static GJNeo4jUtil finalUtil;
 
     @Autowired
@@ -40,9 +37,7 @@ public class GJNeo4jUtil {
     @PostConstruct
     public void init() {
         finalUtil = this;
-        finalUtil.caseDataMapper = this.caseDataMapper;
         System.out.println("init >>>>>>>>>>>>>>>>> finalUtil : " + finalUtil);
-        System.out.println("init >>>>>>>>>>>>>>>>> finalUtil.caseDataMapper : " + finalUtil.caseDataMapper);
 
     }
 
@@ -60,38 +55,6 @@ public class GJNeo4jUtil {
             }
         }
         return driver;
-    }
-
-
-    public static Code test() {
-        Code restfulResult = new Code();
-
-        try {
-            Driver driver = createDrive();
-            Session session = driver.session();
-
-            session.run("CREATE (a:Person {name: {name}, title: {title}})",
-                    parameters("name", "Arthur001", "title", "King001"));
-
-            StatementResult result = session.run("MATCH (a:Person) WHERE a.name = {name} " +
-                            "RETURN a.name AS name, a.title AS title",
-                    parameters("name", "Arthur001"));
-
-            while (result.hasNext()) {
-                Record record = result.next();
-                System.out.println(record.get("title").asString() + " " + record.get("name").asString() + " " + record.get("id").asString());
-            }
-
-            session.close();
-            driver.close();
-
-        } catch (Exception e) {
-            restfulResult.setResult(Constants.RESULT_STATE_ERROR);
-            restfulResult.setMessage(e.getMessage());
-        }
-
-        logger.debug("restfulResult.getResult() : " + restfulResult.getResult());
-        return restfulResult;
     }
 
 
@@ -128,7 +91,7 @@ public class GJNeo4jUtil {
 
         String curTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
         //当前时间作为nodeId
-        map.put("createTime", curTime);
+        map.put("timestamp", curTime);
         try {
 
             StringBuilder terminal = new StringBuilder("CREATE (a:");
@@ -188,262 +151,6 @@ public class GJNeo4jUtil {
     }
 
 
-    public static String createUser(String uName, String uId, String caseId, String caseNodeId) {
-
-        String label = TYPE_USER_NODE;
-        Code code = new Code();
-        code.setLabel(label);
-
-        Driver driver = createDrive();
-        Session session = driver.session();
-
-        String curTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-        String userNodeId = null;
-        try {
-
-            // 查找用户，存在则直接创建关系
-            StatementResult findResult = session.run("MATCH (u:" + label + ") where u.user_id = '" + uId + "' return u");
-
-            if (findResult != null && findResult.hasNext()) {
-                while (findResult.hasNext()) {
-                    Record record = findResult.next();
-                    userNodeId = record.fields().get(0).value().toString().replace("node<", "").replace(">", "");
-                }
-            } else {
-                // 创建用户节点
-                StatementResult createResult = session.run("CREATE (a:" + label + " {" +
-                                "name: {name}" +
-                                ", label: {label}" +
-                                ", user_id: {user_id}" +
-                                "}) return a",
-                        parameters(
-                                "name", uName
-                                , "label", label
-                                , "user_id", uId
-                        ));
-
-                while (createResult.hasNext()) {
-                    Record record = createResult.next();
-                    userNodeId = (record.fields().get(0).value().toString().replace("node<", "").replace(">", ""));
-                }
-            }
-
-            if (userNodeId != null && !"".equals(userNodeId)) {
-                Code relation = new Code();
-                relation.setNodeFromId(userNodeId);
-                relation.setNodeToId(caseNodeId);
-                relation.setRelation("创建");//next
-                relate(relation);
-                code.setId(userNodeId);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            logger.debug(e.getMessage());
-        }
-        logger.debug(code.getId() + ">>>>>>");
-        return code.getId();
-
-    }
-
-    /**
-     * 返回生成节点的ID
-     *
-     * @param nodeBean 案件环节节点信息
-     * @return
-     */
-    public static String createNode(CaseDataNodeBean nodeBean, String lastNodeId) {
-
-        String label = TYPE_TASK_NODE;
-        Code code = new Code();
-        code.setLabel(label);
-
-        Driver driver = createDrive();
-        Session session = driver.session();
-
-        String curTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-        try {
-
-            // 创建流程节点
-            StatementResult createResult = session.run("CREATE (a:" + label + " {" +
-                            "name: {name}" +
-                            ", label: {label}" +
-                            ", lastNodeId: {lastNodeId}" +
-                            ", nodeName:{nodeName}" +
-                            ", caseId: {caseId}" +
-                            ", caseName: {caseName}" +
-                            ", caseDetailUrl: {caseDetailUrl}" +
-                            ", createTime: {createTime}" +
-                            ", createUser: {createUser}" +
-                            ", files: {files}" +
-                            ", remark: {remark}" +
-                            "}) return a",
-                    parameters(
-                            "name", nodeBean.getNodeName()
-                            , "label", label
-                            , NeoConstants.KEY_LAST_NODE_ID, lastNodeId
-                            , "nodeName", nodeBean.getNodeName()
-                            , "caseId", nodeBean.getCaseId()
-                            , "caseName", nodeBean.getCaseName()
-                            , "caseDetailUrl", nodeBean.getCaseDetailUrl()
-                            , "createTime", curTime
-                            , "createUser", nodeBean.getNodeCreateUserJson()
-                            , "files", nodeBean.getNodeFilesJsonArray()
-                            , "remark", nodeBean.getRemark()
-                    ));
-
-            while (createResult.hasNext()) {
-                Record record = createResult.next();
-                code.setId(record.fields().get(0).value().toString().replace("node<", "").replace(">", ""));
-            }
-
-            /**
-             * 存在前置节点，则添加关系
-             */
-            if (lastNodeId != null && !"".equals(lastNodeId)) {
-
-                Code relation = new Code();
-                relation.setNodeFromId(lastNodeId);
-                relation.setNodeToId(code.getId());
-                relation.setRelation(NeoConstants.RELATION_NEXT);//next
-                relate(relation);
-
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            logger.debug(e.getMessage());
-        }
-        logger.debug(code.getId() + ">>>>>>");
-        return code.getId();
-    }
-
-    public static Code save(Code code) {
-
-        try {
-            Driver driver = createDrive();
-            Session session = driver.session();
-
-            StatementResult result = session.run("CREATE (a:" + code.getLabel() + " {" + code.getProperty() + "}) return a");
-
-            while (result.hasNext()) {
-                Record record = result.next();
-                code.setId(record.fields().get(0).value().toString().replace("node<", "").replace(">", ""));
-            }
-
-//            session.close();
-//            driver.close();
-
-        } catch (Exception e) {
-            code.setMessage(e.getMessage());
-        }
-
-        logger.debug("restfulResult.getResult() : " + code.getResult());
-        return code;
-    }
-
-    public static Code update(Code code) {
-
-        try {
-            Driver driver = createDrive();
-            Session session = driver.session();
-
-            StatementResult result = session.run("MATCH (a:" + code.getLabel() + ") WHERE a." + code.getWhere() + " SET a." + code.getUpdate() + " return COUNT(a)");
-
-            while (result.hasNext()) {
-                Record record = result.next();
-                code.setId(record.fields().get(0).value().toString().replace("node<", "").replace(">", ""));
-            }
-
-//            session.close();
-//            driver.close();
-
-        } catch (Exception e) {
-            code.setMessage(e.getMessage());
-        }
-
-        logger.debug("restfulResult.getResult() : " + code.getResult());
-        return code;
-    }
-
-    public static Code delete(Code code) {
-
-        try {
-            Driver driver = createDrive();
-            Session session = driver.session();
-            session.run("match (n) where ID(n) = " + code.getId() + " detach delete n");
-
-//            session.close();
-//            driver.close();
-
-        } catch (Exception e) {
-            code.setMessage(e.getMessage());
-        }
-
-        logger.debug("restfulResult.getResult() : " + code.getResult());
-        return code;
-    }
-
-    /**
-     * 不好用，直接用execute 吧
-     *
-     * @param code
-     * @return
-     */
-    public static Code search(Code code) {
-
-        try {
-            Driver driver = createDrive();
-            Session session = driver.session();
-
-            StatementResult result = session.run("MATCH " + code.getProperty() +
-                    " MATCH " + code.getRelation() +
-                    " WHERE " + code.getWhere() +
-                    " RETURN " + code.getResult());
-            List<String> resultList = new ArrayList<String>();
-            while (result.hasNext()) {
-                Record record = result.next();
-                resultList.add(record.get("id").toString() + " " + record.get("name").toString());
-            }
-
-//            session.close();
-//            driver.close();
-
-            code.setList(resultList);
-
-        } catch (Exception e) {
-            code.setMessage(e.getMessage());
-        }
-
-        logger.debug("restfulResult.getResult() : " + code.getResult());
-        return code;
-    }
-
-    public Code execute(Code code) {
-
-        try {
-            Driver driver = createDrive();
-            Session session = driver.session();
-
-            StatementResult result = session.run(code.getContent());
-
-            List<String> resultList = new ArrayList<String>();
-            while (result.hasNext()) {
-                Record record = result.next();
-                resultList.add(record.fields().get(0).value().toString().replace("node<", "").replace(">", ""));
-            }
-            code.setList(resultList);
-
-//            session.close();
-//            driver.close();
-
-        } catch (Exception e) {
-            code.setMessage(e.getMessage());
-        }
-
-        logger.debug("restfulResult.getResult() : " + code.getResult());
-        return code;
-    }
-
     public static Code relate(Code code) {
 
         try {
@@ -466,26 +173,35 @@ public class GJNeo4jUtil {
         return code;
     }
 
-    /**
-     * 溯源
-     *
-     * @param name 节点名称
-     */
-    public static void trace(String name) {
-        Driver driver = createDrive();
-        Session session = driver.session();
-        session.run("MATCH (n:Task) WHERE n.name=\"" + name + "\" WITH n MATCH p = (n) - [*] -> (m:Task) RETURN m");
-    }
 
     /**
-     * 推理
+     * 流程环节
      *
-     * @param name
+     * @param BMSAH
+     * @param label
+     * @param relation
+     * @param reverse
+     * @param map
+     * @return
      */
-    public static void inference(String name) {
+    public static String addTaskNode(String BMSAH, String label, String relation, boolean reverse, Map<String, Object> map) {
+        //先查找上一个环节节点，然后添加到他的末尾
+        String lastNodeId = null;
         Driver driver = createDrive();
         Session session = driver.session();
-        session.run("MATCH (n:Task) WHERE n.name=\"" + name + "\" WITH n MATCH p = (m:Task) - [*] ->(n) RETURN m");
+        StatementResult findResult = session.run("MATCH (c:CASE) where c.caseId = '" + BMSAH + "' with c MATCH p = (c) - [*] -> (m:" + label + ") return m");
+
+
+        if (findResult != null && findResult.hasNext()) {
+            while (findResult.hasNext()) {
+                Record record = findResult.next();
+                lastNodeId = record.fields().get(0).value().toString().replace("node<", "").replace(">", ""); //lastNode肯定有，因为有一个CASE Node.
+                logger.debug("已有该属性节点》》》》" + lastNodeId);
+            }
+        }
+
+        String nodeId = GJNeo4jUtil.createKeyValues(BMSAH, label, lastNodeId, relation, reverse, map);
+        return nodeId;
     }
 
     /**
@@ -529,6 +245,17 @@ public class GJNeo4jUtil {
         }
 
 
+        //附加流程信息
+        StatementResult findTaskResult = session.run("MATCH (c:CASE) where c.caseId = '" + BMSAH + "' with c MATCH p = (c) - [*] -> (m:Task) return m");
+        if (findTaskResult != null && findTaskResult.hasNext()) {
+            while (findTaskResult.hasNext()) {
+                Record record = findTaskResult.next();
+                String lastTaskLable = record.fields().get(0).value().get("name").toString(); //取出环节名称
+                String lastTaskName= lastTaskLable.substring(1, lastTaskLable.length() - 1);
+                map.put("所属环节", lastTaskName);
+            }
+        }
+
         if (!map.get(label).equals(lastNodeValue)) {
             String nodeId = GJNeo4jUtil.createKeyValues(BMSAH, label, lastNodeId, relation, reverse, map);
             return nodeId;
@@ -562,79 +289,13 @@ public class GJNeo4jUtil {
         Map<String, Object> params = new HashMap<>();
 
         params.put("name", dataBean.getAJLB_MC());
-        params.put("case_name", dataBean.getAJMC());
-        params.put("create_user_name", createUserName);
+        params.put("案件名", dataBean.getAJMC());
+        params.put("操作人", createUserName);
 
         String headId = GJNeo4jUtil.createKeyValues(caseId, NeoConstants.TYPE_CASE_HEAD, "", "开始", false, params);
 
         return headId;
     }
 
-
-    public static void updateCaseProvData(String case_id, String case_prov_data) {
-        finalUtil.caseDataMapper.updateCaseProvData(new CaseProvDataBean(case_id, case_prov_data));
-    }
-
-    public static void updateCaseProvData(String case_id, JSONObject data) {
-        updateCaseProvData(case_id, data.toString());
-    }
-
-    public static JSONObject queryCaseProvData(String case_id) {
-        String data = finalUtil.caseDataMapper.queryCaseProvData(case_id);
-        if (data != null && !"".equals(data)) {
-            JSONObject jsonObject = null;
-            try {
-                jsonObject = JSON.unmarshal(data, JSONObject.class);
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-            }
-            return jsonObject;
-        }
-        return null;
-    }
-
-    public static String addKVs(String caseId, String label, String relation, boolean reverse, Map<String, Object> map) {
-        JSONObject caseProvData = queryCaseProvData(caseId);
-        if (caseProvData != null) {
-            String lastNodeId = null;
-            if (map != null && map.get(NeoConstants.KEY_LAST_NODE_ID) != null) {
-                lastNodeId = (String) map.get(NeoConstants.KEY_LAST_NODE_ID);
-            } else {
-                lastNodeId = caseProvData.getStr(label);//如果有相同标签的最新节点id则作为上一个节点id
-            }
-
-            if (lastNodeId == null || "".equals(lastNodeId)) {
-                lastNodeId = caseProvData.getStr(KEY_CASE_HEAD_ID);//否则以案件虚拟头部节点作为前一个节点
-                map.put(NeoConstants.KEY_LAST_NODE_ID, lastNodeId);
-            }
-
-            String nodeId = GJNeo4jUtil.createKeyValues(caseId, label, lastNodeId, relation, reverse, map);
-            caseProvData.put(label, nodeId);
-            updateCaseProvData(caseId, caseProvData);
-            return nodeId;
-        } else {
-            return "-1";
-        }
-    }
-
-    public final class Constants {
-
-        // 返回状态：error
-        public static final String RESULT_STATE_ERROR = "Error";
-        // 返回状态：success
-        public static final String RESULT_STATE_SUCCESS = "Success";
-        // 父级菜单最上层
-        public static final String PARENT_MAX = "0";
-
-        // 短信供应商：阿里大鱼
-        public static final String SUPPLIER_ALI = "1";
-
-        // 验证码是否被使用 : 否
-        public static final String VCODE_USED_NO = "0";
-        // 验证码是否被使用: 是
-        public static final String VCODE_USED_YES = "1";
-
-    }
 
 }
