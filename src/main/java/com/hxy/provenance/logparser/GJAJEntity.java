@@ -16,11 +16,11 @@ import java.util.List;
  */
 @ActTable(tableName = "AJ_YX_AJ", pkName = "BMSAH")
 public class GJAJEntity {
-    private String BMSAH;
+    private String BMSAH;   //部门受案号
     private String TYSAH;
-    private String AJMC;
+    private String AJMC;    //案件名称
+    private String AJLB_MC; // 案件类别名称
     private String CBDW_MC;
-    private String AJLB_MC;
 
     public String getAJLB_MC() {
         return AJLB_MC;

@@ -66,6 +66,9 @@ public class GJNeo4jUtil {
      * @return
      */
     public static String createKeyValues(String caseId, String label, String lastNodeId, String relationName, boolean reverse, Map<String, Object> map) {
+        if (map == null) {
+            map = new HashMap<String, Object>();
+        }
         if (label == null || "".equals(label)) {
             if (!map.containsKey("label")) {
                 return null;
@@ -76,12 +79,16 @@ public class GJNeo4jUtil {
             map.put("label", label);
         }
 
-        map.put("caseId", caseId);
+        if (!StringUtils.isEmpty(caseId)) {
+            map.put("caseId", caseId);
+        }
 
-        if (lastNodeId == null || "".equals(lastNodeId)) {
+        if (StringUtils.isEmpty(lastNodeId)) {
             if (map.containsKey(NeoConstants.KEY_LAST_NODE_ID)) {
                 lastNodeId = (String) map.get(NeoConstants.KEY_LAST_NODE_ID);
             }
+        } else {
+            map.put(NeoConstants.KEY_LAST_NODE_ID, lastNodeId);
         }
 
         Code code = new Code();
@@ -169,7 +176,6 @@ public class GJNeo4jUtil {
         } catch (Exception e) {
             code.setMessage(e.getMessage());
         }
-
 
         return code;
     }
@@ -285,13 +291,15 @@ public class GJNeo4jUtil {
         Session session = driver.session();
         StatementResult findResult = session.run("MATCH (c:CASE) where c.caseId = '" + dataBean.getBMSAH() + "' return c");
 
-        String caseNodeId;
+        String caseNodeId = null;
         if (findResult != null && findResult.hasNext()) {
             while (findResult.hasNext()) {
                 Record record = findResult.next();
                 caseNodeId = record.fields().get(0).value().toString().replace("node<", "").replace(">", "");
-                logger.debug("已有案件》》》》" + caseNodeId);
-                return caseNodeId;
+                if (StringUtils.isEmpty(caseNodeId)) {
+                    //如果存在该案件，就不用在插入了
+                    return caseNodeId;
+                }
             }
         }
 
@@ -302,11 +310,35 @@ public class GJNeo4jUtil {
 
         params.put("name", dataBean.getAJLB_MC());
         params.put("案件名", dataBean.getAJMC());
-        params.put("操作人", createUserName);
+        params.put("承办单位", createUserName);
+        params.put("案件类别", dataBean.getAJLB_MC());
+        caseNodeId = GJNeo4jUtil.createKeyValues(caseId, NeoConstants.TYPE_CASE_HEAD, "", "", false, params);
 
-        String headId = GJNeo4jUtil.createKeyValues(caseId, NeoConstants.TYPE_CASE_HEAD, "", "开始", false, params);
+        //再查询有没有相同承办单位节点，有就直接关联，没有就创建并关联。
+        StatementResult cbdwFindResult = session.run("MATCH (c:CBDW) where c.CBDW_MC = '" + dataBean.getCBDW_MC() + "' return c");
 
-        return headId;
+        String cbdwNodeId = null;
+        if (cbdwFindResult != null && cbdwFindResult.hasNext()) {
+            while (cbdwFindResult.hasNext()) {
+                Record record = cbdwFindResult.next();
+                cbdwNodeId = record.fields().get(0).value().toString().replace("node<", "").replace(">", "");
+
+                Code code = new Code();
+                code.setNodeFromId(cbdwNodeId);
+                code.setNodeToId(caseNodeId);
+                code.setLabel("承办");
+                relate(code);
+                return caseNodeId;
+            }
+        }
+
+
+        if (StringUtils.isEmpty(cbdwNodeId)) {
+            cbdwNodeId = GJNeo4jUtil.createKeyValues("", "CBDW", caseNodeId, "承办", true, null);
+        }
+
+
+        return caseNodeId;
     }
 
 
