@@ -1,5 +1,6 @@
 package com.hxy.provenance.logparser;
 
+import com.hxy.modules.common.utils.StringUtils;
 import com.hxy.provenance.neo4j.*;
 import com.hxy.provenance.neo4j.json.JSON;
 import com.hxy.provenance.neo4j.json.JSONObject;
@@ -89,7 +90,7 @@ public class GJNeo4jUtil {
         Driver driver = createDrive();
         Session session = driver.session();
 
-        String curTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+        String curTime = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date()); //必须精确到毫秒，方便后面查询的时候逆序排列找到最后一个节点
         //当前时间作为nodeId
         map.put("timestamp", curTime);
         try {
@@ -226,37 +227,48 @@ public class GJNeo4jUtil {
 
     public static String addPropertyNode(String BMSAH, String label, String relation, boolean reverse, Map<String, Object> map) {
         String lastNodeId = null;
-        String lastNodeValue = "";
+        String lastNodeValue = null;
 
         //先查询有没有这个BMSAH的属性节点，没有就插入，有就返回该属性的最后一个节点id，并作为当前插入的lastNode
         Driver driver = createDrive();
         Session session = driver.session();
-        StatementResult findResult = session.run("MATCH (c:CASE) where c.caseId = '" + BMSAH + "' with c MATCH p = (c) - [*] -> (m:" + label + ") return m");
+        //要取最后一个创建的节点，不然会出现多个节点连接同一个节点上的情况
+        StatementResult findResult = session.run("MATCH (c:CASE) where c.caseId = '" + BMSAH + "' with c MATCH p = (c) - [*] -> (m:" + label + ") return m Order by m.timestamp desc Limit 1");
 
 
         if (findResult != null && findResult.hasNext()) {
             while (findResult.hasNext()) {
                 Record record = findResult.next();
                 lastNodeId = record.fields().get(0).value().toString().replace("node<", "").replace(">", ""); //lastNode肯定有，因为有一个CASE Node.
+                if (!lastNodeId.equals(map.get("CaseNodeId"))) {
+                    //如果上一个节点不是CASE节点，则为当前节点添加KEY_LAST_NODE_ID属性，并且获取上一个节点的值作为后续比较用
+                    map.put(NeoConstants.KEY_LAST_NODE_ID, lastNodeId);
+                    String lastNodeLable = record.fields().get(0).value().get(label).toString(); //取出来的值前后加了两个双引号
+                    lastNodeValue = lastNodeLable.substring(1, lastNodeLable.length() - 1);
+                }
                 logger.debug("已有该属性节点》》》》" + lastNodeId);
-                String lastNodeLable = record.fields().get(0).value().get(label).toString(); //取出来的值前后加了两个双引号
-                lastNodeValue = lastNodeLable.substring(1, lastNodeLable.length() - 1);
+
             }
         }
 
+        if (StringUtils.isEmpty(lastNodeId)) {
+            lastNodeId = (String) map.get("CaseNodeId");
+            map.put(NeoConstants.KEY_LAST_NODE_ID, lastNodeId);
+        }
 
         //附加流程信息
-        StatementResult findTaskResult = session.run("MATCH (c:CASE) where c.caseId = '" + BMSAH + "' with c MATCH p = (c) - [*] -> (m:Task) return m");
+        StatementResult findTaskResult = session.run("MATCH (c:CASE) where c.caseId = '" + BMSAH + "' with c MATCH p = (c) - [*] -> (m:Task) return m Order by m.timestamp desc Limit 1");
         if (findTaskResult != null && findTaskResult.hasNext()) {
             while (findTaskResult.hasNext()) {
                 Record record = findTaskResult.next();
                 String lastTaskLable = record.fields().get(0).value().get("name").toString(); //取出环节名称
-                String lastTaskName= lastTaskLable.substring(1, lastTaskLable.length() - 1);
+                String lastTaskName = lastTaskLable.substring(1, lastTaskLable.length() - 1);
                 map.put("所属环节", lastTaskName);
             }
         }
 
-        if (!map.get(label).equals(lastNodeValue)) {
+
+        if (lastNodeValue == null || map.get(label) == null || !map.get(label).equals(lastNodeValue)) {
             String nodeId = GJNeo4jUtil.createKeyValues(BMSAH, label, lastNodeId, relation, reverse, map);
             return nodeId;
         }

@@ -106,6 +106,7 @@ public class GJAJServiceImpl implements GJAJService {
                         map.put("name", RZMS);
                         map.put("CZRM", rz.getCZRM());
                         map.put("操作人", RZMS);
+                        map.put("RZID", rz.getID());
                         GJNeo4jUtil.addTaskNode(BMSAH, "Task", "next", false, map);
 
                     } else if (RZMS.startsWith("[") || RZMS.startsWith("{")) {
@@ -121,17 +122,18 @@ public class GJAJServiceImpl implements GJAJService {
                             System.out.println("xp>>>>>>>>>Found key: " + m1.group(1));
                             System.out.println("xp>>>>>>>>>Found value: " + m1.group(2));
                             Map<String, Object> par = new HashMap<>();
-                            par.put(NeoConstants.KEY_LAST_NODE_ID, caseNodeId);
                             par.put(key, value);
+                            par.put("CaseNodeId", caseNodeId);
                             par.put("name", key);
                             par.put("操作人", rz.getCZRM());
+                            par.put("RZID", rz.getID());
                             GJNeo4jUtil.addPropertyNode(BMSAH, key, "next", false, par);
                         }
 
                         //正则匹配键值对，整型的值
                         Pattern r2 = Pattern.compile("\"(\\w+)\":(\\w+)");
                         Matcher m2 = r2.matcher(RZMS);
-                        while (m1.find()) {
+                        while (m2.find()) {
                             String key = m2.group(1);
                             String value = m2.group(2);
                             System.out.println("xp>>>>>>>>>Found key: " + m2.group(1));
@@ -139,10 +141,11 @@ public class GJAJServiceImpl implements GJAJService {
                             Map<String, Object> par = new HashMap<>();
                             par.put(NeoConstants.KEY_LAST_NODE_ID, caseNodeId);
                             par.put(key, value);
+                            par.put("CaseNodeId", caseNodeId);
                             par.put("name", key);
                             par.put("操作人", rz.getCZRM());
+                            par.put("RZID", rz.getID());
                             GJNeo4jUtil.addPropertyNode(BMSAH, key, "next", false, par);
-
                         }
 
 
@@ -153,6 +156,7 @@ public class GJAJServiceImpl implements GJAJService {
                         map.put("RZMS", RZMS);
                         map.put("name", "ACTION");
                         map.put("操作人", rz.getCZRM());
+                        map.put("RZID", rz.getID());
                         GJNeo4jUtil.addActionNode(BMSAH, "ACTION", "next", false, map);
                     }
                 }
