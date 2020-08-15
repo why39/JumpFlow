@@ -216,7 +216,7 @@ public class GJNeo4jUtil {
      * @return
      */
     public static String addUserNode(String RM, String relatedNodeId, String relation) {
-        if (StringUtils.isEmpty(RM)) {
+        if (StringUtils.isEmpty(RM) || "null".equals(RM)) {
             return null;
         }
         //如果有该人名节点，则直接和relatedNodeId关联，否则先创建，再关联。
@@ -234,6 +234,7 @@ public class GJNeo4jUtil {
                 Code code = new Code();
                 code.setNodeFromId(userNodeId);
                 code.setNodeToId(relatedNodeId);
+                code.setRelation(relation);
                 code.setLabel(relation);
                 relate(code);
             }
@@ -365,6 +366,7 @@ public class GJNeo4jUtil {
                 code.setNodeFromId(cbdwNodeId);
                 code.setNodeToId(caseNodeId);
                 code.setLabel("承办");
+                code.setRelation("承办");
                 relate(code);
                 return caseNodeId;
             }

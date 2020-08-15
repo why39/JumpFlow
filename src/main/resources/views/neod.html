@@ -286,12 +286,12 @@
     //对接高检，案卡项溯源
     function traceGJ() {
         var query = null;
-        if ($("#labelName").val()) {
+        if ($("#caseId").val() && $("#labelName").val()) {
             query = "MATCH (n) WHERE n.caseId=\'" + $("#caseId").val() + "\' WITH n MATCH p = (n) - [*] -> (m:"+ $("#labelName").val()+") RETURN m,p";
         } else {
             query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
         }
-        console.log("$(\"#labelName\").val()---->" + $("#labelName").val());
+        console.log("$(\"#labelName\").val()---->" + $("#caseId").val());
         clearNodeInfo();
         execute(query);
     }
@@ -316,9 +316,9 @@
 
     function clearNodeInfo(){
         $(".nodeId").text("");
-        $(".caseId").text("");
-        $(".nodeTaskId").text("");
-        $(".nodeName").text("");
+        $(".labelName").text("");
+        $(".userName").text("");
+        $(".caseCategory").text("");
     }
     window.onload = (function () {
         //todo dynamic configuration
