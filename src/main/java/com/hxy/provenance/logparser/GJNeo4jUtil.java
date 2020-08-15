@@ -65,7 +65,7 @@ public class GJNeo4jUtil {
      * @param map
      * @return
      */
-    public static String createKeyValues(String caseId, String label, String lastNodeId, String relationName, boolean reverse, Map<String, Object> map) {
+    public static String createKeyValues(String label, String lastNodeId, String relationName, boolean reverse, Map<String, Object> map) {
         if (map == null) {
             map = new HashMap<String, Object>();
         }
@@ -77,10 +77,6 @@ public class GJNeo4jUtil {
             }
         } else {
             map.put("label", label);
-        }
-
-        if (!StringUtils.isEmpty(caseId)) {
-            map.put("caseId", caseId);
         }
 
         if (StringUtils.isEmpty(lastNodeId)) {
@@ -207,8 +203,49 @@ public class GJNeo4jUtil {
             }
         }
 
-        String nodeId = GJNeo4jUtil.createKeyValues(BMSAH, label, lastNodeId, relation, reverse, map);
+        map.put("caseId", BMSAH);
+        String nodeId = GJNeo4jUtil.createKeyValues(label, lastNodeId, relation, reverse, map);
         return nodeId;
+    }
+
+    /**
+     * 添加用户节点
+     * @param RM
+     * @param relatedNodeId
+     * @param relation
+     * @return
+     */
+    public static String addUserNode(String RM, String relatedNodeId, String relation) {
+        if (StringUtils.isEmpty(RM)) {
+            return null;
+        }
+        //如果有该人名节点，则直接和relatedNodeId关联，否则先创建，再关联。
+        String userNodeId = null;
+        Driver driver = createDrive();
+        Session session = driver.session();
+        StatementResult findResult = session.run("MATCH (c:USER) where c.name = '" + RM + "' return c");
+
+
+        if (findResult != null && findResult.hasNext()) {
+            while (findResult.hasNext()) {
+                Record record = findResult.next();
+                userNodeId = record.fields().get(0).value().toString().replace("node<", "").replace(">", ""); //lastNode肯定有，因为有一个CASE Node.
+                //关联
+                Code code = new Code();
+                code.setNodeFromId(userNodeId);
+                code.setNodeToId(relatedNodeId);
+                code.setLabel(relation);
+                relate(code);
+            }
+        }
+
+        if (StringUtils.isEmpty(userNodeId)) {
+            Map<String, Object> par = new HashMap<>();
+            par.put("name", RM);
+            userNodeId = createKeyValues("USER", relatedNodeId, relation, true, par);
+        }
+        return userNodeId;
+
     }
 
     /**
@@ -227,7 +264,8 @@ public class GJNeo4jUtil {
             lastNodeId = (String) map.get(NeoConstants.KEY_LAST_NODE_ID);
         }
 
-        String nodeId = GJNeo4jUtil.createKeyValues(BMSAH, label, lastNodeId, relation, reverse, map);
+        map.put("caseId", BMSAH);
+        String nodeId = GJNeo4jUtil.createKeyValues(label, lastNodeId, relation, reverse, map);
         return nodeId;
     }
 
@@ -275,7 +313,8 @@ public class GJNeo4jUtil {
 
 
         if (lastNodeValue == null || map.get(label) == null || !map.get(label).equals(lastNodeValue)) {
-            String nodeId = GJNeo4jUtil.createKeyValues(BMSAH, label, lastNodeId, relation, reverse, map);
+            map.put("caseId", BMSAH);
+            String nodeId = GJNeo4jUtil.createKeyValues(label, lastNodeId, relation, reverse, map);
             return nodeId;
         }
 
@@ -303,8 +342,6 @@ public class GJNeo4jUtil {
             }
         }
 
-        String caseId = dataBean.getBMSAH();
-
         String createUserName = dataBean.getCBDW_MC();
         Map<String, Object> params = new HashMap<>();
 
@@ -312,7 +349,8 @@ public class GJNeo4jUtil {
         params.put("案件名", dataBean.getAJMC());
         params.put("承办单位", createUserName);
         params.put("案件类别", dataBean.getAJLB_MC());
-        caseNodeId = GJNeo4jUtil.createKeyValues(caseId, NeoConstants.TYPE_CASE_HEAD, "", "", false, params);
+        params.put("caseId", dataBean.getBMSAH());
+        caseNodeId = GJNeo4jUtil.createKeyValues(NeoConstants.TYPE_CASE_HEAD, "", "", false, params);
 
         //再查询有没有相同承办单位节点，有就直接关联，没有就创建并关联。
         StatementResult cbdwFindResult = session.run("MATCH (c:CBDW) where c.CBDW_MC = '" + dataBean.getCBDW_MC() + "' return c");
@@ -334,7 +372,7 @@ public class GJNeo4jUtil {
 
 
         if (StringUtils.isEmpty(cbdwNodeId)) {
-            cbdwNodeId = GJNeo4jUtil.createKeyValues("", "CBDW", caseNodeId, "承办", true, null);
+            cbdwNodeId = GJNeo4jUtil.createKeyValues("CBDW", caseNodeId, "承办", true, null);
         }
 
 

@@ -26,7 +26,7 @@
 
     <div style="margin-top: 6px" class="col-lg-12">
         <div class="input-group">
-            <input class="form-control" type="text" style="width: 160px" id="caseName" placeholder="输入内容"/>
+            <input class="form-control" type="text" style="width: 360px" id="caseName" placeholder="输入内容"/>
             <button style="margin-left: 6px" type="button" class="btn btn-primary"  onclick="findCase()">查找案件
             </button>
         </div><!-- /input-group -->
@@ -34,14 +34,14 @@
 
     <div style="margin-top: 6px" class="col-lg-12">
         <div class="input-group">
-            <input class="form-control" type="text" style="width: 160px" id="caseCategory" placeholder="案件类别"/>
+            <input class="form-control" type="text" style="width: 360px" id="caseCategory" placeholder="案件类别"/>
             <button style="margin-left: 6px" type="button" class="btn btn-primary" onclick="filterCaseByCategory()">筛选案件</button>
         </div>
     </div>
 
     <div style="margin-top: 6px" class="col-lg-12">
         <div class="input-group">
-            <input class="form-control" type="text" style="width: 160px" id="caseId" placeholder="部门受案号"/>
+            <input class="form-control" type="text" style="width: 360px" id="caseId" placeholder="部门受案号"/>
             <div style="margin-left: 6px" class="btn-group">
                 <button type="button" class="btn btn-primary" id="inference" onclick="filterCaseByBMSAH()">查找案件</button>
                 <button type="button" class="btn btn-primary" id="trace" onclick="filterCaseFlow()">仅看流程</button>
@@ -52,14 +52,14 @@
 
     <div style="margin-top: 6px" class="col-lg-12">
         <div class="input-group">
-            <input class="form-control" type="text" style="width: 160px" id="labelName" placeholder="案卡项名称"/>
+            <input class="form-control" type="text" style="width: 360px" id="labelName" placeholder="案卡项名称"/>
             <button style="margin-left: 6px" type="button" class="btn btn-primary" onclick="traceGJ()">溯源</button>
         </div>
     </div>
 
     <div style="margin-top: 6px" class="col-lg-12">
         <div class="input-group">
-            <input class="form-control" type="text" style="width: 160px" id="userId" placeholder="操作人名/单位名称"/>
+            <input class="form-control" type="text" style="width: 360px" id="userName" placeholder="操作人名"/>
             <div style="margin-left: 6px" class="btn-group">
                 <button type="button" class="btn btn-primary" id="relatedCase" onclick="relatedCase()">涉及案件</button>
                 <button type="button" class="btn btn-primary" id="relatedData" onclick="relatedData()">涉及数据</button>
@@ -70,7 +70,7 @@
 
     <div style="margin-top: 6px" class="col-lg-12">
         <div class="input-group">
-            <input class="form-control" type="text" style="width: 160px" id="executeQuery" placeholder="执行查询"/>
+            <input class="form-control" type="text" style="width: 360px" id="executeQuery" placeholder="执行查询"/>
             <button style="margin-left: 6px" type="button" class="btn btn-primary" onclick="executeQuery()">执行查询</button>
         </div>
     </div>
@@ -252,19 +252,35 @@
         } else {
             query = "MATCH (n)-[r]->(m) RETURN n,r,m";
         }
-        console.log("$(\"#caseId\").val()---->" + $("#caseId").val());
+        console.log("$(\"#caseName\").val()---->" + $("#caseName").val());
         clearNodeInfo();
         execute(query);
     }
 
     //查找人名涉及的案件
     function relatedCase() {
-        
+        var query = null;
+        if ($("#userName").val()) {
+            query = "MATCH (n:USER) WHERE n.name=\'" + $("#userName").val() + "\' WITH n MATCH p = (n) - [*1] -> (m:Task) RETURN m,p,n";
+        } else {
+            query = "MATCH (n)-[r]->(m) RETURN n,r,m";
+        }
+        console.log("$(\"#userName\").val()---->" + $("#userName").val());
+        clearNodeInfo();
+        execute(query);
     }
 
-    //查找人名设计的数据
+    //查找人名涉及的数据
     function relatedData() {
-
+        var query = null;
+        if ($("#userName").val()) {
+            query = "MATCH (n:USER) WHERE n.name=\'" + $("#userName").val() + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
+        } else {
+            query = "MATCH (n)-[r]->(m) RETURN n,r,m";
+        }
+        console.log("$(\"#userName\").val()---->" + $("#userName").val());
+        clearNodeInfo();
+        execute(query);
     }
 
     //对接高检，案卡项溯源
