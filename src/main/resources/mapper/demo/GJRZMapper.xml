@@ -8,7 +8,7 @@
         <result property="RZMS" column="RZMS"/>
 		<result property="CZRM" column="CZRM"/>
 		<result property="ZHXGSJ" column="ZHXGSJ"/>
-
+		<result property="EJFL" column="EJFL"/>
     </resultMap>
 
     <sql id="Base_Column_List" >
@@ -16,7 +16,8 @@
 		BMSAH,
 		RZMS,
 		CZRM,
-		ZHXGSJ
+		ZHXGSJ,
+		EJFL
     </sql>
 
 

@@ -8,7 +8,17 @@ public class GJRZEntity {
     private String BMSAH;
     private String RZMS; //日志明细
     private String CZRM; //人名
-    private String ZHXGSJ;
+    private String ZHXGSJ; //最后修改使劲
+    private String EJFL; //日志类别，TYYW_LCBA_YW_BL_LC_XXX:流程节点信息。
+    public static final String LC_PREFIX = "TYYW_LCBA_YW_BL_LC_";
+
+    public String getEJFL() {
+        return EJFL;
+    }
+
+    public void setEJFL(String EJFL) {
+        this.EJFL = EJFL;
+    }
 
     public String getID() {
         return ID;
