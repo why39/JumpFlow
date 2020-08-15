@@ -35,8 +35,11 @@
     <div style="margin-top: 6px" class="col-lg-6">
         <div class="input-group">
             <input class="form-control" type="text" style="width: 160px" id="caseId" placeholder="部门受案号"/>
-            <button style="margin-left: 6px" type="button" class="btn btn-primary" onclick="filterCase()">筛选案件
-            </button>
+            <div style="margin-left: 6px" class="btn-group">
+                <button type="button" class="btn btn-primary" id="inference" onclick="filterCase()">筛选案件</button>
+                <button type="button" class="btn btn-primary" id="trace" onclick="filterCaseFlow()">仅看流程</button>
+            </div>
+
         </div><!-- /input-group -->
     </div>
 
@@ -47,8 +50,15 @@
         </div>
     </div>
 
+    <div style="margin-top: 6px" class="col-lg-6">
+        <div class="input-group">
+            <input class="form-control" type="text" style="width: 160px" id="executeQuery" placeholder="执行查询"/>
+            <button style="margin-left: 6px" type="button" class="btn btn-primary" onclick="executeQuery()">执行查询</button>
+        </div>
+    </div>
 
-<!--    <div style="margin-top: 6px" class="col-lg-6">-->
+
+    <!--    <div style="margin-top: 6px" class="col-lg-6">-->
 <!--        <div class="input-group">-->
 <!--            <input class="form-control" type="text" style="width: 160px" id="caseTaskId" placeholder="案件环节ID"/>-->
 <!--            <input class="form-control" type="number" style="width: 160px" id="actionLength" placeholder="推理/溯源路径长度"/>-->
@@ -177,6 +187,18 @@
         execute(query);
     }
 
+    function filterCaseFlow() {
+        var query = null;
+        if ($("#caseId").val()) {
+            query = "MATCH (m:CASE) WHERE m.caseId=\'" + $("#caseId").val() + "\' WITH m MATCH p = (m) - [*] -> (n:Task) RETURN m,n,p";
+        } else {
+            query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
+        }
+        console.log("$(\"#caseId\").val()---->" + $("#caseId").val());
+        clearNodeInfo();
+        execute(query);
+    }
+
     function filterCase() {
         var query = null;
         if ($("#caseId").val()) {
@@ -212,6 +234,10 @@
         console.log("$(\"#labelName\").val()---->" + $("#labelName").val());
         clearNodeInfo();
         execute(query);
+    }
+
+    function executeQuery(){
+        execute($("#executeQuery").val());
     }
 
     function logImport(){

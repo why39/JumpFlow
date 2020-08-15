@@ -59,7 +59,7 @@ function Neod3Renderer() {
                 alertString+=k+" : " +selectNode[k]+"\n";
 
             }
-            sweetAlert("结点"
+            sweetAlert(selectNode["label"]
                 ,alertString
                 , "info");
         }
