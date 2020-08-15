@@ -89,7 +89,7 @@ public class GJAJServiceImpl implements GJAJService {
 
     @Override
     public Result parseLog(String BMSAH) {
-        //1. 创建一个案件头部节点
+        //1. 修改一个案件头部节点
         GJAJEntity gjajEntity = caseDao.queryObject(BMSAH);
         String caseNodeId = GJNeo4jUtil.addCase(gjajEntity);
 
@@ -105,16 +105,13 @@ public class GJAJServiceImpl implements GJAJService {
                         Map<String, Object> map = new HashMap<>();
                         map.put(NeoConstants.KEY_LAST_NODE_ID, caseNodeId);
                         map.put("name", LCRZMS);
-                        map.put("CZRM", lcrz.getCZRM());
-                        map.put("操作人", LCRZMS);
+                        map.put("操作人", lcrz.getCZRM());
                         map.put("RZID", lcrz.getID());
-                        GJNeo4jUtil.addTaskNode(BMSAH, "Task", "next", false, map);
-
+                        String taskNodeId = GJNeo4jUtil.addTaskNode(BMSAH, "Task", "next", false, map);
+                        GJNeo4jUtil.addUserNode(lcrz.getCZRM(), taskNodeId, "修改");
                     }
-
                 }
             }
-
 
             //2.2再添加其他日志信息：
             for (GJRZEntity rz : rzlist) {
@@ -139,7 +136,8 @@ public class GJAJServiceImpl implements GJAJService {
                                 par.put("name", key);
                                 par.put("操作人", rz.getCZRM());
                                 par.put("RZID", rz.getID());
-                                GJNeo4jUtil.addPropertyNode(BMSAH, key, "next", false, par);
+                                String taskNodeId = GJNeo4jUtil.addPropertyNode(BMSAH, key, "next", false, par);
+                                GJNeo4jUtil.addUserNode(rz.getCZRM(), taskNodeId, "修改");
                             }
 
                             //正则匹配键值对，整型的值
@@ -157,19 +155,21 @@ public class GJAJServiceImpl implements GJAJService {
                                 par.put("name", key);
                                 par.put("操作人", rz.getCZRM());
                                 par.put("RZID", rz.getID());
-                                GJNeo4jUtil.addPropertyNode(BMSAH, key, "next", false, par);
+                                String taskNodeId = GJNeo4jUtil.addPropertyNode(BMSAH, key, "next", false, par);
+                                GJNeo4jUtil.addUserNode(rz.getCZRM(), taskNodeId, "修改");
                             }
 
 
                         } else {
-                            //不是json，直接创建节点
+                            //不是json，直接修改节点
                             Map<String, Object> map = new HashMap<>();
                             map.put(NeoConstants.KEY_LAST_NODE_ID, caseNodeId);
                             map.put("RZMS", RZMS);
                             map.put("name", "ACTION");
                             map.put("操作人", rz.getCZRM());
                             map.put("RZID", rz.getID());
-                            GJNeo4jUtil.addActionNode(BMSAH, "ACTION", "next", false, map);
+                            String taskNodeId = GJNeo4jUtil.addActionNode(BMSAH, "ACTION", "next", false, map);
+                            GJNeo4jUtil.addUserNode(rz.getCZRM(), taskNodeId, "修改");
                         }
                     }
 
