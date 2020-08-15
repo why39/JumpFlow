@@ -1,6 +1,5 @@
 package com.hxy.provenance.logparser;
 
-import com.hxy.dq.Suggestion;
 import com.hxy.modules.common.page.Page;
 import com.hxy.modules.common.utils.CommUtils;
 import com.hxy.modules.common.utils.Result;
