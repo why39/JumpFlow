@@ -2,8 +2,6 @@ package com.hxy.provenance.logparser;
 
 import com.hxy.modules.common.utils.StringUtils;
 import com.hxy.provenance.neo4j.*;
-import com.hxy.provenance.neo4j.json.JSON;
-import com.hxy.provenance.neo4j.json.JSONObject;
 import org.neo4j.driver.v1.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,9 +12,6 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
-import static com.hxy.provenance.neo4j.NeoConstants.*;
-import static org.neo4j.driver.v1.Values.parameters;
 
 @Component
 public class GJNeo4jUtil {

@@ -2,36 +2,7 @@
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="Spring" name="Spring">
-      <configuration>
-        <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/modules/activiti/config/Cfg_Activiti.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/modules/activiti/config/Cfg_PageOffice.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/modules/activiti/config/Cfg_Util.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/modules/activiti/config/Cfg_View.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/config/FilterConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/HxyFrameBootApplication.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/config/KaptchaConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/config/MybatisConf.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/config/RedisConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/modules/activiti/config/RestConfiguration.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/modules/quartz/config/ScheduleConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/config/ShiroConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/config/SpringConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/config/SwaggerConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/config/VelocityConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/modules/app/config/WebMvcConfig.java</file>
-        </fileset>
-      </configuration>
-    </facet>
-    <facet type="web" name="Web">
-      <configuration>
-        <webroots />
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/src/main/java" />
-          <root url="file://$MODULE_DIR$/src/main/resources" />
-          <root url="file://$MODULE_DIR$/src/main/webapp" />
-        </sourceRoots>
-      </configuration>
+      <configuration />
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
@@ -42,13 +13,14 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/webapp" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/IDE/lic" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="pageoffice4.6.0.3" level="project" />
-    <orderEntry type="library" name="scala-sdk-2.11.5" level="application" />
-    <orderEntry type="library" name="scala-sdk-2.11.0" level="application" />
+    <orderEntry type="library" exported="" name="scala-sdk-2.11.5" level="application" />
+    <orderEntry type="library" exported="" name="deequ-1.0.2" level="project" />
+    <orderEntry type="library" exported="" name="pageoffice" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp:3.8.1" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.13.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.2" level="project" />
@@ -209,7 +181,7 @@
     <orderEntry type="library" name="Maven: io.jsonwebtoken:jjwt:0.7.0" level="project" />
     <orderEntry type="library" name="Maven: com.github.axet:kaptcha:0.0.9" level="project" />
     <orderEntry type="library" name="Maven: com.jhlabs:filters:2.0.235" level="project" />
-    <orderEntry type="library" name="Maven: com.qiniu:qiniu-java-sdk:7.2.28" level="project" />
+    <orderEntry type="library" name="Maven: com.qiniu:qiniu-java-sdk:7.2.29" level="project" />
     <orderEntry type="library" name="Maven: com.aliyun.oss:aliyun-sdk-oss:2.5.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.5.3" level="project" />
     <orderEntry type="library" name="Maven: org.jdom:jdom:1.1" level="project" />
@@ -317,16 +289,17 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:1.5.8.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-configuration-processor:1.5.8.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" level="project" />
+    <orderEntry type="library" name="Maven: org.xerial:sqlite-jdbc:3.7.2" level="project" />
     <orderEntry type="module-library">
       <library name="Maven: com.zhuozhengsoft:pageoffice:4.6.0.3">
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/pageoffice4.6.0.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/pageoffice.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="Maven: com.amazon.deequ:deequ:1.0.1" level="project" />
+    <orderEntry type="library" name="Maven: com.amazon.deequ:deequ:1.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.scala-lang:scala-library:2.11.5" level="project" />
     <orderEntry type="library" name="Maven: org.apache.spark:spark-core_2.11:2.2.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.avro:avro:1.7.7" level="project" />
@@ -389,6 +362,7 @@
     <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:1.3.9" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:jul-to-slf4j:1.7.25" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-log4j12:1.7.25" level="project" />
     <orderEntry type="library" name="Maven: com.ning:compress-lzf:1.0.3" level="project" />
     <orderEntry type="library" name="Maven: org.xerial.snappy:snappy-java:1.1.2.6" level="project" />
     <orderEntry type="library" name="Maven: net.jpountz.lz4:lz4:1.3.0" level="project" />

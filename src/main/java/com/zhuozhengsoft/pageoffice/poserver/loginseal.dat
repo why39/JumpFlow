@@ -1,0 +1,77 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>印章管理登录</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<style type="text/css" title="currentStyle" media="screen" >
+#loginDiv {
+	position: absolute; /*层漂浮*/
+	top: 50%;
+	left: 50%;
+	width: 400px;
+	height: 180px;
+	margin-top: -90px; /*注意这里必须是DIV高度的一半*/
+	margin-left: -200px; /*这里是DIV宽度的一半*/
+	background: #edf8fe;
+	border: 1px solid #d0eaf7;
+	color: SteelBlue;
+	text-align:center;
+}
+</style>
+	</head>
+	<body>
+		<form id="form1" action="loginseal.zz" method="post">
+			<div id="loginDiv">
+				<div
+					style="border-bottom: solid 1px #d0eaf7; font-size: 12px; padding-left: 10px; height: 22px; vertical-align: middle; text-align:left; padding-top: 8px;">
+					印章管理
+				</div>
+				<table style="margin: 18px auto auto auto; display: table-cell; vertical-align: middle;">
+					<tr>
+						<td>
+							<label style="font-size: 9pt;">
+								用户名：
+							</label>
+						</td>
+						<td>
+							<input id="TextUserName" name="TextUserName" type="text" value="admin"
+								style="font-size: 9pt; height: 20px; width: 120px;" tabIndex="1" />
+						</td>
+						<td>
+							&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label style="font-size: 9pt;">
+								密&nbsp;&nbsp;码：
+							</label>
+						</td>
+						<td>
+							<input id="TextPassword" name="TextPassword" type="password" value=""
+								style="font-size: 9pt; height: 20px; width: 120px;" tabIndex="2" />
+						</td>
+						<td>
+							&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3" height="10">
+						</td>
+					</tr>
+					<tr>
+						<td>
+						</td>
+						<td align="left">
+						<input type="submit" value="登录" style="color: #003D79; height:22px;" TabIndex="3" />
+							&nbsp;
+						<input type="reset" value="取消" style="color: #003D79; height:22px;" TabIndex="4" />
+						</td>
+						<td>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</form>
+	</body>
+</html>
