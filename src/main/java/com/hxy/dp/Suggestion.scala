@@ -1,15 +1,16 @@
-//package com.hxy.modules.demo.controller
+//package com.hxy.dp;
 //
 //import com.amazon.deequ.suggestions.{ConstraintSuggestionRunner, Rules}
 //import org.apache.spark.sql.SparkSession
 //
-//class Suggestion {
+//object Suggestion {
 //  val path = "/Users/mac/xp/projects/cscw/NewBpm/JumpFlow/"
+//
 //  def main(args: Array[String]) {
 //    deal("sample_file1.csv")
 //  }
 //
-//   def deal(outputname:String): Unit ={
+//  def deal(outputname: String): Unit = {
 //    val spark = SparkSession.builder
 //      .appName("Deequ")
 //      .master("local[*]")
@@ -18,7 +19,7 @@
 //    val dF = spark.read
 //      .option("header", true)
 //      .option("timestampFormat", "yyyy/MM/dd HH:mm:ss ZZ")
-//      .csv(path+"titanic.csv")
+//      .csv(path + "titanic.csv")
 //
 //
 //    dF.printSchema()
@@ -41,7 +42,7 @@
 //    suggestionDataFrame.coalesce(1).write
 //      .option("header", "true")
 //      .option("timestampFormat", "yyyy/MM/dd HH:mm:ss ZZ")
-//      .csv(path+"case/"+outputname)
+//      .csv(path + "case/" + outputname)
 //    //    suggestionDataFrame.write.csv("test.csv")
 //    //    suggestionDataFrame.write.json("test.json")
 //  }

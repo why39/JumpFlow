@@ -18,7 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+//import com.hxy.dp.Suggestion;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -75,7 +75,7 @@ public class CaseController {
     @RequiresPermissions("act:model:all")
     @ResponseBody
     public Result dealquality(String id) {
-//        new Suggestion().deal(id + "");
+//        Suggestion.deal(id + "");
         return Result.ok("分析成功");
     }
 

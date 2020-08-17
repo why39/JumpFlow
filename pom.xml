@@ -506,6 +506,8 @@
             <groupId>com.amazon.deequ</groupId>
             <artifactId>deequ</artifactId>
             <version>1.0.2</version>
+<!--            <scope>system</scope>-->
+<!--            <systemPath>${project.basedir}/libs/deequ-1.0.2.jar</systemPath>-->
         </dependency>
 
     </dependencies>
@@ -520,7 +522,6 @@
                 <configuration>
                     <mainClass>com.hxy.HxyFrameBootApplication</mainClass>
                 </configuration>
-
                 <executions>
                     <execution>
                         <goals>
