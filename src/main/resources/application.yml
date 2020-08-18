@@ -73,7 +73,7 @@ mybatis:
 
 # Pageoffice
 pageoffice:
-  posyspath: /Users/mac/xp/projects/cscw/NewBpm/JumpFlow/IDE/lic
+  posyspath: ./IDE/lic/
   popassword: 111111
 
 # APP模块

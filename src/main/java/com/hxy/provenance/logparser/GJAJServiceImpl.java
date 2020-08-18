@@ -91,6 +91,11 @@ public class GJAJServiceImpl implements GJAJService {
     public Result parseLog(String BMSAH) {
         //1. 修改一个案件头部节点
         GJAJEntity gjajEntity = caseDao.queryObject(BMSAH);
+
+        if (!StringUtils.isEmpty(GJNeo4jUtil.queryCase(gjajEntity))) {
+            return Result.ok();
+        }
+
         String caseNodeId = GJNeo4jUtil.addCase(gjajEntity);
 
         //2. 从RZ_YX_RZ中查询该BMSAH所有的日志
