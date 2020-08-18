@@ -27,7 +27,7 @@
     <div style="margin-top: 6px" class="col-lg-12">
         <div class="input-group">
             <input class="form-control" type="text" style="width: 360px" id="caseName" placeholder="输入内容"/>
-            <button style="margin-left: 6px" type="button" class="btn btn-primary"  onclick="findCase()">查找案件
+            <button style="margin-left: 6px" type="button" class="btn btn-primary" onclick="findCase()">查找案件
             </button>
         </div><!-- /input-group -->
     </div>
@@ -35,7 +35,9 @@
     <div style="margin-top: 6px" class="col-lg-12">
         <div class="input-group">
             <input class="form-control" type="text" style="width: 360px" id="caseCategory" placeholder="案件类别"/>
-            <button style="margin-left: 6px" type="button" class="btn btn-primary" onclick="filterCaseByCategory()">筛选案件</button>
+            <button style="margin-left: 6px" type="button" class="btn btn-primary" onclick="filterCaseByCategory()">
+                筛选案件
+            </button>
         </div>
     </div>
 
@@ -71,29 +73,31 @@
     <div style="margin-top: 6px" class="col-lg-12">
         <div class="input-group">
             <input class="form-control" type="text" style="width: 360px" id="executeQuery" placeholder="执行查询"/>
-            <button style="margin-left: 6px" type="button" class="btn btn-primary" onclick="executeQuery()">执行查询</button>
+            <div style="margin-left: 6px" class="btn-group">
+                <button type="button" class="btn btn-primary" onclick="executeQuery()">执行查询</button>
+                <button type="button" class="btn btn-primary" onclick="executeClear()">清空数据</button>
+            </div>
         </div>
     </div>
 
     <!--    <div style="margin-top: 6px" class="col-lg-12">-->
-<!--        <div class="input-group">-->
-<!--            <input class="form-control" type="text" style="width: 160px" id="caseTaskId" placeholder="案件环节ID"/>-->
-<!--            <input class="form-control" type="number" style="width: 160px" id="actionLength" placeholder="推理/溯源路径长度"/>-->
-<!--            <div style="margin-left: 6px" class="btn-group">-->
-<!--                <button type="button" class="btn btn-primary" id="inference" onclick="inference()">推理</button>-->
-<!--                <button type="button" class="btn btn-primary" id="trace" onclick="trace()">溯源</button>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
+    <!--        <div class="input-group">-->
+    <!--            <input class="form-control" type="text" style="width: 160px" id="caseTaskId" placeholder="案件环节ID"/>-->
+    <!--            <input class="form-control" type="number" style="width: 160px" id="actionLength" placeholder="推理/溯源路径长度"/>-->
+    <!--            <div style="margin-left: 6px" class="btn-group">-->
+    <!--                <button type="button" class="btn btn-primary" id="inference" onclick="inference()">推理</button>-->
+    <!--                <button type="button" class="btn btn-primary" id="trace" onclick="trace()">溯源</button>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
 
-<!--    <div style="margin-top: 6px" class="col-lg-12">-->
-<!--        <div class="input-group">-->
-<!--            <input class="form-control" type="text" style="width: 160px" id="logIn" placeholder="案件实例ID"/>-->
-<!--            <button style="margin-left: 6px" type="button" class="btn btn-primary" id="logIn" onclick="logImport()">导入日志-->
-<!--            </button>-->
-<!--        </div>&lt;!&ndash; /input-group &ndash;&gt;-->
-<!--    </div>-->
-
+    <!--    <div style="margin-top: 6px" class="col-lg-12">-->
+    <!--        <div class="input-group">-->
+    <!--            <input class="form-control" type="text" style="width: 160px" id="logIn" placeholder="案件实例ID"/>-->
+    <!--            <button style="margin-left: 6px" type="button" class="btn btn-primary" id="logIn" onclick="logImport()">导入日志-->
+    <!--            </button>-->
+    <!--        </div>&lt;!&ndash; /input-group &ndash;&gt;-->
+    <!--    </div>-->
 
 
 </div>
@@ -143,8 +147,12 @@
     var connection = function () {
         configStr = localStorage.getItem("neoconfig");
         configJSON = JSON.parse(configStr)
-        console.log(configJSON.NEO_SERVER_URL, configJSON.NEO_SERVER_USER,configJSON.NEO_SERVER_PSW)
-        config = {url: "http://"+configJSON.NEO_SERVER_URL+":7474" , user: configJSON.NEO_SERVER_USER , pass: configJSON.NEO_SERVER_PSW};
+        console.log(configJSON.NEO_SERVER_URL, configJSON.NEO_SERVER_USER, configJSON.NEO_SERVER_PSW)
+        config = {
+            url: "http://" + configJSON.NEO_SERVER_URL + ":7474",
+            user: configJSON.NEO_SERVER_USER,
+            pass: configJSON.NEO_SERVER_PSW
+        };
         return config;
     }
 
@@ -245,10 +253,10 @@
     }
 
     //根据案件名称模糊查询
-    function findCase(){
+    function findCase() {
         var query = null;
         if ($("#caseName").val()) {
-            query = "MATCH (a:CASE) WHERE a.name=~ '.*"+$("#caseName").val()+".*' with a MATCH p=(a)-[*]->(m:Task) RETURN a,p,m";
+            query = "MATCH (a:CASE) WHERE a.name=~ '.*" + $("#caseName").val() + ".*' with a MATCH p=(a)-[*]->(m:Task) RETURN a,p,m";
         } else {
             query = "MATCH (n)-[r]->(m) RETURN n,r,m";
         }
@@ -287,7 +295,7 @@
     function traceGJ() {
         var query = null;
         if ($("#caseId").val() && $("#labelName").val()) {
-            query = "MATCH (n) WHERE n.caseId=\'" + $("#caseId").val() + "\' WITH n MATCH p = (n) - [*] -> (m:"+ $("#labelName").val()+") RETURN m,p";
+            query = "MATCH (n) WHERE n.caseId=\'" + $("#caseId").val() + "\' WITH n MATCH p = (n) - [*] -> (m:" + $("#labelName").val() + ") RETURN m,p";
         } else {
             query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
         }
@@ -296,33 +304,38 @@
         execute(query);
     }
 
-    function executeQuery(){
+    function executeQuery() {
         execute($("#executeQuery").val());
     }
 
-    function logImport(){
-        var url ="${webRoot}/logImport";
-        var params ={
-            'caseId' : $("#logIn").val(),
+    function executeClear() {
+        execute("match(n)-[r]-(m) delete r,n,m");
+    }
+
+    function logImport() {
+        var url = "${webRoot}/logImport";
+        var params = {
+            'caseId': $("#logIn").val(),
         };
-        $.post(url,params,function (result) {
-            if(result.code == '0'){
+        $.post(url, params, function (result) {
+            if (result.code == '0') {
                 console.log(result);
-            }else {
+            } else {
                 alertMsg(result.msg);
             }
         });
     }
 
-    function clearNodeInfo(){
+    function clearNodeInfo() {
         $(".nodeId").text("");
         $(".labelName").text("");
         $(".userName").text("");
         $(".caseCategory").text("");
     }
+
     window.onload = (function () {
         //todo dynamic configuration
-        var query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
+        var query = "  MATCH (n:CASE)-[r]->(m:Task) RETURN n,r,m";
         execute(query);
     });
 </script>
