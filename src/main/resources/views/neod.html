@@ -246,7 +246,7 @@
         if ($("#caseCategory").val()) {
             query = "MATCH (m:CASE) WHERE m.案件类别=\'" + $("#caseCategory").val() + "\' WITH m MATCH p = (m) - [*] -> (n:Task) RETURN n,p,m";
         } else {
-            query = "match (n:CASE) with n match p=(n)-[*]->(m:Task) return p";
+            query = "MATCH (n:CASE) WITH n MATCH p=(n)-[*]->(m:Task) RETURN p,n,m";
         }
         clearNodeInfo();
         execute(query);
@@ -258,7 +258,7 @@
         if ($("#caseName").val()) {
             query = "MATCH (a:CASE) WHERE a.name=~ '.*" + $("#caseName").val() + ".*' with a MATCH p=(a)-[*]->(m:Task) RETURN a,p,m";
         } else {
-            query = "MATCH (n)-[r]->(m) RETURN n,r,m";
+            query = "MATCH (n:CASE) WITH n MATCH p=(n)-[*]->(m:Task) RETURN p,n,m";
         }
         console.log("$(\"#caseName\").val()---->" + $("#caseName").val());
         clearNodeInfo();
@@ -327,15 +327,16 @@
     }
 
     function clearNodeInfo() {
+
+        //neo pane区域
         $(".nodeId").text("");
-        $(".labelName").text("");
-        $(".userName").text("");
-        $(".caseCategory").text("");
+        $(".caseId").text("");
+        $(".nodeName").text("");
     }
 
     window.onload = (function () {
         //todo dynamic configuration
-        var query = "  MATCH (n:CASE)-[r]->(m:Task) RETURN n,r,m";
+        var query = "MATCH (n:CASE) WITH n MATCH p=(n)-[*]->(m:Task) RETURN p,n,m";
         execute(query);
     });
 </script>

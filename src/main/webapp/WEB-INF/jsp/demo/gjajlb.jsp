@@ -31,6 +31,7 @@
                 <tr>
                     <th>序号</th>
                     <th>部门受案号</th>
+                    <th>案件类别</th>
                     <th>案件名称</th>
                     <th>操作</th>
                 </tr>
@@ -40,6 +41,7 @@
                     <tr id="leave_${leave.BMSAH }">
                         <td>${i.index+1 }</td>
                         <td>${leave.BMSAH}</td>
+                        <td>${leave.AJLB_MC}</td>
                         <td>${leave.AJMC}</td>
                         <td>
                             <div class=" btn-group ">

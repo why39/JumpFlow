@@ -343,7 +343,7 @@ public class GJNeo4jUtil {
         String createUserName = dataBean.getCBDW_MC();
         Map<String, Object> params = new HashMap<>();
 
-        params.put("name", dataBean.getAJLB_MC());
+        params.put("name", dataBean.getAJMC());
         params.put("案件名", dataBean.getAJMC());
         params.put("承办单位", createUserName);
         params.put("案件类别", dataBean.getAJLB_MC());
