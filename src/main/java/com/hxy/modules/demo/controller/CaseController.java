@@ -1,5 +1,6 @@
 package com.hxy.modules.demo.controller;
 
+import com.hxy.dq.Suggestion;
 import com.hxy.modules.common.page.Page;
 import com.hxy.modules.common.utils.CommUtils;
 import com.hxy.modules.common.utils.Result;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -75,7 +77,11 @@ public class CaseController {
     @RequiresPermissions("act:model:all")
     @ResponseBody
     public Result dealquality(String id) {
+<<<<<<< HEAD
 //        Suggestion.deal(id + "");
+=======
+        Suggestion.deal(id + "");
+>>>>>>> b8251902abe39b3ed74b7d07d6fd9edcfdfa96b1
         return Result.ok("分析成功");
     }
 

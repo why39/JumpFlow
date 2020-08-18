@@ -31,7 +31,10 @@
                 <tr>
                     <th>序号</th>
                     <th>部门受案号</th>
+<<<<<<< HEAD
                     <th>案件类别</th>
+=======
+>>>>>>> b8251902abe39b3ed74b7d07d6fd9edcfdfa96b1
                     <th>案件名称</th>
                     <th>操作</th>
                 </tr>
@@ -41,7 +44,10 @@
                     <tr id="leave_${leave.BMSAH }">
                         <td>${i.index+1 }</td>
                         <td>${leave.BMSAH}</td>
+<<<<<<< HEAD
                         <td>${leave.AJLB_MC}</td>
+=======
+>>>>>>> b8251902abe39b3ed74b7d07d6fd9edcfdfa96b1
                         <td>${leave.AJMC}</td>
                         <td>
                             <div class=" btn-group ">

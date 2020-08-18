@@ -2,6 +2,11 @@ package com.hxy.provenance.logparser;
 
 import com.hxy.modules.common.utils.StringUtils;
 import com.hxy.provenance.neo4j.*;
+<<<<<<< HEAD
+=======
+import com.hxy.provenance.neo4j.json.JSON;
+import com.hxy.provenance.neo4j.json.JSONObject;
+>>>>>>> b8251902abe39b3ed74b7d07d6fd9edcfdfa96b1
 import org.neo4j.driver.v1.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +18,12 @@ import javax.annotation.PostConstruct;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+<<<<<<< HEAD
+=======
+import static com.hxy.provenance.neo4j.NeoConstants.*;
+import static org.neo4j.driver.v1.Values.parameters;
+
+>>>>>>> b8251902abe39b3ed74b7d07d6fd9edcfdfa96b1
 @Component
 public class GJNeo4jUtil {
     public static String NEO_SERVER_URL;//= "bolt://127.0.0.1:7687";
@@ -205,7 +216,10 @@ public class GJNeo4jUtil {
 
     /**
      * 添加用户节点
+<<<<<<< HEAD
      *
+=======
+>>>>>>> b8251902abe39b3ed74b7d07d6fd9edcfdfa96b1
      * @param RM
      * @param relatedNodeId
      * @param relation
@@ -319,7 +333,13 @@ public class GJNeo4jUtil {
 
     }
 
+<<<<<<< HEAD
     public static String queryCase(GJAJEntity dataBean) {
+=======
+    public static String addCase(GJAJEntity dataBean) {
+        //同时添加一个neo4j的虚拟头节点，用于存储整个案件的信息，并且所有属性世系数据都从这个案件开始
+
+>>>>>>> b8251902abe39b3ed74b7d07d6fd9edcfdfa96b1
         //先查询有没有这个BMSAH的case，没有就插入，有就返回节点id
         Driver driver = createDrive();
         Session session = driver.session();
@@ -330,6 +350,7 @@ public class GJNeo4jUtil {
             while (findResult.hasNext()) {
                 Record record = findResult.next();
                 caseNodeId = record.fields().get(0).value().toString().replace("node<", "").replace(">", "");
+<<<<<<< HEAD
 
             }
         }
@@ -344,11 +365,28 @@ public class GJNeo4jUtil {
         Map<String, Object> params = new HashMap<>();
 
         params.put("name", dataBean.getAJMC());
+=======
+                if (StringUtils.isEmpty(caseNodeId)) {
+                    //如果存在该案件，就不用在插入了
+                    return caseNodeId;
+                }
+            }
+        }
+
+        String createUserName = dataBean.getCBDW_MC();
+        Map<String, Object> params = new HashMap<>();
+
+        params.put("name", dataBean.getAJLB_MC());
+>>>>>>> b8251902abe39b3ed74b7d07d6fd9edcfdfa96b1
         params.put("案件名", dataBean.getAJMC());
         params.put("承办单位", createUserName);
         params.put("案件类别", dataBean.getAJLB_MC());
         params.put("caseId", dataBean.getBMSAH());
+<<<<<<< HEAD
         String caseNodeId = GJNeo4jUtil.createKeyValues(NeoConstants.TYPE_CASE_HEAD, "", "", false, params);
+=======
+        caseNodeId = GJNeo4jUtil.createKeyValues(NeoConstants.TYPE_CASE_HEAD, "", "", false, params);
+>>>>>>> b8251902abe39b3ed74b7d07d6fd9edcfdfa96b1
 
         //再查询有没有相同承办单位节点，有就直接关联，没有就创建并关联。
         StatementResult cbdwFindResult = session.run("MATCH (c:CBDW) where c.CBDW_MC = '" + dataBean.getCBDW_MC() + "' return c");
