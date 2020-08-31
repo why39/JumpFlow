@@ -45,11 +45,7 @@
         <swagger.version>2.2.2</swagger.version>
         <activiti.version>5.22.0</activiti.version>
         <pagehelper>1.1.2</pagehelper>
-<<<<<<< HEAD
-        <scala.major.version>2.11</scala.major.version>
-=======
         <scala.major.version>2.11.5</scala.major.version>
->>>>>>> b8251902abe39b3ed74b7d07d6fd9edcfdfa96b1
         <scala.version>${scala.major.version}.12</scala.version>
         <scala-maven-plugin.version>3.4.4</scala-maven-plugin.version>
     </properties>
@@ -487,42 +483,15 @@
         </dependency>
 
         <!--<dependency>-->
-<<<<<<< HEAD
         <!--<groupId>org.springframework.boot</groupId>-->
         <!--<artifactId>spring-boot-starter-thymeleaf</artifactId>-->
         <!--</dependency>-->
 
-        <dependency>
-            <groupId>org.xerial</groupId>
-            <artifactId>sqlite-jdbc</artifactId>
-            <version>3.7.2</version>
-        </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId>com.zhuozhengsoft</groupId>-->
-<!--            <artifactId>pageoffice</artifactId>-->
-<!--            <version>4.6.0.3</version>-->
-<!--            <scope>system</scope>-->
-<!--            <systemPath>${project.basedir}/libs/pageoffice.jar</systemPath>-->
-<!--        </dependency>-->
-
-        <!-- https://mvnrepository.com/artifact/com.amazon.deequ/deequ -->
-<!--        <dependency>-->
-<!--            <groupId>com.amazon.deequ</groupId>-->
-<!--            <artifactId>deequ</artifactId>-->
-<!--            <version>1.0.2</version>-->
-<!--            <scope>system</scope>-->
-<!--            <systemPath>${project.basedir}/libs/deequ-1.0.2.jar</systemPath>-->
-=======
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-thymeleaf</artifactId>-->
-        <!--</dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>org.xerial</groupId>-->
-<!--            <artifactId>sqlite-jdbc</artifactId>-->
-<!--            <version>3.7.2</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.xerial</groupId>-->
+        <!--            <artifactId>sqlite-jdbc</artifactId>-->
+        <!--            <version>3.7.2</version>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>com.zhuozhengsoft</groupId>
@@ -550,12 +519,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.codehaus.janino</groupId>-->
-<!--            <artifactId>janino</artifactId>-->
-<!--            <version>3.0.8</version>-->
->>>>>>> b8251902abe39b3ed74b7d07d6fd9edcfdfa96b1
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.codehaus.janino</groupId>-->
+        <!--            <artifactId>janino</artifactId>-->
+        <!--            <version>3.0.8</version>-->
+        <!--        </dependency>-->
 
     </dependencies>
 
@@ -609,7 +577,6 @@
                 <targetPath>META-INF/resources</targetPath>
                 <filtering>false</filtering>
             </resource>
-
         </resources>
 
 

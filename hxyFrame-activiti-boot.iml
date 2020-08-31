@@ -23,6 +23,16 @@
         </fileset>
       </configuration>
     </facet>
+    <facet type="web" name="Web">
+      <configuration>
+        <webroots />
+        <sourceRoots>
+          <root url="file://$MODULE_DIR$/src/main/java" />
+          <root url="file://$MODULE_DIR$/src/main/resources" />
+          <root url="file://$MODULE_DIR$/src/main/webapp" />
+        </sourceRoots>
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
@@ -32,20 +42,13 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/webapp" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/IDE/lic" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-<<<<<<< HEAD
-    <orderEntry type="library" exported="" name="deequ-1.0.2" level="project" />
-    <orderEntry type="library" exported="" name="pageoffice" level="project" />
-    <orderEntry type="library" name="scala-sdk-2.11.5" level="project" />
-=======
     <orderEntry type="library" name="pageoffice4.6.0.3" level="project" />
     <orderEntry type="library" name="scala-sdk-2.11.5" level="application" />
     <orderEntry type="library" name="scala-sdk-2.11.0" level="application" />
->>>>>>> b8251902abe39b3ed74b7d07d6fd9edcfdfa96b1
     <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp:3.8.1" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.13.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.2" level="project" />
@@ -206,7 +209,7 @@
     <orderEntry type="library" name="Maven: io.jsonwebtoken:jjwt:0.7.0" level="project" />
     <orderEntry type="library" name="Maven: com.github.axet:kaptcha:0.0.9" level="project" />
     <orderEntry type="library" name="Maven: com.jhlabs:filters:2.0.235" level="project" />
-    <orderEntry type="library" name="Maven: com.qiniu:qiniu-java-sdk:7.2.29" level="project" />
+    <orderEntry type="library" name="Maven: com.qiniu:qiniu-java-sdk:7.2.28" level="project" />
     <orderEntry type="library" name="Maven: com.aliyun.oss:aliyun-sdk-oss:2.5.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.5.3" level="project" />
     <orderEntry type="library" name="Maven: org.jdom:jdom:1.1" level="project" />
@@ -314,9 +317,6 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:1.5.8.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-configuration-processor:1.5.8.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" level="project" />
-<<<<<<< HEAD
-    <orderEntry type="library" name="Maven: org.xerial:sqlite-jdbc:3.7.2" level="project" />
-=======
     <orderEntry type="module-library">
       <library name="Maven: com.zhuozhengsoft:pageoffice:4.6.0.3">
         <CLASSES>
@@ -456,6 +456,5 @@
     <orderEntry type="library" name="Maven: org.typelevel:machinist_2.11:0.6.1" level="project" />
     <orderEntry type="library" name="Maven: com.chuusai:shapeless_2.11:2.3.2" level="project" />
     <orderEntry type="library" name="Maven: org.typelevel:macro-compat_2.11:1.1.1" level="project" />
->>>>>>> b8251902abe39b3ed74b7d07d6fd9edcfdfa96b1
   </component>
 </module>
