@@ -44,6 +44,7 @@
     <div style="margin-top: 6px" class="col-lg-12">
         <div class="input-group">
             <input class="form-control" type="text" style="width: 360px" id="caseId" placeholder="部门受案号"/>
+            <input class="form-control" type="text" style="width: 120px" id="nodeCount" placeholder="显示节点数量"/>
             <div style="margin-left: 6px" class="btn-group">
                 <button type="button" class="btn btn-primary" id="inference" onclick="filterCaseByBMSAH()">查找案件</button>
                 <button type="button" class="btn btn-primary" id="trace" onclick="filterCaseFlow()">仅看流程</button>
@@ -216,8 +217,12 @@
     //根据部门受案号查找案件
     function filterCaseByBMSAH() {
         var query = null;
+        var nodeCount=50;
+        if ($("#nodeCount").val()) {
+            nodeCount=$("#nodeCount").val()
+        }
         if ($("#caseId").val()) {
-            query = "MATCH (n) WHERE n.caseId=\'" + $("#caseId").val() + "\' WITH n MATCH p = (m) - [*] -> (n) RETURN n,p";
+            query = "MATCH (n) WHERE n.caseId=\'" + $("#caseId").val() + "\' WITH n MATCH p = (m) - [*] -> (n) RETURN n,p limit("+nodeCount+")";
         } else {
             query = "MATCH (n)-[r]->(m) RETURN n,r,m";
         }
@@ -336,8 +341,8 @@
 
     window.onload = (function () {
         //todo dynamic configuration
-        var query = "MATCH (n:CASE) WITH n MATCH p=(n)-[*]->(m:Task) RETURN p,n,m";
-        execute(query);
+        // var query = "MATCH (n:CASE) WITH n MATCH p=(n)-[*]->(m:Task) RETURN p,n,m";
+        // execute(query);
     });
 </script>
 </body>
