@@ -30,11 +30,11 @@ public class GJNeo4jUtil {
     @Autowired
     private Environment env;
 
+
+
     @PostConstruct
     public void init() {
         finalUtil = this;
-        System.out.println("init >>>>>>>>>>>>>>>>> finalUtil : " + finalUtil);
-
     }
 
     private static Driver createDrive() {
@@ -375,7 +375,6 @@ public class GJNeo4jUtil {
             cbdw.put("name", "CBDW");
             cbdwNodeId = GJNeo4jUtil.createKeyValues("CBDW", caseNodeId, "承办", true, cbdw);
         }
-
 
         return caseNodeId;
     }

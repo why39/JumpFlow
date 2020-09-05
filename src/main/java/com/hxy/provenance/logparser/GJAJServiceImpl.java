@@ -89,6 +89,7 @@ public class GJAJServiceImpl implements GJAJService {
 
     @Override
     public Result parseLog(String BMSAH) {
+
         //1. 修改一个案件头部节点
         GJAJEntity gjajEntity = caseDao.queryObject(BMSAH);
 
@@ -103,15 +104,15 @@ public class GJAJServiceImpl implements GJAJService {
         try {
             //2.1 先添加流程信息：
             for (GJRZEntity lcrz : rzlist) {
-                String LCRZMS = lcrz.getRZMS();
-                if (LCRZMS != null && LCRZMS.length() > 0) {
+                String LC日志内容 = lcrz.getRZMS();
+                if (LC日志内容 != null && LC日志内容.length() > 0) {
                     if (!lcrz.getEJFL().isEmpty() && lcrz.getEJFL().startsWith(GJRZEntity.LC_PREFIX)) {
                         //流程环节节点
                         Map<String, Object> map = new HashMap<>();
                         map.put(NeoConstants.KEY_LAST_NODE_ID, caseNodeId);
-                        map.put("name", LCRZMS);
+                        map.put("name", LC日志内容);
                         map.put("操作人", lcrz.getCZRM());
-                        map.put("RZID", lcrz.getID());
+                        map.put("日志ID", lcrz.getID());
                         String taskNodeId = GJNeo4jUtil.addTaskNode(BMSAH, "Task", "next", false, map);
                         GJNeo4jUtil.addUserNode(lcrz.getCZRM(), taskNodeId, "修改");
                     }
@@ -120,46 +121,56 @@ public class GJAJServiceImpl implements GJAJService {
 
             //2.2再添加其他日志信息：
             for (GJRZEntity rz : rzlist) {
-                String RZMS = rz.getRZMS();
-                if (RZMS != null && RZMS.length() > 0) {
+                String 日志内容 = rz.getRZMS();
+                if (日志内容 != null && 日志内容.length() > 0) {
                     if (rz.getEJFL().isEmpty() || !rz.getEJFL().startsWith(GJRZEntity.LC_PREFIX)) {
-                        if (RZMS.startsWith("[") || RZMS.startsWith("{")) {
+                        if (日志内容.startsWith("[") || 日志内容.startsWith("{")) {
 
                             //解析json
 
                             //正则匹配键值对，字符型的值
                             Pattern r1 = Pattern.compile("\"(\\w+)\":\"{1}(.*?)\"{1}");
-                            Matcher m1 = r1.matcher(RZMS);
+                            Matcher m1 = r1.matcher(日志内容);
                             while (m1.find()) {
                                 String key = m1.group(1);
+                                String showKey=key;
                                 String value = m1.group(2);
-                                System.out.println("xp>>>>>>>>>Found key: " + m1.group(1));
-                                System.out.println("xp>>>>>>>>>Found value: " + m1.group(2));
+                                System.out.println("xp>>>>>>>>>Found key: " + key);
+                                System.out.println("xp>>>>>>>>>Found value: " + value);
                                 Map<String, Object> par = new HashMap<>();
+                                if(KVCache.kv.containsKey(key)) {
+                                    showKey=KVCache.kv.get(key);
+                                    par.put("CN_KEY", showKey);
+                                }
                                 par.put(key, value);
                                 par.put("CaseNodeId", caseNodeId);
-                                par.put("name", key);
+                                par.put("name", showKey);
                                 par.put("操作人", rz.getCZRM());
-                                par.put("RZID", rz.getID());
+                                par.put("日志ID", rz.getID());
                                 String taskNodeId = GJNeo4jUtil.addPropertyNode(BMSAH, key, "next", false, par);
                                 GJNeo4jUtil.addUserNode(rz.getCZRM(), taskNodeId, "修改");
                             }
 
                             //正则匹配键值对，整型的值
                             Pattern r2 = Pattern.compile("\"(\\w+)\":(\\w+)");
-                            Matcher m2 = r2.matcher(RZMS);
+                            Matcher m2 = r2.matcher(日志内容);
                             while (m2.find()) {
                                 String key = m2.group(1);
+                                String showKey=key;
                                 String value = m2.group(2);
-                                System.out.println("xp>>>>>>>>>Found key: " + m2.group(1));
-                                System.out.println("xp>>>>>>>>>Found value: " + m2.group(2));
+                                System.out.println("xp>>>>>>>>>Found key: " + key);
+                                System.out.println("xp>>>>>>>>>Found value: " + value);
                                 Map<String, Object> par = new HashMap<>();
+                                if(KVCache.kv.containsKey(key)) {
+                                    showKey=KVCache.kv.get(key);
+                                    par.put("CN_KEY", showKey);
+                                }
                                 par.put(NeoConstants.KEY_LAST_NODE_ID, caseNodeId);
                                 par.put(key, value);
                                 par.put("CaseNodeId", caseNodeId);
-                                par.put("name", key);
+                                par.put("name", showKey);
                                 par.put("操作人", rz.getCZRM());
-                                par.put("RZID", rz.getID());
+                                par.put("日志ID", rz.getID());
                                 String taskNodeId = GJNeo4jUtil.addPropertyNode(BMSAH, key, "next", false, par);
                                 GJNeo4jUtil.addUserNode(rz.getCZRM(), taskNodeId, "修改");
                             }
@@ -169,10 +180,10 @@ public class GJAJServiceImpl implements GJAJService {
                             //不是json，直接修改节点
                             Map<String, Object> map = new HashMap<>();
                             map.put(NeoConstants.KEY_LAST_NODE_ID, caseNodeId);
-                            map.put("RZMS", RZMS);
+                            map.put("日志内容", 日志内容);
                             map.put("name", "ACTION");
                             map.put("操作人", rz.getCZRM());
-                            map.put("RZID", rz.getID());
+                            map.put("日志ID", rz.getID());
                             String taskNodeId = GJNeo4jUtil.addActionNode(BMSAH, "ACTION", "next", false, map);
                             GJNeo4jUtil.addUserNode(rz.getCZRM(), taskNodeId, "修改");
                         }

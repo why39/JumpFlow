@@ -56,10 +56,13 @@ function Neod3Renderer() {
         } else {
             var alertString ="";
             for(var k in selectNode){//遍历json对象的每个key/value对,k为key
-                alertString+=k+" : " +selectNode[k]+"\n";
+                if("CN_KEY" != k && "label" !=k && "name"!=k && selectNode["label"]!=k && "CaseNodeId"!=k && "lastNodeId"!=k){
+                    alertString+=k+" : " +selectNode[k]+"\n";
+                }
+
 
             }
-            sweetAlert(selectNode["label"]+"："+selectNode[selectNode["label"]]
+            sweetAlert(selectNode["name"]+"："+selectNode[selectNode["label"]]
                 ,alertString
                 , "info");
         }
