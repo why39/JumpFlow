@@ -59,7 +59,7 @@ function Neod3Renderer() {
                 alertString+=k+" : " +selectNode[k]+"\n";
 
             }
-            sweetAlert(selectNode["label"]
+            sweetAlert(selectNode["label"]+"："+selectNode[selectNode["label"]]
                 ,alertString
                 , "info");
         }

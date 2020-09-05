@@ -88,9 +88,9 @@ public class GJNeo4jUtil {
         Driver driver = createDrive();
         Session session = driver.session();
 
-        String curTime = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date()); //必须精确到毫秒，方便后面查询的时候逆序排列找到最后一个节点
+        String curTime = new SimpleDateFormat("yyyy年MM月dd日HH时mm分ss秒SSS").format(new Date()); //必须精确到毫秒，方便后面查询的时候逆序排列找到最后一个节点
         //当前时间作为nodeId
-        map.put("timestamp", curTime);
+        map.put("创建时间", curTime);
         try {
 
             StringBuilder terminal = new StringBuilder("CREATE (a:");
@@ -274,7 +274,7 @@ public class GJNeo4jUtil {
         Driver driver = createDrive();
         Session session = driver.session();
         //要取最后一个创建的节点，不然会出现多个节点连接同一个节点上的情况
-        StatementResult findResult = session.run("MATCH (c:CASE) where c.caseId = '" + BMSAH + "' with c MATCH p = (c) - [*] -> (m:" + label + ") return m Order by m.timestamp desc Limit 1");
+        StatementResult findResult = session.run("MATCH (c:CASE) where c.caseId = '" + BMSAH + "' with c MATCH p = (c) - [*] -> (m:" + label + ") return m Order by m.创建时间 desc Limit 1");
 
 
         if (findResult != null && findResult.hasNext()) {
@@ -298,7 +298,7 @@ public class GJNeo4jUtil {
         }
 
         //附加流程信息
-        StatementResult findTaskResult = session.run("MATCH (c:CASE) where c.caseId = '" + BMSAH + "' with c MATCH p = (c) - [*] -> (m:Task) return m Order by m.timestamp desc Limit 1");
+        StatementResult findTaskResult = session.run("MATCH (c:CASE) where c.caseId = '" + BMSAH + "' with c MATCH p = (c) - [*] -> (m:Task) return m Order by m.创建时间 desc Limit 1");
         if (findTaskResult != null && findTaskResult.hasNext()) {
             while (findTaskResult.hasNext()) {
                 Record record = findTaskResult.next();
@@ -371,7 +371,9 @@ public class GJNeo4jUtil {
 
 
         if (StringUtils.isEmpty(cbdwNodeId)) {
-            cbdwNodeId = GJNeo4jUtil.createKeyValues("CBDW", caseNodeId, "承办", true, null);
+            Map<String, Object> cbdw = new HashMap<>();
+            cbdw.put("name", "CBDW");
+            cbdwNodeId = GJNeo4jUtil.createKeyValues("CBDW", caseNodeId, "承办", true, cbdw);
         }
 
 
