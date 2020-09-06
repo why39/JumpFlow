@@ -300,7 +300,7 @@
     function traceGJ() {
         var query = null;
         if ($("#caseId").val() && $("#labelName").val()) {
-            query = "MATCH (n) WHERE n.caseId=\'" + $("#caseId").val() + "\' WITH n MATCH p = (n) - [*] -> (m:" + $("#labelName").val() + ") RETURN m,p";
+            query = "MATCH (n) WHERE n.caseId=\'" + $("#caseId").val() + "\' WITH n MATCH p = (n) - [*] -> (m) where m.name=\'" + $("#labelName").val() + "\' RETURN m,p";
         } else {
             query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
         }
