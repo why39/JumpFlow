@@ -73,7 +73,7 @@ mybatis:
 
 # Pageoffice
 pageoffice:
-  posyspath: ./IDE/lic/
+  posyspath: d:\IDE\lic
   popassword: 111111
 
 # APP模块

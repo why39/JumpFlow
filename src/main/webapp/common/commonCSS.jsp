@@ -6,6 +6,11 @@
 <link rel="stylesheet" href="${webRoot}/plugins/ztree/css/zTreeStyle/zTreeStyle.css"/>
 <link rel="stylesheet" href="${webRoot}/plugins/validform/css/style.css"/>
 <link rel="stylesheet" href="${webRoot}/plugins/layui/css/layui.css"/>
+<link rel="stylesheet" href="${webRoot}/css/ace-skins.min.css" />
+<link rel="stylesheet" href="${webRoot}/css/ace-rtl.min.css" />
+<link rel="stylesheet" href="${webRoot}/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+<link rel="stylesheet" href="${webRoot}/css/fonts.googleapis.com.css" />
+<link rel="stylesheet" href="${webRoot}/4.5.0/css/font-awesome.min.css" />
 <style>
     /**透明样式，用作设置某元素禁止操作*/
     .readOnly {

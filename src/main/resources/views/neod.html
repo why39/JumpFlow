@@ -62,6 +62,14 @@
 
     <div style="margin-top: 6px" class="col-lg-12">
         <div class="input-group">
+            <input class="form-control" type="date" style="width: 360px" id="TimeBeginName"  placeholder="起始时间"/>
+            <input class="form-control" type="date" style="width: 360px" id="TimeEndName"  placeholder="截至时间"/>
+            <button style="margin-left: 6px" type="button" class="btn btn-primary" onclick="timeSearch()">时间查找</button>
+        </div>
+    </div>
+
+    <div style="margin-top: 6px" class="col-lg-12">
+        <div class="input-group">
             <input class="form-control" type="text" style="width: 360px" id="userName" placeholder="操作人名"/>
             <div style="margin-left: 6px" class="btn-group">
                 <button type="button" class="btn btn-primary" id="relatedCase" onclick="relatedCase()">涉及案件</button>
@@ -305,6 +313,20 @@
             query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
         }
         console.log("$(\"#labelName\").val()---->" + $("#caseId").val());
+        clearNodeInfo();
+        execute(query);
+    }
+
+
+//根据时间查找案件信息
+    function timeSearch() {
+        var query = null;
+        if ($("#caseName").val()) {
+            query = "MATCH (a:CASE) WHERE a.name=~ '.*" + $("#caseName").val() + ".*' with a MATCH p=(a)-[*]->(m:Task) RETURN a,p,m";
+        } else {
+            query = "MATCH (n:CASE) WITH n MATCH p=(n)-[*]->(m:Task) RETURN p,n,m";
+        }
+        console.log("$(\"#caseName\").val()---->" + $("#caseName").val());
         clearNodeInfo();
         execute(query);
     }

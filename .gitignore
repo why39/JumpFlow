@@ -9,3 +9,6 @@ classes/
 build/
 log/
 /case
+hxyFrame-activiti-boot.iml
+pom.xml
+

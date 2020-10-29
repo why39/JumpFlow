@@ -2,26 +2,7 @@
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="Spring" name="Spring">
-      <configuration>
-        <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/modules/activiti/config/Cfg_Activiti.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/modules/activiti/config/Cfg_PageOffice.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/modules/activiti/config/Cfg_Util.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/modules/activiti/config/Cfg_View.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/config/FilterConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/HxyFrameBootApplication.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/config/KaptchaConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/config/MybatisConf.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/config/RedisConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/modules/activiti/config/RestConfiguration.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/modules/quartz/config/ScheduleConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/config/ShiroConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/config/SpringConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/config/SwaggerConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/config/VelocityConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/hxy/modules/app/config/WebMvcConfig.java</file>
-        </fileset>
-      </configuration>
+      <configuration />
     </facet>
     <facet type="web" name="Web">
       <configuration>
@@ -40,15 +21,12 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/webapp" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="pageoffice4.6.0.3" level="project" />
-    <orderEntry type="library" name="scala-sdk-2.11.5" level="application" />
-    <orderEntry type="library" name="scala-sdk-2.11.0" level="application" />
     <orderEntry type="library" name="Maven: com.squareup.okhttp3:okhttp:3.8.1" level="project" />
     <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.13.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.2" level="project" />
@@ -170,13 +148,14 @@
     <orderEntry type="library" name="Maven: com.github.pagehelper:pagehelper-spring-boot-autoconfigure:1.1.2" level="project" />
     <orderEntry type="library" name="Maven: com.github.pagehelper:pagehelper:5.0.3" level="project" />
     <orderEntry type="library" name="Maven: com.github.jsqlparser:jsqlparser:1.0" level="project" />
-    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.38" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.19" level="project" />
+    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.6.1" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:druid-spring-boot-starter:1.1.3" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:druid:1.1.3" level="project" />
     <orderEntry type="module-library">
       <library name="Maven: com.alibaba:jconsole:1.8.0">
         <CLASSES>
-          <root url="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/lib/jconsole.jar!/" />
+          <root url="jar://C:/Program Files (x86)/Java/jdk/lib/jconsole.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -185,7 +164,7 @@
     <orderEntry type="module-library">
       <library name="Maven: com.alibaba:tools:1.8.0">
         <CLASSES>
-          <root url="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/lib/tools.jar!/" />
+          <root url="jar://C:/Program Files (x86)/Java/jdk/lib/tools.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -346,7 +325,6 @@
     <orderEntry type="library" name="Maven: commons-cli:commons-cli:1.2" level="project" />
     <orderEntry type="library" name="Maven: xmlenc:xmlenc:0.52" level="project" />
     <orderEntry type="library" name="Maven: commons-httpclient:commons-httpclient:3.1" level="project" />
-    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:2.5.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.hadoop:hadoop-auth:2.6.5" level="project" />
     <orderEntry type="library" name="Maven: org.apache.directory.server:apacheds-kerberos-codec:2.0.0-M15" level="project" />
     <orderEntry type="library" name="Maven: org.apache.directory.server:apacheds-i18n:2.0.0-M15" level="project" />

@@ -23,23 +23,34 @@
         </form>
     </div>
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-xs-12">
             <table id="table-list" class="layui-table">
                 <thead>
                 <tr>
+                    <th class="detail-col">Details</th>
                     <th>序号</th>
                     <th>名称</th>
                     <th>业务</th>
                     <th>是否部署</th>
                     <th>机构</th>
                     <th>部门</th>
-                    <th>创建时间</th>
+                    <th>
+                        <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+                        创建时间</th>
                     <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${page.result}" var="model" varStatus="i">
                     <tr name="model_${model.id }">
+                        <td class="center">
+                            <div class="action-buttons">
+                                <a href="#" class="green bigger-140 show-details-btn" title="Show Details">
+                                    <i class="ace-icon fa fa-angle-double-down"></i>
+                                    <span class="sr-only">Details</span>
+                                </a>
+                            </div>
+                        </td>
                         <td>${i.index+1 }</td>
                         <td>${model.name}</td>
                         <td>${model.businessName}</td>
