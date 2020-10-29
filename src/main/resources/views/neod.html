@@ -295,7 +295,7 @@
     function relatedData() {
         var query = null;
         if ($("#userName").val()) {
-            query = "MATCH (n:USER) WHERE n.name=\'" + $("#userName").val() + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
+            query = "MATCH (n:USER) WHERE n.name=\'" + $("#userName").val() + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n LIMIT (10)";
         } else {
             query = "MATCH (n)-[r]->(m) RETURN n,r,m";
         }
@@ -308,7 +308,7 @@
     function traceGJ() {
         var query = null;
         if ($("#caseId").val() && $("#labelName").val()) {
-            query = "MATCH (n) WHERE n.caseId=\'" + $("#caseId").val() + "\' WITH n MATCH p = (n) - [*] -> (m:" + $("#labelName").val() + ") RETURN m,p";
+            query = "MATCH (n) WHERE n.caseId=\'" + $("#caseId").val() + "\' WITH n MATCH p = (n) - [*] -> (m) where m.name=\'" + $("#labelName").val() + "\' RETURN m,p";
         } else {
             query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
         }

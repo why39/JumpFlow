@@ -1,7 +1,7 @@
 JumpFlow
 ====
 A workflow system supporting jump to any activity
-本项目基于检察业务系统背景，实现的是一个可以按自定义规则跳转的工作流系统
+本项目基于世系数据供应链溯源系统背景，实现的是一个可以按自定义规则跳转的工作流系统
 ------------------------------------------------
 ##
 Based on https://github.com/huangxianyuan/hxyFrame-activiti-boot<br>
