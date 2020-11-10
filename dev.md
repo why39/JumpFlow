@@ -104,3 +104,15 @@ Activiti
 3. 从我们系统中查询AJ_YX_AJ表，得到案件列表
 4. 选择一个案件进行日志分析，从RZ_YX_RZ表充，根据某个案件的BMSAH，查询该案件所有日志
 5. 解析每一条日志，创建neo4j节点。
+
+
+- - -
+对接数据平台
+
+1. 获取签名
+sign=md5(查询条件+随机字符串+APPID)
+
+例子（空格用%20代替），生成32位长度的小写字符串：
+sign=md5(bmsah=1&czrm=1&4296d201-f971-42c8-985e-cb147445576f&f658677b-7abc-5946-ac56-ad0684f889b6)
+
+http://tool.chinaz.com/tools/md5.aspx
