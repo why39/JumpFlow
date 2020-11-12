@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 对接数据汇聚平台
@@ -50,7 +51,10 @@ public class DataPlatformService {
     public List<GJAJEntity> queryAJ(String start, String end) {
         List<GJAJEntity> gjajEntityList = new ArrayList<>();
 
-        OkHttpClient client = new OkHttpClient();
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .build();
 
         String params = "queryStartDate=" + start + "&queryEndDate=" + end;
         String signature = MD5.MD5Encode((params + "&" + DATA_RANDOM_STR + "&" + DATA_API_KEY).replace(" ", "%20"));
@@ -103,7 +107,10 @@ public class DataPlatformService {
     public List<GJRZEntity> queryRZ(String start, String end) {
         List<GJRZEntity> gjrzEntityList = new ArrayList<>();
 
-        OkHttpClient client = new OkHttpClient();
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .build();
 
         String params = "queryStartDate=" + start + "&queryEndDate=" + end;
         String signature = MD5.MD5Encode((params + "&" + DATA_RANDOM_STR + "&" + DATA_API_KEY).replace(" ", "%20"));
