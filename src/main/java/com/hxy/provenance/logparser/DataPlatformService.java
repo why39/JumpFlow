@@ -2,11 +2,14 @@ package com.hxy.provenance.logparser;
 
 import com.hxy.modules.common.utils.JsonUtil;
 import com.hxy.modules.common.utils.MD5;
+import com.hxy.provenance.neo4j.utils.http.HttpUtils;
 import com.qiniu.util.Json;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.apache.commons.collections.CollectionUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -20,6 +23,10 @@ import java.util.List;
  */
 @Service
 public class DataPlatformService {
+
+    Logger logger = LoggerFactory.getLogger(DataPlatformService.class);
+
+
     @Value("${spring.data.platform.url}")
     String DATA_URL;
 
@@ -48,6 +55,7 @@ public class DataPlatformService {
         String params = "queryStartDate=" + start + "&queryEndDate=" + end;
         String signature = MD5.MD5Encode((params + "&" + DATA_RANDOM_STR + "&" + DATA_API_KEY).replace(" ", "%20"));
 
+//        HttpUtils.sendGet(DATA_URL + "/api/proc/aj",)
         Request request = new Request.Builder()
                 .url(DATA_URL + "/api/proc/aj?" + params)
                 .get()
@@ -56,6 +64,8 @@ public class DataPlatformService {
                 .addHeader("X-Api-Signature", signature)
                 .addHeader("Content-Type", "application/x-www-form-urlencoded")
                 .addHeader("cache-control", "no-cache")
+                .addHeader("accept", "*/*")
+                .addHeader("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)")
                 .build();
 
         try {
@@ -79,6 +89,7 @@ public class DataPlatformService {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+            logger.info("DATAPlatform...." + gjajEntityList.size());
             return gjajEntityList;
         }
 
@@ -95,7 +106,7 @@ public class DataPlatformService {
         OkHttpClient client = new OkHttpClient();
 
         String params = "queryStartDate=" + start + "&queryEndDate=" + end;
-        String signature = MD5.MD5Encode(params + "&" + DATA_RANDOM_STR + "&" + DATA_API_KEY);
+        String signature = MD5.MD5Encode((params + "&" + DATA_RANDOM_STR + "&" + DATA_API_KEY).replace(" ", "%20"));
 
         Request request = new Request.Builder()
                 .url(DATA_URL + "/api/logs/oper?" + params)
@@ -105,6 +116,8 @@ public class DataPlatformService {
                 .addHeader("X-Api-Signature", signature)
                 .addHeader("Content-Type", "application/x-www-form-urlencoded")
                 .addHeader("cache-control", "no-cache")
+                .addHeader("accept", "*/*")
+                .addHeader("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)")
                 .build();
 
         try {
@@ -129,6 +142,7 @@ public class DataPlatformService {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+            logger.info("DATAPlatform...." + gjrzEntityList.size());
             return gjrzEntityList;
         }
 
