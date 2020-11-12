@@ -102,7 +102,7 @@
         //保存表单
 		$("#submitBtn").click(function () {
             checkFormValid($("#modelForm"),function () {
-                var url = '${model.id}'==""?'${webRoot}/act/model/save':'${webRoot}/act/model/update';
+                var url = '${model.id}'==""?'${webRoot}/act/model/saveAJ':'${webRoot}/act/model/update';
                 //父级搜索表单
                 var searchForm=$(parent.document.getElementById("main-container")).find("#search-from");
                 $.post(url,$("#modelForm").serialize(),function(r){

@@ -62,7 +62,7 @@ public class OrganController extends BaseController {
 	/**
 	 * 保存
 	 */
-	@RequestMapping("/save")
+	@RequestMapping("/saveAJ")
 	@RequiresPermissions("sys:organ:all")
 	@SysLog("保存组织")
 	public Result save(@RequestBody OrganEntity organ){

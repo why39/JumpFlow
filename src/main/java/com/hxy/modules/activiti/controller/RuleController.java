@@ -39,7 +39,7 @@ public class RuleController {
 //        rule.setExpression("4444");
 //        rule.setStartEvent("33333");
 //        rule.setEndEvent("444444");
-//        ruleService.save(rule);
+//        ruleService.saveAJ(rule);
         List<RuleEntity> lr = new ArrayList<>();
         lr = ruleService.queryRulesAva("33","333","33333");
 

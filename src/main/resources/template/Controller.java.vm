@@ -64,8 +64,8 @@ public class ${className}Controller extends BaseController{
 	/**
 	 * 保存
 	 */
-	@RequestMapping("/save")
-	@RequiresPermissions("${pathName}:save")
+	@RequestMapping("/saveAJ")
+	@RequiresPermissions("${pathName}:saveAJ")
 	public Result save(@RequestBody ${className}Entity ${classname}){
 		${classname}Service.save(${classname});
 		

@@ -115,7 +115,7 @@ public class ExtendActModelController {
      * @param modelEntity
      * @return
      */
-    @RequestMapping("save")
+    @RequestMapping("saveAJ")
     @ResponseBody
     @RequiresPermissions("act:model:all")
     public Result save(ExtendActModelEntity modelEntity) {

@@ -113,10 +113,9 @@ TODO
 对接数据平台
 
 1. 获取签名
-sign=md5(查询条件+随机字符串+APPID)
+sign=md5(查询条件&随机字符串&APPID)
 
 例子（空格用%20代替），生成32位长度的小写字符串：
 sign=md5(bmsah=1&czrm=1&4296d201-f971-42c8-985e-cb147445576f&f658677b-7abc-5946-ac56-ad0684f889b6)
 
 http://tool.chinaz.com/tools/md5.aspx
->>>>>>> gj2.0
