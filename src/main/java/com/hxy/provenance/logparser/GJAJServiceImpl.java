@@ -138,8 +138,8 @@ public class GJAJServiceImpl implements GJAJService {
                                 System.out.println("xp>>>>>>>>>Found key: " + key);
                                 System.out.println("xp>>>>>>>>>Found value: " + value);
                                 Map<String, Object> par = new HashMap<>();
-                                if(KVCache.kv.containsKey(key)) {
-                                    showKey=KVCache.kv.get(key);
+                                if(KVCache.kv.containsKey(key.toUpperCase())) {
+                                    showKey=KVCache.kv.get(key.toUpperCase());
                                     par.put("CN_KEY", showKey);
                                 }
                                 par.put(key, value);
@@ -161,8 +161,8 @@ public class GJAJServiceImpl implements GJAJService {
                                 System.out.println("xp>>>>>>>>>Found key: " + key);
                                 System.out.println("xp>>>>>>>>>Found value: " + value);
                                 Map<String, Object> par = new HashMap<>();
-                                if(KVCache.kv.containsKey(key)) {
-                                    showKey=KVCache.kv.get(key);
+                                if(KVCache.kv.containsKey(key.toUpperCase())) {
+                                    showKey=KVCache.kv.get(key.toUpperCase());
                                     par.put("CN_KEY", showKey);
                                 }
                                 par.put(NeoConstants.KEY_LAST_NODE_ID, caseNodeId);

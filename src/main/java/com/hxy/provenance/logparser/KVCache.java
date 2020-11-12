@@ -14,12 +14,16 @@ public class KVCache {
     @Autowired
     GJKVDao gjkvDao;
     public static HashMap<String, String> kv = new HashMap<>();
+    static {
+        kv.put("ACTION","操作");
+        kv.put("CBDW","承办单位");
+    }
 
     @PostConstruct
     public void init() {
-        List<KVEntity> res=gjkvDao.queryList(new HashMap<>());
-        for (KVEntity entity:res){
-            kv.put(entity.en, entity.cn);
+        List<KVEntity> res = gjkvDao.queryList(new HashMap<>());
+        for (KVEntity entity : res) {
+            kv.put(entity.en.toUpperCase(), entity.cn);
         }
     }
 

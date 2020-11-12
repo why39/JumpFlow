@@ -73,7 +73,7 @@ mybatis:
 
 # Pageoffice
 pageoffice:
-  posyspath: C:\Projects\JumpFlow\IDE\lic\
+  posyspath: ./IDE/lic/ #C:\Projects\JumpFlow\IDE\lic\
   popassword: 111111
 
 # APP模块
