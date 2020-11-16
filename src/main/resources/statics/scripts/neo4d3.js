@@ -3,6 +3,7 @@ function Neo(urlSource) {
 		var connection = urlSource();
 		var url = (connection.url || "http://localhost:7474").replace(/\/db\/data.*/,"");
 		return url + "/db/data/transaction/commit";
+		console.log("zzzzzzzzzz");
 	}
 	var me = {
 		executeQuery: function(query, params, cb) {

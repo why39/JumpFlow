@@ -1,14 +1,70 @@
 <html>
 <head>
+    <title>Cy2NeoD3 - Tiny Neo4j Cypher Workbench</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="${rc.contextPath}/styles/codemirror.css">
     <link rel="stylesheet" href="${rc.contextPath}/styles/codemirror-neo.css">
     <link rel="stylesheet" href="${rc.contextPath}/styles/cy2neo.css">
-    <link rel="stylesheet" href="${rc.contextPath}/styles/neod3.css">
+
     <link rel="stylesheet" href="${rc.contextPath}/styles/datatable.css">
     <link rel="stylesheet" href="${rc.contextPath}/styles/vendor.css"> <!-- bootstrap-->
     <link rel="stylesheet" href="${rc.contextPath}/styles/sweet-alert.css">
     <link rel="stylesheet" href="${rc.contextPath}/styles/gh-fork-ribbon.css">
-    <title>Cy2NeoD3 - Tiny Neo4j Cypher Workbench</title>
+    <!--Morris Chart CSS -->
+    <link rel="stylesheet" href="${rc.contextPath}/styles/morris.css">
+
+    <!-- Basic Css files -->
+    <link rel="stylesheet" href="${rc.contextPath}/styles/metismenu.min.css" >
+    <style>
+        path.link{fill:none;stroke:#7f8c8d;stroke-width:2px}
+        text{font-family:sans-serif;pointer-events:none}
+        marker{fill:#d8dadc}
+        text .faded{fill:#333}
+        .node .outline{-webkit-transform:scale(1);-moz-transform:scale(1);-o-transform:scale(1);-ms-transform:scale(1);transform:scale(1);-webkit-transition:all .15s;-moz-transition:all .15s;-o-transition:all .15s;-ms-transition:all .15s;transition:all .15s;-webkit-transition-timing-function:cubic-bezier(.694,.0482,.335,1);-moz-transition-timing-function:cubic-bezier(.694,.0482,.335,1);-o-transition-timing-function:cubic-bezier(.694,.0482,.335,1);-ms-transition-timing-function:cubic-bezier(.694,.0482,.335,1);transition-timing-function:cubic-bezier(.694,.0482,.335,1)}
+        .node:hover .outline{-webkit-transform:scale(1.4);-moz-transform:scale(1.4);-o-transform:scale(1.4);-ms-transform:scale(1.4);transform:scale(1.4)}
+        .relationship:hover{stroke:#3498db}
+        .outline,.overlay{cursor:pointer}
+        g.node text[stroke="#DFE1E3"] {text-shadow: -1px -1px 2px #DFE1E3, -1px 1px 2px #DFE1E3, -1px 0 2px #DFE1E3, 1px -1px 2px #DFE1E3, 1px 1px 2px #DFE1E3, 1px 0 2px #DFE1E3, 0 -1px 2px #DFE1E3, 0 1px 2px #DFE1E3}
+        g.node text[stroke="#F25A29"] {text-shadow: -1px -1px 2px #F25A29, -1px 1px 2px #F25A29, -1px 0 2px #F25A29, 1px -1px 2px #F25A29, 1px 1px 2px #F25A29, 1px 0 2px #F25A29, 0 -1px 2px #F25A29, 0 1px 2px #F25A29}
+        g.node text[stroke="#AD62CE"] {text-shadow: -1px -1px 2px #AD62CE, -1px 1px 2px #AD62CE, -1px 0 2px #AD62CE, 1px -1px 2px #AD62CE, 1px 1px 2px #AD62CE, 1px 0 2px #AD62CE, 0 -1px 2px #AD62CE, 0 1px 2px #AD62CE}
+        g.node text[stroke="#30B6AF"] {text-shadow: -1px -1px 2px #30B6AF, -1px 1px 2px #30B6AF, -1px 0 2px #30B6AF, 1px -1px 2px #30B6AF, 1px 1px 2px #30B6AF, 1px 0 2px #30B6AF, 0 -1px 2px #30B6AF, 0 1px 2px #30B6AF}
+        g.node text[stroke="#FCC940"] {text-shadow: -1px -1px 2px #FCC940, -1px 1px 2px #FCC940, -1px 0 2px #FCC940, 1px -1px 2px #FCC940, 1px 1px 2px #FCC940, 1px 0 2px #FCC940, 0 -1px 2px #FCC940, 0 1px 2px #FCC940}
+        g.node text[stroke="#4356C0"] {text-shadow: -1px -1px 2px #4356C0, -1px 1px 2px #4356C0, -1px 0 2px #4356C0, 1px -1px 2px #4356C0, 1px 1px 2px #4356C0, 1px 0 2px #4356C0, 0 -1px 2px #4356C0, 0 1px 2px #4356C0}
+        g.node text[stroke="#FF6C7C"] {text-shadow: -1px -1px 2px #FF6C7C, -1px 1px 2px #FF6C7C, -1px 0 2px #FF6C7C, 1px -1px 2px #FF6C7C, 1px 1px 2px #FF6C7C, 1px 0 2px #FF6C7C, 0 -1px 2px #FF6C7C, 0 1px 2px #FF6C7C}
+        g.node text[stroke="#a2cf81"] {text-shadow: -1px -1px 2px #a2cf81, -1px 1px 2px #a2cf81, -1px 0 2px #a2cf81, 1px -1px 2px #a2cf81, 1px 1px 2px #a2cf81, 1px 0 2px #a2cf81, 0 -1px 2px #a2cf81, 0 1px 2px #a2cf81}
+        g.node text[stroke="#f79235"] {text-shadow: -1px -1px 2px #f79235, -1px 1px 2px #f79235, -1px 0 2px #f79235, 1px -1px 2px #f79235, 1px 1px 2px #f79235, 1px 0 2px #f79235, 0 -1px 2px #f79235, 0 1px 2px #f79235}
+        g.node text[stroke="#785cc7"] {text-shadow: -1px -1px 2px #785cc7, -1px 1px 2px #785cc7, -1px 0 2px #785cc7, 1px -1px 2px #785cc7, 1px 1px 2px #785cc7, 1px 0 2px #785cc7, 0 -1px 2px #785cc7, 0 1px 2px #785cc7}
+        g.node text[stroke="#d05e7c"] {text-shadow: -1px -1px 2px #d05e7c, -1px 1px 2px #d05e7c, -1px 0 2px #d05e7c, 1px -1px 2px #d05e7c, 1px 1px 2px #d05e7c, 1px 0 2px #d05e7c, 0 -1px 2px #d05e7c, 0 1px 2px #d05e7c}
+        g.node text[stroke="#3986b7"] {text-shadow: -1px -1px 2px #3986b7, -1px 1px 2px #3986b7, -1px 0 2px #3986b7, 1px -1px 2px #3986b7, 1px 1px 2px #3986b7, 1px 0 2px #3986b7, 0 -1px 2px #3986b7, 0 1px 2px #3986b7}
+
+        div.tip-hill-div {
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: Microsoft Yahei;
+        }
+
+        div.tip-hill-div > h1 {
+            font-size: 14px;
+        }
+
+        div.tip-hill-div > h2 {
+            font-size: 12px;
+        }
+
+        .axis path,
+        .axis line {
+            stroke: #000;
+            fill: none;
+        }
+        .canvasClass:hover{
+            background-color: black;
+        }
+        .rectClass:hover{
+           fill: black;
+        }
+    </style>
 </head>
 <body>
 <!--<div>-->
@@ -22,14 +78,52 @@
 <!--<a href="#" title="Execute" id="execute"><i class="fa fa-play-circle-o"></i></a>-->
 <!--</div>-->
 
-<div>
+<div >
 
-    <div style="margin-top: 6px" class="col-lg-12">
+    <nav aria-label="Page navigation">
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href = "javascript:;" onclick="monitorClick()" id = "xieshijiancha_a">刑事检察</a></li>
+            <li role="presentation"><a href = "javascript:;" onclick="supervisionClick()" id = "xieshizhixing_a">刑事执行</a></li>
+            <li role="presentation"><a href = "javascript:;" onclick="prosecutionClick()" id = "gongsu_a">公益诉讼</a></li>
+            <li role="presentation"><a href="javascript:" onclick="minshiClick()" id = "minshi_a">民事</a></li>
+            <li role="presentation"><a href="javascript:" onclick="xinHengClick()" id = "xinzheng_a">行政</a></li>
+            <li role="presentation"><a href="javascript:" onclick="weijianClick()" id = "weijian_a">未检业务</a></li>
+            <li role="presentation"><a href="javascript:" onclick="konggaoClick()" id = "konggao_a">控告申诉</a></li>
+            <li role="presentation"><a href="javascript:" onclick="jianweiClick()" id = "jianwei_a">检委办</a></li>
+            <li role="presentation"><a href="javascript:" onclick="duitaiClick()" id = "duitai_a">对台业务</a></li>
+            <li role="presentation"><a href="javascript:" onclick="anguanClick()" id = "anguan_a">案管</a></li>
+            <li role="presentation"><a href="javascript:" onclick="sifaClick()" id = "sifa_a">司法协助</a></li>
+
+        </ul>
+    </nav>
+
+    <div id = "relevantCase" style="visibility : hidden;text-align:center;margin:0 auto">
+        <input class="form-control" type="text" style="width: 240px" id = "keySelect" placeholder="关键字查询"/>
+
+        <nav aria-label="Page navigation">
+            <div id = "pageData">
+                <ul class="list-group" id = "caseList">
+
+                </ul>
+            </div>
+        </nav>
+        <div class="page">
+            <div id="page">
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+   <!-- <div style="margin-top: 6px" class="col-lg-12" id = "case">
         <div class="input-group">
             <input class="form-control" type="text" style="width: 360px" id="caseName" placeholder="输入内容"/>
             <button style="margin-left: 6px" type="button" class="btn btn-primary" onclick="findCase()">查找案件
             </button>
-        </div><!-- /input-group -->
+        </div>&lt;!&ndash; /input-group &ndash;&gt;
     </div>
 
     <div style="margin-top: 6px" class="col-lg-12">
@@ -50,7 +144,7 @@
                 <button type="button" class="btn btn-primary" id="trace" onclick="filterCaseFlow()">仅看流程</button>
             </div>
 
-        </div><!-- /input-group -->
+        </div>&lt;!&ndash; /input-group &ndash;&gt;
     </div>
 
     <div style="margin-top: 6px" class="col-lg-12">
@@ -62,9 +156,13 @@
 
     <div style="margin-top: 6px" class="col-lg-12">
         <div class="input-group">
-            <input class="form-control" type="date" style="width: 360px" id="TimeBeginName"  placeholder="起始时间"/>
-            <input class="form-control" type="date" style="width: 360px" id="TimeEndName"  placeholder="截至时间"/>
-            <button style="margin-left: 6px" type="button" class="btn btn-primary" onclick="timeSearch()">时间查找</button>
+
+            <input class="form-control" type="date" style="width: 360px" id="TimeStartName" placeholder="起始时间"/>
+            <input class="form-control" type="date" style="width: 360px" id="TimeEndName" placeholder="截至时间"/>
+            <button style="margin-left: 6px" type="button" class="btn btn-primary" onclick="timeSearch()">
+                时间查找
+            </button>
+
         </div>
     </div>
 
@@ -76,7 +174,7 @@
                 <button type="button" class="btn btn-primary" id="relatedData" onclick="relatedData()">涉及数据</button>
             </div>
 
-        </div><!-- /input-group -->
+        </div>&lt;!&ndash; /input-group &ndash;&gt;
     </div>
 
     <div style="margin-top: 6px" class="col-lg-12">
@@ -87,7 +185,7 @@
                 <button type="button" class="btn btn-primary" onclick="executeClear()">清空数据</button>
             </div>
         </div>
-    </div>
+    </div>*/-->
 
     <!--    <div style="margin-top: 6px" class="col-lg-12">-->
     <!--        <div class="input-group">-->
@@ -111,15 +209,27 @@
 
 </div>
 
-<div role="tabpanel">
+<div style = "border-top: 8px solid lightgray; margin-top: 5px;">
 
-    <!-- Nav tabs -->
-    <!--<ul class="nav nav-tabs" role="tablist">-->
-    <!--<li role="presentation" class="active"><a href="#graph" aria-controls="home" role="tab" data-toggle="tab">Graph</a></li>-->
-    <!--<li role="presentation"><a href="#table" aria-controls="table" role="tab" data-toggle="tab">Table</a></li>-->
-    <!--</ul>-->
 
-    <!-- Tab panes -->
+<div id="my_container" style="width:410px; height:410px;float: right;position:relative;box-shadow: 0 0 50px grey;">
+    <canvas id="pie_canvas" ></canvas>
+</div>
+
+<div id = "chart" style = "position: relative">
+
+</div>
+</div>
+
+<!--<div role="tabpanel">
+
+    &lt;!&ndash; Nav tabs &ndash;&gt;
+    &lt;!&ndash;<ul class="nav nav-tabs" role="tablist">&ndash;&gt;
+    &lt;!&ndash;<li role="presentation" class="active"><a href="#graph" aria-controls="home" role="tab" data-toggle="tab">Graph</a></li>&ndash;&gt;
+    &lt;!&ndash;<li role="presentation"><a href="#table" aria-controls="table" role="tab" data-toggle="tab">Table</a></li>&ndash;&gt;
+    &lt;!&ndash;</ul>&ndash;&gt;
+
+    &lt;!&ndash; Tab panes &ndash;&gt;
     <div style="margin-top: 6px">
         <span class="nodeId label label-success"></span>
         <span class="caseId label label-default"></span>
@@ -135,11 +245,12 @@
         <div role="tabpanel" class="tab-pane" id="table">
             <div id="datatable"></div>
         </div>
-    </div>
+    </div>-->
 
 
-</div>
 
+
+<script src="https://d3js.org/d3.v4.js"></script>
 <script src="${rc.contextPath}/scripts/codemirror.js"></script>
 <script src="${rc.contextPath}/scripts/codemirror-cypher.js"></script>
 <script src="${rc.contextPath}/scripts/vendor.js"></script>
@@ -150,9 +261,25 @@
 <script src="${rc.contextPath}/scripts/cy2neod3.js"></script>
 <script src="${rc.contextPath}/scripts/jquery.dataTables.min.js"></script>
 <script src="${rc.contextPath}/scripts/cypher.datatable.js"></script>
+<!--<script src="${rc.contextPath}/scripts/dashboard.js"></script>-->
 
+<!-- jQuery  -->
+<!--<script src="${rc.contextPath}/pluginjs/bootstrap.bundle.min.js"></script>
+<script src="${rc.contextPath}/pluginjs/modernizr.min.js"></script>
+<script src="${rc.contextPath}/pluginjs/metisMenu.min.js"></script>
+<script src="${rc.contextPath}/pluginjs/jquery.slimscroll.js"></script>
+<script src="${rc.contextPath}/pluginjs/waves.js"></script>-->
 
+<!--<script src="${rc.contextPath}/pluginjs/jquery.peity.min.js"></script>-->
+
+<!--Morris Chart-->
+<!--<script src="${rc.contextPath}/pluginjs/morris.min.js"></script>
+<script src="${rc.contextPath}/pluginjs/raphael-min.js"></script>-->
+
+<!-- App js -->
+<!--<script src="${rc.contextPath}/pluginjs/app.js"></script>-->
 <script type="text/javascript">
+
     var connection = function () {
         configStr = localStorage.getItem("neoconfig");
         configJSON = JSON.parse(configStr)
@@ -318,15 +445,32 @@
     }
 
 
-//根据时间查找案件信息
+
     function timeSearch() {
         var query = null;
-        if ($("#caseName").val()) {
-            query = "MATCH (a:CASE) WHERE a.name=~ '.*" + $("#caseName").val() + ".*' with a MATCH p=(a)-[*]->(m:Task) RETURN a,p,m";
+        var data1 = new Date($("#TimeStartName").val());
+        var vYear1 = data1.getFullYear();
+        var vMon1 = data1.getMonth() + 1;
+        var vDay1 = data1.getDate();
+        var h1 = data1.getHours();
+        var m1 = data1.getMinutes();
+        var se1 = data1.getSeconds();
+        var start_time=vYear1 * 10000 + vMon1 * 100 + vDay1;
+        console.log(start_time * 1000000000);
+        var data2 = new Date($("#TimeEndName").val());
+        var vYear2 = data2.getFullYear();
+        var vMon2 = data2.getMonth() + 1;
+        var vDay2 = data2.getDate();
+        var h2 = data2.getHours();
+        var m2 = data2.getMinutes();
+        var se2 = data2.getSeconds();
+        var end_time=vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
+        console.log(end_time * 1000000000);
+        if ($("#TimeStartName").val() && $("#TimeEndName").val()) {
+            query = "MATCH (n) WHERE n.timestamp>=\'" + start_time * 1000000000 + "\' AND n.timestamp<=\'" + end_time * 1000000000 +"\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         } else {
             query = "MATCH (n:CASE) WITH n MATCH p=(n)-[*]->(m:Task) RETURN p,n,m";
         }
-        console.log("$(\"#caseName\").val()---->" + $("#caseName").val());
         clearNodeInfo();
         execute(query);
     }
@@ -361,11 +505,568 @@
         $(".nodeName").text("");
     }
 
+    function executeNode(content,ss) {
+        var query = content;
+        var neo = new Neo(connection);
+        document.getElementById("caseList").innerHTML = "";
+        try {
+            neo.executeQuery(query, {}, function (err, res) {
+                res = res || {};
+                var graph = res.graph;
+                if (graph) {
+                    var node = graph.nodes;
+                    selectNode = JSON.parse(JSON.stringify(node));
+                    console.log(selectNode);
+                    if (selectNode) {
+                        for(var i in selectNode) {
+                            var str="";
+                            var j = parseInt(i) + 1
+                            var className = ss + j;
+                            var bmsah = selectNode[i].caseId;
+                            var timeStr = selectNode[i].timestamp.toString();
+                            console.log(timeStr);
+                            var time = timeStr.substring(0,4) + "年" + timeStr.substring(4,6) + "月" + timeStr.substring(6,8) + "日";
+                            str = "<li class=\"list-group-item\"><span style=\"float: left;margin-top:-2px\">"+className+"</span>  <span style=\"margin-left:-10px;margin-top:-2px\">"+bmsah+"</span> <button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect()\">"+"世系查询"+"</button> <span style=\"float:right;margin-right:50px;margin-top:-2px\">"+time+"</span>";
+                            document.getElementById("caseList").innerHTML += str;
+                        }
+                        var zz=getzz();
+                        change(1,zz);
+                    } else {
+
+                    }
+                } else {
+                    if (err) {
+                        console.log(err);
+                        if (err.length > 0) {
+                            sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
+                        } else {
+                            sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
+                        }
+                    }
+                }
+            });
+        }catch (e) {
+            console.log(e);
+            sweetAlert("Catched error", e, "error");
+        }
+    }
+
+    function getzz() {
+        var a = $("ul#caseList li");
+        var zz =new Array(a.length);
+        for(var i=0;i <a.length;i++){
+            zz[i]=a[i].innerHTML;
+        } //div的字符串数组付给zz
+        console.log("zz is" + zz);
+        return zz;
+    }
+
+
+    var pageno = 1;
+    var gg;
+    function change(e,zz){
+        console.log("zz is" + zz);
+        gg = zz;
+        pageno=e;
+        var pagesize=4; //每页多少条信息
+        if(zz.length%pagesize==0){
+            var  pageall =zz.length/pagesize ;
+        }else{
+            var  pageall =parseInt(zz.length/pagesize)+1;
+        }   //一共多少页
+        if(e<1){
+            e=1;
+            pageno=1;//就等于第1页 ， 当前页为1
+        }
+        if(e>pageall){  //如果输入页大于最大页
+            e=pageall;
+            pageno=pageall; //输入页和当前页都=最大页
+        }
+        $("#caseList").html("");//全部清空
+        console.log("html is" +$("#caseList").html(""));
+        var html="";
+        for(var i=0;i<pagesize;i++){
+            if(zz[(e-1)*pagesize+i]==null) zz[(e-1)*pagesize+i] = "<span style=\"color:white\">空白</span>";
+            html += '<li class=\"list-group-item\">' + zz[(e-1)*pagesize+i] +'</li>';//创建一页的li列表
+        }
+        $("ul#caseList").html(html);//给ul列表写入html
+        var ye="";
+        for(var j=1;j<=pageall;j++){
+            if(e==j){
+                ye=ye+"<span><button onClick='change("+j+",gg)' style='color:#FF0000'>"+j+"</button></span> "
+            }else{
+                ye=ye+"<button onClick='change("+j+",gg)'>"+j+"</button> "
+            }
+        }
+        var pageContent="";
+        pageContent +='第<span id=\"a2\">'+pageno+'</span>/';
+        pageContent +='<span id="a1">'+pageall+'</span>页';
+        pageContent +='<span id="a3">'+ye+'</span>';
+        pageContent +='<button  onClick="change(--pageno,gg)">上一页</button>';
+        pageContent +='<button onClick="change(++pageno,gg)">下一页</button>';
+        $("#page").html(pageContent);
+    }
+
+    monitorClick();
+    function monitorClick() {
+        document.getElementById("relevantCase").style.visibility="visible";
+        var ss = document.getElementById("xieshijiancha_a").innerHTML + "案件";
+        var query = null;
+        query = "MATCH (n:BALB) WHERE n.class=\'" + "刑事检察" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
+        //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
+        clearNodeInfo();
+        console.log("monitorClick");
+        executeNode(query,ss);
+    }
+
+    function supervisionClick() {
+        document.getElementById("relevantCase").style.visibility="visible";
+        var ss = document.getElementById("xieshizhixing_a").innerHTML + "案件";
+        var query = null;
+        query = "MATCH (n:BALB) WHERE n.class=\'" + "刑事执行" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
+        //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
+        clearNodeInfo();
+        executeNode(query,ss);
+    }
+
+    function prosecutionClick(){
+        document.getElementById("relevantCase").style.visibility="visible";
+        var ss = document.getElementById("gongsu_a").innerHTML + "案件";
+        var query = null;
+        query = "MATCH (n:BALB) WHERE n.class=\'" + "公益诉讼" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
+        //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
+        clearNodeInfo();
+        executeNode(query,ss);
+    }
+
+
+    function minshiClick(){
+        document.getElementById("relevantCase").style.visibility="visible";
+        var ss = document.getElementById("minshi_a").innerHTML + "案件";
+        var query = null;
+        query = "MATCH (n:BALB) WHERE n.class=\'" + "民事" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
+        //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
+        clearNodeInfo();
+        executeNode(query,ss);
+    }
+    function weijianClick(){
+        document.getElementById("relevantCase").style.visibility="visible";
+        var ss = document.getElementById("minshi_a").innerHTML + "案件";
+        var query = null;
+        query = "MATCH (n:BALB) WHERE n.class=\'" + "未检业务" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
+        //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
+        clearNodeInfo();
+        executeNode(query,ss);
+    }
+
+    function konggaoClick(){
+        document.getElementById("relevantCase").style.visibility="visible";
+        var ss = document.getElementById("konggao_a").innerHTML + "案件";
+        var query = null;
+        query = "MATCH (n:BALB) WHERE n.class=\'" + "控告申诉" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
+        //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
+        clearNodeInfo();
+        executeNode(query,ss);
+    }
+
+    function jianweiClick(){
+        document.getElementById("relevantCase").style.visibility="visible";
+        var ss = document.getElementById("jianwei_a").innerHTML + "案件";
+        var query = null;
+        query = "MATCH (n:BALB) WHERE n.class=\'" + "检委办" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
+        //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
+        clearNodeInfo();
+        executeNode(query,ss);
+    }
+
+    function duitaiClick(){
+        document.getElementById("relevantCase").style.visibility="visible";
+        var ss = document.getElementById("duitai_a").innerHTML + "案件";
+        var query = null;
+        query = "MATCH (n:BALB) WHERE n.class=\'" + "对台业务" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
+        //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
+        clearNodeInfo();
+        executeNode(query,ss);
+    }
+
+    function anguanClick(){
+        document.getElementById("relevantCase").style.visibility="visible";
+        var ss = document.getElementById("anguan_a").innerHTML + "案件";
+        var query = null;
+        query = "MATCH (n:BALB) WHERE n.class=\'" + "案管" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
+        //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
+        clearNodeInfo();
+        executeNode(query,ss);
+    }
+
+    function sifaClick(){
+        document.getElementById("relevantCase").style.visibility="visible";
+        var ss = document.getElementById("sifa_a").innerHTML + "案件";
+        var query = null;
+        query = "MATCH (n:BALB) WHERE n.class=\'" + "司法协助" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
+        //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
+        clearNodeInfo();
+        executeNode(query,ss);
+    }
+
+
+
+    function lineageSelect() {
+        window.location.href="http://localhost:8083/hxyActiviti/neoData.html";
+    }
+
     window.onload = (function () {
         //todo dynamic configuration
         // var query = "MATCH (n:CASE) WITH n MATCH p=(n)-[*]->(m:Task) RETURN p,n,m";
         // execute(query);
     });
+
+    var over_str = ['刑事检察','刑事执行','公益诉讼','民事','行政','未检业务','控告申诉','检委办','对台业务','案管','司法协助'];
+    var over_data = new Array(over_str.length);
+    var over_data = [17,13,12,11,11,11,11,11,11,11,11];
+    var over_sum = 130;
+
+    window.onload = (function () {
+        for (var i = 0; i < over_str.length; i++) {
+            clearNodeInfo();
+            var over_neo = new Neo(connection);
+            try {
+                var over_query = "MATCH (n:BALB) WHERE n.class=\'" + over_str[i] + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
+                over_neo.executeQuery(over_query, {}, function (err, res) {
+                    res = res || {};
+                    var over_graph = res.graph;
+                    if (over_graph) {
+                        //var over_node = over_graph.nodes;
+                        //over_selectNode = JSON.parse(JSON.stringify(over_node));
+                       //over_data[i] = parseFloat(over_node.length);
+                        //console.log("over_data is"+ over_data[i]);
+                        //over_sum += over_data[i];
+                    } else {
+                        if (err) {
+                            console.log(err);
+                            if (err.length > 0) {
+                                sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
+                            } else {
+                                sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
+                            }
+                        }
+                    }
+                });
+            }catch (e) {
+                console.log(e);
+            }
+        }
+        canvas_data();
+        zhizhutu();
+    });
+
+
+
+
+    function canvas_data() {
+        var canvas = document.getElementById("pie_canvas");
+        var seriesData = [{name:"apples", value:parseFloat(over_data[0]) / parseFloat(over_sum), color:"#34bec9",label1:"公益诉讼",label2:over_data[0] + "件"},
+            {name:"orange", value:parseFloat(over_data[1]) / parseFloat(over_sum), color:"#1616d6",label1:"刑事检察",label2:over_data[1] + "件"},
+            {name:"banana", value:parseFloat(over_data[2]) / parseFloat(over_sum), color:"#4acf23",label1:"刑事执行",label2:over_data[2] + "件"},
+            {name:"peaches", value:parseFloat(over_data[3]) / parseFloat(over_sum), color:"#c316ac",label1:"民事",label2:over_data[3] + "件"},
+            {name:"jiansuo", value:parseFloat(over_data[4]) / parseFloat(over_sum), color:"#c5c516",label1:"行政",label2:over_data[4] + "件"},
+            {name:"konggao", value:parseFloat(over_data[5]) / parseFloat(over_sum), color:"#ca0cc8",label1:"公益诉讼",label2:over_data[5] + "件"},
+            {name:"shensu", value:parseFloat(over_data[6]) / parseFloat(over_sum), color:"#0c1313",label1:"未检业务",label2:over_data[6] + "件"},
+            {name:"yufang", value:parseFloat(over_data[7]) / parseFloat(over_sum), color:"#d4110c",label1:"控告申诉",label2:over_data[7] + "件"},
+            {name:"jianweiban", value:parseFloat(over_data[8]) / parseFloat(over_sum), color:"#c13c90",label1:"检委办",label2:over_data[8] + "件"},
+            {name:"fuheban", value:parseFloat(over_data[9]) / parseFloat(over_sum), color:"#bab9b6",label1:"对台业务",label2:over_data[9] + "件"},
+            {name:"sifaxiezhu", value:parseFloat(over_data[10]) / parseFloat(over_sum), color:"#b5b4b1",label1:"司法协助",label2:over_data[10] + "件"}];
+        var config = {
+            width : 400,
+            height: 400,
+            series: seriesData,
+            canvas: canvas,
+            title:"案件信息",
+            callback:function(obj){
+                console.log(obj.label1);
+            }
+        };
+        pieChart.initSettings(config);
+        pieChart.render();
+
+    }
+
+    var pieChart = {
+        title: "Pie Chart",
+        width: 300,
+        height: 300,
+        series: [],  //格式[{"name":"","value":"","color":"","label1":"","label2":""}]
+        chartCanvas: null,
+        callback:null ,
+        legend : {
+            show : true
+        },
+        label:{
+            show:true,
+            linelength:60,
+            linelength2:60
+        },
+        circle : {
+            cx: 0,
+            cy: 0,
+            radius: 0
+
+        },
+        initSettings: function (config) {
+            this.chartCanvas = config.canvas;
+            this.chartCanvas.width = config.width;
+            this.chartCanvas.height = config.height;
+            this.width = config.width;
+            this.height = config.height;
+            this.series = config.series;
+            this.title = config.title;
+            if(config.legend != undefined) {
+                this.legend.show = config.legend.show;
+            }
+            if(config.label != undefined) {
+                this.label.show = config.label.show;
+            }
+            this.callback = config.callback;
+        },
+        getRatioSum:function(j){
+            var sum = 0;
+            for (var i = 0; i < j; i++) {
+                sum += this.series[i].value;
+            }
+            return sum;
+        },
+        getRatioHalfSumDegrees:function(index){
+            var sum = this.getRatioSum(index);
+            sum += (this.series[index].value / 2);
+            return sum * Math.PI * 2;
+        },
+        getRatioHalfSumDegrees360:function(index){
+            var sum = this.getRatioSum(index);
+            sum += (this.series[index].value / 2);
+            return sum * 360;
+        },
+        renderLegend:function(ctx, length){
+        },
+        renderLabel:function(ctx,length){
+            if(this.label.show){
+                for (var i = 0; i <length; i++) {
+                    this.renderLabelLine(ctx,i) ;
+                }
+
+            }
+        },
+        renderLabelLine:function(ctx,index){
+            ctx.save();
+            ctx.translate(this.width / 2, this.height / 2);
+            ctx.rotate(this.getRatioHalfSumDegrees(index));
+            ctx.strokeStyle = this.series[index].color;
+            ctx.moveTo(this.circle.radius + 1, 0);
+            ctx.lineTo(this.circle.radius + this.label.linelength, 0);
+            ctx.stroke();
+            this.renderLabelLine2(ctx, index);
+            ctx.restore();
+        },
+        renderLabelLine2:function(ctx,index){
+            ctx.save();
+            ctx.translate(this.circle.radius + this.label.linelength, 0);
+            var ro = this.getRatioHalfSumDegrees(index);
+            ctx.rotate( - ro);
+            var xro = this.getRatioHalfSumDegrees360(index);
+            if ((xro > 270 && xro < 360) || (xro > 0 && xro < 90)) {
+                ctx.strokeStyle = this.series[index].color;
+                ctx.moveTo(0, 0);
+                ctx.lineTo(this.label.linelength2, 0);
+                ctx.stroke();
+                ctx.fillText(this.series[index].label1, 10, -4);
+                ctx.fillText(this.series[index].label2, 10, 14);
+            } else {
+                ctx.strokeStyle = this.series[index].color;
+                ctx.moveTo(0, 0);
+                ctx.lineTo( - this.label.linelength2, 0);
+                ctx.stroke();
+                ctx.fillText(this.series[index].label1, -40, -4);
+                ctx.fillText(this.series[index].label2, -40, 14);
+            }
+
+            ctx.restore();
+        },
+        renderPie:function(ctx,length){
+            var lastpos = pos = 0;
+            ctx.lineWidth = this.circle.radius * 0.4;
+            for (var i = 0; i < length; i++) {
+                ctx.beginPath();
+                ctx.strokeStyle = this.series[i].color;
+                pos = lastpos + Math.PI * 2 * this.series[i].value;
+                ctx.arc(this.circle.cx , this.circle.cy, this.circle.radius, lastpos, pos);
+                ctx.stroke();
+                lastpos = pos;
+            }
+
+        },
+        renderPieImage:function(ctx,length){
+
+        },
+        renderClick:function(event,obj){
+            var x = event.pageX;
+            var y = event.pageY;
+            var canvas = event.target;
+            var bbox = canvas.getBoundingClientRect();
+            var loc = { x: x - bbox.left * (canvas.width  / bbox.width),
+                y: y - bbox.top  * (canvas.height / bbox.height)};
+            console.log(loc);
+
+            var dx = loc.x - obj.circle.cx;
+            var dy = loc.y - obj.circle.cy;
+            var dis = Math.floor(Math.sqrt(dx * dx + dy * dy));
+            console.log("dis="+dis+"  mRadius="+obj.circle.radius);
+            if(dis <= obj.circle.radius*3.6&&dis>=obj.circle.radius*1.2) {
+                // draw tool tip text
+                var angle = Math.atan2(dy,dx);
+                if(angle <= 0) {
+                    angle = angle + 2*Math.PI;
+                }
+                var deltaArc = 0;
+                var index = 0;
+                for(var i=0; i<obj.series.length; i++) {
+                    var precent = obj.series[i].value;
+                    deltaArc += 2*Math.PI * precent;
+                    if(angle<=deltaArc) {
+                        index = i;
+                        break;
+                    }
+                }
+                console.log(obj.series[i]);
+                obj.callback(obj.series[index]);
+                //console.log(obj.series[index].label1);
+            }
+        },
+        render:function(){
+            this.circle.cx = this.width/2 ;
+            this.circle.cy = this.height/2 ;
+            this.circle.radius=(this.width - this.width  * 0.5) / 2;
+            var ctx = this.chartCanvas.getContext("2d");
+            if(this.circle.radius <= 0) {
+                ctx.strokeText("请设置布局大小.");
+                return;
+            }
+            if (window.devicePixelRatio) {
+                this.chartCanvas.style.width = this.width + "px";
+                this.chartCanvas.style.height = this.height + "px";
+                this.chartCanvas.height = this.height * window.devicePixelRatio;
+                this.chartCanvas.width = this.width * window.devicePixelRatio;
+                ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            var length = this.series.length ;
+            var length = this.series.length ;
+            this.renderLabel(ctx,length) ;
+            this.renderPie(ctx,length);
+            var parent = this ;
+           // this.chartCanvas.setAttribute("class","canvasClass");
+            this.chartCanvas.addEventListener('click', function (event) {
+                parent.renderClick(event, parent);
+                //console.log(parent);
+                }, false);
+            }
+
+    }
+
+    function zhizhutu() {
+        var dataset = over_data;  // 数据集
+        var datasetName = {
+            x: ["刑事检察", "刑事执行", "公益诉讼", "民事", "行政", "未检业务", "控告申诉", "检委办", "对台业务", "案管", "司法协助"],
+            y: [40, 30, 50, 70, 90, 20, 10, 40]
+        };
+
+        var width = 800;    // svg可视区域宽度
+        var height = 400;   // svg可视区域高度
+        var svg = d3.select("#chart")
+            .append("svg")
+            .attr("width", width).attr("height", height)
+
+
+        var padding = {top: 20, right: 20, bottom: 20, left: 50};   // 边距
+
+        var xAxisWidth = 700; // x轴宽度
+        var yAxisWidth = 300; // y轴宽度
+
+        /* x轴比例尺(序数比例尺) */
+        var xScale = d3.scale.ordinal()
+            .domain(datasetName.x)
+            .rangeRoundBands([0, xAxisWidth], 0.2);
+
+        /* y轴比例尺(线性比例尺) */
+        var yScale = d3.scale.linear()
+            .domain([0, d3.max(dataset)])
+            .range([0, yAxisWidth]);
+
+        /* rect */
+        var rect = svg.selectAll("rect")
+            .data(dataset)
+            .enter()
+            .append("rect")
+            .attr("class", "rectClass")
+            .call(rectFun);
+
+        /* text */
+        var text = svg.selectAll("text")
+            .data(dataset)
+            .enter()
+            .append("text")
+            .call(textFun);
+
+        /* 添加坐标轴 */
+        var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
+        yScale.range([yAxisWidth, 0]);  // 重新设置y轴比例尺的值域,与原来的相反
+        var yAxis = d3.svg.axis().scale(yScale).orient("left");
+
+        svg.attr("style", "margin-top:-420px");
+        svg.append("g").attr("class", "axis")
+            .attr("transform", "translate(" + padding.left + "," + (height - padding.bottom) + ")")
+            .call(xAxis);
+
+        svg.append("g").attr("class", "axis")
+            .attr("transform", "translate(" + padding.left + "," + (height - padding.bottom - yAxisWidth) + ")")
+            .call(yAxis);
+
+
+        svg.selectAll('.bar')
+            .attr('x', function (d, i) {
+                return xScale(datasetName.x[i]);
+            });
+
+        /* rect处理函数 */
+        function rectFun(selection) {
+            selection.attr("fill", "steelblue")
+                .attr("x", function (d, i) {
+                    return padding.left + xScale(datasetName.x[i]);
+                })
+                .attr("y", function (d) {
+                    return height - padding.bottom - yScale(d);
+                })
+                .attr("class", "rectClass")
+                .attr("width", xScale.rangeBand())
+                .attr("height", function (d) {
+                    return yScale(d);
+                });
+        }
+
+        /* text处理函数 */
+
+        function textFun(selection) {
+            selection.attr("fill", "white")
+                .attr("font-size", "14px").attr("text-anchor", "middle")
+                .attr("x", function (d, i) {
+                    return padding.left + xScale(datasetName.x[i]);
+                })
+                .attr("y", function (d) {
+                    return height - padding.bottom - yScale(d);
+                })
+                .attr("dx", xScale.rangeBand() / 2).attr("dy", "1em")
+                .text(function (d) {
+                    return d;
+                });
+        }
+    }
 </script>
 </body>
 </html>
