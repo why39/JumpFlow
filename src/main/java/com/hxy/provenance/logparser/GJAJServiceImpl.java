@@ -119,7 +119,7 @@ public class GJAJServiceImpl implements GJAJService {
                         map.put("name", LC日志内容);
                         map.put("操作人", lcrz.getCZRM());
                         map.put("日志ID", lcrz.getID());
-                        String taskNodeId = GJNeo4jUtil.addTaskNode(BMSAH, "Task", "next", false, map);
+                        String taskNodeId = GJNeo4jUtil.addTaskNode(BMSAH, "Task", "下一步", false, map);
                         GJNeo4jUtil.addUserNode(lcrz.getCZRM(), taskNodeId, "修改");
                     }
                 }
@@ -141,8 +141,6 @@ public class GJAJServiceImpl implements GJAJService {
                                 String key = m1.group(1);
                                 String showKey = key;
                                 String value = m1.group(2);
-                                System.out.println("xp>>>>>>>>>Found key: " + key);
-                                System.out.println("xp>>>>>>>>>Found value: " + value);
                                 Map<String, Object> par = new HashMap<>();
                                 if (KVCache.kv.containsKey(key.toUpperCase())) {
                                     showKey = KVCache.kv.get(key.toUpperCase());
@@ -153,7 +151,7 @@ public class GJAJServiceImpl implements GJAJService {
                                 par.put("name", showKey);
                                 par.put("操作人", rz.getCZRM());
                                 par.put("日志ID", rz.getID());
-                                String taskNodeId = GJNeo4jUtil.addPropertyNode(BMSAH, key, "next", false, par);
+                                String taskNodeId = GJNeo4jUtil.addPropertyNode(BMSAH, key, "相关", false, par);
                                 GJNeo4jUtil.addUserNode(rz.getCZRM(), taskNodeId, "修改");
                             }
 
@@ -164,8 +162,6 @@ public class GJAJServiceImpl implements GJAJService {
                                 String key = m2.group(1);
                                 String showKey = key;
                                 String value = m2.group(2);
-                                System.out.println("xp>>>>>>>>>Found key: " + key);
-                                System.out.println("xp>>>>>>>>>Found value: " + value);
                                 Map<String, Object> par = new HashMap<>();
                                 if (KVCache.kv.containsKey(key.toUpperCase())) {
                                     showKey = KVCache.kv.get(key.toUpperCase());
@@ -177,7 +173,7 @@ public class GJAJServiceImpl implements GJAJService {
                                 par.put("name", showKey);
                                 par.put("操作人", rz.getCZRM());
                                 par.put("日志ID", rz.getID());
-                                String taskNodeId = GJNeo4jUtil.addPropertyNode(BMSAH, key, "next", false, par);
+                                String taskNodeId = GJNeo4jUtil.addPropertyNode(BMSAH, key, "相关", false, par);
                                 GJNeo4jUtil.addUserNode(rz.getCZRM(), taskNodeId, "修改");
                             }
 
@@ -187,10 +183,10 @@ public class GJAJServiceImpl implements GJAJService {
                             Map<String, Object> map = new HashMap<>();
                             map.put(NeoConstants.KEY_LAST_NODE_ID, caseNodeId);
                             map.put("日志内容", 日志内容);
-                            map.put("name", "ACTION");
+                            map.put("name", "操作");
                             map.put("操作人", rz.getCZRM());
                             map.put("日志ID", rz.getID());
-                            String taskNodeId = GJNeo4jUtil.addActionNode(BMSAH, "ACTION", "next", false, map);
+                            String taskNodeId = GJNeo4jUtil.addActionNode(BMSAH, "操作", "下一步", false, map);
                             GJNeo4jUtil.addUserNode(rz.getCZRM(), taskNodeId, "修改");
                         }
                     }
