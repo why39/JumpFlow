@@ -1,3 +1,4 @@
+var over_bmsah = null;
 function Neod3Renderer() {
 
     var styleContents =
@@ -55,6 +56,7 @@ function Neod3Renderer() {
             $(".caseId").text("<所属案件ID> : "+selectNode.caseId);
             // $(".nodeTaskId").text("<案件环节ID> : "+selectNode.taskId);
             $(".nodeName").text("<环节名称> : "+selectNode.name);
+            document.getElementById("suyuanDataId").innerHTML = "<p style='margin-left:5px;'>id:"+node.id+" 案件id:"+selectNode.caseId+" 环节名称:"+selectNode.name+"</p>";
         } else {
             var alertString ="";
             for(var k in selectNode){//遍历json对象的每个key/value对,k为key
@@ -67,8 +69,7 @@ function Neod3Renderer() {
             sweetAlert(selectNode["name"]+"："+selectNode[selectNode["label"]]
                 ,alertString
                 , "info");
-            console.log(document.getElementById("suyuanDataId"));
-            document.getElementById("suyuanDataId").innerHTML += "<p >"+alertString+"</p>";
+            document.getElementById("suyuanDataId").innerHTML = "<p>"+alertString+"</p>";
         }
 
         //$(".nodeFile").text("文案材料 : "+selectNode.file);
@@ -352,3 +353,10 @@ function Neod3Renderer() {
 
     return {'render': render};
 }
+
+function lineageSelect(bmsah) {
+    over_bmsah = bmsah;
+    window.location.href="http://localhost:8083/hxyActiviti/neoData.html"
+}
+
+

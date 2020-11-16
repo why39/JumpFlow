@@ -19,7 +19,7 @@
             overflow-x: hidden;
             overflow-y: scroll;
             width: 1200px;
-            height: 200px;
+            height: 40px;
             -webkit-box-shadow: #666 0px 0px 10px;
             -moz-box-shadow: #666 0px 0px 10px;
             box-shadow: #666 0px 0px 10px;
@@ -31,58 +31,40 @@
 <div>
 
     <div style="margin-bottom: 2px;">
-        <div class="col-lg-6" style="width:530px ;margin-left:-15px">
+       <!-- <div class="col-lg-6" style="width:530px ;margin-left:-15px">
             <input type="text" class="form-control" id = "ankaName" placeholder="请输入部门受案号">
-        </div><!-- /.col-lg-6 -->
+        </div>--><!-- /.col-lg-6 -->
         <div class="col-lg-6" style="width:530px">
                 <input type="text" class="form-control" id = "suyuanName" placeholder="请输入案卡项名称" >
-
-                    <button onclick = "trace()" class="btn btn-default" style = "width: 100px;margin-top: -58px;margin-left:550px" type="button" onclick="timeSearch(10)">溯源查找</button>
-
         </div>
+    </div>
+    <div class="col-lg-6" style="width:530px ;margin-left:-15px">
+        <input type="date" class="form-control" id = "timeStartName" placeholder="请输入起始时间">
+    </div><!-- /input-group -->
+        <div class="col-lg-6" style="width:530px">
+            <input type="date" class="form-control" id = "timeEndName" placeholder="请输入截至时间">
+        </div>
+    <div class="col-lg-6" style="width:530px ;margin-left:-15px">
+        <input type="text" class="form-control" id = "userName" placeholder="请输入办案人姓名" >
+    </div>
+    <div class="col-lg-6" style="width:530px">
+        <input type="text" class="form-control" id = "labelName" placeholder="请选择节点数量" list = "itemlist">
+        <datalist id = "itemlist">
+            <option>10</option>
+            <option>20</option>
+            <option>40</option>
+            <option>所有</option>
+        </datalist>
+        <button onclick = "trace()" class="btn btn-default" style = "width: 100px;margin-top: -58px;margin-left:550px" type="button">溯源查找</button>
     </div>
     <div id = "suyuanDataId">
 
     </div>
-    <div class="row">
-        <div class="col-lg-6" style="width:610px">
-            <div class="input-group">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button" ></button>
-      </span>
-                <input type="text" class="form-control" id = "labelName" placeholder="请输入部门受案号名称">
-            </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
-        <div class="col-lg-6" style="width:610px">
-        <div class="input-group">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button" ></button>
-      </span>
-            <input type="text" class="form-control" id = "userName" placeholder="请输入办案人姓名" >
-        </div><!-- /input-group -->
-        </div>
 
-        <div class="col-lg-6" style="width:610px">
-        <div class="input-group">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button" ></button>
-      </span>
-            <input type="date" class="form-control" id = "timeStartName" placeholder="请输入起始时间">
-        </div><!-- /input-group -->
-        </div>
-        <div class="col-lg-6" style="width:610px">
-        <div class="input-group">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button" ></button>
-      </span>
-            <input type="date" class="form-control" id = "timeEndName" placeholder="请输入截至时间">
-        </div>
-        </div>
-    </div>
 
 
     <!-- Single button -->
-    <div class="btn-group" style = "margin-right:20px;float: right;margin-top: -98px">
+   <!-- <div class="btn-group" style = "margin-right:20px;float: right;margin-top: -98px">
         <button type="button"
                 class="btn btn-default dropdown-toggle" style = "background-color:#b5b4b1;color: white;
                 font-size: 18px; margin-top: 104px;margin-right:-17px"
@@ -96,7 +78,7 @@
             <li role="separator" class="divider"></li>
             <li><button style = "border:none;color:#868582;background-color:white" onclick = "allNode()">所有节点</button></li>
         </ul>
-    </div>
+    </div>-->
 </div>
 
 <div role="tabpanel">
@@ -108,14 +90,14 @@
     <!--</ul>-->
 
     <!-- Tab panes -->
-    <div style="margin-top: 6px;">
+    <!--<div style="margin-top: 6px;">
         <span class="nodeId label label-success"></span>
         <span class="caseId label label-default"></span>
         <span class="nodeTaskId label label-default"></span>
         <span class="nodeName label label-default"></span>
 
     </div>
-
+-->
     <div class="tab-content" style = "height: 620px;border:3px solid lightgray">
         <div role="tabpanel" class="tab-pane active" style = "height: 610px">
             <div class="tab-pane active" id="graph" style = "height: 600px">&nbsp;</div>
@@ -196,46 +178,7 @@
        execute(query);
    }
 
-   //对接高检，案卡项溯源
-   function traceGJ() {
-       var query = null;
-       if ($("#labelName").val()) {
-           //query = "MATCH (n) WHERE n.caseId=\'" + $("#caseId").val() + "\' WITH n MATCH p = (n) - [*] -> (m:" + $("#labelName").val() + ") RETURN m,p";
-           query = "MATCH (n) WHERE n.caseId=\'" + $("#labelName").val() + "\' WITH n MATCH p = (n) - [*1] -> (m:Task) RETURN m,p,n";
-       } else {
-           query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
-       }
-       clearNodeInfo();
-       execute(query);
-   }
 
-   //根据时间筛选案件
-   function timeSearch(count) {
-       var query = null;
-       var data1 = new Date($("#timeStartName").val());
-       var vYear1 = data1.getFullYear();
-       var vMon1 = data1.getMonth() + 1;
-       var vDay1 = data1.getDate();
-       var h1 = data1.getHours();
-       var m1 = data1.getMinutes();
-       var se1 = data1.getSeconds();
-       var start_time=vYear1 * 10000 + vMon1 * 100 + vDay1;
-       var data2 = new Date($("#timeEndName").val());
-       var vYear2 = data2.getFullYear();
-       var vMon2 = data2.getMonth() + 1;
-       var vDay2 = data2.getDate();
-       var h2 = data2.getHours();
-       var m2 = data2.getMinutes();
-       var se2 = data2.getSeconds();
-       var end_time=vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
-       if ($("#timeStartName").val() && $("#timeEndName").val()) {
-           query = "MATCH (n) WHERE n.timestamp>=\'" + start_time * 1000000000 + "\' AND n.timestamp<=\'" + end_time * 1000000000 +"\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n limit " + count;
-       } else {
-           query = "MATCH (n:CASE) WITH n MATCH p=(n)-[*]->(m:Task) RETURN p,n,m";
-       }
-       clearNodeInfo();
-       execute(query);
-   }
    function lookProcess(count) {
        var query = null;
        var data1 = new Date($("#timeStartName").val());
@@ -255,7 +198,7 @@
        var se2 = data2.getSeconds();
        var end_time=vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
        if ($("#timeStartName").val() && $("#timeEndName").val() && $("#userName").val() && $("#labelName").val()) {
-           query = "MATCH (n:BALB) WHERE n.timestamp>=" + start_time * 1000000000 +
+           query = "MATCH (n:CASE) WHERE n.timestamp>=" + start_time * 1000000000 +
                " AND n.timestamp<=" + end_time * 1000000000 +" " +
                "AND n.user =\'" + $("#userName").val() + "\' AND n.caseId = \'" + $("#labelName").val() +
                "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n limit " + count;
@@ -298,6 +241,15 @@
        clearNodeInfo();
        execute(query);
    }
+
+
+
+   window.onload = (function (){
+       var query = null;
+       query = "match(n:CASE) where n.caseId = \'"+over_bmsah+"\' with n match p = (n) - [*] ->(m:Task) RETURN p";
+       clearNodeInfo();
+       execute(query);
+   });
 </script>
 </body>
 </html>

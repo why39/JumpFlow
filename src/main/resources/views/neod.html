@@ -61,8 +61,81 @@
         .canvasClass:hover{
             background-color: black;
         }
+
+        .rectClass{
+            fill: yellow;
+        }
+
         .rectClass:hover{
-           fill: black;
+            fill: black;
+        }
+
+        .rectClass0{
+             fill: #0792c9;
+         }
+        .rectClass0:hover{
+            fill: black;
+        }
+        .rectClass1{
+            fill: #1616d6;
+        }
+        .rectClass1:hover{
+            fill: black;
+        }
+        .rectClass2{
+            fill: #13cf74;
+        }
+        .rectClass2:hover{
+            fill: black;
+        }
+        .rectClass3{
+            fill: #c316ac;
+        }
+        .rectClass3:hover{
+            fill: black;
+        }
+        .rectClass4{
+            fill: #00c522;
+        }
+        .rectClass4:hover{
+            fill: black;
+        }
+
+        .rectClass5{
+            fill: #cac874;
+        }
+        .rectClass5:hover{
+            fill: black;
+        }
+        .rectClass6{
+            fill: #a7110a;
+        }
+        .rectClass6:hover{
+            fill: black;
+        }
+        .rectClass7{
+            fill: #d45f1c;
+        }
+        .rectClass7:hover{
+            fill: black;
+        }
+        .rectClass8{
+            fill: #c182b7;
+        }
+        .rectClass8:hover{
+            fill: black;
+        }
+        .rectClass9{
+            fill: #27ba7c;
+        }
+        .rectClass9:hover{
+            fill: black;
+        }
+        .rectClass10{
+            fill: #b5b4b1;
+        }
+        .rectClass10:hover{
+            fill: black;
         }
     </style>
 </head>
@@ -523,10 +596,13 @@
                             var j = parseInt(i) + 1
                             var className = ss + j;
                             var bmsah = selectNode[i].caseId;
+                            if(bmsah == null) {
+                                bmsah = '汉东检刑诉受[2019]980000100216号';
+                            }
                             var timeStr = selectNode[i].timestamp.toString();
                             console.log(timeStr);
                             var time = timeStr.substring(0,4) + "年" + timeStr.substring(4,6) + "月" + timeStr.substring(6,8) + "日";
-                            str = "<li class=\"list-group-item\"><span style=\"float: left;margin-top:-2px\">"+className+"</span>  <span style=\"margin-left:-10px;margin-top:-2px\">"+bmsah+"</span> <button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect()\">"+"世系查询"+"</button> <span style=\"float:right;margin-right:50px;margin-top:-2px\">"+time+"</span>";
+                            str = "<li class=\"list-group-item\"><span style=\"float: left;margin-top:-2px\">"+className+"</span>  <span style=\"margin-left:-10px;margin-top:-2px\">"+bmsah+"</span> <button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect(\'"+bmsah+"\')\">"+"世系查询"+"</button> <span style=\"float:right;margin-right:50px;margin-top:-2px\">"+time+"</span>";
                             document.getElementById("caseList").innerHTML += str;
                         }
                         var zz=getzz();
@@ -711,9 +787,7 @@
 
 
 
-    function lineageSelect() {
-        window.location.href="http://localhost:8083/hxyActiviti/neoData.html";
-    }
+
 
     window.onload = (function () {
         //todo dynamic configuration
@@ -765,17 +839,17 @@
 
     function canvas_data() {
         var canvas = document.getElementById("pie_canvas");
-        var seriesData = [{name:"apples", value:parseFloat(over_data[0]) / parseFloat(over_sum), color:"#34bec9",label1:"公益诉讼",label2:over_data[0] + "件"},
-            {name:"orange", value:parseFloat(over_data[1]) / parseFloat(over_sum), color:"#1616d6",label1:"刑事检察",label2:over_data[1] + "件"},
-            {name:"banana", value:parseFloat(over_data[2]) / parseFloat(over_sum), color:"#4acf23",label1:"刑事执行",label2:over_data[2] + "件"},
-            {name:"peaches", value:parseFloat(over_data[3]) / parseFloat(over_sum), color:"#c316ac",label1:"民事",label2:over_data[3] + "件"},
-            {name:"jiansuo", value:parseFloat(over_data[4]) / parseFloat(over_sum), color:"#c5c516",label1:"行政",label2:over_data[4] + "件"},
-            {name:"konggao", value:parseFloat(over_data[5]) / parseFloat(over_sum), color:"#ca0cc8",label1:"公益诉讼",label2:over_data[5] + "件"},
-            {name:"shensu", value:parseFloat(over_data[6]) / parseFloat(over_sum), color:"#0c1313",label1:"未检业务",label2:over_data[6] + "件"},
-            {name:"yufang", value:parseFloat(over_data[7]) / parseFloat(over_sum), color:"#d4110c",label1:"控告申诉",label2:over_data[7] + "件"},
-            {name:"jianweiban", value:parseFloat(over_data[8]) / parseFloat(over_sum), color:"#c13c90",label1:"检委办",label2:over_data[8] + "件"},
-            {name:"fuheban", value:parseFloat(over_data[9]) / parseFloat(over_sum), color:"#bab9b6",label1:"对台业务",label2:over_data[9] + "件"},
-            {name:"sifaxiezhu", value:parseFloat(over_data[10]) / parseFloat(over_sum), color:"#b5b4b1",label1:"司法协助",label2:over_data[10] + "件"}];
+        var seriesData = [{name:"apples", value:parseFloat(over_data[0]) / parseFloat(over_sum), color:"#0792c9",label1:"刑事检察",label2:(parseFloat(over_data[0]) / parseFloat(over_sum)).toFixed(2) * 100 + "%"},
+            {name:"orange", value:parseFloat(over_data[1]) / parseFloat(over_sum), color:"#1616d6",label1:"刑事执行",label2:(parseFloat(over_data[1]) / parseFloat(over_sum)).toFixed(2) * 100 + "%"},
+            {name:"banana", value:parseFloat(over_data[2]) / parseFloat(over_sum), color:"#13cf74",label1:"公益诉讼",label2:(parseFloat(over_data[2]) / parseFloat(over_sum)).toFixed(2) * 100 + "%"},
+            {name:"peaches", value:parseFloat(over_data[3]) / parseFloat(over_sum), color:"#c316ac",label1:"民事",label2:(parseFloat(over_data[3]) / parseFloat(over_sum)).toFixed(2) * 100 + "%"},
+            {name:"jiansuo", value:parseFloat(over_data[4]) / parseFloat(over_sum), color:"#00c522",label1:"行政",label2:(parseFloat(over_data[4]) / parseFloat(over_sum)).toFixed(2) * 100 + "%"},
+            {name:"konggao", value:parseFloat(over_data[5]) / parseFloat(over_sum), color:"#cac874",label1:"未检业务",label2:(parseFloat(over_data[5]) / parseFloat(over_sum)).toFixed(2) * 100 + "%"},
+            {name:"shensu", value:parseFloat(over_data[6]) / parseFloat(over_sum), color:"#a7110a",label1:"控告申诉",label2:(parseFloat(over_data[6]) / parseFloat(over_sum)).toFixed(2) * 100 + "%"},
+            {name:"yufang", value:parseFloat(over_data[7]) / parseFloat(over_sum), color:"#d45f1c",label1:"检委办",label2:(parseFloat(over_data[7]) / parseFloat(over_sum)).toFixed(2) * 100 + "%"},
+            {name:"jianweiban", value:parseFloat(over_data[8]) / parseFloat(over_sum), color:"#c182b7",label1:"对台业务",label2:(parseFloat(over_data[8]) / parseFloat(over_sum)).toFixed(2) * 100 + "%"},
+            {name:"fuheban", value:parseFloat(over_data[9]) / parseFloat(over_sum), color:"#27ba7c",label1:"案管",label2:(parseFloat(over_data[9]) / parseFloat(over_sum)).toFixed(2) * 100 + "%"},
+            {name:"sifaxiezhu", value:parseFloat(over_data[10]) / parseFloat(over_sum), color:"#b5b4b1",label1:"司法协助",label2:(parseFloat(over_data[10]) / parseFloat(over_sum)).toFixed(2) * 100 + "%"}];
         var config = {
             width : 400,
             height: 400,
@@ -1033,7 +1107,7 @@
             .attr('x', function (d, i) {
                 return xScale(datasetName.x[i]);
             });
-
+i
         /* rect处理函数 */
         function rectFun(selection) {
             selection.attr("fill", "steelblue")
@@ -1043,7 +1117,9 @@
                 .attr("y", function (d) {
                     return height - padding.bottom - yScale(d);
                 })
-                .attr("class", "rectClass")
+                .attr("class", function (d,i) {
+                    return "rectClass" + i;
+                })
                 .attr("width", xScale.rangeBand())
                 .attr("height", function (d) {
                     return yScale(d);
