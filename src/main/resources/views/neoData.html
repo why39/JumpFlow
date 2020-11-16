@@ -254,7 +254,6 @@
        var m2 = data2.getMinutes();
        var se2 = data2.getSeconds();
        var end_time=vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
-       console.log("fgdgdfggd++" + $("#timeStartName").val() + $("#timeEndName").val() + $("#userName").val() + $("#labelName").val());
        if ($("#timeStartName").val() && $("#timeEndName").val() && $("#userName").val() && $("#labelName").val()) {
            query = "MATCH (n:BALB) WHERE n.timestamp>=" + start_time * 1000000000 +
                " AND n.timestamp<=" + end_time * 1000000000 +" " +
@@ -291,7 +290,7 @@
    function trace() {
        var query = null;
        if ($("#ankaName").val() && $("#suyuanName").val()) {
-           query = "MATCH (n) WHERE n.caseId=\'" + $("#ankaName").val() + "\' WITH n MATCH p = (n) - [*] -> (m:" + $("#suyuanName").val() + ") RETURN m,p";
+           query = "MATCH (n) WHERE n.caseId=\'" + $("#ankaName").val() + "\' WITH n MATCH p = (n) - [*] -> (m) where m.name=\'" + $("#suyuanName").val() +"\' gitRETURN m,p";
        } else {
            query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
        }
