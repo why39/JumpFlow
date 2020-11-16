@@ -33,7 +33,8 @@ function Neod3Renderer() {
     var URLSupport = 'URL' in window && 'createObjectURL' in window.URL;
     var msBlobSupport = typeof window.navigator.msSaveOrOpenBlob !== 'undefined';
     var svgStyling = '<style>\ntext{font-family:sans-serif}\n</style>';
-    var stylingUrl = window.location.hostname === 'www.neo4j.org' ? 'http://gist.neo4j.org/css/neod3' : 'styles/neod3';
+    //var stylingUrl = window.location.hostname === 'www.neo4j.org' ? 'http://gist.neo4j.org/css/neod3' : 'styles/neod3';
+    var stylingUrl = 'http://localhost:8083/hxyActiviti/styles/neod3';
     if (window.isInternetExplorer) {
         stylingUrl += '-ie.css';
     } else {
@@ -46,8 +47,9 @@ function Neod3Renderer() {
     var selectNode = null;
 
     function clickNode(node) {
+        console.log("click_node");
         selectNode = JSON.parse(JSON.stringify(node));
-        console.log(selectNode)
+        console.log(selectNode);
         if (selectNode.label == "Task") {
             $(".nodeId").text("<id> : "+node.id);
             $(".caseId").text("<所属案件ID> : "+selectNode.caseId);
@@ -62,6 +64,8 @@ function Neod3Renderer() {
             sweetAlert(selectNode["label"]
                 ,alertString
                 , "info");
+            console.log(document.getElementById("suyuanDataId"));
+            document.getElementById("suyuanDataId").innerHTML += "<p >"+alertString+"</p>";
         }
 
         //$(".nodeFile").text("文案材料 : "+selectNode.file);
@@ -75,6 +79,7 @@ function Neod3Renderer() {
 
 
     function render(id, $container, visualization) {
+        console.log("render");
         function extract_props(pc) {
             var p = {};
             for (var key in pc) {
@@ -93,6 +98,7 @@ function Neod3Renderer() {
                 return "";
             }
 
+            console.log("node_styles");
             var style = {};
             for (var i = 0; i < nodes.length; i++) {
                 var props = nodes[i].properties = extract_props(nodes[i]);
@@ -129,6 +135,7 @@ function Neod3Renderer() {
         }
 
         function create_styles(styleCaptions, styles) {
+            console.log("create_styles");
             var colors = neo.style.defaults.colors;
             for (var selector in styleCaptions) {
                 if (!(selector in styles)) {
@@ -150,6 +157,7 @@ function Neod3Renderer() {
         }
 
         function applyZoom() {
+            console.log("applyZoom");
             renderer.select(".nodes").attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
             renderer.select(".relationships").attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
         }
@@ -232,6 +240,7 @@ function Neod3Renderer() {
             }
         }
 
+        console.log("KeyHandler");
         var links = visualization.links;
         var nodes = visualization.nodes;
         for (var i = 0; i < links.length; i++) {
@@ -252,10 +261,12 @@ function Neod3Renderer() {
         var renderer = svg.data([graphModel]);
         // legend(svg, existingStyles);
         var zoomHandlers = {};
-        var zoomBehavior = d3.behavior.zoom().on("zoom", applyZoom).scaleExtent([0.2, 8]);
+        var zoomBehavior = d3.behavior.zoom().on("zoom", applyZoom).scaleExtent([0.01, 2]);
+        console.log("zoom" + zoomBehavior);
 
+        //renderer.call(zoomBehavior);
         renderer.call(graphView);
-        // renderer.call(zoomBehavior);
+
 
         zoomHandlers.wheel = renderer.on("wheel.zoom");
         zoomHandlers.mousewheel = renderer.on("mousewheel.zoom");
@@ -267,6 +278,7 @@ function Neod3Renderer() {
         disableZoomHandlers();
 
         d3.select('body').on("keydown", keyHandler).on("keyup", keyHandler);
+        console.log("d3_keyHandler");
 
         function refresh() {
             graphView.height($container.height());
