@@ -95,7 +95,7 @@ public class UserController extends BaseController {
 	/**
 	 * 保存
 	 */
-	@RequestMapping("/save")
+	@RequestMapping("/saveAJ")
 	@RequiresPermissions("sys:user:update")
 	@SysLog("新增系统用户")
 	public Result save(@RequestBody UserEntity user){

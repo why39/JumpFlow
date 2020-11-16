@@ -52,6 +52,11 @@ spring:
             uri: 127.0.0.1
             username: neo4j
             password: 1992
+        platform:
+            url: http://aiidc.5gzvip.idcfengye.com/portal
+            api-id: ed773218-9f67-503a-8c9b-d570628110e6
+            api-key: f658677b-7abc-5946-ac56-ad0684f889b6
+            random-str: 4296d201-f971-42c8-985e-cb147445576f
 
 
 #    # Thymeleaf
@@ -73,11 +78,7 @@ mybatis:
 
 # Pageoffice
 pageoffice:
-<<<<<<< HEAD
-  posyspath: d:\IDE\lic
-=======
-  posyspath: d:/IDE/lic/
->>>>>>> a0c8385ae6bdc27aac6a92155f4bf74b0027a754
+  posyspath: ./IDE/lic/ #C:\Projects\JumpFlow\IDE\lic\
   popassword: 111111
 
 # APP模块

@@ -789,8 +789,8 @@ public class ActModelerServiceImpl implements ActModelerService {
         noticeUserEntity.setNoticeId(noticeEntity.getId());
         noticeUserEntity.setStatus(Constant.YESNO.NO.getValue());
         noticeUserEntity.setUserId(userId);
-        noticeService.save(noticeEntity);
-        noticeUserDao.save(noticeUserEntity);
+        noticeService.saveAJ(noticeEntity);
+        noticeUserDao.saveAJ(noticeUserEntity);
     }*/ //未改
 
 

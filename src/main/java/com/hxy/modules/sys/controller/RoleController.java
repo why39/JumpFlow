@@ -70,7 +70,7 @@ public class RoleController extends BaseController {
 	/**
 	 * 保存
 	 */
-	@RequestMapping("/save")
+	@RequestMapping("/saveAJ")
 	@RequiresPermissions("sys:role:update")
 	@SysLog("新增角色")
 	public Result save(@RequestBody RoleEntity role){

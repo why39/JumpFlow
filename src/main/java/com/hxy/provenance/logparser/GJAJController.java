@@ -32,6 +32,8 @@ public class GJAJController {
     @Autowired
     GJAJService caseService;
 
+    @Autowired
+    DataPlatformService dataPlatformService;
 
     @RequestMapping("gjajlb")
     @RequiresPermissions("act:model:all")
@@ -40,6 +42,9 @@ public class GJAJController {
         Page<GJAJEntity> page = caseService.findPage(caseEntity, pageNum);
         model.addAttribute("page",page);
         model.addAttribute("case",caseEntity);
+
+//        dataPlatformService.queryAJ("2019-11-08 15:10:42", "2019-11-08 23:10:42");
+
         return "demo/gjajlb";
     }
 
@@ -50,6 +55,7 @@ public class GJAJController {
         //解析某个案件的所有日志
         return caseService.parseLog(bmsah);
     }
+
 
 
 

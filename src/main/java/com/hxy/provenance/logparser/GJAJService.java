@@ -16,7 +16,9 @@ public interface GJAJService {
 
     int queryTotal(Map<String, Object> map);
 
-    void save(GJAJEntity leave);
+    void saveAJ(GJAJEntity leave);
+
+    void saveRZ(GJRZEntity rz);
 
     void update(GJAJEntity leave);
 

@@ -57,7 +57,7 @@ public class SysConfigController extends BaseController {
 	/**
 	 * 保存配置
 	 */
-	@RequestMapping("/save")
+	@RequestMapping("/saveAJ")
 	@RequiresPermissions("sys:config:update")
 	@SysLog("新增配置")
 	public Result save(@RequestBody SysConfigEntity config){

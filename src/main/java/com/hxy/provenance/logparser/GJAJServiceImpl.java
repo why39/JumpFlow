@@ -53,9 +53,15 @@ public class GJAJServiceImpl implements GJAJService {
     }
 
     @Override
-    public void save(GJAJEntity leave) {
+    public void saveAJ(GJAJEntity leave) {
         caseDao.save(leave);
     }
+
+    @Override
+    public void saveRZ(GJRZEntity rz) {
+        logDao.save(rz);
+    }
+
 
     @Override
     public void update(GJAJEntity leave) {
@@ -133,13 +139,13 @@ public class GJAJServiceImpl implements GJAJService {
                             Matcher m1 = r1.matcher(日志内容);
                             while (m1.find()) {
                                 String key = m1.group(1);
-                                String showKey=key;
+                                String showKey = key;
                                 String value = m1.group(2);
                                 System.out.println("xp>>>>>>>>>Found key: " + key);
                                 System.out.println("xp>>>>>>>>>Found value: " + value);
                                 Map<String, Object> par = new HashMap<>();
-                                if(KVCache.kv.containsKey(key)) {
-                                    showKey=KVCache.kv.get(key);
+                                if (KVCache.kv.containsKey(key.toUpperCase())) {
+                                    showKey = KVCache.kv.get(key.toUpperCase());
                                     par.put("CN_KEY", showKey);
                                 }
                                 par.put(key, value);
@@ -156,13 +162,13 @@ public class GJAJServiceImpl implements GJAJService {
                             Matcher m2 = r2.matcher(日志内容);
                             while (m2.find()) {
                                 String key = m2.group(1);
-                                String showKey=key;
+                                String showKey = key;
                                 String value = m2.group(2);
                                 System.out.println("xp>>>>>>>>>Found key: " + key);
                                 System.out.println("xp>>>>>>>>>Found value: " + value);
                                 Map<String, Object> par = new HashMap<>();
-                                if(KVCache.kv.containsKey(key)) {
-                                    showKey=KVCache.kv.get(key);
+                                if (KVCache.kv.containsKey(key.toUpperCase())) {
+                                    showKey = KVCache.kv.get(key.toUpperCase());
                                     par.put("CN_KEY", showKey);
                                 }
                                 par.put(NeoConstants.KEY_LAST_NODE_ID, caseNodeId);

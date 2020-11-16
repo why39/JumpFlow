@@ -17,7 +17,7 @@
     <select id="queryList" resultMap="caseMap">
         select
         <include refid="Base_Column_List"/>
-        from new_properties_mapper
+        from properties_mapper
     </select>
 
 

@@ -205,7 +205,7 @@ public class SysOssController {
      */
     private void uploadFileLocal(MultipartFile file) {
         try {
-            // Get the file and save it somewhere
+            // Get the file and saveAJ it somewhere
             byte[] bytes = file.getBytes();
             Path path = Paths.get(springConfig.getLocation() + file.getOriginalFilename());
             Files.write(path, bytes);

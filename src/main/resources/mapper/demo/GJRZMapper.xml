@@ -21,6 +21,22 @@
     </sql>
 
 
+	<insert id="save" parameterType="com.hxy.provenance.logparser.GJAJEntity">
+		insert into RZ_YX_RZ
+		(
+		<include refid="Base_Column_List" />
+		)
+		values
+		(
+		#{ID},
+		#{BMSAH},
+		#{RZMS},
+		#{CZRM},
+		#{ZHXGSJ},
+		#{EJFL}
+		)
+	</insert>
+
 	<select id="queryList" resultType="com.hxy.provenance.logparser.GJRZEntity" resultMap="caseMap">
 		select
 		<include refid="Base_Column_List" />

@@ -5,11 +5,7 @@ spring:
         druid:
             url: jdbc:mysql://localhost:3306/hxyframe_activiti?allowMultiQueries=true&useUnicode=true&useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
             username: root
-<<<<<<< HEAD
             password: 123456
-=======
-            password: 7366925
->>>>>>> a0c8385ae6bdc27aac6a92155f4bf74b0027a754
             initial-size: 10
             max-active: 100
             min-idle: 10
