@@ -351,7 +351,7 @@ public class GJNeo4jUtil {
         String caseNodeId = GJNeo4jUtil.createKeyValues(NeoConstants.TYPE_CASE_HEAD, "", "", false, params);
 
         //再查询有没有相同承办单位节点，有就直接关联，没有就创建并关联。
-        StatementResult cbdwFindResult = session.run("MATCH (c:CBDW) where c.CBDW_MC = '" + dataBean.getCBDW_MC() + "' return c");
+        StatementResult cbdwFindResult = session.run("MATCH (c:承办单位) where c.CBDW_MC = '" + dataBean.getCBDW_MC() + "' return c");
 
         String cbdwNodeId = null;
         if (cbdwFindResult != null && cbdwFindResult.hasNext()) {
@@ -372,8 +372,8 @@ public class GJNeo4jUtil {
 
         if (StringUtils.isEmpty(cbdwNodeId)) {
             Map<String, Object> cbdw = new HashMap<>();
-            cbdw.put("name", "CBDW");
-            cbdwNodeId = GJNeo4jUtil.createKeyValues("CBDW", caseNodeId, "承办", true, cbdw);
+            cbdw.put("name", "承办单位");
+            cbdwNodeId = GJNeo4jUtil.createKeyValues("承办单位", caseNodeId, "承办", true, cbdw);
         }
 
         return caseNodeId;
