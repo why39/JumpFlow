@@ -37,6 +37,8 @@ public class GJNeo4jUtil {
         finalUtil = this;
     }
 
+    static SimpleDateFormat format1 = new SimpleDateFormat("yyyy年MM月dd日HH时mm分ss秒SSS");
+    static SimpleDateFormat format2 = new SimpleDateFormat("yyyyMMddHHmmss");
     private static Driver createDrive() {
         if (driver == null) {
             synchronized (GJNeo4jUtil.class) {
@@ -88,9 +90,11 @@ public class GJNeo4jUtil {
         Driver driver = createDrive();
         Session session = driver.session();
 
-        String curTime = new SimpleDateFormat("yyyy年MM月dd日HH时mm分ss秒SSS").format(new Date()); //必须精确到毫秒，方便后面查询的时候逆序排列找到最后一个节点
+        String curTime = format1.format(new Date()); //必须精确到毫秒，方便后面查询的时候逆序排列找到最后一个节点
         //当前时间作为nodeId
+
         map.put("创建时间", curTime);
+        map.put("timestamp",format2.format(new Date()));
         try {
 
             StringBuilder terminal = new StringBuilder("CREATE (a:");

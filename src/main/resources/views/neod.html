@@ -159,7 +159,7 @@
             <li role="presentation"><a href = "javascript:;" onclick="supervisionClick()" id = "xieshizhixing_a">刑事执行</a></li>
             <li role="presentation"><a href = "javascript:;" onclick="prosecutionClick()" id = "gongsu_a">公益诉讼</a></li>
             <li role="presentation"><a href="javascript:" onclick="minshiClick()" id = "minshi_a">民事</a></li>
-            <li role="presentation"><a href="javascript:" onclick="xinHengClick()" id = "xinzheng_a">行政</a></li>
+            <li role="presentation"><a href="javascript:" onclick="xinzhengClick()" id = "xinzheng_a">行政</a></li>
             <li role="presentation"><a href="javascript:" onclick="weijianClick()" id = "weijian_a">未检业务</a></li>
             <li role="presentation"><a href="javascript:" onclick="konggaoClick()" id = "konggao_a">控告申诉</a></li>
             <li role="presentation"><a href="javascript:" onclick="jianweiClick()" id = "jianwei_a">检委办</a></li>
@@ -725,6 +725,15 @@
         clearNodeInfo();
         executeNode(query,ss);
     }
+    function xinzhengClick(){
+        document.getElementById("relevantCase").style.visibility="visible";
+        var ss = document.getElementById("xinzheng_a").innerHTML + "案件";
+        var query = null;
+        query = "MATCH (n:BALB) WHERE n.class=\'" + "行政" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
+        //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
+        clearNodeInfo();
+        executeNode(query,ss);
+    }
     function weijianClick(){
         document.getElementById("relevantCase").style.visibility="visible";
         var ss = document.getElementById("minshi_a").innerHTML + "案件";
@@ -797,8 +806,8 @@
 
     var over_str = ['刑事检察','刑事执行','公益诉讼','民事','行政','未检业务','控告申诉','检委办','对台业务','案管','司法协助'];
     var over_data = new Array(over_str.length);
-    var over_data = [17,13,12,11,11,11,11,11,11,11,11];
-    var over_sum = 130;
+    var over_data = [7,4,3,2,2,2,2,2,2,2,2];
+    var over_sum = 30;
 
     window.onload = (function () {
         for (var i = 0; i < over_str.length; i++) {
@@ -839,17 +848,17 @@
 
     function canvas_data() {
         var canvas = document.getElementById("pie_canvas");
-        var seriesData = [{name:"apples", value:parseFloat(over_data[0]) / parseFloat(over_sum), color:"#0792c9",label1:"刑事检察",label2:(parseFloat(over_data[0]) / parseFloat(over_sum)).toFixed(2) * 100 + "%"},
-            {name:"orange", value:parseFloat(over_data[1]) / parseFloat(over_sum), color:"#1616d6",label1:"刑事执行",label2:(parseFloat(over_data[1]) / parseFloat(over_sum)).toFixed(2) * 100 + "%"},
-            {name:"banana", value:parseFloat(over_data[2]) / parseFloat(over_sum), color:"#13cf74",label1:"公益诉讼",label2:(parseFloat(over_data[2]) / parseFloat(over_sum)).toFixed(2) * 100 + "%"},
-            {name:"peaches", value:parseFloat(over_data[3]) / parseFloat(over_sum), color:"#c316ac",label1:"民事",label2:(parseFloat(over_data[3]) / parseFloat(over_sum)).toFixed(2) * 100 + "%"},
-            {name:"jiansuo", value:parseFloat(over_data[4]) / parseFloat(over_sum), color:"#00c522",label1:"行政",label2:(parseFloat(over_data[4]) / parseFloat(over_sum)).toFixed(2) * 100 + "%"},
-            {name:"konggao", value:parseFloat(over_data[5]) / parseFloat(over_sum), color:"#cac874",label1:"未检业务",label2:(parseFloat(over_data[5]) / parseFloat(over_sum)).toFixed(2) * 100 + "%"},
-            {name:"shensu", value:parseFloat(over_data[6]) / parseFloat(over_sum), color:"#a7110a",label1:"控告申诉",label2:(parseFloat(over_data[6]) / parseFloat(over_sum)).toFixed(2) * 100 + "%"},
-            {name:"yufang", value:parseFloat(over_data[7]) / parseFloat(over_sum), color:"#d45f1c",label1:"检委办",label2:(parseFloat(over_data[7]) / parseFloat(over_sum)).toFixed(2) * 100 + "%"},
-            {name:"jianweiban", value:parseFloat(over_data[8]) / parseFloat(over_sum), color:"#c182b7",label1:"对台业务",label2:(parseFloat(over_data[8]) / parseFloat(over_sum)).toFixed(2) * 100 + "%"},
-            {name:"fuheban", value:parseFloat(over_data[9]) / parseFloat(over_sum), color:"#27ba7c",label1:"案管",label2:(parseFloat(over_data[9]) / parseFloat(over_sum)).toFixed(2) * 100 + "%"},
-            {name:"sifaxiezhu", value:parseFloat(over_data[10]) / parseFloat(over_sum), color:"#b5b4b1",label1:"司法协助",label2:(parseFloat(over_data[10]) / parseFloat(over_sum)).toFixed(2) * 100 + "%"}];
+        var seriesData = [{name:"apples", value:parseFloat(over_data[0]) / parseFloat(over_sum), color:"#0792c9",label1:"刑事检察",label2:(parseFloat(over_data[0]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
+            {name:"orange", value:parseFloat(over_data[1]) / parseFloat(over_sum), color:"#1616d6",label1:"刑事执行",label2:(parseFloat(over_data[1]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
+            {name:"banana", value:parseFloat(over_data[2]) / parseFloat(over_sum), color:"#13cf74",label1:"公益诉讼",label2:(parseFloat(over_data[2]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
+            {name:"peaches", value:parseFloat(over_data[3]) / parseFloat(over_sum), color:"#c316ac",label1:"民事",label2:(parseFloat(over_data[3]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
+            {name:"jiansuo", value:parseFloat(over_data[4]) / parseFloat(over_sum), color:"#00c522",label1:"行政",label2:(parseFloat(over_data[4]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
+            {name:"konggao", value:parseFloat(over_data[5]) / parseFloat(over_sum), color:"#cac874",label1:"未检业务",label2:(parseFloat(over_data[5]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
+            {name:"shensu", value:parseFloat(over_data[6]) / parseFloat(over_sum), color:"#a7110a",label1:"控告申诉",label2:(parseFloat(over_data[6]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
+            {name:"yufang", value:parseFloat(over_data[7]) / parseFloat(over_sum), color:"#d45f1c",label1:"检委办",label2:(parseFloat(over_data[7]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
+            {name:"jianweiban", value:parseFloat(over_data[8]) / parseFloat(over_sum), color:"#c182b7",label1:"对台业务",label2:(parseFloat(over_data[8]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
+            {name:"fuheban", value:parseFloat(over_data[9]) / parseFloat(over_sum), color:"#27ba7c",label1:"案管",label2:(parseFloat(over_data[9]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
+            {name:"sifaxiezhu", value:parseFloat(over_data[10]) / parseFloat(over_sum), color:"#b5b4b1",label1:"司法协助",label2:(parseFloat(over_data[10]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"}];
         var config = {
             width : 400,
             height: 400,

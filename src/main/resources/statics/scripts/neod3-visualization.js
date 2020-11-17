@@ -51,25 +51,53 @@ function Neod3Renderer() {
         console.log("click_node");
         selectNode = JSON.parse(JSON.stringify(node));
         console.log(selectNode);
+        if(selectNode.name != null) {
+            var neo = new Neo(connection);
+            try {
+            query = "MATCH (n)-[r]->(m) RETURN n,r,m";
+            neo.executeQuery(query, {}, function (err, res) {
+                res = res || {};
+                var graph = res.graph;
+                if (graph) {
+                    var node = graph.nodes;
+                    selectNode = JSON.parse(JSON.stringify(node));
+                    console.log(selectNode);
+                    if (selectNode){
+                        for(var i in selectNode) {
+                            if(selectNode[i].CN_KEY != null){
+                                console.log(selectNode[i].CN_KEY);
+                            }
+                        }
+                    }
+                } else {
+                    if (err) {
+                        console.log(err);
+                    }
+                }
+            });
+        }catch (e) {
+            console.log(e);
+        }
+            document.getElementById("suyuanName").value = '附注';
+        }
         if (selectNode.label == "Task") {
             $(".nodeId").text("<id> : "+node.id);
             $(".caseId").text("<所属案件ID> : "+selectNode.caseId);
             // $(".nodeTaskId").text("<案件环节ID> : "+selectNode.taskId);
             $(".nodeName").text("<环节名称> : "+selectNode.name);
-            document.getElementById("suyuanDataId").innerHTML = "<p style='margin-left:5px;'>id:"+node.id+" 案件id:"+selectNode.caseId+" 环节名称:"+selectNode.name+"</p>";
+            document.getElementById("suyuanDataId").innerHTML = "<p style='margin-left:5px;color:#ff6601;'>ID:"+node.id+"&nbsp&nbsp&nbsp&nbsp&nbsp案件ID:" +
+                ""+selectNode.caseId+"&nbsp&nbsp&nbsp&nbsp&nbsp环节名称:"+selectNode.name+"</p>";
         } else {
             var alertString ="";
             for(var k in selectNode){//遍历json对象的每个key/value对,k为key
                 if("CN_KEY" != k && "label" !=k && "name"!=k && selectNode["label"]!=k && "CaseNodeId"!=k && "lastNodeId"!=k){
-                    alertString+=k+" : " +selectNode[k]+"\n";
+                    alertString+=k+" : " +selectNode[k]+ "&nbsp&nbsp&nbsp&nbsp&nbsp"+"\n";
                 }
-
-
             }
             sweetAlert(selectNode["name"]+"："+selectNode[selectNode["label"]]
                 ,alertString
                 , "info");
-            document.getElementById("suyuanDataId").innerHTML = "<p>"+alertString+"</p>";
+            document.getElementById("suyuanDataId").innerHTML = "<p style='margin-left:5px;color:#ff6601;'>"+alertString+"</p>";
         }
 
         //$(".nodeFile").text("文案材料 : "+selectNode.file);
@@ -356,7 +384,7 @@ function Neod3Renderer() {
 
 function lineageSelect(bmsah) {
     over_bmsah = bmsah;
-    window.location.href="http://localhost:8083/hxyActiviti/neoData.html"
+    window.location.href="http://localhost:8083/hxyActiviti/neoData.html?bmsah="+encodeURI(bmsah);
 }
 
 
