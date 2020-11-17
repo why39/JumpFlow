@@ -152,7 +152,10 @@ function Neod3Renderer() {
                         console.log(props[selectedKey] + "   "+ selectedKey)
                         if(selectedKey == 'name') {
                             props['copy_name'] = props[selectedKey];
-                            props[selectedKey] = props[selectedKey].substring(0, 3) + " ...";
+                            if (props[selectedKey].length > 3) {
+                                props[selectedKey] = props[selectedKey].substring(0, 3) + " ...";
+                            }
+
                         }else {
                             props[selectedKey] = props[selectedKey];
                         }
