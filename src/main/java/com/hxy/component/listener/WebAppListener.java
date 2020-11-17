@@ -46,7 +46,7 @@ public class WebAppListener implements ApplicationListener<ContextRefreshedEvent
 		codeCache();
 
         if (event.getApplicationContext().getParent() == null){
-            createQueryAJAndRZJob();
+//            createQueryAJAndRZJob();
         }
     }
 
