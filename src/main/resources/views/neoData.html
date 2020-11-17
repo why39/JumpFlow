@@ -248,11 +248,14 @@
            var vYear2 = timeEnd.getFullYear();
            var vMon2 = timeEnd.getMonth() + 1;
            var vDay2 = timeEnd.getDate();
-           var EndTime =vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
+           var EndTime =vYear2 * 10000 + vMon2 * 100 + vDay2;
            console.log("timeStar is " + timeStart);
            count = $("#labelName").val();
            if($("#labelName").val() == '所有') {
                count = 10000;
+           }
+           if($("#timeStartName").val() == $("#timeEndName").val()){
+               EndTime = EndTime + 1;
            }
            query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' AND n.timestamp>=\'" + StartTime * 1000000 +
                "\' AND n.timestamp<\'" + EndTime * 1000000 +"\' " +"AND n.操作人=\'" + $("#userName").val()+
@@ -268,8 +271,11 @@
            var vYear2 = timeEnd.getFullYear();
            var vMon2 = timeEnd.getMonth() + 1;
            var vDay2 = timeEnd.getDate();
-           var EndTime =vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
+           var EndTime =vYear2 * 10000 + vMon2 * 100 + vDay2;
            console.log("timeStart is " + timeStart);
+           if($("#timeStartName").val() == $("#timeEndName").val()){
+               EndTime = EndTime + 1;
+           }
            query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' AND n.timestamp>=\'" + StartTime * 1000000 +
                "\' AND n.timestamp<\'" + EndTime * 1000000 +"\' " +"AND n.操作人=\'" + $("#userName").val()+
                "\' WITH n MATCH p = (n) - [*] -> (m) where m.name=\'"
@@ -284,8 +290,11 @@
            var vYear2 = timeEnd.getFullYear();
            var vMon2 = timeEnd.getMonth() + 1;
            var vDay2 = timeEnd.getDate();
-           var EndTime =vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
+           var EndTime =vYear2 * 10000 + vMon2 * 100 + vDay2;
            console.log("timeStart is " + timeStart);
+           if($("#timeStartName").val() == $("#timeEndName").val()){
+               EndTime = EndTime + 1;
+           }
            query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' AND n.timestamp>=\'" + StartTime * 1000000 +
                "\' AND n.timestamp<\'" + EndTime * 1000000 +"\' WITH n MATCH p = (n) - [*] -> (m) where m.name=\'" + $("#suyuanName").val() +"\' RETURN m,p";
        }else if ($("#suyuanName").val()) {
@@ -302,10 +311,13 @@
                var vYear2 = timeEnd.getFullYear();
                var vMon2 = timeEnd.getMonth() + 1;
                var vDay2 = timeEnd.getDate();
-               var EndTime =vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
+               var EndTime =vYear2 * 10000 + vMon2 * 100 + vDay2;
                console.log("timeStart is " + timeStart);
+               if($("#timeStartName").val() == $("#timeEndName").val()){
+                   EndTime = EndTime + 1;
+               }
                query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' AND n.timestamp>=\'" + StartTime * 1000000 +
-                   "\' AND n.timestamp<=\'" + EndTime * 1000000 +"\' WITH n MATCH p = (n) - [*] -> (m) RETURN m,p";
+                   "\' AND n.timestamp<\'" + EndTime * 1000000 +"\' WITH n MATCH p = (n) - [*] -> (m) RETURN m,p";
            }
            else if($("#timeStartName").val() && $("#timeEndName").val() && $("#suyuanName").val() == "" && $("#userName").val() == "" && $("#labelName").val()){
                var timeStart = new Date($("#timeStartName").val());
@@ -317,14 +329,17 @@
                var vYear2 = timeEnd.getFullYear();
                var vMon2 = timeEnd.getMonth() + 1;
                var vDay2 = timeEnd.getDate();
-               var EndTime =vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
+               var EndTime =vYear2 * 10000 + vMon2 * 100 + vDay2;
                count = $("#labelName").val();
                if($("#labelName").val() == '所有') {
                    count = 10000;
                }
                console.log("timeStart is " + timeStart);
+               if($("#timeStartName").val() == $("#timeEndName").val()){
+                   EndTime = EndTime + 1;
+               }
                query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' AND n.timestamp>=\'" + StartTime * 1000000 +
-                   "\' AND n.timestamp<=\'" + EndTime * 1000000 +"\' WITH n MATCH p = (n) - [*] -> (m) RETURN m,p limit "+ count;
+                   "\' AND n.timestamp<\'" + EndTime * 1000000 +"\' WITH n MATCH p = (n) - [*] -> (m) RETURN m,p limit "+ count;
            }
            else if($("#timeStartName").val() == "" && $("#timeEndName").val() == "" && $("#suyuanName").val() == "" && $("#userName").val() && $("#labelName").val() == ""){
                query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' AND n.操作人=\'" + $("#userName").val()+
@@ -348,11 +363,14 @@
                var vYear2 = timeEnd.getFullYear();
                var vMon2 = timeEnd.getMonth() + 1;
                var vDay2 = timeEnd.getDate();
-               var EndTime =vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
+               var EndTime =vYear2 * 10000 + vMon2 * 100 + vDay2;
                console.log("timeStar is " + timeStart);
+               if($("#timeStartName").val() == $("#timeEndName").val()){
+                   EndTime = EndTime + 1;
+               }
                query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' AND n.timestamp>=\'" + StartTime * 1000000 +
                    "\' AND n.timestamp<\'" + EndTime * 1000000 +"\' " +"AND n.操作人=\'" + $("#userName").val()+
-                   "\' WITH n MATCH p = (n) - [*] -> (m)git RETURN m,p";
+                   "\' WITH n MATCH p = (n) - [*] -> (m) RETURN m,p";
            }
            else if($("#timeStartName").val() && $("#timeEndName").val() && $("#suyuanName").val() == "" && $("#userName").val() && $("#labelName").val()){
                var timeStart = new Date($("#timeStartName").val());
@@ -364,11 +382,14 @@
                var vYear2 = timeEnd.getFullYear();
                var vMon2 = timeEnd.getMonth() + 1;
                var vDay2 = timeEnd.getDate();
-               var EndTime =vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
+               var EndTime =vYear2 * 10000 + vMon2 * 100 + vDay2;
                console.log("timeStar is " + timeStart);
                count = $("#labelName").val();
                if($("#labelName").val() == '所有') {
                    count = 10000;
+               }
+               if($("#timeStartName").val() == $("#timeEndName").val()){
+                   EndTime = EndTime + 1;
                }
                query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' AND n.timestamp>=\'" + StartTime * 1000000 +
                    "\' AND n.timestamp<\'" + EndTime * 1000000 +"\' " +"AND n.操作人=\'" + $("#userName").val()+
@@ -384,11 +405,14 @@
                var vYear2 = timeEnd.getFullYear();
                var vMon2 = timeEnd.getMonth() + 1;
                var vDay2 = timeEnd.getDate();
-               var EndTime =vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
+               var EndTime =vYear2 * 10000 + vMon2 * 100 + vDay2;
                console.log("timeStar is " + timeStart);
                count = $("#labelName").val();
                if($("#labelName").val() == '所有') {
                    count = 10000;
+               }
+               if($("#timeStartName").val() == $("#timeEndName").val()){
+                   EndTime = EndTime + 1;
                }
                query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' AND n.timestamp>=\'" + StartTime * 1000000 +
                    "\' AND n.timestamp<\'" + EndTime * 1000000 +"\' " +"AND n.操作人=\'" + $("#userName").val()+
