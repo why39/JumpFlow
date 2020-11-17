@@ -78,20 +78,20 @@ function Neod3Renderer() {
         }catch (e) {
             console.log(e);
         }
-            document.getElementById("suyuanName").value = '附注';
+            //document.getElementById("suyuanName").value = '附注';
         }
         if (selectNode.label == "Task") {
             $(".nodeId").text("<id> : "+node.id);
             $(".caseId").text("<所属案件ID> : "+selectNode.caseId);
             // $(".nodeTaskId").text("<案件环节ID> : "+selectNode.taskId);
             $(".nodeName").text("<环节名称> : "+selectNode.name);
-            document.getElementById("suyuanDataId").innerHTML = "<p style='margin-left:5px;color:#ff6601;'>ID:"+node.id+"&nbsp&nbsp&nbsp&nbsp&nbsp案件ID:" +
-                ""+selectNode.caseId+"&nbsp&nbsp&nbsp&nbsp&nbsp环节名称:"+selectNode.name+"</p>";
+            document.getElementById("suyuanDataId").innerHTML = "<p style='margin-left:5px;color:#ff6601;'>ID:"+node.id+"案件ID:" +
+                ""+selectNode.caseId+"环节名称:"+selectNode.name+"</p>";
         } else {
             var alertString ="";
             for(var k in selectNode){//遍历json对象的每个key/value对,k为key
                 if("CN_KEY" != k && "label" !=k && "name"!=k && selectNode["label"]!=k && "CaseNodeId"!=k && "lastNodeId"!=k){
-                    alertString+=k+" : " +selectNode[k]+ "&nbsp&nbsp&nbsp&nbsp&nbsp"+"\n";
+                    alertString+=k+" : " +selectNode[k]+"\n";
                 }
             }
             sweetAlert(selectNode["name"]+"："+selectNode[selectNode["label"]]
