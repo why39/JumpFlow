@@ -20,7 +20,7 @@ public class NeoConstants {
     /**
      * 前后关系
      */
-    public static final String RELATION_NEXT = "next";
+    public static final String RELATION_NEXT = "下一步";
 
     /**
      * 相关关系
