@@ -85,16 +85,22 @@ function Neod3Renderer() {
             $(".caseId").text("<所属案件ID> : "+selectNode.caseId);
             // $(".nodeTaskId").text("<案件环节ID> : "+selectNode.taskId);
             $(".nodeName").text("<环节名称> : "+selectNode.name);
-            document.getElementById("suyuanDataId").innerHTML = "<p style='margin-left:5px;color:#ff6601;'>ID:"+node.id+"案件ID:" +
-                ""+selectNode.caseId+"环节名称:"+selectNode.name+"</p>";
+            document.getElementById("suyuanDataId").innerHTML = "<p style='margin-left:5px;color:#ff6601;'>ID:"+node.id+"&nbsp&nbsp&nbsp&nbsp案件ID:" +
+                ""+selectNode.caseId+"&nbsp&nbsp&nbsp&nbsp环节名称:"+selectNode.copy_name+"</p>";
         } else {
             var alertString ="";
             for(var k in selectNode){//遍历json对象的每个key/value对,k为key
-                if("CN_KEY" != k && "label" !=k && "name"!=k && selectNode["label"]!=k && "CaseNodeId"!=k && "lastNodeId"!=k){
+                if("CN_KEY" != k && "label" !=k && "copy_name"!=k && selectNode["label"]!=k && "CaseNodeId"!=k && "lastNodeId"!=k){
+                    if(k == 'name') {
+                        selectNode[k] = selectNode['copy_name'];
+                    }
                     alertString+=k+" : " +selectNode[k]+"\n";
                 }
             }
-            sweetAlert(selectNode["name"]+"："+selectNode[selectNode["label"]]
+            if(selectNode["label"] == null) {
+                selectNode["label"] == "";
+            }
+            sweetAlert(selectNode["copy_name"]
                 ,alertString
                 , "info");
             document.getElementById("suyuanDataId").innerHTML = "<p style='margin-left:5px;color:#ff6601;'>"+alertString+"</p>";
@@ -142,8 +148,14 @@ function Neod3Renderer() {
                     selected_keys = selected_keys.concat(keys).concat(['id']);
                     var selector = "node." + label(nodes[i]);
                     var selectedKey = selected_keys[0];
-                    if (typeof(props[selectedKey]) === "string" && props[selectedKey].length > 30) {
-                        props[selectedKey] = props[selectedKey].substring(0, 30) + " ...";
+                    if (typeof(props[selectedKey]) === "string") {
+                        console.log(props[selectedKey] + "   "+ selectedKey)
+                        if(selectedKey == 'name') {
+                            props['copy_name'] = props[selectedKey];
+                            props[selectedKey] = props[selectedKey].substring(0, 3) + " ...";
+                        }else {
+                            props[selectedKey] = props[selectedKey];
+                        }
                     }
                     style[selector] = style[selector] || selectedKey;
                 }
