@@ -61,11 +61,11 @@ function Neod3Renderer() {
                 if (graph) {
                     var node = graph.nodes;
                     selectNode = JSON.parse(JSON.stringify(node));
-                    console.log(selectNode);
+                    //console.log(selectNode);
                     if (selectNode){
                         for(var i in selectNode) {
                             if(selectNode[i].CN_KEY != null){
-                                console.log(selectNode[i].CN_KEY);
+                                //console.log(selectNode[i].CN_KEY);
                             }
                         }
                     }
@@ -97,12 +97,20 @@ function Neod3Renderer() {
                     alertString+=k+" : " +selectNode[k]+"\n";
                 }
             }
-            if(selectNode["label"] == null) {
+
+            if(selectNode["label"] ==  undefined) {
                 selectNode["label"] == "";
+                sweetAlert(selectNode["copy_name"]
+                    ,alertString
+                    , "info");
             }
-            sweetAlert(selectNode["copy_name"]
-                ,alertString
-                , "info");
+            else {
+                sweetAlert(selectNode["copy_name"] + ":" + selectNode["label"]
+                    ,alertString
+                    , "info");
+            }
+            //console.log(selectNode["label"]);
+
             document.getElementById("suyuanDataId").innerHTML = "<p style='margin-left:5px;color:#ff6601;'>"+alertString+"</p>";
         }
 
@@ -149,7 +157,7 @@ function Neod3Renderer() {
                     var selector = "node." + label(nodes[i]);
                     var selectedKey = selected_keys[0];
                     if (typeof(props[selectedKey]) === "string") {
-                        console.log(props[selectedKey] + "   "+ selectedKey)
+                        //console.log(props[selectedKey] + "   "+ selectedKey)
                         if(selectedKey == 'name') {
                             props['copy_name'] = props[selectedKey];
                             if (props[selectedKey].length > 3) {

@@ -285,7 +285,7 @@
 <div style = "border-top: 8px solid lightgray; margin-top: 5px;">
 
 
-<div id="my_container" style="width:410px; height:410px;float: right;position:relative;box-shadow: 0 0 50px grey;">
+<div id="my_container" style="width:440px; height:410px;float: right;position:relative;box-shadow: 0 0 50px grey;">
     <canvas id="pie_canvas" ></canvas>
 </div>
 
@@ -860,7 +860,7 @@
             {name:"fuheban", value:parseFloat(over_data[9]) / parseFloat(over_sum), color:"#27ba7c",label1:"案管",label2:(parseFloat(over_data[9]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
             {name:"sifaxiezhu", value:parseFloat(over_data[10]) / parseFloat(over_sum), color:"#b5b4b1",label1:"司法协助",label2:(parseFloat(over_data[10]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"}];
         var config = {
-            width : 400,
+            width : 420,
             height: 400,
             series: seriesData,
             canvas: canvas,
@@ -940,7 +940,7 @@
         },
         renderLabelLine:function(ctx,index){
             ctx.save();
-            ctx.translate(this.width / 2, this.height / 2);
+            ctx.translate(this.width / 2 - 5, this.height / 2);
             ctx.rotate(this.getRatioHalfSumDegrees(index));
             ctx.strokeStyle = this.series[index].color;
             ctx.moveTo(this.circle.radius + 1, 0);
