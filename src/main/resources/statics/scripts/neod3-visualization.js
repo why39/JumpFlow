@@ -99,20 +99,20 @@ function Neod3Renderer() {
                     alertString1+="<span style='color:pink'>k<span>+selectNode[k]";
                 }
             }
-            if(selectNode["label"] ==  undefined) {
+
+            if(selectNode[selectNode["label"]] ==  undefined) {
                 selectNode["label"] == "";
                 swal({
                     title: selectNode["copy_name"],
-                    text: alertString,
+                    text: alertString ,
                     icon: "success",
-                    animation: "slide-from-top"
                 });
                 /*sweetAlert(selectNode["copy_name"]
                     ,alertString
                     , "info");*/
             }
             else {
-                sweetAlert(selectNode["copy_name"] + ":" + selectNode["label"]
+                sweetAlert(selectNode["copy_name"] + ":" + selectNode[selectNode["label"]]
                     ,alertString
                     , "success");
             }
