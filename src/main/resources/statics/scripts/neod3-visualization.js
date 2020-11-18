@@ -89,25 +89,32 @@ function Neod3Renderer() {
                 ""+selectNode.caseId+"&nbsp&nbsp&nbsp&nbsp环节名称:"+selectNode.copy_name+"</p>";
         } else {
             var alertString ="";
+            var alertString1 =""
             for(var k in selectNode){//遍历json对象的每个key/value对,k为key
                 if("CN_KEY" != k && "label" !=k && "copy_name"!=k && selectNode["label"]!=k && "CaseNodeId"!=k && "lastNodeId"!=k){
                     if(k == 'name') {
                         selectNode[k] = selectNode['copy_name'];
                     }
                     alertString+=k+" : " +selectNode[k]+"\n";
+                    alertString1+="<span style='color:pink'>k<span>+selectNode[k]";
                 }
             }
-
             if(selectNode["label"] ==  undefined) {
                 selectNode["label"] == "";
-                sweetAlert(selectNode["copy_name"]
+                swal({
+                    title: selectNode["copy_name"],
+                    text: alertString,
+                    icon: "success",
+                    animation: "slide-from-top"
+                });
+                /*sweetAlert(selectNode["copy_name"]
                     ,alertString
-                    , "info");
+                    , "info");*/
             }
             else {
                 sweetAlert(selectNode["copy_name"] + ":" + selectNode["label"]
                     ,alertString
-                    , "info");
+                    , "success");
             }
             //console.log(selectNode["label"]);
 
