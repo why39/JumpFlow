@@ -272,6 +272,7 @@ public class GJNeo4jUtil {
 
     public static String addPropertyNode(String BMSAH, String label, String relation, boolean reverse, Map<String, Object> map) {
         String lastNodeId = null;
+        String lastTaskNodeId = null;
         String lastNodeValue = null;
 
         //先查询有没有这个BMSAH的属性节点，没有就插入，有就返回该属性的最后一个节点id，并作为当前插入的lastNode
@@ -306,6 +307,7 @@ public class GJNeo4jUtil {
         if (findTaskResult != null && findTaskResult.hasNext()) {
             while (findTaskResult.hasNext()) {
                 Record record = findTaskResult.next();
+                lastTaskNodeId = record.fields().get(0).value().toString().replace("node<", "").replace(">", "");
                 String lastTaskLable = record.fields().get(0).value().get("name").toString(); //取出环节名称
                 String lastTaskName = lastTaskLable.substring(1, lastTaskLable.length() - 1);
                 map.put("所属环节", lastTaskName);
@@ -315,11 +317,15 @@ public class GJNeo4jUtil {
 
         if (lastNodeValue == null || map.get(label) == null || !map.get(label).equals(lastNodeValue)) {
             map.put("caseId", BMSAH);
+            if (!StringUtils.isEmpty(lastTaskNodeId)) {
+                lastNodeId = lastTaskNodeId;
+            }
+
             String nodeId = GJNeo4jUtil.createKeyValues(label, lastNodeId, relation, reverse, map);
             return nodeId;
         }
 
-        return lastNodeId;
+        return lastTaskNodeId;
 
     }
 

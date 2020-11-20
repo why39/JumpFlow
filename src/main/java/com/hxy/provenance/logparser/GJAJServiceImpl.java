@@ -191,7 +191,7 @@ public class GJAJServiceImpl implements GJAJService {
                             map.put("name", "操作");
                             map.put("操作人", rz.getCZRM());
                             map.put("日志ID", rz.getID());
-                            String taskNodeId = GJNeo4jUtil.addActionNode(BMSAH, "操作", "下一步", false, map);
+                            String taskNodeId = GJNeo4jUtil.addActionNode(BMSAH, "操作", "相关", false, map);
                             GJNeo4jUtil.addUserNode(rz.getCZRM(), taskNodeId, "修改");
                         }
                     }

@@ -87,6 +87,27 @@ function Neod3Renderer() {
             $(".nodeName").text("<环节名称> : "+selectNode.name);
             document.getElementById("suyuanDataId").innerHTML = "<p style='margin-left:5px;color:#ff6601;'>ID:"+node.id+"&nbsp&nbsp&nbsp&nbsp案件ID:" +
                 ""+selectNode.caseId+"&nbsp&nbsp&nbsp&nbsp环节名称:"+selectNode.copy_name+"</p>";
+
+            swal({
+                title: selectNode["copy_name"],
+                icon: "success",
+                buttons: {
+                    cancel: "取消",
+                    more: {
+                        text: "展开案卡项数据",
+                        value: "more",
+                    }
+                },
+
+            }).then((value) => {
+                switch (value) {
+
+                    case "more":
+                        execute("match (n) where ID(n) = "+node.id+" with n match p = (n) - [r:相关] ->(m) return p")
+                        break;
+
+                }});
+
         } else {
             var alertString ="";
             var alertString1 =""
