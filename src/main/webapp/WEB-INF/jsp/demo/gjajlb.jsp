@@ -49,6 +49,10 @@
                                 <button class="layui-btn layui-btn-small" type="button"
                                         onclick="logDeal('${leave.BMSAH}')"><i class="layui-icon">&#xe604;</i>生成世系数据
                                 </button>
+
+                                <button class="layui-btn layui-btn-small" type="button"
+                                        onclick="logRead('${leave.BMSAH}')"><i class="layui-icon">&#xe604;</i>查看世系数据
+                                </button>
                             </div>
                         </td>
                     </tr>
@@ -74,6 +78,9 @@
 
     }
 
+    function logRead(bmsah) {
+        window.location.href="http://localhost:8083/hxyActiviti/neoData.html?bmsah="+encodeURI(bmsah);
+    }
 </script>
 
 </html>

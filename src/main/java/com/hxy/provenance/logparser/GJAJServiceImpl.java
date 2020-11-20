@@ -110,13 +110,13 @@ public class GJAJServiceImpl implements GJAJService {
         try {
             //2.1 先添加流程信息：
             for (GJRZEntity lcrz : rzlist) {
-                String LC日志内容 = lcrz.getRZMS();
-                if (LC日志内容 != null && LC日志内容.length() > 0) {
+                String LCRZMS = lcrz.getRZMS();
+                if (LCRZMS != null && LCRZMS.length() > 0) {
                     if (!lcrz.getEJFL().isEmpty() && lcrz.getEJFL().startsWith(GJRZEntity.LC_PREFIX)) {
                         //流程环节节点
                         Map<String, Object> map = new HashMap<>();
                         map.put(NeoConstants.KEY_LAST_NODE_ID, caseNodeId);
-                        map.put("name", LC日志内容);
+                        map.put("name", LCRZMS);
                         map.put("操作人", lcrz.getCZRM());
                         map.put("日志ID", lcrz.getID());
                         String taskNodeId = GJNeo4jUtil.addTaskNode(BMSAH, "Task", "下一步", false, map);
@@ -127,16 +127,16 @@ public class GJAJServiceImpl implements GJAJService {
 
             //2.2再添加其他日志信息：
             for (GJRZEntity rz : rzlist) {
-                String 日志内容 = rz.getRZMS();
-                if (日志内容 != null && 日志内容.length() > 0) {
+                String RZMS = rz.getRZMS();
+                if (RZMS != null && RZMS.length() > 0) {
                     if (rz.getEJFL().isEmpty() || !rz.getEJFL().startsWith(GJRZEntity.LC_PREFIX)) {
-                        if (日志内容.startsWith("[") || 日志内容.startsWith("{")) {
+                        if (RZMS.startsWith("[") || RZMS.startsWith("{")) {
 
                             //解析json
 
                             //正则匹配键值对，字符型的值
                             Pattern r1 = Pattern.compile("\"(\\w+)\":\"{1}(.*?)\"{1}");
-                            Matcher m1 = r1.matcher(日志内容);
+                            Matcher m1 = r1.matcher(RZMS);
                             while (m1.find()) {
                                 String key = m1.group(1);
                                 String showKey = key;
@@ -157,7 +157,7 @@ public class GJAJServiceImpl implements GJAJService {
 
                             //正则匹配键值对，整型的值
                             Pattern r2 = Pattern.compile("\"(\\w+)\":(\\w+)");
-                            Matcher m2 = r2.matcher(日志内容);
+                            Matcher m2 = r2.matcher(RZMS);
                             while (m2.find()) {
                                 String key = m2.group(1);
                                 String showKey = key;
@@ -182,7 +182,7 @@ public class GJAJServiceImpl implements GJAJService {
                             //不是json，直接修改节点
                             Map<String, Object> map = new HashMap<>();
                             map.put(NeoConstants.KEY_LAST_NODE_ID, caseNodeId);
-                            map.put("日志内容", 日志内容);
+                            map.put("RZMS", RZMS);
                             map.put("name", "操作");
                             map.put("操作人", rz.getCZRM());
                             map.put("日志ID", rz.getID());
