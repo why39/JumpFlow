@@ -12,6 +12,8 @@ public interface GJAJService {
 
     GJAJEntity queryObject(String id);
 
+    List<GJAJEntity> queryObject2(String ajlb);
+
     List<GJAJEntity> queryList(Map<String, Object> map);
 
     int queryTotal(Map<String, Object> map);

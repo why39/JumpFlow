@@ -8,7 +8,10 @@
         <result property="AJMC" column="AJMC"/>
 		<result property="CBDW_MC" column="CBDW_MC"/>
 		<result property="AJLB_MC" column="AJLB_MC"/>
+		<result property="CJSJ" column="CJSJ"/>
 
+
+		<result property="IS_COMPLETE" column="IS_COMPLETE"/>
     </resultMap>
 
 
@@ -19,6 +22,16 @@
 		AJMC,
 		CBDW_MC,
 		AJLB_MC
+    </sql>
+
+	<sql id="Base_Column_List2" >
+		BMSAH,
+		TYSAH,
+		AJMC,
+		CBDW_MC,
+		AJLB_MC,
+		CJSJ,
+		IS_COMPLETE
     </sql>
 
 	<insert id="save" parameterType="com.hxy.provenance.logparser.GJAJEntity">
@@ -37,10 +50,16 @@
 	</insert>
 
 	<select id="queryObject" resultType="com.hxy.provenance.logparser.GJAJEntity" resultMap="caseMap">
+	select
+	<include refid="Base_Column_List" />
+	from AJ_YX_AJ
+	where BMSAH = #{value}
+</select>
+	<select id="queryObject2" resultType="com.hxy.provenance.logparser.GJAJEntity" resultMap="caseMap">
 		select
-		<include refid="Base_Column_List" />
+		<include refid="Base_Column_List2" />
 		from AJ_YX_AJ
-		where BMSAH = #{value}
+		where AJLB_MC = #{value}
 	</select>
 
 	<select id="queryList" resultType="com.hxy.provenance.logparser.GJAJEntity" resultMap="caseMap">

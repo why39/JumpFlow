@@ -43,6 +43,11 @@ public class GJAJServiceImpl implements GJAJService {
     }
 
     @Override
+    public List<GJAJEntity> queryObject2(String ajlb) {
+        return caseDao.queryObject2(ajlb);
+    }
+
+    @Override
     public List<GJAJEntity> queryList(Map<String, Object> map) {
         return caseDao.queryList(map);
     }

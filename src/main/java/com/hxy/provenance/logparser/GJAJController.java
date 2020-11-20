@@ -15,12 +15,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 对接高检数据库用
@@ -34,6 +34,9 @@ public class GJAJController {
 
     @Autowired
     DataPlatformService dataPlatformService;
+
+    @Autowired
+    GJAJService gjajService;
 
     @RequestMapping("gjajlb")
     @RequiresPermissions("act:model:all")
@@ -56,8 +59,17 @@ public class GJAJController {
         return caseService.parseLog(bmsah);
     }
 
-
-
-
-
+    @RequestMapping(value = "ajlb")
+    @ResponseBody
+    public List<GJAJEntity> Ajlb(@RequestParam  String ajlb){
+        /*try {
+            ajlb = java.net.URLDecoder.decode(ajlb, "UTF-8");
+            ajlb = new String(ajlb.getBytes("ISO-8859-1"),"UTF-8");
+            System.out.println("ajlb+" +ajlb);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }*/
+        List<GJAJEntity> gjajEntity = (List<GJAJEntity>) gjajService.queryObject2(ajlb);
+        return gjajEntity;
+    }
 }

@@ -3,7 +3,9 @@ package com.hxy.provenance.logparser;
 import com.hxy.modules.activiti.annotation.ActField;
 import com.hxy.modules.activiti.annotation.ActTable;
 import com.hxy.modules.common.entity.ActivitiBaseEntity;
+import org.apache.commons.net.ntp.TimeStamp;
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -21,6 +23,8 @@ public class GJAJEntity {
     private String AJMC;    //案件名称
     private String AJLB_MC; // 案件类别名称
     private String CBDW_MC;
+    private int IS_COMPLETE;
+    private Date CJSJ;
 
     public String getAJLB_MC() {
         return AJLB_MC;
@@ -56,6 +60,20 @@ public class GJAJEntity {
 
     public String getAJMC() {
         return AJMC;
+    }
+
+    public void setCJSJ(Date CJSJ) {
+        this.CJSJ = CJSJ;
+    }
+    public Date getCJSJ() {
+        return CJSJ;
+    }
+
+    public void setIS_COMPLETE(int IS_COMPLETE) {
+        this.IS_COMPLETE = IS_COMPLETE;
+    }
+    public int getIS_COMPLETE() {
+        return IS_COMPLETE;
     }
 
     public void setAJMC(String AJMC) {

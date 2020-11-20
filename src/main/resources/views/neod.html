@@ -578,53 +578,41 @@
         $(".nodeName").text("");
     }
 
-    function executeNode(content,ss) {
+    function executeNode(content,ss,ll) {
         var query = content;
         var neo = new Neo(connection);
-        document.getElementById("caseList").innerHTML = "";
-        try {
-            neo.executeQuery(query, {}, function (err, res) {
-                res = res || {};
-                var graph = res.graph;
-                if (graph) {
-                    var node = graph.nodes;
-                    selectNode = JSON.parse(JSON.stringify(node));
-                    console.log(selectNode);
-                    if (selectNode) {
-                        for(var i in selectNode) {
-                            var str="";
-                            var j = parseInt(i) + 1
-                            var className = ss + j;
-                            var bmsah = selectNode[i].caseId;
-                            if(bmsah == null) {
-                                bmsah = '汉东检刑诉受[2019]980000100216号';
-                            }
-                            var timeStr = selectNode[i].timestamp.toString();
-                            console.log(timeStr);
-                            var time = timeStr.substring(0,4) + "年" + timeStr.substring(4,6) + "月" + timeStr.substring(6,8) + "日";
-                            str = "<li class=\"list-group-item\"><span style=\"float: left;margin-top:-2px\">"+className+"</span>  <span style=\"margin-left:-10px;margin-top:-2px\">"+bmsah+"</span> <button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect(\'"+bmsah+"\')\">"+"世系查询"+"</button> <span style=\"float:right;margin-right:50px;margin-top:-2px\">"+time+"</span>";
-                            document.getElementById("caseList").innerHTML += str;
+        ll = ll.toString();
+        console.log(ll);
+        $.ajax({
+            type:"get",
+            async: false,
+            data:{"ajlb":ll},
+            url: "http://localhost:8083/hxyActiviti/demo/gj/ajlb",
+            success: function (res) {
+                if (res) {
+                    for(var i in res) {
+                        console.log(res[i].bmsah);
+                        var str="";
+                        var j = parseInt(i) + 1
+                        var className = ss + j;
+                        var bmsah = res[i].bmsah;
+                        if(bmsah == null) {
+                            bmsah = '汉东检刑诉受[2019]980000100216号';
                         }
-                        var zz=getzz();
-                        change(1,zz);
-                    } else {
-
+                        var timeStr = res[i].cjsj.toString();
+                        var is_complete = res[i].is_complete;
+                        console.log(timeStr);
+                        var time = timeStr.substring(0,4) + "年" + timeStr.substring(5,7) + "月" + timeStr.substring(8,10) + "日";
+                        str = "<li class=\"list-group-item\"><span style=\"float: left;margin-top:-2px\">"+className+"</span>  <span style=\"margin-left:-10px;margin-top:-2px\">"+bmsah+"</span> <button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect(\'"+bmsah+"\')\">"+"世系查询"+"</button> <span style=\"float:right;margin-right:50px;margin-top:-2px\">"+time+"</span>";
+                        document.getElementById("caseList").innerHTML += str;
                     }
+                    var zz=getzz();
+                    change(1,zz);
                 } else {
-                    if (err) {
-                        console.log(err);
-                        if (err.length > 0) {
-                            sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
-                        } else {
-                            sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
-                        }
-                    }
+
                 }
-            });
-        }catch (e) {
-            console.log(e);
-            sweetAlert("Catched error", e, "error");
-        }
+            }
+        });
     }
 
     function getzz() {
@@ -687,111 +675,122 @@
     function monitorClick() {
         document.getElementById("relevantCase").style.visibility="visible";
         var ss = document.getElementById("xieshijiancha_a").innerHTML + "案件";
+        var ll = document.getElementById("xieshijiancha_a").innerHTML;
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "刑事检察" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
         clearNodeInfo();
         console.log("monitorClick");
-        executeNode(query,ss);
+        executeNode(query,ss,ll);
     }
 
     function supervisionClick() {
         document.getElementById("relevantCase").style.visibility="visible";
         var ss = document.getElementById("xieshizhixing_a").innerHTML + "案件";
+        var ll = document.getElementById("xieshizhixing_a").innerHTML
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "刑事执行" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
         clearNodeInfo();
-        executeNode(query,ss);
+        executeNode(query,ss,ll);
     }
 
     function prosecutionClick(){
         document.getElementById("relevantCase").style.visibility="visible";
         var ss = document.getElementById("gongsu_a").innerHTML + "案件";
+        var ll = document.getElementById("gongsu_a").innerHTML
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "公益诉讼" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
         clearNodeInfo();
-        executeNode(query,ss);
+        executeNode(query,ss,ll);
     }
 
 
     function minshiClick(){
         document.getElementById("relevantCase").style.visibility="visible";
         var ss = document.getElementById("minshi_a").innerHTML + "案件";
+        var ll = document.getElementById("minshi_a").innerHTML;
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "民事" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
         clearNodeInfo();
-        executeNode(query,ss);
+        executeNode(query,ss,ll);
     }
     function xinzhengClick(){
         document.getElementById("relevantCase").style.visibility="visible";
         var ss = document.getElementById("xinzheng_a").innerHTML + "案件";
+        var ll = document.getElementById("xinzheng_a").innerHTML
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "行政" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
         clearNodeInfo();
-        executeNode(query,ss);
+        executeNode(query,ss,ll);
     }
     function weijianClick(){
         document.getElementById("relevantCase").style.visibility="visible";
         var ss = document.getElementById("minshi_a").innerHTML + "案件";
+        var ll = document.getElementById("minshi_a").innerHTML
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "未检业务" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
         clearNodeInfo();
-        executeNode(query,ss);
+        executeNode(query,ss,ll);
     }
 
     function konggaoClick(){
         document.getElementById("relevantCase").style.visibility="visible";
         var ss = document.getElementById("konggao_a").innerHTML + "案件";
+        var ll = document.getElementById("konggao_a").innerHTML;
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "控告申诉" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
         clearNodeInfo();
-        executeNode(query,ss);
+        executeNode(query,ss,ll);
     }
 
     function jianweiClick(){
         document.getElementById("relevantCase").style.visibility="visible";
         var ss = document.getElementById("jianwei_a").innerHTML + "案件";
+        var ll = document.getElementById("jianwei_a").innerHTML;
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "检委办" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
         clearNodeInfo();
-        executeNode(query,ss);
+        executeNode(query,ss,ll);
     }
 
     function duitaiClick(){
         document.getElementById("relevantCase").style.visibility="visible";
         var ss = document.getElementById("duitai_a").innerHTML + "案件";
+        var ll = document.getElementById("duitai_a").innerHTML;
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "对台业务" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
         clearNodeInfo();
-        executeNode(query,ss);
+        executeNode(query,ss,ll);
     }
 
     function anguanClick(){
         document.getElementById("relevantCase").style.visibility="visible";
         var ss = document.getElementById("anguan_a").innerHTML + "案件";
+        var ll = document.getElementById("anguan_a").innerHTML;
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "案管" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
         clearNodeInfo();
-        executeNode(query,ss);
+        executeNode(query,ss,ll);
     }
 
     function sifaClick(){
         document.getElementById("relevantCase").style.visibility="visible";
         var ss = document.getElementById("sifa_a").innerHTML + "案件";
+        var ll = document.getElementById("sifa_a").innerHTML;
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "司法协助" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
         clearNodeInfo();
-        executeNode(query,ss);
+        executeNode(query,ss,ll);
     }
 
 
@@ -810,7 +809,7 @@
     var over_sum = 30;
 
     window.onload = (function () {
-        for (var i = 0; i < over_str.length; i++) {
+       /* for (var i = 0; i < over_str.length; i++) {
             clearNodeInfo();
             var over_neo = new Neo(connection);
             try {
@@ -838,7 +837,7 @@
             }catch (e) {
                 console.log(e);
             }
-        }
+        }*/
         canvas_data();
         zhizhutu();
     });

@@ -4,6 +4,8 @@ import com.hxy.modules.common.dao.BaseDao;
 import com.hxy.modules.demo.entity.CaseEntity;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * 案件流程测试
  * 
@@ -13,4 +15,5 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface GJAJDao extends BaseDao<GJAJEntity> {
+    List<GJAJEntity> queryObject2(String ajlb);
 }
