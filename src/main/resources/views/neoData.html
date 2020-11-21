@@ -452,7 +452,7 @@
                     "\' WITH n MATCH p = (n) - [*] -> (m) where m.name=\'"
                     + $("#suyuanName").val() + "\' RETURN m,p limit " + count;
             } else {
-                query = "MATCH (n)-[r]->(m) RETURN n,r,m";
+                query = "match(n:CASE) where n.caseId = \'" + jiema() + "\' with n match p = (n) - [*] ->(m:Task) RETURN p";
             }
         }
 
