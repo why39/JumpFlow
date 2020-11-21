@@ -176,7 +176,7 @@ public class GJAJServiceImpl implements GJAJService {
                                     par.put("taskNodeName", lastTask.get("name"));
                                 }
 
-                                String taskNodeId = GJNeo4jUtil.addPropertyNode(BMSAH, key, "相关", false, par);
+                                String taskNodeId = GJNeo4jUtil.addPropertyNode(BMSAH, key, "变化", false, par);
                                 GJNeo4jUtil.addUserNode(rz.getCZRM(), taskNodeId, "修改");
                             }
 
@@ -216,7 +216,7 @@ public class GJAJServiceImpl implements GJAJService {
                                     par.put("taskNodeName", lastTask.get("name"));
                                 }
 
-                                String taskNodeId = GJNeo4jUtil.addPropertyNode(BMSAH, key, "相关", false, par);
+                                String taskNodeId = GJNeo4jUtil.addPropertyNode(BMSAH, key, "变化", false, par);
                                 GJNeo4jUtil.addUserNode(rz.getCZRM(), taskNodeId, "修改");
                             }
 

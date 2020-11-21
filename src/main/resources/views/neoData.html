@@ -162,30 +162,35 @@
     }
 
     //传入label，callback返回label的列表
-    function executeWithCallback(content,label,callback) {
+    function executeWithCallback(cmd, dislpay, label,callback) {
         var neo = new Neo(connection);
         try {
-            var query = content;
+            var query = cmd;
             console.log("Executing Query", query);
             neo.executeQuery(query, {}, function (err, res) {
                 res = res || {}
                 console.log("Executing Query res: ", res);
                 var graph = res.graph;
-                var table = res.table;
                 var labelList = []
 
                 if (graph) {
                     if (graph.nodes) {
                         for(item in graph.nodes) {
-                            if(item["label"]==label) {
-                                labelList.push(item)
+                            console.log("Executing Query item: ", label, item, graph.nodes[item]);
+                            if(graph.nodes[item]["label"]==label) {
+                                labelList.push(graph.nodes[item])
                             }
                         }
                     }
+                    console.log("Executing Query labelList: ", label, labelList);
                     callback(labelList);
-                    var c = $("#graph");
-                    c.empty();
-                    neod3.render("graph", c, graph);
+
+                    if (dislpay) {
+                        var c = $("#graph");
+                        c.empty();
+                        neod3.render("graph", c, graph);
+                    }
+
                 } else {
                     if (err) {
                         console.log(err);

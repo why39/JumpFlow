@@ -121,22 +121,29 @@ function Neod3Renderer() {
                 }
             }
 
-            if(selectNode[selectNode["label"]] ==  undefined) {
-                selectNode["label"] == "";
-                swal({
-                    title: selectNode["copy_name"],
-                    text: alertString ,
-                    icon: "success",
-                });
-                /*sweetAlert(selectNode["copy_name"]
-                    ,alertString
-                    , "info");*/
-            }
-            else {
-                sweetAlert(selectNode["copy_name"] + ":" + selectNode[selectNode["label"]]
-                    ,alertString
-                    , "success");
-            }
+            executeWithCallback("match (n) where n.label='"+selectNode["label"]+"' and n.caseId='"+selectNode.caseId+"' WITH n OPTIONAL MATCH (n)-[r]-() return n,r",
+                false,
+                selectNode["label"],
+                function (labelList) {
+                console.log("Callback labelList: ", labelList);
+            })
+
+            // if(selectNode[selectNode["label"]] ==  undefined) {
+            //     selectNode["label"] == "";
+            //     swal({
+            //         title: selectNode["copy_name"],
+            //         text: alertString ,
+            //         icon: "success",
+            //     });
+            //     /*sweetAlert(selectNode["copy_name"]
+            //         ,alertString
+            //         , "info");*/
+            // }
+            // else {
+            //     sweetAlert(selectNode["copy_name"] + ":" + selectNode[selectNode["label"]]
+            //         ,alertString
+            //         , "success");
+            // }
             //console.log(selectNode["label"]);
 
             document.getElementById("suyuanDataId").innerHTML = "<p style='margin-left:5px;color:#ff6601;'>"+alertString+"</p>";
