@@ -72,5 +72,54 @@
 		select count(*) from AJ_YX_AJ
 	</select>
 
+	<select id="queryTotal01" resultType="int">
+		select count(*) from AJ_YX_AJ
+		where AJLB_MC = '刑事检察'
+	</select>
+	<select id="queryTotal02" resultType="int">
+		select count(*) from AJ_YX_AJ
+		where AJLB_MC = '刑事执行'
+	</select>
+	<select id="queryTotal03" resultType="int">
+		select count(*) from AJ_YX_AJ
+		where AJLB_MC = '公益诉讼'
+	</select>
+	<select id="queryTotal04" resultType="int">
+		select count(*) from AJ_YX_AJ
+		where AJLB_MC = '民事'
+	</select>
+	<select id="queryTotal05" resultType="int">
+		select count(*) from AJ_YX_AJ
+		where AJLB_MC = '行政'
+	</select>
+	<select id="queryTotal06" resultType="int">
+		select count(*) from AJ_YX_AJ
+		where AJLB_MC = '未检业务'
+	</select>
+	<select id="queryTotal07" resultType="int">
+		select count(*) from AJ_YX_AJ
+		where AJLB_MC = '控告申诉'
+	</select>
+	<select id="queryTotal08" resultType="int">
+		select count(*) from AJ_YX_AJ
+		where AJLB_MC = '检委办'
+	</select>
+	<select id="queryTotal09" resultType="int">
+		select count(*) from AJ_YX_AJ
+		where AJLB_MC = '对台业务'
+	</select>
+	<select id="queryTotal10" resultType="int">
+		select count(*) from AJ_YX_AJ
+		where AJLB_MC = '案管'
+	</select>
+	<select id="queryTotal11" resultType="int">
+		select count(*) from AJ_YX_AJ
+		where AJLB_MC = '司法协助'
+	</select>
+
+
+
+
+
 
 </mapper>

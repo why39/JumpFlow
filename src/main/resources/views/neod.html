@@ -137,6 +137,9 @@
         .rectClass10:hover{
             fill: black;
         }
+        .tick{
+            width:30px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+        }
     </style>
 </head>
 <body>
@@ -187,99 +190,6 @@
         </div>
     </div>
 
-
-
-
-
-   <!-- <div style="margin-top: 6px" class="col-lg-12" id = "case">
-        <div class="input-group">
-            <input class="form-control" type="text" style="width: 360px" id="caseName" placeholder="输入内容"/>
-            <button style="margin-left: 6px" type="button" class="btn btn-primary" onclick="findCase()">查找案件
-            </button>
-        </div>&lt;!&ndash; /input-group &ndash;&gt;
-    </div>
-
-    <div style="margin-top: 6px" class="col-lg-12">
-        <div class="input-group">
-            <input class="form-control" type="text" style="width: 360px" id="caseCategory" placeholder="案件类别"/>
-            <button style="margin-left: 6px" type="button" class="btn btn-primary" onclick="filterCaseByCategory()">
-                筛选案件
-            </button>
-        </div>
-    </div>
-
-    <div style="margin-top: 6px" class="col-lg-12">
-        <div class="input-group">
-            <input class="form-control" type="text" style="width: 360px" id="caseId" placeholder="部门受案号"/>
-            <input class="form-control" type="text" style="width: 120px" id="nodeCount" placeholder="显示节点数量"/>
-            <div style="margin-left: 6px" class="btn-group">
-                <button type="button" class="btn btn-primary" id="inference" onclick="filterCaseByBMSAH()">查找案件</button>
-                <button type="button" class="btn btn-primary" id="trace" onclick="filterCaseFlow()">仅看流程</button>
-            </div>
-
-        </div>&lt;!&ndash; /input-group &ndash;&gt;
-    </div>
-
-    <div style="margin-top: 6px" class="col-lg-12">
-        <div class="input-group">
-            <input class="form-control" type="text" style="width: 360px" id="labelName" placeholder="案卡项名称"/>
-            <button style="margin-left: 6px" type="button" class="btn btn-primary" onclick="traceGJ()">溯源</button>
-        </div>
-    </div>
-
-    <div style="margin-top: 6px" class="col-lg-12">
-        <div class="input-group">
-
-            <input class="form-control" type="date" style="width: 360px" id="TimeStartName" placeholder="起始时间"/>
-            <input class="form-control" type="date" style="width: 360px" id="TimeEndName" placeholder="截至时间"/>
-            <button style="margin-left: 6px" type="button" class="btn btn-primary" onclick="timeSearch()">
-                时间查找
-            </button>
-
-        </div>
-    </div>
-
-    <div style="margin-top: 6px" class="col-lg-12">
-        <div class="input-group">
-            <input class="form-control" type="text" style="width: 360px" id="userName" placeholder="操作人名"/>
-            <div style="margin-left: 6px" class="btn-group">
-                <button type="button" class="btn btn-primary" id="relatedCase" onclick="relatedCase()">涉及案件</button>
-                <button type="button" class="btn btn-primary" id="relatedData" onclick="relatedData()">涉及数据</button>
-            </div>
-
-        </div>&lt;!&ndash; /input-group &ndash;&gt;
-    </div>
-
-    <div style="margin-top: 6px" class="col-lg-12">
-        <div class="input-group">
-            <input class="form-control" type="text" style="width: 360px" id="executeQuery" placeholder="执行查询"/>
-            <div style="margin-left: 6px" class="btn-group">
-                <button type="button" class="btn btn-primary" onclick="executeQuery()">执行查询</button>
-                <button type="button" class="btn btn-primary" onclick="executeClear()">清空数据</button>
-            </div>
-        </div>
-    </div>*/-->
-
-    <!--    <div style="margin-top: 6px" class="col-lg-12">-->
-    <!--        <div class="input-group">-->
-    <!--            <input class="form-control" type="text" style="width: 160px" id="caseTaskId" placeholder="案件环节ID"/>-->
-    <!--            <input class="form-control" type="number" style="width: 160px" id="actionLength" placeholder="推理/溯源路径长度"/>-->
-    <!--            <div style="margin-left: 6px" class="btn-group">-->
-    <!--                <button type="button" class="btn btn-primary" id="inference" onclick="inference()">推理</button>-->
-    <!--                <button type="button" class="btn btn-primary" id="trace" onclick="trace()">溯源</button>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
-
-    <!--    <div style="margin-top: 6px" class="col-lg-12">-->
-    <!--        <div class="input-group">-->
-    <!--            <input class="form-control" type="text" style="width: 160px" id="logIn" placeholder="案件实例ID"/>-->
-    <!--            <button style="margin-left: 6px" type="button" class="btn btn-primary" id="logIn" onclick="logImport()">导入日志-->
-    <!--            </button>-->
-    <!--        </div>&lt;!&ndash; /input-group &ndash;&gt;-->
-    <!--    </div>-->
-
-
 </div>
 
 <div style = "border-top: 8px solid lightgray; margin-top: 5px;">
@@ -292,6 +202,16 @@
 <div id = "chart" style = "position: relative">
 
 </div>
+    <!--colorful pulse-->
+    <div id="colorfulPulse" style = "position: fixed;margin-top: 130px;margin-left:300px">
+        <span class="item-1"></span>
+        <span class="item-2"></span>
+        <span class="item-3"></span>
+        <span class="item-4"></span>
+        <span class="item-5"></span>
+        <span class="item-6"></span>
+        <span class="item-7"></span>
+    </div>
 </div>
 
 <!--<div role="tabpanel">
@@ -353,10 +273,15 @@
 <!--<script src="${rc.contextPath}/pluginjs/app.js"></script>-->
 <script type="text/javascript">
 
+    var over_str = ['刑事检察','刑事执行','公益诉讼','民事','行政','未检业务','控告申诉','检委办','对台业务','案管','司法协助'];
+    var over_data = over_data = [7,4,3,3,2,2,2,2,2,2,2];;
+    var over_sum = 30;
+    var over_count = 0;
+
     var connection = function () {
         configStr = localStorage.getItem("neoconfig");
         configJSON = JSON.parse(configStr)
-        console.log(configJSON.NEO_SERVER_URL, configJSON.NEO_SERVER_USER, configJSON.NEO_SERVER_PSW)
+       // console.log(configJSON.NEO_SERVER_URL, configJSON.NEO_SERVER_USER, configJSON.NEO_SERVER_PSW)
         config = {
             url: "http://" + configJSON.NEO_SERVER_URL + ":7474",
             user: configJSON.NEO_SERVER_USER,
@@ -372,7 +297,7 @@
         var neo = new Neo(connection);
         try {
             var query = content;
-            console.log("Executing Query", query);
+            //console.log("Executing Query", query);
             neo.executeQuery(query, {}, function (err, res) {
                 res = res || {}
                 var graph = res.graph;
@@ -582,6 +507,7 @@
         var query = content;
         var neo = new Neo(connection);
         ll = ll.toString();
+        document.getElementById("caseList").innerHTML = "";
         console.log(ll);
         $.ajax({
             type:"get",
@@ -602,9 +528,11 @@
                         var timeStr = res[i].cjsj.toString();
                         var is_complete = res[i].is_complete;
                         console.log(timeStr);
-                        var time = timeStr.substring(0,4) + "年" + timeStr.substring(5,7) + "月" + timeStr.substring(8,10) + "日";
-                        str = "<li class=\"list-group-item\"><span style=\"float: left;margin-top:-2px\">"+className+"</span>  <span style=\"margin-left:-10px;margin-top:-2px\">"+bmsah+"</span> <button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect(\'"+bmsah+"\')\">"+"世系查询"+"</button> <span style=\"float:right;margin-right:50px;margin-top:-2px\">"+time+"</span>";
-                        document.getElementById("caseList").innerHTML += str;
+                        if(true) {
+                            var time = timeStr.substring(0,4) + "年" + timeStr.substring(5,7) + "月" + timeStr.substring(8,10) + "日";
+                            str = "<li class=\"list-group-item\"><span style=\"float: left;margin-top:-2px\">"+className+"</span>  <span style=\"margin-left:-10px;margin-top:-2px\">"+bmsah+"</span> <button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect(\'"+bmsah+"\')\">"+"世系查询"+"</button> <span style=\"float:right;margin-right:50px;margin-top:-2px\">"+time+"</span>";
+                            document.getElementById("caseList").innerHTML += str;
+                        }
                     }
                     var zz=getzz();
                     change(1,zz);
@@ -621,7 +549,7 @@
         for(var i=0;i <a.length;i++){
             zz[i]=a[i].innerHTML;
         } //div的字符串数组付给zz
-        console.log("zz is" + zz);
+       // console.log("zz is" + zz);
         return zz;
     }
 
@@ -629,7 +557,7 @@
     var pageno = 1;
     var gg;
     function change(e,zz){
-        console.log("zz is" + zz);
+        //console.log("zz is" + zz);
         gg = zz;
         pageno=e;
         var pagesize=4; //每页多少条信息
@@ -680,6 +608,8 @@
         query = "MATCH (n:BALB) WHERE n.class=\'" + "刑事检察" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
         clearNodeInfo();
+        document.getElementById("chart").innerHTML = "";
+        rank(ll.toString());
         console.log("monitorClick");
         executeNode(query,ss,ll);
     }
@@ -692,6 +622,11 @@
         query = "MATCH (n:BALB) WHERE n.class=\'" + "刑事执行" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
         clearNodeInfo();
+        var over_str = ['刑事检察','刑事执行','公益诉讼','民事','行政','未检业务','控告申诉','检委办','对台业务','案管','司法协助'];
+        var over_data = over_data = [7,4,3,3,2,2,2,2,2,2,2];;
+        document.getElementById("chart").innerHTML = "";
+        zhizhutu(over_data,over_str);
+        //rank(ll.toString());
         executeNode(query,ss,ll);
     }
 
@@ -702,6 +637,8 @@
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "公益诉讼" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
+        document.getElementById("chart").innerHTML = "";
+        rank(ll.toString());
         clearNodeInfo();
         executeNode(query,ss,ll);
     }
@@ -715,6 +652,8 @@
         query = "MATCH (n:BALB) WHERE n.class=\'" + "民事" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
         clearNodeInfo();
+        document.getElementById("chart").innerHTML = "";
+        rank(ll.toString());
         executeNode(query,ss,ll);
     }
     function xinzhengClick(){
@@ -725,6 +664,8 @@
         query = "MATCH (n:BALB) WHERE n.class=\'" + "行政" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
         clearNodeInfo();
+        document.getElementById("chart").innerHTML = "";
+        rank(ll.toString());
         executeNode(query,ss,ll);
     }
     function weijianClick(){
@@ -735,6 +676,8 @@
         query = "MATCH (n:BALB) WHERE n.class=\'" + "未检业务" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
         clearNodeInfo();
+        document.getElementById("chart").innerHTML = "";
+        rank(ll.toString());
         executeNode(query,ss,ll);
     }
 
@@ -746,6 +689,8 @@
         query = "MATCH (n:BALB) WHERE n.class=\'" + "控告申诉" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
         clearNodeInfo();
+        document.getElementById("chart").innerHTML = "";
+        rank(ll.toString());
         executeNode(query,ss,ll);
     }
 
@@ -757,6 +702,8 @@
         query = "MATCH (n:BALB) WHERE n.class=\'" + "检委办" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
         clearNodeInfo();
+        document.getElementById("chart").innerHTML = "";
+        rank(ll.toString());
         executeNode(query,ss,ll);
     }
 
@@ -768,6 +715,8 @@
         query = "MATCH (n:BALB) WHERE n.class=\'" + "对台业务" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
         clearNodeInfo();
+        document.getElementById("chart").innerHTML = "";
+        rank(ll.toString());
         executeNode(query,ss,ll);
     }
 
@@ -779,6 +728,8 @@
         query = "MATCH (n:BALB) WHERE n.class=\'" + "案管" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
         clearNodeInfo();
+        document.getElementById("chart").innerHTML = "";
+        rank(ll.toString());
         executeNode(query,ss,ll);
     }
 
@@ -790,6 +741,8 @@
         query = "MATCH (n:BALB) WHERE n.class=\'" + "司法协助" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
         clearNodeInfo();
+        document.getElementById("chart").innerHTML = "";
+        rank(ll.toString());
         executeNode(query,ss,ll);
     }
 
@@ -801,28 +754,64 @@
         //todo dynamic configuration
         // var query = "MATCH (n:CASE) WITH n MATCH p=(n)-[*]->(m:Task) RETURN p,n,m";
         // execute(query);
+        canvas_data();
     });
 
-    var over_str = ['刑事检察','刑事执行','公益诉讼','民事','行政','未检业务','控告申诉','检委办','对台业务','案管','司法协助'];
-    var over_data = new Array(over_str.length);
-    var over_data = [7,4,3,2,2,2,2,2,2,2,2];
-    var over_sum = 30;
 
-    window.onload = (function () {
-       /* for (var i = 0; i < over_str.length; i++) {
+
+
+    function IsUniqueString(str,name_str) {
+        flag = 1;
+        for(k in name_str) {
+            if(str == name_str[k]) flag = 0;
+        }
+        return flag;
+    }
+
+    function IsMarkString(str,name_str) {
+        flag = 0;
+        for(k in name_str) {
+            if(str == name_str[k]) flag = k;
+            //console.log(str)
+        }
+        return flag;
+    }
+
+    function nameCount(name,name_count,name_str) {
+        if(IsUniqueString(name,name_str)) {
+            name_count.push(1);
+            name_str.push(name);
+            over_count++;
+        }
+        else {
+            name_count[IsMarkString(name,name_str)] = name_count[IsMarkString(name,name_str)] + 1;
+        }
+        return name_count;
+    }
+
+
+        function rank(ll) {
+        var name_str=new Array();
+        var name_count=new Array();
+        var temp = new Array();
+        for (var i = 0; i < over_str.length; i++) {
             clearNodeInfo();
             var over_neo = new Neo(connection);
             try {
-                var over_query = "MATCH (n:BALB) WHERE n.class=\'" + over_str[i] + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
+                var over_query = "MATCH (n) WHERE n.案件类别= \'" + ll + "\' WITH n MATCH p = (n) - [*] -> (m)  RETURN m,p";
+                console.log(over_query);
                 over_neo.executeQuery(over_query, {}, function (err, res) {
                     res = res || {};
                     var over_graph = res.graph;
                     if (over_graph) {
-                        //var over_node = over_graph.nodes;
-                        //over_selectNode = JSON.parse(JSON.stringify(over_node));
-                       //over_data[i] = parseFloat(over_node.length);
-                        //console.log("over_data is"+ over_data[i]);
-                        //over_sum += over_data[i];
+                        var over_node = over_graph.nodes;
+                        over_selectNode = JSON.parse(JSON.stringify(over_node));
+                        for(i in over_selectNode) {
+                            if(over_selectNode[i].name != null) {
+                               // console.log(over_selectNode[i].name);
+                                name_count = nameCount(over_selectNode[i].name,name_count,name_str);
+                            }
+                        }
                     } else {
                         if (err) {
                             console.log(err);
@@ -837,10 +826,53 @@
             }catch (e) {
                 console.log(e);
             }
-        }*/
-        canvas_data();
-        zhizhutu();
-    });
+        }
+        var minIndex = 0;
+        console.log(name_count);
+        console.log("name_count" + name_count);
+        //console.log(name_str);
+        setTimeout(function() {
+            var t = 0;
+            var c = name_count.length;
+            var tm = new Array(11);
+            for (var m = 0; m < c - 1; m++) {
+                minIndex = m;
+                for (var n = m + 1; n < c; n++) {
+                    if (name_count[n] > name_count[minIndex]) {     // 寻找最小的数
+                        minIndex = n;                 // 将最小数的索引保存
+                    }
+                }
+                t = name_count[m];
+                name_count[m] = name_count[minIndex];
+                name_count[minIndex] = t;
+                if(m <= 10){
+                    tm[m] = minIndex;
+                }
+            }
+            var str = new Array(11);
+            var data = new Array(11)
+            for(h in name_count) {
+                data[h] = name_count[h];
+                str[h] = name_str[tm[h]];
+                //str[h] = String.valueOf(str[h]).substring(0,1);
+            }
+            var strstr = [];
+            var datadata = [];
+            console.log(name_count);
+            console.log(data);
+            for(var ii = 0; ii < 11; ii++) {
+                if(str[ii].length > 4){
+                    strstr[ii] = str[ii].substring(0,4);
+
+                }else {
+                    strstr[ii] = str[ii];
+                }
+                datadata[ii] = data[ii];
+            }
+            zhizhutu(datadata,strstr);
+        },1000);
+    }
+
 
 
 
@@ -865,7 +897,7 @@
             canvas: canvas,
             title:"案件信息",
             callback:function(obj){
-                console.log(obj.label1);
+                //console.log(obj.label1);
             }
         };
         pieChart.initSettings(config);
@@ -995,7 +1027,7 @@
             var bbox = canvas.getBoundingClientRect();
             var loc = { x: x - bbox.left * (canvas.width  / bbox.width),
                 y: y - bbox.top  * (canvas.height / bbox.height)};
-            console.log(loc);
+            //console.log(loc);
 
             var dx = loc.x - obj.circle.cx;
             var dy = loc.y - obj.circle.cy;
@@ -1017,7 +1049,7 @@
                         break;
                     }
                 }
-                console.log(obj.series[i]);
+                //console.log(obj.series[i]);
                 obj.callback(obj.series[index]);
                 //console.log(obj.series[index].label1);
             }
@@ -1052,8 +1084,10 @@
 
     }
 
-    function zhizhutu() {
-        var dataset = over_data;  // 数据集
+    function zhizhutu(data,str) {
+        console.log(data);
+        var dataset = data;  // 数据集
+        var strset = str;
         var datasetName = {
             x: ["刑事检察", "刑事执行", "公益诉讼", "民事", "行政", "未检业务", "控告申诉", "检委办", "对台业务", "案管", "司法协助"],
             y: [40, 30, 50, 70, 90, 20, 10, 40]
@@ -1073,7 +1107,7 @@
 
         /* x轴比例尺(序数比例尺) */
         var xScale = d3.scale.ordinal()
-            .domain(datasetName.x)
+            .domain(strset)
             .rangeRoundBands([0, xAxisWidth], 0.2);
 
         /* y轴比例尺(线性比例尺) */
@@ -1110,17 +1144,11 @@
             .attr("transform", "translate(" + padding.left + "," + (height - padding.bottom - yAxisWidth) + ")")
             .call(yAxis);
 
-
-        svg.selectAll('.bar')
-            .attr('x', function (d, i) {
-                return xScale(datasetName.x[i]);
-            });
-i
         /* rect处理函数 */
         function rectFun(selection) {
             selection.attr("fill", "steelblue")
                 .attr("x", function (d, i) {
-                    return padding.left + xScale(datasetName.x[i]);
+                    return padding.left + xScale(strset[i]);
                 })
                 .attr("y", function (d) {
                     return height - padding.bottom - yScale(d);
@@ -1139,8 +1167,11 @@ i
         function textFun(selection) {
             selection.attr("fill", "white")
                 .attr("font-size", "14px").attr("text-anchor", "middle")
+                 //width:100px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+                /*.attr("width", "40px").attr("overflow", "hidden")
+                .attr("text-overflow", "ellipsis").attr("white-space", "nowrap")*/
                 .attr("x", function (d, i) {
-                    return padding.left + xScale(datasetName.x[i]);
+                    return padding.left + xScale(strset[i]);
                 })
                 .attr("y", function (d) {
                     return height - padding.bottom - yScale(d);
@@ -1149,6 +1180,12 @@ i
                 .text(function (d) {
                     return d;
                 });
+        }
+
+        document.onreadystatechange = function(){
+            if(doucument.readyState == 'complete'){
+               // document.getElementById("colorfulPulse").style.display = "none";
+            }
         }
     }
 </script>
