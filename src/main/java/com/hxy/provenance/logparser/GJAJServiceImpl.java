@@ -17,22 +17,21 @@ import com.hxy.provenance.neo4j.NeoConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
 @Service("GJAJService")
 public class GJAJServiceImpl implements GJAJService {
+    public static DateTimeFormatter zhxgsjFormatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    public static DateTimeFormatter zhxgsjFormatter2 = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
     @Autowired
     private GJAJDao caseDao;
-
     @Autowired
     private GJRZDao logDao;
-
 
     @Override
     public GJAJEntity queryObject(String id) {
@@ -67,7 +66,6 @@ public class GJAJServiceImpl implements GJAJService {
         logDao.save(rz);
     }
 
-
     @Override
     public void update(GJAJEntity leave) {
         if (StringUtils.isEmpty(leave.getBMSAH())) {
@@ -97,7 +95,6 @@ public class GJAJServiceImpl implements GJAJService {
         return PageHelper.endPage();
     }
 
-
     @Override
     public Result parseLog(String BMSAH) {
 
@@ -112,6 +109,7 @@ public class GJAJServiceImpl implements GJAJService {
 
         //2. 从RZ_YX_RZ中查询该BMSAH所有的日志
         List<GJRZEntity> rzlist = logDao.queryList(BMSAH); //按时间升序排列
+        List<Map<String, Object>> taskList = new ArrayList<>();
         try {
             //2.1 先添加流程信息：
             for (GJRZEntity lcrz : rzlist) {
@@ -124,8 +122,12 @@ public class GJAJServiceImpl implements GJAJService {
                         map.put("name", LCRZMS);
                         map.put("操作人", lcrz.getCZRM());
                         map.put("日志ID", lcrz.getID());
+                        String zhxgsj = LocalDateTime.parse(lcrz.getZHXGSJ(), zhxgsjFormatter1).format(zhxgsjFormatter2);
+                        map.put("zhxgsj", zhxgsj);
                         String taskNodeId = GJNeo4jUtil.addTaskNode(BMSAH, "Task", "下一步", false, map);
                         GJNeo4jUtil.addUserNode(lcrz.getCZRM(), taskNodeId, "修改");
+                        map.put("id", taskNodeId);
+                        taskList.add(map);
                     }
                 }
             }
@@ -156,6 +158,24 @@ public class GJAJServiceImpl implements GJAJService {
                                 par.put("name", showKey);
                                 par.put("操作人", rz.getCZRM());
                                 par.put("日志ID", rz.getID());
+
+                                int relatedTaskId = taskList.size()-1;
+                                for (int i = 0; i < taskList.size(); i++) {
+                                    Map<String, Object> task = taskList.get(i);
+                                    String zhxgsj = (String) task.get("zhxgsj");
+                                    String rzZhxgsj = LocalDateTime.parse(rz.getZHXGSJ(), zhxgsjFormatter1).format(zhxgsjFormatter2);
+                                    if (Long.valueOf(rzZhxgsj) < Long.valueOf(zhxgsj)) {
+                                        relatedTaskId = i;
+                                        break;
+                                    }
+                                }
+
+                                if (relatedTaskId>=0) {
+                                    Map<String, Object> lastTask = taskList.get(relatedTaskId);
+                                    par.put("taskNodeId", lastTask.get("id"));
+                                    par.put("taskNodeName", lastTask.get("name"));
+                                }
+
                                 String taskNodeId = GJNeo4jUtil.addPropertyNode(BMSAH, key, "相关", false, par);
                                 GJNeo4jUtil.addUserNode(rz.getCZRM(), taskNodeId, "修改");
                             }
@@ -178,6 +198,24 @@ public class GJAJServiceImpl implements GJAJService {
                                 par.put("name", showKey);
                                 par.put("操作人", rz.getCZRM());
                                 par.put("日志ID", rz.getID());
+
+                                int relatedTaskId = taskList.size()-1;
+                                for (int i = 0; i < taskList.size(); i++) {
+                                    Map<String, Object> task = taskList.get(i);
+                                    String zhxgsj = (String) task.get("zhxgsj");
+                                    String rzZhxgsj = LocalDateTime.parse(rz.getZHXGSJ(), zhxgsjFormatter1).format(zhxgsjFormatter2);
+                                    if (Long.valueOf(rzZhxgsj) < Long.valueOf(zhxgsj)) {
+                                        relatedTaskId = i;
+                                        break;
+                                    }
+                                }
+
+                                if (relatedTaskId>=0) {
+                                    Map<String, Object> lastTask = taskList.get(relatedTaskId);
+                                    par.put("taskNodeId", lastTask.get("id"));
+                                    par.put("taskNodeName", lastTask.get("name"));
+                                }
+
                                 String taskNodeId = GJNeo4jUtil.addPropertyNode(BMSAH, key, "相关", false, par);
                                 GJNeo4jUtil.addUserNode(rz.getCZRM(), taskNodeId, "修改");
                             }

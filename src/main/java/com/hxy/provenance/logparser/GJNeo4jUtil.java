@@ -20,25 +20,14 @@ public class GJNeo4jUtil {
     public static String NEO_SERVER_USER;//= "neo4j";
 
     public static String NEO_SERVER_PSW;//= "1992";
-
-    private static Driver driver = null;
-
-    static Logger logger = LoggerFactory.getLogger(GJNeo4jUtil.class);
-
     public static GJNeo4jUtil finalUtil;
-
+    static Logger logger = LoggerFactory.getLogger(GJNeo4jUtil.class);
+    static SimpleDateFormat format1 = new SimpleDateFormat("yyyy年MM月dd日HH时mm分ss秒SSS");
+    static SimpleDateFormat format2 = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+    private static Driver driver = null;
     @Autowired
     private Environment env;
 
-
-
-    @PostConstruct
-    public void init() {
-        finalUtil = this;
-    }
-
-    static SimpleDateFormat format1 = new SimpleDateFormat("yyyy年MM月dd日HH时mm分ss秒SSS");
-    static SimpleDateFormat format2 = new SimpleDateFormat("yyyyMMddHHmmss");
     private static Driver createDrive() {
         if (driver == null) {
             synchronized (GJNeo4jUtil.class) {
@@ -54,7 +43,6 @@ public class GJNeo4jUtil {
         }
         return driver;
     }
-
 
     /**
      * 插入自定义key value节点
@@ -94,7 +82,7 @@ public class GJNeo4jUtil {
         //当前时间作为nodeId
 
         map.put("创建时间", curTime);
-        map.put("timestamp",format2.format(new Date()));
+        map.put("timestamp", format2.format(new Date()));
         try {
 
             StringBuilder terminal = new StringBuilder("CREATE (a:");
@@ -153,7 +141,6 @@ public class GJNeo4jUtil {
         return code.getId();
     }
 
-
     public static Code relate(Code code) {
 
         try {
@@ -174,7 +161,6 @@ public class GJNeo4jUtil {
 
         return code;
     }
-
 
     /**
      * 流程环节
@@ -272,7 +258,8 @@ public class GJNeo4jUtil {
 
     public static String addPropertyNode(String BMSAH, String label, String relation, boolean reverse, Map<String, Object> map) {
         String lastNodeId = null;
-        String lastTaskNodeId = null;
+        String lastTaskNodeId = (String) map.get("taskNodeId");
+        String lastTaskNodeName = (String) map.get("taskNodeName");
         String lastNodeValue = null;
 
         //先查询有没有这个BMSAH的属性节点，没有就插入，有就返回该属性的最后一个节点id，并作为当前插入的lastNode
@@ -302,30 +289,40 @@ public class GJNeo4jUtil {
             map.put(NeoConstants.KEY_LAST_NODE_ID, lastNodeId);
         }
 
-        //附加流程信息
-        StatementResult findTaskResult = session.run("MATCH (c:CASE) where c.caseId = '" + BMSAH + "' with c MATCH p = (c) - [*] -> (m:Task) return m Order by m.创建时间 desc Limit 1");
-        if (findTaskResult != null && findTaskResult.hasNext()) {
-            while (findTaskResult.hasNext()) {
-                Record record = findTaskResult.next();
-                lastTaskNodeId = record.fields().get(0).value().toString().replace("node<", "").replace(">", "");
-                String lastTaskLable = record.fields().get(0).value().get("name").toString(); //取出环节名称
-                String lastTaskName = lastTaskLable.substring(1, lastTaskLable.length() - 1);
-                map.put("所属环节", lastTaskName);
+
+        if (!StringUtils.isEmpty(lastTaskNodeId)) {
+            map.put("所属环节", lastTaskNodeName);
+            map.put(NeoConstants.KEY_LAST_NODE_ID, lastTaskNodeId);
+        } else {
+            //附加流程信息
+            StatementResult findTaskResult = session.run("MATCH (c:CASE) where c.caseId = '" + BMSAH + "' with c MATCH p = (c) - [*] -> (m:Task) return m Order by m.创建时间 desc Limit 1");
+            if (findTaskResult != null && findTaskResult.hasNext()) {
+                while (findTaskResult.hasNext()) {
+                    Record record = findTaskResult.next();
+
+                    String lastTaskLable = record.fields().get(0).value().get("name").toString(); //取出环节名称
+                    String lastTaskName = lastTaskLable.substring(1, lastTaskLable.length() - 1);
+                    map.put("所属环节", lastTaskName);
+                }
             }
         }
-
 
         if (lastNodeValue == null || map.get(label) == null || !map.get(label).equals(lastNodeValue)) {
             map.put("caseId", BMSAH);
-            if (!StringUtils.isEmpty(lastTaskNodeId)) {
-                lastNodeId = lastTaskNodeId;
-            }
 
             String nodeId = GJNeo4jUtil.createKeyValues(label, lastNodeId, relation, reverse, map);
+
+            Code code = new Code();
+            code.setNodeFromId(lastTaskNodeId);
+            code.setNodeToId(nodeId);
+            code.setLabel("相关");
+            code.setRelation("相关");
+            relate(code);
+
             return nodeId;
         }
 
-        return lastTaskNodeId;
+        return lastNodeId;
 
     }
 
@@ -387,6 +384,11 @@ public class GJNeo4jUtil {
         }
 
         return caseNodeId;
+    }
+
+    @PostConstruct
+    public void init() {
+        finalUtil = this;
     }
 
 
