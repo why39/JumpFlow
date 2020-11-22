@@ -1,4 +1,5 @@
 var over_bmsah = null;
+var over_flag = 0;
 function Neod3Renderer() {
 
     var styleContents =
@@ -19,6 +20,7 @@ function Neod3Renderer() {
           padding: 3px;\
           text-color-external: #000000;\
           text-color-internal: #FFFFFF;\
+          width:100;\
         }\n";
 
     var skip = ["id", "start", "end", "source", "target", "labels", "type", "selected", "properties"];
@@ -48,7 +50,7 @@ function Neod3Renderer() {
     var selectNode = null;
 
     function clickNode(node) {
-        console.log("click_node");
+        console.log("click_node" + over_flag);
         selectNode = JSON.parse(JSON.stringify(node));
         console.log(selectNode);
         if(selectNode.name != null) {
@@ -81,6 +83,7 @@ function Neod3Renderer() {
             //document.getElementById("suyuanName").value = '附注';
         }
         if (selectNode.label == "Task") {
+            //console.log(document.getElementById("tableData"));
             $(".nodeId").text("<id> : "+node.id);
             $(".caseId").text("<所属案件ID> : "+selectNode.caseId);
             // $(".nodeTaskId").text("<案件环节ID> : "+selectNode.taskId);
@@ -94,7 +97,7 @@ function Neod3Renderer() {
                 buttons: {
                     cancel: "取消",
                     more: {
-                        text: "展开案卡项数据",
+                        text: "展开案卡项",
                         value: "more",
                     }
                 },
@@ -103,7 +106,13 @@ function Neod3Renderer() {
                 switch (value) {
 
                     case "more":
-                        execute("match (n) where ID(n) = "+node.id+" with n match p = (n) - [r:相关] ->(m) return p")
+                    if(document.getElementById("tableData")){
+                        document.getElementById("tableData").setAttribute
+                        ("style", "margin-left:0px;width:1210px");
+                        document.getElementById("leftContent").setAttribute
+                        ("style", "display:none");
+                    }
+                        execute("match (n) where ID(n) = "+node.id+" with n match p = (n) - [r:相关] ->(m) return p");
                         break;
 
                 }});
@@ -121,21 +130,84 @@ function Neod3Renderer() {
                 }
             }
 
+            console.log("案件名+"+ selectNode["案件名"]);
+
             if(selectNode[selectNode["label"]] ==  undefined) {
                 selectNode["label"] == "";
-                swal({
-                    title: selectNode["copy_name"],
-                    text: alertString ,
-                    icon: "success",
-                });
+                if(selectNode["案件名"] != undefined){
+                    swal({
+                        title: selectNode["copy_name"],
+                        text: alertString ,
+                        icon: "success",
+                    });
+                }
+                if(selectNode["案件名"] == undefined) {
+                    swal({
+                        title: selectNode["copy_name"],
+                        icon: "success",
+                        buttons: {
+                            cancel: "取消",
+                            more: {
+                                text: "查看该案卡项",
+                                value: "more",
+                            }
+                        },
+
+                    }).then((value) => {
+                        switch (value) {
+
+                        case "more":
+                            execute("MATCH (n) WHERE n.caseId='汉东检刑诉受[2019]980000100216号' WITH n MATCH p = (n) - [*] -> (m) where m.name='附注' RETURN m,p");
+                            if(document.getElementById("tableData")){
+                                document.getElementById("tableData").setAttribute
+                                ("style", "margin-left:300px;width:960px");
+                                document.getElementById("leftContent").setAttribute
+                                ("style", "position:absolute;width:370px;height: 620px;" +
+                                    " display: block;border-right: 3px solid lightgray;z-index: 100 ;overflow-y:auto;overflow-x:hidden;");
+                            }
+                            break;
+
+                        }});
+                }
                 /*sweetAlert(selectNode["copy_name"]
                     ,alertString
                     , "info");*/
             }
             else {
-                sweetAlert(selectNode["copy_name"] + ":" + selectNode[selectNode["label"]]
-                    ,alertString
-                    , "success");
+                if(selectNode["案件名"] != undefined){
+                    sweetAlert(selectNode["copy_name"] + ":" + selectNode[selectNode["label"]]
+                        ,alertString
+                        , "success");
+                }
+                if(selectNode["案件名"] == undefined) {
+                    swal({
+                        title: selectNode["copy_name"],
+                        icon: "success",
+                        buttons: {
+                            cancel: "取消",
+                            more: {
+                                text: "查看该案卡项",
+                                value: "more",
+                            }
+                        },
+
+                    }).then((value) => {
+                        switch (value) {
+
+                        case "more":
+                            execute("MATCH (n) WHERE n.caseId='汉东检刑诉受[2019]980000100216号' WITH n MATCH p = (n) - [*] -> (m) where m.name='附注' RETURN m,p");
+                            if(document.getElementById("tableData")){
+                                document.getElementById("tableData").setAttribute
+                                ("style", "margin-left:300px;width:960px");
+                                document.getElementById("leftContent").setAttribute
+                                ("style", "position:absolute;width:370px;height: 620px;" +
+                                    " display: block;border-right: 3px solid lightgray;z-index: 100 ;overflow-y:auto;overflow-x:hidden;");
+                            }
+                            break;
+
+                        }});
+                }
+
             }
             //console.log(selectNode["label"]);
 
@@ -323,7 +395,6 @@ function Neod3Renderer() {
             }
         }
 
-        console.log("KeyHandler");
         var links = visualization.links;
         var nodes = visualization.nodes;
         for (var i = 0; i < links.length; i++) {
@@ -437,5 +508,17 @@ function lineageSelect(bmsah) {
     over_bmsah = bmsah;
     window.location.href="http://localhost:8083/hxyActiviti/neoData.html?bmsah="+encodeURI(bmsah);
 }
+
+/*
+$(document).ready(function() {
+    createStoryJS({
+        type:		'timeline',
+        width:		'100',
+        height:		'620',
+        source:		'12334fsdfdsfdsfdsfdsfsdfdsfsdfsdfsdf',
+        embed_id:	'leftContent'
+    });
+});
+*/
 
 

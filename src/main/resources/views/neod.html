@@ -15,144 +15,12 @@
 
     <!-- Basic Css files -->
     <link rel="stylesheet" href="${rc.contextPath}/styles/metismenu.min.css" >
+    <link rel="stylesheet" href="${rc.contextPath}/styles/neodCss1.css" >
     <style>
-        path.link{fill:none;stroke:#7f8c8d;stroke-width:2px}
-        text{font-family:sans-serif;pointer-events:none}
-        marker{fill:#d8dadc}
-        text .faded{fill:#333}
-        .node .outline{-webkit-transform:scale(1);-moz-transform:scale(1);-o-transform:scale(1);-ms-transform:scale(1);transform:scale(1);-webkit-transition:all .15s;-moz-transition:all .15s;-o-transition:all .15s;-ms-transition:all .15s;transition:all .15s;-webkit-transition-timing-function:cubic-bezier(.694,.0482,.335,1);-moz-transition-timing-function:cubic-bezier(.694,.0482,.335,1);-o-transition-timing-function:cubic-bezier(.694,.0482,.335,1);-ms-transition-timing-function:cubic-bezier(.694,.0482,.335,1);transition-timing-function:cubic-bezier(.694,.0482,.335,1)}
-        .node:hover .outline{-webkit-transform:scale(1.4);-moz-transform:scale(1.4);-o-transform:scale(1.4);-ms-transform:scale(1.4);transform:scale(1.4)}
-        .relationship:hover{stroke:#3498db}
-        .outline,.overlay{cursor:pointer}
-        g.node text[stroke="#DFE1E3"] {text-shadow: -1px -1px 2px #DFE1E3, -1px 1px 2px #DFE1E3, -1px 0 2px #DFE1E3, 1px -1px 2px #DFE1E3, 1px 1px 2px #DFE1E3, 1px 0 2px #DFE1E3, 0 -1px 2px #DFE1E3, 0 1px 2px #DFE1E3}
-        g.node text[stroke="#F25A29"] {text-shadow: -1px -1px 2px #F25A29, -1px 1px 2px #F25A29, -1px 0 2px #F25A29, 1px -1px 2px #F25A29, 1px 1px 2px #F25A29, 1px 0 2px #F25A29, 0 -1px 2px #F25A29, 0 1px 2px #F25A29}
-        g.node text[stroke="#AD62CE"] {text-shadow: -1px -1px 2px #AD62CE, -1px 1px 2px #AD62CE, -1px 0 2px #AD62CE, 1px -1px 2px #AD62CE, 1px 1px 2px #AD62CE, 1px 0 2px #AD62CE, 0 -1px 2px #AD62CE, 0 1px 2px #AD62CE}
-        g.node text[stroke="#30B6AF"] {text-shadow: -1px -1px 2px #30B6AF, -1px 1px 2px #30B6AF, -1px 0 2px #30B6AF, 1px -1px 2px #30B6AF, 1px 1px 2px #30B6AF, 1px 0 2px #30B6AF, 0 -1px 2px #30B6AF, 0 1px 2px #30B6AF}
-        g.node text[stroke="#FCC940"] {text-shadow: -1px -1px 2px #FCC940, -1px 1px 2px #FCC940, -1px 0 2px #FCC940, 1px -1px 2px #FCC940, 1px 1px 2px #FCC940, 1px 0 2px #FCC940, 0 -1px 2px #FCC940, 0 1px 2px #FCC940}
-        g.node text[stroke="#4356C0"] {text-shadow: -1px -1px 2px #4356C0, -1px 1px 2px #4356C0, -1px 0 2px #4356C0, 1px -1px 2px #4356C0, 1px 1px 2px #4356C0, 1px 0 2px #4356C0, 0 -1px 2px #4356C0, 0 1px 2px #4356C0}
-        g.node text[stroke="#FF6C7C"] {text-shadow: -1px -1px 2px #FF6C7C, -1px 1px 2px #FF6C7C, -1px 0 2px #FF6C7C, 1px -1px 2px #FF6C7C, 1px 1px 2px #FF6C7C, 1px 0 2px #FF6C7C, 0 -1px 2px #FF6C7C, 0 1px 2px #FF6C7C}
-        g.node text[stroke="#a2cf81"] {text-shadow: -1px -1px 2px #a2cf81, -1px 1px 2px #a2cf81, -1px 0 2px #a2cf81, 1px -1px 2px #a2cf81, 1px 1px 2px #a2cf81, 1px 0 2px #a2cf81, 0 -1px 2px #a2cf81, 0 1px 2px #a2cf81}
-        g.node text[stroke="#f79235"] {text-shadow: -1px -1px 2px #f79235, -1px 1px 2px #f79235, -1px 0 2px #f79235, 1px -1px 2px #f79235, 1px 1px 2px #f79235, 1px 0 2px #f79235, 0 -1px 2px #f79235, 0 1px 2px #f79235}
-        g.node text[stroke="#785cc7"] {text-shadow: -1px -1px 2px #785cc7, -1px 1px 2px #785cc7, -1px 0 2px #785cc7, 1px -1px 2px #785cc7, 1px 1px 2px #785cc7, 1px 0 2px #785cc7, 0 -1px 2px #785cc7, 0 1px 2px #785cc7}
-        g.node text[stroke="#d05e7c"] {text-shadow: -1px -1px 2px #d05e7c, -1px 1px 2px #d05e7c, -1px 0 2px #d05e7c, 1px -1px 2px #d05e7c, 1px 1px 2px #d05e7c, 1px 0 2px #d05e7c, 0 -1px 2px #d05e7c, 0 1px 2px #d05e7c}
-        g.node text[stroke="#3986b7"] {text-shadow: -1px -1px 2px #3986b7, -1px 1px 2px #3986b7, -1px 0 2px #3986b7, 1px -1px 2px #3986b7, 1px 1px 2px #3986b7, 1px 0 2px #3986b7, 0 -1px 2px #3986b7, 0 1px 2px #3986b7}
 
-        div.tip-hill-div {
-            background: rgba(0, 0, 0, 0.7);
-            color: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            font-family: Microsoft Yahei;
-        }
-
-        div.tip-hill-div > h1 {
-            font-size: 14px;
-        }
-
-        div.tip-hill-div > h2 {
-            font-size: 12px;
-        }
-
-        .axis path,
-        .axis line {
-            stroke: #000;
-            fill: none;
-        }
-        .canvasClass:hover{
-            background-color: black;
-        }
-
-        .rectClass{
-            fill: yellow;
-        }
-
-        .rectClass:hover{
-            fill: black;
-        }
-
-        .rectClass0{
-             fill: #0792c9;
-         }
-        .rectClass0:hover{
-            fill: black;
-        }
-        .rectClass1{
-            fill: #1616d6;
-        }
-        .rectClass1:hover{
-            fill: black;
-        }
-        .rectClass2{
-            fill: #13cf74;
-        }
-        .rectClass2:hover{
-            fill: black;
-        }
-        .rectClass3{
-            fill: #c316ac;
-        }
-        .rectClass3:hover{
-            fill: black;
-        }
-        .rectClass4{
-            fill: #00c522;
-        }
-        .rectClass4:hover{
-            fill: black;
-        }
-
-        .rectClass5{
-            fill: #cac874;
-        }
-        .rectClass5:hover{
-            fill: black;
-        }
-        .rectClass6{
-            fill: #a7110a;
-        }
-        .rectClass6:hover{
-            fill: black;
-        }
-        .rectClass7{
-            fill: #d45f1c;
-        }
-        .rectClass7:hover{
-            fill: black;
-        }
-        .rectClass8{
-            fill: #c182b7;
-        }
-        .rectClass8:hover{
-            fill: black;
-        }
-        .rectClass9{
-            fill: #27ba7c;
-        }
-        .rectClass9:hover{
-            fill: black;
-        }
-        .rectClass10{
-            fill: #b5b4b1;
-        }
-        .rectClass10:hover{
-            fill: black;
-        }
-        .tick{
-            width:30px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
-        }
     </style>
 </head>
 <body>
-<!--<div>-->
-<!--&lt;!&ndash;<input class="form-control" type="url" value="http://127.0.0.1:7474" id="neo4jUrl"/><br/>&ndash;&gt;-->
-<!--&lt;!&ndash;<input class="form-control" type="text" size="8" value="neo4j" id="neo4jUser"/>&ndash;&gt;-->
-<!--&lt;!&ndash;<input class="form-control" type="password" size="8" placeholder="password" value="test" id="neo4jPass"/><br/>&ndash;&gt;-->
-<!--<textarea name="cypher" id="cypher" rows="4" cols="120" data-lang="cypher" class="code form-control">-->
-<!--MATCH (n)-[r]->(m)-->
-<!--RETURN n,r,m-->
-<!--</textarea>-->
-<!--<a href="#" title="Execute" id="execute"><i class="fa fa-play-circle-o"></i></a>-->
-<!--</div>-->
 
 <div >
 
@@ -194,11 +62,15 @@
 
 <div style = "border-top: 8px solid lightgray; margin-top: 5px;">
 
-
+    <p id = "containerName" style = "position: absolute;
+    margin-left: 910px;
+    margin-top: 190px;font-size: 24px;color: darkred;font-weight: bold">案件总数比例</p>
 <div id="my_container" style="width:440px; height:410px;float: right;position:relative;box-shadow: 0 0 50px grey;">
     <canvas id="pie_canvas" ></canvas>
 </div>
 
+    <p id = "chartName" style = "position:absolute;
+    margin-top: 40px;margin-left: 260px;font-size: 24px;color: darkred;font-weight: bold"></p>
 <div id = "chart" style = "position: relative">
 
 </div>
@@ -214,33 +86,6 @@
     </div>
 </div>
 
-<!--<div role="tabpanel">
-
-    &lt;!&ndash; Nav tabs &ndash;&gt;
-    &lt;!&ndash;<ul class="nav nav-tabs" role="tablist">&ndash;&gt;
-    &lt;!&ndash;<li role="presentation" class="active"><a href="#graph" aria-controls="home" role="tab" data-toggle="tab">Graph</a></li>&ndash;&gt;
-    &lt;!&ndash;<li role="presentation"><a href="#table" aria-controls="table" role="tab" data-toggle="tab">Table</a></li>&ndash;&gt;
-    &lt;!&ndash;</ul>&ndash;&gt;
-
-    &lt;!&ndash; Tab panes &ndash;&gt;
-    <div style="margin-top: 6px">
-        <span class="nodeId label label-success"></span>
-        <span class="caseId label label-default"></span>
-        <span class="nodeTaskId label label-default"></span>
-        <span class="nodeName label label-default"></span>
-
-    </div>
-
-    <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active">
-            <div class="tab-pane active" id="graph">&nbsp;</div>
-        </div>
-        <div role="tabpanel" class="tab-pane" id="table">
-            <div id="datatable"></div>
-        </div>
-    </div>-->
-
-
 
 
 <script src="https://d3js.org/d3.v4.js"></script>
@@ -254,23 +99,7 @@
 <script src="${rc.contextPath}/scripts/cy2neod3.js"></script>
 <script src="${rc.contextPath}/scripts/jquery.dataTables.min.js"></script>
 <script src="${rc.contextPath}/scripts/cypher.datatable.js"></script>
-<!--<script src="${rc.contextPath}/scripts/dashboard.js"></script>-->
 
-<!-- jQuery  -->
-<!--<script src="${rc.contextPath}/pluginjs/bootstrap.bundle.min.js"></script>
-<script src="${rc.contextPath}/pluginjs/modernizr.min.js"></script>
-<script src="${rc.contextPath}/pluginjs/metisMenu.min.js"></script>
-<script src="${rc.contextPath}/pluginjs/jquery.slimscroll.js"></script>
-<script src="${rc.contextPath}/pluginjs/waves.js"></script>-->
-
-<!--<script src="${rc.contextPath}/pluginjs/jquery.peity.min.js"></script>-->
-
-<!--Morris Chart-->
-<!--<script src="${rc.contextPath}/pluginjs/morris.min.js"></script>
-<script src="${rc.contextPath}/pluginjs/raphael-min.js"></script>-->
-
-<!-- App js -->
-<!--<script src="${rc.contextPath}/pluginjs/app.js"></script>-->
 <script type="text/javascript">
 
     var over_str = ['刑事检察','刑事执行','公益诉讼','民事','行政','未检业务','控告申诉','检委办','对台业务','案管','司法协助'];
@@ -342,133 +171,6 @@
             query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
         }
         console.log("$(\"#caseTaskId\").val()---->" + $("#caseTaskId").val());
-        clearNodeInfo();
-        execute(query);
-    }
-
-
-    //根据部门受案号查找案件
-    function filterCaseByBMSAH() {
-        var query = null;
-        var nodeCount=50;
-        if ($("#nodeCount").val()) {
-            nodeCount=$("#nodeCount").val()
-        }
-        if ($("#caseId").val()) {
-            query = "MATCH (n) WHERE n.caseId=\'" + $("#caseId").val() + "\' WITH n MATCH p = (m) - [*] -> (n) RETURN n,p limit("+nodeCount+")";
-        } else {
-            query = "MATCH (n)-[r]->(m) RETURN n,r,m";
-        }
-        console.log("$(\"#caseId\").val()---->" + $("#caseId").val());
-        clearNodeInfo();
-        execute(query);
-    }
-
-    //根据部门受案号查找案件，仅显示流程信息
-    function filterCaseFlow() {
-        var query = null;
-        if ($("#caseId").val()) {
-            query = "MATCH (m:CASE) WHERE m.caseId=\'" + $("#caseId").val() + "\' WITH m MATCH p = (m) - [*] -> (n:Task) RETURN m,n,p";
-        } else {
-            query = "match (n:CASE) with n match p=(n)-[*]->(m:Task) return p"; //不指定案件id，也只看所有案件的流程
-        }
-        console.log("$(\"#caseId\").val()---->" + $("#caseId").val());
-        clearNodeInfo();
-        execute(query);
-    }
-
-
-    //根据案件类别筛选案件
-    function filterCaseByCategory() {
-        var query = null;
-        if ($("#caseCategory").val()) {
-            query = "MATCH (m:CASE) WHERE m.案件类别=\'" + $("#caseCategory").val() + "\' WITH m MATCH p = (m) - [*] -> (n:Task) RETURN n,p,m";
-        } else {
-            query = "MATCH (n:CASE) WITH n MATCH p=(n)-[*]->(m:Task) RETURN p,n,m";
-        }
-        clearNodeInfo();
-        execute(query);
-    }
-
-    //根据案件名称模糊查询
-    function findCase() {
-        var query = null;
-        if ($("#caseName").val()) {
-            query = "MATCH (a:CASE) WHERE a.name=~ '.*" + $("#caseName").val() + ".*' with a MATCH p=(a)-[*]->(m:Task) RETURN a,p,m";
-        } else {
-            query = "MATCH (n:CASE) WITH n MATCH p=(n)-[*]->(m:Task) RETURN p,n,m";
-        }
-        console.log("$(\"#caseName\").val()---->" + $("#caseName").val());
-        clearNodeInfo();
-        execute(query);
-    }
-
-    //查找人名涉及的案件
-    function relatedCase() {
-        var query = null;
-        if ($("#userName").val()) {
-            query = "MATCH (n:USER) WHERE n.name=\'" + $("#userName").val() + "\' WITH n MATCH p = (n) - [*1] -> (m:Task) RETURN m,p,n";
-        } else {
-            query = "MATCH (n)-[r]->(m) RETURN n,r,m";
-        }
-        console.log("$(\"#userName\").val()---->" + $("#userName").val());
-        clearNodeInfo();
-        execute(query);
-    }
-
-    //查找人名涉及的数据
-    function relatedData() {
-        var query = null;
-        if ($("#userName").val()) {
-            query = "MATCH (n:USER) WHERE n.name=\'" + $("#userName").val() + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n LIMIT (10)";
-        } else {
-            query = "MATCH (n)-[r]->(m) RETURN n,r,m";
-        }
-        console.log("$(\"#userName\").val()---->" + $("#userName").val());
-        clearNodeInfo();
-        execute(query);
-    }
-
-    //对接高检，案卡项溯源
-    function traceGJ() {
-        var query = null;
-        if ($("#caseId").val() && $("#labelName").val()) {
-            query = "MATCH (n) WHERE n.caseId=\'" + $("#caseId").val() + "\' WITH n MATCH p = (n) - [*] -> (m) where m.name=\'" + $("#labelName").val() + "\' RETURN m,p";
-        } else {
-            query = "  MATCH (n)-[r]->(m) RETURN n,r,m";
-        }
-        console.log("$(\"#labelName\").val()---->" + $("#caseId").val());
-        clearNodeInfo();
-        execute(query);
-    }
-
-
-
-    function timeSearch() {
-        var query = null;
-        var data1 = new Date($("#TimeStartName").val());
-        var vYear1 = data1.getFullYear();
-        var vMon1 = data1.getMonth() + 1;
-        var vDay1 = data1.getDate();
-        var h1 = data1.getHours();
-        var m1 = data1.getMinutes();
-        var se1 = data1.getSeconds();
-        var start_time=vYear1 * 10000 + vMon1 * 100 + vDay1;
-        console.log(start_time * 1000000000);
-        var data2 = new Date($("#TimeEndName").val());
-        var vYear2 = data2.getFullYear();
-        var vMon2 = data2.getMonth() + 1;
-        var vDay2 = data2.getDate();
-        var h2 = data2.getHours();
-        var m2 = data2.getMinutes();
-        var se2 = data2.getSeconds();
-        var end_time=vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
-        console.log(end_time * 1000000000);
-        if ($("#TimeStartName").val() && $("#TimeEndName").val()) {
-            query = "MATCH (n) WHERE n.timestamp>=\'" + start_time * 1000000000 + "\' AND n.timestamp<=\'" + end_time * 1000000000 +"\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
-        } else {
-            query = "MATCH (n:CASE) WITH n MATCH p=(n)-[*]->(m:Task) RETURN p,n,m";
-        }
         clearNodeInfo();
         execute(query);
     }
@@ -604,6 +306,7 @@
         document.getElementById("relevantCase").style.visibility="visible";
         var ss = document.getElementById("xieshijiancha_a").innerHTML + "案件";
         var ll = document.getElementById("xieshijiancha_a").innerHTML;
+        document.getElementById("chartName").innerHTML = ll + "案卡项修改次数";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "刑事检察" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
@@ -617,7 +320,8 @@
     function supervisionClick() {
         document.getElementById("relevantCase").style.visibility="visible";
         var ss = document.getElementById("xieshizhixing_a").innerHTML + "案件";
-        var ll = document.getElementById("xieshizhixing_a").innerHTML
+        var ll = document.getElementById("xieshizhixing_a").innerHTML;
+        document.getElementById("chartName").innerHTML = ll + "案卡项修改次数";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "刑事执行" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
@@ -633,7 +337,8 @@
     function prosecutionClick(){
         document.getElementById("relevantCase").style.visibility="visible";
         var ss = document.getElementById("gongsu_a").innerHTML + "案件";
-        var ll = document.getElementById("gongsu_a").innerHTML
+        var ll = document.getElementById("gongsu_a").innerHTML;
+        document.getElementById("chartName").innerHTML = ll + "案卡项修改次数";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "公益诉讼" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
@@ -648,6 +353,7 @@
         document.getElementById("relevantCase").style.visibility="visible";
         var ss = document.getElementById("minshi_a").innerHTML + "案件";
         var ll = document.getElementById("minshi_a").innerHTML;
+        document.getElementById("chartName").innerHTML = ll + "案卡项修改次数";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "民事" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
@@ -659,7 +365,8 @@
     function xinzhengClick(){
         document.getElementById("relevantCase").style.visibility="visible";
         var ss = document.getElementById("xinzheng_a").innerHTML + "案件";
-        var ll = document.getElementById("xinzheng_a").innerHTML
+        var ll = document.getElementById("xinzheng_a").innerHTML;
+        document.getElementById("chartName").innerHTML = ll + "案卡项修改次数";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "行政" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
@@ -670,8 +377,9 @@
     }
     function weijianClick(){
         document.getElementById("relevantCase").style.visibility="visible";
-        var ss = document.getElementById("minshi_a").innerHTML + "案件";
-        var ll = document.getElementById("minshi_a").innerHTML
+        var ss = document.getElementById("weijian_a").innerHTML + "案件";
+        var ll = document.getElementById("weijian_a").innerHTML;
+        document.getElementById("chartName").innerHTML = ll + "案卡项修改次数";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "未检业务" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
@@ -685,6 +393,7 @@
         document.getElementById("relevantCase").style.visibility="visible";
         var ss = document.getElementById("konggao_a").innerHTML + "案件";
         var ll = document.getElementById("konggao_a").innerHTML;
+        document.getElementById("chartName").innerHTML = ll + "案卡项修改次数";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "控告申诉" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
@@ -698,6 +407,7 @@
         document.getElementById("relevantCase").style.visibility="visible";
         var ss = document.getElementById("jianwei_a").innerHTML + "案件";
         var ll = document.getElementById("jianwei_a").innerHTML;
+        document.getElementById("chartName").innerHTML = ll + "案卡项修改次数";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "检委办" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
@@ -711,6 +421,7 @@
         document.getElementById("relevantCase").style.visibility="visible";
         var ss = document.getElementById("duitai_a").innerHTML + "案件";
         var ll = document.getElementById("duitai_a").innerHTML;
+        document.getElementById("chartName").innerHTML = ll + "案卡项修改次数";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "对台业务" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
@@ -724,6 +435,7 @@
         document.getElementById("relevantCase").style.visibility="visible";
         var ss = document.getElementById("anguan_a").innerHTML + "案件";
         var ll = document.getElementById("anguan_a").innerHTML;
+        document.getElementById("chartName").innerHTML = ll + "案卡项修改次数";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "案管" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
@@ -737,6 +449,7 @@
         document.getElementById("relevantCase").style.visibility="visible";
         var ss = document.getElementById("sifa_a").innerHTML + "案件";
         var ll = document.getElementById("sifa_a").innerHTML;
+        document.getElementById("chartName").innerHTML = ll + "案卡项修改次数";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "司法协助" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
@@ -1112,7 +825,7 @@
 
         /* y轴比例尺(线性比例尺) */
         var yScale = d3.scale.linear()
-            .domain([0, d3.max(dataset)])
+            .domain([0, d3.max(dataset) + 1])
             .range([0, yAxisWidth]);
 
         /* rect */
@@ -1148,7 +861,7 @@
         function rectFun(selection) {
             selection.attr("fill", "steelblue")
                 .attr("x", function (d, i) {
-                    return padding.left + xScale(strset[i]);
+                    return padding.left + xScale(strset[i]) + 5;
                 })
                 .attr("y", function (d) {
                     return height - padding.bottom - yScale(d);
@@ -1156,7 +869,7 @@
                 .attr("class", function (d,i) {
                     return "rectClass" + i;
                 })
-                .attr("width", xScale.rangeBand())
+                .attr("width", xScale.rangeBand() - 10)
                 .attr("height", function (d) {
                     return yScale(d);
                 });
@@ -1171,7 +884,7 @@
                 /*.attr("width", "40px").attr("overflow", "hidden")
                 .attr("text-overflow", "ellipsis").attr("white-space", "nowrap")*/
                 .attr("x", function (d, i) {
-                    return padding.left + xScale(strset[i]);
+                    return padding.left + xScale(strset[i]) ;
                 })
                 .attr("y", function (d) {
                     return height - padding.bottom - yScale(d);
