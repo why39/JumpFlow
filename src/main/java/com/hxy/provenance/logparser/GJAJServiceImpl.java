@@ -155,9 +155,8 @@ public class GJAJServiceImpl implements GJAJService {
                                 String value = m1.group(2);
                                 Map<String, Object> par = new HashMap<>();
                                 if (KVCache.kv.containsKey(key.toUpperCase())) {
-                                    showKey = KVCache.kv.get(key.toUpperCase()).cn;
+                                    showKey = KVCache.kv.get(key.toUpperCase());
                                     par.put("CN_KEY", showKey);
-                                    par.put("案卡项类型", KVCache.kv.get(key.toUpperCase()).category);
                                 }
                                 par.put(key, value);
                                 par.put("CaseNodeId", caseNodeId);
@@ -195,9 +194,8 @@ public class GJAJServiceImpl implements GJAJService {
                                 String value = m2.group(2);
                                 Map<String, Object> par = new HashMap<>();
                                 if (KVCache.kv.containsKey(key.toUpperCase())) {
-                                    showKey = KVCache.kv.get(key.toUpperCase()).cn;
+                                    showKey = KVCache.kv.get(key.toUpperCase());
                                     par.put("CN_KEY", showKey);
-                                    par.put("案卡项类型", KVCache.kv.get(key.toUpperCase()).category);
                                 }
                                 par.put(NeoConstants.KEY_LAST_NODE_ID, caseNodeId);
                                 par.put(key, value);

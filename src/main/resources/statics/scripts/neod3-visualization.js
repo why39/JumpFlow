@@ -109,7 +109,7 @@ function Neod3Renderer() {
                         document.getElementById("leftContent").setAttribute
                         ("style", "display:none");
                     }
-                    execute("match (n) where ID(n) = "+node.id+" with n match p = (n) - [r:相关] ->(m) where m.案卡项类型='人员相关' or m.案卡项类型='案件相关' return p");
+                    execute("match (n) where ID(n) = "+node.id+" with n match p = (n) - [r:相关] ->(m) return p");
                     break;
 
                 }});
@@ -155,7 +155,7 @@ function Neod3Renderer() {
                         console.log("");
                     var neo = new Neo(connection);
                     try {
-                        var query = "match (n) where n.CN_KEY='"+value['CN_KEY']+"' and n.caseId='"+value['caseId']+"' WITH n OPTIONAL MATCH (n)-[r:变化]-() return n,r";
+                        var query = "match (n) where n.CN_KEY='"+value['CN_KEY']+"' and n.caseId='"+value['caseId']+"' WITH n OPTIONAL MATCH (n)-[r]-() return n,r";
                         var label = value["label"];
                         if(document.getElementById("tableData")){
                             document.getElementById("tableData").setAttribute

@@ -257,7 +257,7 @@ public class GJNeo4jUtil {
     }
 
     public static String addPropertyNode(String BMSAH, String label, String relation, boolean reverse, Map<String, Object> map) {
-        String theLabelLastNodeId = null;
+        String lastNodeId = null;
         String lastTaskNodeId = (String) map.get("taskNodeId");
         String lastTaskNodeName = (String) map.get("taskNodeName");
         String lastNodeValue = null;
@@ -268,24 +268,31 @@ public class GJNeo4jUtil {
         //要取最后一个创建的节点，不然会出现多个节点连接同一个节点上的情况
         StatementResult findResult = session.run("MATCH (c:CASE) where c.caseId = '" + BMSAH + "' with c MATCH p = (c) - [*] -> (m:" + label + ") return m Order by m.创建时间 desc Limit 1");
 
+
         if (findResult != null && findResult.hasNext()) {
             while (findResult.hasNext()) {
                 Record record = findResult.next();
-                theLabelLastNodeId = record.fields().get(0).value().toString().replace("node<", "").replace(">", ""); //lastNode肯定有，因为有一个CASE Node.
-                if (!theLabelLastNodeId.equals(map.get("CaseNodeId"))) {
+                lastNodeId = record.fields().get(0).value().toString().replace("node<", "").replace(">", ""); //lastNode肯定有，因为有一个CASE Node.
+                if (!lastNodeId.equals(map.get("CaseNodeId"))) {
                     //如果上一个节点不是CASE节点，则为当前节点添加KEY_LAST_NODE_ID属性，并且获取上一个节点的值作为后续比较用
-                    map.put(NeoConstants.KEY_LAST_NODE_ID, theLabelLastNodeId);
+                    map.put(NeoConstants.KEY_LAST_NODE_ID, lastNodeId);
                     String lastNodeLable = record.fields().get(0).value().get(label).toString(); //取出来的值前后加了两个双引号
                     lastNodeValue = lastNodeLable.substring(1, lastNodeLable.length() - 1);
                 }
-                logger.debug("已有该属性节点》》》》" + theLabelLastNodeId);
+                logger.debug("已有该属性节点》》》》" + lastNodeId);
 
             }
+        }
+
+        if (StringUtils.isEmpty(lastNodeId)) {
+            lastNodeId = (String) map.get("CaseNodeId");
+            map.put(NeoConstants.KEY_LAST_NODE_ID, lastNodeId);
         }
 
 
         if (!StringUtils.isEmpty(lastTaskNodeId)) {
             map.put("所属环节", lastTaskNodeName);
+            map.put(NeoConstants.KEY_LAST_NODE_ID, lastTaskNodeId);
         } else {
             //附加流程信息
             StatementResult findTaskResult = session.run("MATCH (c:CASE) where c.caseId = '" + BMSAH + "' with c MATCH p = (c) - [*] -> (m:Task) return m Order by m.创建时间 desc Limit 1");
@@ -296,38 +303,26 @@ public class GJNeo4jUtil {
                     String lastTaskLable = record.fields().get(0).value().get("name").toString(); //取出环节名称
                     String lastTaskName = lastTaskLable.substring(1, lastTaskLable.length() - 1);
                     map.put("所属环节", lastTaskName);
-                    break;
                 }
-            }
-
-            if (StringUtils.isEmpty(map.get("所属环节"))) {
-                map.put("所属环节", (String) map.get("CaseNodeId"));
             }
         }
 
         if (lastNodeValue == null || map.get(label) == null || !map.get(label).equals(lastNodeValue)) {
             map.put("caseId", BMSAH);
-            String nodeId = null;
-            if (StringUtils.isEmpty(theLabelLastNodeId)) {
-                //如果之前没有此类结点，则通过相关关系连接到task或者case结点
-                nodeId = GJNeo4jUtil.createKeyValues(label, lastTaskNodeId , "相关", reverse, map);
-            } else {
-                //如果之前有此类结点，则通过变化关系连接前一个结点
-                nodeId = GJNeo4jUtil.createKeyValues(label, theLabelLastNodeId, "变化", reverse, map);
-                //同时和task连接
-                Code code = new Code();
-                code.setNodeFromId(lastTaskNodeId);
-                code.setNodeToId(nodeId);
-                code.setLabel("相关");
-                code.setRelation("相关");
-                relate(code);
-            }
 
+            String nodeId = GJNeo4jUtil.createKeyValues(label, lastNodeId, relation, reverse, map);
+
+            Code code = new Code();
+            code.setNodeFromId(lastTaskNodeId);
+            code.setNodeToId(nodeId);
+            code.setLabel("相关");
+            code.setRelation("相关");
+            relate(code);
 
             return nodeId;
         }
 
-        return theLabelLastNodeId;
+        return lastNodeId;
 
     }
 
