@@ -327,7 +327,29 @@
         document.getElementById("chart").innerHTML = "";
         rank(ll.toString());
         console.log("monitorClick");
+        displayZhuZhuangTu("刑事检察");
         executeNode(query, ss, ll);
+    }
+
+    function displayZhuZhuangTu(lbmc) {
+        var neo = new Neo(connection);
+        try {
+            var query="match(n) where n.案件类别='"+lbmc+"' with n.caseId as CASEIDS unwind CASEIDS as id with id match (m) where m.caseId=id with m.name as names unwind names as name return name,count(*) as c order by c";
+            neo.executeQuery(query, {}, function (err, res) {
+                res = res || {}
+                console.log("Executing Query res: ", query,res);
+                if(res && res.table) {
+                    for (i in res.table) {
+                        item = res.tabl[i]
+                    }
+                }
+
+            });
+        } catch (e) {
+            console.log(e);
+            sweetAlert("Catched error", e, "error");
+        }
+
     }
 
     function supervisionClick() {
@@ -341,10 +363,11 @@
         clearNodeInfo();
         var over_str = ['刑事检察', '刑事执行', '公益诉讼', '民事', '行政', '未检业务', '控告申诉', '检委办', '对台业务', '案管', '司法协助'];
         var over_data = over_data = [7, 4, 3, 3, 2, 2, 2, 2, 2, 2, 2];
-        ;
+
         document.getElementById("chart").innerHTML = "";
         zhizhutu(over_data, over_str);
         //rank(ll.toString());
+        displayZhuZhuangTu("刑事执行");
         executeNode(query, ss, ll);
     }
 
@@ -359,6 +382,7 @@
         document.getElementById("chart").innerHTML = "";
         rank(ll.toString());
         clearNodeInfo();
+        displayZhuZhuangTu("公益诉讼");
         executeNode(query, ss, ll);
     }
 
@@ -374,6 +398,7 @@
         clearNodeInfo();
         document.getElementById("chart").innerHTML = "";
         rank(ll.toString());
+        displayZhuZhuangTu("民事");
         executeNode(query, ss, ll);
     }
 
@@ -388,6 +413,7 @@
         clearNodeInfo();
         document.getElementById("chart").innerHTML = "";
         rank(ll.toString());
+        displayZhuZhuangTu("行政");
         executeNode(query, ss, ll);
     }
 
@@ -402,6 +428,7 @@
         clearNodeInfo();
         document.getElementById("chart").innerHTML = "";
         rank(ll.toString());
+        displayZhuZhuangTu("未检业务");
         executeNode(query, ss, ll);
     }
 
@@ -416,6 +443,7 @@
         clearNodeInfo();
         document.getElementById("chart").innerHTML = "";
         rank(ll.toString());
+        displayZhuZhuangTu("控告申诉");
         executeNode(query, ss, ll);
     }
 
@@ -430,6 +458,7 @@
         clearNodeInfo();
         document.getElementById("chart").innerHTML = "";
         rank(ll.toString());
+        displayZhuZhuangTu("检委办");
         executeNode(query, ss, ll);
     }
 
@@ -444,6 +473,7 @@
         clearNodeInfo();
         document.getElementById("chart").innerHTML = "";
         rank(ll.toString());
+        displayZhuZhuangTu("对台业务");
         executeNode(query, ss, ll);
     }
 
@@ -458,6 +488,7 @@
         clearNodeInfo();
         document.getElementById("chart").innerHTML = "";
         rank(ll.toString());
+        displayZhuZhuangTu("案管");
         executeNode(query, ss, ll);
     }
 
@@ -472,6 +503,7 @@
         clearNodeInfo();
         document.getElementById("chart").innerHTML = "";
         rank(ll.toString());
+        displayZhuZhuangTu("司法协助");
         executeNode(query, ss, ll);
     }
 
@@ -592,7 +624,7 @@
                 datadata[ii] = data[ii];
             }
             zhizhutu(datadata, strstr);
-        }, 1000);
+        }, 3000);
     }
 
     function toFIXED(num, n) {
@@ -616,7 +648,6 @@
                     for (i in res) {
                         caseSum += res[i]["c"];
                     }
-                    console.log(caseSum)
                     var seriesData = [];
                     for (i in res) {
                         item = res[i]
@@ -627,7 +658,6 @@
                             label2: toFIXED(parseFloat(item["c"]) / parseFloat(caseSum) * 100, 3) + "%"
                         }
                         seriesData.push(cnf)
-                        console.log(item, seriesData);
                     }
 
                     var canvas = document.getElementById("pie_canvas");
