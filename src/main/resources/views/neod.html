@@ -221,12 +221,9 @@
             url: "http://localhost:8083/hxyActiviti/demo/gj/ajlb",
             success: function (res) {
                 if (res) {
-<<<<<<< HEAD
-                    var yy = 0;
-                    for(var i in res) {
-=======
+
                     for (var i in res) {
->>>>>>> a9d8e8f100df71034b54dfd0ff68db1f56e026bb
+
                         console.log(res[i].bmsah);
                         var str = "";
                         var j = parseInt(i) + 1
@@ -478,10 +475,6 @@
         executeNode(query, ss, ll);
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> a9d8e8f100df71034b54dfd0ff68db1f56e026bb
     window.onload = (function () {
         //todo dynamic configuration
         // var query = "MATCH (n:CASE) WITH n MATCH p=(n)-[*]->(m:Task) RETURN p,n,m";
@@ -602,36 +595,12 @@
         }, 1000);
     }
 
-<<<<<<< HEAD
-    function canvas_data() {
-        var canvas = document.getElementById("pie_canvas");
-        var seriesData = [{name:"apples", value:parseFloat(over_data[0]) / parseFloat(over_sum), color:"#0792c9",label1:"刑事检察",label2:(parseFloat(over_data[0]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
-            {name:"orange", value:parseFloat(over_data[1]) / parseFloat(over_sum), color:"#1616d6",label1:"刑事执行",label2:(parseFloat(over_data[1]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
-            {name:"banana", value:parseFloat(over_data[2]) / parseFloat(over_sum), color:"#13cf74",label1:"公益诉讼",label2:(parseFloat(over_data[2]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
-            {name:"peaches", value:parseFloat(over_data[3]) / parseFloat(over_sum), color:"#c316ac",label1:"民事",label2:(parseFloat(over_data[3]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
-            {name:"jiansuo", value:parseFloat(over_data[4]) / parseFloat(over_sum), color:"#00c522",label1:"行政",label2:(parseFloat(over_data[4]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
-            {name:"konggao", value:parseFloat(over_data[5]) / parseFloat(over_sum), color:"#cac874",label1:"未检业务",label2:(parseFloat(over_data[5]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
-            {name:"shensu", value:parseFloat(over_data[6]) / parseFloat(over_sum), color:"#a7110a",label1:"控告申诉",label2:(parseFloat(over_data[6]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
-            {name:"yufang", value:parseFloat(over_data[7]) / parseFloat(over_sum), color:"#d45f1c",label1:"检委办",label2:(parseFloat(over_data[7]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
-            {name:"jianweiban", value:parseFloat(over_data[8]) / parseFloat(over_sum), color:"#c182b7",label1:"对台业务",label2:(parseFloat(over_data[8]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
-            {name:"fuheban", value:parseFloat(over_data[9]) / parseFloat(over_sum), color:"#27ba7c",label1:"案管",label2:(parseFloat(over_data[9]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
-            {name:"sifaxiezhu", value:parseFloat(over_data[10]) / parseFloat(over_sum), color:"#b5b4b1",label1:"司法协助",label2:(parseFloat(over_data[10]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"}];
-        var config = {
-            width : 420,
-            height: 400,
-            series: seriesData,
-            canvas: canvas,
-            title:"案件信息",
-            callback:function(obj){
-                //console.log(obj.label1);
-=======
     function toFIXED(num, n) {
         let numStr = num.toString()
         let index = numStr.indexOf('.')
         let result = numStr.slice(0, index + n)
         return Number(result);
     }
-
 
     function canvas_data() {
         $.ajax({
@@ -676,7 +645,6 @@
                     pieChart.initSettings(config);
                     pieChart.render();
                 }
->>>>>>> a9d8e8f100df71034b54dfd0ff68db1f56e026bb
             }
         });
 
