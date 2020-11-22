@@ -97,6 +97,7 @@ public class GJAJServiceImpl implements GJAJService {
 
     public Result deleteLog(String BMSAH) {
         caseDao.updateComplete(0, BMSAH);
+        GJNeo4jUtil.delete(BMSAH);
         return Result.ok();
     }
 

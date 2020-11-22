@@ -391,6 +391,12 @@ public class GJNeo4jUtil {
         return caseNodeId;
     }
 
+    public static void delete(String bmsah) {
+        Driver driver = createDrive();
+        Session session = driver.session();
+        session.run("MATCH (n) where n.caseId = '" + bmsah + "' detach delete n");
+    }
+
     @PostConstruct
     public void init() {
         finalUtil = this;
