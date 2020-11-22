@@ -1,6 +1,7 @@
 $(function(){
     //时间轴收缩动画
     $(".number").click(function(){
+        console.log("fsdfdsfsdfsdfsdfsdfsdfsdfsfs");
         var $divcount = $(this).parent().find(".divCount");
         var $divimg = $(this).find(".hand_img");
         if ($divcount.is(":hidden")) {

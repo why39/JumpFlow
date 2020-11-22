@@ -198,3 +198,89 @@
 		#returnTop:hover {
 			background-position:0 -65px;
 		}
+
+
+
+
+.time
+{
+	position: absolute;
+	font-size: 15px;
+	width: 90px;
+	text-align: right;
+	left: 0;
+	top: 10px;
+	color: #999;
+}
+.version
+{
+	color: #3594cb;
+	font-size: 18px;
+	left: 25px;
+	line-height: 50px;
+	overflow: hidden;
+	position: absolute;
+	text-align: right;
+	top: 30px;
+	width: 80px;
+	margin-top: -10px;
+}
+
+.timeBananName{
+	font-size: 16px;
+	color: #8A3104;
+	margin-left: 46px;
+	position: absolute;
+	margin-top: 70px;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	width:70px;
+}
+
+.timeBananName:hover{
+	width:500px;
+}
+
+.number
+{
+	position: absolute;
+	background: url("images/version_dot.png") no-repeat scroll 0 0 transparent;
+	width: 30px;
+	height: 30px;
+	left: 110px;
+	line-height: 30px;
+	text-align: center;
+	color: #fff;
+	font-size: 18px;
+}
+.number
+{
+	background-image: url("images/version_dot_alt.png");
+}
+.content
+{
+	min-height:70px;
+	min-width:500px;
+	margin-left: 180px;
+	overflow: hidden;
+}
+.divCount
+{
+	background-color: #3594cb;
+	padding: 20px;
+	color: #fff;
+	font-size: 13px;
+	line-height: 20px;
+	width: 200px;
+}
+
+.divCount h2
+{
+	text-align:center;
+}
+
+.divCount
+{
+	background-color: #43B1F1;
+}

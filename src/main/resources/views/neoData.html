@@ -48,6 +48,7 @@
             border-top: 1px solid #E9EEF1;
             overflow: hidden;
         }
+
     </style>
 </head>
 <body>
@@ -111,7 +112,7 @@
 <div id="leftContent" style="position:absolute;width:300px;height: 620px;
     display: none;border-right: 3px solid lightgray;z-index: 100">
     <div style="float: left;width:90%;margin-left:-40px">
-        <ul class="timeline" >
+        <ul class="timeline" id = "timelineId">
             <li>
                 <div class="time">2020</div>
                 <div class="version">11-20</div>
@@ -237,6 +238,7 @@
     //传入label，callback返回label的列表
     function executeWithCallback(cmd, dislpay, label,callback) {
         var neo = new Neo(connection);
+        var labelList = []
         try {
             var query = cmd;
             console.log("Executing Query", query);
@@ -244,7 +246,7 @@
                 res = res || {}
                 console.log("Executing Query res: ", res);
                 var graph = res.graph;
-                var labelList = []
+
 
                 if (graph) {
                     if (graph.nodes) {
@@ -255,9 +257,8 @@
                             }
                         }
                     }
-                    console.log("Executing Query labelList: ", label, labelList);
+                    //console.log("Executing Query labelList: ", label, labelList);
                     callback(labelList);
-
                     if (dislpay) {
                         var c = $("#graph");
                         c.empty();
@@ -278,11 +279,52 @@
         } catch (e) {
             console.log(e);
             sweetAlert("Catched error", e, "error");
-        }
+
+    }
     }
 
-    function execute(content) {
+        function executeWithList(cmd,label) {
+            var neo = new Neo(connection);
+            var labelList = []
+            try {
+                var query = cmd;
+                console.log("Executing Query", query);
+                neo.executeQuery(query, {}, function (err, res) {
+                    res = res || {}
+                    //console.log("Executing Query res: ", res);
+                    var graph = res.graph;
+                    if (graph) {
+                        if (graph.nodes) {
+                            for (item in graph.nodes) {
+                                console.log("Executing Query item: ", label, item, graph.nodes[item]);
+                                if (graph.nodes[item]["label"] == label) {
+                                    labelList.push(graph.nodes[item])
+                                }
+                            }
+                        }
+                        var c = $("#graph");
+                        c.empty();
+                        neod3.render("graph", c, graph);
 
+                    } else {
+                        if (err) {
+                            console.log(err);
+                            if (err.length > 0) {
+                                sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
+                            } else {
+                                sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
+                            }
+                        }
+                    }
+                });
+            } catch (e) {
+                console.log(e);
+                sweetAlert("Catched error", e, "error");
+            }
+            return labelList;
+        }
+
+    function execute(content) {
         var neo = new Neo(connection);
         try {
             var query = content;

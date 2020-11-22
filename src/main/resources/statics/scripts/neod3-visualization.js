@@ -90,7 +90,6 @@ function Neod3Renderer() {
             $(".nodeName").text("<环节名称> : "+selectNode.name);
             document.getElementById("suyuanDataId").innerHTML = "<p style='margin-left:5px;color:#ff6601;'>ID:"+node.id+"&nbsp&nbsp&nbsp&nbsp案件ID:" +
                 ""+selectNode.caseId+"&nbsp&nbsp&nbsp&nbsp环节名称:"+selectNode.copy_name+"</p>";
-
             swal({
                 title: selectNode["copy_name"],
                 icon: "success",
@@ -101,10 +100,8 @@ function Neod3Renderer() {
                         value: "more",
                     }
                 },
-
             }).then((value) => {
                 switch (value) {
-
                     case "more":
                     if(document.getElementById("tableData")){
                         document.getElementById("tableData").setAttribute
@@ -129,8 +126,6 @@ function Neod3Renderer() {
                     alertString1+="<span style='color:pink'>k<span>+selectNode[k]";
                 }
             }
-
-<<<<<<< HEAD
             console.log("案件名+"+ selectNode["案件名"]);
 
             if(selectNode[selectNode["label"]] ==  undefined) {
@@ -146,33 +141,90 @@ function Neod3Renderer() {
                     swal({
                         title: selectNode["copy_name"],
                         icon: "success",
+                        copy_name: selectNode["copy_name"],
                         buttons: {
                             cancel: "取消",
                             more: {
                                 text: "查看该案卡项",
-                                value: "more",
+                                value: selectNode,
+
                             }
                         },
 
                     }).then((value) => {
-                        switch (value) {
-
-                        case "more":
-                            execute("MATCH (n) WHERE n.caseId='汉东检刑诉受[2019]980000100216号' WITH n MATCH p = (n) - [*] -> (m) where m.name='附注' RETURN m,p");
-                            if(document.getElementById("tableData")){
-                                document.getElementById("tableData").setAttribute
-                                ("style", "margin-left:300px;width:960px");
-                                document.getElementById("leftContent").setAttribute
-                                ("style", "position:absolute;width:370px;height: 620px;" +
-                                    " display: block;border-right: 3px solid lightgray;z-index: 100 ;overflow-y:auto;overflow-x:hidden;");
+                            console.log("");
+                    var neo = new Neo(connection);
+                    try {
+                        var query = "match (n) where n.CN_KEY='"+value['CN_KEY']+"' and n.caseId='"+value['caseId']+"' WITH n OPTIONAL MATCH (n)-[r]-() return n,r";
+                        var label = value["label"];
+                        if(document.getElementById("tableData")){
+                            document.getElementById("tableData").setAttribute
+                            ("style", "margin-left:300px;width:960px");
+                            document.getElementById("leftContent").setAttribute
+                            ("style", "position:absolute;width:370px;height: 620px;" +
+                                " display: block;border-right: 3px solid lightgray;z-index: 100 ;overflow-y:auto;overflow-x:hidden;");
+                            document.getElementById("timelineId").innerHTML = "";
+                        }
+                        neo.executeQuery(query, {}, function (err, res) {
+                            console.log(query);
+                            res = res || {}
+                            var graph = res.graph;
+                            if (graph) {
+                                if (graph.nodes) {
+                                    for(item in graph.nodes) {
+                                        if(graph.nodes[item]["label"]==label) {
+                                            //labelList.push(graph.nodes[item])
+                                            console.log("ffffff+",graph.nodes[item]);
+                                            var year = (graph.nodes[item].timestamp).toString().substring(0,4);
+                                            var month = (graph.nodes[item].timestamp).toString().substring(5,7)
+                                                + "-" + (graph.nodes[item].timestamp).toString().substring(7,9);
+                                            var str_div = graph.nodes[item][graph.nodes[item].label];
+                                            if(str_div != ""){
+                                                document.getElementById("timelineId").innerHTML +=
+                                                    "<li><div class = \"time\">"+year+"</div> <div class = \"version\">"+month+"</div> " +
+                                                    "<div class = \"timeBananName\">"+"测试账号0102"+"</div> <div class = \"number\"></div>" +
+                                                    " <div class = \"content\">" +
+                                                    "<div class = \"divCount\"> "+str_div+"<br /></div></div></li>";
+                                                //console.log(document.getElementById("timelineId").innerHTML);
+                                                $(".number").click(function(){
+                                                    var $divcount = $(this).parent().find(".divCount");
+                                                    var $divimg = $(this).find(".hand_img");
+                                                    if ($divcount.is(":hidden")) {
+                                                        $divcount.slideDown(800);
+                                                        $divimg.removeClass("Rotation");
+                                                    }
+                                                    else
+                                                    {
+                                                        $divcount.slideUp(1000);
+                                                        $divimg.addClass("Rotation");
+                                                    };
+                                                });
+                                            }
+                                        }
+                                    }
+                                }
+                                var c = $("#graph");
+                                c.empty();
+                                neod3.render("graph", c, graph);
+                            } else {
+                                if (err) {
+                                    console.log(err);
+                                    if (err.length > 0) {
+                                        sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
+                                    } else {
+                                        sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
+                                    }
+                                }
                             }
-                            break;
+                        });
+                    } catch (e) {
+                        console.log(e);
+                        sweetAlert("Catched error", e, "error");
 
-                        }});
+                    }
+                        });
                 }
-                /*sweetAlert(selectNode["copy_name"]
-                    ,alertString
-                    , "info");*/
+
             }
             else {
                 if(selectNode["案件名"] != undefined){
@@ -184,66 +236,94 @@ function Neod3Renderer() {
                     swal({
                         title: selectNode["copy_name"],
                         icon: "success",
+                        copy_name: selectNode["copy_name"],
                         buttons: {
                             cancel: "取消",
                             more: {
                                 text: "查看该案卡项",
-                                value: "more",
+                                value:  selectNode
                             }
                         },
-
                     }).then((value) => {
-                        switch (value) {
-
-                        case "more":
-                            execute("MATCH (n) WHERE n.caseId='汉东检刑诉受[2019]980000100216号' WITH n MATCH p = (n) - [*] -> (m) where m.name='附注' RETURN m,p");
-                            if(document.getElementById("tableData")){
-                                document.getElementById("tableData").setAttribute
-                                ("style", "margin-left:300px;width:960px");
-                                document.getElementById("leftContent").setAttribute
-                                ("style", "position:absolute;width:370px;height: 620px;" +
-                                    " display: block;border-right: 3px solid lightgray;z-index: 100 ;overflow-y:auto;overflow-x:hidden;");
+                            console.log("");
+                    var neo = new Neo(connection);
+                    try {
+                        var query = "match (n) where n.CN_KEY='"+value['CN_KEY']+"' and n.caseId='"+value['caseId']+"' WITH n OPTIONAL MATCH p=(n)-[r:变化]-() return p,n,r";
+                        var label = value["label"];
+                        if(document.getElementById("tableData")){
+                            document.getElementById("tableData").setAttribute
+                            ("style", "margin-left:300px;width:960px");
+                            document.getElementById("leftContent").setAttribute
+                            ("style", "position:absolute;width:370px;height: 620px;" +
+                                " display: block;border-right: 3px solid lightgray;z-index: 100 ;overflow-y:auto;overflow-x:hidden;");
+                            document.getElementById("timelineId").innerHTML = "";
+                        }
+                        neo.executeQuery(query, {}, function (err, res) {
+                            console.log(query);
+                            res = res || {}
+                            var graph = res.graph;
+                            if (graph) {
+                                if (graph.nodes) {
+                                    for(item in graph.nodes) {
+                                        if(graph.nodes[item]["label"]==label) {
+                                            //labelList.push(graph.nodes[item])
+                                            console.log("ffffff+",graph.nodes[item]);
+                                            var year = (graph.nodes[item].timestamp).toString().substring(0,4);
+                                            var month = (graph.nodes[item].timestamp).toString().substring(5,7)
+                                                + "-" + (graph.nodes[item].timestamp).toString().substring(7,9);
+                                            var str_div = graph.nodes[item][graph.nodes[item].label];
+                                            if(str_div != ""){
+                                                document.getElementById("timelineId").innerHTML +=
+                                                    "<li><div class = \"time\">"+year+"</div> <div class = \"version\">"+month+"</div> " +
+                                                    "<div class = \"timeBananName\">"+"测试账号0102"+"</div> <div class = \"number\"></div>" +
+                                                    " <div class = \"content\">" +
+                                                    "<div class = \"divCount\"> "+str_div+"<br /></div></div></li>";
+                                                //console.log(document.getElementById("timelineId").innerHTML);
+                                                $(".number").click(function(){
+                                                    var $divcount = $(this).parent().find(".divCount");
+                                                    var $divimg = $(this).find(".hand_img");
+                                                    if ($divcount.is(":hidden")) {
+                                                        $divcount.slideDown(800);
+                                                        $divimg.removeClass("Rotation");
+                                                    }
+                                                    else
+                                                    {
+                                                        $divcount.slideUp(1000);
+                                                        $divimg.addClass("Rotation");
+                                                    };
+                                                });
+                                            }
+                                        }
+                                    }
+                                }
+                                var c = $("#graph");
+                                c.empty();
+                                neod3.render("graph", c, graph);
+                            } else {
+                                if (err) {
+                                    console.log(err);
+                                    if (err.length > 0) {
+                                        sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
+                                    } else {
+                                        sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
+                                    }
+                                }
                             }
-                            break;
+                        });
+                    } catch (e) {
+                        console.log(e);
+                        sweetAlert("Catched error", e, "error");
 
-                        }});
+                    }
+                        });
                 }
 
             }
-=======
-            executeWithCallback("match (n) where n.label='"+selectNode["label"]+"' and n.caseId='"+selectNode.caseId+"' WITH n OPTIONAL MATCH (n)-[r]-() return n,r",
-                false,
-                selectNode["label"],
-                function (labelList) {
-                console.log("Callback labelList: ", labelList);
-            })
-
-            // if(selectNode[selectNode["label"]] ==  undefined) {
-            //     selectNode["label"] == "";
-            //     swal({
-            //         title: selectNode["copy_name"],
-            //         text: alertString ,
-            //         icon: "success",
-            //     });
-            //     /*sweetAlert(selectNode["copy_name"]
-            //         ,alertString
-            //         , "info");*/
-            // }
-            // else {
-            //     sweetAlert(selectNode["copy_name"] + ":" + selectNode[selectNode["label"]]
-            //         ,alertString
-            //         , "success");
-            // }
->>>>>>> bc34cf86d61e25dcd7448d716e471547f70133d6
-            //console.log(selectNode["label"]);
 
             document.getElementById("suyuanDataId").innerHTML = "<p style='margin-left:5px;color:#ff6601;'>"+alertString+"</p>";
         }
-
-        //$(".nodeFile").text("文案材料 : "+selectNode.file);
-
-
     }
+
 
     function dummyFunc(node) {
 
@@ -251,7 +331,6 @@ function Neod3Renderer() {
 
 
     function render(id, $container, visualization) {
-        console.log("render");
         function extract_props(pc) {
             var p = {};
             for (var key in pc) {
@@ -337,11 +416,11 @@ function Neod3Renderer() {
             return styles;
         }
 
-        function applyZoom() {
+        /*function applyZoom() {
             console.log("applyZoom");
             renderer.select(".nodes").attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
             renderer.select(".relationships").attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-        }
+        }*/
 
         function enableZoomHandlers() {
             renderer.on("wheel.zoom", zoomHandlers.wheel);
@@ -441,20 +520,20 @@ function Neod3Renderer() {
         var renderer = svg.data([graphModel]);
         // legend(svg, existingStyles);
         var zoomHandlers = {};
-        var zoomBehavior = d3.behavior.zoom().on("zoom", applyZoom).scaleExtent([0.01, 2]);
-        console.log("zoom" + zoomBehavior);
+        //var zoomBehavior = d3.behavior.zoom().on("zoom", applyZoom).scaleExtent([0.01, 2]);
+        //console.log("zoom" + zoomBehavior);
 
         //renderer.call(zoomBehavior);
         renderer.call(graphView);
 
 
-        zoomHandlers.wheel = renderer.on("wheel.zoom");
+      /*  zoomHandlers.wheel = renderer.on("wheel.zoom");
         zoomHandlers.mousewheel = renderer.on("mousewheel.zoom");
         zoomHandlers.mousedown = renderer.on("mousedown.zoom");
         zoomHandlers.DOMMouseScroll = renderer.on("DOMMouseScroll.zoom");
         zoomHandlers.touchstart = renderer.on("touchstart.zoom");
         zoomHandlers.touchmove = renderer.on("touchmove.zoom")
-        zoomHandlers.touchend = renderer.on("touchend.zoom");
+        zoomHandlers.touchend = renderer.on("touchend.zoom");*/
         disableZoomHandlers();
 
         d3.select('body').on("keydown", keyHandler).on("keyup", keyHandler);

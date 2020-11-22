@@ -801,10 +801,6 @@
         console.log(data);
         var dataset = data;  // 数据集
         var strset = str;
-        var datasetName = {
-            x: ["刑事检察", "刑事执行", "公益诉讼", "民事", "行政", "未检业务", "控告申诉", "检委办", "对台业务", "案管", "司法协助"],
-            y: [40, 30, 50, 70, 90, 20, 10, 40]
-        };
 
         var width = 800;    // svg可视区域宽度
         var height = 400;   // svg可视区域高度
@@ -825,7 +821,7 @@
 
         /* y轴比例尺(线性比例尺) */
         var yScale = d3.scale.linear()
-            .domain([0, d3.max(dataset) + 1])
+            .domain([0, d3.max(dataset) + d3.max(dataset)/data.length])
             .range([0, yAxisWidth]);
 
         /* rect */
@@ -845,7 +841,7 @@
 
         /* 添加坐标轴 */
         var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
-        yScale.range([yAxisWidth, 0]);  // 重新设置y轴比例尺的值域,与原来的相反
+        yScale.range([yAxisWidth , 0]);  // 重新设置y轴比例尺的值域,与原来的相反
         var yAxis = d3.svg.axis().scale(yScale).orient("left");
 
         svg.attr("style", "margin-top:-420px");
@@ -901,6 +897,24 @@
             }
         }
     }
+</script>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+    $("#keySelect").bind('keypress', function(event) {
+        var strSelect = this.value;
+        if (event.keyCode == "13") {
+            var listItems = $('.list-group-item');
+            var listLength = listItems.length;
+            for (i = 0; i < listLength; i++) {
+                if (listItems[i].textContent.includes(this.value)) {
+                    listItems[i].style.backgroundColor = "orange"
+                } else {
+                    listItems[i].style.backgroundColor = "white"
+                }
+            }
+        }
+    });
 </script>
 </body>
 </html>
