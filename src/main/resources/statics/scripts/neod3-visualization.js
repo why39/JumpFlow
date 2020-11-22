@@ -130,6 +130,7 @@ function Neod3Renderer() {
                 }
             }
 
+<<<<<<< HEAD
             console.log("案件名+"+ selectNode["案件名"]);
 
             if(selectNode[selectNode["label"]] ==  undefined) {
@@ -209,6 +210,31 @@ function Neod3Renderer() {
                 }
 
             }
+=======
+            executeWithCallback("match (n) where n.label='"+selectNode["label"]+"' and n.caseId='"+selectNode.caseId+"' WITH n OPTIONAL MATCH (n)-[r]-() return n,r",
+                false,
+                selectNode["label"],
+                function (labelList) {
+                console.log("Callback labelList: ", labelList);
+            })
+
+            // if(selectNode[selectNode["label"]] ==  undefined) {
+            //     selectNode["label"] == "";
+            //     swal({
+            //         title: selectNode["copy_name"],
+            //         text: alertString ,
+            //         icon: "success",
+            //     });
+            //     /*sweetAlert(selectNode["copy_name"]
+            //         ,alertString
+            //         , "info");*/
+            // }
+            // else {
+            //     sweetAlert(selectNode["copy_name"] + ":" + selectNode[selectNode["label"]]
+            //         ,alertString
+            //         , "success");
+            // }
+>>>>>>> bc34cf86d61e25dcd7448d716e471547f70133d6
             //console.log(selectNode["label"]);
 
             document.getElementById("suyuanDataId").innerHTML = "<p style='margin-left:5px;color:#ff6601;'>"+alertString+"</p>";
