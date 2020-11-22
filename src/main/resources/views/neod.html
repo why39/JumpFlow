@@ -107,8 +107,8 @@
     ;
     var over_sum = 30;
     var over_count = 0;
-    var over_anjian = ['朱某某逃逸案','周某某盗窃案',
-        '张某某盗窃案','郭某某漏税案','刘某某投毒案','贺某某纵火案','王某某强奸案','李某某贪污案'];
+    var over_anjian = ['朱某某逃逸案', '周某某盗窃案',
+        '张某某盗窃案', '郭某某漏税案', '刘某某投毒案', '贺某某纵火案', '王某某强奸案', '李某某贪污案'];
 
     var connection = function () {
         configStr = localStorage.getItem("neoconfig");
@@ -221,7 +221,7 @@
             url: "http://localhost:8083/hxyActiviti/demo/gj/ajlb",
             success: function (res) {
                 if (res) {
-
+                    var yy = 0;
                     for (var i in res) {
 
                         console.log(res[i].bmsah);
@@ -229,7 +229,7 @@
                         var j = parseInt(i) + 1
                         //var className = ss + j;
                         var className = ss;
-                        if(yy >= over_anjian.length){
+                        if (yy >= over_anjian.length) {
                             yy = 0;
                         }
                         className = className + '-' + over_anjian[yy];
