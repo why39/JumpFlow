@@ -109,7 +109,7 @@ function Neod3Renderer() {
                         document.getElementById("leftContent").setAttribute
                         ("style", "display:none");
                     }
-                    execute("match (n) where ID(n) = "+node.id+" with n match p = (n) - [r:相关] ->(m) where m.案卡项类型='人员相关' or m.案卡项类型='案件相关' return p");
+                    execute("match (n) where ID(n) = "+node.id+" with n match p = (n) - [r:相关] ->(m) return p");
                     break;
 
                 }});
@@ -118,15 +118,32 @@ function Neod3Renderer() {
             var alertString ="";
             var alertString1 =""
             for(var k in selectNode){//遍历json对象的每个key/value对,k为key
-                if("CN_KEY" != k && "label" !=k && "copy_name"!=k && selectNode["label"]!=k && "CaseNodeId"!=k && "lastNodeId"!=k){
+                if("CN_KEY" != k && "label" !=k && "copy_name"!=k && selectNode["label"]!=k && "CaseNodeId"!=k
+                    && "lastNodeId"!=k && "日志ID"!=k && "taskNodeName"!=k && "name"!= k && "taskNodeId" !=k){
                     if(k == 'name') {
                         selectNode[k] = selectNode['copy_name'];
                     }
-                    alertString+=k+" : " +selectNode[k]+"\n";
-                    alertString1+="<span style='color:pink'>k<span>+selectNode[k]";
+                    var anjianName = selectNode['案件类别']
+                    if(k == '案件类别'){
+                        k = '业务名称';
+                        selectNode[k] = anjianName;
+                    }
+                    if(k == 'caseId'){
+                        k = '部门受案号';
+                        selectNode[k] = selectNode['caseId'];
+                    }
+                    if(k == '创建时间') {
+                        selectNode[k] = selectNode[k].substring(0,20);
+                    }
+                    if(k != 'timestamp'){
+                        //console.log(anjianName);
+                        //console.log(selectNode[k]);
+                        alertString+=k+" : " +selectNode[k]+"\n";
+                        alertString1+="<span style='color:pink'>k<span>+selectNode[k]";
+                    }
                 }
             }
-            console.log("案件名+"+ selectNode["案件名"]);
+            //console.log("案件名+"+ selectNode["案件名"]);
 
             if(selectNode[selectNode["label"]] ==  undefined) {
                 selectNode["label"] == "";
@@ -319,7 +336,6 @@ function Neod3Renderer() {
                 }
 
             }
-
             document.getElementById("suyuanDataId").innerHTML = "<p style='margin-left:5px;color:#ff6601;'>"+alertString+"</p>";
         }
     }

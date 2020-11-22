@@ -106,6 +106,8 @@
     var over_data = over_data = [7,4,3,3,2,2,2,2,2,2,2];;
     var over_sum = 30;
     var over_count = 0;
+    var over_anjian = ['朱某某逃逸案','周某某盗窃案',
+        '张某某盗窃案','郭某某漏税案','刘某某投毒案','贺某某纵火案','王某某强奸案','李某某贪污案'];
 
     var connection = function () {
         configStr = localStorage.getItem("neoconfig");
@@ -218,11 +220,18 @@
             url: "http://localhost:8083/hxyActiviti/demo/gj/ajlb",
             success: function (res) {
                 if (res) {
+                    var yy = 0;
                     for(var i in res) {
                         console.log(res[i].bmsah);
                         var str="";
                         var j = parseInt(i) + 1
-                        var className = ss + j;
+                        //var className = ss + j;
+                        var className = ss;
+                        if(yy >= over_anjian.length){
+                            yy = 0;
+                        }
+                        className = className + '-' + over_anjian[yy];
+                        yy++;
                         var bmsah = res[i].bmsah;
                         if(bmsah == null) {
                             bmsah = '汉东检刑诉受[2019]980000100216号';
@@ -306,7 +315,7 @@
         document.getElementById("relevantCase").style.visibility="visible";
         var ss = document.getElementById("xieshijiancha_a").innerHTML + "案件";
         var ll = document.getElementById("xieshijiancha_a").innerHTML;
-        document.getElementById("chartName").innerHTML = ll + "案卡项修改次数";
+        document.getElementById("chartName").innerHTML = ll + "业务案卡数据项修改次数";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "刑事检察" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
@@ -459,10 +468,6 @@
         executeNode(query,ss,ll);
     }
 
-
-
-
-
     window.onload = (function () {
         //todo dynamic configuration
         // var query = "MATCH (n:CASE) WITH n MATCH p=(n)-[*]->(m:Task) RETURN p,n,m";
@@ -585,10 +590,6 @@
             zhizhutu(datadata,strstr);
         },1000);
     }
-
-
-
-
 
     function canvas_data() {
         var canvas = document.getElementById("pie_canvas");
