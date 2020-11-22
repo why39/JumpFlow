@@ -102,15 +102,15 @@ function Neod3Renderer() {
                 },
             }).then((value) => {
                 switch (value) {
-                    case "more":
-                        if(document.getElementById("tableData")){
-                            document.getElementById("tableData").setAttribute
-                            ("style", "margin-left:0px;width:1210px");
-                            document.getElementById("leftContent").setAttribute
-                            ("style", "display:none");
-                        }
-                        execute("match (n) where ID(n) = "+node.id+" with n match p = (n) - [r:相关] ->(m) return p");
-                        break;
+                case "more":
+                    if(document.getElementById("tableData")){
+                        document.getElementById("tableData").setAttribute
+                        ("style", "margin-left:0px;width:1210px");
+                        document.getElementById("leftContent").setAttribute
+                        ("style", "display:none");
+                    }
+                    execute("match (n) where ID(n) = "+node.id+" with n match p = (n) - [r:相关] ->(m) return p");
+                    break;
 
                 }});
 
@@ -126,10 +126,6 @@ function Neod3Renderer() {
                     alertString1+="<span style='color:pink'>k<span>+selectNode[k]";
                 }
             }
-<<<<<<< HEAD
-=======
-
->>>>>>> 32e37c1235159edec3ba7462da213b6c3e3a2513
             console.log("案件名+"+ selectNode["案件名"]);
 
             if(selectNode[selectNode["label"]] ==  undefined) {
@@ -156,8 +152,7 @@ function Neod3Renderer() {
                         },
 
                     }).then((value) => {
-<<<<<<< HEAD
-                            console.log("");
+                        console.log("");
                     var neo = new Neo(connection);
                     try {
                         var query = "match (n) where n.CN_KEY='"+value['CN_KEY']+"' and n.caseId='"+value['caseId']+"' WITH n OPTIONAL MATCH (n)-[r]-() return n,r";
@@ -225,23 +220,9 @@ function Neod3Renderer() {
                     } catch (e) {
                         console.log(e);
                         sweetAlert("Catched error", e, "error");
-=======
-                        switch (value) {
-
-                            case "more":
-                                execute("MATCH (n) WHERE n.caseId='汉东检刑诉受[2019]980000100216号' WITH n MATCH p = (n) - [*] -> (m) where m.name='附注' RETURN m,p");
-                                if(document.getElementById("tableData")){
-                                    document.getElementById("tableData").setAttribute
-                                    ("style", "margin-left:300px;width:960px");
-                                    document.getElementById("leftContent").setAttribute
-                                    ("style", "position:absolute;width:370px;height: 620px;" +
-                                        " display: block;border-right: 3px solid lightgray;z-index: 100 ;overflow-y:auto;overflow-x:hidden;");
-                                }
-                                break;
->>>>>>> 32e37c1235159edec3ba7462da213b6c3e3a2513
 
                     }
-                        });
+                });
                 }
 
             }
@@ -264,8 +245,7 @@ function Neod3Renderer() {
                             }
                         },
                     }).then((value) => {
-<<<<<<< HEAD
-                            console.log("");
+                        console.log("");
                     var neo = new Neo(connection);
                     try {
                         var query = "match (n) where n.CN_KEY='"+value['CN_KEY']+"' and n.caseId='"+value['caseId']+"' WITH n OPTIONAL MATCH p=(n)-[r:变化]-() return p,n,r";
@@ -333,30 +313,12 @@ function Neod3Renderer() {
                     } catch (e) {
                         console.log(e);
                         sweetAlert("Catched error", e, "error");
-=======
-                        switch (value) {
-
-                            case "more":
-                                execute("MATCH (n) WHERE n.caseId='汉东检刑诉受[2019]980000100216号' WITH n MATCH p = (n) - [*] -> (m) where m.name='附注' RETURN m,p");
-                                if(document.getElementById("tableData")){
-                                    document.getElementById("tableData").setAttribute
-                                    ("style", "margin-left:300px;width:960px");
-                                    document.getElementById("leftContent").setAttribute
-                                    ("style", "position:absolute;width:370px;height: 620px;" +
-                                        " display: block;border-right: 3px solid lightgray;z-index: 100 ;overflow-y:auto;overflow-x:hidden;");
-                                }
-                                break;
->>>>>>> 32e37c1235159edec3ba7462da213b6c3e3a2513
 
                     }
-                        });
+                });
                 }
 
             }
-<<<<<<< HEAD
-=======
-            //console.log(selectNode["label"]);
->>>>>>> 32e37c1235159edec3ba7462da213b6c3e3a2513
 
             document.getElementById("suyuanDataId").innerHTML = "<p style='margin-left:5px;color:#ff6601;'>"+alertString+"</p>";
         }
@@ -565,13 +527,13 @@ function Neod3Renderer() {
         renderer.call(graphView);
 
 
-      /*  zoomHandlers.wheel = renderer.on("wheel.zoom");
-        zoomHandlers.mousewheel = renderer.on("mousewheel.zoom");
-        zoomHandlers.mousedown = renderer.on("mousedown.zoom");
-        zoomHandlers.DOMMouseScroll = renderer.on("DOMMouseScroll.zoom");
-        zoomHandlers.touchstart = renderer.on("touchstart.zoom");
-        zoomHandlers.touchmove = renderer.on("touchmove.zoom")
-        zoomHandlers.touchend = renderer.on("touchend.zoom");*/
+        /*  zoomHandlers.wheel = renderer.on("wheel.zoom");
+          zoomHandlers.mousewheel = renderer.on("mousewheel.zoom");
+          zoomHandlers.mousedown = renderer.on("mousedown.zoom");
+          zoomHandlers.DOMMouseScroll = renderer.on("DOMMouseScroll.zoom");
+          zoomHandlers.touchstart = renderer.on("touchstart.zoom");
+          zoomHandlers.touchmove = renderer.on("touchmove.zoom")
+          zoomHandlers.touchend = renderer.on("touchend.zoom");*/
         disableZoomHandlers();
 
         d3.select('body').on("keydown", keyHandler).on("keyup", keyHandler);
