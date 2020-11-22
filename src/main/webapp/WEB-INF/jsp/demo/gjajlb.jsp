@@ -76,9 +76,6 @@
         var url = "${webRoot}/demo/gj/parselog";
         confirm('确定生成世系数据？', function () {
             $.post(url, "bmsah=" + bmsah, function (r) {
-                $("#pageNum").val(0);
-                $("#search-from  input").val("");
-                $("#search-from  select").val("");
                 $("#search-from").submit();
             });
         });
@@ -93,9 +90,6 @@
         var url = "${webRoot}/demo/gj/deletelog";
         confirm('确定删除世系数据？', function () {
             $.post(url, "bmsah=" + bmsah, function (r) {
-                $("#pageNum").val(0);
-                $("#search-from  input").val("");
-                $("#search-from  select").val("");
                 $("#search-from").submit();
             });
         });
