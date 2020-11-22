@@ -155,7 +155,7 @@ function Neod3Renderer() {
                         console.log("");
                     var neo = new Neo(connection);
                     try {
-                        var query = "match (n) where n.CN_KEY='"+value['CN_KEY']+"' and n.caseId='"+value['caseId']+"' WITH n OPTIONAL MATCH (n)-[r]-() return n,r";
+                        var query = "match (n) where n.CN_KEY='"+value['CN_KEY']+"' and n.caseId='"+value['caseId']+"' WITH n OPTIONAL MATCH (n)-[r:变化]-() return n,r";
                         var label = value["label"];
                         if(document.getElementById("tableData")){
                             document.getElementById("tableData").setAttribute
