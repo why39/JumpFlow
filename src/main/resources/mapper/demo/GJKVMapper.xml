@@ -3,15 +3,16 @@
 
 <mapper namespace="com.hxy.provenance.logparser.GJKVDao">
 
-
     <resultMap type="com.hxy.provenance.logparser.KVEntity" id="caseMap">
         <result property="en" column="en"/>
         <result property="cn" column="cn"/>
+        <result property="category" column="category"/>
     </resultMap>
 
     <sql id="Base_Column_List">
 		en,
-		cn
+		cn,
+		category
     </sql>
 
     <select id="queryList" resultMap="caseMap">
