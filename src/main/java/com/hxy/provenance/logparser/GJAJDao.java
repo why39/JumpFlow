@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * 案件流程测试
- * 
+ *
  * @author hxy
  * @email huangxianyuan@gmail.com
  * @date 2017-07-31 13:33:23
@@ -16,4 +16,6 @@ import java.util.List;
 @Mapper
 public interface GJAJDao extends BaseDao<GJAJEntity> {
     List<GJAJEntity> queryObject2(String ajlb);
+
+    void updateComplete(int IS_COMPLETE,String BMSAH);
 }

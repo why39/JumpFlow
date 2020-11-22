@@ -16,7 +16,7 @@ import java.util.List;
  * @Auther hxy
  * @Date 2017/7/27
  */
-@ActTable(tableName = "AJ_YX_AJ", pkName = "BMSAH")
+@ActTable(tableName = "aj_yx_aj", pkName = "BMSAH")
 public class GJAJEntity {
     private String BMSAH;   //部门受案号
     private String TYSAH;
