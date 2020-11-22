@@ -587,7 +587,10 @@
     }
 
     function toFIXED(num, n) {
-        return parseInt(num * Math.pow(10, n) + 0.5, 10) / Math.pow(10, n);
+        let numStr = num.toString()
+        let index = numStr.indexOf('.')
+        let result = numStr.slice(0, index + n)
+        return Number(result);
     }
 
 
@@ -613,7 +616,7 @@
                             value: parseFloat(item["c"]) / parseFloat(caseSum),
                             color: colors.pop(),
                             label1: item["AJLB_MC"],
-                            label2: toFIXED(parseFloat(item["c"]) / parseFloat(caseSum), 3) * 100 + "%"
+                            label2: toFIXED(parseFloat(item["c"]) / parseFloat(caseSum) * 100, 3) + "%"
                         }
                         seriesData.push(cnf)
                         console.log(item, seriesData);
