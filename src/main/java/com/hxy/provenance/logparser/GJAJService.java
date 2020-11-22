@@ -31,4 +31,6 @@ public interface GJAJService {
     Page<GJAJEntity> findPage(GJAJEntity leaveEntity, int pageNum);
 
     Result parseLog(String BMSAH);
+
+    Result deleteLog(String bmsah);
 }

@@ -34,7 +34,7 @@
                     <th>部门受案号</th>
                     <th>案件类别</th>
                     <th>案件名称</th>
-                    <th>操作</th>
+                    <th>世系数据操作</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -47,12 +47,18 @@
                         <td>
                             <div class=" btn-group ">
                                 <button class="layui-btn layui-btn-small" type="button"
-                                        onclick="logDeal('${leave.BMSAH}')"><i class="layui-icon">&#xe604;</i>生成世系数据
+                                        onclick="logDeal('${leave.BMSAH}')">生成
                                 </button>
+                                <c:if test="${leave.IS_COMPLETE == 1}">
+                                    <button class="layui-btn layui-btn-small" type="button"
+                                            onclick="logRead('${leave.BMSAH}')">查看
+                                    </button>
+                                    <button class="layui-btn layui-btn-small" type="button"
+                                            onclick="logDelete('${leave.BMSAH}')">删除
+                                    </button>
 
-                                <button class="layui-btn layui-btn-small" type="button"
-                                        onclick="logRead('${leave.BMSAH}')"><i class="layui-icon">&#xe604;</i>查看世系数据
-                                </button>
+                                </c:if>
+
                             </div>
                         </td>
                     </tr>
@@ -70,9 +76,10 @@
         var url = "${webRoot}/demo/gj/parselog";
         confirm('确定生成世系数据？', function () {
             $.post(url, "bmsah=" + bmsah, function (r) {
-                alert('解析成功', function () {
-                    vm.reload();
-                });
+                $("#pageNum").val(0);
+                $("#search-from  input").val("");
+                $("#search-from  select").val("");
+                $("#search-from").submit();
             });
         });
 
@@ -80,6 +87,18 @@
 
     function logRead(bmsah) {
         window.location.href="http://localhost:8083/hxyActiviti/neoData.html?bmsah="+encodeURI(bmsah);
+    }
+
+    function logDelete(bmsah) {
+        var url = "${webRoot}/demo/gj/deletelog";
+        confirm('确定删除世系数据？', function () {
+            $.post(url, "bmsah=" + bmsah, function (r) {
+                $("#pageNum").val(0);
+                $("#search-from  input").val("");
+                $("#search-from  select").val("");
+                $("#search-from").submit();
+            });
+        });
     }
 </script>
 

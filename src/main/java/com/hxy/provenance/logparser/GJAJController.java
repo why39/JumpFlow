@@ -59,6 +59,13 @@ public class GJAJController {
         return caseService.parseLog(bmsah);
     }
 
+    @RequestMapping(value="deletelog", method = RequestMethod.POST)
+    @RequiresPermissions("act:model:all")
+    @ResponseBody
+    public Result deletelog(String bmsah) {
+        return caseService.deleteLog(bmsah);
+    }
+
     @RequestMapping(value = "ajlb")
     @ResponseBody
     public List<GJAJEntity> Ajlb(@RequestParam  String ajlb){

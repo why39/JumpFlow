@@ -95,6 +95,11 @@ public class GJAJServiceImpl implements GJAJService {
         return PageHelper.endPage();
     }
 
+    public Result deleteLog(String BMSAH) {
+        caseDao.updateComplete(0, BMSAH);
+        return Result.ok();
+    }
+
     @Override
     public Result parseLog(String BMSAH) {
 

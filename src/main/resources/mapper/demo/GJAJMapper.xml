@@ -14,14 +14,6 @@
 
 
 
-    <sql id="Base_Column_List" >
-		BMSAH,
-		TYSAH,
-		AJMC,
-		CBDW_MC,
-		AJLB_MC
-    </sql>
-
 	<sql id="Base_Column_List2" >
 		BMSAH,
 		TYSAH,
@@ -35,7 +27,7 @@
 	<insert id="save" parameterType="com.hxy.provenance.logparser.GJAJEntity">
 		insert into aj_yx_aj
 		(
-		<include refid="Base_Column_List" />
+		<include refid="Base_Column_List2" />
 		)
 		values
 		(
@@ -49,7 +41,7 @@
 
 	<select id="queryObject" resultType="com.hxy.provenance.logparser.GJAJEntity" resultMap="caseMap">
 	select
-	<include refid="Base_Column_List" />
+	<include refid="Base_Column_List2" />
 	from aj_yx_aj
 	where BMSAH = #{value}
 </select>
@@ -66,7 +58,7 @@
 
 	<select id="queryList" resultType="com.hxy.provenance.logparser.GJAJEntity" resultMap="caseMap">
 		select
-		<include refid="Base_Column_List" />
+		<include refid="Base_Column_List2" />
 		from aj_yx_aj
 	</select>
 	
