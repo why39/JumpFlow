@@ -511,7 +511,7 @@
             clearNodeInfo();
             var over_neo = new Neo(connection);
             try {
-                var over_query = "MATCH (n) WHERE n.案件类别= \'" + ll + "\' WITH n MATCH p = (n) - [*] -> (m)  RETURN m,p";
+                var over_query = "MATCH (n) WHERE n.案件类别= \'" + ll + "\' WITH n MATCH p = (n) - [r:修改|:变化|:相关|:下一步] -> (m)  RETURN m,p";
                 console.log(over_query);
                 over_neo.executeQuery(over_query, {}, function (err, res) {
                     res = res || {};

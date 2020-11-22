@@ -28,7 +28,7 @@
 
         .swal-title {
             margin: 0px;
-            font-size: 28px;
+            font-size: 14px;
             box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.21);
             margin-bottom: 28px;
         }
@@ -49,6 +49,15 @@
             overflow: hidden;
         }
 
+        .displayLabelCLass{
+            margin-top:3px;
+            float: right;
+            border: 3px solid #000000;
+            margin-right: 3px;
+        }
+        .displayLabelCLass:hover{
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -105,7 +114,14 @@
     <div id="suyuanDataId">
 
     </div>
-
+    <div id="displayLabel" style = "float: right" class = "displayLabelCLass">
+        <p id = "displayLeiBie"
+           style = "margin-top:10px;margin-right: 10px;font-weight: bold;
+           color: #187526;font-size: 14px;font-family: 'Arial Black'">123</p>
+        <p id = "displayCaseId"
+           style = "margin-top:10px;margin-right: 10px;font-weight: bold;
+           color: #187526;font-size: 14px;font-family: 'Arial Black'">456</p>
+    </div>
 
 </div>
 
@@ -246,8 +262,6 @@
                 res = res || {}
                 console.log("Executing Query res: ", res);
                 var graph = res.graph;
-
-
                 if (graph) {
                     if (graph.nodes) {
                         for(item in graph.nodes) {
@@ -279,7 +293,6 @@
         } catch (e) {
             console.log(e);
             sweetAlert("Catched error", e, "error");
-
     }
     }
 
@@ -753,6 +766,8 @@
 
     window.onload = (function () {
         var query = null;
+        document.getElementById("displayCaseId").innerHTML = jiema();
+        document.getElementById("displayLeiBie").innerHTML = "刑事检察";
         query = "match(n:CASE) where n.caseId = \'" + jiema() + "\' with n match p = (n) - [*] ->(m:Task) RETURN p";
         clearNodeInfo();
         execute(query);
