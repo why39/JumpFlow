@@ -95,6 +95,11 @@ public class GJAJServiceImpl implements GJAJService {
         return PageHelper.endPage();
     }
 
+    public Result deleteLog(String BMSAH) {
+        caseDao.updateComplete(0, BMSAH);
+        return Result.ok();
+    }
+
     @Override
     public Result parseLog(String BMSAH) {
 
@@ -159,7 +164,7 @@ public class GJAJServiceImpl implements GJAJService {
                                 par.put("操作人", rz.getCZRM());
                                 par.put("日志ID", rz.getID());
 
-                                int relatedTaskId = taskList.size()-1;
+                                int relatedTaskId = taskList.size() - 1;
                                 for (int i = 0; i < taskList.size(); i++) {
                                     Map<String, Object> task = taskList.get(i);
                                     String zhxgsj = (String) task.get("zhxgsj");
@@ -170,7 +175,7 @@ public class GJAJServiceImpl implements GJAJService {
                                     }
                                 }
 
-                                if (relatedTaskId>=0) {
+                                if (relatedTaskId >= 0) {
                                     Map<String, Object> lastTask = taskList.get(relatedTaskId);
                                     par.put("taskNodeId", lastTask.get("id"));
                                     par.put("taskNodeName", lastTask.get("name"));
@@ -199,7 +204,7 @@ public class GJAJServiceImpl implements GJAJService {
                                 par.put("操作人", rz.getCZRM());
                                 par.put("日志ID", rz.getID());
 
-                                int relatedTaskId = taskList.size()-1;
+                                int relatedTaskId = taskList.size() - 1;
                                 for (int i = 0; i < taskList.size(); i++) {
                                     Map<String, Object> task = taskList.get(i);
                                     String zhxgsj = (String) task.get("zhxgsj");
@@ -210,7 +215,7 @@ public class GJAJServiceImpl implements GJAJService {
                                     }
                                 }
 
-                                if (relatedTaskId>=0) {
+                                if (relatedTaskId >= 0) {
                                     Map<String, Object> lastTask = taskList.get(relatedTaskId);
                                     par.put("taskNodeId", lastTask.get("id"));
                                     par.put("taskNodeName", lastTask.get("name"));
@@ -237,6 +242,7 @@ public class GJAJServiceImpl implements GJAJService {
 
                 }
             }
+            caseDao.updateComplete(1, BMSAH);
         } catch (Exception e) {
             e.printStackTrace();
         }

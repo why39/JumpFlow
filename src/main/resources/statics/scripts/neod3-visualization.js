@@ -56,30 +56,30 @@ function Neod3Renderer() {
         if(selectNode.name != null) {
             var neo = new Neo(connection);
             try {
-            query = "MATCH (n)-[r]->(m) RETURN n,r,m";
-            neo.executeQuery(query, {}, function (err, res) {
-                res = res || {};
-                var graph = res.graph;
-                if (graph) {
-                    var node = graph.nodes;
-                    selectNode = JSON.parse(JSON.stringify(node));
-                    //console.log(selectNode);
-                    if (selectNode){
-                        for(var i in selectNode) {
-                            if(selectNode[i].CN_KEY != null){
-                                //console.log(selectNode[i].CN_KEY);
+                query = "MATCH (n)-[r]->(m) RETURN n,r,m";
+                neo.executeQuery(query, {}, function (err, res) {
+                    res = res || {};
+                    var graph = res.graph;
+                    if (graph) {
+                        var node = graph.nodes;
+                        selectNode = JSON.parse(JSON.stringify(node));
+                        //console.log(selectNode);
+                        if (selectNode){
+                            for(var i in selectNode) {
+                                if(selectNode[i].CN_KEY != null){
+                                    //console.log(selectNode[i].CN_KEY);
+                                }
                             }
                         }
+                    } else {
+                        if (err) {
+                            console.log(err);
+                        }
                     }
-                } else {
-                    if (err) {
-                        console.log(err);
-                    }
-                }
-            });
-        }catch (e) {
-            console.log(e);
-        }
+                });
+            }catch (e) {
+                console.log(e);
+            }
             //document.getElementById("suyuanName").value = '附注';
         }
         if (selectNode.label == "Task") {
@@ -103,12 +103,12 @@ function Neod3Renderer() {
             }).then((value) => {
                 switch (value) {
                     case "more":
-                    if(document.getElementById("tableData")){
-                        document.getElementById("tableData").setAttribute
-                        ("style", "margin-left:0px;width:1210px");
-                        document.getElementById("leftContent").setAttribute
-                        ("style", "display:none");
-                    }
+                        if(document.getElementById("tableData")){
+                            document.getElementById("tableData").setAttribute
+                            ("style", "margin-left:0px;width:1210px");
+                            document.getElementById("leftContent").setAttribute
+                            ("style", "display:none");
+                        }
                         execute("match (n) where ID(n) = "+node.id+" with n match p = (n) - [r:相关] ->(m) return p");
                         break;
 
@@ -126,6 +126,10 @@ function Neod3Renderer() {
                     alertString1+="<span style='color:pink'>k<span>+selectNode[k]";
                 }
             }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 32e37c1235159edec3ba7462da213b6c3e3a2513
             console.log("案件名+"+ selectNode["案件名"]);
 
             if(selectNode[selectNode["label"]] ==  undefined) {
@@ -152,6 +156,7 @@ function Neod3Renderer() {
                         },
 
                     }).then((value) => {
+<<<<<<< HEAD
                             console.log("");
                     var neo = new Neo(connection);
                     try {
@@ -220,6 +225,20 @@ function Neod3Renderer() {
                     } catch (e) {
                         console.log(e);
                         sweetAlert("Catched error", e, "error");
+=======
+                        switch (value) {
+
+                            case "more":
+                                execute("MATCH (n) WHERE n.caseId='汉东检刑诉受[2019]980000100216号' WITH n MATCH p = (n) - [*] -> (m) where m.name='附注' RETURN m,p");
+                                if(document.getElementById("tableData")){
+                                    document.getElementById("tableData").setAttribute
+                                    ("style", "margin-left:300px;width:960px");
+                                    document.getElementById("leftContent").setAttribute
+                                    ("style", "position:absolute;width:370px;height: 620px;" +
+                                        " display: block;border-right: 3px solid lightgray;z-index: 100 ;overflow-y:auto;overflow-x:hidden;");
+                                }
+                                break;
+>>>>>>> 32e37c1235159edec3ba7462da213b6c3e3a2513
 
                     }
                         });
@@ -245,6 +264,7 @@ function Neod3Renderer() {
                             }
                         },
                     }).then((value) => {
+<<<<<<< HEAD
                             console.log("");
                     var neo = new Neo(connection);
                     try {
@@ -313,12 +333,30 @@ function Neod3Renderer() {
                     } catch (e) {
                         console.log(e);
                         sweetAlert("Catched error", e, "error");
+=======
+                        switch (value) {
+
+                            case "more":
+                                execute("MATCH (n) WHERE n.caseId='汉东检刑诉受[2019]980000100216号' WITH n MATCH p = (n) - [*] -> (m) where m.name='附注' RETURN m,p");
+                                if(document.getElementById("tableData")){
+                                    document.getElementById("tableData").setAttribute
+                                    ("style", "margin-left:300px;width:960px");
+                                    document.getElementById("leftContent").setAttribute
+                                    ("style", "position:absolute;width:370px;height: 620px;" +
+                                        " display: block;border-right: 3px solid lightgray;z-index: 100 ;overflow-y:auto;overflow-x:hidden;");
+                                }
+                                break;
+>>>>>>> 32e37c1235159edec3ba7462da213b6c3e3a2513
 
                     }
                         });
                 }
 
             }
+<<<<<<< HEAD
+=======
+            //console.log(selectNode["label"]);
+>>>>>>> 32e37c1235159edec3ba7462da213b6c3e3a2513
 
             document.getElementById("suyuanDataId").innerHTML = "<p style='margin-left:5px;color:#ff6601;'>"+alertString+"</p>";
         }
