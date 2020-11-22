@@ -98,14 +98,13 @@
     </div>
     <div class="col-lg-6" style="width:447px;margin-left:5px">
         <label id="labelNameLabel"
-               style="position: absolute;margin-top: 6px;">选择节点类型</label>
+               style="position: absolute;margin-top: 6px;">案卡项数据类型</label>
         <input type="text" class="form-control" id="labelName" placeholder="" list="itemlist"
                style="margin-left:100px">
         <datalist id="itemlist">
-            <option>人员相关</option>
-            <option>案件相关</option>
-            <option>其他</option>
-            <option>所有</option>
+            <option value="人员相关">人员相关</option>
+            <option value="案件相关">案件相关</option>
+            <option value="其他">其他</option>
         </datalist>
         <button onclick="trace()" class="btn btn-default" style="width: 100px;margin-top: -58px;margin-left:550px"
                 type="button">溯源查找
