@@ -33,4 +33,6 @@ public interface GJAJService {
     Result parseLog(String BMSAH);
 
     Result deleteLog(String bmsah);
+
+    List<Map<String, Object>> countAJLB();
 }
