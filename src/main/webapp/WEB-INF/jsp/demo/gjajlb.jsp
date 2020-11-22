@@ -53,9 +53,9 @@
                                     <button class="layui-btn layui-btn-small" type="button"
                                             onclick="logRead('${leave.BMSAH}')">查看
                                     </button>
-                                    <button class="layui-btn layui-btn-small" type="button"
-                                            onclick="logDelete('${leave.BMSAH}')">删除
-                                    </button>
+<%--                                    <button class="layui-btn layui-btn-small" type="button"--%>
+<%--                                            onclick="logDelete('${leave.BMSAH}')">删除--%>
+<%--                                    </button>--%>
 
                                 </c:if>
 
