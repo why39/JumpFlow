@@ -339,9 +339,18 @@
                 res = res || {}
                 console.log("Executing Query res: ", query,res);
                 if(res && res.table) {
+                    over_data = []
+                    over_str=[]
                     for (i in res.table) {
                         item = res.table[i]
+                        over_data.push(item["c"])
+                        over_str.push(item["name"])
+                        if (i>=10) {
+                            break;
+                        }
                     }
+
+                    zhizhutu(over_data, over_str);
                 }
 
             });
@@ -361,11 +370,9 @@
         query = "MATCH (n:BALB) WHERE n.class=\'" + "刑事执行" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
         clearNodeInfo();
-        var over_str = ['刑事检察', '刑事执行', '公益诉讼', '民事', '行政', '未检业务', '控告申诉', '检委办', '对台业务', '案管', '司法协助'];
-        var over_data = over_data = [7, 4, 3, 3, 2, 2, 2, 2, 2, 2, 2];
 
         document.getElementById("chart").innerHTML = "";
-        zhizhutu(over_data, over_str);
+        //zhizhutu(over_data, over_str);
         //rank(ll.toString());
         displayZhuZhuangTu("刑事执行");
         executeNode(query, ss, ll);
@@ -623,7 +630,7 @@
                 }
                 datadata[ii] = data[ii];
             }
-            zhizhutu(datadata, strstr);
+            //zhizhutu(datadata, strstr);
         }, 3000);
     }
 
