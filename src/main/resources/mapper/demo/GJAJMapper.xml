@@ -6,15 +6,14 @@
         <result property="BMSAH" column="BMSAH"/>
         <result property="TYSAH" column="TYSAH"/>
         <result property="AJMC" column="AJMC"/>
-		<result property="CBDW_MC" column="CBDW_MC"/>
-		<result property="AJLB_MC" column="AJLB_MC"/>
-		<result property="CJSJ" column="CJSJ"/>
-		<result property="IS_COMPLETE" column="IS_COMPLETE"/>
+        <result property="CBDW_MC" column="CBDW_MC"/>
+        <result property="AJLB_MC" column="AJLB_MC"/>
+        <result property="CJSJ" column="CJSJ"/>
+        <result property="IS_COMPLETE" column="IS_COMPLETE"/>
     </resultMap>
 
 
-
-	<sql id="Base_Column_List2" >
+    <sql id="Base_Column_List2">
 		BMSAH,
 		TYSAH,
 		AJMC,
@@ -24,96 +23,96 @@
 		IS_COMPLETE
     </sql>
 
-	<insert id="save" parameterType="com.hxy.provenance.logparser.GJAJEntity">
-		insert into aj_yx_aj
-		(
-		<include refid="Base_Column_List2" />
-		)
-		values
-		(
-		#{BMSAH},
-		#{TYSAH},
-		#{AJMC},
-		#{CBDW_MC},
-		#{AJLB_MC}
-		)
-	</insert>
+    <insert id="save" parameterType="com.hxy.provenance.logparser.GJAJEntity">
+        insert into aj_yx_aj
+        (
+        <include refid="Base_Column_List2"/>
+        )
+        values
+        (
+        #{BMSAH},
+        #{TYSAH},
+        #{AJMC},
+        #{CBDW_MC},
+        #{AJLB_MC}
+        )
+    </insert>
 
-	<select id="queryObject" resultType="com.hxy.provenance.logparser.GJAJEntity" resultMap="caseMap">
-	select
-	<include refid="Base_Column_List2" />
-	from aj_yx_aj
-	where BMSAH = #{value}
-</select>
-	<select id="queryObject2" resultType="com.hxy.provenance.logparser.GJAJEntity" resultMap="caseMap">
-		select
-		<include refid="Base_Column_List2" />
-		from aj_yx_aj
-		where AJLB_MC = #{value} and IS_COMPLETE=1
-	</select>
+    <select id="queryObject" resultType="com.hxy.provenance.logparser.GJAJEntity" resultMap="caseMap">
+        select
+        <include refid="Base_Column_List2"/>
+        from aj_yx_aj
+        where BMSAH = #{value}
+    </select>
+    <select id="queryObject2" resultType="com.hxy.provenance.logparser.GJAJEntity" resultMap="caseMap">
+        select
+        <include refid="Base_Column_List2"/>
+        from aj_yx_aj
+        where AJLB_MC = #{value} and IS_COMPLETE=1
+    </select>
 
-	<update id="updateComplete" >
+    <update id="updateComplete">
 		update aj_yx_aj set IS_COMPLETE = #{arg0} where BMSAH = #{arg1}
 	</update>
 
-	<select id="queryList" resultType="com.hxy.provenance.logparser.GJAJEntity" resultMap="caseMap">
-		select
-		<include refid="Base_Column_List2" />
-		from aj_yx_aj
-	</select>
-	
- 	<select id="queryTotal" resultType="int">
+    <select id="queryList" resultType="com.hxy.provenance.logparser.GJAJEntity" resultMap="caseMap">
+        select
+        <include refid="Base_Column_List2"/>
+        from aj_yx_aj
+    </select>
+
+    <select id="queryTotal" resultType="int">
 		select count(*) from aj_yx_aj
 	</select>
 
-	<select id="queryTotal01" resultType="int">
+    <select id="countAJLB" resultType="map">
+        select AJLB_MC,count(*) as c from aj_yx_aj GROUP BY AJLB_MC
+    </select>
+
+    <select id="queryTotal01" resultType="int">
 		select count(*) from aj_yx_aj
 		where AJLB_MC = '刑事检察'
 	</select>
-	<select id="queryTotal02" resultType="int">
+    <select id="queryTotal02" resultType="int">
 		select count(*) from aj_yx_aj
 		where AJLB_MC = '刑事执行'
 	</select>
-	<select id="queryTotal03" resultType="int">
+    <select id="queryTotal03" resultType="int">
 		select count(*) from aj_yx_aj
 		where AJLB_MC = '公益诉讼'
 	</select>
-	<select id="queryTotal04" resultType="int">
+    <select id="queryTotal04" resultType="int">
 		select count(*) from aj_yx_aj
 		where AJLB_MC = '民事'
 	</select>
-	<select id="queryTotal05" resultType="int">
+    <select id="queryTotal05" resultType="int">
 		select count(*) from aj_yx_aj
 		where AJLB_MC = '行政'
 	</select>
-	<select id="queryTotal06" resultType="int">
+    <select id="queryTotal06" resultType="int">
 		select count(*) from aj_yx_aj
 		where AJLB_MC = '未检业务'
 	</select>
-	<select id="queryTotal07" resultType="int">
+    <select id="queryTotal07" resultType="int">
 		select count(*) from aj_yx_aj
 		where AJLB_MC = '控告申诉'
 	</select>
-	<select id="queryTotal08" resultType="int">
+    <select id="queryTotal08" resultType="int">
 		select count(*) from aj_yx_aj
 		where AJLB_MC = '检委办'
 	</select>
-	<select id="queryTotal09" resultType="int">
+    <select id="queryTotal09" resultType="int">
 		select count(*) from aj_yx_aj
 		where AJLB_MC = '对台业务'
 	</select>
-	<select id="queryTotal10" resultType="int">
+    <select id="queryTotal10" resultType="int">
 		select count(*) from aj_yx_aj
 		where AJLB_MC = '案管'
 	</select>
-	<select id="queryTotal11" resultType="int">
+    <select id="queryTotal11" resultType="int">
 		select count(*) from aj_yx_aj
 		where AJLB_MC = '司法协助'
 	</select>
-
-
-
-
 
 
 </mapper>

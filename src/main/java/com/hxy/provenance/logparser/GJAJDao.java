@@ -5,6 +5,7 @@ import com.hxy.modules.demo.entity.CaseEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 案件流程测试
@@ -18,4 +19,6 @@ public interface GJAJDao extends BaseDao<GJAJEntity> {
     List<GJAJEntity> queryObject2(String ajlb);
 
     void updateComplete(int IS_COMPLETE,String BMSAH);
+
+    List<Map<String, Object>> countAJLB();
 }

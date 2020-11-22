@@ -101,6 +101,10 @@ public class GJAJServiceImpl implements GJAJService {
         return Result.ok();
     }
 
+    public List<Map<String, Object>> countAJLB() {
+        return caseDao.countAJLB();
+    }
+
     @Override
     public Result parseLog(String BMSAH) {
 

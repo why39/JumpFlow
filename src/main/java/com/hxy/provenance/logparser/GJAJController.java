@@ -79,4 +79,10 @@ public class GJAJController {
         List<GJAJEntity> gjajEntity = (List<GJAJEntity>) gjajService.queryObject2(ajlb);
         return gjajEntity;
     }
+
+    @RequestMapping(value = "count-ajlb")
+    @ResponseBody
+    public List<Map<String, Object>> countAJLB() {
+        return  gjajService.countAJLB();
+    }
 }
