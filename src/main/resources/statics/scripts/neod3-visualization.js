@@ -109,7 +109,7 @@ function Neod3Renderer() {
                         document.getElementById("leftContent").setAttribute
                         ("style", "display:none");
                     }
-                    execute("match (n) where ID(n) = "+node.id+" with n match p = (n) - [r:相关] ->(m) return p");
+                    execute("match (n) where ID(n) = "+node.id+" with n match p = (n) - [r:相关] ->(m) where m.案卡项类型='人员相关' or m.案卡项类型='案件相关' return p");
                     break;
 
                 }});

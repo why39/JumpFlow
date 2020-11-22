@@ -14,37 +14,46 @@ public class KVCache {
     @Autowired
     GJKVDao gjkvDao;
 
-    public static HashMap<String, String> kv = new HashMap<>();
+    public static HashMap<String, KVEntity> kv = new HashMap<>();
 
+    public void preLoad(String en,String cn,String category) {
+        KVEntity entity = new KVEntity();
+        entity.en=en;
+        entity.cn=cn;
+        entity.category=category;
+        kv.put(en.toUpperCase(), entity);
+    }
+    
     @PostConstruct
     public void init() {
 
         List<KVEntity> res = gjkvDao.queryList(new HashMap<>());
         for (KVEntity entity : res) {
-            kv.put(entity.en.toUpperCase(), entity.cn);
+            kv.put(entity.en.toUpperCase(), entity);
         }
 
-        kv.put("ACTION","操作");
-        kv.put("CBDW","承办单位");
-        kv.put("AJLX","案件类型");
-        kv.put("AJLXMC","案件类型名称");
-        kv.put("OPERATOR","操作人");
-        kv.put("LOGTIMESTAMP","日志时间");
-        kv.put("LOGLEVEL","日志等级");
-        kv.put("LOGGROUPID","日志组ID");
-        kv.put("LOGORDER","日志优先级");
-        kv.put("SERVICENAME","服务名称");
-        kv.put("SERVICEVERSION","服务版本");
-        kv.put("SERVICEORDER","服务优先级");
-        kv.put("SJBS","审结不诉");
-        kv.put("TABLENAME","表名");
-        kv.put("RJRBH","入卷人编号");
-        kv.put("GLZRRBH","关联自然人编号");
-        kv.put("CHRBH","撤回人编号");
-        kv.put("CHRXM","撤回人姓名");
-        kv.put("BCRXM","补充人姓名");
-        kv.put("BCRBH","补充人编号");
-        kv.put("YJDQRQ","移交日期");
+        
+        preLoad("ACTION","操作","其他");
+        preLoad("CBDW","承办单位","案件相关");
+        preLoad("AJLX","案件类型","案件相关");
+        preLoad("AJLXMC","案件类型名称","案件相关");
+        preLoad("OPERATOR","操作人","人员相关");
+        preLoad("LOGTIMESTAMP","日志时间","其他");
+        preLoad("LOGLEVEL","日志等级","其他");
+        preLoad("LOGGROUPID","日志组ID","其他");
+        preLoad("LOGORDER","日志优先级","其他");
+        preLoad("SERVICENAME","服务名称","其他");
+        preLoad("SERVICEVERSION","服务版本","其他");
+        preLoad("SERVICEORDER","服务优先级","其他");
+        preLoad("SJBS","审结不诉","其他");
+        preLoad("TABLENAME","表名","其他");
+        preLoad("RJRBH","入卷人编号","人员相关");
+        preLoad("GLZRRBH","关联自然人编号","人员相关");
+        preLoad("CHRBH","撤回人编号","人员相关");
+        preLoad("CHRXM","撤回人姓名","人员相关");
+        preLoad("BCRXM","补充人姓名","人员相关");
+        preLoad("BCRBH","补充人编号","人员相关");
+        preLoad("YJDQRQ","移交日期","其他");
     }
 
     @PreDestroy

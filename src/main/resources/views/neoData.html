@@ -89,13 +89,13 @@
     </div>
     <div class="col-lg-6" style="width:447px;margin-left:5px">
         <label id = "labelNameLabel"
-               style = "position: absolute;margin-top: 6px;">选择节点数量</label>
+               style = "position: absolute;margin-top: 6px;">选择节点类型</label>
         <input type="text" class="form-control" id="labelName" placeholder="" list="itemlist"
         style = "margin-left:100px">
         <datalist id="itemlist">
-            <option>10</option>
-            <option>20</option>
-            <option>40</option>
+            <option>人员相关</option>
+            <option>案件相关</option>
+            <option>其他</option>
             <option>所有</option>
         </datalist>
         <button onclick="trace()" class="btn btn-default" style="width: 100px;margin-top: -58px;margin-left:550px"
@@ -367,58 +367,11 @@
         execute(query);
     }
 
-
-    function lookProcess(count) {
-        var query = null;
-        var data1 = new Date($("#timeStartName").val());
-        var vYear1 = data1.getFullYear();
-        var vMon1 = data1.getMonth() + 1;
-        var vDay1 = data1.getDate();
-        var h1 = data1.getHours();
-        var m1 = data1.getMinutes();
-        var se1 = data1.getSeconds();
-        var start_time = vYear1 * 10000 + vMon1 * 100 + vDay1;
-        var data2 = new Date($("#timeEndName").val());
-        var vYear2 = data2.getFullYear();
-        var vMon2 = data2.getMonth() + 1;
-        var vDay2 = data2.getDate();
-        var h2 = data2.getHours();
-        var m2 = data2.getMinutes();
-        var se2 = data2.getSeconds();
-        var end_time = vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
-        if ($("#timeStartName").val() && $("#timeEndName").val() && $("#userName").val() && $("#labelName").val()) {
-            query = "MATCH (n:CASE) WHERE n.timestamp>=" + start_time * 1000000000 +
-                " AND n.timestamp<=" + end_time * 1000000000 + " " +
-                "AND n.user =\'" + $("#userName").val() + "\' AND n.caseId = \'" + $("#labelName").val() +
-                "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n limit " + count;
-        } else {
-            query = "MATCH (n:BALB) WITH n MATCH p=(n)-[*]->(m:Task) RETURN p,n,m";
-        }
-        clearNodeInfo();
-        execute(query);
-    }
-
     function clearNodeInfo() {
         //neo pane区域
         $(".nodeId").text("");
         $(".caseId").text("");
         $(".nodeName").text("");
-    }
-
-    function shiNode() {
-        lookProcess(10);
-    }
-
-    function twNode() {
-        lookProcess(20);
-    }
-
-    function sishiNode() {
-        lookProcess(40);
-    }
-
-    function allNode() {
-        lookProcess(100000);
     }
 
     //TODO 不存在的节点提示
@@ -436,6 +389,11 @@
         console.log("suanyuaName is " + $("#suyuanName").val());
         console.log("userName is" + $("#userName").val());
         console.log("jiedianshuliang is" + $("#labelName").val());
+        categoryContent="";
+        if($("#labelName").val()){
+            categoryContent=" and m.案卡项类型='"+$("#labelName").val()+"'";
+        }
+
         if ($("#suyuanName").val() && $("#timeStartName").val() && $("#timeEndName").val() && $("#userName").val() && $("#labelName").val()&& $("#ankaCount").val() =="") {
             var timeStart = new Date($("#timeStartName").val());
             var vYear1 = timeStart.getFullYear();
@@ -448,17 +406,14 @@
             var vDay2 = timeEnd.getDate();
             var EndTime = vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
             console.log("timeStar is " + timeStart);
-            count = $("#labelName").val();
-            if ($("#labelName").val() == '所有') {
-                count = 10000;
-            }
+
             if ($("#timeStartName").val() == $("#timeEndName").val()) {
                 EndTime = EndTime + 1;
             }
             query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' AND n.timestamp>=\'" + StartTime * 1000000 +
                 "\' AND n.timestamp<\'" + EndTime * 1000000 + "\' " + "AND n.操作人=\'" + $("#userName").val() +
                 "\' WITH n MATCH p = (n) - [*] -> (m) where m.name=\'"
-                + $("#suyuanName").val() + "\' RETURN m,p limit " + count;
+                + $("#suyuanName").val() + "\' "+categoryContent+" RETURN m,p";
         } else if ($("#suyuanName").val() && $("#timeStartName").val() && $("#timeEndName").val() && $("#userName").val() &&$("#labelName").val() == ""&& $("#ankaCount").val() =="") {
             var timeStart = new Date($("#timeStartName").val());
             var vYear1 = timeStart.getFullYear();
@@ -476,7 +431,7 @@
             query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' AND n.timestamp>=\'" + StartTime * 1000000 +
                 "\' AND n.timestamp<\'" + EndTime * 1000000 + "\' " + "AND n.操作人=\'" + $("#userName").val() +
                 "\' WITH n MATCH p = (n) - [*] -> (m) where m.name=\'"
-                + $("#suyuanName").val() + "\' RETURN m,p";
+                + $("#suyuanName").val() + "\' "+categoryContent+" RETURN m,p";
         } else if ($("#suyuanName").val() && $("#timeStartName").val() && $("#timeEndName").val() &&$("#labelName").val() == "" && $("#userName").val() == ""&& $("#ankaCount").val() =="") {
             var timeStart = new Date($("#timeStartName").val());
             var vYear1 = timeStart.getFullYear();
@@ -492,9 +447,9 @@
                 EndTime = EndTime + 1;
             }
             query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' AND n.timestamp>=\'" + StartTime * 1000000 +
-                "\' AND n.timestamp<\'" + EndTime * 1000000 + "\' WITH n MATCH p = (n) - [*] -> (m) where m.name=\'" + $("#suyuanName").val() + "\' RETURN m,p";
+                "\' AND n.timestamp<\'" + EndTime * 1000000 + "\' WITH n MATCH p = (n) - [*] -> (m) where m.name=\'" + $("#suyuanName").val() + "\' "+categoryContent+" RETURN m,p";
         } else if ($("#suyuanName").val() && $("#timeStartName").val() =="" && $("#timeEndName").val() == "" && $("#userName").val() == "" && $("#labelName").val() == ""&& $("#ankaCount").val() =="") {
-            query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' WITH n MATCH p = (n) - [*] -> (m) where m.name=\'" + $("#suyuanName").val() + "\' RETURN m,p";
+            query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' WITH n MATCH p = (n) - [*] -> (m) where m.name=\'" + $("#suyuanName").val() + "\' "+categoryContent+" RETURN m,p";
         }
         else {
 
