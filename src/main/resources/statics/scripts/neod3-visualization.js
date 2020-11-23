@@ -194,9 +194,9 @@ function Neod3Renderer() {
                                         if(graph.nodes[item]["label"]==label) {
                                             //labelList.push(graph.nodes[item])
                                             console.log("ffffff+",graph.nodes[item]);
-                                            var year = (graph.nodes[item].timestamp).toString().substring(0,4);
-                                            var month = (graph.nodes[item].timestamp).toString().substring(5,7)
-                                                + "-" + (graph.nodes[item].timestamp).toString().substring(7,9);
+                                            var year = (graph.nodes[item]["最后修改时间"]).toString().substring(0,4);
+                                            var month = (graph.nodes[item]["最后修改时间"]).toString().substring(5,7)
+                                                + "-" + (graph.nodes[item]["最后修改时间"]).toString().substring(8,10);
                                             var str_div = graph.nodes[item][graph.nodes[item].label];
                                             if(str_div != ""){
                                                 document.getElementById("timelineId").innerHTML +=
@@ -289,9 +289,9 @@ function Neod3Renderer() {
                                         if(graph.nodes[item]["label"]==label) {
                                             //labelList.push(graph.nodes[item])
                                             console.log("ffffff+",graph.nodes[item]);
-                                            var year = (graph.nodes[item].timestamp).toString().substring(0,4);
-                                            var month = (graph.nodes[item].timestamp).toString().substring(5,7)
-                                                + "-" + (graph.nodes[item].timestamp).toString().substring(7,9);
+                                            var year = (graph.nodes[item]["最后修改时间"]).toString().substring(0,4);
+                                            var month = (graph.nodes[item]["最后修改时间"]).toString().substring(5,7)
+                                                + "-" + (graph.nodes[item]["最后修改时间"]).toString().substring(8,10);
                                             var str_div = graph.nodes[item][graph.nodes[item].label];
                                             if(str_div != ""){
                                                 document.getElementById("timelineId").innerHTML +=

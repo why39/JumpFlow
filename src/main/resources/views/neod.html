@@ -63,14 +63,13 @@
 
 <div style="border-top: 8px solid lightgray; margin-top: 5px;">
 
-    <div id="my_container" style="width:440px; height:410px;float: right;position:relative;box-shadow: 0 0 50px grey;">
-        <p id="containerName" style="float: right;margin-right: 20px;margin-top:10px;
-    font-size: 24px;color: darkred;font-weight: bold">案件总数比例</p>
+
+    <p id="containerName" style="float: right; font-size: 12px;color: darkred;font-weight: bold">案件总数比例</p>
+    <div id="my_container" style="width:440px; height:410px;float: right;position:relative;">
         <canvas id="pie_canvas"></canvas>
     </div>
 
-    <p id="chartName" style="position:absolute;
-    margin-top: 40px;margin-left: 260px;font-size: 24px;color: darkred;font-weight: bold"></p>
+    <p id="chartName" style="position:absolute; font-size: 10px;color: darkred;font-weight: bold"></p>
     <div id="chart" style="position: relative">
 
     </div>
@@ -232,7 +231,8 @@
                         if (yy >= over_anjian.length) {
                             yy = 0;
                         }
-                        className = className + '-' + over_anjian[yy];
+                        // className + '-' + over_anjian[yy];
+                        className = res[i].ajmc
                         yy++;
                         var bmsah = res[i].bmsah;
                         if (bmsah == null) {
