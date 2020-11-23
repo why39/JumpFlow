@@ -335,10 +335,11 @@
     function displayZhuZhuangTu(lbmc) {
         var neo = new Neo(connection);
         try {
-            var query="match(n) where n.案件类别='"+lbmc+"' with n.caseId as CASEIDS unwind CASEIDS as id with id match (m) where m.caseId=id and m.案卡项类型='案件相关' or m.案卡项类型='人员相关' with m.name as names unwind names as name return name,count(*) as c order by c DESC";
+            var query="match(n) where n.案件类别='"+lbmc+"' with n.caseId as CASEIDS unwind CASEIDS as id with id match (m) where m.caseId=id and (m.案卡项类型='案件相关' or m.案卡项类型='人员相关') with m.name as names unwind names as name return name,count(*) as c order by c DESC";
             neo.executeQuery(query, {}, function (err, res) {
                 res = res || {}
                 if(res && res.table) {
+                    console.log("executeQuery : ", query);
                     over_data = []
                     over_str=[]
                     for (i in res.table) {
@@ -351,7 +352,7 @@
                             break;
                         }
                     }
-                    console.log("Executing Query res: ", over_data,over_str);
+                    console.log("over data : ", over_data,over_str);
                     zhizhutu(over_data, over_str);
                 }
 
