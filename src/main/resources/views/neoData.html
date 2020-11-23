@@ -394,7 +394,6 @@
             document.getElementById("leftContent").setAttribute
             ("style", "display:none");
         }
-
         console.log("userName is" + $("#userName").val());
         console.log("ankaCount is" + $("#ankaCount").val());
 
@@ -456,9 +455,6 @@
                 + lableContent
                 + categoryContent + " RETURN m,p";
         }
-
-
-
         //
         // if ($("#suyuanName").val() && $("#timeStartName").val() && $("#timeEndName").val() && $("#userName").val() && $("#labelName").val() && $("#ankaCount").val() == "") {
         //     var timeStart = new Date($("#timeStartName").val());
@@ -738,8 +734,6 @@
 
     var url = window.location.href;//得到页面的url
     var URL_decode = decodeURI(decodeURI(url));//对含有中文的url进行解码,注意是两次解码
-    console.log(URL_decode);
-
     //自定义获取URL中某一参数的封装函数
     function GetQueryString_new(key) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -763,7 +757,7 @@
     window.onload = (function () {
         var query = null;
         document.getElementById("displayCaseId").innerHTML = jiema();
-        document.getElementById("displayLeiBie").innerHTML = "刑事检察";
+        document.getElementById("displayLeiBie").innerHTML = localStorage.getItem("LeiBieName");;
         query = "match(n:CASE) where n.caseId = \'" + jiema() + "\' with n match p = (n) - [*] ->(m:Task) RETURN p";
         clearNodeInfo();
         execute(query);

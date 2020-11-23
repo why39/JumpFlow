@@ -211,6 +211,7 @@
         var query = content;
         var neo = new Neo(connection);
         ll = ll.toString();
+        localStorage.setItem("LeiBieName", ll);
         document.getElementById("caseList").innerHTML = "";
         console.log(ll);
         $.ajax({
