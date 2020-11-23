@@ -188,6 +188,7 @@ function Neod3Renderer() {
                             var graph = res.graph;
                             if (graph) {
                                 if (graph.nodes) {
+                                    var str_name = ['贺甲','贺甲','张四','王六','丁戊','丁戊','张伟'];
                                     for(item in graph.nodes) {
                                         if(graph.nodes[item]["label"]==label) {
                                             //labelList.push(graph.nodes[item])
@@ -199,7 +200,7 @@ function Neod3Renderer() {
                                             if(str_div != ""){
                                                 document.getElementById("timelineId").innerHTML +=
                                                     "<li><div class = \"time\">"+year+"</div> <div class = \"version\">"+month+"</div> " +
-                                                    "<div class = \"timeBananName\">"+"测试账号0102"+"</div> <div class = \"number\"></div>" +
+                                                    "<div class = \"timeBananName\">"+str_name[item]+"</div> <div class = \"number\"></div>" +
                                                     " <div class = \"content\">" +
                                                     "<div class = \"divCount\"> "+str_div+"<br /></div></div></li>";
                                                 //console.log(document.getElementById("timelineId").innerHTML);
