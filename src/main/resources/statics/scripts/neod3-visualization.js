@@ -119,7 +119,7 @@ function Neod3Renderer() {
             var alertString1 =""
             for(var k in selectNode){//遍历json对象的每个key/value对,k为key
                 if("CN_KEY" != k && "label" !=k && "copy_name"!=k && selectNode["label"]!=k && "CaseNodeId"!=k
-                    && "lastNodeId"!=k && "日志ID"!=k && "taskNodeName"!=k && "name"!= k && "taskNodeId" !=k){
+                    && "lastNodeId"!=k && "日志ID"!=k && "taskNodeName"!=k && "name"!= k && "taskNodeId" !=k && "操作人" != k){
                     if(k == 'name') {
                         selectNode[k] = selectNode['copy_name'];
                     }
