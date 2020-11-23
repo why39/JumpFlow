@@ -87,7 +87,7 @@
 </div>
 
 
-<script src="https://d3js.org/d3.v4.js"></script>
+<script src="${rc.contextPath}/scripts/d3.v4.js"></script>
 <script src="${rc.contextPath}/scripts/codemirror.js"></script>
 <script src="${rc.contextPath}/scripts/codemirror-cypher.js"></script>
 <script src="${rc.contextPath}/scripts/vendor.js"></script>
@@ -598,13 +598,13 @@
                 });
             } catch (e) {
                 console.log(e);
-            }
+            }git
         }
         var minIndex = 0;
-        console.log(name_count);
-        console.log("name_count" + name_count);
+        //console.log(name_count);
+        //console.log("name_count" + name_count);
         //console.log(name_str);
-        setTimeout(function () {
+       /* setTimeout(function () {
             var t = 0;
             var c = name_count.length;
             var tm = new Array(11);
@@ -643,7 +643,7 @@
                 datadata[ii] = data[ii];
             }
             //zhizhutu(datadata, strstr);
-        }, 3000);
+        }, 3000);*/
     }
 
     function toFIXED(num, n) {
