@@ -46,9 +46,12 @@
                     <td>${leave.AJMC}</td>
                         <td>
                             <div class=" btn-group ">
-                                <button class="layui-btn layui-btn-small" type="button"
-                                        onclick="logDeal('${leave.BMSAH}')">生成
-                                </button>
+                                <c:if test="${leave.IS_COMPLETE == 0}">
+                                    <button class="layui-btn layui-btn-small" type="button"
+                                            onclick="logDeal('${leave.BMSAH}')">生成
+                                    </button>
+                                </c:if>
+
                                 <c:if test="${leave.IS_COMPLETE == 1}">
                                     <button class="layui-btn layui-btn-small" type="button"
                                             onclick="logRead('${leave.BMSAH}')">查看

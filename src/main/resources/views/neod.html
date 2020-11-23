@@ -14,39 +14,40 @@
     <link rel="stylesheet" href="${rc.contextPath}/styles/morris.css">
 
     <!-- Basic Css files -->
-    <link rel="stylesheet" href="${rc.contextPath}/styles/metismenu.min.css" >
-    <link rel="stylesheet" href="${rc.contextPath}/styles/neodCss1.css" >
+    <link rel="stylesheet" href="${rc.contextPath}/styles/metismenu.min.css">
+    <link rel="stylesheet" href="${rc.contextPath}/styles/neodCss1.css">
     <style>
 
     </style>
 </head>
 <body>
 
-<div >
+<div>
 
     <nav aria-label="Page navigation">
         <ul class="nav nav-tabs">
-            <li role="presentation"><a href = "javascript:;" onclick="monitorClick()" id = "xieshijiancha_a">刑事检察</a></li>
-            <li role="presentation"><a href = "javascript:;" onclick="supervisionClick()" id = "xieshizhixing_a">刑事执行</a></li>
-            <li role="presentation"><a href = "javascript:;" onclick="prosecutionClick()" id = "gongsu_a">公益诉讼</a></li>
-            <li role="presentation"><a href="javascript:" onclick="minshiClick()" id = "minshi_a">民事</a></li>
-            <li role="presentation"><a href="javascript:" onclick="xinzhengClick()" id = "xinzheng_a">行政</a></li>
-            <li role="presentation"><a href="javascript:" onclick="weijianClick()" id = "weijian_a">未检业务</a></li>
-            <li role="presentation"><a href="javascript:" onclick="konggaoClick()" id = "konggao_a">控告申诉</a></li>
-            <li role="presentation"><a href="javascript:" onclick="jianweiClick()" id = "jianwei_a">检委办</a></li>
-            <li role="presentation"><a href="javascript:" onclick="duitaiClick()" id = "duitai_a">对台业务</a></li>
-            <li role="presentation"><a href="javascript:" onclick="anguanClick()" id = "anguan_a">案管</a></li>
-            <li role="presentation"><a href="javascript:" onclick="sifaClick()" id = "sifa_a">司法协助</a></li>
+            <li role="presentation"><a href="javascript:;" onclick="monitorClick()" id="xieshijiancha_a">刑事检察</a></li>
+            <li role="presentation"><a href="javascript:;" onclick="supervisionClick()" id="xieshizhixing_a">刑事执行</a>
+            </li>
+            <li role="presentation"><a href="javascript:;" onclick="prosecutionClick()" id="gongsu_a">公益诉讼</a></li>
+            <li role="presentation"><a href="javascript:" onclick="minshiClick()" id="minshi_a">民事</a></li>
+            <li role="presentation"><a href="javascript:" onclick="xinzhengClick()" id="xinzheng_a">行政</a></li>
+            <li role="presentation"><a href="javascript:" onclick="weijianClick()" id="weijian_a">未检业务</a></li>
+            <li role="presentation"><a href="javascript:" onclick="konggaoClick()" id="konggao_a">控告申诉</a></li>
+            <li role="presentation"><a href="javascript:" onclick="jianweiClick()" id="jianwei_a">检委办</a></li>
+            <li role="presentation"><a href="javascript:" onclick="duitaiClick()" id="duitai_a">对台业务</a></li>
+            <li role="presentation"><a href="javascript:" onclick="anguanClick()" id="anguan_a">案管</a></li>
+            <li role="presentation"><a href="javascript:" onclick="sifaClick()" id="sifa_a">司法协助</a></li>
 
         </ul>
     </nav>
 
-    <div id = "relevantCase" style="visibility : hidden;text-align:center;margin:0 auto">
-        <input class="form-control" type="text" style="width: 240px" id = "keySelect" placeholder="关键字查询"/>
+    <div id="relevantCase" style="visibility : hidden;text-align:center;margin:0 auto">
+        <input class="form-control" type="text" style="width: 240px" id="keySelect" placeholder="关键字查询"/>
 
         <nav aria-label="Page navigation">
-            <div id = "pageData">
-                <ul class="list-group" id = "caseList">
+            <div id="pageData">
+                <ul class="list-group" id="caseList">
 
                 </ul>
             </div>
@@ -60,22 +61,22 @@
 
 </div>
 
-<div style = "border-top: 8px solid lightgray; margin-top: 5px;">
+<div style="border-top: 8px solid lightgray; margin-top: 5px;">
 
-    <p id = "containerName" style = "position: absolute;
+    <p id="containerName" style="position: absolute;
     margin-left: 910px;
     margin-top: 190px;font-size: 24px;color: darkred;font-weight: bold">案件总数比例</p>
     <div id="my_container" style="width:440px; height:410px;float: right;position:relative;box-shadow: 0 0 50px grey;">
-        <canvas id="pie_canvas" ></canvas>
+        <canvas id="pie_canvas"></canvas>
     </div>
 
-    <p id = "chartName" style = "position:absolute;
+    <p id="chartName" style="position:absolute;
     margin-top: 40px;margin-left: 260px;font-size: 24px;color: darkred;font-weight: bold"></p>
-    <div id = "chart" style = "position: relative">
+    <div id="chart" style="position: relative">
 
     </div>
     <!--colorful pulse-->
-    <div id="colorfulPulse" style = "position: fixed;margin-top: 130px;margin-left:300px">
+    <div id="colorfulPulse" style="position: fixed;margin-top: 130px;margin-left:300px">
         <span class="item-1"></span>
         <span class="item-2"></span>
         <span class="item-3"></span>
@@ -85,7 +86,6 @@
         <span class="item-7"></span>
     </div>
 </div>
-
 
 
 <script src="https://d3js.org/d3.v4.js"></script>
@@ -102,12 +102,12 @@
 
 <script type="text/javascript">
 
-    var over_str = ['刑事检察','刑事执行','公益诉讼','民事','行政','未检业务','控告申诉','检委办','对台业务','案管','司法协助'];
-    var over_data = over_data = [7,4,3,3,2,2,2,2,2,2,2];;
+    var over_str = ['刑事检察', '刑事执行', '公益诉讼', '民事', '行政', '未检业务', '控告申诉', '检委办', '对台业务', '案管', '司法协助'];
+    var over_data = over_data = [7, 4, 3, 3, 2, 2, 2, 2, 2, 2, 2];
     var over_sum = 30;
     var over_count = 0;
-    var over_anjian = ['朱某某逃逸案','周某某盗窃案',
-        '张某某盗窃案','郭某某漏税案','刘某某投毒案','贺某某纵火案','王某某强奸案','李某某贪污案'];
+    var over_anjian = ['朱某某逃逸案', '周某某盗窃案',
+        '张某某盗窃案', '郭某某漏税案', '刘某某投毒案', '贺某某纵火案', '王某某强奸案', '李某某贪污案'];
 
     var connection = function () {
         configStr = localStorage.getItem("neoconfig");
@@ -207,47 +207,48 @@
         $(".nodeName").text("");
     }
 
-    function executeNode(content,ss,ll) {
+    function executeNode(content, ss, ll) {
         var query = content;
         var neo = new Neo(connection);
         ll = ll.toString();
         document.getElementById("caseList").innerHTML = "";
         console.log(ll);
         $.ajax({
-            type:"get",
+            type: "get",
             async: false,
-            data:{"ajlb":ll},
+            data: {"ajlb": ll},
             url: "http://localhost:8083/hxyActiviti/demo/gj/ajlb",
             success: function (res) {
                 if (res) {
                     var yy = 0;
-                    for(var i in res) {
+                    for (var i in res) {
+
                         console.log(res[i].bmsah);
-                        var str="";
+                        var str = "";
                         var j = parseInt(i) + 1
                         var className = ss + j;
                         //var className = ss + j;
                         var className = ss;
-                        if(yy >= over_anjian.length){
+                        if (yy >= over_anjian.length) {
                             yy = 0;
                         }
                         className = className + '-' + over_anjian[yy];
                         yy++;
                         var bmsah = res[i].bmsah;
-                        if(bmsah == null) {
+                        if (bmsah == null) {
                             bmsah = '汉东检刑诉受[2019]980000100216号';
                         }
                         var timeStr = res[i].cjsj.toString();
                         var is_complete = res[i].is_complete;
                         console.log(timeStr);
-                        if(true) {
-                            var time = timeStr.substring(0,4) + "年" + timeStr.substring(5,7) + "月" + timeStr.substring(8,10) + "日";
-                            str = "<li class=\"list-group-item\"><span style=\"float: left;margin-top:-2px\">"+className+"</span>  <span style=\"margin-left:-10px;margin-top:-2px\">"+bmsah+"</span> <button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect(\'"+bmsah+"\')\">"+"世系查询"+"</button> <span style=\"float:right;margin-right:50px;margin-top:-2px\">"+time+"</span>";
+                        if (true) {
+                            var time = timeStr.substring(0, 4) + "年" + timeStr.substring(5, 7) + "月" + timeStr.substring(8, 10) + "日";
+                            str = "<li class=\"list-group-item\"><span style=\"float: left;margin-top:-2px\">" + className + "</span>  <span style=\"margin-left:-10px;margin-top:-2px\">" + bmsah + "</span> <button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect(\'" + bmsah + "\')\">" + "世系查询" + "</button> <span style=\"float:right;margin-right:50px;margin-top:-2px\">" + time + "</span>";
                             document.getElementById("caseList").innerHTML += str;
                         }
                     }
-                    var zz=getzz();
-                    change(1,zz);
+                    var zz = getzz();
+                    change(1, zz);
                 } else {
 
                 }
@@ -257,9 +258,9 @@
 
     function getzz() {
         var a = $("ul#caseList li");
-        var zz =new Array(a.length);
-        for(var i=0;i <a.length;i++){
-            zz[i]=a[i].innerHTML;
+        var zz = new Array(a.length);
+        for (var i = 0; i < a.length; i++) {
+            zz[i] = a[i].innerHTML;
         } //div的字符串数组付给zz
         // console.log("zz is" + zz);
         return zz;
@@ -268,52 +269,54 @@
 
     var pageno = 1;
     var gg;
-    function change(e,zz){
+
+    function change(e, zz) {
         //console.log("zz is" + zz);
         gg = zz;
-        pageno=e;
-        var pagesize=4; //每页多少条信息
-        if(zz.length%pagesize==0){
-            var  pageall =zz.length/pagesize ;
-        }else{
-            var  pageall =parseInt(zz.length/pagesize)+1;
+        pageno = e;
+        var pagesize = 4; //每页多少条信息
+        if (zz.length % pagesize == 0) {
+            var pageall = zz.length / pagesize;
+        } else {
+            var pageall = parseInt(zz.length / pagesize) + 1;
         }   //一共多少页
-        if(e<1){
-            e=1;
-            pageno=1;//就等于第1页 ， 当前页为1
+        if (e < 1) {
+            e = 1;
+            pageno = 1;//就等于第1页 ， 当前页为1
         }
-        if(e>pageall){  //如果输入页大于最大页
-            e=pageall;
-            pageno=pageall; //输入页和当前页都=最大页
+        if (e > pageall) {  //如果输入页大于最大页
+            e = pageall;
+            pageno = pageall; //输入页和当前页都=最大页
         }
         $("#caseList").html("");//全部清空
-        console.log("html is" +$("#caseList").html(""));
-        var html="";
-        for(var i=0;i<pagesize;i++){
-            if(zz[(e-1)*pagesize+i]==null) zz[(e-1)*pagesize+i] = "<span style=\"color:white\">空白</span>";
-            html += '<li class=\"list-group-item\">' + zz[(e-1)*pagesize+i] +'</li>';//创建一页的li列表
+        console.log("html is" + $("#caseList").html(""));
+        var html = "";
+        for (var i = 0; i < pagesize; i++) {
+            if (zz[(e - 1) * pagesize + i] == null) zz[(e - 1) * pagesize + i] = "<span style=\"color:white\">空白</span>";
+            html += '<li class=\"list-group-item\">' + zz[(e - 1) * pagesize + i] + '</li>';//创建一页的li列表
         }
         $("ul#caseList").html(html);//给ul列表写入html
-        var ye="";
-        for(var j=1;j<=pageall;j++){
-            if(e==j){
-                ye=ye+"<span><button onClick='change("+j+",gg)' style='color:#FF0000'>"+j+"</button></span> "
-            }else{
-                ye=ye+"<button onClick='change("+j+",gg)'>"+j+"</button> "
+        var ye = "";
+        for (var j = 1; j <= pageall; j++) {
+            if (e == j) {
+                ye = ye + "<span><button onClick='change(" + j + ",gg)' style='color:#FF0000'>" + j + "</button></span> "
+            } else {
+                ye = ye + "<button onClick='change(" + j + ",gg)'>" + j + "</button> "
             }
         }
-        var pageContent="";
-        pageContent +='第<span id=\"a2\">'+pageno+'</span>/';
-        pageContent +='<span id="a1">'+pageall+'</span>页';
-        pageContent +='<span id="a3">'+ye+'</span>';
-        pageContent +='<button  onClick="change(--pageno,gg)">上一页</button>';
-        pageContent +='<button onClick="change(++pageno,gg)">下一页</button>';
+        var pageContent = "";
+        pageContent += '第<span id=\"a2\">' + pageno + '</span>/';
+        pageContent += '<span id="a1">' + pageall + '</span>页';
+        pageContent += '<span id="a3">' + ye + '</span>';
+        pageContent += '<button  onClick="change(--pageno,gg)">上一页</button>';
+        pageContent += '<button onClick="change(++pageno,gg)">下一页</button>';
         $("#page").html(pageContent);
     }
 
     monitorClick();
+
     function monitorClick() {
-        document.getElementById("relevantCase").style.visibility="visible";
+        document.getElementById("relevantCase").style.visibility = "visible";
         var ss = document.getElementById("xieshijiancha_a").innerHTML + "案件";
         var ll = document.getElementById("xieshijiancha_a").innerHTML;
         document.getElementById("chartName").innerHTML = ll + "案卡项修改次数";
@@ -325,11 +328,43 @@
         document.getElementById("chart").innerHTML = "";
         rank(ll.toString());
         console.log("monitorClick");
-        executeNode(query,ss,ll);
+        displayZhuZhuangTu("刑事检察");
+        executeNode(query, ss, ll);
+    }
+
+    function displayZhuZhuangTu(lbmc) {
+        var neo = new Neo(connection);
+        try {
+            var query="match(n) where n.案件类别='"+lbmc+"' with n.caseId as CASEIDS unwind CASEIDS as id with id match (m) where m.caseId=id and m.案卡项类型='案件相关' or m.案卡项类型='人员相关' with m.name as names unwind names as name return name,count(*) as c order by c DESC";
+            neo.executeQuery(query, {}, function (err, res) {
+                res = res || {}
+                if(res && res.table) {
+                    over_data = []
+                    over_str=[]
+                    for (i in res.table) {
+                        item = res.table[i]
+                        if (item["c"]>0) {
+                            over_data.push(item["c"])
+                            over_str.push(item["name"])
+                        }
+                        if (over_data.length>=10) {
+                            break;
+                        }
+                    }
+                    console.log("Executing Query res: ", over_data,over_str);
+                    zhizhutu(over_data, over_str);
+                }
+
+            });
+        } catch (e) {
+            console.log(e);
+            sweetAlert("Catched error", e, "error");
+        }
+
     }
 
     function supervisionClick() {
-        document.getElementById("relevantCase").style.visibility="visible";
+        document.getElementById("relevantCase").style.visibility = "visible";
         var ss = document.getElementById("xieshizhixing_a").innerHTML + "案件";
         var ll = document.getElementById("xieshizhixing_a").innerHTML;
         document.getElementById("chartName").innerHTML = ll + "案卡项修改次数";
@@ -337,16 +372,16 @@
         query = "MATCH (n:BALB) WHERE n.class=\'" + "刑事执行" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         //query = "MATCH (n:BALB) where n.class=\'" + "公诉" + "\' Return n.caseId";
         clearNodeInfo();
-        var over_str = ['操作人','统一受案号','补充姓名','补充编号','移送代码','移送名称','部门受案号','犯罪人数','移送电话','入卷姓名','入卷编码'];
-        var over_data = over_data = [12,6,6,6,5,5,4,4,4,4,4];;
+
         document.getElementById("chart").innerHTML = "";
-        zhizhutu(over_data,over_str);
+        //zhizhutu(over_data, over_str);
         //rank(ll.toString());
-        executeNode(query,ss,ll);
+        displayZhuZhuangTu("刑事执行");
+        executeNode(query, ss, ll);
     }
 
-    function prosecutionClick(){
-        document.getElementById("relevantCase").style.visibility="visible";
+    function prosecutionClick() {
+        document.getElementById("relevantCase").style.visibility = "visible";
         var ss = document.getElementById("gongsu_a").innerHTML + "案件";
         var ll = document.getElementById("gongsu_a").innerHTML;
         document.getElementById("chartName").innerHTML = ll + "案卡项修改次数";
@@ -356,12 +391,13 @@
         document.getElementById("chart").innerHTML = "";
         rank(ll.toString());
         clearNodeInfo();
-        executeNode(query,ss,ll);
+        displayZhuZhuangTu("公益诉讼");
+        executeNode(query, ss, ll);
     }
 
 
-    function minshiClick(){
-        document.getElementById("relevantCase").style.visibility="visible";
+    function minshiClick() {
+        document.getElementById("relevantCase").style.visibility = "visible";
         var ss = document.getElementById("minshi_a").innerHTML + "案件";
         var ll = document.getElementById("minshi_a").innerHTML;
         document.getElementById("chartName").innerHTML = ll + "案卡项修改次数";
@@ -371,10 +407,12 @@
         clearNodeInfo();
         document.getElementById("chart").innerHTML = "";
         rank(ll.toString());
-        executeNode(query,ss,ll);
+        displayZhuZhuangTu("民事");
+        executeNode(query, ss, ll);
     }
-    function xinzhengClick(){
-        document.getElementById("relevantCase").style.visibility="visible";
+
+    function xinzhengClick() {
+        document.getElementById("relevantCase").style.visibility = "visible";
         var ss = document.getElementById("xinzheng_a").innerHTML + "案件";
         var ll = document.getElementById("xinzheng_a").innerHTML;
         document.getElementById("chartName").innerHTML = ll + "案卡项修改次数";
@@ -384,10 +422,12 @@
         clearNodeInfo();
         document.getElementById("chart").innerHTML = "";
         rank(ll.toString());
-        executeNode(query,ss,ll);
+        displayZhuZhuangTu("行政");
+        executeNode(query, ss, ll);
     }
-    function weijianClick(){
-        document.getElementById("relevantCase").style.visibility="visible";
+
+    function weijianClick() {
+        document.getElementById("relevantCase").style.visibility = "visible";
         var ss = document.getElementById("weijian_a").innerHTML + "案件";
         var ll = document.getElementById("weijian_a").innerHTML;
         document.getElementById("chartName").innerHTML = ll + "案卡项修改次数";
@@ -397,11 +437,12 @@
         clearNodeInfo();
         document.getElementById("chart").innerHTML = "";
         rank(ll.toString());
-        executeNode(query,ss,ll);
+        displayZhuZhuangTu("未检业务");
+        executeNode(query, ss, ll);
     }
 
-    function konggaoClick(){
-        document.getElementById("relevantCase").style.visibility="visible";
+    function konggaoClick() {
+        document.getElementById("relevantCase").style.visibility = "visible";
         var ss = document.getElementById("konggao_a").innerHTML + "案件";
         var ll = document.getElementById("konggao_a").innerHTML;
         document.getElementById("chartName").innerHTML = ll + "案卡项修改次数";
@@ -411,11 +452,12 @@
         clearNodeInfo();
         document.getElementById("chart").innerHTML = "";
         rank(ll.toString());
-        executeNode(query,ss,ll);
+        displayZhuZhuangTu("控告申诉");
+        executeNode(query, ss, ll);
     }
 
-    function jianweiClick(){
-        document.getElementById("relevantCase").style.visibility="visible";
+    function jianweiClick() {
+        document.getElementById("relevantCase").style.visibility = "visible";
         var ss = document.getElementById("jianwei_a").innerHTML + "案件";
         var ll = document.getElementById("jianwei_a").innerHTML;
         document.getElementById("chartName").innerHTML = ll + "案卡项修改次数";
@@ -425,11 +467,12 @@
         clearNodeInfo();
         document.getElementById("chart").innerHTML = "";
         rank(ll.toString());
-        executeNode(query,ss,ll);
+        displayZhuZhuangTu("检委办");
+        executeNode(query, ss, ll);
     }
 
-    function duitaiClick(){
-        document.getElementById("relevantCase").style.visibility="visible";
+    function duitaiClick() {
+        document.getElementById("relevantCase").style.visibility = "visible";
         var ss = document.getElementById("duitai_a").innerHTML + "案件";
         var ll = document.getElementById("duitai_a").innerHTML;
         document.getElementById("chartName").innerHTML = ll + "案卡项修改次数";
@@ -439,11 +482,12 @@
         clearNodeInfo();
         document.getElementById("chart").innerHTML = "";
         rank(ll.toString());
-        executeNode(query,ss,ll);
+        displayZhuZhuangTu("对台业务");
+        executeNode(query, ss, ll);
     }
 
-    function anguanClick(){
-        document.getElementById("relevantCase").style.visibility="visible";
+    function anguanClick() {
+        document.getElementById("relevantCase").style.visibility = "visible";
         var ss = document.getElementById("anguan_a").innerHTML + "案件";
         var ll = document.getElementById("anguan_a").innerHTML;
         document.getElementById("chartName").innerHTML = ll + "案卡项修改次数";
@@ -453,11 +497,12 @@
         clearNodeInfo();
         document.getElementById("chart").innerHTML = "";
         rank(ll.toString());
-        executeNode(query,ss,ll);
+        displayZhuZhuangTu("案管");
+        executeNode(query, ss, ll);
     }
 
-    function sifaClick(){
-        document.getElementById("relevantCase").style.visibility="visible";
+    function sifaClick() {
+        document.getElementById("relevantCase").style.visibility = "visible";
         var ss = document.getElementById("sifa_a").innerHTML + "案件";
         var ll = document.getElementById("sifa_a").innerHTML;
         document.getElementById("chartName").innerHTML = ll + "案卡项修改次数";
@@ -467,7 +512,8 @@
         clearNodeInfo();
         document.getElementById("chart").innerHTML = "";
         rank(ll.toString());
-        executeNode(query,ss,ll);
+        displayZhuZhuangTu("司法协助");
+        executeNode(query, ss, ll);
     }
 
 
@@ -482,41 +528,41 @@
     });
 
 
-
-
-    function IsUniqueString(str,name_str) {
+    function IsUniqueString(str, name_str) {
         flag = 1;
-        for(k in name_str) {
-            if(str == name_str[k]) flag = 0;
+        for (k in name_str) {
+            if (str == name_str[k]) flag = 0;
         }
         return flag;
     }
 
-    function IsMarkString(str,name_str) {
+    function IsMarkString(str, name_str) {
         flag = 0;
-        for(k in name_str) {
-            if(str == name_str[k]) flag = k;
+        for (k in name_str) {
+            if (str == name_str[k]) flag = k;
             //console.log(str)
         }
         return flag;
     }
 
-    function nameCount(name,name_count,name_str) {
-        if(IsUniqueString(name,name_str)) {
+    function nameCount(name, name_count, name_str) {
+        if (IsUniqueString(name, name_str)) {
             name_count.push(1);
             name_str.push(name);
             over_count++;
+        } else {
+            name_count[IsMarkString(name, name_str)] = name_count[IsMarkString(name, name_str)] + 1;
         }
-        else {
-            name_count[IsMarkString(name,name_str)] = name_count[IsMarkString(name,name_str)] + 1;
-        }
+       /* console.log("gdgdfgfdgdfgdf");
+        console.log(name_count);
+        console.log(name_str);*/
         return name_count;
     }
 
 
     function rank(ll) {
-        var name_str=new Array();
-        var name_count=new Array();
+        var name_str = new Array();
+        var name_count = new Array();
         var temp = new Array();
         for (var i = 0; i < over_str.length; i++) {
             clearNodeInfo();
@@ -530,10 +576,11 @@
                     if (over_graph) {
                         var over_node = over_graph.nodes;
                         over_selectNode = JSON.parse(JSON.stringify(over_node));
-                        for(i in over_selectNode) {
-                            if(over_selectNode[i].name != null) {
+
+                        for (i in over_selectNode) {
+                            if (over_selectNode[i].name != null) {
                                 // console.log(over_selectNode[i].name);
-                                name_count = nameCount(over_selectNode[i].name,name_count,name_str);
+                                name_count = nameCount(over_selectNode[i].name, name_count, name_str);
                             }
                         }
                     } else {
@@ -547,7 +594,7 @@
                         }
                     }
                 });
-            }catch (e) {
+            } catch (e) {
                 console.log(e);
             }
         }
@@ -555,7 +602,7 @@
         console.log(name_count);
         console.log("name_count" + name_count);
         //console.log(name_str);
-        setTimeout(function() {
+        setTimeout(function () {
             var t = 0;
             var c = name_count.length;
             var tm = new Array(11);
@@ -569,63 +616,83 @@
                 t = name_count[m];
                 name_count[m] = name_count[minIndex];
                 name_count[minIndex] = t;
-                if(m <= 10){
+                if (m <= 10) {
                     tm[m] = minIndex;
                 }
             }
             var str = new Array(11);
             var data = new Array(11)
-            for(h in name_count) {
+            for (h in name_count) {
                 data[h] = name_count[h];
                 str[h] = name_str[tm[h]];
                 //str[h] = String.valueOf(str[h]).substring(0,1);
             }
             var strstr = [];
             var datadata = [];
-            console.log(name_count);
-            console.log(data);
-            for(var ii = 0; ii < 11; ii++) {
-                if(str[ii].length > 4){
-                    strstr[ii] = str[ii].substring(0,4);
+            //console.log(name_count);
+           // console.log(data);
+            for (var ii = 0; ii < 11; ii++) {
+                if (str[ii].length > 4) {
+                    strstr[ii] = str[ii].substring(0, 4);
 
-                }else {
+                } else {
                     strstr[ii] = str[ii];
                 }
                 datadata[ii] = data[ii];
             }
-            zhizhutu(datadata,strstr);
-        },1000);
+            //zhizhutu(datadata, strstr);
+        }, 3000);
     }
 
-
-
-
+    function toFIXED(num, n) {
+        var numStr = num.toString()
+        var index = numStr.indexOf('.')
+        var result = numStr.slice(0, index + n)
+        return Number(result);
+    }
 
     function canvas_data() {
-        var canvas = document.getElementById("pie_canvas");
-        var seriesData = [{name:"apples", value:parseFloat(over_data[0]) / parseFloat(over_sum), color:"#0792c9",label1:"刑事检察",label2:(parseFloat(over_data[0]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
-            {name:"orange", value:parseFloat(over_data[1]) / parseFloat(over_sum), color:"#1616d6",label1:"刑事执行",label2:(parseFloat(over_data[1]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
-            {name:"banana", value:parseFloat(over_data[2]) / parseFloat(over_sum), color:"#13cf74",label1:"公益诉讼",label2:(parseFloat(over_data[2]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
-            {name:"peaches", value:parseFloat(over_data[3]) / parseFloat(over_sum), color:"#c316ac",label1:"民事",label2:(parseFloat(over_data[3]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
-            {name:"jiansuo", value:parseFloat(over_data[4]) / parseFloat(over_sum), color:"#00c522",label1:"行政",label2:(parseFloat(over_data[4]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
-            {name:"konggao", value:parseFloat(over_data[5]) / parseFloat(over_sum), color:"#cac874",label1:"未检业务",label2:(parseFloat(over_data[5]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
-            {name:"shensu", value:parseFloat(over_data[6]) / parseFloat(over_sum), color:"#a7110a",label1:"控告申诉",label2:(parseFloat(over_data[6]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
-            {name:"yufang", value:parseFloat(over_data[7]) / parseFloat(over_sum), color:"#d45f1c",label1:"检委办",label2:(parseFloat(over_data[7]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
-            {name:"jianweiban", value:parseFloat(over_data[8]) / parseFloat(over_sum), color:"#c182b7",label1:"对台业务",label2:(parseFloat(over_data[8]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
-            {name:"fuheban", value:parseFloat(over_data[9]) / parseFloat(over_sum), color:"#27ba7c",label1:"案管",label2:(parseFloat(over_data[9]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"},
-            {name:"sifaxiezhu", value:parseFloat(over_data[10]) / parseFloat(over_sum), color:"#b5b4b1",label1:"司法协助",label2:(parseFloat(over_data[10]) / parseFloat(over_sum)).toFixed(3) * 100 + "%"}];
-        var config = {
-            width : 420,
-            height: 400,
-            series: seriesData,
-            canvas: canvas,
-            title:"案件信息",
-            callback:function(obj){
-                //console.log(obj.label1);
+        $.ajax({
+            type: "get",
+            async: false,
+            url: "http://localhost:8083/hxyActiviti/demo/gj/count-ajlb",
+            success: function (res) {
+                if (res) {
+                    var colors = ["#0792c9", "#1616d6", "#13cf74", "#c316ac", "#00c522", "#cac874", "#a7110a", "#d45f1c", "#c182b7", "#27ba7c", "#b5b4b1"]
+                    var caseSum = 0;
+                    for (i in res) {
+                        caseSum += res[i]["c"];
+                    }
+                    var seriesData = [];
+                    for (i in res) {
+                        item = res[i]
+                        cnf = {
+                            value: parseFloat(item["c"]) / parseFloat(caseSum),
+                            color: colors.pop(),
+                            label1: item["AJLB_MC"],
+                            label2: toFIXED(parseFloat(item["c"]) / parseFloat(caseSum) * 100, 3) + "%"
+                        }
+                        seriesData.push(cnf)
+                    }
+
+                    var canvas = document.getElementById("pie_canvas");
+
+                    var config = {
+                        width: 420,
+                        height: 400,
+                        series: seriesData,
+                        canvas: canvas,
+                        title: "案件信息",
+                        callback: function (obj) {
+                            //console.log(obj.label1);
+                        }
+                    };
+                    pieChart.initSettings(config);
+                    pieChart.render();
+                }
             }
-        };
-        pieChart.initSettings(config);
-        pieChart.render();
+        });
+
 
     }
 
@@ -635,16 +702,16 @@
         height: 300,
         series: [],  //格式[{"name":"","value":"","color":"","label1":"","label2":""}]
         chartCanvas: null,
-        callback:null ,
-        legend : {
-            show : true
+        callback: null,
+        legend: {
+            show: true
         },
-        label:{
-            show:true,
-            linelength:60,
-            linelength2:60
+        label: {
+            show: true,
+            linelength: 60,
+            linelength2: 60
         },
-        circle : {
+        circle: {
             cx: 0,
             cy: 0,
             radius: 0
@@ -658,42 +725,42 @@
             this.height = config.height;
             this.series = config.series;
             this.title = config.title;
-            if(config.legend != undefined) {
+            if (config.legend != undefined) {
                 this.legend.show = config.legend.show;
             }
-            if(config.label != undefined) {
+            if (config.label != undefined) {
                 this.label.show = config.label.show;
             }
             this.callback = config.callback;
         },
-        getRatioSum:function(j){
+        getRatioSum: function (j) {
             var sum = 0;
             for (var i = 0; i < j; i++) {
                 sum += this.series[i].value;
             }
             return sum;
         },
-        getRatioHalfSumDegrees:function(index){
+        getRatioHalfSumDegrees: function (index) {
             var sum = this.getRatioSum(index);
             sum += (this.series[index].value / 2);
             return sum * Math.PI * 2;
         },
-        getRatioHalfSumDegrees360:function(index){
+        getRatioHalfSumDegrees360: function (index) {
             var sum = this.getRatioSum(index);
             sum += (this.series[index].value / 2);
             return sum * 360;
         },
-        renderLegend:function(ctx, length){
+        renderLegend: function (ctx, length) {
         },
-        renderLabel:function(ctx,length){
-            if(this.label.show){
-                for (var i = 0; i <length; i++) {
-                    this.renderLabelLine(ctx,i) ;
+        renderLabel: function (ctx, length) {
+            if (this.label.show) {
+                for (var i = 0; i < length; i++) {
+                    this.renderLabelLine(ctx, i);
                 }
 
             }
         },
-        renderLabelLine:function(ctx,index){
+        renderLabelLine: function (ctx, index) {
             ctx.save();
             ctx.translate(this.width / 2 - 5, this.height / 2);
             ctx.rotate(this.getRatioHalfSumDegrees(index));
@@ -704,11 +771,11 @@
             this.renderLabelLine2(ctx, index);
             ctx.restore();
         },
-        renderLabelLine2:function(ctx,index){
+        renderLabelLine2: function (ctx, index) {
             ctx.save();
             ctx.translate(this.circle.radius + this.label.linelength, 0);
             var ro = this.getRatioHalfSumDegrees(index);
-            ctx.rotate( - ro);
+            ctx.rotate(-ro);
             var xro = this.getRatioHalfSumDegrees360(index);
             if ((xro > 270 && xro < 360) || (xro > 0 && xro < 90)) {
                 ctx.strokeStyle = this.series[index].color;
@@ -720,7 +787,7 @@
             } else {
                 ctx.strokeStyle = this.series[index].color;
                 ctx.moveTo(0, 0);
-                ctx.lineTo( - this.label.linelength2, 0);
+                ctx.lineTo(-this.label.linelength2, 0);
                 ctx.stroke();
                 ctx.fillText(this.series[index].label1, -40, -4);
                 ctx.fillText(this.series[index].label2, -40, 14);
@@ -728,47 +795,49 @@
 
             ctx.restore();
         },
-        renderPie:function(ctx,length){
+        renderPie: function (ctx, length) {
             var lastpos = pos = 0;
             ctx.lineWidth = this.circle.radius * 0.4;
             for (var i = 0; i < length; i++) {
                 ctx.beginPath();
                 ctx.strokeStyle = this.series[i].color;
                 pos = lastpos + Math.PI * 2 * this.series[i].value;
-                ctx.arc(this.circle.cx , this.circle.cy, this.circle.radius, lastpos, pos);
+                ctx.arc(this.circle.cx, this.circle.cy, this.circle.radius, lastpos, pos);
                 ctx.stroke();
                 lastpos = pos;
             }
 
         },
-        renderPieImage:function(ctx,length){
+        renderPieImage: function (ctx, length) {
 
         },
-        renderClick:function(event,obj){
+        renderClick: function (event, obj) {
             var x = event.pageX;
             var y = event.pageY;
             var canvas = event.target;
             var bbox = canvas.getBoundingClientRect();
-            var loc = { x: x - bbox.left * (canvas.width  / bbox.width),
-                y: y - bbox.top  * (canvas.height / bbox.height)};
+            var loc = {
+                x: x - bbox.left * (canvas.width / bbox.width),
+                y: y - bbox.top * (canvas.height / bbox.height)
+            };
             //console.log(loc);
 
             var dx = loc.x - obj.circle.cx;
             var dy = loc.y - obj.circle.cy;
             var dis = Math.floor(Math.sqrt(dx * dx + dy * dy));
-            console.log("dis="+dis+"  mRadius="+obj.circle.radius);
-            if(dis <= obj.circle.radius*3.6&&dis>=obj.circle.radius*1.2) {
+            console.log("dis=" + dis + "  mRadius=" + obj.circle.radius);
+            if (dis <= obj.circle.radius * 3.6 && dis >= obj.circle.radius * 1.2) {
                 // draw tool tip text
-                var angle = Math.atan2(dy,dx);
-                if(angle <= 0) {
-                    angle = angle + 2*Math.PI;
+                var angle = Math.atan2(dy, dx);
+                if (angle <= 0) {
+                    angle = angle + 2 * Math.PI;
                 }
                 var deltaArc = 0;
                 var index = 0;
-                for(var i=0; i<obj.series.length; i++) {
+                for (var i = 0; i < obj.series.length; i++) {
                     var precent = obj.series[i].value;
-                    deltaArc += 2*Math.PI * precent;
-                    if(angle<=deltaArc) {
+                    deltaArc += 2 * Math.PI * precent;
+                    if (angle <= deltaArc) {
                         index = i;
                         break;
                     }
@@ -778,12 +847,12 @@
                 //console.log(obj.series[index].label1);
             }
         },
-        render:function(){
-            this.circle.cx = this.width/2 ;
-            this.circle.cy = this.height/2 ;
-            this.circle.radius=(this.width - this.width  * 0.5) / 2;
+        render: function () {
+            this.circle.cx = this.width / 2;
+            this.circle.cy = this.height / 2;
+            this.circle.radius = (this.width - this.width * 0.5) / 2;
             var ctx = this.chartCanvas.getContext("2d");
-            if(this.circle.radius <= 0) {
+            if (this.circle.radius <= 0) {
                 ctx.strokeText("请设置布局大小.");
                 return;
             }
@@ -794,11 +863,12 @@
                 this.chartCanvas.width = this.width * window.devicePixelRatio;
                 ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
             }
-            var length = this.series.length ;
-            var length = this.series.length ;
-            this.renderLabel(ctx,length) ;
-            this.renderPie(ctx,length);
-            var parent = this ;
+
+            var length = this.series.length;
+            var length = this.series.length;
+            this.renderLabel(ctx, length);
+            this.renderPie(ctx, length);
+            var parent = this;
             // this.chartCanvas.setAttribute("class","canvasClass");
             this.chartCanvas.addEventListener('click', function (event) {
                 parent.renderClick(event, parent);
@@ -808,9 +878,11 @@
 
     }
 
-    function zhizhutu(data,str) {
-        console.log(data);
-        for(kk in str) {
+    function zhizhutu(data, str) {
+        //console.log("gdgdfgdfgdfgdf");
+        //var over_str = ['刑事检察', '刑事执行', '公益诉讼', '民事', '行政', '未检业务', '控告申诉', '检委办', '对台业务', '案管', '司法协助'];
+        //var over_data = over_data = [7, 4, 3, 3, 2, 2, 2, 2, 2, 2, 2];
+       /* for(kk in str) {
             if(str[kk].length > 4 ){
                 str[kk] = str[kk].substring(0,4);
             }
@@ -819,9 +891,9 @@
             if(str[kk].length > 3 ){
                 str[kk] = str[kk].substring(0,3) + "...";
             }
-        }
-        var dataset = data;  // 数据集
-        var strset = str;
+        }*/
+        var dataset = over_data;  // 数据集
+        var strset = over_str;
 
         var width = 800;    // svg可视区域宽度
         var height = 400;   // svg可视区域高度
@@ -842,7 +914,7 @@
 
         /* y轴比例尺(线性比例尺) */
         var yScale = d3.scale.linear()
-            .domain([0, d3.max(dataset) + d3.max(dataset)/data.length])
+            .domain([0, d3.max(dataset) + d3.max(dataset) / data.length])
             .range([0, yAxisWidth]);
 
         /* rect */
@@ -862,13 +934,19 @@
 
         /* 添加坐标轴 */
         var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
-        yScale.range([yAxisWidth , 0]);  // 重新设置y轴比例尺的值域,与原来的相反
+        yScale.range([yAxisWidth, 0]);  // 重新设置y轴比例尺的值域,与原来的相反
         var yAxis = d3.svg.axis().scale(yScale).orient("left");
 
-        svg.attr("style", "margin-top:-420px");
-        svg.append("g").attr("class", "axis")
+        svg.attr("style", "margin-top:-425px");
+        svg.append("g")
+            .attr("class", "axis")
             .attr("transform", "translate(" + padding.left + "," + (height - padding.bottom) + ")")
-            .call(xAxis);
+            .call(xAxis)
+            .selectAll("text")
+            .style("font-size", "12px")
+            .style("text-anchor", "start")
+            .attr("transform", "rotate(15 -10 -10)")
+            .attr("x", "-15");
 
         svg.append("g").attr("class", "axis")
             .attr("transform", "translate(" + padding.left + "," + (height - padding.bottom - yAxisWidth) + ")")
@@ -883,7 +961,7 @@
                 .attr("y", function (d) {
                     return height - padding.bottom - yScale(d);
                 })
-                .attr("class", function (d,i) {
+                .attr("class", function (d, i) {
                     return "rectClass" + i;
                 })
                 .attr("width", xScale.rangeBand() - 10)
@@ -897,11 +975,11 @@
         function textFun(selection) {
             selection.attr("fill", "white")
                 .attr("font-size", "14px").attr("text-anchor", "middle")
-            //width:100px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
-            /*.attr("width", "40px").attr("overflow", "hidden")
-            .attr("text-overflow", "ellipsis").attr("white-space", "nowrap")*/
+                //width:100px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+                /*.attr("width", "40px").attr("overflow", "hidden")
+                .attr("text-overflow", "ellipsis").attr("white-space", "nowrap")*/
                 .attr("x", function (d, i) {
-                    return padding.left + xScale(strset[i]) ;
+                    return padding.left + xScale(strset[i]);
                 })
                 .attr("y", function (d) {
                     return height - padding.bottom - yScale(d);
@@ -912,17 +990,17 @@
                 });
         }
 
-        document.onreadystatechange = function(){
-            if(doucument.readyState == 'complete'){
-                // document.getElementById("colorfulPulse").style.display = "none";
-            }
+        document.onreadystatechange = function () {
+           /* if (doucument.readyState == 'complete') {
+                 document.getElementById("colorfulPulse").style.display = "none";
+            }*/
         }
     }
 </script>
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript">
-    $("#keySelect").bind('keypress', function(event) {
+    $("#keySelect").bind('keypress', function (event) {
         var strSelect = this.value;
         if (event.keyCode == "13") {
             var listItems = $('.list-group-item');
