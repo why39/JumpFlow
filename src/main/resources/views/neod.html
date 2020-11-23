@@ -337,19 +337,22 @@
             var query="match(n) where n.案件类别='"+lbmc+"' with n.caseId as CASEIDS unwind CASEIDS as id with id match (m) where m.caseId=id and m.案卡项类型='案件相关' or m.案卡项类型='人员相关' with m.name as names unwind names as name return name,count(*) as c order by c DESC";
             neo.executeQuery(query, {}, function (err, res) {
                 res = res || {}
-                console.log("Executing Query res: ", query,res);
+
                 if(res && res.table) {
                     over_data = []
                     over_str=[]
                     for (i in res.table) {
                         item = res.table[i]
-                        over_data.push(item["c"])
-                        over_str.push(item["name"])
-                        if (i>=10) {
+
+                        if (item["c"]>0) {
+                            over_data.push(item["c"])
+                            over_str.push(item["name"])
+                        }
+                        if (over_data.length>=10) {
                             break;
                         }
                     }
-
+                    console.log("Executing Query res: ", over_data,over_str);
                     zhizhutu(over_data, over_str);
                 }
 
@@ -917,9 +920,14 @@
         var yAxis = d3.svg.axis().scale(yScale).orient("left");
 
         svg.attr("style", "margin-top:-420px");
-        svg.append("g").attr("class", "axis")
+        svg.append("g")
+            .attr("class", "axis")
             .attr("transform", "translate(" + padding.left + "," + (height - padding.bottom) + ")")
-            .call(xAxis);
+            .call(xAxis)
+            .selectAll("text")
+            .style("font-size", "12px")
+            .style("text-anchor", "start")
+            .attr("transform", "rotate(45 -10 10)");
 
         svg.append("g").attr("class", "axis")
             .attr("transform", "translate(" + padding.left + "," + (height - padding.bottom - yAxisWidth) + ")")
@@ -947,7 +955,7 @@
 
         function textFun(selection) {
             selection.attr("fill", "white")
-                .attr("font-size", "14px").attr("text-anchor", "middle")
+                .attr("font-size", "6px").attr("text-anchor", "middle")
                 //width:100px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
                 /*.attr("width", "40px").attr("overflow", "hidden")
                 .attr("text-overflow", "ellipsis").attr("white-space", "nowrap")*/
