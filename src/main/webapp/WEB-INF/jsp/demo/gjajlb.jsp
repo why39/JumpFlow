@@ -86,7 +86,7 @@
     }
 
     function logRead(bmsah) {
-        window.location.href="http://localhost:8083/hxyActiviti/neoData.html?bmsah="+encodeURI(bmsah);
+        window.location.href="${webRoot}/neoData.html?bmsah="+encodeURI(bmsah);
     }
 
     function logDelete(bmsah) {

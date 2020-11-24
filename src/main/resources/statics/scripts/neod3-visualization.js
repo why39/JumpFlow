@@ -37,7 +37,7 @@ function Neod3Renderer() {
     var msBlobSupport = typeof window.navigator.msSaveOrOpenBlob !== 'undefined';
     var svgStyling = '<style>\ntext{font-family:sans-serif}\n</style>';
     //var stylingUrl = window.location.hostname === 'www.neo4j.org' ? 'http://gist.neo4j.org/css/neod3' : 'styles/neod3';
-    var stylingUrl = 'http://localhost:8083/hxyActiviti/styles/neod3';
+    var stylingUrl = '/hxyActiviti/styles/neod3';
     if (window.isInternetExplorer) {
         stylingUrl += '-ie.css';
     } else {
@@ -631,7 +631,7 @@ function Neod3Renderer() {
 
 function lineageSelect(bmsah) {
     over_bmsah = bmsah;
-    window.location.href="http://localhost:8083/hxyActiviti/neoData.html?bmsah="+encodeURI(bmsah);
+    window.location.href="/hxyActiviti/neoData.html?bmsah="+encodeURI(bmsah);
 }
 
 /*
