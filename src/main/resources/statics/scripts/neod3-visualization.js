@@ -172,7 +172,7 @@ function Neod3Renderer() {
                         console.log("");
                     var neo = new Neo(connection);
                     try {
-                        var query = "match (n) where n.CN_KEY='"+value['CN_KEY']+"' and n.caseId='"+value['caseId']+"' WITH n OPTIONAL MATCH (n)-[r:变化]-() return n,r";
+                        var query = "match (n) where n.CN_KEY='"+value['CN_KEY']+"' and n.caseId='"+value['caseId']+"' WITH n OPTIONAL MATCH (n)-[r:变化]-()  return m  order by m.最后修改时间";
                         var label = value["label"];
                         if(document.getElementById("tableData")){
                             document.getElementById("tableData").setAttribute
@@ -193,7 +193,7 @@ function Neod3Renderer() {
                                     for(item in graph.nodes) {
                                         if(graph.nodes[item]["label"]==label) {
                                             //labelList.push(graph.nodes[item])
-                                            console.log("ffffff+",graph.nodes[item]);
+                                            console.log(graph.nodes[item]);
                                             var year = (graph.nodes[item]["最后修改时间"]).toString().substring(0,4);
                                             var month = (graph.nodes[item]["最后修改时间"]).toString().substring(5,7)
                                                 + "-" + (graph.nodes[item]["最后修改时间"]).toString().substring(8,10);
@@ -267,7 +267,7 @@ function Neod3Renderer() {
                         console.log("");
                     var neo = new Neo(connection);
                     try {
-                        var query = "match (n) where n.CN_KEY='"+value['CN_KEY']+"' and n.caseId='"+value['caseId']+"' WITH n OPTIONAL MATCH p=(n)-[r:变化]-() return p,n,r";
+                        var query = "match (n) where n.CN_KEY='"+value['CN_KEY']+"' and n.caseId='"+value['caseId']+"' WITH n OPTIONAL MATCH p=(n)-[r:变化]-()  return m  order by m.最后修改时间";
                         var label = value["label"];
                         if(document.getElementById("tableData")){
                             document.getElementById("tableData").setAttribute
@@ -288,7 +288,7 @@ function Neod3Renderer() {
                                     for(item in graph.nodes) {
                                         if(graph.nodes[item]["label"]==label) {
                                             //labelList.push(graph.nodes[item])
-                                            console.log("ffffff+",graph.nodes[item]);
+                                            console.log(graph.nodes[item]);
                                             var year = (graph.nodes[item]["最后修改时间"]).toString().substring(0,4);
                                             var month = (graph.nodes[item]["最后修改时间"]).toString().substring(5,7)
                                                 + "-" + (graph.nodes[item]["最后修改时间"]).toString().substring(8,10);
