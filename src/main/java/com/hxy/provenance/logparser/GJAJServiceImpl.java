@@ -159,39 +159,37 @@ public class GJAJServiceImpl implements GJAJService {
                                 String showKey = key;
                                 String value = m1.group(2);
                                 Map<String, Object> par = new HashMap<>();
-                                if (KVCache.contains(key.toUpperCase())) {
+                                if (KVCache.kv.containsKey(key.toUpperCase())) {
                                     showKey = KVCache.kv.get(key.toUpperCase()).cn;
                                     par.put("CN_KEY", showKey);
                                     par.put("案卡项类型", KVCache.kv.get(key.toUpperCase()).category);
+                                }
+                                par.put(key, value);
+                                par.put("CaseNodeId", caseNodeId);
+                                par.put("name", showKey);
+                                par.put("最后修改时间", (String) rz.getZHXGSJ());
+                                par.put("操作人", rz.getCZRM());
+                                par.put("日志ID", rz.getID());
 
-                                    par.put(key, value);
-                                    par.put("CaseNodeId", caseNodeId);
-                                    par.put("name", showKey);
-                                    par.put("最后修改时间", (String) rz.getZHXGSJ());
-                                    par.put("操作人", rz.getCZRM());
-                                    par.put("日志ID", rz.getID());
-
-                                    int relatedTaskId = taskList.size() - 1;
-                                    for (int i = 0; i < taskList.size(); i++) {
-                                        Map<String, Object> task = taskList.get(i);
-                                        String zhxgsj = (String) task.get("最后修改时间");
-                                        String rzZhxgsj = LocalDateTime.parse(rz.getZHXGSJ(), zhxgsjFormatter1).format(zhxgsjFormatter2);
-                                        if (Long.valueOf(rzZhxgsj) < Long.valueOf(zhxgsj)) {
-                                            relatedTaskId = i;
-                                            break;
-                                        }
+                                int relatedTaskId = taskList.size() - 1;
+                                for (int i = 0; i < taskList.size(); i++) {
+                                    Map<String, Object> task = taskList.get(i);
+                                    String zhxgsj = (String) task.get("最后修改时间");
+                                    String rzZhxgsj = LocalDateTime.parse(rz.getZHXGSJ(), zhxgsjFormatter1).format(zhxgsjFormatter2);
+                                    if (Long.valueOf(rzZhxgsj) < Long.valueOf(zhxgsj)) {
+                                        relatedTaskId = i;
+                                        break;
                                     }
-
-                                    if (relatedTaskId >= 0) {
-                                        Map<String, Object> lastTask = taskList.get(relatedTaskId);
-                                        par.put("taskNodeId", lastTask.get("id"));
-                                        par.put("taskNodeName", lastTask.get("name"));
-                                    }
-
-                                    String taskNodeId = GJNeo4jUtil.addPropertyNode(BMSAH, key, "变化", false, par);
-                                    GJNeo4jUtil.addUserNode(rz.getCZRM(), taskNodeId, "修改");
                                 }
 
+                                if (relatedTaskId >= 0) {
+                                    Map<String, Object> lastTask = taskList.get(relatedTaskId);
+                                    par.put("taskNodeId", lastTask.get("id"));
+                                    par.put("taskNodeName", lastTask.get("name"));
+                                }
+
+                                String taskNodeId = GJNeo4jUtil.addPropertyNode(BMSAH, key, "变化", false, par);
+                                GJNeo4jUtil.addUserNode(rz.getCZRM(), taskNodeId, "修改");
                             }
 
                             //正则匹配键值对，整型的值
@@ -202,40 +200,38 @@ public class GJAJServiceImpl implements GJAJService {
                                 String showKey = key;
                                 String value = m2.group(2);
                                 Map<String, Object> par = new HashMap<>();
-                                if (KVCache.contains(key.toUpperCase())) {
+                                if (KVCache.kv.containsKey(key.toUpperCase())) {
                                     showKey = KVCache.kv.get(key.toUpperCase()).cn;
                                     par.put("CN_KEY", showKey);
                                     par.put("案卡项类型", KVCache.kv.get(key.toUpperCase()).category);
+                                }
+                                par.put(NeoConstants.KEY_LAST_NODE_ID, caseNodeId);
+                                par.put(key, value);
+                                par.put("CaseNodeId", caseNodeId);
+                                par.put("name", showKey);
+                                par.put("最后修改时间", (String) rz.getZHXGSJ());
+                                par.put("操作人", rz.getCZRM());
+                                par.put("日志ID", rz.getID());
 
-                                    par.put(NeoConstants.KEY_LAST_NODE_ID, caseNodeId);
-                                    par.put(key, value);
-                                    par.put("CaseNodeId", caseNodeId);
-                                    par.put("name", showKey);
-                                    par.put("最后修改时间", (String) rz.getZHXGSJ());
-                                    par.put("操作人", rz.getCZRM());
-                                    par.put("日志ID", rz.getID());
-
-                                    int relatedTaskId = taskList.size() - 1;
-                                    for (int i = 0; i < taskList.size(); i++) {
-                                        Map<String, Object> task = taskList.get(i);
-                                        String zhxgsj = (String) task.get("最后修改时间");
-                                        String rzZhxgsj = LocalDateTime.parse(rz.getZHXGSJ(), zhxgsjFormatter1).format(zhxgsjFormatter2);
-                                        if (Long.valueOf(rzZhxgsj) < Long.valueOf(zhxgsj)) {
-                                            relatedTaskId = i;
-                                            break;
-                                        }
+                                int relatedTaskId = taskList.size() - 1;
+                                for (int i = 0; i < taskList.size(); i++) {
+                                    Map<String, Object> task = taskList.get(i);
+                                    String zhxgsj = (String) task.get("最后修改时间");
+                                    String rzZhxgsj = LocalDateTime.parse(rz.getZHXGSJ(), zhxgsjFormatter1).format(zhxgsjFormatter2);
+                                    if (Long.valueOf(rzZhxgsj) < Long.valueOf(zhxgsj)) {
+                                        relatedTaskId = i;
+                                        break;
                                     }
-
-                                    if (relatedTaskId >= 0) {
-                                        Map<String, Object> lastTask = taskList.get(relatedTaskId);
-                                        par.put("taskNodeId", lastTask.get("id"));
-                                        par.put("taskNodeName", lastTask.get("name"));
-                                    }
-
-                                    String taskNodeId = GJNeo4jUtil.addPropertyNode(BMSAH, key, "变化", false, par);
-                                    GJNeo4jUtil.addUserNode(rz.getCZRM(), taskNodeId, "修改");
                                 }
 
+                                if (relatedTaskId >= 0) {
+                                    Map<String, Object> lastTask = taskList.get(relatedTaskId);
+                                    par.put("taskNodeId", lastTask.get("id"));
+                                    par.put("taskNodeName", lastTask.get("name"));
+                                }
+
+                                String taskNodeId = GJNeo4jUtil.addPropertyNode(BMSAH, key, "变化", false, par);
+                                GJNeo4jUtil.addUserNode(rz.getCZRM(), taskNodeId, "修改");
                             }
 
 
