@@ -32,7 +32,7 @@
                 <tr>
                     <th>序号</th>
                     <th>部门受案号</th>
-                    <th>案件类别</th>
+                    <th>业务名称</th>
                     <th>案件名称</th>
                     <th>世系数据操作</th>
                 </tr>
@@ -46,9 +46,12 @@
                     <td>${leave.AJMC}</td>
                         <td>
                             <div class=" btn-group ">
-                                <button class="layui-btn layui-btn-small" type="button"
-                                        onclick="logDeal('${leave.BMSAH}')">生成
-                                </button>
+                                <c:if test="${leave.IS_COMPLETE == 0}">
+                                    <button class="layui-btn layui-btn-small" type="button"
+                                            onclick="logDeal('${leave.BMSAH}')">生成
+                                    </button>
+                                </c:if>
+
                                 <c:if test="${leave.IS_COMPLETE == 1}">
                                     <button class="layui-btn layui-btn-small" type="button"
                                             onclick="logRead('${leave.BMSAH}')">查看
@@ -83,7 +86,7 @@
     }
 
     function logRead(bmsah) {
-        window.location.href="http://localhost:8083/hxyActiviti/neoData.html?bmsah="+encodeURI(bmsah);
+        window.location.href="${webRoot}/neoData.html?bmsah="+encodeURI(bmsah);
     }
 
     function logDelete(bmsah) {

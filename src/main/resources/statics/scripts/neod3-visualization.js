@@ -37,7 +37,7 @@ function Neod3Renderer() {
     var msBlobSupport = typeof window.navigator.msSaveOrOpenBlob !== 'undefined';
     var svgStyling = '<style>\ntext{font-family:sans-serif}\n</style>';
     //var stylingUrl = window.location.hostname === 'www.neo4j.org' ? 'http://gist.neo4j.org/css/neod3' : 'styles/neod3';
-    var stylingUrl = 'http://localhost:8083/hxyActiviti/styles/neod3';
+    var stylingUrl = '/hxyActiviti/styles/neod3';
     if (window.isInternetExplorer) {
         stylingUrl += '-ie.css';
     } else {
@@ -118,15 +118,32 @@ function Neod3Renderer() {
             var alertString ="";
             var alertString1 =""
             for(var k in selectNode){//遍历json对象的每个key/value对,k为key
-                if("CN_KEY" != k && "label" !=k && "copy_name"!=k && selectNode["label"]!=k && "CaseNodeId"!=k && "lastNodeId"!=k){
+                if("CN_KEY" != k && "label" !=k && "copy_name"!=k && selectNode["label"]!=k && "CaseNodeId"!=k
+                    && "lastNodeId"!=k && "日志ID"!=k && "taskNodeName"!=k && "name"!= k && "taskNodeId" !=k && "操作人" != k){
                     if(k == 'name') {
                         selectNode[k] = selectNode['copy_name'];
                     }
-                    alertString+=k+" : " +selectNode[k]+"\n";
-                    alertString1+="<span style='color:pink'>k<span>+selectNode[k]";
+                    var anjianName = selectNode['案件类别']
+                    if(k == '案件类别'){
+                        k = '业务名称';
+                        selectNode[k] = anjianName;
+                    }
+                    if(k == 'caseId'){
+                        k = '部门受案号';
+                        selectNode[k] = selectNode['caseId'];
+                    }
+                    if(k == '创建时间') {
+                        selectNode[k] = selectNode[k].substring(0,20);
+                    }
+                    if(k != 'timestamp'){
+                        //console.log(anjianName);
+                        //console.log(selectNode[k]);
+                        alertString+=k+" : " +selectNode[k]+"\n";
+                        alertString1+="<span style='color:pink'>k<span>+selectNode[k]";
+                    }
                 }
             }
-            console.log("案件名+"+ selectNode["案件名"]);
+            //console.log("案件名+"+ selectNode["案件名"]);
 
             if(selectNode[selectNode["label"]] ==  undefined) {
                 selectNode["label"] == "";
@@ -155,7 +172,7 @@ function Neod3Renderer() {
                         console.log("");
                     var neo = new Neo(connection);
                     try {
-                        var query = "match (n) where n.CN_KEY='"+value['CN_KEY']+"' and n.caseId='"+value['caseId']+"' WITH n OPTIONAL MATCH (n)-[r]-() return n,r";
+                        var query = "match (n) where n.CN_KEY='"+value['CN_KEY']+"' and n.caseId='"+value['caseId']+"' WITH n OPTIONAL MATCH (n)-[r:变化]-()  return m  order by m.最后修改时间";
                         var label = value["label"];
                         if(document.getElementById("tableData")){
                             document.getElementById("tableData").setAttribute
@@ -171,18 +188,20 @@ function Neod3Renderer() {
                             var graph = res.graph;
                             if (graph) {
                                 if (graph.nodes) {
+                                    var str_name = ['贺甲','丁戊','张四','王六','丁戊','丁戊','张伟',
+                                        '贺甲','贺甲','张四','王六','丁戊','丁戊','张伟','贺甲','贺甲','张四','王六','丁戊','丁戊','张伟'];
                                     for(item in graph.nodes) {
                                         if(graph.nodes[item]["label"]==label) {
                                             //labelList.push(graph.nodes[item])
-                                            console.log("ffffff+",graph.nodes[item]);
-                                            var year = (graph.nodes[item].timestamp).toString().substring(0,4);
-                                            var month = (graph.nodes[item].timestamp).toString().substring(5,7)
-                                                + "-" + (graph.nodes[item].timestamp).toString().substring(7,9);
+                                            console.log(graph.nodes[item]);
+                                            var year = (graph.nodes[item]["最后修改时间"]).toString().substring(0,4);
+                                            var month = (graph.nodes[item]["最后修改时间"]).toString().substring(5,7)
+                                                + "-" + (graph.nodes[item]["最后修改时间"]).toString().substring(8,10);
                                             var str_div = graph.nodes[item][graph.nodes[item].label];
                                             if(str_div != ""){
                                                 document.getElementById("timelineId").innerHTML +=
                                                     "<li><div class = \"time\">"+year+"</div> <div class = \"version\">"+month+"</div> " +
-                                                    "<div class = \"timeBananName\">"+"测试账号0102"+"</div> <div class = \"number\"></div>" +
+                                                    "<div class = \"timeBananName\">"+str_name[item]+"</div> <div class = \"number\"></div>" +
                                                     " <div class = \"content\">" +
                                                     "<div class = \"divCount\"> "+str_div+"<br /></div></div></li>";
                                                 //console.log(document.getElementById("timelineId").innerHTML);
@@ -248,7 +267,7 @@ function Neod3Renderer() {
                         console.log("");
                     var neo = new Neo(connection);
                     try {
-                        var query = "match (n) where n.CN_KEY='"+value['CN_KEY']+"' and n.caseId='"+value['caseId']+"' WITH n OPTIONAL MATCH p=(n)-[r:变化]-() return p,n,r";
+                        var query = "match (n) where n.CN_KEY='"+value['CN_KEY']+"' and n.caseId='"+value['caseId']+"' WITH n OPTIONAL MATCH p=(n)-[r:变化]-()  return m  order by m.最后修改时间";
                         var label = value["label"];
                         if(document.getElementById("tableData")){
                             document.getElementById("tableData").setAttribute
@@ -264,18 +283,20 @@ function Neod3Renderer() {
                             var graph = res.graph;
                             if (graph) {
                                 if (graph.nodes) {
+                                    var str_name = ['贺甲','丁戊','张四','王六','丁戊','丁戊','张伟',
+                                        '贺甲','贺甲','张四','王六','丁戊','丁戊','张伟','贺甲','贺甲','张四','王六','丁戊','丁戊','张伟'];
                                     for(item in graph.nodes) {
                                         if(graph.nodes[item]["label"]==label) {
                                             //labelList.push(graph.nodes[item])
-                                            console.log("ffffff+",graph.nodes[item]);
-                                            var year = (graph.nodes[item].timestamp).toString().substring(0,4);
-                                            var month = (graph.nodes[item].timestamp).toString().substring(5,7)
-                                                + "-" + (graph.nodes[item].timestamp).toString().substring(7,9);
+                                            console.log(graph.nodes[item]);
+                                            var year = (graph.nodes[item]["最后修改时间"]).toString().substring(0,4);
+                                            var month = (graph.nodes[item]["最后修改时间"]).toString().substring(5,7)
+                                                + "-" + (graph.nodes[item]["最后修改时间"]).toString().substring(8,10);
                                             var str_div = graph.nodes[item][graph.nodes[item].label];
                                             if(str_div != ""){
                                                 document.getElementById("timelineId").innerHTML +=
                                                     "<li><div class = \"time\">"+year+"</div> <div class = \"version\">"+month+"</div> " +
-                                                    "<div class = \"timeBananName\">"+"测试账号0102"+"</div> <div class = \"number\"></div>" +
+                                                    "<div class = \"timeBananName\">"+str_name[item]+"</div> <div class = \"number\"></div>" +
                                                     " <div class = \"content\">" +
                                                     "<div class = \"divCount\"> "+str_div+"<br /></div></div></li>";
                                                 //console.log(document.getElementById("timelineId").innerHTML);
@@ -319,7 +340,6 @@ function Neod3Renderer() {
                 }
 
             }
-
             document.getElementById("suyuanDataId").innerHTML = "<p style='margin-left:5px;color:#ff6601;'>"+alertString+"</p>";
         }
     }
@@ -611,7 +631,7 @@ function Neod3Renderer() {
 
 function lineageSelect(bmsah) {
     over_bmsah = bmsah;
-    window.location.href="http://localhost:8083/hxyActiviti/neoData.html?bmsah="+encodeURI(bmsah);
+    window.location.href="/hxyActiviti/neoData.html?bmsah="+encodeURI(bmsah);
 }
 
 /*

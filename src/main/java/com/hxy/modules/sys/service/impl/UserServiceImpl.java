@@ -225,9 +225,9 @@ public class UserServiceImpl implements UserService {
         }
         UserEntity currentUser = UserUtils.getCurrentUser();
         String newPassWord = ShiroUtils.EncodeSalt(user.getPassWord(),currentUser.getSalt());
-        if(Constant.SUPERR_USER.equals(currentUser.getId())){
-            throw new MyException("不能修改超级管理员密码!");
-        }
+//        if(Constant.SUPERR_USER.equals(currentUser.getId())){
+//            throw new MyException("不能修改超级管理员密码!");
+//        }
         if(!newPassWord.equals(currentUser.getPassWord())){
             throw new MyException("密码不正确");
         }
