@@ -14,18 +14,23 @@ import com.hxy.modules.demo.service.CaseService;
 import com.hxy.modules.sys.entity.UserEntity;
 import com.hxy.provenance.neo4j.Neo4jFinalUtil;
 import com.hxy.provenance.neo4j.NeoConstants;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.concurrent.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
 @Service("GJAJService")
 public class GJAJServiceImpl implements GJAJService {
+    Logger logger = LoggerFactory.getLogger(GJAJServiceImpl.class);
+
     public static DateTimeFormatter zhxgsjFormatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     public static DateTimeFormatter zhxgsjFormatter2 = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
     @Autowired
@@ -103,6 +108,43 @@ public class GJAJServiceImpl implements GJAJService {
 
     public List<Map<String, Object>> countAJLB() {
         return caseDao.countAJLB();
+    }
+
+    @Override
+    public Result deleteTest(int count) {
+        long start = System.currentTimeMillis();
+        PageHelper.startPage(1, count);
+        Map<String, Object> params = new HashMap<>();
+        caseDao.queryList(params);
+        Page<GJAJEntity> list = PageHelper.endPage();
+
+        for (GJAJEntity gjajEntity : list.getResult()) {
+            deleteLog(gjajEntity.getBMSAH());
+        }
+
+        return Result.ok(String.valueOf(System.currentTimeMillis() - start));
+    }
+
+    @Override
+    public Result parseLogForTest(int count) {
+        long start = System.currentTimeMillis();
+        PageHelper.startPage(1, count);
+        Map<String, Object> params = new HashMap<>();
+        caseDao.queryList(params);
+        Page<GJAJEntity> list = PageHelper.endPage();
+
+        ExecutorService executors = Executors.newFixedThreadPool(4);
+        for (GJAJEntity gjajEntity : list.getResult()) {
+            executors.submit(new Runnable() {
+                @Override
+                public void run() {
+                    parseLog(gjajEntity.getBMSAH());
+                    logger.info(count + " : " + String.valueOf(System.currentTimeMillis() - start));
+                }
+            });
+        }
+        executors.shutdown();
+        return Result.ok();
     }
 
     @Override
