@@ -3,7 +3,6 @@ package com.hxy.provenance.logparser;
 public class KVEntity {
     public String en;
     public String cn;
-    public String category;
 
     public String getEn() {
         return en;
@@ -19,13 +18,5 @@ public class KVEntity {
 
     public void setCn(String cn) {
         this.cn = cn;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 }

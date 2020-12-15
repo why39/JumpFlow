@@ -56,9 +56,9 @@
                                     <button class="layui-btn layui-btn-small" type="button"
                                             onclick="logRead('${leave.BMSAH}')">查看
                                     </button>
-                                    <button class="layui-btn layui-btn-small" type="button"
-                                            onclick="logDelete('${leave.BMSAH}')">删除
-                                    </button>
+<%--                                    <button class="layui-btn layui-btn-small" type="button"--%>
+<%--                                            onclick="logDelete('${leave.BMSAH}')">删除--%>
+<%--                                    </button>--%>
 
                                 </c:if>
 
@@ -86,7 +86,7 @@
     }
 
     function logRead(bmsah) {
-        window.location.href="http://localhost:8083/hxyActiviti/neoData.html?bmsah="+encodeURI(bmsah);
+        window.location.href="${webRoot}/neoData.html?bmsah="+encodeURI(bmsah);
     }
 
     function logDelete(bmsah) {
