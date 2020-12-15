@@ -12,6 +12,7 @@ import com.hxy.provenance.neo4j.Neo4jFinalUtil;
 import com.hxy.provenance.neo4j.json.JSONObject;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +28,7 @@ import java.util.Map;
  */
 @RequestMapping("demo/gj")
 @Controller
+@Scope(value = "prototype")
 public class GJAJController {
 
     @Autowired
@@ -57,6 +59,22 @@ public class GJAJController {
     public Result parselog(String bmsah){
         //解析某个案件的所有日志
         return caseService.parseLog(bmsah);
+    }
+
+    @RequestMapping(value="parselog-test", method = RequestMethod.POST)
+    @RequiresPermissions("act:model:all")
+    @ResponseBody
+    public Result parselogForTest(int count){
+        //解析某个案件的所有日志
+        return caseService.parseLogForTest(count);
+    }
+
+    @RequestMapping(value="delete-test", method = RequestMethod.POST)
+    @RequiresPermissions("act:model:all")
+    @ResponseBody
+    public Result deleteTest(int count){
+        //解析某个案件的所有日志
+        return caseService.deleteTest(count);
     }
 
     @RequestMapping(value="deletelog", method = RequestMethod.POST)

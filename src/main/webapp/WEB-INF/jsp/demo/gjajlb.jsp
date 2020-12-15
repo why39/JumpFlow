@@ -16,11 +16,14 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label" style="width:10%;">案件标题:</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="title" value="${leave.title}" placeholder="请输入案件标题"
+                        <input type="text" name="title" id="test-count" value="${leave.title}" placeholder="请输入案件标题"
                                class="layui-input">
                     </div>
                     <button class="layui-btn" id="searchSubmit"><i class="layui-icon">&#xe615;</i>搜 索</button>
                     <button class="layui-btn layui-btn-warm" type="button" id="refresh">重 置</button>
+                    <button class="layui-btn layui-btn-warm" type="button" onclick="testCases()">测试</button>
+                    <button class="layui-btn layui-btn-warm" type="button" onclick="deleteTestCases()">清空测试</button>
+
                 </div>
             </form>
         </div>
@@ -97,6 +100,25 @@
             });
         });
     }
+
+    function testCases() {
+        var url = "${webRoot}/demo/gj/parselog-test";
+        confirm('开始测试？', function () {
+            $.post(url, "count=" + $("#test-count").val(), function (r) {
+                $("#search-from").submit();
+            });
+        });
+    }
+
+    function deleteTestCases() {
+        var url = "${webRoot}/demo/gj/delete-test";
+        confirm('确认删除？', function () {
+            $.post(url, "count=" + $("#test-count").val(), function (r) {
+                $("#search-from").submit();
+            });
+        });
+    }
+
 </script>
 
 </html>
