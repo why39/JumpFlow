@@ -94,7 +94,7 @@ public class ExtendActDealController {
 
     @RequestMapping("query")
     public String query() {
-        return "neod.html";
+        return "new_index.html";
     }
 
     @RequestMapping("traceProp")
