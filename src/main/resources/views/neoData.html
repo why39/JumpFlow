@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>世系数据</title>
-    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="styles/codemirror.css">
     <link rel="stylesheet" href="styles/codemirror-neo.css">
     <link rel="stylesheet" href="styles/cy2neo.css">
@@ -57,6 +57,34 @@
         .displayLabelCLass:hover{
             display: block;
         }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #c0c0c0;
+        }
+
+        th,td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 5px;
+        }
+
+        th {
+            background-color: #09c;
+            font: bold 10px "微软雅黑";
+            color: #fff;
+        }
+
+        td {
+            font: 8px "微软雅黑";
+        }
+        tbody tr {
+            background-color: #f0f0f0;
+        }
+        tbody tr:hover {
+            cursor: pointer;
+            background-color: #fafafa;
+        }
     </style>
 </head>
 <body>
@@ -76,6 +104,7 @@
                    style=" margin-left:13px">
         </div>
     </div>
+
     <div class="col-lg-6" style="width:420px ;margin-left:70px">
         <label id="timeStartNameLabel"
                style="position: absolute;margin-top: 6px;margin-left:-85px">起始时间</label>
@@ -114,6 +143,19 @@
     </div>
 
 
+</div>
+<div id = "anka_table" style = "overflow:auto;height: 400px;position:absolute; margin-top:4px;z-index: 100;margin-left:3px;display:none">
+<table style = "">
+    <thead>
+    <tr>
+        <th>犯罪嫌疑人相关</th>
+        <th>案情相关</th>
+        <th>其他</th>
+    </tr>
+    </thead>
+    <tbody id="J_TbData">
+    </tbody>
+</table>
 </div>
 
 <div id="leftContent" style="position:absolute;width:300px;height: 620px;
@@ -455,278 +497,6 @@
                 + lableContent
                 + categoryContent + " RETURN m,p";
         }
-        //
-        // if ($("#suyuanName").val() && $("#timeStartName").val() && $("#timeEndName").val() && $("#userName").val() && $("#labelName").val() && $("#ankaCount").val() == "") {
-        //     var timeStart = new Date($("#timeStartName").val());
-        //     var vYear1 = timeStart.getFullYear();
-        //     var vMon1 = timeStart.getMonth() + 1;
-        //     var vDay1 = timeStart.getDate();
-        //     var StartTime = vYear1 * 10000 + vMon1 * 100 + vDay1;
-        //     var timeEnd = new Date($("#timeEndName").val());
-        //     var vYear2 = timeEnd.getFullYear();
-        //     var vMon2 = timeEnd.getMonth() + 1;
-        //     var vDay2 = timeEnd.getDate();
-        //     var EndTime = vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
-        //     console.log("timeStar is " + timeStart);
-        //
-        //     if ($("#timeStartName").val() == $("#timeEndName").val()) {
-        //         EndTime = EndTime + 1;
-        //     }
-        //     query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' AND n.timestamp>=\'" + StartTime * 1000000 +
-        //         "\' AND n.timestamp<\'" + EndTime * 1000000 + "\' " + "AND n.操作人=\'" + $("#userName").val() +
-        //         "\' WITH n MATCH p = (n) - [*] -> (m) where m.name=\'"
-        //         + $("#suyuanName").val() + "\' " + categoryContent + " RETURN m,p";
-        // } else if ($("#suyuanName").val() && $("#timeStartName").val() && $("#timeEndName").val() && $("#userName").val() && $("#labelName").val() == "" && $("#ankaCount").val() == "") {
-        //     var timeStart = new Date($("#timeStartName").val());
-        //     var vYear1 = timeStart.getFullYear();
-        //     var vMon1 = timeStart.getMonth() + 1;
-        //     var vDay1 = timeStart.getDate();
-        //     var StartTime = vYear1 * 10000 + vMon1 * 100 + vDay1;
-        //     var timeEnd = new Date($("#timeEndName").val());
-        //     var vYear2 = timeEnd.getFullYear();
-        //     var vMon2 = timeEnd.getMonth() + 1;
-        //     var vDay2 = timeEnd.getDate();
-        //     var EndTime = vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
-        //     if ($("#timeStartName").val() == $("#timeEndName").val()) {
-        //         EndTime = EndTime + 1;
-        //     }
-        //     query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' AND n.timestamp>=\'" + StartTime * 1000000 +
-        //         "\' AND n.timestamp<\'" + EndTime * 1000000 + "\' " + "AND n.操作人=\'" + $("#userName").val() +
-        //         "\' WITH n MATCH p = (n) - [*] -> (m) where m.name=\'"
-        //         + $("#suyuanName").val() + "\' " + categoryContent + " RETURN m,p";
-        // } else if ($("#suyuanName").val() && $("#timeStartName").val() && $("#timeEndName").val() && $("#labelName").val() == "" && $("#userName").val() == "" && $("#ankaCount").val() == "") {
-        //     var timeStart = new Date($("#timeStartName").val());
-        //     var vYear1 = timeStart.getFullYear();
-        //     var vMon1 = timeStart.getMonth() + 1;
-        //     var vDay1 = timeStart.getDate();
-        //     var StartTime = vYear1 * 10000 + vMon1 * 100 + vDay1;
-        //     var timeEnd = new Date($("#timeEndName").val());
-        //     var vYear2 = timeEnd.getFullYear();
-        //     var vMon2 = timeEnd.getMonth() + 1;
-        //     var vDay2 = timeEnd.getDate();
-        //     var EndTime = vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
-        //     if ($("#timeStartName").val() == $("#timeEndName").val()) {
-        //         EndTime = EndTime + 1;
-        //     }
-        //     query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' AND n.timestamp>=\'" + StartTime * 1000000 +
-        //         "\' AND n.timestamp<\'" + EndTime * 1000000 + "\' WITH n MATCH p = (n) - [*] -> (m) where m.name=\'" + $("#suyuanName").val() + "\' " + categoryContent + " RETURN m,p";
-        // } else if ($("#suyuanName").val() && $("#timeStartName").val() == "" && $("#timeEndName").val() == "" && $("#userName").val() == "" && $("#labelName").val() == "" && $("#ankaCount").val() == "") {
-        //     query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' WITH n MATCH p = (n) - [*] -> (m) where m.name=\'" + $("#suyuanName").val() + "\' " + categoryContent + " RETURN m,p";
-        // } else {
-        //
-        //     if ($("#timeStartName").val() && $("#timeEndName").val() && $("#suyuanName").val() == "" && $("#userName").val() == "" && $("#labelName").val() == "" && $("#ankaCount").val() == "") {
-        //         var timeStart = new Date($("#timeStartName").val());
-        //         var vYear1 = timeStart.getFullYear();
-        //         var vMon1 = timeStart.getMonth() + 1;
-        //         var vDay1 = timeStart.getDate();
-        //         var StartTime = vYear1 * 10000 + vMon1 * 100 + vDay1;
-        //         var timeEnd = new Date($("#timeEndName").val());
-        //         var vYear2 = timeEnd.getFullYear();
-        //         var vMon2 = timeEnd.getMonth() + 1;
-        //         var vDay2 = timeEnd.getDate();
-        //         var EndTime = vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
-        //         if ($("#timeStartName").val() == $("#timeEndName").val()) {
-        //             EndTime = EndTime + 1;
-        //         }
-        //         query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' AND n.timestamp>=\'" + StartTime * 1000000 +
-        //             "\' AND n.timestamp<\'" + EndTime * 1000000 + "\' WITH n MATCH p = (n) - [*] -> (m) RETURN m,p";
-        //     } else if ($("#timeStartName").val() && $("#timeEndName").val() && $("#suyuanName").val() == "" && $("#userName").val() == "" && $("#labelName").val() && $("#ankaCount").val() == "") {
-        //         var timeStart = new Date($("#timeStartName").val());
-        //         var vYear1 = timeStart.getFullYear();
-        //         var vMon1 = timeStart.getMonth() + 1;
-        //         var vDay1 = timeStart.getDate();
-        //         var StartTime = vYear1 * 10000 + vMon1 * 100 + vDay1;
-        //         var timeEnd = new Date($("#timeEndName").val());
-        //         var vYear2 = timeEnd.getFullYear();
-        //         var vMon2 = timeEnd.getMonth() + 1;
-        //         var vDay2 = timeEnd.getDate();
-        //         var EndTime = vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
-        //         count = $("#labelName").val();
-        //         if ($("#labelName").val() == '所有') {
-        //             count = 10000;
-        //         }
-        //         if ($("#timeStartName").val() == $("#timeEndName").val()) {
-        //             EndTime = EndTime + 1;
-        //         }
-        //         query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' AND n.timestamp>=\'" + StartTime * 1000000 +
-        //             "\' AND n.timestamp<\'" + EndTime * 1000000 + "\' WITH n MATCH p = (n) - [*] -> (m) RETURN m,p limit " + count;
-        //     } else if ($("#timeStartName").val() == "" && $("#timeEndName").val() == "" && $("#suyuanName").val() == "" && $("#userName").val() && $("#labelName").val() == "" && $("#ankaCount").val() == "") {
-        //         query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' AND n.操作人=\'" + $("#userName").val() +
-        //             "\' WITH n MATCH p = (n) - [*] -> (m)  RETURN m,p";
-        //     } else if ($("#timeStartName").val() == "" && $("#timeEndName").val() == "" && $("#suyuanName").val() == "" && $("#userName").val() && $("#labelName").val() && $("#ankaCount").val() == "") {
-        //         count = $("#labelName").val();
-        //         if ($("#labelName").val() == '所有') {
-        //             count = 10000;
-        //         }
-        //         query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' AND n.操作人=\'" + $("#userName").val() +
-        //             "\' WITH n MATCH p = (n) - [*] -> (m)  RETURN m,p limit " + count;
-        //     } else if ($("#timeStartName").val() && $("#timeEndName").val() && $("#suyuanName").val() == "" && $("#userName").val() && $("#labelName").val() == "" && $("#ankaCount").val() == "") {
-        //         var timeStart = new Date($("#timeStartName").val());
-        //         var vYear1 = timeStart.getFullYear();
-        //         var vMon1 = timeStart.getMonth() + 1;
-        //         var vDay1 = timeStart.getDate();
-        //         var StartTime = vYear1 * 10000 + vMon1 * 100 + vDay1;
-        //         var timeEnd = new Date($("#timeEndName").val());
-        //         var vYear2 = timeEnd.getFullYear();
-        //         var vMon2 = timeEnd.getMonth() + 1;
-        //         var vDay2 = timeEnd.getDate();
-        //         var EndTime = vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
-        //         console.log("timeStar is " + timeStart);
-        //         if ($("#timeStartName").val() == $("#timeEndName").val()) {
-        //             EndTime = EndTime + 1;
-        //         }
-        //         query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' AND n.timestamp>=\'" + StartTime * 1000000 +
-        //             "\' AND n.timestamp<\'" + EndTime * 1000000 + "\' " + "AND n.操作人=\'" + $("#userName").val() +
-        //             "\' WITH n MATCH p = (n) - [*] -> (m) RETURN m,p";
-        //     } else if ($("#timeStartName").val() && $("#timeEndName").val() && $("#suyuanName").val() == "" && $("#userName").val() && $("#labelName").val() && $("#ankaCount").val() == "") {
-        //         var timeStart = new Date($("#timeStartName").val());
-        //         var vYear1 = timeStart.getFullYear();
-        //         var vMon1 = timeStart.getMonth() + 1;
-        //         var vDay1 = timeStart.getDate();
-        //         var StartTime = vYear1 * 10000 + vMon1 * 100 + vDay1;
-        //         var timeEnd = new Date($("#timeEndName").val());
-        //         var vYear2 = timeEnd.getFullYear();
-        //         var vMon2 = timeEnd.getMonth() + 1;
-        //         var vDay2 = timeEnd.getDate();
-        //         var EndTime = vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
-        //         count = $("#labelName").val();
-        //         if ($("#labelName").val() == '所有') {
-        //             count = 10000;
-        //         }
-        //         if ($("#timeStartName").val() == $("#timeEndName").val()) {
-        //             EndTime = EndTime + 1;
-        //         }
-        //         query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' AND n.timestamp>=\'" + StartTime * 1000000 +
-        //             "\' AND n.timestamp<\'" + EndTime * 1000000 + "\' " + "AND n.操作人=\'" + $("#userName").val() +
-        //             "\' WITH n MATCH p = (n) - [*] -> (m) RETURN m,p limit " + count;
-        //     } else if ($("#timeStartName").val() && $("#timeEndName").val() && $("#suyuanName").val() && $("#userName").val() == "" && $("#labelName").val() && $("#ankaCount").val() == "") {
-        //         console.log("时间 + 案卡名字+数量");
-        //         var timeStart = new Date($("#timeStartName").val());
-        //         var vYear1 = timeStart.getFullYear();
-        //         var vMon1 = timeStart.getMonth() + 1;
-        //         var vDay1 = timeStart.getDate();
-        //         var StartTime = vYear1 * 10000 + vMon1 * 100 + vDay1;
-        //         var timeEnd = new Date($("#timeEndName").val());
-        //         var vYear2 = timeEnd.getFullYear();
-        //         var vMon2 = timeEnd.getMonth() + 1;
-        //         var vDay2 = timeEnd.getDate();
-        //         var EndTime = vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
-        //         console.log("timeStar is " + timeStart);
-        //         count = $("#labelName").val();
-        //         if ($("#labelName").val() == '所有') {
-        //             count = 10000;
-        //         }
-        //         if ($("#timeStartName").val() == $("#timeEndName").val()) {
-        //             EndTime = EndTime + 1;
-        //         }
-        //         query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' AND n.timestamp>=\'" + StartTime * 1000000 +
-        //             "\' AND n.timestamp<\'" + EndTime * 1000000 +
-        //             "\' WITH n MATCH p = (n) - [*] -> (m) where m.name=\'"
-        //             + $("#suyuanName").val() + "\' RETURN m,p limit " + count;
-        //     } else if ($("#timeStartName").val() == "" && $("#timeEndName").val() == "" && $("#suyuanName").val() && $("#userName").val() && $("#labelName").val() == "" && $("#ankaCount").val() == "") {
-        //         query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' AND n.操作人=\'" + $("#userName").val() +
-        //             "\' WITH n MATCH p = (n) - [*] -> (m) where m.name=\'"
-        //             + $("#suyuanName").val() + "\' RETURN m,p";
-        //     } else if ($("#timeStartName").val() == "" && $("#timeEndName").val() == "" && $("#suyuanName").val() && $("#userName").val() && $("#labelName").val() && $("#ankaCount").val() == "") {
-        //         count = $("#labelName").val();
-        //         if ($("#labelName").val() == '所有') {
-        //             count = 10000;
-        //         }
-        //         query = "MATCH (n) WHERE n.caseId=\'" + jiema() + "\' AND n.操作人=\'" + $("#userName").val() +
-        //             "\' WITH n MATCH p = (n) - [*] -> (m) where m.name=\'"
-        //             + $("#suyuanName").val() + "\' RETURN m,p limit " + count;
-        //     } else if ($("#timeStartName").val() == "" && $("#timeEndName").val() == "" && $("#suyuanName").val() && $("#userName").val() == "" && $("#labelName").val() == "" && $("#ankaCount").val()) {
-        //         query = "MATCH (n) WHERE n.caseId =\'" + jiema() +
-        //             "\' WITH n MATCH p = (n) - [*" + $("#ankaCount").val() + "..] -> (m) " +
-        //             "where m.name=\'" + $("#suyuanName").val() + "\' RETURN m,p";
-        //     } else if ($("#timeStartName").val() == "" && $("#timeEndName").val() == "" && $("#suyuanName").val() && $("#userName").val() && $("#labelName").val() == "" && $("#ankaCount").val()) {
-        //         query = "MATCH (n) WHERE n.caseId =\'" + jiema() + "\' AND n.操作人=\'" + $("#userName").val() +
-        //             "\' WITH n MATCH p = (n) - [*" + $("#ankaCount").val() + "..] -> (m) " +
-        //             "where m.name=\'" + $("#suyuanName").val() + "\' RETURN m,p";
-        //     } else if ($("#timeStartName").val() && $("#timeEndName").val() && $("#suyuanName").val() && $("#userName").val() == "" && $("#labelName").val() == "" && $("#ankaCount").val()) {
-        //         var timeStart = new Date($("#timeStartName").val());
-        //         var vYear1 = timeStart.getFullYear();
-        //         var vMon1 = timeStart.getMonth() + 1;
-        //         var vDay1 = timeStart.getDate();
-        //         var StartTime = vYear1 * 10000 + vMon1 * 100 + vDay1;
-        //         var timeEnd = new Date($("#timeEndName").val());
-        //         var vYear2 = timeEnd.getFullYear();
-        //         var vMon2 = timeEnd.getMonth() + 1;
-        //         var vDay2 = timeEnd.getDate();
-        //         var EndTime = vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
-        //         if ($("#timeStartName").val() == $("#timeEndName").val()) {
-        //             EndTime = EndTime + 1;
-        //         }
-        //         query = "MATCH (n) WHERE n.caseId =\'" + jiema()
-        //             + "\' AND n.timestamp>=\'" + StartTime * 1000000 +
-        //             "\' AND n.timestamp<\'" + EndTime * 1000000 +
-        //             "\' WITH n MATCH p = (n) - [*" + $("#ankaCount").val() + "..] -> (m) " +
-        //             "where m.name=\'" + $("#suyuanName").val() + "\' RETURN m,p";
-        //     } else if ($("#timeStartName").val() && $("#timeEndName").val() && $("#suyuanName").val() && $("#userName").val() && $("#labelName").val() == "" && $("#ankaCount").val()) {
-        //         var timeStart = new Date($("#timeStartName").val());
-        //         var vYear1 = timeStart.getFullYear();
-        //         var vMon1 = timeStart.getMonth() + 1;
-        //         var vDay1 = timeStart.getDate();
-        //         var StartTime = vYear1 * 10000 + vMon1 * 100 + vDay1;
-        //         var timeEnd = new Date($("#timeEndName").val());
-        //         var vYear2 = timeEnd.getFullYear();
-        //         var vMon2 = timeEnd.getMonth() + 1;
-        //         var vDay2 = timeEnd.getDate();
-        //         var EndTime = vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
-        //         if ($("#timeStartName").val() == $("#timeEndName").val()) {
-        //             EndTime = EndTime + 1;
-        //         }
-        //         query = "MATCH (n) WHERE n.caseId =\'" + jiema() + "\' AND n.操作人=\'" + $("#userName").val() +
-        //             "\' AND n.timestamp>=\'" + StartTime * 1000000 +
-        //             "\' AND n.timestamp<\'" + EndTime * 1000000 +
-        //             "\' WITH n MATCH p = (n) - [*" + $("#ankaCount").val() + "..] -> (m) " +
-        //             "where m.name=\'" + $("#suyuanName").val() + "\' RETURN m,p";
-        //     } else if ($("#timeStartName").val() == "" && $("#timeEndName").val() == "" && $("#suyuanName").val() == "" && $("#userName").val() && $("#labelName").val() == "" && $("#ankaCount").val()) {
-        //         query = "MATCH (n) WHERE n.caseId =\'" + jiema() + "\' AND n.操作人=\'" + $("#userName").val() +
-        //             "\' WITH n MATCH p = (n) - [*" + $("#ankaCount").val() + "..] -> (m) RETURN m,p";
-        //     } else if ($("#timeStartName").val() == "" && $("#timeEndName").val() == "" && $("#suyuanName").val() == "" && $("#userName").val() == "" && $("#labelName").val() == "" && $("#ankaCount").val()) {
-        //         query = "MATCH (n) WHERE n.caseId =\'" + jiema() +
-        //             "\' WITH n MATCH p = (n) - [*" + $("#ankaCount").val() + "..] -> (m) RETURN m,p";
-        //     } else if ($("#timeStartName").val() && $("#timeEndName").val() && $("#suyuanName").val() == "" && $("#userName").val() && $("#labelName").val() == "" && $("#ankaCount").val()) {
-        //         var timeStart = new Date($("#timeStartName").val());
-        //         var vYear1 = timeStart.getFullYear();
-        //         var vMon1 = timeStart.getMonth() + 1;
-        //         var vDay1 = timeStart.getDate();
-        //         var StartTime = vYear1 * 10000 + vMon1 * 100 + vDay1;
-        //         var timeEnd = new Date($("#timeEndName").val());
-        //         var vYear2 = timeEnd.getFullYear();
-        //         var vMon2 = timeEnd.getMonth() + 1;
-        //         var vDay2 = timeEnd.getDate();
-        //         var EndTime = vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
-        //         if ($("#timeStartName").val() == $("#timeEndName").val()) {
-        //             EndTime = EndTime + 1;
-        //         }
-        //         query = "MATCH (n) WHERE n.caseId =\'" + jiema() + "\' AND n.操作人=\'" + $("#userName").val() +
-        //             "\' AND n.timestamp>=\'" + StartTime * 1000000 +
-        //             "\' AND n.timestamp<\'" + EndTime * 1000000 +
-        //             "\' WITH n MATCH p = (n) - [*" + $("#ankaCount").val() + "..] -> (m) RETURN m,p";
-        //     } else if ($("#timeStartName").val() && $("#timeEndName").val() && $("#suyuanName").val() == "" && $("#userName").val() == "" && $("#labelName").val() == "" && $("#ankaCount").val()) {
-        //         var timeStart = new Date($("#timeStartName").val());
-        //         var vYear1 = timeStart.getFullYear();
-        //         var vMon1 = timeStart.getMonth() + 1;
-        //         var vDay1 = timeStart.getDate();
-        //         var StartTime = vYear1 * 10000 + vMon1 * 100 + vDay1;
-        //         var timeEnd = new Date($("#timeEndName").val());
-        //         var vYear2 = timeEnd.getFullYear();
-        //         var vMon2 = timeEnd.getMonth() + 1;
-        //         var vDay2 = timeEnd.getDate();
-        //         var EndTime = vYear2 * 10000 + vMon2 * 100 + vDay2 + 1;
-        //         if ($("#timeStartName").val() == $("#timeEndName").val()) {
-        //             EndTime = EndTime + 1;
-        //         }
-        //         query = "MATCH (n) WHERE n.caseId =\'" + jiema() +
-        //             "\' AND n.timestamp>=\'" + StartTime * 1000000 +
-        //             "\' AND n.timestamp<\'" + EndTime * 1000000 +
-        //             "\' WITH n MATCH p = (n) - [*" + $("#ankaCount").val() + "..] -> (m) RETURN m,p";
-        //     } else {
-        //         query = "match(n:CASE) where n.caseId = \'" + jiema() + "\' with n match p = (n) - [*] ->(m:Task) RETURN p";
-        //     }
-        // }
 
         clearNodeInfo();
         execute(query);
@@ -754,15 +524,84 @@
         console.log(str_2);
     }
 
+    function BanAnRen() {
+        window.location.href="http://localhost:8083/hxyActiviti/neoBan.html?bmsah="+localStorage.getItem("LeiBieName");;
+    }
     window.onload = (function () {
         var query = null;
         document.getElementById("displayCaseId").innerHTML = jiema();
-        document.getElementById("displayLeiBie").innerHTML = localStorage.getItem("LeiBieName");;
+        document.getElementById("displayLeiBie").innerHTML = localStorage.getItem("LeiBieName");
         query = "match(n:CASE) where n.caseId = \'" + jiema() + "\' with n match p = (n) - [*] ->(m:Task) RETURN p";
         clearNodeInfo();
         execute(query);
     });
 
+</script>
+<script>
+    function table_data(){
+        var data = [{
+            name: "办案人",
+            case: "案情摘要",
+            other: "附注"
+        },{
+            name: "补充人编号",
+            case: "统一受案号",
+            other: "日志组ID"
+        },{
+            name: "请示单位代码",
+            case: "操作人",
+            other: "服务优先级"
+        },{
+            name: "办案人",
+            case: "案情摘要",
+            other: "附注"
+        },{
+            name: "补充人编号",
+            case: "统一受案号",
+            other: "日志组ID"
+        },{
+            name: "请示单位代码",
+            case: "操作人",
+            other: "服务优先级"
+        },{
+            name: "办案人",
+            case: "案情摘要",
+            other: "附注"
+        },{
+            name: "补充人编号",
+            case: "统一受案号",
+            other: "日志组ID"
+        },{
+            name: "请示单位代码",
+            case: "操作人",
+            other: "服务优先级"
+        },{
+            name: "办案人",
+            case: "案情摘要",
+            other: "附注"
+        },{
+            name: "补充人编号",
+            case: "统一受案号",
+            other: "日志组ID"
+        },{
+            name: "请示单位代码",
+            case: "操作人",
+            other: "服务优先级"
+        }];
+
+        $("#J_TbData").empty();
+        for( var i = 0; i < data.length; i++ ) {
+            //动态创建一个tr行标签,并且转换成jQuery对象
+            var $trTemp = $("<tr></tr>");
+
+            //往行里面追加 td单元格
+            $trTemp.append("<td>"+ data[i].name +"</td>");
+            $trTemp.append("<td>"+ data[i].case +"</td>");
+            $trTemp.append("<td>"+ data[i].other +"</td>");
+            // $("#J_TbData").append($trTemp);
+            $trTemp.appendTo("#J_TbData");
+        }
+    }
 </script>
 </body>
 </html>

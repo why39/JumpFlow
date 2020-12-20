@@ -12,8 +12,8 @@
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url("../fonts/fontawesome-webfont.eot?v=4.7.0");
-  src: url("../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("../fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("../fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("../fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
+  src: url("assets/fonts/fontawesome-webfont.eot?v=4.7.0");
+  src: url("assets/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("assets/fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("assets/fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("assets/fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("assets/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -3051,8 +3051,8 @@
 /* MaterialDesignIcons.com */
 @font-face {
   font-family: "Material Design Icons";
-  src: url("../fonts/materialdesignicons-webfont.eot?v=2.5.94");
-  src: url("../fonts/materialdesignicons-webfont.eot?#iefix&v=2.5.94") format("embedded-opentype"), url("../fonts/materialdesignicons-webfont.woff2?v=2.5.94") format("woff2"), url("../fonts/materialdesignicons-webfont.woff?v=2.5.94") format("woff"), url("../fonts/materialdesignicons-webfont.ttf?v=2.5.94") format("truetype"), url("../fonts/materialdesignicons-webfont.svg?v=2.5.94#materialdesigniconsregular") format("svg");
+  src: url("assets/fonts/materialdesignicons-webfont.eot?v=2.5.94");
+  src: url("assets/fonts/materialdesignicons-webfont.eot?#iefix&v=2.5.94") format("embedded-opentype"), url("assets/fonts/materialdesignicons-webfont.woff2?v=2.5.94") format("woff2"), url("assets/fonts/materialdesignicons-webfont.woff?v=2.5.94") format("woff"), url("assets/fonts/materialdesignicons-webfont.ttf?v=2.5.94") format("truetype"), url("assets/fonts/materialdesignicons-webfont.svg?v=2.5.94#materialdesigniconsregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -13699,8 +13699,8 @@
 */
 @font-face {
   font-family: "Ionicons";
-  src: url("../fonts/ionicons.eot?v=1.5.0");
-  src: url("../fonts/ionicons.eot?v=1.5.0#iefix") format("embedded-opentype"), url("../fonts/ionicons.ttf?v=1.5.0") format("truetype"), url("../fonts/ionicons.woff?v=1.5.0") format("woff"), url("../fonts/ionicons.svg?v=1.5.0#Ionicons") format("svg");
+  src: url("assets/fonts/ionicons.eot?v=1.5.0");
+  src: url("assets/fonts/ionicons.eot?v=1.5.0#iefix") format("embedded-opentype"), url("assets/fonts/ionicons.ttf?v=1.5.0") format("truetype"), url("assets/fonts/ionicons.woff?v=1.5.0") format("woff"), url("assets/fonts/ionicons.svg?v=1.5.0#Ionicons") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -16768,8 +16768,8 @@
 
 @font-face {
   font-family: 'themify';
-  src: url("../fonts/themify.eot?-fvbane");
-  src: url("../fonts/themify.eot?#iefix-fvbane") format("embedded-opentype"), url("../fonts/themify.woff?-fvbane") format("woff"), url("../fonts/themify.ttf?-fvbane") format("truetype"), url("../fonts/themify.svg?-fvbane#themify") format("svg");
+  src: url("assets/fonts/themify.eot?-fvbane");
+  src: url("assets/fonts/themify.eot?#iefix-fvbane") format("embedded-opentype"), url("assets/fonts/themify.woff?-fvbane") format("woff"), url("assets/fonts/themify.ttf?-fvbane") format("truetype"), url("assets/fonts/themify.svg?-fvbane#themify") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -18197,8 +18197,8 @@
 
 @font-face {
   font-family: "dripicons-v2";
-  src: url("../fonts/dripicons-v2.eot");
-  src: url("../fonts/dripicons-v2.eot?#iefix") format("embedded-opentype"), url("../fonts/dripicons-v2.woff") format("woff"), url("../fonts/dripicons-v2.ttf") format("truetype"), url("../fonts/dripicons-v2.svg#dripicons-v2") format("svg");
+  src: url("assets/fonts/dripicons-v2.eot");
+  src: url("assets/fonts/dripicons-v2.eot?#iefix") format("embedded-opentype"), url("assets/fonts/dripicons-v2.woff") format("woff"), url("assets/fonts/dripicons-v2.ttf") format("truetype"), url("assets/fonts/dripicons-v2.svg#dripicons-v2") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -19032,8 +19032,8 @@
   font-family: 'typicons';
   font-weight: normal;
   font-style: normal;
-  src: url("../fonts/typicons.eot");
-  src: url("../fonts/typicons.eot?#iefix") format("embedded-opentype"), url("../fonts/typicons.woff") format("woff"), url("../fonts/typicons.ttf") format("truetype"), url("../fonts/typicons.svg#typicons") format("svg");
+  src: url("assets/fonts/typicons.eot");
+  src: url("assets/fonts/typicons.eot?#iefix") format("embedded-opentype"), url("assets/fonts/typicons.woff") format("woff"), url("assets/fonts/typicons.ttf") format("truetype"), url("assets/fonts/typicons.svg#typicons") format("svg");
 }
 
 /* :before psuedo-selector inserts and styles icon */

@@ -2,7 +2,7 @@
 Template Name: Foxia - Responsive Bootstrap 4 Admin Dashboard
 Author: Themesbrand
 File: Main Css File
-    更多精品模板：http://www.bootstrapmb.com
+    锟斤拷锟洁精品模锟藉：http://www.bootstrapmb.com
 */
 /*
 01. General
@@ -1001,14 +1001,13 @@ code {
 }
 
 .content-page {
-  margin-left: 240px;
   overflow: hidden;
 }
 
 .content-page .content {
   padding: 0 10px 10px 10px;
-  margin-top: 60px;
-  margin-bottom: 60px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .button-menu-mobile {

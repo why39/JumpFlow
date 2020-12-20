@@ -1,0 +1,291 @@
+<html>
+<head>
+    <title>检察</title>
+    <link rel="stylesheet" href="styles/codemirror.css">
+    <link rel="stylesheet" href="styles/codemirror-neo.css">
+    <link rel="stylesheet" href="styles/cy2neo.css">
+
+    <link rel="stylesheet" href="styles/datatable.css">
+    <link rel="stylesheet" href="styles/vendor.css"> <!-- bootstrap-->
+    <link rel="stylesheet" href="styles/sweet-alert.css">
+    <link rel="stylesheet" href="styles/gh-fork-ribbon.css">
+
+    <!-- Basic Css files -->
+    <link rel="stylesheet" href="styles/metismenu.min.css">
+    <link rel="stylesheet" href="styles/neodCss1.css">
+
+    <link rel="stylesheet" href="styles/morris.css">
+    <link href="styles/icons.css" rel="stylesheet">
+    <link href="styles/style.css" rel="stylesheet" >
+    <style>
+        .list-group-item{
+            height: 48px;
+        }
+    </style>
+</head>
+<body>
+<div>
+
+    <nav aria-label="Page navigation">
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href="javascript:;" onclick="monitorClick()" id="xieshijiancha_a">团队信息列表</a></li>
+           <!-- <li role="presentation"><a href="javascript:;" onclick="supervisionClick()" id="xieshizhixing_a">刑事执行</a>
+            </li>
+            <li role="presentation"><a href="javascript:;" onclick="prosecutionClick()" id="gongsu_a">公益诉讼</a></li>
+            <li role="presentation"><a href="javascript:" onclick="minshiClick()" id="minshi_a">民事</a></li>
+            <li role="presentation"><a href="javascript:" onclick="xinzhengClick()" id="xinzheng_a">行政</a></li>
+            <li role="presentation"><a href="javascript:" onclick="weijianClick()" id="weijian_a">未检业务</a></li>
+            <li role="presentation"><a href="javascript:" onclick="konggaoClick()" id="konggao_a">控告申诉</a></li>
+            <li role="presentation"><a href="javascript:" onclick="jianweiClick()" id="jianwei_a">检委办</a></li>
+            <li role="presentation"><a href="javascript:" onclick="duitaiClick()" id="duitai_a">对台业务</a></li>
+            <li role="presentation"><a href="javascript:" onclick="anguanClick()" id="anguan_a">案管</a></li>
+            <li role="presentation"><a href="javascript:" onclick="sifaClick()" id="sifa_a">司法协助</a></li>-->
+
+        </ul>
+    </nav>
+
+    <div id="relevantCase" style="visibility : hidden;text-align:center;margin:0 auto">
+        <input class="form-control" type="text" style="width: 240px" id="keySelect" placeholder="关键字查询"/>
+
+        <nav aria-label="Page navigation">
+            <div id="pageData">
+                <ul class="list-group" id="caseList">
+
+                </ul>
+            </div>
+        </nav>
+        <div class="page">
+            <div id="page">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div style="border-top: 8px solid lightgray; margin-top: 5px;">
+
+    <!--<div id="my_container" style="width:440px; height:410px;float: right;position:relative;box-shadow: 0 0 50px grey;">
+        <p id="containerName" style="float: right;margin-right: 20px;margin-top:10px;
+    font-size: 24px;color: darkred;font-weight: bold">案件总数比例</p>
+        <canvas id="pie_canvas"></canvas>
+    </div>-->
+
+    <!--<p id="chartName" style="position:absolute; font-size: 24px;color: darkred;
+    font-weight: bold;margin-top:10px;margin-left: 20px"></p>
+    <div id="chart" style="position: relative">
+
+    </div>-->
+    <div class="col-xl-9" style = "display:inline-block">
+        <div class="card" style = "width:580px;height: 400px">
+            <div class="card-body">
+                <h4 class="mt-0 header-title mb-5">检察官团队办结案件数</h4>
+                <div id="morris-bar-stacked1" class="morris-chart-height morris-charts"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-9" style = "display:inline-block">
+        <div class="card" style = "width:580px;height: 400px">
+            <div class="card-body">
+                <h4 class="mt-0 header-title mb-5">检察官团队办结案件耗时（平均/小时）</h4>
+                <div id="morris-bar-stacked2" class="morris-chart-height morris-charts"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="colorfulPulse" style="position: fixed;margin-top: 130px;margin-left:300px">
+        <span class="item-1"></span>
+        <span class="item-2"></span>
+        <span class="item-3"></span>
+        <span class="item-4"></span>
+        <span class="item-5"></span>
+        <span class="item-6"></span>
+        <span class="item-7"></span>
+    </div>
+</div>
+
+<!--<script src="${rc.contextPath}/scripts/d3.v4.js"></script>-->
+<script src="scripts/d3.v4.js"></script>
+<script src="scripts/codemirror.js"></script>
+<script src="scripts/codemirror-cypher.js"></script>
+<script src="scripts/vendor.js"></script>
+<script src="scripts/sweet-alert.min.js"></script>
+<script src="scripts/neod3.js"></script>
+<script src="scripts/neod3-visualization.js"></script>
+<script src="scripts/neo4d3.js"></script>
+<script src="scripts/cy2neod3.js"></script>
+<script src="scripts/jquery.dataTables.min.js"></script>
+<script src="scripts/cypher.datatable.js"></script>
+<script src="scripts/jianchaJs.js">
+    <script src="http://localhost:8083/hxyActiviti/scripts/jquery.min.js"></script>
+<script src="http://localhost:8083/hxyActiviti/scripts/bootstrap.bundle.min.js"></script>
+<script src="http://localhost:8083/hxyActiviti/scripts/modernizr.min.js"></script>
+<script src="http://localhost:8083/hxyActiviti/scripts/metisMenu.min.js"></script>
+<script src="http://localhost:8083/hxyActiviti/scripts/jquery.slimscroll.js"></script>
+<script src="http://localhost:8083/hxyActiviti/scripts/waves.js"></script>
+<script src="http://localhost:8083/hxyActiviti/scripts/jquery.peity.min.js"></script>
+<script src="scripts/morris.min.js"></script>
+<script src="http://localhost:8083/hxyActiviti/scripts/raphael-min.js"></script>
+<script src="scripts/dashboard.js"></script>
+<script src="http://localhost:8083/hxyActiviti/scripts/app.js"></script>
+
+<script type="text/javascript">
+
+</script>
+
+
+<script type="text/javascript">
+    $("#keySelect").bind('keypress', function (event) {
+        var strSelect = this.value;
+        if (event.keyCode == "13") {
+            var listItems = $('.list-group-item');
+            var listLength = listItems.length;
+            for (i = 0; i < listLength; i++) {
+                if (listItems[i].textContent.includes(this.value)) {
+                    listItems[i].style.backgroundColor = "orange"
+                } else {
+                    listItems[i].style.backgroundColor = "white"
+                }
+            }
+        }
+    });
+</script>
+<script>
+
+    !function ($) {
+        "use strict1";
+
+        var Dashboard = function () {
+        };
+
+        //creates Stacked chart
+        Dashboard.prototype.createStackedChart  = function(element, data, xkey, ykeys, labels, lineColors) {
+            Morris.Bar({
+                element: element,
+                data: data,
+                xkey: xkey,
+                ykeys: ykeys,
+                stacked: true,
+                labels: labels,
+                hideHover: 'auto',
+                resize: true, //defaulted to true
+                gridLineColor: '#eeeeee',
+                barColors: lineColors,
+                labelTop:true,
+                barRatio: 0.4,
+                xLabelAngle: 35,
+            });
+        },
+            // pie
+            $('.peity-pie').each(function () {
+                $(this).peity("pie", $(this).data());
+            });
+
+        //donut
+        $('.peity-donut').each(function () {
+            $(this).peity("donut", $(this).data());
+        });
+
+        // line
+        $('.peity-line').each(function () {
+            $(this).peity("line", $(this).data());
+        });
+
+
+        Dashboard.prototype.init = function () {
+            var $stckedData  = [
+                { y: '刑事检察团队', a: 20},
+                { y: '刑事执行团队', a: 18},
+                { y: '公益诉讼团队', a: 16},
+                { y: '民事团队', a: 40},
+                { y: '行政团队', a: 15},
+                { y: '未检业务团队', a: 23},
+                { y: '控告申诉团队', a: 4},
+                { y: '检委办团队', a: 6},
+                { y: '对台业务团队', a: 8},
+                { y: '案管团队', a: 44},
+                { y: '司法协助', a: 3}
+            ];
+            this.createStackedChart('morris-bar-stacked1', $stckedData, 'y', ['a'], ['案件数'], ['#1699dd']);
+        },
+            //init
+            $.Dashboard = new Dashboard, $.Dashboard.Constructor = Dashboard
+    }(window.jQuery),
+
+//initializing
+        function ($) {
+            "use strict1";
+            $.Dashboard.init();
+        }(window.jQuery);
+
+    !function ($) {
+        "use strict2";
+
+        var Dashboard = function () {
+        };
+
+        //creates Stacked chart
+        Dashboard.prototype.createStackedChart  = function(element, data, xkey, ykeys, labels, lineColors) {
+            Morris.Bar({
+                element: element,
+                data: data,
+                xkey: xkey,
+                ykeys: ykeys,
+                stacked: true,
+                labels: labels,
+                hideHover: 'auto',
+                resize: true, //defaulted to true
+                gridLineColor: '#eeeeee',
+                barColors: lineColors,
+                labelTop:true,
+                barRatio: 0.4,
+                xLabelAngle: 35,
+            });
+        },
+            // pie
+            $('.peity-pie').each(function () {
+                $(this).peity("pie", $(this).data());
+            });
+
+        //donut
+        $('.peity-donut').each(function () {
+            $(this).peity("donut", $(this).data());
+        });
+
+        // line
+        $('.peity-line').each(function () {
+            $(this).peity("line", $(this).data());
+        });
+
+
+        Dashboard.prototype.init = function () {
+
+            var $stckedData  = [
+                { y: '刑事检察团队', a: 8.00},
+                { y: '刑事执行团队', a: 7.05},
+                { y: '公益诉讼团队', a: 4.70},
+                { y: '民事团队', a: 3.75},
+                { y: '行政团队', a: 2.90},
+                { y: '未检业务团队', a: 2.75},
+                { y: '控告申诉团队', a: 1.60},
+                { y: '检委办团队', a: 1.55},
+                { y: '对台业务团队', a: 1.50},
+                { y: '案管团队', a: 0.45},
+                { y: '司法协助', a: 0.30}
+            ];
+            this.createStackedChart('morris-bar-stacked2', $stckedData, 'y', ['a'], ['耗时'], ['#1699dd']);
+        },
+            //init
+            $.Dashboard = new Dashboard, $.Dashboard.Constructor = Dashboard
+    }(window.jQuery),
+
+//initializing
+        function ($) {
+            "use strict2";
+            $.Dashboard.init();
+        }(window.jQuery);
+
+</script>
+</body>
+</html>

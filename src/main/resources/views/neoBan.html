@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>办案人溯源</title>
+
+   <!-- <link rel="shortcut icon" href="${rc.contextPath}/styles/assets/images/favicon.ico">-->
+    <link rel="stylesheet" href="styles/morris.css">
+    <link href="styles/bootstrap.min.css" rel="stylesheet" >
+    <link href="styles/metismenu.min.css" rel="stylesheet">
+    <link href="styles/icons.css" rel="stylesheet">
+    <link href="styles/style.css" rel="stylesheet" >
+
+</head>
+<body>
+<div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h4 class="page-title mb-0" id = "name_label"></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+            <div class="row">
+                <div class="col-xl-3 col-md-6">
+                    <div class="card mini-stats">
+                        <div class="p-3 mini-stats-content">
+                            <div class="mb-4">
+                                <div class="float-right text-right">
+                                    <span class="badge badge-light text-info mt-2 mb-2"> + 21% </span>
+                                    <p class="text-white-50">办理案件占比</p>
+                                </div>
+
+                                <span class="peity-pie" data-peity='{ "fill": ["rgba(255, 255, 255, 0.8)", "rgba(255, 255, 255, 0.2)"]}' data-width="54" data-height="54">2/8</span>
+                            </div>
+                        </div>
+                        <div class="ml-3 mr-3">
+                            <div class="bg-white p-3 mini-stats-desc rounded">
+                                <h5 class="float-right mt-0">1758</h5>
+                                <h6 class="mt-0 mb-3">总案件数</h6>
+                               <!-- <p class="text-muted mb-0">Sed ut perspiciatis unde iste</p>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card mini-stats">
+                        <div class="p-3 mini-stats-content">
+                            <div class="mb-4">
+                                <div class="float-right text-right">
+                                    <span class="badge badge-light text-danger mt-2 mb-2">27%</span>
+                                    <p class="text-white-50">修改案卡项占比</p>
+                                </div>
+
+                                <span class="peity-donut" data-peity='{ "fill": ["rgba(255, 255, 255, 0.8)", "rgba(255, 255, 255, 0.2)"], "innerRadius": 18, "radius": 32 }' data-width="54" data-height="54">2/5</span>
+                            </div>
+                        </div>
+                        <div class="ml-3 mr-3">
+                            <div class="bg-white p-3 mini-stats-desc rounded">
+                                <h5 class="float-right mt-0">48259</h5>
+                                <h6 class="mt-0 mb-3">总案卡项总数</h6>
+                               <!-- <p class="text-muted mb-0">Sed ut perspiciatis unde iste</p>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card mini-stats">
+                        <div class="p-3 mini-stats-content">
+                            <div class="mb-4">
+                                <div class="float-right text-right">
+                                    <span class="badge badge-light text-primary mt-2 mb-2"> 40% </span>
+                                    <p class="text-white-50">刑事检察占比</p>
+                                </div>
+
+                                <span class="peity-pie" data-peity='{ "fill": ["rgba(255, 255, 255, 0.8)", "rgba(255, 255, 255, 0.2)"]}' data-width="54" data-height="54">3/8</span>
+                            </div>
+                        </div>
+                        <div class="ml-3 mr-3">
+                            <div class="bg-white p-3 mini-stats-desc rounded">
+                                <h5 class="float-right mt-0">1758</h5>
+                                <h6 class="mt-0 mb-3">总案件数</h6>
+                               <!-- <p class="text-muted mb-0">Sed ut perspiciatis unde iste</p>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card mini-stats">
+                        <div class="p-3 mini-stats-content">
+                            <div class="mb-4">
+                                <div class="float-right text-right">
+                                    <span class="badge badge-light text-info mt-2 mb-2"> 19% </span>
+                                    <p class="text-white-50">填写案卡项数量</p>
+                                </div>
+                                <span class="peity-donut" data-peity='{ "fill": ["rgba(255, 255, 255, 0.8)", "rgba(255, 255, 255, 0.2)"], "innerRadius": 18, "radius": 32 }' data-width="54" data-height="54">3/5</span>
+                            </div>
+                        </div>
+                        <div class="ml-3 mr-3">
+                            <div class="bg-white p-3 mini-stats-desc rounded">
+                                <h5 class="float-right mt-0">48259</h5>
+                                <h6 class="mt-0 mb-3">总案卡项总数</h6>
+                               <!-- <p class="text-muted mb-0">Sed ut perspiciatis unde iste</p>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+
+            <div class="row">
+                <div class="col-xl-9">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="mt-0 header-title mb-5">办案人处理案卡类型排名</h4>
+                            <div id="morris-bar-stacked" class="morris-chart-height morris-charts"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="mt-0 header-title">办案数目</h4>
+
+                            <div class="row text-center m-t-20">
+                                <div class="col-6">
+                                    <h5 class="">56241</h5>
+                                    <p class="text-muted font-14">总办案数目</p>
+                                </div>
+                                <div class="col-6">
+                                    <h5 class="">23651</h5>
+                                    <p class="text-muted font-14">已完结办案数目</p>
+                                </div>
+                            </div>
+
+                            <div id="morris-donut-example" class="dash-chart morris-charts text-center"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- end row -->
+
+            <div class="row">
+                <div class="col-xl-4 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="mt-0 header-title">办案峰值曲线</h4>
+                            <div class="py-4">
+                                <span class="peity-line" data-width="100%" data-peity='{ "fill": ["rgba(101, 91, 230, 0.3)"],"stroke": ["rgba(101, 91, 230, 0.8)"]}' data-height="60">4,6,8,7,6,7,9,8,6,5,7,5,8,6,4,8,9,8,5,4</span>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="weekly-sale-list text-center">
+                                        <h5>145</h5>
+                                        <p class="text-muted mb-0">本月</p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="weekly-sale-list text-center">
+                                        <h5>132</h5>
+                                        <p class="text-muted mb-0">上月</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="mt-0 header-title">结案峰值曲线</h4>
+                            <div class="py-4">
+                                <span class="peity-line" data-width="100%" data-peity='{ "fill": ["rgba(101, 91, 230, 0.3)"],"stroke": ["rgba(101, 91, 230, 0.8)"]}' data-height="60">4,6,8,7,6,7,9,8,6,5,7,5,8,6,4,8,9,8,5,4</span>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="weekly-sale-list text-center">
+                                        <h5>145</h5>
+                                        <p class="text-muted mb-0">本月</p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="weekly-sale-list text-center">
+                                        <h5>132</h5>
+                                        <p class="text-muted mb-0">上月</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            <div class="row" style = "margin-left: 30px">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="mt-0 header-title">办案人修改案卡项次数</h4>
+                            <div class="table-responsive mt-4">
+                                <table class="table table-hover mb-0">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">姓名</th>
+                                        <th scope="col">日期</th>
+                                        <th scope="col">名称</th>
+                                        <th scope="col">次数</th>
+                                        <th scope="col">环节名称</th>
+                                        <th scope="col" colspan="2">排名</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">#16252</th>
+                                        <td>
+                                            <div>
+                                                <img src="styles/assets/images/users/avatar-2.jpg" alt="" class="thumb-sm rounded-circle mr-2"> 丁真
+                                            </div>
+                                        </td>
+                                        <td>14/10/2020</td>
+                                        <td><span class="badge badge-success">案情摘要</span></td>
+                                        <td>10</td>
+                                        <td>案件管理办公室 韩信 受理</td>
+                                        <td>1</td>
+                                        <td>
+                                            <div>
+                                                <a href="#" class="btn btn-primary btn-sm">详情</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">#16253</th>
+                                        <td>
+                                            <div>
+                                                <img src="styles/assets/images/users/avatar-3.jpg" alt="" class="thumb-sm rounded-circle mr-2"> 丁真
+                                            </div>
+                                        </td>
+                                        <td>15/10/2020</td>
+                                        <td><span class="badge badge-warning">附注</span></td>
+                                        <td>8</td>
+                                        <td>案件管理办公室 韩信 受理</td>
+                                        <td>2</td>
+                                        <td>
+                                            <div>
+                                                <a href="#" class="btn btn-primary btn-sm">详情</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">#16254</th>
+                                        <td>
+                                            <div>
+                                                <img src="styles/assets/images/users/avatar-4.jpg" alt="" class="thumb-sm rounded-circle mr-2"> 丁真
+                                            </div>
+                                        </td>
+                                        <td>15/10/2020</td>
+                                        <td><span class="badge badge-success">承办单位</span></td>
+                                        <td>7</td>
+                                        <td>案件管理办公室 韩信 受理</td>
+                                        <td>3</td>
+                                        <td>
+                                            <div>
+                                                <a href="#" class="btn btn-primary btn-sm">详情</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">#16255</th>
+                                        <td>
+                                            <div>
+                                                <img src="styles/assets/images/users/avatar-5.jpg" alt="" class="thumb-sm rounded-circle mr-2">丁真
+                                            </div>
+                                        </td>
+                                        <td>16/10/2020</td>
+                                        <td><span class="badge badge-danger">承办单位</span></td>
+                                        <td>5</td>
+                                        <td>受理</td>
+                                        <td>4</td>
+                                        <td>
+                                            <div>
+                                                <a href="#" class="btn btn-primary btn-sm">详情</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">#16256</th>
+                                        <td>
+                                            <div>
+                                                <img src="styles/assets/images/users/avatar-6.jpg" alt="" class="thumb-sm rounded-circle mr-2"> 丁真
+                                            </div>
+                                        </td>
+                                        <td>17/10/2018</td>
+                                        <td><span class="badge badge-success">附注</span></td>
+                                        <td>4</td>
+                                        <td>受理</td>
+                                        <td>5</td>
+                                        <td>
+                                            <div>
+                                                <a href="#" class="btn btn-primary btn-sm">详情</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+
+<script src="http://localhost:8083/hxyActiviti/scripts/jquery.min.js"></script>
+<script src="http://localhost:8083/hxyActiviti/scripts/bootstrap.bundle.min.js"></script>
+<script src="http://localhost:8083/hxyActiviti/scripts/modernizr.min.js"></script>
+<script src="http://localhost:8083/hxyActiviti/scripts/metisMenu.min.js"></script>
+<script src="http://localhost:8083/hxyActiviti/scripts/jquery.slimscroll.js"></script>
+<script src="http://localhost:8083/hxyActiviti/scripts/waves.js"></script>
+<script src="http://localhost:8083/hxyActiviti/scripts/jquery.peity.min.js"></script>
+<script src="http://localhost:8083/hxyActiviti/scripts/morris.min.js"></script>
+<script src="http://localhost:8083/hxyActiviti/scripts/raphael-min.js"></script>
+<script src="http://localhost:8083/hxyActiviti/scripts/dashboard.js"></script>
+<script src="http://localhost:8083/hxyActiviti/scripts/app.js"></script>
+
+<script>
+    function jiema2() {
+        console.log(window.location.href)
+        var index_1 = window.location.href.indexOf("=");
+        str_1 = window.location.href.substring(index_1 + 1);
+        return decodeURI(str_1)
+    }
+    console.log(jiema2())
+    document.getElementById("name_label").innerHTML = jiema2() + '检察官'
+</script>
+</body>
+</html>

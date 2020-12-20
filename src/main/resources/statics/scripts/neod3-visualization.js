@@ -1,7 +1,6 @@
 var over_bmsah = null;
 var over_flag = 0;
 function Neod3Renderer() {
-
     var styleContents =
         "node {\
           diameter: 40px;\
@@ -92,6 +91,8 @@ function Neod3Renderer() {
                 ""+selectNode.caseId+"&nbsp&nbsp&nbsp&nbsp环节名称:"+selectNode.copy_name+"</p>";
             swal({
                 title: selectNode["copy_name"],
+                text: "开始时间：2020年十月二十日"+"\n"+
+                    "结束时间：2020年十二月十八日",
                 icon: "success",
                 buttons: {
                     cancel: "取消",
@@ -110,8 +111,34 @@ function Neod3Renderer() {
                         ("style", "display:none");
                     }
                     execute("match (n) where ID(n) = "+node.id+" with n match p = (n) - [r:相关] ->(m) return p");
+                    document.getElementById("anka_table").style.display = "block";
+                    table_data();
+                   /* var neo = new Neo(connection);
+                    try {
+                        var query = "match (n) where ID(n) = "+node.id+" with n match p = (n) - [r:相关] ->(m) return p";
+                        console.log("Executing Query", query);
+                        neo.executeQuery(query, {}, function (err, res) {
+                            res = res || {}
+                            console.log("Executing Query res: ", res);
+                            var graph = res.graph;
+                            if (graph) {
+                                var c = $("#graph");
+                                c.empty();
+                                neod3.render("graph", c, graph);
+                            } else {
+                                if (err) {
+                                    console.log(err);
+                                    if (err.length > 0) {
+                                        sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
+                                    } else {
+                                        sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
+                                    }
+                                }
+                            }
+                        });
+                    } catch (e) {
+                    }*/
                     break;
-
                 }});
 
         } else {
@@ -136,14 +163,11 @@ function Neod3Renderer() {
                         selectNode[k] = selectNode[k].substring(0,20);
                     }
                     if(k != 'timestamp'){
-                        //console.log(anjianName);
-                        //console.log(selectNode[k]);
                         alertString+=k+" : " +selectNode[k]+"\n";
                         alertString1+="<span style='color:pink'>k<span>+selectNode[k]";
                     }
                 }
             }
-            //console.log("案件名+"+ selectNode["案件名"]);
 
             if(selectNode[selectNode["label"]] ==  undefined) {
                 selectNode["label"] == "";
@@ -167,9 +191,7 @@ function Neod3Renderer() {
 
                             }
                         },
-
                     }).then((value) => {
-                        console.log("");
                     var neo = new Neo(connection);
                     try {
                         var query = "match (n) where n.CN_KEY='"+value['CN_KEY']+"' and n.caseId='"+value['caseId']+"' WITH n OPTIONAL MATCH (n)-[r:变化]-(m)  return p,m  order by m.最后修改时间";
@@ -192,11 +214,9 @@ function Neod3Renderer() {
                                         '贺甲','贺甲','张四','王六','丁戊','丁戊','张伟','贺甲','贺甲','张四','王六','丁戊','丁戊','张伟'];
                                     for(item in graph.nodes) {
                                         if(graph.nodes[item]["label"]==label) {
-                                            //labelList.push(graph.nodes[item])
-                                            console.log("ffffff+",graph.nodes[item]);
-                                            var year = (graph.nodes[item]["最后修改时间"]).toString().substring(0,4);
-                                            var month = (graph.nodes[item]["最后修改时间"]).toString().substring(5,7)
-                                                + "-" + (graph.nodes[item]["最后修改时间"]).toString().substring(8,10);
+                                            var year = (graph.nodes[item]["创建时间"]).toString().substring(0,4);
+                                            var month = (graph.nodes[item]["创建时间"]).toString().substring(5,7)
+                                                + "-" + (graph.nodes[item]["创建时间"]).toString().substring(8,10);
                                             var str_div = graph.nodes[item][graph.nodes[item].label];
                                             if(str_div != ""){
                                                 document.getElementById("timelineId").innerHTML +=
@@ -204,7 +224,7 @@ function Neod3Renderer() {
                                                     "<div class = \"timeBananName\">"+str_name[item]+"</div> <div class = \"number\"></div>" +
                                                     " <div class = \"content\">" +
                                                     "<div class = \"divCount\"> "+str_div+"<br /></div></div></li>";
-                                                //console.log(document.getElementById("timelineId").innerHTML);
+                                                console.log(document.getElementById("timelineId").innerHTML);
                                                 $(".number").click(function(){
                                                     var $divcount = $(this).parent().find(".divCount");
                                                     var $divimg = $(this).find(".hand_img");
@@ -224,6 +244,7 @@ function Neod3Renderer() {
                                 }
                                 var c = $("#graph");
                                 c.empty();
+                                document.getElementById("anka_table").style.display = "none";
                                 neod3.render("graph", c, graph);
                             } else {
                                 if (err) {
@@ -243,7 +264,6 @@ function Neod3Renderer() {
                     }
                 });
                 }
-
             }
             else {
                 if(selectNode["案件名"] != undefined){
@@ -264,10 +284,9 @@ function Neod3Renderer() {
                             }
                         },
                     }).then((value) => {
-                        console.log("");
+
                     var neo = new Neo(connection);
                     try {
-
                         var query = "match (n) where n.CN_KEY='"+value['CN_KEY']+"' and n.caseId='"+value['caseId']+"' WITH n OPTIONAL MATCH p=(n)-[r:变化]-(m)  return p,m  order by m.最后修改时间";
 
                         var label = value["label"];
@@ -289,11 +308,9 @@ function Neod3Renderer() {
                                         '贺甲','贺甲','张四','王六','丁戊','丁戊','张伟','贺甲','贺甲','张四','王六','丁戊','丁戊','张伟'];
                                     for(item in graph.nodes) {
                                         if(graph.nodes[item]["label"]==label) {
-                                            //labelList.push(graph.nodes[item])
-                                            console.log("ffffff+",graph.nodes[item]);
-                                            var year = (graph.nodes[item]["最后修改时间"]).toString().substring(0,4);
-                                            var month = (graph.nodes[item]["最后修改时间"]).toString().substring(5,7)
-                                                + "-" + (graph.nodes[item]["最后修改时间"]).toString().substring(8,10);
+                                            var year = (graph.nodes[item]["创建时间"]).toString().substring(0,4);
+                                            var month = (graph.nodes[item]["创建时间"]).toString().substring(5,7)
+                                                + "-" + (graph.nodes[item]["创建时间"]).toString().substring(8,10);
                                             var str_div = graph.nodes[item][graph.nodes[item].label];
                                             if(str_div != ""){
                                                 document.getElementById("timelineId").innerHTML +=
@@ -301,7 +318,7 @@ function Neod3Renderer() {
                                                     "<div class = \"timeBananName\">"+str_name[item]+"</div> <div class = \"number\"></div>" +
                                                     " <div class = \"content\">" +
                                                     "<div class = \"divCount\"> "+str_div+"<br /></div></div></li>";
-                                                //console.log(document.getElementById("timelineId").innerHTML);
+                                                console.log(document.getElementById("timelineId").innerHTML);
                                                 $(".number").click(function(){
                                                     var $divcount = $(this).parent().find(".divCount");
                                                     var $divimg = $(this).find(".hand_img");
@@ -321,6 +338,7 @@ function Neod3Renderer() {
                                 }
                                 var c = $("#graph");
                                 c.empty();
+                                document.getElementById("anka_table").style.display = "none";
                                 neod3.render("graph", c, graph);
                             } else {
                                 if (err) {
@@ -635,6 +653,7 @@ function lineageSelect(bmsah) {
     over_bmsah = bmsah;
     window.location.href="/hxyActiviti/neoData.html?bmsah="+encodeURI(bmsah);
 }
+
 
 /*
 $(document).ready(function() {
