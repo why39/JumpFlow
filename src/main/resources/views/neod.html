@@ -473,37 +473,37 @@
         var ss = document.getElementById("xieshijiancha_a").innerHTML + "案件";
         var ll = document.getElementById("xieshijiancha_a").innerHTML;
         document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/秒）";
+        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/小时）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "刑事检察" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
         document.getElementById("morris-bar-stacked1").innerHTML = "";
         document.getElementById("morris-bar-stacked2").innerHTML = "";
         data1 = [
-            { y: '操作人', a: 3.00, b: 1.80, c: 1.00 },
+            { y: '附注', a: 3.00, b: 1.80, c: 1.00 },
             { y: '补充人编号', a: 2.05,  b: 0.65, c: 0.80 },
             { y: '补充人姓名', a: 1.70, b: 0.90, c: 0.56 },
             { y: '入卷入编号', a: 1.75,  b: 0.85, c: 1.20 },
             { y: '案件类型', a: 0.60, b: 0.90, c: 1.00 },
             { y: '撤回人编号', a: 0.75,  b: 0.65, c: 1.10 },
             { y: '案件类型名称', a: 0.60,  b: 0.50, c: 0.85 },
-            { y: '附注', a: 0.55,  b: 0.65, c: 0.52 },
+            { y: '移送案由', a: 0.55,  b: 0.65, c: 0.52 },
             { y: '案情摘要', a: 0.50,  b: 0.40, c: 0.77 },
             { y: '关联自然人编号', a: 0.45,  b: 0.65, c: 0.60 },
             { y: '撤回人姓名', a: 0.30, b: 0.30, c: 0.30 }
         ];
         data2 = [
-            { y: '撤回人编号', a: 3.00},
-            { y: '附注', a: 2.05},
-            { y: '补充人姓名', a: 1.70},
-            { y: '入卷入编号', a: 1.75},
-            { y: '案件类型', a: 0.90},
-            { y: '操作人', a: 0.75},
-            { y: '案件类型名称', a: 0.60},
-            { y: '补充人编号', a: 0.55},
-            { y: '案情摘要', a: 0.50},
-            { y: '关联自然人编号', a: 0.45},
-            { y: '撤回人姓名', a: 0.30}
+            { y: '受理', a: 3.00},
+            { y: '分案', a: 2.05},
+            { y: '审查起诉', a: 1.70},
+            { y: '起诉', a: 1.75},
+            { y: '全案不起诉', a: 0.90},
+            { y: '改变管辖', a: 0.75},
+            { y: '建议撤案', a: 0.60},
+            { y: '并案', a: 0.55},
+            { y: '拆案', a: 0.50},
+            { y: '出庭公诉', a: 0.45},
+            { y: '提出抗诉', a: 0.30}
         ];
         bar1(data1);
         bar2(data2);
@@ -514,7 +514,7 @@
         var ss = document.getElementById("xieshizhixing_a").innerHTML + "案件";
         var ll = document.getElementById("xieshizhixing_a").innerHTML;
         document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/秒）";
+        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/小时）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "刑事执行" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         data1 = [
@@ -531,17 +531,17 @@
             { y: '李某', a: 30, b: 30, c: 30 }
         ];
         data2 = [
-            { y: '撤回人编号', a: 3.00},
-            { y: '附注', a: 2.05},
-            { y: '补充人姓名', a: 1.70},
-            { y: '入卷入编号', a: 1.75},
-            { y: '案件类型', a: 0.90},
-            { y: '操作人', a: 0.75},
-            { y: '案件类型名称', a: 0.60},
-            { y: '补充人编号', a: 0.55},
-            { y: '案情摘要', a: 0.50},
-            { y: '关联自然人编号', a: 0.45},
-            { y: '撤回人姓名', a: 0.30}
+            { y: '受理', a: 3.00},
+            { y: '分案', a: 2.05},
+            { y: '审查起诉', a: 1.70},
+            { y: '起诉', a: 1.75},
+            { y: '全案不起诉', a: 0.90},
+            { y: '改变管辖', a: 0.75},
+            { y: '建议撤案', a: 0.60},
+            { y: '并案', a: 0.55},
+            { y: '拆案', a: 0.50},
+            { y: '出庭公诉', a: 0.45},
+            { y: '提出抗诉', a: 0.30}
         ];
         clearNodeInfo();
         document.getElementById("morris-bar-stacked1").innerHTML = "";
@@ -556,7 +556,7 @@
         var ss = document.getElementById("gongsu_a").innerHTML + "案件";
         var ll = document.getElementById("gongsu_a").innerHTML;
         document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/秒）";
+        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/小时）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "公益诉讼" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -569,7 +569,7 @@
         var ss = document.getElementById("minshi_a").innerHTML + "案件";
         var ll = document.getElementById("minshi_a").innerHTML;
         document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/秒）";
+        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/小时）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "民事" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -581,7 +581,7 @@
         var ss = document.getElementById("xinzheng_a").innerHTML + "案件";
         var ll = document.getElementById("xinzheng_a").innerHTML;
         document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/秒）";
+        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/小时）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "行政" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -593,7 +593,7 @@
         var ss = document.getElementById("weijian_a").innerHTML + "案件";
         var ll = document.getElementById("weijian_a").innerHTML;
         document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/秒）";
+        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/小时）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "未检业务" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -605,7 +605,7 @@
         var ss = document.getElementById("konggao_a").innerHTML + "案件";
         var ll = document.getElementById("konggao_a").innerHTML;
         document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/秒）";
+        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/小时）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "控告申诉" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -617,7 +617,7 @@
         var ss = document.getElementById("jianwei_a").innerHTML + "案件";
         var ll = document.getElementById("jianwei_a").innerHTML;
         document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/秒）";
+        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/小时）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "检委办" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -629,7 +629,7 @@
         var ss = document.getElementById("duitai_a").innerHTML + "案件";
         var ll = document.getElementById("duitai_a").innerHTML;
         document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/秒）";
+        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/小时）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "对台业务" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -641,7 +641,7 @@
         var ss = document.getElementById("anguan_a").innerHTML + "案件";
         var ll = document.getElementById("anguan_a").innerHTML;
         document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/秒）";
+        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/小时）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "案管" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -653,7 +653,7 @@
         var ss = document.getElementById("sifa_a").innerHTML + "案件";
         var ll = document.getElementById("sifa_a").innerHTML;
         document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/秒）";
+        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/小时）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "司法协助" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
