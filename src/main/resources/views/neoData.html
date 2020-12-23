@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>世系数据</title>
-
+    <link rel="stylesheet" href="styles/dhtmlxgantt.css?v=7.0.11">
     <link rel="stylesheet" href="styles/codemirror.css">
     <link rel="stylesheet" href="styles/codemirror-neo.css">
     <link rel="stylesheet" href="styles/cy2neo.css">
@@ -14,81 +14,14 @@
     <link rel="stylesheet" href="styles/gh-fork-ribbon.css">
     <link rel="stylesheet" href="styles/TimeLine.css">
     <style>
-        #suyuanDataId {
-            position: relative;
-            overflow-x: hidden;
-            overflow-y: scroll;
-            width: 1200px;
-            height: 40px;
-            -webkit-box-shadow: #666 0px 0px 10px;
-            -moz-box-shadow: #666 0px 0px 10px;
-            box-shadow: #666 0px 0px 10px;
-            margin-bottom: 5px;
-        }
 
-        .swal-title {
-            margin: 0px;
-            font-size: 30px;
-            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.21);
-            margin-bottom: 28px;
-        }
-
-        .swal-text {
-            background-color: #FEFAE3;
-            padding: 17px;
-            border: 1px solid #F0E1A1;
-            display: block;
-            margin: 22px;
-            color: #61534e;
-        }
-
-        .swal-footer {
-            background-color: rgb(245, 248, 250);
-            margin-top: 32px;
-            border-top: 1px solid #E9EEF1;
-            overflow: hidden;
-        }
-
-        .displayLabelCLass{
-            margin-top:3px;
-            float: right;
-            margin-right: 3px;
-        }
-        .displayLabelCLass:hover{
-            display: block;
-        }
-        table {
-            border-collapse: collapse;
-            border-spacing: 0;
-            border: 1px solid #c0c0c0;
-        }
-
-        th,td {
-            border: 1px solid #d0d0d0;
-            color: #404060;
-            padding: 5px;
-        }
-
-        th {
-            background-color: #09c;
-            font: bold 10px "微软雅黑";
-            color: #fff;
-        }
-
-        td {
-            font: 8px "微软雅黑";
-        }
-        tbody tr {
-            background-color: #f0f0f0;
-        }
-        tbody tr:hover {
-            cursor: pointer;
-            background-color: #fafafa;
-        }
     </style>
 </head>
 <body>
-<div style = "display: block">
+<div style="float:right;margin-right: 10px" id = "label_spread">
+    👇
+</div>
+<div style = "display:none" id = "table_select">
     <div style="margin-bottom: 2px;">
         <label id="suyuanNameLabel"
                style="position: absolute;margin-top: 6px;">案卡项名称</label>
@@ -144,13 +77,34 @@
 
 
 </div>
-<div id = "anka_table" style = "overflow:auto;height: 400px;position:absolute; margin-top:4px;z-index: 100;margin-left:3px;display:none">
-<table style = "">
+<div>
+<div id = "huanjie_detail" style="position: absolute;z-index: 101">▶</div>
+<div id="gantt_here" style='width:100%; height:90%;position: absolute;float:right;z-index: 100;display: none' ></div>
+<!--    <div class="col-xl-9" style = "display:inline-block" >
+        <div class="card" style = "width:580px;height: 400px" id = "barId1">
+            <div class="card-body">
+                <h4 class="mt-0 header-title mb-5" id="bar_label1">修改案卡项个数</h4>
+                <div id="morris-bar-stacked1" class="morris-chart-height morris-charts"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-9" style = "display:inline-block" >
+        <div class="card" style = "width:580px;height: 400px" id = "barId2">
+            <div class="card-body">
+                <h4 class="mt-0 header-title mb-5" id="bar_label2">案卡项修改次数</h4>
+                <div id="morris-bar-stacked2" class="morris-chart-height morris-charts"></div>
+            </div>
+        </div>
+    </div>
+</div>-->
+<div id = "anka_table" style = "overflow:auto;height: 400px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;display:none">
+<table style = "" id = "anka_table_data">
     <thead>
     <tr>
-        <th>犯罪嫌疑人相关</th>
-        <th>案情相关</th>
-        <th>其他</th>
+        <th id = "anka_table_data_ren">犯罪嫌疑人相关</th>
+        <th id = "anka_table_data_anjian">案情相关</th>
+        <th id = "anka_table_data_other">其他</th>
     </tr>
     </thead>
     <tbody id="J_TbData">
@@ -159,7 +113,7 @@
 </div>
 
 <div id="leftContent" style="position:absolute;width:300px;height: 620px;
-    display: none;border-right: 3px solid lightgray;z-index: 100">
+    display: none;border-right: 3px solid lightgray;z-index: 10">
     <div style="float: left;width:90%;margin-left:-40px">
         <ul class="timeline" id="timelineId">
             <li>
@@ -260,6 +214,8 @@
 
 </div>
 
+<script src="scripts/dhtmlxgantt_neodata.js?v=7.0.11"></script>
+<script src="scripts/testdata.js?v=7.0.11"></script>
 
 <script src="scripts/codemirror.js"></script>
 <script src="scripts/codemirror-cypher.js"></script>
@@ -527,11 +483,20 @@
     function BanAnRen() {
         window.location.href="http://localhost:8083/hxyActiviti/neoBan.html?bmsah="+localStorage.getItem("LeiBieName");;
     }
+
     window.onload = (function () {
         var query = null;
         document.getElementById("displayCaseId").innerHTML = jiema();
         document.getElementById("displayLeiBie").innerHTML = localStorage.getItem("LeiBieName");
         query = "match(n:CASE) where n.caseId = \'" + jiema() + "\' with n match p = (n) - [*] ->(m:Task) RETURN p";
+        document.getElementById("label_spread").onclick = function(){
+            if(document.getElementById("table_select").style.display == "none") {
+                document.getElementById("table_select").style.display = "block"
+            }
+            else{
+                document.getElementById("table_select").style.display = "none"
+            }
+        }
         clearNodeInfo();
         execute(query);
     });
@@ -595,11 +560,153 @@
             var $trTemp = $("<tr></tr>");
 
             //往行里面追加 td单元格
-            $trTemp.append("<td>"+ data[i].name +"</td>");
-            $trTemp.append("<td>"+ data[i].case +"</td>");
-            $trTemp.append("<td>"+ data[i].other +"</td>");
+            $trTemp.append("<td onclick = \"table_data_ren(\'" + data[i].name + "\')\">"+ data[i].name +"</td>");
+            $trTemp.append("<td onclick = \"table_data_anjian(\'" + data[i].case + "\')\" >"+ data[i].case +"</td>");
+            $trTemp.append("<td onclick = \"table_data_other(\'" + data[i].other + "\')\">"+ data[i].other +"</td>");
             // $("#J_TbData").append($trTemp);
             $trTemp.appendTo("#J_TbData");
+        }
+    }
+    function table_data_ren(name){
+        table_data_ececute(name);
+    }
+    function table_data_anjian(anjian){
+        table_data_ececute(anjian);
+    }
+    function table_data_other(other){
+        table_data_ececute(other);
+    }
+    function table_data_ececute(name){
+        var neo = new Neo(connection);
+        try {
+            var query = "match (n) where n.CN_KEY='"+name+"' and n.caseId='"+jiema()+"' WITH n OPTIONAL MATCH (n)-[r:变化]-(m)  return r,n,m  order by m.最后修改时间";
+            if(document.getElementById("tableData")){
+                document.getElementById("tableData").setAttribute
+                ("style", "margin-left:300px;width:960px");
+                document.getElementById("leftContent").setAttribute
+                ("style", "position:absolute;width:370px;height: 620px;" +
+                    " display: block;border-right: 3px solid lightgray;z-index: 100 ;overflow-y:auto;overflow-x:hidden;");
+                document.getElementById("timelineId").innerHTML = "";
+            }
+            neo.executeQuery(query, {}, function (err, res) {
+                res = res || {}
+                var graph = res.graph;
+                if (graph) {
+                    if (graph.nodes) {
+                        var str_name = ['贺甲','丁戊','张四','王六','丁戊','丁戊','张伟',
+                            '贺甲','贺甲','张四','王六','丁戊','丁戊','张伟','贺甲','贺甲','张四','王六','丁戊','丁戊','张伟'];
+                        for(item in graph.nodes) {
+                            if(graph.nodes[item]["CN_KEY"]==name) {
+                                var year = (graph.nodes[item]["创建时间"]).toString().substring(0,4);
+                                var month = (graph.nodes[item]["创建时间"]).toString().substring(5,7)
+                                    + "-" + (graph.nodes[item]["创建时间"]).toString().substring(8,10);
+                                var str_div = graph.nodes[item][graph.nodes[item].label];
+                                if(str_div != ""){
+                                    document.getElementById("timelineId").innerHTML +=
+                                        "<li><div class = \"time\">"+year+"</div> <div class = \"version\">"+month+"</div> " +
+                                        "<div class = \"timeBananName\">"+str_name[item]+"</div> <div class = \"number\"></div>" +
+                                        " <div class = \"content\">" +
+                                        "<div class = \"divCount\"> "+str_div+"<br /></div></div></li>";
+                                    $(".number").click(function(){
+                                        var $divcount = $(this).parent().find(".divCount");
+                                        var $divimg = $(this).find(".hand_img");
+                                        if ($divcount.is(":hidden")) {
+                                            $divcount.slideDown(800);
+                                            $divimg.removeClass("Rotation");
+                                        }
+                                        else
+                                        {
+                                            $divcount.slideUp(1000);
+                                            $divimg.addClass("Rotation");
+                                        };
+                                    });
+                                }
+                            }
+                        }
+                    }
+                    var c = $("#graph");
+                    c.empty();
+                    document.getElementById("anka_table").style.display = "none";
+                    neod3.render("graph", c, graph);
+                }
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    }
+</script>
+<script>
+
+    gantt.config.static_background = true;
+    gantt.config.date_format = "%Y-%m-%d %H:%i:%s";
+    gantt.config.columns = [
+        {name: "text", tree: true, width: 150, resize: true},
+        {name: "start_date", align: "center", width: 80, resize: true},
+        {name: "duration", width: 50, align: "center"},
+        {name: "add", width: 44}
+    ];
+
+    var mainGridConfig = {
+        scale_height: 0
+    };
+    var mainTimelineConfig = {
+        scale_height: 0
+    };
+
+    gantt.config.scale_height = 60;
+    gantt.config.layout = {
+        css: "gantt_container",
+        cols: [
+            {
+                rows: [
+                    {
+                        css: "no-scale",
+                        cols: [
+                            {
+                                view: "grid",
+                                group: "grids",
+                                config: mainGridConfig,
+                                scrollY: "scrollVer"
+                            },
+                            {
+                                view: "timeline",
+                                config: mainTimelineConfig,
+                                scrollX: "scrollHor",
+                                scrollY: "scrollVer"
+                            }
+                        ]
+                    },
+                    {
+                        height: gantt.config.scale_height,
+                        cols: [
+                            {
+                                view: "grid",
+                                group: "grids",
+                                bind: "task"
+                            },
+                            {
+                                view: "timeline",
+                                scrollX: "scrollHor",
+                                bind: null,
+                                bindLinks: null
+                            }
+                        ]
+                    },
+                    {view: "scrollbar", id: "scrollHor"}
+                ]
+            },
+            {view: "scrollbar", id: "scrollVer"}]
+    };
+
+
+    gantt.init("gantt_here");
+    gantt.parse(generateData(3, new Date(2017, 11, 15), new Date(2018, 1, 1)));
+    document.getElementById("huanjie_detail").onclick = function() {
+        if(document.getElementById("gantt_here").style.display == 'none'){
+            document.getElementById("gantt_here").style.display = "block";
+        }
+        else {
+            document.getElementById("gantt_here").style.display = "none";
         }
     }
 </script>

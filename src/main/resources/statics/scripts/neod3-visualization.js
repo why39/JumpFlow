@@ -112,7 +112,9 @@ function Neod3Renderer() {
                     }
                     execute("match (n) where ID(n) = "+node.id+" with n match p = (n) - [r:相关] ->(m) return p");
                     document.getElementById("anka_table").style.display = "block";
+                    document.getElementById("huanjie_detail").innerHTML = ""
                     table_data();
+
                    /* var neo = new Neo(connection);
                     try {
                         var query = "match (n) where ID(n) = "+node.id+" with n match p = (n) - [r:相关] ->(m) return p";
@@ -192,76 +194,7 @@ function Neod3Renderer() {
                             }
                         },
                     }).then((value) => {
-                    var neo = new Neo(connection);
-                    try {
-                        var query = "match (n) where n.CN_KEY='"+value['CN_KEY']+"' and n.caseId='"+value['caseId']+"' WITH n OPTIONAL MATCH (n)-[r:变化]-(m)  return p,m  order by m.最后修改时间";
-                        var label = value["label"];
-                        if(document.getElementById("tableData")){
-                            document.getElementById("tableData").setAttribute
-                            ("style", "margin-left:300px;width:960px");
-                            document.getElementById("leftContent").setAttribute
-                            ("style", "position:absolute;width:370px;height: 620px;" +
-                                " display: block;border-right: 3px solid lightgray;z-index: 100 ;overflow-y:auto;overflow-x:hidden;");
-                            document.getElementById("timelineId").innerHTML = "";
-                        }
-                        neo.executeQuery(query, {}, function (err, res) {
-                            console.log(query);
-                            res = res || {}
-                            var graph = res.graph;
-                            if (graph) {
-                                if (graph.nodes) {
-                                    var str_name = ['贺甲','丁戊','张四','王六','丁戊','丁戊','张伟',
-                                        '贺甲','贺甲','张四','王六','丁戊','丁戊','张伟','贺甲','贺甲','张四','王六','丁戊','丁戊','张伟'];
-                                    for(item in graph.nodes) {
-                                        if(graph.nodes[item]["label"]==label) {
-                                            var year = (graph.nodes[item]["创建时间"]).toString().substring(0,4);
-                                            var month = (graph.nodes[item]["创建时间"]).toString().substring(5,7)
-                                                + "-" + (graph.nodes[item]["创建时间"]).toString().substring(8,10);
-                                            var str_div = graph.nodes[item][graph.nodes[item].label];
-                                            if(str_div != ""){
-                                                document.getElementById("timelineId").innerHTML +=
-                                                    "<li><div class = \"time\">"+year+"</div> <div class = \"version\">"+month+"</div> " +
-                                                    "<div class = \"timeBananName\">"+str_name[item]+"</div> <div class = \"number\"></div>" +
-                                                    " <div class = \"content\">" +
-                                                    "<div class = \"divCount\"> "+str_div+"<br /></div></div></li>";
-                                                console.log(document.getElementById("timelineId").innerHTML);
-                                                $(".number").click(function(){
-                                                    var $divcount = $(this).parent().find(".divCount");
-                                                    var $divimg = $(this).find(".hand_img");
-                                                    if ($divcount.is(":hidden")) {
-                                                        $divcount.slideDown(800);
-                                                        $divimg.removeClass("Rotation");
-                                                    }
-                                                    else
-                                                    {
-                                                        $divcount.slideUp(1000);
-                                                        $divimg.addClass("Rotation");
-                                                    };
-                                                });
-                                            }
-                                        }
-                                    }
-                                }
-                                var c = $("#graph");
-                                c.empty();
-                                document.getElementById("anka_table").style.display = "none";
-                                neod3.render("graph", c, graph);
-                            } else {
-                                if (err) {
-                                    console.log(err);
-                                    if (err.length > 0) {
-                                        sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
-                                    } else {
-                                        sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
-                                    }
-                                }
-                            }
-                        });
-                    } catch (e) {
-                        console.log(e);
-                        sweetAlert("Catched error", e, "error");
-
-                    }
+                    look_anka(value);
                 });
                 }
             }
@@ -284,78 +217,7 @@ function Neod3Renderer() {
                             }
                         },
                     }).then((value) => {
-
-                    var neo = new Neo(connection);
-                    try {
-                        var query = "match (n) where n.CN_KEY='"+value['CN_KEY']+"' and n.caseId='"+value['caseId']+"' WITH n OPTIONAL MATCH p=(n)-[r:变化]-(m)  return p,m  order by m.最后修改时间";
-
-                        var label = value["label"];
-                        if(document.getElementById("tableData")){
-                            document.getElementById("tableData").setAttribute
-                            ("style", "margin-left:300px;width:960px");
-                            document.getElementById("leftContent").setAttribute
-                            ("style", "position:absolute;width:370px;height: 620px;" +
-                                " display: block;border-right: 3px solid lightgray;z-index: 100 ;overflow-y:auto;overflow-x:hidden;");
-                            document.getElementById("timelineId").innerHTML = "";
-                        }
-                        neo.executeQuery(query, {}, function (err, res) {
-                            console.log(query);
-                            res = res || {}
-                            var graph = res.graph;
-                            if (graph) {
-                                if (graph.nodes) {
-                                    var str_name = ['贺甲','丁戊','张四','王六','丁戊','丁戊','张伟',
-                                        '贺甲','贺甲','张四','王六','丁戊','丁戊','张伟','贺甲','贺甲','张四','王六','丁戊','丁戊','张伟'];
-                                    for(item in graph.nodes) {
-                                        if(graph.nodes[item]["label"]==label) {
-                                            var year = (graph.nodes[item]["创建时间"]).toString().substring(0,4);
-                                            var month = (graph.nodes[item]["创建时间"]).toString().substring(5,7)
-                                                + "-" + (graph.nodes[item]["创建时间"]).toString().substring(8,10);
-                                            var str_div = graph.nodes[item][graph.nodes[item].label];
-                                            if(str_div != ""){
-                                                document.getElementById("timelineId").innerHTML +=
-                                                    "<li><div class = \"time\">"+year+"</div> <div class = \"version\">"+month+"</div> " +
-                                                    "<div class = \"timeBananName\">"+str_name[item]+"</div> <div class = \"number\"></div>" +
-                                                    " <div class = \"content\">" +
-                                                    "<div class = \"divCount\"> "+str_div+"<br /></div></div></li>";
-                                                console.log(document.getElementById("timelineId").innerHTML);
-                                                $(".number").click(function(){
-                                                    var $divcount = $(this).parent().find(".divCount");
-                                                    var $divimg = $(this).find(".hand_img");
-                                                    if ($divcount.is(":hidden")) {
-                                                        $divcount.slideDown(800);
-                                                        $divimg.removeClass("Rotation");
-                                                    }
-                                                    else
-                                                    {
-                                                        $divcount.slideUp(1000);
-                                                        $divimg.addClass("Rotation");
-                                                    };
-                                                });
-                                            }
-                                        }
-                                    }
-                                }
-                                var c = $("#graph");
-                                c.empty();
-                                document.getElementById("anka_table").style.display = "none";
-                                neod3.render("graph", c, graph);
-                            } else {
-                                if (err) {
-                                    console.log(err);
-                                    if (err.length > 0) {
-                                        sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
-                                    } else {
-                                        sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
-                                    }
-                                }
-                            }
-                        });
-                    } catch (e) {
-                        console.log(e);
-                        sweetAlert("Catched error", e, "error");
-
-                    }
+                        look_anka(value);
                 });
                 }
 
@@ -455,12 +317,6 @@ function Neod3Renderer() {
             }
             return styles;
         }
-
-        /*function applyZoom() {
-            console.log("applyZoom");
-            renderer.select(".nodes").attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-            renderer.select(".relationships").attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-        }*/
 
         function enableZoomHandlers() {
             renderer.on("wheel.zoom", zoomHandlers.wheel);
@@ -648,7 +504,78 @@ function Neod3Renderer() {
 
     return {'render': render};
 }
+function look_anka(value){
+    var neo = new Neo(connection);
+    try {
+        var query = "match (n) where n.CN_KEY='"+value['CN_KEY']+"' and n.caseId='"+value['caseId']+"' WITH n OPTIONAL MATCH (n)-[r:变化]-(m)  return r,n,m  order by m.最后修改时间";
+        var label = value["label"];
+        if(document.getElementById("tableData")){
+            document.getElementById("tableData").setAttribute
+            ("style", "margin-left:300px;width:960px");
+            document.getElementById("leftContent").setAttribute
+            ("style", "position:absolute;width:370px;height: 620px;" +
+                " display: block;border-right: 3px solid lightgray;z-index: 100 ;overflow-y:auto;overflow-x:hidden;");
+            document.getElementById("timelineId").innerHTML = "";
+        }
+        neo.executeQuery(query, {}, function (err, res) {
+            res = res || {}
+            var graph = res.graph;
+            if (graph) {
+                if (graph.nodes) {
+                    var str_name = ['贺甲','丁戊','张四','王六','丁戊','丁戊','张伟',
+                        '贺甲','贺甲','张四','王六','丁戊','丁戊','张伟','贺甲','贺甲','张四','王六','丁戊','丁戊','张伟'];
+                    for(item in graph.nodes) {
+                        if(graph.nodes[item]["label"]==label) {
+                            console.log("ggggg",label)
+                            var year = (graph.nodes[item]["创建时间"]).toString().substring(0,4);
+                            var month = (graph.nodes[item]["创建时间"]).toString().substring(5,7)
+                                + "-" + (graph.nodes[item]["创建时间"]).toString().substring(8,10);
+                            var str_div = graph.nodes[item][graph.nodes[item].label];
+                            if(str_div != ""){
+                                document.getElementById("timelineId").innerHTML +=
+                                    "<li><div class = \"time\">"+year+"</div> <div class = \"version\">"+month+"</div> " +
+                                    "<div class = \"timeBananName\">"+str_name[item]+"</div> <div class = \"number\"></div>" +
+                                    " <div class = \"content\">" +
+                                    "<div class = \"divCount\"> "+str_div+"<br /></div></div></li>";
+                                console.log(document.getElementById("timelineId").innerHTML);
+                                $(".number").click(function(){
+                                    var $divcount = $(this).parent().find(".divCount");
+                                    var $divimg = $(this).find(".hand_img");
+                                    if ($divcount.is(":hidden")) {
+                                        $divcount.slideDown(800);
+                                        $divimg.removeClass("Rotation");
+                                    }
+                                    else
+                                    {
+                                        $divcount.slideUp(1000);
+                                        $divimg.addClass("Rotation");
+                                    };
+                                });
+                            }
+                        }
+                    }
+                }
+                var c = $("#graph");
+                c.empty();
+                document.getElementById("anka_table").style.display = "none";
+                neod3.render("graph", c, graph);
+            } else {
+                if (err) {
+                    console.log(err);
+                    if (err.length > 0) {
+                        sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
+                    } else {
+                        sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
+                    }
+                }
+            }
+        });
+    } catch (e) {
+        console.log(e);
+        sweetAlert("Catched error", e, "error");
 
+    }
+}
 function lineageSelect(bmsah) {
     over_bmsah = bmsah;
     window.location.href="/hxyActiviti/neoData.html?bmsah="+encodeURI(bmsah);
