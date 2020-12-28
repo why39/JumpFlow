@@ -22,6 +22,32 @@
             height: 48px;
         }
     </style>
+    <style>
+        .select_class {
+            width                    : 14em;
+            height                   : 30px;
+            padding                  : 0.2em 0.4em 0.2em 0.4em;
+            vertical-align           : middle;
+            border                   : 1px solid #94c1e7;
+            -moz-border-radius       : 0.2em;
+            -webkit-border-radius    : 0.2em;
+            border-radius            : 0.2em;
+            -webkit-appearance       : none;
+            -moz-appearance          : none;
+            appearance               : none;
+            background               : #ffffff;
+            font-family              : SimHei;
+            font-size                : 1.1em;
+            color                    : RGBA(102,102,102,0.7);
+            cursor                   : pointer;
+        }
+        .select_class option {
+            margin-left: 5px;
+            padding-left: 5px;
+            font-weight: bolder;
+        }
+        select::-ms-expand { display: none; }
+    </style>
 </head>
 <body>
 <div>
@@ -29,18 +55,6 @@
     <nav aria-label="Page navigation">
         <ul class="nav nav-tabs">
             <li role="presentation"><a href="javascript:;" onclick="monitorClick()" id="xieshijiancha_a">团队信息列表</a></li>
-           <!-- <li role="presentation"><a href="javascript:;" onclick="supervisionClick()" id="xieshizhixing_a">刑事执行</a>
-            </li>
-            <li role="presentation"><a href="javascript:;" onclick="prosecutionClick()" id="gongsu_a">公益诉讼</a></li>
-            <li role="presentation"><a href="javascript:" onclick="minshiClick()" id="minshi_a">民事</a></li>
-            <li role="presentation"><a href="javascript:" onclick="xinzhengClick()" id="xinzheng_a">行政</a></li>
-            <li role="presentation"><a href="javascript:" onclick="weijianClick()" id="weijian_a">未检业务</a></li>
-            <li role="presentation"><a href="javascript:" onclick="konggaoClick()" id="konggao_a">控告申诉</a></li>
-            <li role="presentation"><a href="javascript:" onclick="jianweiClick()" id="jianwei_a">检委办</a></li>
-            <li role="presentation"><a href="javascript:" onclick="duitaiClick()" id="duitai_a">对台业务</a></li>
-            <li role="presentation"><a href="javascript:" onclick="anguanClick()" id="anguan_a">案管</a></li>
-            <li role="presentation"><a href="javascript:" onclick="sifaClick()" id="sifa_a">司法协助</a></li>-->
-
         </ul>
     </nav>
 
@@ -79,7 +93,16 @@
     <div class="col-xl-9" style = "display:inline-block">
         <div class="card" style = "width:580px;height: 400px">
             <div class="card-body">
-                <h4 class="mt-0 header-title mb-5">检察官团队办结案件数</h4>
+                <h4 class="mt-0 header-title mb-5" style = "display: inline">检察官团队办结案件数</h4>
+                <div class="checkbox" style = "display: inline">
+                    <select class = "select_class" id = "banan_time_id">
+                        <option>查看本周内统计信息</option>
+                        <option>查看本月内统计信息</option>
+                        <option>查看本季度内统计信息</option>
+                        <option>查看本年内统计信息</option>
+                        <option>查看所有统计信息</option>
+                    </select>
+                </div>
                 <div id="morris-bar-stacked1" class="morris-chart-height morris-charts"></div>
             </div>
         </div>
@@ -88,7 +111,16 @@
     <div class="col-xl-9" style = "display:inline-block">
         <div class="card" style = "width:580px;height: 400px">
             <div class="card-body">
-                <h4 class="mt-0 header-title mb-5">检察官团队办结案件耗时（平均/小时）</h4>
+                <h4 class="mt-0 header-title mb-5" style = "display: inline">检察官团队办结案件耗时（平均/小时）</h4>
+                <div class="checkbox" style = "display: inline">
+                    <select class = "select_class" id = "jiean_time_id">
+                        <option>查看本周内统计信息</option>
+                        <option>查看本月内统计信息</option>
+                        <option>查看本季度内统计信息</option>
+                        <option>查看本年内统计信息</option>
+                        <option>查看所有统计信息</option>
+                    </select>
+                </div>
                 <div id="morris-bar-stacked2" class="morris-chart-height morris-charts"></div>
             </div>
         </div>

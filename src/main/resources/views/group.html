@@ -62,6 +62,32 @@
         }
 
     </style>
+    <style>
+        .select_class {
+            width                    : 14em;
+            height                   : 30px;
+            padding                  : 0.2em 0.4em 0.2em 0.4em;
+            vertical-align           : middle;
+            border                   : 1px solid #94c1e7;
+            -moz-border-radius       : 0.2em;
+            -webkit-border-radius    : 0.2em;
+            border-radius            : 0.2em;
+            -webkit-appearance       : none;
+            -moz-appearance          : none;
+            appearance               : none;
+            background               : #ffffff;
+            font-family              : SimHei;
+            font-size                : 1.1em;
+            color                    : RGBA(102,102,102,0.7);
+            cursor                   : pointer;
+        }
+        .select_class option {
+            margin-left: 5px;
+            padding-left: 5px;
+            font-weight: bolder;
+        }
+        select::-ms-expand { display: none; }
+    </style>
 </head>
 
 <body>
@@ -74,7 +100,32 @@
         <li class="list-group-item" style="height: 45px;"/>
         <span style="float: left;margin-top:-2px;text-align:left;color: orange;font-size:24px"> 姓名 </span>
 
-        <span style="float:right;margin-right:240px;margin-top:-2px;color: orange;font-size:24px">编号</span>
+        <span style="float:right;margin-right:240px;margin-top:-2px;color: orange;font-size:24px">所属</span>
+        <span style="float:right;margin-right:-290px;
+        margin-top:-2px;color: orange;font-size:24px;" id = "group_select_id">信息筛选</span>
+    </div>
+    <div id = "group_select_data_id" style = "display: none;position: absolute;
+    width:514px;height: 220px;z-index: 101;background-color: #e9e1d3">
+        <label id="userNameLabel"
+               style="margin-top:26px;position: absolute;margin-left:-250px;">办案人姓名</label>
+        <div class="col-lg-6" style="width:410px ;margin-left: 90px;float: left;margin-top:20px">
+            <input type="text" class="form-control" id="group_user_name" placeholder=""
+                   style=" margin-left:13px">
+        </div>
+        <div class="col-lg-6" style="width:410px ;margin-left:90px;margin-top:20px">
+            <label id="timeStartNameLabel"
+                   style="margin-top: 6px;position: absolute;margin-left:-290px">起始时间</label>
+            <input type="date" class="form-control" id="group_start_time" placeholder="请输入起始时间"
+                   style="margin-left:13px;">
+        </div><!-- /input-group -->
+        <!--    <p style="color:#939282;margin-top: 42px;position: absolute;margin-left: 507px;"> 至 </p>-->
+        <div class="col-lg-6" style="width:410px;margin-left: 90px;margin-top:20px">
+            <label id="timeEndNameLabel"
+                   style="margin-top: 6px;position: absolute;margin-left:-290px">截止时间</label>
+            <input type="date" class="form-control" id="group_end_time" placeholder="请输入截至时间"
+                   style=" margin-left:13px;">
+        </div>
+        <button onclick="group_select()" style="float:right;margin-top:10px;margin-right: 12px">确定</button>
     </div>
     <nav aria-label="Page navigation">
         <div id="pageData">
@@ -90,14 +141,23 @@
     </div>
 </div>
 <div class="col-xl-9" style="width:514px;position:absolute;margin-top: 340px">
-    <div class="card" style = "width:514px;height: 400px">
+    <div class="card" style = "width:514px;height: 400px;margin-top:10px">
         <div class="card-body">
-            <h4 class="mt-0 header-title mb-5">办案人处理案件排名</h4>
+            <h4 class="mt-0 header-title mb-5" style = "display: inline">办案人处理案件排名</h4>
+            <div class="checkbox" style = "display: inline">
+                <select class = "select_class" id = "jiean_time_id">
+                    <option>查看本周内统计信息</option>
+                    <option>查看本月内统计信息</option>
+                    <option>查看本季度内统计信息</option>
+                    <option>查看本年内统计信息</option>
+                    <option>查看所有统计信息</option>
+                </select>
+            </div>
             <div id="morris-bar-stacked" class="morris-chart-height morris-charts"></div>
         </div>
     </div>
 </div>
-<div id="gantt_here" style='width:700px; height:700px;float:right;margin-right:0px'></div>
+<div id="gantt_here" style='width:700px; height:700px;float:right;'></div>
 <script src="scripts/dhtmlxgantt.js?v=7.0.11"></script>
 <script src="scripts/testdata.js?v=7.0.11"></script>
 <script src="scripts/jquery.min.js"></script>
@@ -114,11 +174,6 @@
 <script src="scripts/dashboard.js"></script>
 <script src="http://localhost:8083/hxyActiviti/scripts/app.js"></script>
 <script>
-    /*gantt.message({
-        text: "Predefined project structure with three levels of items<br>1 - <b>Projects</b><br>2 - <b>Subprojects</b><br>3 - <b>Tasks</b><br>Tasks can't have child items",
-        expire: -1
-    });*/
-
     gantt.config.open_tree_initially = true;
     gantt.config.scale_height = 50;
 
@@ -133,111 +188,113 @@
         {name: "description", height: 70, map_to: "text", type: "textarea", focus: true},
         {name: "time", type: "duration", map_to: "auto", readonly: true}
     ];
+    dataSet = [
+        {id: 1426170055699, start_date: "02-01-2019 00:00", text: "姓名 :张远帆", duration: 7, type: "project", parent: 0},
+        {id: 1426170055704, start_date: "03-01-2019 00:00", text: "案件 :张某三故意杀人案", duration: 8, parent: "1426170055699", type: "subproject"},
+        {id: 1426170055707, start_date: "04-01-2019 00:00", text: " 案情摘要", duration: 1, parent: "1426170055704", type: "task"},
+        {id: 1426170055710, start_date: "06-01-2019 00:00", text: " 附注", duration: 1, parent: "1426170055704", type: "task"},
+        {id: 1426170055711, start_date: "10-01-2019 00:00", text: " 统一受案号", duration: 1, parent: "1426170055704", type: "task"},
+        {id: 1426170055712, start_date: "02-01-2019 00:00", text: "案件 :李某兵生产有毒食品案", duration: 6, parent: "1426170055699", type: "subproject"},
+        {id: 1426170055715, start_date: "03-01-2019 00:00", text: " 案情摘要", duration: 1, parent: "1426170055712", type: "task", progress: 0},
+        {id: 1426170055718, start_date: "07-01-2019 00:00", text: " 附注", duration: 1, parent: "1426170055712", type: "task"},
+        {id: 1426170055702, start_date: "02-01-2019 00:00", text: "姓名 :陈川俊", duration: 1, type: "project", end_date: "17-01-2019 00:00", parent: 0},
+        {id: 1426170055719, start_date: "02-01-2019 00:00", text: "案件 :罗某盗窃案", duration: 11, parent: "1426170055702", type: "subproject"},
+        {id: 1426170055722, start_date: "02-01-2019 00:00", text: " 案情摘要", duration: 1, parent: "1426170055719", type: "task"},
+        {id: 1426170055725, start_date: "06-01-2019 00:00", text: " 附注", duration: 1, parent: "1426170055719", type: "task"},
+        {id: 1426170055726, start_date: "12-01-2019 00:00", text: " 补充人编号", duration: 1, parent: "1426170055719", type: "task"},
+        {id: 1426170055703, start_date: "08-01-2019 00:00", text: "姓名 :李驭龙", duration: 1, type: "project", parent: 0},
+        {id: 1426170055727, start_date: "08-01-2019 00:00", text: "案件 :田某易抢劫案", duration: 1, parent: "1426170055703", type: "subproject"},
+        {id: 1426170055601, start_date: "02-01-2019 00:00", text: "姓名 :贺甲", duration: 9, type: "project", parent: 0},
+        {id: 1426170055787, start_date: "03-01-2019 00:00", text: "案件 :交通案件", duration: 5, parent: "1426170055601", type: "subproject"},
+        {id: 1426170055001, start_date: "03-01-2019 00:00", text: " 案情摘要", duration: 1, parent: "1426170055787", type: "task", progress: 0},
+        {id: 1426170055002, start_date: "07-01-2019 00:00", text: " 附注", duration: 1, parent: "1426170055787", type: "task"},
+        {id: 1426170055688, start_date: "02-01-2019 00:00", text: "姓名 :杨春露", duration: 9, type: "project", parent: 0},
+        {id: 1426170055750, start_date: "03-01-2019 00:00", text: "案件 :罗某盗窃案", duration: 5, parent: "1426170055688", type: "subproject"},
+        {id: 1426170055004, start_date: "03-01-2019 00:00", text: " 案情摘要", duration: 1, parent: "1426170055750", type: "task", progress: 0},
+        {id: 1426170055005, start_date: "07-01-2019 00:00", text: " 附注", duration: 1, parent: "1426170055750", type: "task"},
+        {id: 1426170055602, start_date: "02-01-2019 00:00", text: "姓名 :黄彦赫", duration: 9, type: "project", parent: 0},
+        {id: 1426170055751, start_date: "03-01-2019 00:00", text: "案件 :罗某盗窃案", duration: 5, parent: "1426170055602", type: "subproject"},
+        {id: 1426170055006, start_date: "03-01-2019 00:00", text: " 案情摘要", duration: 1, parent: "1426170055751", type: "task", progress: 0},
+        {id: 1426170055007, start_date: "07-01-2019 00:00", text: " 附注", duration: 1, parent: "1426170055751", type: "task"},
+        {id: 1426170055603, start_date: "02-01-2019 00:00", text: "姓名 :王太将", duration: 9, type: "project", parent: 0},
+        {id: 1426170055752, start_date: "03-01-2019 00:00", text: "案件 :田某易抢劫案", duration: 5, parent: "1426170055603", type: "subproject"},
+        {id: 1426170055008, start_date: "03-01-2019 00:00", text: " 案情摘要", duration: 1, parent: "1426170055752", type: "task", progress: 0},
+        {id: 1426170055009, start_date: "07-01-2019 00:00", text: " 附注", duration: 1, parent: "1426170055752", type: "task"},
+    ]
+    function gante(dataSet){
+        // set initial values based on task type
+        function defaultValues(task) {
+            var text = "",
+                index = gantt.getChildren(task.parent || gantt.config.root_id).length + 1,
+                types = gantt.config.types;
 
-    // set initial values based on task type
-    function defaultValues(task) {
-        var text = "",
-            index = gantt.getChildren(task.parent || gantt.config.root_id).length + 1,
-            types = gantt.config.types;
-
-        switch (task.type) {
-            case types.project:
-                text = "姓名";
-                break;
-            case types.subproject:
-                text = '案件';
-                break;
-            default:
-                text = ' ';
-                break;
+            switch (task.type) {
+                case types.project:
+                    text = "姓名";
+                    break;
+                case types.subproject:
+                    text = '案件';
+                    break;
+                default:
+                    text = ' ';
+                    break;
+            }
+            task.text = text + " #" + index;
+            return;
         }
-        task.text = text + " #" + index;
-        return;
-    }
 
-    gantt.attachEvent("onTaskCreated", function (task) {
-        var parent = task.parent,
-            types = gantt.config.types,
-            level = 0;
+        gantt.attachEvent("onTaskCreated", function (task) {
+            var parent = task.parent,
+                types = gantt.config.types,
+                level = 0;
 
-        if (parent == gantt.config.root_id || !parent) {
-            level = 0;
-        } else {
-            level = gantt.getTask(task.parent).$level + 1;
-        }
+            if (parent == gantt.config.root_id || !parent) {
+                level = 0;
+            } else {
+                level = gantt.getTask(task.parent).$level + 1;
+            }
 //assign task type based on task level
-        switch (level) {
-            case 0:
-                task.type = types.project;
-                break;
-            case 1:
-                task.type = types.subproject;
-                break;
-            default:
-                task.type = types.task;
-                break;
-        }
+            switch (level) {
+                case 0:
+                    task.type = types.project;
+                    break;
+                case 1:
+                    task.type = types.subproject;
+                    break;
+                default:
+                    task.type = types.task;
+                    break;
+            }
 
-        defaultValues(task);
-        return true;
-    });
-
-
-    //css template for each task type
-    gantt.templates.task_class = gantt.templates.grid_row_class = function (start, end, task) {
-        switch (task.type) {
-            case gantt.config.types.project:
-                return 'project-task';
-                break;
-            case gantt.config.types.subproject:
-                return 'phase-task';
-                break;
-            default:
-                return 'regular-task';
-                break;
-        }
-    };
+            defaultValues(task);
+            return true;
+        });
 
 
-    gantt.init("gantt_here");
-
-    gantt.parse({
-        data: [
-            {id: 1426170055699, start_date: "02-01-2019 00:00", text: "姓名 :张远帆", duration: 9, type: "project", parent: 0},
-            {id: 1426170055704, start_date: "03-01-2019 00:00", text: "案件 :张某三故意杀人案", duration: 8, parent: "1426170055699", type: "subproject"},
-            {id: 1426170055707, start_date: "04-01-2019 00:00", text: " 案情摘要", duration: 1, parent: "1426170055704", type: "task"},
-            {id: 1426170055710, start_date: "06-01-2019 00:00", text: " 附注", duration: 1, parent: "1426170055704", type: "task"},
-            {id: 1426170055711, start_date: "10-01-2019 00:00", text: " 统一受案号", duration: 1, parent: "1426170055704", type: "task"},
-            {id: 1426170055712, start_date: "02-01-2019 00:00", text: "案件 :李某兵生产有毒食品案", duration: 6, parent: "1426170055699", type: "subproject"},
-            {id: 1426170055715, start_date: "03-01-2019 00:00", text: " 案情摘要", duration: 1, parent: "1426170055712", type: "task", progress: 0},
-            {id: 1426170055718, start_date: "07-01-2019 00:00", text: " 附注", duration: 1, parent: "1426170055712", type: "task"},
-            {id: 1426170055702, start_date: "02-01-2019 00:00", text: "姓名 :陈川俊", duration: 1, type: "project", end_date: "17-01-2019 00:00", parent: 0},
-            {id: 1426170055719, start_date: "02-01-2019 00:00", text: "案件 :罗某盗窃案", duration: 11, parent: "1426170055702", type: "subproject"},
-            {id: 1426170055722, start_date: "02-01-2019 00:00", text: " 案情摘要", duration: 1, parent: "1426170055719", type: "task"},
-            {id: 1426170055725, start_date: "06-01-2019 00:00", text: " 附注", duration: 1, parent: "1426170055719", type: "task"},
-            {id: 1426170055726, start_date: "12-01-2019 00:00", text: " 补充人编号", duration: 1, parent: "1426170055719", type: "task"},
-            {id: 1426170055703, start_date: "08-01-2019 00:00", text: "姓名 :李驭龙", duration: 1, type: "project", parent: 0},
-            {id: 1426170055727, start_date: "08-01-2019 00:00", text: "案件 :田某易抢劫案", duration: 1, parent: "1426170055703", type: "subproject"},
-            {id: 1426170055601, start_date: "02-01-2019 00:00", text: "姓名 :贺甲", duration: 9, type: "project", parent: 0},
-            {id: 1426170055787, start_date: "03-01-2019 00:00", text: "案件 :交通案件", duration: 5, parent: "1426170055601", type: "subproject"},
-            {id: 1426170055001, start_date: "03-01-2019 00:00", text: " 案情摘要", duration: 1, parent: "1426170055787", type: "task", progress: 0},
-            {id: 1426170055002, start_date: "07-01-2019 00:00", text: " 附注", duration: 1, parent: "1426170055787", type: "task"},
-            {id: 1426170055688, start_date: "02-01-2019 00:00", text: "姓名 :杨春露", duration: 9, type: "project", parent: 0},
-            {id: 1426170055750, start_date: "03-01-2019 00:00", text: "案件 :罗某盗窃案", duration: 5, parent: "1426170055688", type: "subproject"},
-            {id: 1426170055004, start_date: "03-01-2019 00:00", text: " 案情摘要", duration: 1, parent: "1426170055750", type: "task", progress: 0},
-            {id: 1426170055005, start_date: "07-01-2019 00:00", text: " 附注", duration: 1, parent: "1426170055750", type: "task"},
-            {id: 1426170055602, start_date: "02-01-2019 00:00", text: "姓名 :黄彦赫", duration: 9, type: "project", parent: 0},
-            {id: 1426170055751, start_date: "03-01-2019 00:00", text: "案件 :罗某盗窃案", duration: 5, parent: "1426170055602", type: "subproject"},
-            {id: 1426170055006, start_date: "03-01-2019 00:00", text: " 案情摘要", duration: 1, parent: "1426170055751", type: "task", progress: 0},
-            {id: 1426170055007, start_date: "07-01-2019 00:00", text: " 附注", duration: 1, parent: "1426170055751", type: "task"},
-            {id: 1426170055603, start_date: "02-01-2019 00:00", text: "姓名 :王太将", duration: 9, type: "project", parent: 0},
-            {id: 1426170055752, start_date: "03-01-2019 00:00", text: "案件 :田某易抢劫案", duration: 5, parent: "1426170055603", type: "subproject"},
-            {id: 1426170055008, start_date: "03-01-2019 00:00", text: " 案情摘要", duration: 1, parent: "1426170055752", type: "task", progress: 0},
-            {id: 1426170055009, start_date: "07-01-2019 00:00", text: " 附注", duration: 1, parent: "1426170055752", type: "task"},
-        ], links: []
-    });
+        //css template for each task type
+        gantt.templates.task_class = gantt.templates.grid_row_class = function (start, end, task) {
+            switch (task.type) {
+                case gantt.config.types.project:
+                    return 'project-task';
+                    break;
+                case gantt.config.types.subproject:
+                    return 'phase-task';
+                    break;
+                default:
+                    return 'regular-task';
+                    break;
+            }
+        };
 
 
+        gantt.init("gantt_here");
+        console.log(dataSet)
+        gantt.parse({
+            data: dataSet, links: []
+        });
+
+    }
+    gante(dataSet)
 </script>
 <script>
 over_flag = 0;
@@ -258,25 +315,25 @@ document.getElementById("huadongId").onclick = function() {
     function executeNode() {
         str = "<li class=\"list-group-item\" style=\"height: 45px;\"><span style=\"float: left;margin-top:-2px;text-align:left;\">" + "张远帆" + "</span> "
             + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "张远帆" + "\')\">" + "绩效考核" + "</button> "
-            + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "2000115" + "</span>";
+            + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "市级检察院" + "</span>";
         str += "<li class=\"list-group-item\" style=\"height: 45px;\"><span style=\"float: left;margin-top:-2px;text-align:left;\">" + "陈川俊" + "</span> "
             + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "陈川俊" + "\')\">" + "绩效考核" + "</button> "
-            + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "1900105" + "</span>";
+            + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "市级检察院" + "</span>";
         str += "<li class=\"list-group-item\" style=\"height: 45px;\"><span style=\"float: left;margin-top:-2px;text-align:left;\">" + "李驭龙" + "</span> "
             + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "李驭龙" + "\')\">" + "绩效考核" + "</button> "
-            + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "1900223" + "</span>";
+            + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "市级检察院" + "</span>";
         str += "<li class=\"list-group-item\" style=\"height:45px;\"><span style=\"float: left;margin-top:-2px;text-align:left;\">" + "王太将" + "</span> "
             + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "王太将" + "\')\">" + "绩效考核" + "</button> "
-            + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "1200448" + "</span>";
+            + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "省级检察院" + "</span>";
         str += "<li class=\"list-group-item\" style=\"height:45px;\"><span style=\"float: left;margin-top:-2px;text-align:left;\">" + "杨春露" + "</span> "
             + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "杨春露" + "\')\">" + "绩效考核" + "</button> "
-            + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "1700567" + "</span>";
+            + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "省级检察院" + "</span>";
         str += "<li class=\"list-group-item\" style=\"height:45px;\"><span style=\"float: left;margin-top:-2px;text-align:left;\">" + "黄彦赫" + "</span> "
             + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "黄彦赫" + "\')\">" + "绩效考核" + "</button> "
-            + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "1800163" + "</span>";
+            + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "省级检察院" + "</span>";
         str += "<li class=\"list-group-item\" style=\"height:45px;\"><span style=\"float: left;margin-top:-2px;text-align:left;\">" + "贺甲" + "</span> "
             + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "贺甲" + "\')\">" + "绩效考核" + "</button> "
-            + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "1400732" + "</span>";
+            + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "最高人民检察院" + "</span>";
         document.getElementById("caseList").innerHTML += str;
         var zz = getzz();
         change(1, zz);
@@ -286,8 +343,7 @@ document.getElementById("huadongId").onclick = function() {
         var zz = new Array(a.length);
         for (var i = 0; i < a.length; i++) {
             zz[i] = a[i].innerHTML;
-        } //div的字符串数组付给zz
-        // console.log("zz is" + zz);
+        }
         return zz;
     }
 
@@ -303,23 +359,23 @@ document.getElementById("huadongId").onclick = function() {
             var pageall = zz.length / pagesize;
         } else {
             var pageall = parseInt(zz.length / pagesize) + 1;
-        }   //一共多少页
+        }
         if (e < 1) {
             e = 1;
-            pageno = 1;//就等于第1页 ， 当前页为1
+            pageno = 1;
         }
-        if (e > pageall) {  //如果输入页大于最大页
+        if (e > pageall) {
             e = pageall;
-            pageno = pageall; //输入页和当前页都=最大页
+            pageno = pageall;
         }
-        $("#caseList").html("");//全部清空
+        $("#caseList").html("");
         console.log("html is" + $("#caseList").html(""));
         var html = "";
         for (var i = 0; i < pagesize; i++) {
             if (zz[(e - 1) * pagesize + i] == null) zz[(e - 1) * pagesize + i] = "<span style=\"color:white\">空白</span>";
-            html += '<li class=\"list-group-item\">' + zz[(e - 1) * pagesize + i] + '</li>';//创建一页的li列表
+            html += '<li class=\"list-group-item\">' + zz[(e - 1) * pagesize + i] + '</li>';
         }
-        $("ul#caseList").html(html);//给ul列表写入html
+        $("ul#caseList").html(html);
         var ye = "";
         for (var j = 1; j <= pageall; j++) {
             if (e == j) {
@@ -340,8 +396,67 @@ document.getElementById("huadongId").onclick = function() {
     monitorClick();
 
     function monitorClick() {
-
         executeNode();
+        document.getElementById("group_select_id").onclick = function(){
+            document.getElementById("group_select_data_id").style.display = "block";
+        }
+    }
+    function group_select() {
+        document.getElementById("group_select_data_id").style.display = "none";
+        dataSet = [
+            {id: 1426170055699, start_date: "02-01-2019 00:00", text: "姓名 :张远帆", duration: 7, type: "project", parent: 0},
+            {id: 1426170055704, start_date: "03-01-2019 00:00", text: "案件 :张某三故意杀人案", duration: 8, parent: "1426170055699", type: "subproject"},
+            {id: 1426170055707, start_date: "04-01-2019 00:00", text: " 案情摘要", duration: 1, parent: "1426170055704", type: "task"},
+            {id: 1426170055710, start_date: "06-01-2019 00:00", text: " 附注", duration: 1, parent: "1426170055704", type: "task"},
+            {id: 1426170055711, start_date: "10-01-2019 00:00", text: " 统一受案号", duration: 1, parent: "1426170055704", type: "task"},
+            {id: 1426170055712, start_date: "02-01-2019 00:00", text: "案件 :李某兵生产有毒食品案", duration: 6, parent: "1426170055699", type: "subproject"},
+            {id: 1426170055715, start_date: "03-01-2019 00:00", text: " 案情摘要", duration: 1, parent: "1426170055712", type: "task", progress: 0},
+            {id: 1426170055718, start_date: "07-01-2019 00:00", text: " 附注", duration: 1, parent: "1426170055712", type: "task"},
+            {id: 1426170055702, start_date: "02-01-2019 00:00", text: "姓名 :陈川俊", duration: 4, type: "project", end_date: "17-01-2019 00:00", parent: 0},
+            {id: 1426170055719, start_date: "02-01-2019 00:00", text: "案件 :罗某盗窃案", duration: 3, parent: "1426170055702", type: "subproject"},
+            {id: 1426170055722, start_date: "02-01-2019 00:00", text: " 案情摘要", duration: 1, parent: "1426170055719", type: "task"},
+            {id: 1426170055725, start_date: "06-01-2019 00:00", text: " 附注", duration: 1, parent: "1426170055719", type: "task"},
+            {id: 1426170055726, start_date: "12-01-2019 00:00", text: " 补充人编号", duration: 1, parent: "1426170055719", type: "task"},
+            {id: 1426170055703, start_date: "08-01-2019 00:00", text: "姓名 :李驭龙", duration: 1, type: "project", parent: 0},
+            {id: 1426170055727, start_date: "08-01-2019 00:00", text: "案件 :田某易抢劫案", duration: 1, parent: "1426170055703", type: "subproject"},
+            {id: 1426170055601, start_date: "02-01-2019 00:00", text: "姓名 :贺甲", duration: 3, type: "project", parent: 0},
+            {id: 1426170055787, start_date: "03-01-2019 00:00", text: "案件 :交通案件", duration: 2, parent: "1426170055601", type: "subproject"},
+            {id: 1426170055001, start_date: "03-01-2019 00:00", text: " 案情摘要", duration: 1, parent: "1426170055787", type: "task", progress: 0},
+            {id: 1426170055002, start_date: "07-01-2019 00:00", text: " 附注", duration: 1, parent: "1426170055787", type: "task"},
+            {id: 1426170055688, start_date: "02-01-2019 00:00", text: "姓名 :杨春露", duration: 3, type: "project", parent: 0},
+            {id: 1426170055750, start_date: "03-01-2019 00:00", text: "案件 :罗某盗窃案", duration: 2, parent: "1426170055688", type: "subproject"},
+            {id: 1426170055004, start_date: "03-01-2019 00:00", text: " 案情摘要", duration: 1, parent: "1426170055750", type: "task", progress: 0},
+            {id: 1426170055005, start_date: "07-01-2019 00:00", text: " 附注", duration: 1, parent: "1426170055750", type: "task"},
+            {id: 1426170055602, start_date: "02-01-2019 00:00", text: "姓名 :黄彦赫", duration: 3, type: "project", parent: 0},
+            {id: 1426170055751, start_date: "03-01-2019 00:00", text: "案件 :罗某盗窃案", duration: 2, parent: "1426170055602", type: "subproject"},
+            {id: 1426170055006, start_date: "03-01-2019 00:00", text: " 案情摘要", duration: 1, parent: "1426170055751", type: "task", progress: 0},
+            {id: 1426170055007, start_date: "07-01-2019 00:00", text: " 附注", duration: 1, parent: "1426170055751", type: "task"},
+            {id: 1426170055603, start_date: "02-01-2019 00:00", text: "姓名 :王太将", duration: 3, type: "project", parent: 0},
+            {id: 1426170055752, start_date: "03-01-2019 00:00", text: "案件 :田某易抢劫案", duration: 2, parent: "1426170055603", type: "subproject"},
+            {id: 1426170055008, start_date: "03-01-2019 00:00", text: " 案情摘要", duration: 1, parent: "1426170055752", type: "task", progress: 0},
+            {id: 1426170055009, start_date: "07-01-2019 00:00", text: " 附注", duration: 1, parent: "1426170055752", type: "task"},
+        ]
+        var count = 0;
+        for(data in dataSet){
+            if(dataSet[data]['text'] == "姓名 :"+$("#group_user_name").val()){
+                count = dataSet[data]['duration']
+            }
+        }
+        var dataCopy = [];
+
+        for(data in dataSet){
+            if(dataSet[data]['text'] == "姓名 :"+$("#group_user_name").val()){
+                dataCopy.push(dataSet[data]);
+                data = Number(data)
+                for(i = data + 1; i <= count + data; i++) {
+                    dataCopy.push(dataSet[i]);
+                }
+                break;
+            }
+        }
+        console.log(dataCopy)
+        gantt.clearAll();
+        gante(dataCopy)
     }
 </script>
 <script>

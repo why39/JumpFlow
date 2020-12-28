@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hxy.provenance.logparser.AKLBDao">
+    <resultMap type="com.hxy.provenance.logparser.AKLBEntity" id="caseMap">
+        <result property="en" column="en"/>
+        <result property="cn" column="cn"/>
+        <result property="category" column="category"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+		en,
+		cn,
+		category
+    </sql>
+
+
+    <select id="queryObject3" resultType="com.hxy.provenance.logparser.AKLBEntity" resultMap="caseMap">
+        select
+        <include refid="Base_Column_List"/>
+        from properties_mapper
+    </select>
+
+
+
+
+</mapper>

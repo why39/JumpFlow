@@ -19,6 +19,32 @@
     <link href="styles/icons.css" rel="stylesheet">
     <link href="styles/style.css" rel="stylesheet" >
 </head>
+<style>
+    .select_class {
+        width                    : 14em;
+        height                   : 30px;
+        padding                  : 0.2em 0.4em 0.2em 0.4em;
+        vertical-align           : middle;
+        border                   : 1px solid #94c1e7;
+        -moz-border-radius       : 0.2em;
+        -webkit-border-radius    : 0.2em;
+        border-radius            : 0.2em;
+        -webkit-appearance       : none;
+        -moz-appearance          : none;
+        appearance               : none;
+        background               : #ffffff;
+        font-family              : SimHei;
+        font-size                : 1.1em;
+        color                    : RGBA(102,102,102,0.7);
+        cursor                   : pointer;
+    }
+    .select_class option {
+        margin-left: 5px;
+        padding-left: 5px;
+        font-weight: bolder;
+    }
+    select::-ms-expand { display: none; }
+</style>
 <body>
 
 <div>
@@ -61,22 +87,19 @@
 </div>
 
 <div style="border-top: 8px solid lightgray; margin-top: 5px;">
-
-    <!--<div id="my_container" style="width:440px; height:410px;float: right;position:relative;box-shadow: 0 0 50px grey;">
-        <p id="containerName" style="float: right;margin-right: 20px;margin-top:10px;
-    font-size: 24px;color: darkred;font-weight: bold">案件总数比例</p>
-        <canvas id="pie_canvas"></canvas>
-    </div>-->
-
-    <!--<p id="chartName" style="position:absolute; font-size: 24px;color: darkred;
-    font-weight: bold;margin-top:10px;margin-left: 20px"></p>
-    <div id="chart" style="position: relative">
-
-    </div>-->
     <div class="col-xl-9" style = "display:inline-block" >
         <div class="card" style = "width:580px;height: 400px" id = "barId1">
             <div class="card-body">
-                <h4 class="mt-0 header-title mb-5" id="bar_label1"></h4>
+                <h4 class="mt-0 header-title mb-5" id="bar_label1" style = "display: inline"></h4>
+                <div class="checkbox" style = "display: inline">
+                    <select class = "select_class" id = "anka_time_id">
+                        <option>查看本周内统计信息</option>
+                        <option>查看本月内统计信息</option>
+                        <option>查看本季度内统计信息</option>
+                        <option>查看本年内统计信息</option>
+                        <option>查看所有统计信息</option>
+                    </select>
+                </div>
                 <div id="morris-bar-stacked1" class="morris-chart-height morris-charts"></div>
             </div>
         </div>
@@ -85,7 +108,16 @@
     <div class="col-xl-9" style = "display:inline-block" >
         <div class="card" style = "width:580px;height: 400px" id = "barId2">
             <div class="card-body">
-                <h4 class="mt-0 header-title mb-5" id="bar_label2"></h4>
+                <h4 class="mt-0 header-title mb-5" id="bar_label2" style = "display: inline"></h4>
+                <div class="checkbox" style = "display: inline">
+                    <select class = "select_class" id = "haoshi_time_id">
+                        <option>查看本周内统计信息</option>
+                        <option>查看本月内统计信息</option>
+                        <option>查看本季度内统计信息</option>
+                        <option>查看本年内统计信息</option>
+                        <option>查看所有统计信息</option>
+                    </select>
+                </div>
                 <div id="morris-bar-stacked2" class="morris-chart-height morris-charts"></div>
             </div>
         </div>
@@ -359,7 +391,6 @@
         ll = ll.toString();
         localStorage.setItem("LeiBieName", ll);
         document.getElementById("caseList").innerHTML = "";
-        console.log(ll);
         $.ajax({
             type: "get",
             async: false,
@@ -473,7 +504,7 @@
         var ss = document.getElementById("xieshijiancha_a").innerHTML + "案件";
         var ll = document.getElementById("xieshijiancha_a").innerHTML;
         document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/小时）";
+        document.getElementById("bar_label2").innerHTML = ll + "案件办理耗时（平均/小时）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "刑事检察" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -514,7 +545,7 @@
         var ss = document.getElementById("xieshizhixing_a").innerHTML + "案件";
         var ll = document.getElementById("xieshizhixing_a").innerHTML;
         document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/小时）";
+        document.getElementById("bar_label2").innerHTML = ll + "案件办理耗时（平均/小时）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "刑事执行" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         data1 = [
@@ -556,7 +587,7 @@
         var ss = document.getElementById("gongsu_a").innerHTML + "案件";
         var ll = document.getElementById("gongsu_a").innerHTML;
         document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/小时）";
+        document.getElementById("bar_label2").innerHTML = ll + "案件办理耗时（平均/小时）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "公益诉讼" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -569,7 +600,7 @@
         var ss = document.getElementById("minshi_a").innerHTML + "案件";
         var ll = document.getElementById("minshi_a").innerHTML;
         document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/小时）";
+        document.getElementById("bar_label2").innerHTML = ll + "案件办理耗时（平均/小时）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "民事" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -581,7 +612,7 @@
         var ss = document.getElementById("xinzheng_a").innerHTML + "案件";
         var ll = document.getElementById("xinzheng_a").innerHTML;
         document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/小时）";
+        document.getElementById("bar_label2").innerHTML = ll + "案件办理耗时（平均/小时）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "行政" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -593,7 +624,7 @@
         var ss = document.getElementById("weijian_a").innerHTML + "案件";
         var ll = document.getElementById("weijian_a").innerHTML;
         document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/小时）";
+        document.getElementById("bar_label2").innerHTML = ll + "案件办理耗时（平均/小时）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "未检业务" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -605,7 +636,7 @@
         var ss = document.getElementById("konggao_a").innerHTML + "案件";
         var ll = document.getElementById("konggao_a").innerHTML;
         document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/小时）";
+        document.getElementById("bar_label2").innerHTML = ll + "案件办理耗时（平均/小时）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "控告申诉" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -617,7 +648,7 @@
         var ss = document.getElementById("jianwei_a").innerHTML + "案件";
         var ll = document.getElementById("jianwei_a").innerHTML;
         document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/小时）";
+        document.getElementById("bar_label2").innerHTML = ll + "案件办理耗时（平均/小时）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "检委办" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -629,7 +660,7 @@
         var ss = document.getElementById("duitai_a").innerHTML + "案件";
         var ll = document.getElementById("duitai_a").innerHTML;
         document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/小时）";
+        document.getElementById("bar_label2").innerHTML = ll + "案件办理耗时（平均/小时）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "对台业务" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -641,7 +672,7 @@
         var ss = document.getElementById("anguan_a").innerHTML + "案件";
         var ll = document.getElementById("anguan_a").innerHTML;
         document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/小时）";
+        document.getElementById("bar_label2").innerHTML = ll + "案件办理耗时（平均/小时）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "案管" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -653,7 +684,7 @@
         var ss = document.getElementById("sifa_a").innerHTML + "案件";
         var ll = document.getElementById("sifa_a").innerHTML;
         document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "业务流程环节耗时（平均/小时）";
+        document.getElementById("bar_label2").innerHTML = ll + "案件办理耗时（平均/小时）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "司法协助" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -665,8 +696,68 @@
         // var query = "MATCH (n:CASE) WITH n MATCH p=(n)-[*]->(m:Task) RETURN p,n,m";
         // execute(query);
         //canvas_data();
+        document.getElementById("anka_time_id").onchange = function(){
+            var options=$("#anka_time_id option:selected");
+           if(options.val() == "查看本月内统计信息"){
+               data1 = [
+                   { y: '附注', a: 5.00, b: 1.80, c: 1.00 },
+                   { y: '补充人编号', a: 4.05,  b: 0.65, c: 0.80 },
+                   { y: '补充人姓名', a: 2.70, b: 0.90, c: 0.56 },
+                   { y: '入卷入编号', a: 2.75,  b: 0.85, c: 1.20 },
+                   { y: '案件类型', a: 1.60, b: 0.90, c: 1.00 },
+                   { y: '撤回人编号', a: 1.75,  b: 0.65, c: 1.10 },
+                   { y: '案件类型名称', a: 1.60,  b: 0.50, c: 0.85 },
+                   { y: '移送案由', a: 1.55,  b: 0.65, c: 0.52 },
+                   { y: '案情摘要', a: 1.50,  b: 0.40, c: 0.77 },
+                   { y: '关联自然人编号', a: 1.45,  b: 0.65, c: 0.60 },
+                   { y: '撤回人姓名', a: 1.30, b: 0.30, c: 0.30 }
+               ];
+               document.getElementById("morris-bar-stacked1").innerHTML = "";
+               bar1(data1);
+               var index = document.getElementById("bar_label1").innerHTML.indexOf("业务");
+               console.log(document.getElementById("bar_label1").innerHTML.substring(0,index));
+           }
+            if(options.val() == "查看本季度内统计信息"){
+                data1 = [
+                    { y: '附注', a: 11.00, b: 4.80, c: 1.00 },
+                    { y: '补充人编号', a: 9.05,  b: 0.65, c: 0.80 },
+                    { y: '补充人姓名', a: 7.70, b: 0.90, c: 0.56 },
+                    { y: '入卷入编号', a: 4.75,  b: 0.85, c: 1.20 },
+                    { y: '案件类型', a: 4.60, b: 0.90, c: 1.00 },
+                    { y: '撤回人编号', a: 3.75,  b: 0.65, c: 1.10 },
+                    { y: '案件类型名称', a: 1.60,  b: 0.50, c: 0.85 },
+                    { y: '移送案由', a: 1.55,  b: 0.65, c: 0.52 },
+                    { y: '案情摘要', a: 1.50,  b: 0.40, c: 0.77 },
+                    { y: '关联自然人编号', a: 1.45,  b: 0.65, c: 0.60 },
+                    { y: '撤回人姓名', a: 1.30, b: 0.30, c: 0.30 }
+                ];
+                document.getElementById("morris-bar-stacked1").innerHTML = "";
+                bar1(data1);
+                var index = document.getElementById("bar_label1").innerHTML.indexOf("业务");
+                console.log(document.getElementById("bar_label1").innerHTML.substring(0,index));
+            }
+        }
+        document.getElementById("haoshi_time_id").onchange = function(){
+            var options=$("#haoshi_time_id option:selected");
+            data1 = [
+                { y: '受理', a: 8.00},
+                { y: '分案', a: 6.05},
+                { y: '审查起诉', a: 4.70},
+                { y: '起诉', a: 4.75},
+                { y: '全案不起诉', a: 2.90},
+                { y: '改变管辖', a: 1.75},
+                { y: '建议撤案', a: 1.60},
+                { y: '并案', a: 1.55},
+                { y: '拆案', a: 0.50},
+                { y: '出庭公诉', a: 0.45},
+                { y: '提出抗诉', a: 0.30}
+            ];
+            document.getElementById("morris-bar-stacked2").innerHTML = "";
+            bar2(data1);
+            var index = document.getElementById("bar_label2").innerHTML.indexOf("业务");
+            console.log(document.getElementById("bar_label2").innerHTML.substring(0,index));
+        }
     });
-
 </script>
 </body>
 </html>

@@ -98,19 +98,35 @@
         </div>
     </div>
 </div>-->
-<div id = "anka_table" style = "overflow:auto;height: 400px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;display:none">
+<div id = "anka_table" style = "overflow:auto;width:325px;
+height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;display:none">
 <table style = "" id = "anka_table_data">
     <thead>
     <tr>
-        <th id = "anka_table_data_ren">犯罪嫌疑人相关</th>
-        <th id = "anka_table_data_anjian">案情相关</th>
+        <th id = "anka_table_data_ren">人员相关</th>
+        <th id = "anka_table_data_anjian">案件相关</th>
         <th id = "anka_table_data_other">其他</th>
     </tr>
     </thead>
     <tbody id="J_TbData">
     </tbody>
 </table>
+    <div id = "un_use_anka_id" style = "color:orange;margin-left: 110px">未被使用案卡项</div>
 </div>
+    <div id = "unuse_anka_data_id" style = "display: none;margin-top: 325px; overflow:auto;
+    position: absolute;width:325px;height: 290px;z-index: 10;">
+        <table style = "" id = "un_anka_table_data">
+            <thead>
+            <tr>
+                <th id = "un_anka_table_data_ren">人员相关</th>
+                <th id = "un_anka_table_data_anjian">案件相关</th>
+                <th id = "un_anka_table_data_other">其他</th>
+            </tr>
+            </thead>
+            <tbody id="UN_J_TbData">
+            </tbody>
+        </table>
+    </div>
 
 <div id="leftContent" style="position:absolute;width:300px;height: 620px;
     display: none;border-right: 3px solid lightgray;z-index: 10">
@@ -392,14 +408,7 @@
             document.getElementById("leftContent").setAttribute
             ("style", "display:none");
         }
-        console.log("userName is" + $("#userName").val());
-        console.log("ankaCount is" + $("#ankaCount").val());
 
-        console.log("timeStartName is" + $("#timeStartName").val());
-        console.log("timeEndName is" + $("#timeEndName").val());
-        console.log("labelName is" + $("#labelName").val());
-
-        console.log("suanyuaName is " + $("#suyuanName").val());
 
         if ( ($("#userName").val()) == "" && $("#ankaCount").val() == "" && $("#timeStartName").val()=="" && $("#timeEndName").val() =="" && $("#labelName").val()=="" && $("#suyuanName").val() =="") {
             query = "match(n:CASE) where n.caseId = \'" + jiema() + "\' with n match p = (n) - [*] ->(m:Task) RETURN p";
@@ -503,56 +512,101 @@
 
 </script>
 <script>
-    function table_data(){
+    document.getElementById("un_use_anka_id").onclick  = function () {
         var data = [{
-            name: "姓名",
-            case: "案情摘要",
+            name: "案发时年龄",
+            case: "案件办理参与状态",
             other: "附注"
         },{
-            name: "性别",
-            case: "移送其他案由",
+            name: "案发时年龄代码",
+            case: "案件办理延长天数",
             other: "日志组ID"
         },{
-            name: "作案时年龄",
-            case: "移送意见",
+            name: "案发时年龄名称",
+            case: "案件承办单位",
             other: "服务优先级"
         },{
             name: "嫌疑人身份",
-            case: "主要作案地",
+            case: "案件光盘数量",
             other: "附注"
         },{
             name: "受教育情况",
-            case: "起诉(含部分不起诉)",
+            case: "案件阶段编码",
             other: "日志组ID"
         },{
             name: "是否担任实职",
-            case: "全案不起诉",
+            case: "案件阶段名称",
             other: "服务优先级"
         },{
             name: "是否为单位主要领导",
-            case: "改变管辖",
+            case: "案件卷宗册数",
             other: "附注"
         },{
             name: "是否为恶势力保护伞",
-            case: "建议撤案",
+            case: "案件来源",
             other: "日志组ID"
         },{
             name: "是否为追捕对象",
-            case: "并案",
+            case: "案件领域",
             other: "服务优先级"
         },{
             name: "是否为追诉对象",
-            case: "罪名",
+            case: "案件类型",
             other: "附注"
         },{
             name: "补充人编号",
-            case: "统一受案号",
+            case: "案件类型名称",
             other: "日志组ID"
         },{
             name: "请示单位代码",
-            case: "涉嫌罪名",
+            case: "案件领域代码",
             other: "服务优先级"
         }];
+
+        $("#UN_J_TbData").empty();
+        for( var i = 0; i < data.length; i++ ) {
+            var $trTemp = $("<tr></tr>");
+
+            $trTemp.append("<td>"+ data[i].name +"</td>");
+            $trTemp.append("<td>"+ data[i].case +"</td>");
+            $trTemp.append("<td>"+ data[i].other +"</td>");
+            $trTemp.appendTo("#UN_J_TbData");
+        }
+        if(document.getElementById("unuse_anka_data_id").style.display == "none"){
+            document.getElementById("unuse_anka_data_id").style.display = "block"
+        }
+        else{
+            document.getElementById("unuse_anka_data_id").style.display = "none"
+        }
+    }
+    function table_data(){
+        var data = [];
+        name_data = [];
+        case_data = [];
+        other_data = [];
+        $.ajax({
+            type: "get",
+            async: false,
+            url: "/hxyActiviti/demo/ak/aklb",
+            success: function (res) {
+                if (res) {
+                    for (i in res) {
+                        if(res[i].category == '其他'){
+                            other_data.push(res[i].cn)
+                        }
+                        if(res[i].category == '案件相关'){
+                            case_data.push(res[i].cn)
+                        }
+                        if(res[i].category == '人员相关'){
+                            name_data.push(res[i].cn)
+                        }
+                    }
+                }
+               for(i = 0;i < name_data.length;i++) {
+                   data.push({name: name_data[i],case: case_data[i],other:other_data[i]});
+               }
+            }
+        });
 
         $("#J_TbData").empty();
         for( var i = 0; i < data.length; i++ ) {
