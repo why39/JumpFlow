@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hxy.provenance.logparser.GroupNameDao">
+    <resultMap type="com.hxy.provenance.logparser.GroupNameEntity" id="caseMap">
+        <result property="group_id" column="group_id"/>
+        <result property="type" column="type"/>
+        <result property="member_name" column="member_name"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+		group_id,
+		type,
+		member_name
+    </sql>
+
+
+    <select id="queryObject" resultType="com.hxy.provenance.logparser.GroupNameEntity" resultMap="caseMap">
+        select
+        <include refid="Base_Column_List"/>
+        from group_name
+    </select>
+</mapper>

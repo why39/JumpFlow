@@ -80,24 +80,7 @@
 <div>
 <div id = "huanjie_detail" style="position: absolute;z-index: 101">▶</div>
 <div id="gantt_here" style='width:100%; height:90%;position: absolute;float:right;z-index: 100;display: none' ></div>
-<!--    <div class="col-xl-9" style = "display:inline-block" >
-        <div class="card" style = "width:580px;height: 400px" id = "barId1">
-            <div class="card-body">
-                <h4 class="mt-0 header-title mb-5" id="bar_label1">修改案卡项个数</h4>
-                <div id="morris-bar-stacked1" class="morris-chart-height morris-charts"></div>
-            </div>
-        </div>
-    </div>
 
-    <div class="col-xl-9" style = "display:inline-block" >
-        <div class="card" style = "width:580px;height: 400px" id = "barId2">
-            <div class="card-body">
-                <h4 class="mt-0 header-title mb-5" id="bar_label2">案卡项修改次数</h4>
-                <div id="morris-bar-stacked2" class="morris-chart-height morris-charts"></div>
-            </div>
-        </div>
-    </div>
-</div>-->
 <div id = "anka_table" style = "overflow:auto;width:325px;
 height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;display:none">
 <table style = "" id = "anka_table_data">
@@ -130,7 +113,7 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
 
 <div id="leftContent" style="position:absolute;width:300px;height: 620px;
     display: none;border-right: 3px solid lightgray;z-index: 10">
-    <div style="float: left;width:90%;margin-left:-40px">
+    <div style="float: left;width:90%;margin-left:-20px">
         <ul class="timeline" id="timelineId">
             <li>
                 <div class="time">2020</div>
@@ -211,7 +194,7 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
 <div role="tabpanel">
     <div class="tab-content" style="
     position:absolute;height: 620px;border:3px solid lightgray;width:1210px">
-        <div id="displayLabel" style = "float: right;position: relative" class = "displayLabelCLass">
+        <div id="displayLabel" style = "float: right;position: relative;display:none" class = "displayLabelCLass">
             <p id = "displayLeiBie"
                style = "margin-top:10px;margin-right: 10px;font-weight: bold;
            color: #187526;font-size: 14px;font-family: 'Arial Black'">123</p>
@@ -651,6 +634,7 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
                             '贺甲','贺甲','张四','王六','丁戊','丁戊','张伟','贺甲','贺甲','张四','王六','丁戊','丁戊','张伟'];
                         for(item in graph.nodes) {
                             if(graph.nodes[item]["CN_KEY"]==name) {
+                                console.log("gggg",graph.nodes[item]["创建时间"])
                                 var year = (graph.nodes[item]["创建时间"]).toString().substring(0,4);
                                 var month = (graph.nodes[item]["创建时间"]).toString().substring(5,7)
                                     + "-" + (graph.nodes[item]["创建时间"]).toString().substring(8,10);

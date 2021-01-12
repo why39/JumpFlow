@@ -16,33 +16,33 @@
         ul.timeline li .time
         {
             position: absolute;
-            font-size: 15px;
+            font-size: 9px;
             width: 90px;
             text-align: right;
-            left: 0;
-            top: 10px;
+            left: 20px;
+            top: -3px;
             color: #999;
         }
         ul.timeline li .version
         {
 			color: #3594cb;
-			font-size: 18px;
+			font-size: 12px;
 			left: 25px;
 			line-height: 50px;
 			overflow: hidden;
 			position: absolute;
 			text-align: right;
-			top: 30px;
-			width: 80px;
+			top: 50px;
+			width: 90px;
 			margin-top: -10px;
         }
 
 		ul.timeline li .timeBananName{
-			font-size: 16px;
+			font-size: 12px;
 			color: #8A3104;
 			margin-left: 46px;
 			position: absolute;
-			margin-top: 70px;
+			margin-top: 40px;
 			overflow: hidden;
 			text-overflow:ellipsis;
 			white-space: nowrap;
@@ -205,8 +205,8 @@
 .time
 {
 	position: absolute;
-	font-size: 15px;
-	width: 90px;
+	font-size: 5px;
+	width: 70px;
 	text-align: right;
 	left: 0;
 	top: 10px;

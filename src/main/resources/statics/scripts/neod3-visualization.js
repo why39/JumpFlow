@@ -376,14 +376,6 @@ function Neod3Renderer() {
             }).attr('y', function (node) {
                 return (keys.indexOf(node) + 1) * 2.2 * r + 6;
             })
-            /*
-                      .attr('stroke', function(node) {
-                        return styles[node]['color'];
-                      })
-                     .attr('fill', function(node) {
-                          return styles[node]['text-color-internal'];
-                      });
-            */
             return circles.exit().remove();
         }
 
@@ -526,15 +518,18 @@ function look_anka(value){
                         '贺甲','贺甲','张四','王六','丁戊','丁戊','张伟','贺甲','贺甲','张四','王六','丁戊','丁戊','张伟'];
                     for(item in graph.nodes) {
                         if(graph.nodes[item]["label"]==label) {
-                            console.log("ggggg",label)
                             var year = (graph.nodes[item]["创建时间"]).toString().substring(0,4);
                             var month = (graph.nodes[item]["创建时间"]).toString().substring(5,7)
                                 + "-" + (graph.nodes[item]["创建时间"]).toString().substring(8,10);
+                            var time  = (graph.nodes[item]["创建时间"]).toString().substring(12,20)
+                            var str_time = (graph.nodes[item]["创建时间"]).toString().substring(0,20)
                             var str_div = graph.nodes[item][graph.nodes[item].label];
+                            s_name = "操作人:"+str_name[item]
+                            s_alter = "修改者:"+"案管人员"
                             if(str_div != ""){
                                 document.getElementById("timelineId").innerHTML +=
-                                    "<li><div class = \"time\">"+year+"</div> <div class = \"version\">"+month+"</div> " +
-                                    "<div class = \"timeBananName\">"+str_name[item]+"</div> <div class = \"number\"></div>" +
+                                    "<li><div class = \"time\">"+str_time+"</div> <div class = \"version\">"+s_alter+"</div> " +
+                                    "<div class = \"timeBananName\">"+s_name+"</div> <div class = \"number\"></div>" +
                                     " <div class = \"content\">" +
                                     "<div class = \"divCount\"> "+str_div+"<br /></div></div></li>";
                                 console.log(document.getElementById("timelineId").innerHTML);

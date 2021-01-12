@@ -101,27 +101,27 @@
         <span style="float: left;margin-top:-2px;text-align:left;color: orange;font-size:24px"> 姓名 </span>
 
         <span style="float:right;margin-right:240px;margin-top:-2px;color: orange;font-size:24px">所属</span>
-        <span style="float:right;margin-right:-290px;
-        margin-top:-2px;color: orange;font-size:24px;" id = "group_select_id">信息筛选</span>
+       <!-- <span style="float:right;margin-right:-290px;
+        margin-top:-2px;color: orange;font-size:24px;" id = "group_select_id">信息筛选</span>-->
     </div>
     <div id = "group_select_data_id" style = "display: none;position: absolute;
-    width:514px;height: 220px;z-index: 101;background-color: #e9e1d3">
+    width:360px;height: 220px;z-index: 101;background-color: #e9e1d3;margin-top:-40px">
         <label id="userNameLabel"
-               style="margin-top:26px;position: absolute;margin-left:-250px;">办案人姓名</label>
-        <div class="col-lg-6" style="width:410px ;margin-left: 90px;float: left;margin-top:20px">
+               style="margin-top:26px;position: absolute;margin-left:-160px">办案人姓名</label>
+        <div class="col-lg-6" style="width:260px ;margin-left: 90px;float: left;margin-top:20px;">
             <input type="text" class="form-control" id="group_user_name" placeholder=""
                    style=" margin-left:13px">
         </div>
-        <div class="col-lg-6" style="width:410px ;margin-left:90px;margin-top:20px">
+        <div class="col-lg-6" style="width:260px ;margin-left:90px;margin-top:20px;">
             <label id="timeStartNameLabel"
-                   style="margin-top: 6px;position: absolute;margin-left:-290px">起始时间</label>
+                   style="margin-top: 6px;position: absolute;margin-left:-190px">起始时间</label>
             <input type="date" class="form-control" id="group_start_time" placeholder="请输入起始时间"
                    style="margin-left:13px;">
         </div><!-- /input-group -->
         <!--    <p style="color:#939282;margin-top: 42px;position: absolute;margin-left: 507px;"> 至 </p>-->
-        <div class="col-lg-6" style="width:410px;margin-left: 90px;margin-top:20px">
+        <div class="col-lg-6" style="width:260px;margin-left: 90px;margin-top:20px;">
             <label id="timeEndNameLabel"
-                   style="margin-top: 6px;position: absolute;margin-left:-290px">截止时间</label>
+                   style="margin-top: 6px;position: absolute;margin-left: -190px">截止时间</label>
             <input type="date" class="form-control" id="group_end_time" placeholder="请输入截至时间"
                    style=" margin-left:13px;">
         </div>
@@ -157,7 +157,41 @@
         </div>
     </div>
 </div>
-<div id="gantt_here" style='width:700px; height:700px;float:right;'></div>
+<div class="col-xl-9" style="width:514px;position:absolute;margin-left: 600px">
+    <div class="card" style = "width:514px;height: 400px;margin-top:10px">
+        <div class="card-body">
+            <h4 class="mt-0 header-title mb-5" style = "display: inline">办案人文书处理数量</h4>
+            <div class="checkbox" style = "display: inline">
+                <select class = "select_class" id = "chuli_wenshu_id">
+                    <option>查看本周内统计信息</option>
+                    <option>查看本月内统计信息</option>
+                    <option>查看本季度内统计信息</option>
+                    <option>查看本年内统计信息</option>
+                    <option>查看所有统计信息</option>
+                </select>
+            </div>
+            <div id="morris-bar-stacked2" class="morris-chart-height morris-charts"></div>
+        </div>
+    </div>
+</div>
+<div class="col-xl-9" style="width:514px;position:absolute;margin-top: 340px;margin-left:600px">
+    <div class="card" style = "width:514px;height: 400px;margin-top:10px">
+        <div class="card-body">
+            <h4 class="mt-0 header-title mb-5" style = "display: inline">办案人处理环节个数</h4>
+            <div class="checkbox" style = "display: inline">
+                <select class = "select_class" id = "chuli_huanjie_id">
+                    <option>查看本周内统计信息</option>
+                    <option>查看本月内统计信息</option>
+                    <option>查看本季度内统计信息</option>
+                    <option>查看本年内统计信息</option>
+                    <option>查看所有统计信息</option>
+                </select>
+            </div>
+            <div id="morris-bar-stacked3" class="morris-chart-height morris-charts"></div>
+        </div>
+    </div>
+</div>
+<div id="gantt_here" style='width:100%; height:700px;float:right;display:none'></div>
 <script src="scripts/dhtmlxgantt.js?v=7.0.11"></script>
 <script src="scripts/testdata.js?v=7.0.11"></script>
 <script src="scripts/jquery.min.js"></script>
@@ -300,39 +334,36 @@
 over_flag = 0;
 document.getElementById("huadongId").onclick = function() {
     gant = document.getElementById("gantt_here")
-    if(over_flag == 0){
-        gant.style.width = '100%';
-        over_flag = 1;
+    if(gant.style.display == "none"){
+        gant.style.display = "block";
     }
-    else if(over_flag == 1){
-        gant.style.width = "700px";
-        gant.style.height = "700px";
-        over_flag = 0;
+    else if(gant.style.display == "block"){
+        gant.style.display = "none";
     }
 }
 </script>
 <script>
     function executeNode() {
         str = "<li class=\"list-group-item\" style=\"height: 45px;\"><span style=\"float: left;margin-top:-2px;text-align:left;\">" + "张远帆" + "</span> "
-            + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "张远帆" + "\')\">" + "绩效考核" + "</button> "
+            + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "张远帆" + "\')\">" + "查看" + "</button> "
             + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "市级检察院" + "</span>";
         str += "<li class=\"list-group-item\" style=\"height: 45px;\"><span style=\"float: left;margin-top:-2px;text-align:left;\">" + "陈川俊" + "</span> "
-            + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "陈川俊" + "\')\">" + "绩效考核" + "</button> "
+            + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "陈川俊" + "\')\">" + "查看" + "</button> "
             + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "市级检察院" + "</span>";
         str += "<li class=\"list-group-item\" style=\"height: 45px;\"><span style=\"float: left;margin-top:-2px;text-align:left;\">" + "李驭龙" + "</span> "
-            + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "李驭龙" + "\')\">" + "绩效考核" + "</button> "
+            + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "李驭龙" + "\')\">" + "查看" + "</button> "
             + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "市级检察院" + "</span>";
         str += "<li class=\"list-group-item\" style=\"height:45px;\"><span style=\"float: left;margin-top:-2px;text-align:left;\">" + "王太将" + "</span> "
-            + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "王太将" + "\')\">" + "绩效考核" + "</button> "
+            + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "王太将" + "\')\">" + "查看" + "</button> "
             + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "省级检察院" + "</span>";
         str += "<li class=\"list-group-item\" style=\"height:45px;\"><span style=\"float: left;margin-top:-2px;text-align:left;\">" + "杨春露" + "</span> "
-            + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "杨春露" + "\')\">" + "绩效考核" + "</button> "
+            + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "杨春露" + "\')\">" + "查看" + "</button> "
             + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "省级检察院" + "</span>";
         str += "<li class=\"list-group-item\" style=\"height:45px;\"><span style=\"float: left;margin-top:-2px;text-align:left;\">" + "黄彦赫" + "</span> "
-            + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "黄彦赫" + "\')\">" + "绩效考核" + "</button> "
+            + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "黄彦赫" + "\')\">" + "查看" + "</button> "
             + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "省级检察院" + "</span>";
         str += "<li class=\"list-group-item\" style=\"height:45px;\"><span style=\"float: left;margin-top:-2px;text-align:left;\">" + "贺甲" + "</span> "
-            + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "贺甲" + "\')\">" + "绩效考核" + "</button> "
+            + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "贺甲" + "\')\">" + "查看" + "</button> "
             + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "最高人民检察院" + "</span>";
         document.getElementById("caseList").innerHTML += str;
         var zz = getzz();
@@ -397,9 +428,7 @@ document.getElementById("huadongId").onclick = function() {
 
     function monitorClick() {
         executeNode();
-        document.getElementById("group_select_id").onclick = function(){
-            document.getElementById("group_select_data_id").style.display = "block";
-        }
+
     }
     function group_select() {
         document.getElementById("group_select_data_id").style.display = "none";
@@ -460,69 +489,200 @@ document.getElementById("huadongId").onclick = function() {
     }
 </script>
 <script>
+    window.onload = function(){
+        bar1();
+        bar2();
+        bar3();
+    }
+    function bar1(){
+        !function ($) {
+            "use strict";
 
-    !function ($) {
-        "use strict";
+            var Dashboard = function () {
+            };
 
-        var Dashboard = function () {
-        };
+            //creates Stacked chart
+            Dashboard.prototype.createStackedChart  = function(element, data, xkey, ykeys, labels, lineColors) {
+                Morris.Bar({
+                    element: element,
+                    data: data,
+                    xkey: xkey,
+                    ykeys: ykeys,
+                    stacked: true,
+                    labels: labels,
+                    hideHover: 'auto',
+                    resize: true, //defaulted to true
+                    gridLineColor: '#eeeeee',
+                    barColors: lineColors,
+                    labelTop:true,
+                    barRatio: 0.4,
+                    xLabelAngle: 35,
+                });
+            },
+                // pie
+                $('.peity-pie').each(function () {
+                    $(this).peity("pie", $(this).data());
+                });
 
-        //creates Stacked chart
-        Dashboard.prototype.createStackedChart  = function(element, data, xkey, ykeys, labels, lineColors) {
-            Morris.Bar({
-                element: element,
-                data: data,
-                xkey: xkey,
-                ykeys: ykeys,
-                stacked: true,
-                labels: labels,
-                hideHover: 'auto',
-                resize: true, //defaulted to true
-                gridLineColor: '#eeeeee',
-                barColors: lineColors,
-                labelTop:true,
-                barRatio: 0.4,
-                xLabelAngle: 35,
+            //donut
+            $('.peity-donut').each(function () {
+                $(this).peity("donut", $(this).data());
             });
-        },
-            // pie
-            $('.peity-pie').each(function () {
-                $(this).peity("pie", $(this).data());
+
+            // line
+            $('.peity-line').each(function () {
+                $(this).peity("line", $(this).data());
             });
 
-        //donut
-        $('.peity-donut').each(function () {
-            $(this).peity("donut", $(this).data());
-        });
 
-        // line
-        $('.peity-line').each(function () {
-            $(this).peity("line", $(this).data());
-        });
-
-
-        Dashboard.prototype.init = function () {
-            var $stckedData  = [
-                { y: '张远帆', a: 300, b: 180, c: 100 },
-                { y: '陈川俊', a: 170, b: 90, c: 56 },
-                { y: '李驭龙', a: 75,  b: 85, c: 120 },
-                { y: '王太将', a: 60, b: 90, c: 100 },
-                { y: '杨春露', a: 60,  b: 50, c: 85 },
-                { y: '黄彦赫', a: 55,  b: 65, c: 52 },
-                { y: '贺甲', a: 50,  b: 40, c: 77 }
-            ];
-            this.createStackedChart('morris-bar-stacked', $stckedData, 'y', ['a', 'b', 'c'], ['案卡项数量', '环节个数', '环节耗时(平均/小时)'], ['#1699dd', '#655be6', '#ebeff2']);
-        },
-            //init
-            $.Dashboard = new Dashboard, $.Dashboard.Constructor = Dashboard
-    }(window.jQuery),
+            Dashboard.prototype.init = function () {
+                var $stckedData  = [
+                    { y: '张远帆', a: 300},
+                    { y: '陈川俊', a: 170},
+                    { y: '李驭龙', a: 75},
+                    { y: '王太将', a: 60},
+                    { y: '杨春露', a: 60 },
+                    { y: '黄彦赫', a: 55},
+                    { y: '贺甲', a: 50}
+                ];
+                this.createStackedChart('morris-bar-stacked', $stckedData, 'y', ['a'], ['案卡项数量'], ['#1699dd']);
+            },
+                //init
+                $.Dashboard = new Dashboard, $.Dashboard.Constructor = Dashboard
+        }(window.jQuery),
 
 //initializing
-        function ($) {
+            function ($) {
+                "use strict";
+                $.Dashboard.init();
+            }(window.jQuery);
+    }
+    function bar2(){
+        !function ($) {
             "use strict";
-            $.Dashboard.init();
-        }(window.jQuery);
 
+            var Dashboard = function () {
+            };
+
+            //creates Stacked chart
+            Dashboard.prototype.createStackedChart  = function(element, data, xkey, ykeys, labels, lineColors) {
+                Morris.Bar({
+                    element: element,
+                    data: data,
+                    xkey: xkey,
+                    ykeys: ykeys,
+                    stacked: true,
+                    labels: labels,
+                    hideHover: 'auto',
+                    resize: true, //defaulted to true
+                    gridLineColor: '#eeeeee',
+                    barColors: lineColors,
+                    labelTop:true,
+                    barRatio: 0.4,
+                    xLabelAngle: 35,
+                });
+            },
+                // pie
+                $('.peity-pie').each(function () {
+                    $(this).peity("pie", $(this).data());
+                });
+
+            //donut
+            $('.peity-donut').each(function () {
+                $(this).peity("donut", $(this).data());
+            });
+
+            // line
+            $('.peity-line').each(function () {
+                $(this).peity("line", $(this).data());
+            });
+
+
+            Dashboard.prototype.init = function () {
+                var $stckedData  = [
+                    { y: '张远帆',c: 100 },
+                    { y: '陈川俊',c: 56 },
+                    { y: '李驭龙',c: 120 },
+                    { y: '王太将',c: 100 },
+                    { y: '杨春露',c: 85 },
+                    { y: '黄彦赫', c: 52 },
+                    { y: '贺甲', c: 77 }
+                ];
+                this.createStackedChart('morris-bar-stacked2', $stckedData, 'y', ['c'], ['处理文书的数量'], ['#f28515']);
+            },
+                //init
+                $.Dashboard = new Dashboard, $.Dashboard.Constructor = Dashboard
+        }(window.jQuery),
+
+//initializing
+            function ($) {
+                "use strict";
+                $.Dashboard.init();
+            }(window.jQuery);
+    }
+    function bar3(){
+        !function ($) {
+            "use strict";
+
+            var Dashboard = function () {
+            };
+
+            //creates Stacked chart
+            Dashboard.prototype.createStackedChart  = function(element, data, xkey, ykeys, labels, lineColors) {
+                Morris.Bar({
+                    element: element,
+                    data: data,
+                    xkey: xkey,
+                    ykeys: ykeys,
+                    stacked: true,
+                    labels: labels,
+                    hideHover: 'auto',
+                    resize: true, //defaulted to true
+                    gridLineColor: '#eeeeee',
+                    barColors: lineColors,
+                    labelTop:true,
+                    barRatio: 0.4,
+                    xLabelAngle: 35,
+                });
+            },
+                // pie
+                $('.peity-pie').each(function () {
+                    $(this).peity("pie", $(this).data());
+                });
+
+            //donut
+            $('.peity-donut').each(function () {
+                $(this).peity("donut", $(this).data());
+            });
+
+            // line
+            $('.peity-line').each(function () {
+                $(this).peity("line", $(this).data());
+            });
+
+
+            Dashboard.prototype.init = function () {
+                var $stckedData  = [
+                    { y: '张远帆', b: 180},
+                    { y: '陈川俊', b: 90},
+                    { y: '李驭龙', b: 85},
+                    { y: '王太将', b: 90},
+                    { y: '杨春露',  b: 50},
+                    { y: '黄彦赫',b: 65},
+                    { y: '贺甲', b: 40 }
+                ];
+                this.createStackedChart('morris-bar-stacked3', $stckedData, 'y', ['b'], ['环节个数'], ['#655be6']);
+            },
+                //init
+                $.Dashboard = new Dashboard, $.Dashboard.Constructor = Dashboard
+        }(window.jQuery),
+
+//initializing
+            function ($) {
+                "use strict";
+                $.Dashboard.init();
+            }(window.jQuery);
+    }
 </script>
 <script>
     function lineageSelect1(name_str){
