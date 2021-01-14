@@ -110,10 +110,11 @@ function Neod3Renderer() {
                         document.getElementById("leftContent").setAttribute
                         ("style", "display:none");
                     }
+                    //console.log("hhhhh",node.id);
                     execute("match (n) where ID(n) = "+node.id+" with n match p = (n) - [r:相关] ->(m) return p");
                     document.getElementById("anka_table").style.display = "block";
                     document.getElementById("huanjie_detail").innerHTML = ""
-                    table_data();
+                    table_data(node.id);
 
                    /* var neo = new Neo(connection);
                     try {

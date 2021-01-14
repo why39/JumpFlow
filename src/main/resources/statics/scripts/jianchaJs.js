@@ -167,7 +167,7 @@ function change(e, zz) {
         if (e == j) {
             ye = ye + "<span><button onClick='change(" + j + ",gg)' style='color:#FF0000'>" + j + "</button></span> "
         } else {
-            ye = ye + "<button onClick='change(" + j + ",gg)'>" + j + "</button> "
+            ye = ye + "<button onClick='change(" + j + ",gg)'>" + j + "</button>"
         }
     }
     var pageContent = "";

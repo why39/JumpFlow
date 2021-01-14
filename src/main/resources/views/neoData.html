@@ -346,18 +346,13 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
                     neod3.render("graph", c, graph);
                 } else {
                     if (err) {
-                        console.log(err);
                         if (err.length > 0) {
-                            sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
                         } else {
-                            sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
                         }
                     }
                 }
             });
         } catch (e) {
-            console.log(e);
-            sweetAlert("Catched error", e, "error");
         }
     }
 
@@ -562,47 +557,70 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
             document.getElementById("unuse_anka_data_id").style.display = "none"
         }
     }
-    function table_data(){
+    function table_data(node_id){
         var data = [];
         name_data = [];
         case_data = [];
         other_data = [];
-        $.ajax({
-            type: "get",
-            async: false,
-            url: "/hxyActiviti/demo/ak/aklb",
-            success: function (res) {
-                if (res) {
-                    for (i in res) {
-                        if(res[i].category == '其他'){
-                            other_data.push(res[i].cn)
+        var graph_node = [];
+        var neo = new Neo(connection);
+        try {
+            var query = "match (n) where ID(n) = "+node_id+" with n match p = (n) - [r:相关] ->(m) return p";
+            neo.executeQuery(query, {}, function (err, res) {
+                res = res || {}
+                var graph = res.graph;
+                if (graph) {
+                    graph_node = graph.nodes;
+                    /*for(var i = 0;i < node.length;i++){
+                        console.log(node[i].CN_KEY);
+                    }*/
+                }
+                $.ajax({
+                    type: "get",
+                    async: false,
+                    url: "/hxyActiviti/demo/ak/aklb",
+                    success: function (res) {
+                        if (res) {
+                            for (i in res) {
+                                for (var k = 0; k < graph_node.length; k++) {
+                                    if (res[i].cn == graph_node[k].CN_KEY) {
+                                        if (res[i].category == '其他') {
+                                            other_data.push(res[i].cn)
+                                        }
+                                        if (res[i].category == '案件相关') {
+                                            case_data.push(res[i].cn)
+                                        }
+                                        if (res[i].category == '人员相关') {
+                                            name_data.push(res[i].cn)
+                                        }
+                                    }
+                                }
+                            }
+                            for(i = 0;i < other_data.length;i++) {
+                                if(other_data[i] == undefined) other_data[i] = "";
+                                if(case_data[i] == undefined) case_data[i] = "";
+                                if(name_data[i] == undefined) name_data[i] = "";
+                                data.push({name: name_data[i], case: case_data[i], other: other_data[i]});
+                            }
                         }
-                        if(res[i].category == '案件相关'){
-                            case_data.push(res[i].cn)
-                        }
-                        if(res[i].category == '人员相关'){
-                            name_data.push(res[i].cn)
+                        $("#J_TbData").empty();
+                        for( var i = 0; i < data.length; i++ ) {
+                            //动态创建一个tr行标签,并且转换成jQuery对象
+                            var $trTemp = $("<tr></tr>");
+
+                            //往行里面追加 td单元格
+                            $trTemp.append("<td onclick = \"table_data_ren(\'" + data[i].name + "\')\">"+ data[i].name +"</td>");
+                            $trTemp.append("<td onclick = \"table_data_anjian(\'" + data[i].case + "\')\" >"+ data[i].case +"</td>");
+                            $trTemp.append("<td onclick = \"table_data_other(\'" + data[i].other + "\')\">"+ data[i].other +"</td>");
+                            // $("#J_TbData").append($trTemp);
+                            $trTemp.appendTo("#J_TbData");
                         }
                     }
-                }
-               for(i = 0;i < name_data.length;i++) {
-                   data.push({name: name_data[i],case: case_data[i],other:other_data[i]});
-               }
-            }
-        });
-
-        $("#J_TbData").empty();
-        for( var i = 0; i < data.length; i++ ) {
-            //动态创建一个tr行标签,并且转换成jQuery对象
-            var $trTemp = $("<tr></tr>");
-
-            //往行里面追加 td单元格
-            $trTemp.append("<td onclick = \"table_data_ren(\'" + data[i].name + "\')\">"+ data[i].name +"</td>");
-            $trTemp.append("<td onclick = \"table_data_anjian(\'" + data[i].case + "\')\" >"+ data[i].case +"</td>");
-            $trTemp.append("<td onclick = \"table_data_other(\'" + data[i].other + "\')\">"+ data[i].other +"</td>");
-            // $("#J_TbData").append($trTemp);
-            $trTemp.appendTo("#J_TbData");
+                });
+            });
+        } catch (e) {
         }
+
     }
     function table_data_ren(name){
         table_data_ececute(name);
@@ -634,17 +652,21 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
                             '贺甲','贺甲','张四','王六','丁戊','丁戊','张伟','贺甲','贺甲','张四','王六','丁戊','丁戊','张伟'];
                         for(item in graph.nodes) {
                             if(graph.nodes[item]["CN_KEY"]==name) {
-                                console.log("gggg",graph.nodes[item]["创建时间"])
                                 var year = (graph.nodes[item]["创建时间"]).toString().substring(0,4);
                                 var month = (graph.nodes[item]["创建时间"]).toString().substring(5,7)
                                     + "-" + (graph.nodes[item]["创建时间"]).toString().substring(8,10);
+                                var time  = (graph.nodes[item]["创建时间"]).toString().substring(12,20)
+                                var str_time = (graph.nodes[item]["创建时间"]).toString().substring(0,20)
                                 var str_div = graph.nodes[item][graph.nodes[item].label];
+                                s_name = "操作人:"+str_name[item]
+                                s_alter = "修改者:"+"案管人员"
                                 if(str_div != ""){
                                     document.getElementById("timelineId").innerHTML +=
-                                        "<li><div class = \"time\">"+year+"</div> <div class = \"version\">"+month+"</div> " +
-                                        "<div class = \"timeBananName\">"+str_name[item]+"</div> <div class = \"number\"></div>" +
+                                        "<li><div class = \"time\">"+str_time+"</div> <div class = \"version\">"+s_alter+"</div> " +
+                                        "<div class = \"timeBananName\">"+s_name+"</div> <div class = \"number\"></div>" +
                                         " <div class = \"content\">" +
                                         "<div class = \"divCount\"> "+str_div+"<br /></div></div></li>";
+                                    console.log(document.getElementById("timelineId").innerHTML);
                                     $(".number").click(function(){
                                         var $divcount = $(this).parent().find(".divCount");
                                         var $divimg = $(this).find(".hand_img");
