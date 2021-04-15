@@ -126,7 +126,7 @@ public class GJAJServiceImpl implements GJAJService {
     }
 
     @Override
-    public List<Map<String, Integer>> countFields(String caseType, int size) {
+    public List<Map<String, Object>> countFields(String caseType, int size) {
         return caseDao.countFields(caseType, size);
     }
 

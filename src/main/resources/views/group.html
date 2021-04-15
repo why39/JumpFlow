@@ -98,9 +98,9 @@
     <input class="form-control" type="text" style="width: 240px" id="keySelect" placeholder="关键字查询"/>
     <div>
         <li class="list-group-item" style="height: 45px;"/>
-        <span style="float: left;margin-top:-2px;text-align:left;color: orange;font-size:24px"> 姓名 </span>
+        <span style="float: left;margin-top:-2px;text-align:left;color: orange;font-size:24px"> 时间 </span>
 
-        <span style="float:right;margin-right:240px;margin-top:-2px;color: orange;font-size:24px">所属</span>
+        <span style="float:right;margin-right:200px;margin-top:-2px;color: orange;font-size:24px">环节</span>
        <!-- <span style="float:right;margin-right:-290px;
         margin-top:-2px;color: orange;font-size:24px;" id = "group_select_id">信息筛选</span>-->
     </div>
@@ -203,6 +203,8 @@
 <script src="http://localhost:8083/hxyActiviti/scripts/jquery.slimscroll.js"></script>
 <script src="http://localhost:8083/hxyActiviti/scripts/waves.js"></script>
 <script src="http://localhost:8083/hxyActiviti/scripts/jquery.peity.min.js"></script>
+<script src="http://localhost:8083/hxyActiviti/scripts/neo4d3.js"></script>
+
 <script src="scripts/morris.min.js"></script>
 <script src="http://localhost:8083/hxyActiviti/scripts/raphael-min.js"></script>
 <script src="scripts/dashboard.js"></script>
@@ -320,7 +322,6 @@
             }
         };
 
-
         gantt.init("gantt_here");
         console.log(dataSet)
         gantt.parse({
@@ -343,31 +344,46 @@ document.getElementById("huadongId").onclick = function() {
 }
 </script>
 <script>
+    var connection = function () {
+        configStr = localStorage.getItem("neoconfig");
+        configJSON = JSON.parse(configStr)
+        // console.log(configJSON.NEO_SERVER_URL, configJSON.NEO_SERVER_USER, configJSON.NEO_SERVER_PSW)
+        config = {
+            url: "http://" + configJSON.NEO_SERVER_URL + ":7474",
+            user: configJSON.NEO_SERVER_USER,
+            pass: configJSON.NEO_SERVER_PSW
+        };
+        return config;
+    }
+    function jiema2() {
+        console.log(window.location.href)
+        var index_1 = window.location.href.indexOf("=");
+        str_1 = window.location.href.substring(index_1 + 1);
+        return decodeURI(str_1)
+    }
+    //查询检察官最近操作
     function executeNode() {
-        str = "<li class=\"list-group-item\" style=\"height: 45px;\"><span style=\"float: left;margin-top:-2px;text-align:left;\">" + "张远帆" + "</span> "
-            + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "张远帆" + "\')\">" + "查看" + "</button> "
-            + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "市级检察院" + "</span>";
-        str += "<li class=\"list-group-item\" style=\"height: 45px;\"><span style=\"float: left;margin-top:-2px;text-align:left;\">" + "陈川俊" + "</span> "
-            + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "陈川俊" + "\')\">" + "查看" + "</button> "
-            + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "市级检察院" + "</span>";
-        str += "<li class=\"list-group-item\" style=\"height: 45px;\"><span style=\"float: left;margin-top:-2px;text-align:left;\">" + "李驭龙" + "</span> "
-            + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "李驭龙" + "\')\">" + "查看" + "</button> "
-            + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "市级检察院" + "</span>";
-        str += "<li class=\"list-group-item\" style=\"height:45px;\"><span style=\"float: left;margin-top:-2px;text-align:left;\">" + "王太将" + "</span> "
-            + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "王太将" + "\')\">" + "查看" + "</button> "
-            + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "省级检察院" + "</span>";
-        str += "<li class=\"list-group-item\" style=\"height:45px;\"><span style=\"float: left;margin-top:-2px;text-align:left;\">" + "杨春露" + "</span> "
-            + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "杨春露" + "\')\">" + "查看" + "</button> "
-            + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "省级检察院" + "</span>";
-        str += "<li class=\"list-group-item\" style=\"height:45px;\"><span style=\"float: left;margin-top:-2px;text-align:left;\">" + "黄彦赫" + "</span> "
-            + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "黄彦赫" + "\')\">" + "查看" + "</button> "
-            + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "省级检察院" + "</span>";
-        str += "<li class=\"list-group-item\" style=\"height:45px;\"><span style=\"float: left;margin-top:-2px;text-align:left;\">" + "贺甲" + "</span> "
-            + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "贺甲" + "\')\">" + "查看" + "</button> "
-            + "<span style=\"float:right;margin-right:140px;margin-top:-2px\">" + "最高人民检察院" + "</span>";
-        document.getElementById("caseList").innerHTML += str;
-        var zz = getzz();
-        change(1, zz);
+       var neo = new Neo(connection);
+        try {
+            var query = "MATCH (m:Task)-[]-(n:USER) WHERE n.name = '" + jiema2() + "' RETURN m";
+            neo.executeQuery(query, {}, function (err, res) {
+                res = res || {}
+                var graph = res.graph;
+                if(graph.nodes){
+                    var str = "";
+                    //"<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + "张远帆" + "\')\">" + "" + "</button> "
+                    for(var i = 0;i < graph.nodes.length;i++){
+                        str += "<li class=\"list-group-item\" style=\"height: 45px;\"><span style=\"float: left;margin-top:-2px;text-align:left;\">" + graph.nodes[i]["创建时间"].substring(0,11) + "</span> "
+                            + "<span style=\"float:right;margin-right:110px;margin-top:-2px\">" + graph.nodes[i]["name"] + "</span>";
+                    }
+                    document.getElementById("caseList").innerHTML += str;
+                    var zz = getzz();
+                    change(1, zz);
+                }
+            });
+        } catch (e) {
+        }
+
     }
     function getzz() {
         var a = $("ul#caseList li");

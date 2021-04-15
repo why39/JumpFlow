@@ -386,6 +386,7 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
             document.getElementById("leftContent").setAttribute
             ("style", "display:none");
         }
+        }
 
 
         if ( ($("#userName").val()) == "" && $("#ankaCount").val() == "" && $("#timeStartName").val()=="" && $("#timeEndName").val() =="" && $("#labelName").val()=="" && $("#suyuanName").val() =="") {
@@ -491,71 +492,51 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
 </script>
 <script>
     document.getElementById("un_use_anka_id").onclick  = function () {
-        var data = [{
-            name: "案发时年龄",
-            case: "案件办理参与状态",
-            other: "附注"
-        },{
-            name: "案发时年龄代码",
-            case: "案件办理延长天数",
-            other: "日志组ID"
-        },{
-            name: "案发时年龄名称",
-            case: "案件承办单位",
-            other: "服务优先级"
-        },{
-            name: "嫌疑人身份",
-            case: "案件光盘数量",
-            other: "附注"
-        },{
-            name: "受教育情况",
-            case: "案件阶段编码",
-            other: "日志组ID"
-        },{
-            name: "是否担任实职",
-            case: "案件阶段名称",
-            other: "服务优先级"
-        },{
-            name: "是否为单位主要领导",
-            case: "案件卷宗册数",
-            other: "附注"
-        },{
-            name: "是否为恶势力保护伞",
-            case: "案件来源",
-            other: "日志组ID"
-        },{
-            name: "是否为追捕对象",
-            case: "案件领域",
-            other: "服务优先级"
-        },{
-            name: "是否为追诉对象",
-            case: "案件类型",
-            other: "附注"
-        },{
-            name: "补充人编号",
-            case: "案件类型名称",
-            other: "日志组ID"
-        },{
-            name: "请示单位代码",
-            case: "案件领域代码",
-            other: "服务优先级"
-        }];
+        var un_other_data = [];
+        var un_case_data = [];
+        var un_name_data = [];
+        var data = [];
+        $.ajax({
+            type: "get",
+            async: false,
+            url: "/hxyActiviti/demo/ak/aklb",
+            success: function (res) {
+                if (res) {
+                    for (i in res) {
+                        if (res[i].category == '其他' && !un_other_data.includes(res[i].cn)) {
+                            un_other_data.push(res[i].cn)
+                        }
+                        if (res[i].category == '案件相关' && !un_case_data.includes(res[i].cn)) {
+                            un_case_data.push(res[i].cn)
+                        }
+                        if (res[i].category == '人员相关' && !un_name_data.includes(res[i].cn)) {
+                            un_name_data.push(res[i].cn)
+                        }
+                    }
+                    for(i = 0;i < un_other_data.length;i++) {
+                        if(un_other_data[i] == undefined) un_other_data[i] = "";
+                        if(un_case_data[i] == undefined) un_case_data[i] = "";
+                        if(un_name_data[i] == undefined) un_name_data[i] = "";
+                        data.push({name: un_name_data[i], case: un_case_data[i], other: un_other_data[i]});
+                    }
+                }
+                $("#UN_J_TbData").empty();
+                for( var i = 0; i < data.length; i++ ) {
+                    var $trTemp = $("<tr></tr>");
 
-        $("#UN_J_TbData").empty();
-        for( var i = 0; i < data.length; i++ ) {
-            var $trTemp = $("<tr></tr>");
-
-            $trTemp.append("<td>"+ data[i].name +"</td>");
-            $trTemp.append("<td>"+ data[i].case +"</td>");
-            $trTemp.append("<td>"+ data[i].other +"</td>");
-            $trTemp.appendTo("#UN_J_TbData");
-        }
-        if(document.getElementById("unuse_anka_data_id").style.display == "none"){
-            document.getElementById("unuse_anka_data_id").style.display = "block"
-        }
-        else{
-            document.getElementById("unuse_anka_data_id").style.display = "none"
-        }
+                    $trTemp.append("<td>"+ data[i].name +"</td>");
+                    $trTemp.append("<td>"+ data[i].case +"</td>");
+                    $trTemp.append("<td>"+ data[i].other +"</td>");
+                    $trTemp.appendTo("#UN_J_TbData");
+                }
+                if(document.getElementById("unuse_anka_data_id").style.display == "none"){
+                    document.getElementById("unuse_anka_data_id").style.display = "block"
+                }
+                else{
+                    document.getElementById("unuse_anka_data_id").style.display = "none"
+                }
+            }
+        });
     }
     function table_data(node_id){
         var data = [];
@@ -584,13 +565,13 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
                             for (i in res) {
                                 for (var k = 0; k < graph_node.length; k++) {
                                     if (res[i].cn == graph_node[k].CN_KEY) {
-                                        if (res[i].category == '其他') {
+                                        if (res[i].category == '其他' && !other_data.includes(res[i].cn)) {
                                             other_data.push(res[i].cn)
                                         }
-                                        if (res[i].category == '案件相关') {
+                                        if (res[i].category == '案件相关' && !case_data.includes(res[i].cn)) {
                                             case_data.push(res[i].cn)
                                         }
-                                        if (res[i].category == '人员相关') {
+                                        if (res[i].category == '人员相关' && !name_data.includes(res[i].cn)) {
                                             name_data.push(res[i].cn)
                                         }
                                     }

@@ -19,9 +19,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.*;
 
 /**
  * 对接高检数据库用
@@ -104,9 +104,23 @@ public class GJAJController {
         return gjajService.countAJLB();
     }
 
-    @RequestMapping(value = "count-type-fileds")
+    @RequestMapping(value = "count-type-fields")
     @ResponseBody
-    public List<Map<String, Integer>> countAJLBField(@RequestParam String ajlb, @RequestParam int size) {
-        return caseService.countFields(ajlb, size);
+    public List<Map<String, Object>> countAJLBField(@RequestParam String ajlb, @RequestParam int size) {
+        if(ajlb.equals("xsjc")){
+            ajlb = "刑事检察";
+        }
+        List<Map<String, Object>> map = new ArrayList<>();
+        List<Map<String, Object>> list = caseService.countFields(ajlb, size);
+        for(Map<String, Object> item:list){
+            if(KVCache.kv.containsKey(item.get("field").toString().toUpperCase())){
+                Map<String, Object> hash = new HashMap<>();
+                hash.put("field",KVCache.kv.get(item.get("field").toString().toUpperCase()).cn);
+                hash.put("count_man",item.get("count_man"));
+                map.add(hash);
+            }
+
+        }
+        return map;
     }
 }

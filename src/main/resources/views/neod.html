@@ -400,7 +400,6 @@
                 if (res) {
                     var yy = 0;
                     for (var i in res) {
-
                         console.log(res[i].bmsah);
                         var str = "";
                         var j = parseInt(i) + 1
@@ -510,35 +509,27 @@
         clearNodeInfo();
         document.getElementById("morris-bar-stacked1").innerHTML = "";
         document.getElementById("morris-bar-stacked2").innerHTML = "";
-        data1 = [
-            { y: '附注', a: 3.00, b: 1.80, c: 1.00 },
-            { y: '补充人编号', a: 2.05,  b: 0.65, c: 0.80 },
-            { y: '补充人姓名', a: 1.70, b: 0.90, c: 0.56 },
-            { y: '入卷入编号', a: 1.75,  b: 0.85, c: 1.20 },
-            { y: '案件类型', a: 0.60, b: 0.90, c: 1.00 },
-            { y: '撤回人编号', a: 0.75,  b: 0.65, c: 1.10 },
-            { y: '案件类型名称', a: 0.60,  b: 0.50, c: 0.85 },
-            { y: '移送案由', a: 0.55,  b: 0.65, c: 0.52 },
-            { y: '案情摘要', a: 0.50,  b: 0.40, c: 0.77 },
-            { y: '关联自然人编号', a: 0.45,  b: 0.65, c: 0.60 },
-            { y: '撤回人姓名', a: 0.30, b: 0.30, c: 0.30 }
-        ];
-        data2 = [
-            { y: '受理', a: 3.00},
-            { y: '分案', a: 2.05},
-            { y: '审查起诉', a: 1.70},
-            { y: '起诉', a: 1.75},
-            { y: '全案不起诉', a: 0.90},
-            { y: '改变管辖', a: 0.75},
-            { y: '建议撤案', a: 0.60},
-            { y: '并案', a: 0.55},
-            { y: '拆案', a: 0.50},
-            { y: '出庭公诉', a: 0.45},
-            { y: '提出抗诉', a: 0.30}
-        ];
-        bar1(data1);
-        bar2(data2);
         executeNode(query, ss, ll);
+        $.ajax({
+            type: 'get',
+            data: {
+                ajlb: "xsjc",
+                size: 10
+            },
+            url: '/hxyActiviti/demo/gj/count-type-fields',
+            success: function(res) {
+                data = [];
+                for(var i = 0;i < res.length;i++){
+                    data.push({
+                        y: res[i]["field"],
+                        a: parseInt(res[i]["count_man"]),
+                        b: 0,
+                        c: 0
+                    })
+                }
+                bar1(data);
+            }
+        })
     }
     function supervisionClick() {
         document.getElementById("relevantCase").style.visibility = "visible";
