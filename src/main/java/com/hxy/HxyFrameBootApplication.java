@@ -14,6 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableAutoConfiguration(exclude={SecurityAutoConfiguration.class})
 @ServletComponentScan
 @ComponentScan({"com.hxy.modules.activiti.config","com.hxy.modules.activiti.org.activiti", "com.hxy"})
+
 public class HxyFrameBootApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {

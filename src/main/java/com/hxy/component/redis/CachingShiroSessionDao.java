@@ -71,7 +71,9 @@ public class CachingShiroSessionDao extends CachingSessionDAO {
         Session session = null;
         try {
             String key = prefix + sessionId;
+            //String key = redisUtil.getString("loginName");
             session = (Session) redisUtil.getObject(key);
+            //session.setAttribute();
             logger.info("sessionId {} name {} 被读取", sessionId, session.getClass().getName());
         } catch (Exception e) {
             logger.warn("读取Session失败", e);

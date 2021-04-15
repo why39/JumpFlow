@@ -18,8 +18,8 @@ public class SysPageController {
 		return  "modules/"+ module + "/" + url + ".html";
 	}
 
-	@RequestMapping("/")
+	/*@RequestMapping("/")
 	public String index(){
 		return "login.html";
-	}
+	}*/
 }

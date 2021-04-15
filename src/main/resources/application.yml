@@ -8,6 +8,14 @@ server:
     connection-timeout: 5000
     context-path: /hxyActiviti
 
+#CAS服务地址
+#本地客户端ip端口，不是首页地址
+cas:
+    client-host: http://localhost:8083
+    server-url: https://localhost:8080/cas
+    authn:
+        accept: users=root::a
+
 spring:
     # 环境 dev|test|pro
     profiles:
@@ -88,6 +96,9 @@ jwt:
     # token有效时长，7天，单位秒
     expire: 604800
     header: token
+
+
+
 
 security:
     basic:
