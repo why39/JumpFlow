@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Component
 public class GJNeo4jUtil {
@@ -245,7 +246,7 @@ public class GJNeo4jUtil {
      * @param map
      * @return
      */
-    public static String addActionNode(String BMSAH, String label, String relation, boolean reverse, Map<String, Object> map) {
+    public static String addActionNode(String BMSAH, String label, String relation, boolean reverse, Map<String, Object> map, ConcurrentHashMap<String, Integer> fieldCount) {
         String lastNodeId = null;
         if (map != null && map.get(NeoConstants.KEY_LAST_NODE_ID) != null) {
             lastNodeId = (String) map.get(NeoConstants.KEY_LAST_NODE_ID);
@@ -253,10 +254,15 @@ public class GJNeo4jUtil {
 
         map.put("caseId", BMSAH);
         String nodeId = GJNeo4jUtil.createKeyValues(label, lastNodeId, relation, reverse, map);
+        if (fieldCount.containsKey(label)) {
+            fieldCount.put(label, fieldCount.get(label) + 1);
+        } else {
+            fieldCount.put(label, 1);
+        }
         return nodeId;
     }
 
-    public static String addPropertyNode(String BMSAH, String label, String relation, boolean reverse, Map<String, Object> map) {
+    public static String addPropertyNode(String BMSAH, String label, String relation, boolean reverse, Map<String, Object> map, ConcurrentHashMap<String, Integer> fieldCount) {
         String lastNodeId = null;
         String lastTaskNodeId = (String) map.get("taskNodeId");
         String lastTaskNodeName = (String) map.get("taskNodeName");
@@ -318,6 +324,11 @@ public class GJNeo4jUtil {
             code.setLabel("相关");
             code.setRelation("相关");
             relate(code);
+            if (fieldCount.containsKey(label)) {
+                fieldCount.put(label, fieldCount.get(label) + 1);
+            } else {
+                fieldCount.put(label, 1);
+            }
 
             return nodeId;
         }

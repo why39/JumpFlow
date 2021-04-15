@@ -126,6 +126,11 @@ public class GJAJServiceImpl implements GJAJService {
     }
 
     @Override
+    public List<Map<String, Integer>> countFields(String caseType, int size) {
+        return caseDao.countFields(caseType, size);
+    }
+
+    @Override
     public Result parseLogForTest(int count) {
         long start = System.currentTimeMillis();
         PageHelper.startPage(1, count);
@@ -146,6 +151,8 @@ public class GJAJServiceImpl implements GJAJService {
         executors.shutdown();
         return Result.ok();
     }
+
+    private ConcurrentHashMap<String, Integer> fieldCount = new ConcurrentHashMap<String, Integer>();
 
     @Override
     public Result parseLog(String BMSAH) {
@@ -230,7 +237,7 @@ public class GJAJServiceImpl implements GJAJService {
                                     par.put("taskNodeName", lastTask.get("name"));
                                 }
 
-                                String taskNodeId = GJNeo4jUtil.addPropertyNode(BMSAH, key, "变化", false, par);
+                                String taskNodeId = GJNeo4jUtil.addPropertyNode(BMSAH, key, "变化", false, par, fieldCount);
                                 GJNeo4jUtil.addUserNode(rz.getCZRM(), taskNodeId, "修改");
                             }
 
@@ -272,7 +279,7 @@ public class GJAJServiceImpl implements GJAJService {
                                     par.put("taskNodeName", lastTask.get("name"));
                                 }
 
-                                String taskNodeId = GJNeo4jUtil.addPropertyNode(BMSAH, key, "变化", false, par);
+                                String taskNodeId = GJNeo4jUtil.addPropertyNode(BMSAH, key, "变化", false, par, fieldCount);
                                 GJNeo4jUtil.addUserNode(rz.getCZRM(), taskNodeId, "修改");
                             }
 
@@ -286,7 +293,7 @@ public class GJAJServiceImpl implements GJAJService {
                             map.put("操作人", rz.getCZRM());
                             map.put("最后修改时间", (String) rz.getZHXGSJ());
                             map.put("日志ID", rz.getID());
-                            String taskNodeId = GJNeo4jUtil.addActionNode(BMSAH, "操作", "相关", false, map);
+                            String taskNodeId = GJNeo4jUtil.addActionNode(BMSAH, "操作", "相关", false, map, fieldCount);
                             GJNeo4jUtil.addUserNode(rz.getCZRM(), taskNodeId, "修改");
                         }
                     }
@@ -295,6 +302,18 @@ public class GJAJServiceImpl implements GJAJService {
                 }
             }
             caseDao.updateComplete(1, BMSAH);
+
+            for (Map.Entry<String, Integer> field : fieldCount.entrySet()) {
+
+                if (caseDao.countField(gjajEntity.getAJLB_MC(), field.getKey()) > 0) {
+                    //如果表里面有这个案件类型对应的field，直接累加
+                    caseDao.updateCountFields(gjajEntity.getAJLB_MC(), field.getKey(), field.getValue());
+                } else {
+                    //否则插入新数据
+                    caseDao.insertCountFields(gjajEntity.getAJLB_MC(), field.getKey(), field.getValue());
+                }
+
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

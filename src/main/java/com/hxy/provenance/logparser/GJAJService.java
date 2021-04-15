@@ -39,4 +39,6 @@ public interface GJAJService {
     Result parseLogForTest(int count);
 
     Result deleteTest(int count);
+
+    List<Map<String,Integer>> countFields(String caseType,int size);
 }

@@ -42,42 +42,42 @@ public class GJAJController {
 
     @RequestMapping("gjajlb")
     @RequiresPermissions("act:model:all")
-    public String gjajlb(Model model , GJAJEntity caseEntity, HttpServletRequest request){
+    public String gjajlb(Model model, GJAJEntity caseEntity, HttpServletRequest request) {
         int pageNum = CommUtils.parseInt(request.getParameter("pageNum"), 1);
         Page<GJAJEntity> page = caseService.findPage(caseEntity, pageNum);
-        model.addAttribute("page",page);
-        model.addAttribute("case",caseEntity);
+        model.addAttribute("page", page);
+        model.addAttribute("case", caseEntity);
 
 //        dataPlatformService.queryAJ("2019-11-08 15:10:42", "2019-11-08 23:10:42");
 
         return "demo/gjajlb";
     }
 
-    @RequestMapping(value="parselog", method = RequestMethod.POST)
+    @RequestMapping(value = "parselog", method = RequestMethod.POST)
     @RequiresPermissions("act:model:all")
     @ResponseBody
-    public Result parselog(String bmsah){
+    public Result parselog(String bmsah) {
         //解析某个案件的所有日志
         return caseService.parseLog(bmsah);
     }
 
-    @RequestMapping(value="parselog-test", method = RequestMethod.POST)
+    @RequestMapping(value = "parselog-test", method = RequestMethod.POST)
     @RequiresPermissions("act:model:all")
     @ResponseBody
-    public Result parselogForTest(int count){
+    public Result parselogForTest(int count) {
         //解析某个案件的所有日志
         return caseService.parseLogForTest(count);
     }
 
-    @RequestMapping(value="delete-test", method = RequestMethod.POST)
+    @RequestMapping(value = "delete-test", method = RequestMethod.POST)
     @RequiresPermissions("act:model:all")
     @ResponseBody
-    public Result deleteTest(int count){
+    public Result deleteTest(int count) {
         //解析某个案件的所有日志
         return caseService.deleteTest(count);
     }
 
-    @RequestMapping(value="deletelog", method = RequestMethod.POST)
+    @RequestMapping(value = "deletelog", method = RequestMethod.POST)
     @RequiresPermissions("act:model:all")
     @ResponseBody
     public Result deletelog(String bmsah) {
@@ -86,7 +86,7 @@ public class GJAJController {
 
     @RequestMapping(value = "ajlb")
     @ResponseBody
-    public List<GJAJEntity> Ajlb(@RequestParam  String ajlb){
+    public List<GJAJEntity> Ajlb(@RequestParam String ajlb) {
         /*try {
             ajlb = java.net.URLDecoder.decode(ajlb, "UTF-8");
             ajlb = new String(ajlb.getBytes("ISO-8859-1"),"UTF-8");
@@ -101,6 +101,12 @@ public class GJAJController {
     @RequestMapping(value = "count-ajlb")
     @ResponseBody
     public List<Map<String, Object>> countAJLB() {
-        return  gjajService.countAJLB();
+        return gjajService.countAJLB();
+    }
+
+    @RequestMapping(value = "count-type-fileds")
+    @ResponseBody
+    public List<Map<String, Integer>> countAJLBField(@RequestParam String ajlb, @RequestParam int size) {
+        return caseService.countFields(ajlb, size);
     }
 }
