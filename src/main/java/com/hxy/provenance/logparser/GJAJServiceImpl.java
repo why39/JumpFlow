@@ -305,7 +305,7 @@ public class GJAJServiceImpl implements GJAJService {
 
             for (Map.Entry<String, Integer> field : fieldCount.entrySet()) {
 
-                if (caseDao.countField(gjajEntity.getAJLB_MC(), field.getKey()) > 0) {
+                if (caseDao.hasField(gjajEntity.getAJLB_MC(), field.getKey()) > 0) {
                     //如果表里面有这个案件类型对应的field，直接累加
                     caseDao.updateCountFields(gjajEntity.getAJLB_MC(), field.getKey(), field.getValue());
                 } else {

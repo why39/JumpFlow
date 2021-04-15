@@ -13,21 +13,23 @@
     </resultMap>
 
     <insert id="insertCountFields">
-        insert into tb_type_filed_count (case_type,field,count_man)
-        values (#{case_type},#{field},#{count_man})
+        insert into tb_type_filed_count (case_type,field,count_man) values (#{case_type},#{field},#{count_man})
     </insert>
 
     <insert id="updateCountFields">
-        update tb_type_filed_count set(count_man)
-        values (count_man+#{count}) where case_type=#{case_type} and field=#{field}
+        update tb_type_filed_count set count_man=count_man+#{count} where case_type=#{case_type} and field=#{field}
     </insert>
 
     <select id="countFields" resultType="map">
-        select field,count_man from tb_type_filed_count where case_type = #{case_type} order by count_man limit #{size};
+        select field,count_man from tb_type_filed_count where case_type = #{case_type} order by count_man limit #{size}
+    </select>
+
+    <select id="hasField" resultType="Integer">
+        select count(count_man) from tb_type_filed_count where case_type = #{case_type} and field=#{field}
     </select>
 
     <select id="countField" resultType="Integer">
-        select count(count_man) from tb_type_filed_count where case_type = #{case_type} and field=#{field};
+        select count_man from tb_type_filed_count where case_type = #{case_type} and field=#{field}
     </select>
 
     <sql id="Base_Column_List2">
