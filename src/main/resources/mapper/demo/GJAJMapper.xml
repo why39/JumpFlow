@@ -28,8 +28,8 @@
         select count(count_man) from tb_type_filed_count where case_type = #{case_type} and field=#{field}
     </select>
 
-    <select id="countField" resultType="Integer">
-        select count_man from tb_type_filed_count where case_type = #{case_type} and field=#{field}
+    <select id="openJob" resultType="Integer">
+        select count_man from tb_type_filed_count where case_type = 'JobConfig' and field='JobConfig'
     </select>
 
     <sql id="Base_Column_List2">

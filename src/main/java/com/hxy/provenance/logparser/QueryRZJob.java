@@ -3,6 +3,7 @@ package com.hxy.provenance.logparser;
 import com.hxy.modules.common.utils.RedisUtil;
 import com.hxy.modules.common.utils.SpringContextUtils;
 import com.hxy.modules.common.utils.StringUtils;
+import com.hxy.modules.demo.dao.CaseDao;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -27,11 +28,17 @@ public class QueryRZJob implements Job {
 
     private RedisUtil redisUtil = (RedisUtil) SpringContextUtils.getBean("redisUtil");
 
+    GJAJDao caseDao = SpringContextUtils.getBean(GJAJDao.class);
+
     /**
      * 任务被触发时执行的方法
      */
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
+
+        if (caseDao.openJob() == 0) {
+            return;
+        }
         logger.info("EXECUTE...QueryRZJob");
         LocalDate date = LocalDate.parse("2018-01-01");
         try {

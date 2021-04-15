@@ -27,11 +27,16 @@ public class QueryAjJob implements Job {
 
     private RedisUtil redisUtil=(RedisUtil) SpringContextUtils.getBean("redisUtil");
 
+    GJAJDao caseDao = SpringContextUtils.getBean(GJAJDao.class);
+
     /**
      * 任务被触发时执行的方法
      */
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
+        if (caseDao.openJob() == 0) {
+            return;
+        }
         logger.info("EXECUTE...QueryAjJob");
         LocalDate date = LocalDate.parse("2018-01-01");
         try {
