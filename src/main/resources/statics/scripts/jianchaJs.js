@@ -110,17 +110,17 @@ function executeNode() {
         neo.executeQuery(query, {}, function (err, res) {
             if (res.table) {
                 for (index in res.table) {
+                    // + "<button onclick=\"MemberName(\'" + group_id + "\')\" style=\"float:right;margin-right:430px;margin-top:-2px;  background-color: transparent;" +
+                    //                         "border: 0px solid transparent;outline: none;\">" + "团队成员详情" + "</button>";
                     var group_id = res.table[index]["n.operator"];
                     str = "<li class=\"list-group-item\" style=\"height: 45px;\"><span style=\"float: left;margin-top:-2px;width:250px;text-align:left;\">" + res.table[index]["n.operator"] + "</span> "
-                        + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + res.table[index]["n.operator"] + "\')\">" + "世系查询" + "</button> "
-                        + "<button onclick=\"MemberName(\'" + group_id + "\')\" style=\"float:right;margin-right:430px;margin-top:-2px;  background-color: transparent;" +
-                        "border: 0px solid transparent;outline: none;\">" + "团队成员详情" + "</button>";
+                        + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + res.table[index]["n.operator"] + "\')\">" + "世系查询" + "</button> ";
                     document.getElementById("caseList").innerHTML += str;
                 }
                 var zz = getzz();
                 change(1, zz);
             }
-        });
+        });;
     } catch (e) {
     }
    /* $.ajax({

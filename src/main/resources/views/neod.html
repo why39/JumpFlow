@@ -502,8 +502,8 @@
         document.getElementById("relevantCase").style.visibility = "visible";
         var ss = document.getElementById("xieshijiancha_a").innerHTML + "案件";
         var ll = document.getElementById("xieshijiancha_a").innerHTML;
-        document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "案件办理耗时（平均/小时）";
+        document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（降序）";
+        document.getElementById("bar_label2").innerHTML = ll + "业务案卡项修改次数（升序）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "刑事检察" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -518,7 +518,7 @@
             },
             url: '/hxyActiviti/demo/gj/count-type-fields',
             success: function(res) {
-                data = [];
+                var data = [];
                 for(var i = 0;i < res.length;i++){
                     data.push({
                         y: res[i]["field"],
@@ -528,6 +528,16 @@
                     })
                 }
                 bar1(data);
+                var data2 = [];
+                for(var i = res.length - 1;i >= 0;i--){
+                    data2.push({
+                        y: res[i]["field"],
+                        a: parseInt(res[i]["count_man"]),
+                        b: 0,
+                        c: 0
+                    })
+                }
+                bar2(data2);
             }
         })
     }
@@ -539,38 +549,40 @@
         document.getElementById("bar_label2").innerHTML = ll + "案件办理耗时（平均/小时）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "刑事执行" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
-        data1 = [
-            { y: '张某hhh', a: 300, b: 180, c: 100 },
-            { y: '李某', a: 205,  b: 65, c: 80 },
-            { y: '王某', a: 170, b: 90, c: 56 },
-            { y: '丁某', a: 75,  b: 85, c: 120 },
-            { y: '贺某', a: 60, b: 90, c: 100 },
-            { y: '王某', a: 75,  b: 65, c: 110 },
-            { y: '马某', a: 60,  b: 50, c: 85 },
-            { y: '丁某', a: 55,  b: 65, c: 52 },
-            { y: '刘某', a: 50,  b: 40, c: 77 },
-            { y: '马某', a: 45,  b: 65, c: 60 },
-            { y: '李某', a: 30, b: 30, c: 30 }
-        ];
-        data2 = [
-            { y: '受理', a: 3.00},
-            { y: '分案', a: 2.05},
-            { y: '审查起诉', a: 1.70},
-            { y: '起诉', a: 1.75},
-            { y: '全案不起诉', a: 0.90},
-            { y: '改变管辖', a: 0.75},
-            { y: '建议撤案', a: 0.60},
-            { y: '并案', a: 0.55},
-            { y: '拆案', a: 0.50},
-            { y: '出庭公诉', a: 0.45},
-            { y: '提出抗诉', a: 0.30}
-        ];
         clearNodeInfo();
         document.getElementById("morris-bar-stacked1").innerHTML = "";
         document.getElementById("morris-bar-stacked2").innerHTML = "";
-        bar1(data1);
-        bar2(data2);
         executeNode(query, ss, ll);
+        $.ajax({
+            type: 'get',
+            data: {
+                ajlb: "xszx",
+                size: 10
+            },
+            url: '/hxyActiviti/demo/gj/count-type-fields',
+            success: function(res) {
+                var data = [];
+                for(var i = 0;i < res.length;i++){
+                    data.push({
+                        y: res[i]["field"],
+                        a: parseInt(res[i]["count_man"]),
+                        b: 0,
+                        c: 0
+                    })
+                }
+                bar1(data);
+                var data2 = [];
+                for(var i = res.length - 1;i >= 0;i--){
+                    data2.push({
+                        y: res[i]["field"],
+                        a: parseInt(res[i]["count_man"]),
+                        b: 0,
+                        c: 0
+                    })
+                }
+                bar2(data2);
+            }
+        })
     }
 
     function prosecutionClick() {
@@ -582,7 +594,39 @@
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "公益诉讼" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
+        document.getElementById("morris-bar-stacked1").innerHTML = "";
+        document.getElementById("morris-bar-stacked2").innerHTML = "";
         executeNode(query, ss, ll);
+        $.ajax({
+            type: 'get',
+            data: {
+                ajlb: "gyss",
+                size: 10
+            },
+            url: '/hxyActiviti/demo/gj/count-type-fields',
+            success: function(res) {
+                var data = [];
+                for(var i = 0;i < res.length;i++){
+                    data.push({
+                        y: res[i]["field"],
+                        a: parseInt(res[i]["count_man"]),
+                        b: 0,
+                        c: 0
+                    })
+                }
+                bar1(data);
+                var data2 = [];
+                for(var i = res.length - 1;i >= 0;i--){
+                    data2.push({
+                        y: res[i]["field"],
+                        a: parseInt(res[i]["count_man"]),
+                        b: 0,
+                        c: 0
+                    })
+                }
+                bar2(data2);
+            }
+        })
     }
 
 
@@ -595,7 +639,39 @@
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "民事" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
+        document.getElementById("morris-bar-stacked1").innerHTML = "";
+        document.getElementById("morris-bar-stacked2").innerHTML = "";
         executeNode(query, ss, ll);
+        $.ajax({
+            type: 'get',
+            data: {
+                ajlb: "ms",
+                size: 10
+            },
+            url: '/hxyActiviti/demo/gj/count-type-fields',
+            success: function(res) {
+                var data = [];
+                for(var i = 0;i < res.length;i++){
+                    data.push({
+                        y: res[i]["field"],
+                        a: parseInt(res[i]["count_man"]),
+                        b: 0,
+                        c: 0
+                    })
+                }
+                bar1(data);
+                var data2 = [];
+                for(var i = res.length - 1;i >= 0;i--){
+                    data2.push({
+                        y: res[i]["field"],
+                        a: parseInt(res[i]["count_man"]),
+                        b: 0,
+                        c: 0
+                    })
+                }
+                bar2(data2);
+            }
+        })
     }
 
     function xinzhengClick() {
@@ -607,7 +683,39 @@
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "行政" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
+        document.getElementById("morris-bar-stacked1").innerHTML = "";
+        document.getElementById("morris-bar-stacked2").innerHTML = "";
         executeNode(query, ss, ll);
+        $.ajax({
+            type: 'get',
+            data: {
+                ajlb: "xz",
+                size: 10
+            },
+            url: '/hxyActiviti/demo/gj/count-type-fields',
+            success: function(res) {
+                var data = [];
+                for(var i = 0;i < res.length;i++){
+                    data.push({
+                        y: res[i]["field"],
+                        a: parseInt(res[i]["count_man"]),
+                        b: 0,
+                        c: 0
+                    })
+                }
+                bar1(data);
+                var data2 = [];
+                for(var i = res.length - 1;i >= 0;i--){
+                    data2.push({
+                        y: res[i]["field"],
+                        a: parseInt(res[i]["count_man"]),
+                        b: 0,
+                        c: 0
+                    })
+                }
+                bar2(data2);
+            }
+        })
     }
 
     function weijianClick() {
@@ -619,7 +727,39 @@
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "未检业务" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
+        document.getElementById("morris-bar-stacked1").innerHTML = "";
+        document.getElementById("morris-bar-stacked2").innerHTML = "";
         executeNode(query, ss, ll);
+        $.ajax({
+            type: 'get',
+            data: {
+                ajlb: "wjyw",
+                size: 10
+            },
+            url: '/hxyActiviti/demo/gj/count-type-fields',
+            success: function(res) {
+                var data = [];
+                for(var i = 0;i < res.length;i++){
+                    data.push({
+                        y: res[i]["field"],
+                        a: parseInt(res[i]["count_man"]),
+                        b: 0,
+                        c: 0
+                    })
+                }
+                bar1(data);
+                var data2 = [];
+                for(var i = res.length - 1;i >= 0;i--){
+                    data2.push({
+                        y: res[i]["field"],
+                        a: parseInt(res[i]["count_man"]),
+                        b: 0,
+                        c: 0
+                    })
+                }
+                bar2(data2);
+            }
+        })
     }
 
     function konggaoClick() {
@@ -631,7 +771,39 @@
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "控告申诉" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
+        document.getElementById("morris-bar-stacked1").innerHTML = "";
+        document.getElementById("morris-bar-stacked2").innerHTML = "";
         executeNode(query, ss, ll);
+        $.ajax({
+            type: 'get',
+            data: {
+                ajlb: "kgss",
+                size: 10
+            },
+            url: '/hxyActiviti/demo/gj/count-type-fields',
+            success: function(res) {
+                var data = [];
+                for(var i = 0;i < res.length;i++){
+                    data.push({
+                        y: res[i]["field"],
+                        a: parseInt(res[i]["count_man"]),
+                        b: 0,
+                        c: 0
+                    })
+                }
+                bar1(data);
+                var data2 = [];
+                for(var i = res.length - 1;i >= 0;i--){
+                    data2.push({
+                        y: res[i]["field"],
+                        a: parseInt(res[i]["count_man"]),
+                        b: 0,
+                        c: 0
+                    })
+                }
+                bar2(data2);
+            }
+        })
     }
 
     function jianweiClick() {
@@ -643,7 +815,39 @@
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "检委办" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
+        document.getElementById("morris-bar-stacked1").innerHTML = "";
+        document.getElementById("morris-bar-stacked2").innerHTML = "";
         executeNode(query, ss, ll);
+        $.ajax({
+            type: 'get',
+            data: {
+                ajlb: "jwb",
+                size: 10
+            },
+            url: '/hxyActiviti/demo/gj/count-type-fields',
+            success: function(res) {
+                var data = [];
+                for(var i = 0;i < res.length;i++){
+                    data.push({
+                        y: res[i]["field"],
+                        a: parseInt(res[i]["count_man"]),
+                        b: 0,
+                        c: 0
+                    })
+                }
+                bar1(data);
+                var data2 = [];
+                for(var i = res.length - 1;i >= 0;i--){
+                    data2.push({
+                        y: res[i]["field"],
+                        a: parseInt(res[i]["count_man"]),
+                        b: 0,
+                        c: 0
+                    })
+                }
+                bar2(data2);
+            }
+        })
     }
 
     function duitaiClick() {
@@ -655,7 +859,39 @@
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "对台业务" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
+        document.getElementById("morris-bar-stacked1").innerHTML = "";
+        document.getElementById("morris-bar-stacked2").innerHTML = "";
         executeNode(query, ss, ll);
+        $.ajax({
+            type: 'get',
+            data: {
+                ajlb: "dtyw",
+                size: 10
+            },
+            url: '/hxyActiviti/demo/gj/count-type-fields',
+            success: function(res) {
+                var data = [];
+                for(var i = 0;i < res.length;i++){
+                    data.push({
+                        y: res[i]["field"],
+                        a: parseInt(res[i]["count_man"]),
+                        b: 0,
+                        c: 0
+                    })
+                }
+                bar1(data);
+                var data2 = [];
+                for(var i = res.length - 1;i >= 0;i--){
+                    data2.push({
+                        y: res[i]["field"],
+                        a: parseInt(res[i]["count_man"]),
+                        b: 0,
+                        c: 0
+                    })
+                }
+                bar2(data2);
+            }
+        })
     }
 
     function anguanClick() {
@@ -667,7 +903,39 @@
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "案管" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
+        document.getElementById("morris-bar-stacked1").innerHTML = "";
+        document.getElementById("morris-bar-stacked2").innerHTML = "";
         executeNode(query, ss, ll);
+        $.ajax({
+            type: 'get',
+            data: {
+                ajlb: "ag",
+                size: 10
+            },
+            url: '/hxyActiviti/demo/gj/count-type-fields',
+            success: function(res) {
+                var data = [];
+                for(var i = 0;i < res.length;i++){
+                    data.push({
+                        y: res[i]["field"],
+                        a: parseInt(res[i]["count_man"]),
+                        b: 0,
+                        c: 0
+                    })
+                }
+                bar1(data);
+                var data2 = [];
+                for(var i = res.length - 1;i >= 0;i--){
+                    data2.push({
+                        y: res[i]["field"],
+                        a: parseInt(res[i]["count_man"]),
+                        b: 0,
+                        c: 0
+                    })
+                }
+                bar2(data2);
+            }
+        })
     }
 
     function sifaClick() {
@@ -679,7 +947,39 @@
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "司法协助" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
+        document.getElementById("morris-bar-stacked1").innerHTML = "";
+        document.getElementById("morris-bar-stacked2").innerHTML = "";
         executeNode(query, ss, ll);
+        $.ajax({
+            type: 'get',
+            data: {
+                ajlb: "sfxz",
+                size: 10
+            },
+            url: '/hxyActiviti/demo/gj/count-type-fields',
+            success: function(res) {
+                var data = [];
+                for(var i = 0;i < res.length;i++){
+                    data.push({
+                        y: res[i]["field"],
+                        a: parseInt(res[i]["count_man"]),
+                        b: 0,
+                        c: 0
+                    })
+                }
+                bar1(data);
+                var data2 = [];
+                for(var i = res.length - 1;i >= 0;i--){
+                    data2.push({
+                        y: res[i]["field"],
+                        a: parseInt(res[i]["count_man"]),
+                        b: 0,
+                        c: 0
+                    })
+                }
+                bar2(data2);
+            }
+        })
     }
 
     window.onload = (function () {

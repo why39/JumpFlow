@@ -14,7 +14,7 @@ cas:
     client-host: http://localhost:8083
     server-url: https://localhost:8080/cas
     authn:
-        accept: users=root::a
+        accept: users= root::a
 
 spring:
     # 环境 dev|test|pro

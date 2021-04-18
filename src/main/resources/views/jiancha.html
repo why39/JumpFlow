@@ -101,7 +101,7 @@
     <div class="col-xl-9" style = "display:inline-block">
         <div class="card" style = "width:580px;height: 400px">
             <div class="card-body">
-                <h4 class="mt-0 header-title mb-5" style = "display: inline">检察官办结案件耗时（平均/小时）</h4>
+                <h4 class="mt-0 header-title mb-5" style = "display: inline">检察官办结案件总耗时/小时</h4>
                 <div class="checkbox" style = "display: inline">
                     <select class = "select_class" id = "jiean_time_id">
                         <option>查看本周内统计信息</option>
@@ -277,7 +277,7 @@
                                 "use strict1";
                                 $.Dashboard.init();
                             }(window.jQuery);
-                    },500)
+                    },200)
 
                 }
             });
@@ -329,17 +329,17 @@
         Dashboard.prototype.init = function () {
 
             var $stckedData  = [
-                { y: '刑事检察团队', a: 8.00},
-                { y: '刑事执行团队', a: 7.05},
-                { y: '公益诉讼团队', a: 4.70},
-                { y: '民事团队', a: 3.75},
-                { y: '行政团队', a: 2.90},
-                { y: '未检业务团队', a: 2.75},
-                { y: '控告申诉团队', a: 1.60},
-                { y: '检委办团队', a: 1.55},
-                { y: '对台业务团队', a: 1.50},
-                { y: '案管团队', a: 0.45},
-                { y: '司法协助', a: 0.30}
+                { y: '汉东省院180', a: 8.00},
+                { y: '测试账号1804', a: 7.05},
+                { y: '汉东省院0103', a: 4.70},
+                { y: '执检十一部主任', a: 3.75},
+                { y: '测试账号0103', a: 2.90},
+                { y: '测试账号0903', a: 2.75},
+                { y: '汉东省院18044', a: 1.60},
+                { y: '汉东省院1804', a: 1.55},
+                { y: '汉东省院0102', a: 1.50},
+                { y: '测试账号0101', a: 0.45},
+                { y: '测试账号0102', a: 0.30}
             ];
             this.createStackedChart('morris-bar-stacked2', $stckedData, 'y', ['a'], ['耗时'], ['#8603FF']);
         },

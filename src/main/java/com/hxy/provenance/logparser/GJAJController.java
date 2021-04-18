@@ -110,6 +110,32 @@ public class GJAJController {
         if(ajlb.equals("xsjc")){
             ajlb = "刑事检察";
         }
+        if(ajlb.equals("xszx")){
+            ajlb = "刑事执行";
+        }
+        if(ajlb.equals("gyss")){
+            ajlb = "公益诉讼";
+        }
+        if(ajlb.equals("ms")){
+            ajlb = "民事";
+        }
+        if(ajlb.equals("xz")){
+            ajlb = "行政";
+        }
+        if(ajlb.equals("jwb")){
+            ajlb = "检委办";
+        }
+        if(ajlb.equals("wjyw")){
+            ajlb = "未检业务";
+        } if(ajlb.equals("kgss")){
+            ajlb = "控告申诉";
+        } if(ajlb.equals("dtyw")){
+            ajlb = "对台业务";
+        } if(ajlb.equals("ag")){
+            ajlb = "案管";
+        } if(ajlb.equals("sfxz")){
+            ajlb = "司法协助";
+        }
         List<Map<String, Object>> map = new ArrayList<>();
         List<Map<String, Object>> list = caseService.countFields(ajlb, size);
         for(Map<String, Object> item:list){

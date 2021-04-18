@@ -369,6 +369,8 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
         execute(query);
     }
 
+
+
     function clearNodeInfo() {
         //neo pane区域
         $(".nodeId").text("");
@@ -386,9 +388,6 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
             document.getElementById("leftContent").setAttribute
             ("style", "display:none");
         }
-        }
-
-
         if ( ($("#userName").val()) == "" && $("#ankaCount").val() == "" && $("#timeStartName").val()=="" && $("#timeEndName").val() =="" && $("#labelName").val()=="" && $("#suyuanName").val() =="") {
             query = "match(n:CASE) where n.caseId = \'" + jiema() + "\' with n match p = (n) - [*] ->(m:Task) RETURN p";
         } else {
@@ -404,7 +403,7 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
                 nodeLimitContent = " MATCH p = (n) - [*] -> (m) ";
             }
 
-            timeContent = ""
+            timeContent = "";
             if ($("#timeStartName").val() && $("#timeEndName").val()) {
                 var timeStart = new Date($("#timeStartName").val());
                 var vYear1 = timeStart.getFullYear();
@@ -443,11 +442,12 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
         }
 
         clearNodeInfo();
+        console.log("gggggg");
         execute(query);
-    }
+        }
 
-    var url = window.location.href;//得到页面的url
-    var URL_decode = decodeURI(decodeURI(url));//对含有中文的url进行解码,注意是两次解码
+
+
     //自定义获取URL中某一参数的封装函数
     function GetQueryString_new(key) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -460,18 +460,15 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
     }
 
     function jiema() {
+        var url = window.location.href;//得到页面的url
+        var URL_decode = decodeURI(decodeURI(url));//对含有中文的url进行解码,注意是两次解码
         var index_1 = URL_decode.indexOf("=");
         str_1 = URL_decode.substring(index_1 + 1);
         var index_2 = str_1.indexOf("=")
         str_2 = str_1.substring(index_2 + 1);
         return str_2
-        console.log(str_2);
+        //return "东检刑诉受[2019]770000101702号";
     }
-
-    function BanAnRen() {
-        window.location.href="http://localhost:8083/hxyActiviti/neoBan.html?bmsah="+localStorage.getItem("LeiBieName");;
-    }
-
     window.onload = (function () {
         var query = null;
         document.getElementById("displayCaseId").innerHTML = jiema();
@@ -488,6 +485,11 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
         clearNodeInfo();
         execute(query);
     });
+
+    function BanAnRen() {
+        window.location.href="http://localhost:8083/hxyActiviti/neoBan.html?bmsah="+localStorage.getItem("LeiBieName");;
+    }
+
 
 </script>
 <script>

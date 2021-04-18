@@ -143,7 +143,7 @@
 <div class="col-xl-9" style="width:514px;position:absolute;margin-top: 340px">
     <div class="card" style = "width:514px;height: 400px;margin-top:10px">
         <div class="card-body">
-            <h4 class="mt-0 header-title mb-5" style = "display: inline">办案人处理案件排名</h4>
+            <h4 class="mt-0 header-title mb-5" style = "display: inline">办案人处理案件类型排名</h4>
             <div class="checkbox" style = "display: inline">
                 <select class = "select_class" id = "jiean_time_id">
                     <option>查看本周内统计信息</option>
@@ -160,7 +160,7 @@
 <div class="col-xl-9" style="width:514px;position:absolute;margin-left: 600px">
     <div class="card" style = "width:514px;height: 400px;margin-top:10px">
         <div class="card-body">
-            <h4 class="mt-0 header-title mb-5" style = "display: inline">办案人文书处理数量</h4>
+            <h4 class="mt-0 header-title mb-5" style = "display: inline">办案人处理文书类型排名</h4>
             <div class="checkbox" style = "display: inline">
                 <select class = "select_class" id = "chuli_wenshu_id">
                     <option>查看本周内统计信息</option>
@@ -177,7 +177,7 @@
 <div class="col-xl-9" style="width:514px;position:absolute;margin-top: 340px;margin-left:600px">
     <div class="card" style = "width:514px;height: 400px;margin-top:10px">
         <div class="card-body">
-            <h4 class="mt-0 header-title mb-5" style = "display: inline">办案人处理环节个数</h4>
+            <h4 class="mt-0 header-title mb-5" style = "display: inline">办案人处理案卡项类型排名</h4>
             <div class="checkbox" style = "display: inline">
                 <select class = "select_class" id = "chuli_huanjie_id">
                     <option>查看本周内统计信息</option>
@@ -510,69 +510,111 @@ document.getElementById("huadongId").onclick = function() {
         bar2();
         bar3();
     }
+
     function bar1(){
-        !function ($) {
-            "use strict";
+        var neo = new Neo(connection);
+        var name_list = [];
+        var arr = new Array();
+        arr["刑事检察"] = 0;
+        arr["刑事执行"] = 0;
+        arr["公益诉讼"] = 0;
+        arr["民事"] = 0;
+        arr["行政"] = 0;
+        arr["未检业务"] = 0;
+        arr["控告申诉"] = 0;
+        arr["检委办"] = 0;
+        arr["对台业务"] = 0;
+        arr["案管"] = 0;
+        arr["司法协助"] = 0;
+        name_list.push("刑事检察");
+        name_list.push("刑事执行");
+        name_list.push("公益诉讼");
+        name_list.push("民事");
+        name_list.push("行政");
+        name_list.push("未检业务");
+        name_list.push("控告申诉");
+        name_list.push("检委办");
+        name_list.push("对台业务");
+        name_list.push("案管");
+        name_list.push("司法协助");
+        try {
+            var query = "MATCH (m)-[]-(n:USER) WHERE n.name = '"+jiema2() + "' AND m.CN_KEY IS NOT NULL WITH m MATCH (x:CASE) WHERE x.caseId = m.caseId RETURN DISTINCT x.案件类别, x.name";
+            neo.executeQuery(query, {}, function (err, res) {
+                if (res.table) {
+                    for (index in res.table) {
+                        var group_id = res.table[index]["x.案件类别"];
+                        //console.log(group_id);
+                        if (group_id) {
+                            arr[group_id]++;
+                        }
+                    }
 
-            var Dashboard = function () {
-            };
+                    setTimeout(function(){
+                        !function ($) {
+                            "use strict1";
 
-            //creates Stacked chart
-            Dashboard.prototype.createStackedChart  = function(element, data, xkey, ykeys, labels, lineColors) {
-                Morris.Bar({
-                    element: element,
-                    data: data,
-                    xkey: xkey,
-                    ykeys: ykeys,
-                    stacked: true,
-                    labels: labels,
-                    hideHover: 'auto',
-                    resize: true, //defaulted to true
-                    gridLineColor: '#eeeeee',
-                    barColors: lineColors,
-                    labelTop:true,
-                    barRatio: 0.4,
-                    xLabelAngle: 35,
-                });
-            },
-                // pie
-                $('.peity-pie').each(function () {
-                    $(this).peity("pie", $(this).data());
-                });
+                            var Dashboard = function () {
+                            };
 
-            //donut
-            $('.peity-donut').each(function () {
-                $(this).peity("donut", $(this).data());
+                            //creates Stacked chart
+                            Dashboard.prototype.createStackedChart  = function(element, data, xkey, ykeys, labels, lineColors) {
+                                Morris.Bar({
+                                    element: element,
+                                    data: data,
+                                    xkey: xkey,
+                                    ykeys: ykeys,
+                                    stacked: true,
+                                    labels: labels,
+                                    hideHover: 'auto',
+                                    resize: true, //defaulted to true
+                                    gridLineColor: '#eeeeee',
+                                    barColors: lineColors,
+                                    labelTop:true,
+                                    barRatio: 0.4,
+                                    xLabelAngle: 35,
+                                });
+                            },
+                                // pie
+                                $('.peity-pie').each(function () {
+                                    $(this).peity("pie", $(this).data());
+                                });
+
+                            //donut
+                            $('.peity-donut').each(function () {
+                                $(this).peity("donut", $(this).data());
+                            });
+
+                            // line
+                            $('.peity-line').each(function () {
+                                $(this).peity("line", $(this).data());
+                            });
+
+                            Dashboard.prototype.init = function () {
+                                var $stckedData  = [
+                                ];
+
+                                for(var i = 0;i < name_list.length;i++){
+                                    $stckedData.push({
+                                        y: name_list[i],
+                                        a: arr[name_list[i]]
+                                    })
+                                }
+                                this.createStackedChart('morris-bar-stacked', $stckedData, 'y', ['a'], ['案件类别数量'], ['#1699dd']);
+                            },
+                                //init
+                                $.Dashboard = new Dashboard, $.Dashboard.Constructor = Dashboard
+                        }(window.jQuery),
+
+                            function ($) {
+                                "use strict1";
+                                $.Dashboard.init();
+                            }(window.jQuery);
+                    },200)
+                }
             });
-
-            // line
-            $('.peity-line').each(function () {
-                $(this).peity("line", $(this).data());
-            });
-
-
-            Dashboard.prototype.init = function () {
-                var $stckedData  = [
-                    { y: '张远帆', a: 300},
-                    { y: '陈川俊', a: 170},
-                    { y: '李驭龙', a: 75},
-                    { y: '王太将', a: 60},
-                    { y: '杨春露', a: 60 },
-                    { y: '黄彦赫', a: 55},
-                    { y: '贺甲', a: 50}
-                ];
-                this.createStackedChart('morris-bar-stacked', $stckedData, 'y', ['a'], ['案卡项数量'], ['#1699dd']);
-            },
-                //init
-                $.Dashboard = new Dashboard, $.Dashboard.Constructor = Dashboard
-        }(window.jQuery),
-
-//initializing
-            function ($) {
-                "use strict";
-                $.Dashboard.init();
-            }(window.jQuery);
+    }catch (e) {}
     }
+
     function bar2(){
         !function ($) {
             "use strict";
@@ -616,13 +658,13 @@ document.getElementById("huadongId").onclick = function() {
 
             Dashboard.prototype.init = function () {
                 var $stckedData  = [
-                    { y: '张远帆',c: 100 },
-                    { y: '陈川俊',c: 56 },
-                    { y: '李驭龙',c: 120 },
-                    { y: '王太将',c: 100 },
-                    { y: '杨春露',c: 85 },
-                    { y: '黄彦赫', c: 52 },
-                    { y: '贺甲', c: 77 }
+                    { y: '审查起诉书',c: 180 },
+                    { y: '没收违法所得意见书',c: 56 },
+                    { y: '委托鉴定书',c: 120 },
+                    { y: '扣押通知书',c: 100 },
+                    { y: '解除查封通知书',c: 85 },
+                    { y: '督促纠正违法通知书', c: 52 },
+                    { y: '决定释放通知书', c: 77 }
                 ];
                 this.createStackedChart('morris-bar-stacked2', $stckedData, 'y', ['c'], ['处理文书的数量'], ['#f28515']);
             },
@@ -679,15 +721,15 @@ document.getElementById("huadongId").onclick = function() {
 
             Dashboard.prototype.init = function () {
                 var $stckedData  = [
-                    { y: '张远帆', b: 180},
-                    { y: '陈川俊', b: 90},
-                    { y: '李驭龙', b: 85},
-                    { y: '王太将', b: 90},
-                    { y: '杨春露',  b: 50},
-                    { y: '黄彦赫',b: 65},
-                    { y: '贺甲', b: 40 }
+                    { y: '统一受案号', b: 180},
+                    { y: '移送案由', b: 90},
+                    { y: '移送案由代码', b: 85},
+                    { y: '案情摘要', b: 90},
+                    { y: '附注',  b: 50},
+                    { y: '操作人',b: 65},
+                    { y: '承办单位', b: 40 }
                 ];
-                this.createStackedChart('morris-bar-stacked3', $stckedData, 'y', ['b'], ['环节个数'], ['#655be6']);
+                this.createStackedChart('morris-bar-stacked3', $stckedData, 'y', ['b'], ['案卡项个数'], ['#655be6']);
             },
                 //init
                 $.Dashboard = new Dashboard, $.Dashboard.Constructor = Dashboard
