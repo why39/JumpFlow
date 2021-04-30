@@ -42,6 +42,6 @@ public interface GJAJService {
 
     List<Map<String,Object>> countFields(String caseType,int size);
 
-    Page<GJAJEntity> findPageByAjlb(String ajlb, int pageNum, int pageSize);
+    Page<GJAJEntity> queryCompleted(String ajlb, int pageNum, int pageSize);
 
 }

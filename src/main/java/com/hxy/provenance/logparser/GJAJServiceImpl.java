@@ -323,9 +323,9 @@ public class GJAJServiceImpl implements GJAJService {
     }
 
     @Override
-    public Page<GJAJEntity> findPageByAjlb(String ajlb, int pageNum, int pageSize) {
+    public Page<GJAJEntity> queryCompleted(String ajlb, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize == 0 ? Constant.pageSize : pageSize);
-        caseDao.queryObject2(ajlb);
+        caseDao.queryCompleted(ajlb);
         return PageHelper.endPage();
     }
 

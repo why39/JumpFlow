@@ -159,7 +159,7 @@ public class GJAJController {
     @RequiresPermissions("act:model:all")
     public String jumpfuse(Model model, GJAJEntity caseEntity, HttpServletRequest request) {
         int pageNum = CommUtils.parseInt(request.getParameter("pageNum"), 1);
-        Page<GJAJEntity> page = caseService.findPageByAjlb("", pageNum, 5);
+        Page<GJAJEntity> page = caseService.queryCompleted("", pageNum, 5);
         model.addAttribute("page", page);
         model.addAttribute("case", caseEntity);
 

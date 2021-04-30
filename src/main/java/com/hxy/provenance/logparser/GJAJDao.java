@@ -21,6 +21,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public interface GJAJDao extends BaseDao<GJAJEntity> {
     List<GJAJEntity> queryObject2(String ajlb);
 
+    List<GJAJEntity> queryCompleted(String ajlb);
+
     void updateComplete(int IS_COMPLETE, String BMSAH);
 
     List<Map<String, Object>> countAJLB();
