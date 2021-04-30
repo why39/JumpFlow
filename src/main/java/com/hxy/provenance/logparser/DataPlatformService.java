@@ -74,14 +74,18 @@ public class DataPlatformService {
 
         try {
             Response response = client.newCall(request).execute();
+            System.out.println("re" + request);
+            System.out.println("reh"+ request.header("X-Api-Id"));
             System.out.println("fuck" + response.toString());
             System.out.println("fuck" + response.isSuccessful());
             if (response.isSuccessful()) {
                 DataPlatformAJEntity resultEntity = Json.decode(response.body().string(), DataPlatformAJEntity.class);
-                logger.info("fuck",resultEntity);
+                System.out.println("fuck" + resultEntity);
                 if (resultEntity != null && !CollectionUtils.isEmpty(resultEntity.data)) {
                     for (DataPlatformAJEntity.Item entity : resultEntity.data) {
                         GJAJEntity gjajEntity = new GJAJEntity();
+                        System.out.println("fuck" + gjajEntity.toString());
+                        System.out.println("fuck" + entity.getBmsah());
                         gjajEntity.setBMSAH(entity.getBmsah());
                         gjajEntity.setAJLB_MC(entity.getAjlbmc());
                         gjajEntity.setAJMC(entity.getAjmc());

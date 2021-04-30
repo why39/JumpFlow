@@ -38,7 +38,7 @@ public class QueryAjJob implements Job {
             return;
         }
         logger.info("EXECUTE...QueryAjJob");
-        LocalDate date = LocalDate.parse("2018-01-01");
+        LocalDate date = LocalDate.parse("2021-03-10");
         try {
             String dateStr = redisUtil.getString(REDIS_KEY);
             if (!StringUtils.isEmpty(dateStr)) {

@@ -76,7 +76,21 @@ public class GJAJEntity {
         return IS_COMPLETE;
     }
 
+
     public void setAJMC(String AJMC) {
         this.AJMC = AJMC;
+    }
+
+    @Override
+    public String toString() {
+        return "GJAJEntity{" +
+                "BMSAH='" + BMSAH + '\'' +
+                ", TYSAH='" + TYSAH + '\'' +
+                ", AJMC='" + AJMC + '\'' +
+                ", AJLB_MC='" + AJLB_MC + '\'' +
+                ", CBDW_MC='" + CBDW_MC + '\'' +
+                ", IS_COMPLETE=" + IS_COMPLETE +
+                ", CJSJ=" + CJSJ +
+                '}';
     }
 }
