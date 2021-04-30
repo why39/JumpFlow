@@ -41,4 +41,7 @@ public interface GJAJService {
     Result deleteTest(int count);
 
     List<Map<String,Object>> countFields(String caseType,int size);
+
+    Page<GJAJEntity> findPageByAjlb(String ajlb, int pageNum, int pageSize);
+
 }

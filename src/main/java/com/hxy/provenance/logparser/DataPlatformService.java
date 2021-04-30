@@ -74,23 +74,23 @@ public class DataPlatformService {
 
         try {
             Response response = client.newCall(request).execute();
-            System.out.println("re" + request);
-            System.out.println("reh"+ request.header("X-Api-Id"));
             System.out.println("fuck" + response.toString());
             System.out.println("fuck" + response.isSuccessful());
             if (response.isSuccessful()) {
                 DataPlatformAJEntity resultEntity = Json.decode(response.body().string(), DataPlatformAJEntity.class);
-                System.out.println("fuck" + resultEntity);
+                logger.info("fuck",resultEntity);
                 if (resultEntity != null && !CollectionUtils.isEmpty(resultEntity.data)) {
                     for (DataPlatformAJEntity.Item entity : resultEntity.data) {
                         GJAJEntity gjajEntity = new GJAJEntity();
-                        System.out.println("fuck" + gjajEntity.toString());
-                        System.out.println("fuck" + entity.getBmsah());
+
                         gjajEntity.setBMSAH(entity.getBmsah());
-                        gjajEntity.setAJLB_MC(entity.getAjlbmc());
-                        gjajEntity.setAJMC(entity.getAjmc());
                         gjajEntity.setTYSAH(entity.getTysah());
+                        gjajEntity.setAJMC(entity.getAjmc());
                         gjajEntity.setCBDW_MC(entity.getCbdwmc());
+                        gjajEntity.setCJSJ(entity.getCjsj());
+                        gjajEntity.setAJLB_MC(entity.getAjlbmc());
+                        gjajEntity.setIS_COMPLETE(0);
+
                         caseService.saveAJ(gjajEntity);
                         gjajEntityList.add(gjajEntity);
                     }

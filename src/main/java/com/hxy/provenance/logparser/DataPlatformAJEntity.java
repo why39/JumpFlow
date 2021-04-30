@@ -1,5 +1,6 @@
 package com.hxy.provenance.logparser;
 
+import java.util.Date;
 import java.util.List;
 
 public class DataPlatformAJEntity {
@@ -38,6 +39,7 @@ public class DataPlatformAJEntity {
         private String ajmc;
         private String ajlbmc;
         private String cbdwmc;
+        private Date cjsj;
 
         public Object getSearchValue() {
             return searchValue;
@@ -144,6 +146,14 @@ public class DataPlatformAJEntity {
         }
 
         public static class ParamsBean {
+        }
+
+        public Date getCjsj() {
+            return cjsj;
+        }
+
+        public void setCjsj(Date cjsj) {
+            this.cjsj = cjsj;
         }
     }
 

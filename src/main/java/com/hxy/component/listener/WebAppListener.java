@@ -52,10 +52,10 @@ public class WebAppListener implements ApplicationListener<ContextRefreshedEvent
 
         if (event.getApplicationContext().getParent() == null) {
             try {
-                if (caseDao.openJob() == 1) {
-                    //开关加到表tb_type_filed_count中，case_type=JobConifg,field=JobConifg,count_man=1
-                    createQueryAJAndRZJob();
-                }
+
+                //开关加到表tb_type_filed_count中，case_type=JobConifg,field=JobConifg,count_man=1
+                createQueryAJAndRZJob();
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
