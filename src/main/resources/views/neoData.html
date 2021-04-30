@@ -354,6 +354,20 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
             });
         } catch (e) {
         }
+        window.setTimeout(function(){
+            var relation = document.getElementsByClassName('layer relationships')[0];
+            var list_relation = relation.children;
+            var node = document.getElementsByClassName("layer nodes")[0];
+            var list_node = node.children;
+            for(var i = 0;i < list_node.length;i++){
+                //console.log(list_node[i].children[1].innerHTML);
+                if(list_node[i].children[1].innerHTML == "请示单"
+                || list_node[i].children[1].innerHTML == "移送案" ){
+                    //console.log(list_node[i].children[0].r)
+                    list_node[i].children[0].r.baseVal.value = 30;
+                }
+            }
+        },500);
     }
 
     //查找人名涉及的案件

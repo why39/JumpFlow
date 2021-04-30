@@ -74,8 +74,11 @@ public class DataPlatformService {
 
         try {
             Response response = client.newCall(request).execute();
+            System.out.println("fuck" + response.toString());
+            System.out.println("fuck" + response.isSuccessful());
             if (response.isSuccessful()) {
                 DataPlatformAJEntity resultEntity = Json.decode(response.body().string(), DataPlatformAJEntity.class);
+                logger.info("fuck",resultEntity);
                 if (resultEntity != null && !CollectionUtils.isEmpty(resultEntity.data)) {
                     for (DataPlatformAJEntity.Item entity : resultEntity.data) {
                         GJAJEntity gjajEntity = new GJAJEntity();

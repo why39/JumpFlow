@@ -499,6 +499,8 @@
     monitorClick();
 
     function monitorClick() {
+        var len = window.parent.document.getElementById("index-user-name").innerHTML.length;
+        var user_name = window.parent.document.getElementById("index-user-name").innerHTML.substring(3,len);
         document.getElementById("relevantCase").style.visibility = "visible";
         var ss = document.getElementById("xieshijiancha_a").innerHTML + "案件";
         var ll = document.getElementById("xieshijiancha_a").innerHTML;

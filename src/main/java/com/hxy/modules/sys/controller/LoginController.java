@@ -45,29 +45,6 @@ public class LoginController extends BaseController {
         response.addHeader("Cache-Control", "post-check=0, pre-check=0");
         // Set standard HTTP/1.0 no-cache header.
         response.setHeader("Pragma", "no-cache");
-
-        // return a jpeg
-//        response.setContentType("image/jpeg");
-//
-//        // create the text for the image
-//        String capText = captchaProducer.createText();
-//
-//        // store the text in the session
-//        request.getSession().setAttribute(Constants.KAPTCHA_SESSION_KEY, capText);
-//
-//        // create the image with the text
-//        BufferedImage bi = captchaProducer.createImage(capText);
-//
-//        ServletOutputStream out = response.getOutputStream();
-//
-//        // write the data out
-//        ImageIO.write(bi, "jpg", out);
-//        try {
-//            out.flush();
-//        } finally {
-//            out.close();
-//        }
-
     }
 
     /**
@@ -76,10 +53,6 @@ public class LoginController extends BaseController {
     @ResponseBody
     @RequestMapping(value = "/login/login", method = RequestMethod.POST)
     public Result login(String username, String password, String captcha, boolean isRememberMe)throws IOException {
-      /*  String kaptcha = ShiroUtils.getKaptcha(Constants.KAPTCHA_SESSION_KEY);
-        if(!captcha.equalsIgnoreCase(kaptcha)){
-            return Result.error("验证码不正确");
-        }*/
         try{
             Subject subject = ShiroUtils.getSubject();
             UsernamePasswordToken token = new UsernamePasswordToken(username, password);
