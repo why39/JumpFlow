@@ -82,11 +82,15 @@ public class DataPlatformService {
                 if (resultEntity != null && !CollectionUtils.isEmpty(resultEntity.data)) {
                     for (DataPlatformAJEntity.Item entity : resultEntity.data) {
                         GJAJEntity gjajEntity = new GJAJEntity();
+
                         gjajEntity.setBMSAH(entity.getBmsah());
-                        gjajEntity.setAJLB_MC(entity.getAjlbmc());
-                        gjajEntity.setAJMC(entity.getAjmc());
                         gjajEntity.setTYSAH(entity.getTysah());
+                        gjajEntity.setAJMC(entity.getAjmc());
                         gjajEntity.setCBDW_MC(entity.getCbdwmc());
+                        gjajEntity.setCJSJ(entity.getCjsj());
+                        gjajEntity.setAJLB_MC(entity.getAjlbmc());
+                        gjajEntity.setIS_COMPLETE(0);
+
                         caseService.saveAJ(gjajEntity);
                         gjajEntityList.add(gjajEntity);
                     }

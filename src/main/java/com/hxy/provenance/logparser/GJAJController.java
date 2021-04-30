@@ -107,46 +107,90 @@ public class GJAJController {
     @RequestMapping(value = "count-type-fields")
     @ResponseBody
     public List<Map<String, Object>> countAJLBField(@RequestParam String ajlb, @RequestParam int size) {
-        if(ajlb.equals("xsjc")){
+        if (ajlb.equals("xsjc")) {
             ajlb = "刑事检察";
         }
-        if(ajlb.equals("xszx")){
+        if (ajlb.equals("xszx")) {
             ajlb = "刑事执行";
         }
-        if(ajlb.equals("gyss")){
+        if (ajlb.equals("gyss")) {
             ajlb = "公益诉讼";
         }
-        if(ajlb.equals("ms")){
+        if (ajlb.equals("ms")) {
             ajlb = "民事";
         }
-        if(ajlb.equals("xz")){
+        if (ajlb.equals("xz")) {
             ajlb = "行政";
         }
-        if(ajlb.equals("jwb")){
+        if (ajlb.equals("jwb")) {
             ajlb = "检委办";
         }
-        if(ajlb.equals("wjyw")){
+        if (ajlb.equals("wjyw")) {
             ajlb = "未检业务";
-        } if(ajlb.equals("kgss")){
+        }
+        if (ajlb.equals("kgss")) {
             ajlb = "控告申诉";
-        } if(ajlb.equals("dtyw")){
+        }
+        if (ajlb.equals("dtyw")) {
             ajlb = "对台业务";
-        } if(ajlb.equals("ag")){
+        }
+        if (ajlb.equals("ag")) {
             ajlb = "案管";
-        } if(ajlb.equals("sfxz")){
+        }
+        if (ajlb.equals("sfxz")) {
             ajlb = "司法协助";
         }
         List<Map<String, Object>> map = new ArrayList<>();
         List<Map<String, Object>> list = caseService.countFields(ajlb, size);
-        for(Map<String, Object> item:list){
-            if(KVCache.kv.containsKey(item.get("field").toString().toUpperCase())){
+        for (Map<String, Object> item : list) {
+            if (KVCache.kv.containsKey(item.get("field").toString().toUpperCase())) {
                 Map<String, Object> hash = new HashMap<>();
-                hash.put("field",KVCache.kv.get(item.get("field").toString().toUpperCase()).cn);
-                hash.put("count_man",item.get("count_man"));
+                hash.put("field", KVCache.kv.get(item.get("field").toString().toUpperCase()).cn);
+                hash.put("count_man", item.get("count_man"));
                 map.add(hash);
             }
 
         }
         return map;
     }
+
+
+    @RequestMapping("fuse")
+    @RequiresPermissions("act:model:all")
+    public String jumpfuse(Model model, GJAJEntity caseEntity, HttpServletRequest request) {
+        int pageNum = CommUtils.parseInt(request.getParameter("pageNum"), 1);
+        Page<GJAJEntity> page = caseService.findPageByAjlb("", pageNum, 5);
+        model.addAttribute("page", page);
+        model.addAttribute("case", caseEntity);
+
+//        dataPlatformService.queryAJ("2019-11-08 15:10:42", "2019-11-08 23:10:42");
+
+        return "demo/fuse";
+    }
+
+
+    @PostMapping("dofuse")
+    @RequiresPermissions("act:model:all")
+    public String dofuse(@RequestParam(name = "bmsah") String bmsah, @RequestParam(name = "bmsah2") String bmsah2) {
+        //1. 插入一条mysql数据
+        GJAJEntity oldAj = caseService.queryObject(bmsah);
+        GJAJEntity oldAj2 = caseService.queryObject(bmsah2);
+
+        GJAJEntity gjajEntity = new GJAJEntity();
+        gjajEntity.setBMSAH(bmsah + "+" + bmsah2);
+        gjajEntity.setTYSAH(oldAj.getTYSAH().substring(0,9)+oldAj.getTYSAH().substring(0,6));
+        gjajEntity.setAJMC(oldAj.getAJMC() + "2");
+        gjajEntity.setCBDW_MC(oldAj.getCBDW_MC());
+        gjajEntity.setAJLB_MC(oldAj.getAJLB_MC());
+        gjajEntity.setCJSJ(oldAj.getCJSJ());
+        gjajEntity.setIS_COMPLETE(1);
+
+        caseService.saveAJ(gjajEntity);
+
+        //2. 插入一条neo4j数据
+
+        return "demo/gjajlb";
+
+    }
+
 }

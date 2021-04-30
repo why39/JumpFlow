@@ -1,13 +1,10 @@
 package com.hxy.provenance.logparser;
 
-import com.hxy.modules.activiti.annotation.ActField;
 import com.hxy.modules.activiti.annotation.ActTable;
-import com.hxy.modules.common.entity.ActivitiBaseEntity;
-import org.apache.commons.net.ntp.TimeStamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.Date;
+
 
 /**
  * 类的功能描述.
@@ -23,7 +20,9 @@ public class GJAJEntity {
     private String AJMC;    //案件名称
     private String AJLB_MC; // 案件类别名称
     private String CBDW_MC;
-    private int IS_COMPLETE;
+    private int IS_COMPLETE = 0;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date CJSJ;
 
     public String getAJLB_MC() {

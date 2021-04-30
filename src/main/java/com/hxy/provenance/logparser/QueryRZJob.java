@@ -24,7 +24,7 @@ public class QueryRZJob implements Job {
     public static final String END_TIME = "23:59:59";
     public static final String REDIS_KEY = "RZ_LAST_QUERY_DATE";
 
-    DataPlatformService dataPlatformService=  SpringContextUtils.getBean(DataPlatformService.class);
+    DataPlatformService dataPlatformService = SpringContextUtils.getBean(DataPlatformService.class);
 
     private RedisUtil redisUtil = (RedisUtil) SpringContextUtils.getBean("redisUtil");
 
@@ -36,26 +36,27 @@ public class QueryRZJob implements Job {
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
 
-        if (caseDao.openJob() == 0) {
-            return;
-        }
-        logger.info("EXECUTE...QueryRZJob");
-        LocalDate date = LocalDate.parse("2018-01-01");
-        try {
-            String dateStr = redisUtil.getString(REDIS_KEY);
-            if (!StringUtils.isEmpty(dateStr)) {
-                date = LocalDate.parse(dateStr);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        if (caseDao.openJob().get(0).get("count_man") == 1) {
 
-        dataPlatformService.queryRZ(String.format(FORMAT, formatter.format(date), START_TIME), String.format(FORMAT, formatter.format(date), END_TIME));
-        LocalDate newDate = date.plusDays(1l);
-        try {
-            redisUtil.setString(REDIS_KEY, formatter.format(newDate).toString());
-        } catch (Exception e) {
-            e.printStackTrace();
+
+            logger.info("EXECUTE...QueryRZJob");
+            LocalDate date = LocalDate.parse("2018-01-01");
+            try {
+                String dateStr = redisUtil.getString(REDIS_KEY);
+                if (!StringUtils.isEmpty(dateStr)) {
+                    date = LocalDate.parse(dateStr);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            dataPlatformService.queryRZ(String.format(FORMAT, formatter.format(date), START_TIME), String.format(FORMAT, formatter.format(date), END_TIME));
+            LocalDate newDate = date.plusDays(1l);
+            try {
+                redisUtil.setString(REDIS_KEY, formatter.format(newDate).toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }
