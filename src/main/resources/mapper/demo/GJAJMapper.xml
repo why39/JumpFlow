@@ -21,7 +21,7 @@
     </insert>
 
     <select id="countFields" resultType="map">
-        select field,count_man from tb_type_filed_count where case_type = #{case_type} order by count_man limit #{size}
+        select field,count_man from tb_type_filed_count where case_type = #{case_type} order by count_man desc limit #{size}
     </select>
 
     <select id="hasField" resultType="Integer">

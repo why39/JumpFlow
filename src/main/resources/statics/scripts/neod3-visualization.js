@@ -110,37 +110,10 @@ function Neod3Renderer() {
                         document.getElementById("leftContent").setAttribute
                         ("style", "display:none");
                     }
-                    //console.log("hhhhh",node.id);
                     execute("match (n) where ID(n) = "+node.id+" with n match p = (n) - [r:相关] ->(m) return p");
                     document.getElementById("anka_table").style.display = "block";
                     document.getElementById("huanjie_detail").innerHTML = ""
                     table_data(node.id);
-
-                   /* var neo = new Neo(connection);
-                    try {
-                        var query = "match (n) where ID(n) = "+node.id+" with n match p = (n) - [r:相关] ->(m) return p";
-                        console.log("Executing Query", query);
-                        neo.executeQuery(query, {}, function (err, res) {
-                            res = res || {}
-                            console.log("Executing Query res: ", res);
-                            var graph = res.graph;
-                            if (graph) {
-                                var c = $("#graph");
-                                c.empty();
-                                neod3.render("graph", c, graph);
-                            } else {
-                                if (err) {
-                                    console.log(err);
-                                    if (err.length > 0) {
-                                        sweetAlert("Cypher error", err[0].code + "\n" + err[0].message, "error");
-                                    } else {
-                                        sweetAlert("Ajax " + err.statusText, "Status " + err.status + ": " + err.state(), "error");
-                                    }
-                                }
-                            }
-                        });
-                    } catch (e) {
-                    }*/
                     break;
                 }});
 
@@ -229,9 +202,7 @@ function Neod3Renderer() {
 
 
     function dummyFunc(node) {
-
     }
-
 
     function render(id, $container, visualization) {
         function extract_props(pc) {
@@ -339,47 +310,6 @@ function Neod3Renderer() {
             renderer.on("touchend.zoom", null);
         }
 
-        function legend(svg, styles) {
-            var keys = Object.keys(styles).sort();
-            var circles = svg.selectAll('circle.legend').data(keys);
-            var r = 20;
-            circles.enter().append('circle').classed('legend', true).attr({
-                cx: 2 * r,
-                r: r
-            });
-            circles.attr({
-                cy: function (node) {
-                    return (keys.indexOf(node) + 1) * 2.2 * r;
-                },
-                fill: function (node) {
-                    return styles[node]['color'];
-                },
-                stroke: function (node) {
-                    return styles[node]['border-color'];
-                },
-                'stroke-width': function (node) {
-                    return "2px";
-                }
-            });
-            var text = svg.selectAll('text.legend').data(keys);
-            text.enter().append('text').classed('legend', true).attr({
-                'text-anchor': 'left',
-                'font-weight': 'bold',
-                'stroke-width': '0',
-                'stroke-color': 'black',
-                'fill': 'black',
-                'x': 3.2 * r,
-                'font-size': "12px"
-            });
-            text.text(function (node) {
-                var label = styles[node].selector;
-                return label ? label.substring(5) : "";
-            }).attr('y', function (node) {
-                return (keys.indexOf(node) + 1) * 2.2 * r + 6;
-            })
-            return circles.exit().remove();
-        }
-
         function keyHandler() {
             if (d3.event.altKey || d3.event.shiftKey) {
                 enableZoomHandlers();
@@ -407,22 +337,9 @@ function Neod3Renderer() {
             .width($container.width()).height($container.height()).on('nodeClicked', clickNode).on('relationshipClicked', dummyFunc).on('nodeDblClicked', dummyFunc);
         var svg = d3.select("#" + id).append("svg");
         var renderer = svg.data([graphModel]);
-        // legend(svg, existingStyles);
         var zoomHandlers = {};
-        //var zoomBehavior = d3.behavior.zoom().on("zoom", applyZoom).scaleExtent([0.01, 2]);
-        //console.log("zoom" + zoomBehavior);
-
-        //renderer.call(zoomBehavior);
         renderer.call(graphView);
 
-
-        /*  zoomHandlers.wheel = renderer.on("wheel.zoom");
-          zoomHandlers.mousewheel = renderer.on("mousewheel.zoom");
-          zoomHandlers.mousedown = renderer.on("mousedown.zoom");
-          zoomHandlers.DOMMouseScroll = renderer.on("DOMMouseScroll.zoom");
-          zoomHandlers.touchstart = renderer.on("touchstart.zoom");
-          zoomHandlers.touchmove = renderer.on("touchmove.zoom")
-          zoomHandlers.touchend = renderer.on("touchend.zoom");*/
         disableZoomHandlers();
 
         d3.select('body').on("keydown", keyHandler).on("keyup", keyHandler);

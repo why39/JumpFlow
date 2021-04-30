@@ -19,9 +19,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.*;
 
 /**
  * 对接高检数据库用
@@ -104,9 +104,49 @@ public class GJAJController {
         return gjajService.countAJLB();
     }
 
-    @RequestMapping(value = "count-type-fileds")
+    @RequestMapping(value = "count-type-fields")
     @ResponseBody
-    public List<Map<String, Integer>> countAJLBField(@RequestParam String ajlb, @RequestParam int size) {
-        return caseService.countFields(ajlb, size);
+    public List<Map<String, Object>> countAJLBField(@RequestParam String ajlb, @RequestParam int size) {
+        if(ajlb.equals("xsjc")){
+            ajlb = "刑事检察";
+        }
+        if(ajlb.equals("xszx")){
+            ajlb = "刑事执行";
+        }
+        if(ajlb.equals("gyss")){
+            ajlb = "公益诉讼";
+        }
+        if(ajlb.equals("ms")){
+            ajlb = "民事";
+        }
+        if(ajlb.equals("xz")){
+            ajlb = "行政";
+        }
+        if(ajlb.equals("jwb")){
+            ajlb = "检委办";
+        }
+        if(ajlb.equals("wjyw")){
+            ajlb = "未检业务";
+        } if(ajlb.equals("kgss")){
+            ajlb = "控告申诉";
+        } if(ajlb.equals("dtyw")){
+            ajlb = "对台业务";
+        } if(ajlb.equals("ag")){
+            ajlb = "案管";
+        } if(ajlb.equals("sfxz")){
+            ajlb = "司法协助";
+        }
+        List<Map<String, Object>> map = new ArrayList<>();
+        List<Map<String, Object>> list = caseService.countFields(ajlb, size);
+        for(Map<String, Object> item:list){
+            if(KVCache.kv.containsKey(item.get("field").toString().toUpperCase())){
+                Map<String, Object> hash = new HashMap<>();
+                hash.put("field",KVCache.kv.get(item.get("field").toString().toUpperCase()).cn);
+                hash.put("count_man",item.get("count_man"));
+                map.add(hash);
+            }
+
+        }
+        return map;
     }
 }

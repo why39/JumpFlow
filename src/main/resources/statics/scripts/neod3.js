@@ -1431,7 +1431,7 @@ neo.utils.measureText = (function() {
 })();
 
 (function() {
-  var arrowPath, nodeCaption, nodeOutline, nodeOverlay, noop, relationshipOverlay, relationshipType;
+  var arrowPath, arrowPathRed,nodeCaption, nodeOutline, nodeOverlay, noop, relationshipOverlay, relationshipType;
   noop = function() {};
   nodeOutline = new neo.Renderer({
     onGraphChange: function(selection, viz) {
@@ -1522,7 +1522,27 @@ neo.utils.measureText = (function() {
       });
       paths.enter().append('path');
       paths.attr('fill', function(rel) {
-        return viz.style.forRelationship(rel).get('color');
+        return viz.style.forRelationship(rel).get('color'); //"#ff0000"
+      }).attr('stroke', 'none');
+      return paths.exit().remove();
+    },
+    onTick: function(selection) {
+      return selection.selectAll('path').attr('d', function(d) {
+        return d.arrowOutline;
+      }).attr('transform', function(d) {
+        return isNaN(d.startPoint.x) || isNaN(d.startPoint.y) ? null : "translate(" + d.startPoint.x + " " + d.startPoint.y + ") rotate(" + d.angle + ")";
+      });
+    }
+  });
+  arrowPathRed = new neo.Renderer({
+    onGraphChange: function(selection, viz) {
+      var paths;
+      paths = selection.selectAll('path').data(function(rel) {
+        return [rel];
+      });
+      paths.enter().append('path');
+      paths.attr('fill', function(rel) {
+        return "#ff0000"; //"#ff0000"
       }).attr('stroke', 'none');
       return paths.exit().remove();
     },
@@ -1595,6 +1615,7 @@ neo.utils.measureText = (function() {
   neo.renderers.node.push(nodeCaption);
   neo.renderers.node.push(nodeOverlay);
   neo.renderers.relationship.push(arrowPath);
+ // neo.renderers.relationship.push(arrowPathRed);
   neo.renderers.relationship.push(relationshipType);
   return neo.renderers.relationship.push(relationshipOverlay);
 })();

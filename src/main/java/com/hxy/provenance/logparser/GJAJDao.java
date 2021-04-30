@@ -35,7 +35,7 @@ public interface GJAJDao extends BaseDao<GJAJEntity> {
      * @param size
      * @return
      */
-    List<Map<String, Integer>> countFields(@Param("case_type") String case_type,@Param("size") int size );
+    List<Map<String, Object>> countFields(@Param("case_type") String case_type,@Param("size") int size );
 
     /**
      * 查询某类别中某个案卡项是否存在

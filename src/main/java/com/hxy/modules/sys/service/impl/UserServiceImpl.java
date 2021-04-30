@@ -57,8 +57,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	@Transactional
-	public void save(UserEntity user){
+	@Transactional	public void save(UserEntity user){
         //生成salt
         String salt = RandomStringUtils.randomAlphanumeric(20);
         if(!StringUtils.isEmpty(user.getPassWord())){

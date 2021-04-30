@@ -55,7 +55,7 @@
 
     <nav aria-label="Page navigation">
         <ul class="nav nav-tabs">
-            <li role="presentation"><a href="javascript:;" onclick="monitorClick()" id="xieshijiancha_a">团队信息列表</a></li>
+            <li role="presentation"><a href="javascript:;" onclick="monitorClick()" id="xieshijiancha_a">检察官信息列表</a></li>
         </ul>
     </nav>
 
@@ -83,7 +83,7 @@
     <div class="col-xl-9" style = "display:inline-block">
         <div class="card" style = "width:580px;height: 400px">
             <div class="card-body">
-                <h4 class="mt-0 header-title mb-5" style = "display: inline">检察官团队办结案件数</h4>
+                <h4 class="mt-0 header-title mb-5" style = "display: inline">检察官办结案件数</h4>
                 <div class="checkbox" style = "display: inline">
                     <select class = "select_class" id = "banan_time_id">
                         <option>查看本周内统计信息</option>
@@ -101,7 +101,7 @@
     <div class="col-xl-9" style = "display:inline-block">
         <div class="card" style = "width:580px;height: 400px">
             <div class="card-body">
-                <h4 class="mt-0 header-title mb-5" style = "display: inline">检察官团队办结案件耗时（平均/小时）</h4>
+                <h4 class="mt-0 header-title mb-5" style = "display: inline">检察官办结案件总耗时/小时</h4>
                 <div class="checkbox" style = "display: inline">
                     <select class = "select_class" id = "jiean_time_id">
                         <option>查看本周内统计信息</option>
@@ -173,73 +173,119 @@
     });
 </script>
 <script>
+    window.onload = function(){
+        var neo = new Neo(connection);
+        var name_list = [];
+        var count_list = [];
+        try {
+            var query = "MATCH (n:operator) WHERE n.operator<> \"\" AND n.operator<> \"null\"  RETURN DISTINCT n.operator";
+            neo.executeQuery(query, {}, function (err, res) {
+                if (res.table) {
+                    for (index in res.table) {
+                        var group_id = res.table[index]["n.operator"];
+                        name_list.push(group_id);
+                        try{
+                            var query2 = "MATCH (m:Task)-[]-(n:USER) WHERE n.name ='" + group_id +"' RETURN DISTINCT COUNT(m.caseId)";
+                            console.log(query2);
+                            neo.executeQuery(query2, {}, function (err, res) {
+                                if(res){
+                                   count_list.push(res.table[0]["COUNT(m.caseId)"]);
+                                }
+                            });
+                        }catch (e) {
+                        }
+                    }
 
-    !function ($) {
-        "use strict1";
+                    setTimeout(function(){
+                        !function ($) {
+                            "use strict1";
 
-        var Dashboard = function () {
-        };
+                            var Dashboard = function () {
+                            };
 
-        //creates Stacked chart
-        Dashboard.prototype.createStackedChart  = function(element, data, xkey, ykeys, labels, lineColors) {
-            Morris.Bar({
-                element: element,
-                data: data,
-                xkey: xkey,
-                ykeys: ykeys,
-                stacked: true,
-                labels: labels,
-                hideHover: 'auto',
-                resize: true, //defaulted to true
-                gridLineColor: '#eeeeee',
-                barColors: lineColors,
-                labelTop:true,
-                barRatio: 0.4,
-                xLabelAngle: 35,
+                            //creates Stacked chart
+                            Dashboard.prototype.createStackedChart  = function(element, data, xkey, ykeys, labels, lineColors) {
+                                Morris.Bar({
+                                    element: element,
+                                    data: data,
+                                    xkey: xkey,
+                                    ykeys: ykeys,
+                                    stacked: true,
+                                    labels: labels,
+                                    hideHover: 'auto',
+                                    resize: true, //defaulted to true
+                                    gridLineColor: '#eeeeee',
+                                    barColors: lineColors,
+                                    labelTop:true,
+                                    barRatio: 0.4,
+                                    xLabelAngle: 35,
+                                });
+                            },
+                                // pie
+                                $('.peity-pie').each(function () {
+                                    $(this).peity("pie", $(this).data());
+                                });
+
+                            //donut
+                            $('.peity-donut').each(function () {
+                                $(this).peity("donut", $(this).data());
+                            });
+
+                            // line
+                            $('.peity-line').each(function () {
+                                $(this).peity("line", $(this).data());
+                            });
+
+                            for(var m = 0;m < name_list.length;m++){
+                                for(var n = m;n < name_list.length;n++){
+                                    if(count_list[m] < count_list[n]){
+                                        var temp_count = count_list[m];
+                                        var temp_name = name_list[m];
+                                        count_list[m] = count_list[n];
+                                        count_list[n] = temp_count;
+                                        name_list[m] = name_list[n];
+                                        name_list[n] = temp_name;
+                                    }
+                                }
+                            }
+                            Dashboard.prototype.init = function () {
+                                var $stckedData  = [
+                                ];
+                                if(name_list.length < 11) {
+                                    for(var i = 0;i < name_list.length;i++){
+                                        $stckedData.push({
+                                            y: name_list[i],
+                                            a: count_list[i]
+                                        })
+                                    }
+                                }
+                                if(name_list.length >= 11){
+                                    for(var i = 0;i <= 10;i++){
+                                        $stckedData.push({
+                                            y: name_list[i],
+                                            a: count_list[i]
+                                        })
+                                    }
+                                }
+                                this.createStackedChart('morris-bar-stacked1', $stckedData, 'y', ['a'], ['案件数'], ['#1699dd']);
+                            },
+                                //init
+                                $.Dashboard = new Dashboard, $.Dashboard.Constructor = Dashboard
+                        }(window.jQuery),
+
+                            function ($) {
+                                "use strict1";
+                                $.Dashboard.init();
+                            }(window.jQuery);
+                    },200)
+
+                }
             });
-        },
-            // pie
-            $('.peity-pie').each(function () {
-                $(this).peity("pie", $(this).data());
-            });
-
-        //donut
-        $('.peity-donut').each(function () {
-            $(this).peity("donut", $(this).data());
-        });
-
-        // line
-        $('.peity-line').each(function () {
-            $(this).peity("line", $(this).data());
-        });
-
-
-        Dashboard.prototype.init = function () {
-            var $stckedData  = [
-                { y: '刑事检察团队', a: 20},
-                { y: '刑事执行团队', a: 18},
-                { y: '公益诉讼团队', a: 16},
-                { y: '民事团队', a: 40},
-                { y: '行政团队', a: 15},
-                { y: '未检业务团队', a: 23},
-                { y: '控告申诉团队', a: 4},
-                { y: '检委办团队', a: 6},
-                { y: '对台业务团队', a: 8},
-                { y: '案管团队', a: 44},
-                { y: '司法协助', a: 3}
-            ];
-            this.createStackedChart('morris-bar-stacked1', $stckedData, 'y', ['a'], ['案件数'], ['#1699dd']);
-        },
-            //init
-            $.Dashboard = new Dashboard, $.Dashboard.Constructor = Dashboard
-    }(window.jQuery),
-
-//initializing
-        function ($) {
-            "use strict1";
-            $.Dashboard.init();
-        }(window.jQuery);
-
+        } catch (e) {
+        }
+    }
+</script>
+<script>
     !function ($) {
         "use strict2";
 
@@ -283,17 +329,17 @@
         Dashboard.prototype.init = function () {
 
             var $stckedData  = [
-                { y: '刑事检察团队', a: 8.00},
-                { y: '刑事执行团队', a: 7.05},
-                { y: '公益诉讼团队', a: 4.70},
-                { y: '民事团队', a: 3.75},
-                { y: '行政团队', a: 2.90},
-                { y: '未检业务团队', a: 2.75},
-                { y: '控告申诉团队', a: 1.60},
-                { y: '检委办团队', a: 1.55},
-                { y: '对台业务团队', a: 1.50},
-                { y: '案管团队', a: 0.45},
-                { y: '司法协助', a: 0.30}
+                { y: '汉东省院180', a: 8.00},
+                { y: '测试账号1804', a: 7.05},
+                { y: '汉东省院0103', a: 4.70},
+                { y: '执检十一部主任', a: 3.75},
+                { y: '测试账号0103', a: 2.90},
+                { y: '测试账号0903', a: 2.75},
+                { y: '汉东省院18044', a: 1.60},
+                { y: '汉东省院1804', a: 1.55},
+                { y: '汉东省院0102', a: 1.50},
+                { y: '测试账号0101', a: 0.45},
+                { y: '测试账号0102', a: 0.30}
             ];
             this.createStackedChart('morris-bar-stacked2', $stckedData, 'y', ['a'], ['耗时'], ['#8603FF']);
         },
