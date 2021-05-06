@@ -18,6 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -61,6 +62,7 @@ public class GJAJServiceImpl implements GJAJService {
         return caseDao.queryTotal(map);
     }
 
+    @Transactional
     @Override
     public void saveAJ(GJAJEntity leave) {
         caseDao.save(leave);
@@ -319,4 +321,12 @@ public class GJAJServiceImpl implements GJAJService {
         }
         return Result.ok();
     }
+
+    @Override
+    public Page<GJAJEntity> queryCompleted(String ajlb, int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum, pageSize == 0 ? Constant.pageSize : pageSize);
+        caseDao.queryCompleted(ajlb);
+        return PageHelper.endPage();
+    }
+
 }
