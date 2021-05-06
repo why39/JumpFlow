@@ -28,7 +28,7 @@
         select count(count_man) from tb_type_filed_count where case_type = #{case_type} and field=#{field}
     </select>
 
-    <select id="openJob" resultType="Integer">
+    <select id="openJob" resultType="java.util.HashMap">
         select count_man from tb_type_filed_count where case_type = 'JobConfig' and field='JobConfig'
     </select>
 
@@ -53,7 +53,9 @@
         #{TYSAH},
         #{AJMC},
         #{CBDW_MC},
-        #{AJLB_MC}
+        #{AJLB_MC},
+        #{CJSJ},
+        #{IS_COMPLETE}
         )
     </insert>
 
@@ -69,6 +71,14 @@
         from aj_yx_aj
         where AJLB_MC = #{value} and IS_COMPLETE=1
     </select>
+
+    <select id="queryCompleted" resultType="com.hxy.provenance.logparser.GJAJEntity" resultMap="caseMap">
+        select
+        <include refid="Base_Column_List2"/>
+        from aj_yx_aj
+        where IS_COMPLETE=1
+    </select>
+
 
     <update id="updateComplete">
 		update aj_yx_aj set IS_COMPLETE = #{arg0} where BMSAH = #{arg1}

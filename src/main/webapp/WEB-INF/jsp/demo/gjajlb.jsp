@@ -21,8 +21,9 @@
                     </div>
                     <button class="layui-btn" id="searchSubmit"><i class="layui-icon">&#xe615;</i>搜 索</button>
                     <button class="layui-btn layui-btn-warm" type="button" id="refresh">重 置</button>
-                    <button class="layui-btn layui-btn-warm" type="button" onclick="testCases()">测试</button>
-                    <button class="layui-btn layui-btn-warm" type="button" onclick="deleteTestCases()">清空测试</button>
+<%--                    <button class="layui-btn layui-btn-warm" type="button" onclick="testCases()">测试</button>--%>
+<%--                    <button class="layui-btn layui-btn-warm" type="button" onclick="deleteTestCases()">清空测试</button>--%>
+                        <button class="layui-btn layui-btn-warm" type="button" onclick="jumpfuse()">并案处理</button>
 
                 </div>
             </form>
@@ -118,6 +119,20 @@
             });
         });
     }
+
+        function jumpfuse() {
+        var url="${webRoot}/demo/gj/fuse";
+        //弹框层
+        layer.open({
+        scrollbar: true,
+        type: 2,
+        title : ["世系融合" , true],
+        area: ['100%', '100%'], //宽高
+        content: [url,'no'],
+        shadeClose : false,
+        });
+
+        }
 
 </script>
 
