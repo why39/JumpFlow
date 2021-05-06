@@ -61,7 +61,7 @@ public class NoticeController extends BaseController {
 	/**
 	 * 保存
 	 */
-	@RequestMapping("/saveAJ")
+	@RequestMapping("/save")
 	@RequiresPermissions("sys:notice:all")
 	@SysLog("保存通知")
 	public Result save(@RequestBody NoticeEntity notice){

@@ -56,7 +56,7 @@ public class CodeController extends BaseController {
 	/**
 	 * 保存
 	 */
-	@RequestMapping("/saveAJ")
+	@RequestMapping("/save")
 	@RequiresPermissions("sys:code:update")
 	@SysLog("保存字典")
 	public Result save(@RequestBody CodeEntity code){

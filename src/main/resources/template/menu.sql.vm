@@ -6,7 +6,7 @@ INSERT INTO `sys_menu` (`id`,`parent_id`, `name`, `url`, `permission`, `type`, `
 INSERT INTO `sys_menu` (`id`,`parent_id`, `name`, `url`, `permission`, `type`, `icon`, `sort`)
     SELECT '${rid}','${id}', '查看', null, '${pathName}:info', '2', null, '6';
 INSERT INTO `sys_menu` (`id`,`parent_id`, `name`, `url`, `permission`, `type`, `icon`, `sort`)
-    SELECT '${cid}','${id}', '新增', null, '${pathName}:saveAJ', '2', null, '6';
+    SELECT '${cid}','${id}', '新增', null, '${pathName}:save', '2', null, '6';
 INSERT INTO `sys_menu` (`id`,`parent_id`, `name`, `url`, `permission`, `type`, `icon`, `sort`)
     SELECT '${uid}','${id}', '修改', null, '${pathName}:update', '2', null, '6';
 INSERT INTO `sys_menu` (`id`,`parent_id`, `name`, `url`, `permission`, `type`, `icon`, `sort`)
