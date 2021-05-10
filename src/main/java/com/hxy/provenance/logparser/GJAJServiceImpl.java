@@ -39,6 +39,12 @@ public class GJAJServiceImpl implements GJAJService {
     @Autowired
     private GJRZDao logDao;
 
+    @Autowired
+    private DqFZXYRDao dqFZXYRDao;
+
+    @Autowired
+    private DqAKDao dqAKDao;
+
     @Override
     public GJAJEntity queryObject(String id) {
         if (StringUtils.isEmpty(id)) {
@@ -159,6 +165,9 @@ public class GJAJServiceImpl implements GJAJService {
     @Override
     public Result parseLog(String BMSAH) {
 
+        DqAKEntity dqAKEntity = new DqAKEntity();
+        DqFZXYREntity dqFZXYREntity = new DqFZXYREntity();
+
         //1. 修改一个案件头部节点
         GJAJEntity gjajEntity = caseDao.queryObject(BMSAH);
 
@@ -222,6 +231,20 @@ public class GJAJServiceImpl implements GJAJService {
                                 par.put("操作人", rz.getCZRM());
                                 par.put("日志ID", rz.getID());
 
+                                if ("AFSNL".equalsIgnoreCase(key) && !StringUtils.isEmpty(value)) {
+                                    dqFZXYREntity.setAfsnl(Integer.valueOf(value));
+                                }
+                                if ("XB".equalsIgnoreCase(key)&& !StringUtils.isEmpty(value)) {
+                                    dqFZXYREntity.setXb(value);
+                                }
+                                if ("xyrxm".equalsIgnoreCase(key)&& !StringUtils.isEmpty(value)) {
+                                    dqFZXYREntity.setXyrxm(value);
+                                }
+                                if ("xyrbh".equalsIgnoreCase(key)&& !StringUtils.isEmpty(value)) {
+                                    dqFZXYREntity.setXyrbh(Integer.valueOf(value));
+                                }
+
+
                                 int relatedTaskId = taskList.size() - 1;
                                 for (int i = 0; i < taskList.size(); i++) {
                                     Map<String, Object> task = taskList.get(i);
@@ -264,6 +287,20 @@ public class GJAJServiceImpl implements GJAJService {
                                 par.put("操作人", rz.getCZRM());
                                 par.put("日志ID", rz.getID());
 
+                                if ("AFSNL".equalsIgnoreCase(key) && !StringUtils.isEmpty(value)) {
+                                    dqFZXYREntity.setAfsnl(Integer.valueOf(value));
+                                }
+                                if ("XB".equalsIgnoreCase(key)&& !StringUtils.isEmpty(value)) {
+                                    dqFZXYREntity.setXb(value);
+                                }
+                                if ("xyrxm".equalsIgnoreCase(key)&& !StringUtils.isEmpty(value)) {
+                                    dqFZXYREntity.setXyrxm(value);
+                                }
+                                if ("xyrbh".equalsIgnoreCase(key)&& !StringUtils.isEmpty(value)) {
+                                    dqFZXYREntity.setXyrbh(Integer.valueOf(value));
+                                }
+
+
                                 int relatedTaskId = taskList.size() - 1;
                                 for (int i = 0; i < taskList.size(); i++) {
                                     Map<String, Object> task = taskList.get(i);
@@ -304,6 +341,9 @@ public class GJAJServiceImpl implements GJAJService {
                 }
             }
             caseDao.updateComplete(1, BMSAH);
+
+            dqFZXYRDao.save(dqFZXYREntity);
+//            dqAKDao.save(dqAKEntity);
 
             for (Map.Entry<String, Integer> field : fieldCount.entrySet()) {
 

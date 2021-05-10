@@ -146,36 +146,29 @@ object Suggestion {
 
     val dF = spark.read
       .option("timestampFormat", "yyyy/MM/dd HH:mm:ss ZZ")
-      .jdbc("jdbc:mysql://localhost:3306/hxyframe_activiti?allowMultiQueries=true&useUnicode=true&useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true", "tb_dq_ak", properties)
-      .select("id", "AFD_MC", "AJCBDW_MC", "AJCBDW_BM", "AJLB_MC", "AJLB_BM", "AY_MC", "AY_DM")
+      .jdbc("jdbc:mysql://localhost:3306/hxyframe_activiti?allowMultiQueries=true&useUnicode=true&useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true", "aj_yx_aj", properties)
+      .select("CBDW_MC", "CBDW_BM", "AJLB_MC", "AJLB_BM", "BMSAH","TYSAH")
 
     dF.printSchema()
 
 
     var check = Check(CheckLevel.Error, "case verification")
-      .isComplete("id")
-      .isUnique("id")
-      .hasDataType("id", ConstrainableDataTypes.Integral)
 
-      .isComplete("AFD_MC")
-      .hasDataType("AFD_MC", ConstrainableDataTypes.String)
+      .isComplete("CBDW_MC")
+      .hasDataType("CBDW_MC", ConstrainableDataTypes.String)
 
-      .isComplete("AJCBDW_MC")
-      .hasDataType("AJCBDW_MC", ConstrainableDataTypes.String)
-
-      .isComplete("AJCBDW_BM")
-      .isNonNegative("AJCBDW_BM")
-      .hasDataType("AJCBDW_BM", ConstrainableDataTypes.Integral)
+      .isComplete("CBDW_BM")
+      .isNonNegative("CBDW_BM")
+      .hasDataType("CBDW_BM", ConstrainableDataTypes.Integral)
 
       .isComplete("AJLB_MC")
       .hasDataType("AJLB_MC", ConstrainableDataTypes.String)
 
-      .isComplete("AY_MC")
-      .hasDataType("AJLB_MC", ConstrainableDataTypes.String)
+      .isComplete("BMSAH")
+      .hasDataType("BMSAH", ConstrainableDataTypes.String)
 
-      .isComplete("AY_DM")
-      .isNonNegative("AY_DM")
-      .hasDataType("AY_DM", ConstrainableDataTypes.Integral)
+      .isComplete("TYSAH")
+      .hasDataType("TYSAH", ConstrainableDataTypes.String)
 
 
     return deal(dF, check, outputname)
