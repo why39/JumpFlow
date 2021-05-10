@@ -104,16 +104,16 @@
 <div id="banner">
     <div id="content">
         <ul id="ul">
-            <li><img src="http://localhost:8083/hxyActiviti/images/l1.jpg" /></a> </li>
-            <li><img src="http://localhost:8083/hxyActiviti/images/l2.jpg" /></a> </li>
-            <li><img src="http://localhost:8083/hxyActiviti/images/l3.jpg" /></a> </li>
-            <li><img src="http://localhost:8083/hxyActiviti/images/l1.jpg" /></a> </li>
-            <li><img src="http://localhost:8083/hxyActiviti/images/l4.jpg" /></a> </li>
-            <li><img src="http://localhost:8083/hxyActiviti/images/l5.jpg" /></a> </li>
-            <li><img src="http://localhost:8083/hxyActiviti/images/l6.jpg" /></a> </li>
-            <li><img src="http://localhost:8083/hxyActiviti/images/l4.jpg" /></a> </li>
-            <li><img src="http://localhost:8083/hxyActiviti/images/l7.jpg" /></a> </li>
-            <li><img src="http://localhost:8083/hxyActiviti/images/l8.jpg" /></a> </li>
+            <li><img src="${webRoot}images/l1.jpg" /></a> </li>
+            <li><img src="${webRoot}/images/l2.jpg" /></a> </li>
+            <li><img src="${webRoot}/images/l3.jpg" /></a> </li>
+            <li><img src="${webRoot}/images/l1.jpg" /></a> </li>
+            <li><img src="${webRoot}/images/l4.jpg" /></a> </li>
+            <li><img src="${webRoot}/images/l5.jpg" /></a> </li>
+            <li><img src="${webRoot}/images/l6.jpg" /></a> </li>
+            <li><img src="${webRoot}/images/l4.jpg" /></a> </li>
+            <li><img src="${webRoot}/images/l7.jpg" /></a> </li>
+            <li><img src="${webRoot}/images/l8.jpg" /></a> </li>
         </ul>
         <div class="dot" id="dot">
             <ul id="dotul">
@@ -254,7 +254,8 @@
     }
     anjian_id = document.getElementById("anjianId");
     anjian_id.onclick = function(){
-        window.location.href="http://localhost:8083/hxyActiviti/neod.html";
+        //window.location.href="http://localhost:8083/hxyActiviti/neod.html";
+        window.location.href="${webRoot}/neod.html";
     }
 </script>
 </body>

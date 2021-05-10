@@ -110,10 +110,10 @@ function Neod3Renderer() {
                         document.getElementById("leftContent").setAttribute
                         ("style", "display:none");
                     }
-                    execute("match (n) where ID(n) = "+node.id+" with n match p = (n) - [r:相关] ->(m) return p");
+                    execute1("match (n) where ID(n) = "+node.id+" with n match p = (n) - [r:相关] ->(m) return p",node.id);
                     document.getElementById("anka_table").style.display = "block";
                     document.getElementById("huanjie_detail").innerHTML = ""
-                    table_data(node.id);
+
                     break;
                 }});
 
@@ -418,6 +418,7 @@ function look_anka(value){
     var neo = new Neo(connection);
     try {
         var query = "match (n) where n.CN_KEY='"+value['CN_KEY']+"' and n.caseId='"+value['caseId']+"' WITH n OPTIONAL MATCH (n)-[r:变化]-(m)  return r,n,m  order by m.创建时间";
+        console.log(query);
         var label = value["label"];
         if(document.getElementById("tableData")){
             document.getElementById("tableData").setAttribute
@@ -432,19 +433,12 @@ function look_anka(value){
             var graph = res.graph;
             if (graph) {
                 if (graph.nodes) {
-                    var str_name = ['贺甲','丁戊','张四','王六','丁戊','丁戊','张伟',
-                        '贺甲','贺甲','张四','王六','丁戊','丁戊','张伟','贺甲','贺甲','张四','王六','丁戊','丁戊','张伟'];
                     for(var item = 0;item < graph.nodes.length;item++) {
                         if(graph.nodes[item]["label"]==label) {
-                            var year = (graph.nodes[item]["创建时间"]).toString().substring(0,4);
-                            var month = (graph.nodes[item]["创建时间"]).toString().substring(5,7)
-                                + "-" + (graph.nodes[item]["创建时间"]).toString().substring(8,10);
-                            var time  = (graph.nodes[item]["创建时间"]).toString().substring(12,20)
                             var str_time = (graph.nodes[item]["创建时间"]).toString().substring(0,20)
                             var str_div = graph.nodes[item][graph.nodes[item].label];
-                            //s_name = "操作人:"+str_name[item];
-                            s_name = "操作人:" + (graph.nodes[item]["操作人"]).toString()
-                            //s_alter = "修改者:"+"案管人员"
+                            //s_name = "操作人:" + (graph.nodes[item]["操作人"]).toString()
+                            s_name = "韩信";
                             s_alter = "";
                             if(true){
                                 document.getElementById("timelineId").innerHTML +=

@@ -1,5 +1,5 @@
-<script src="${webRoot}/js/jquery-2.0.3.min.js"></script>
-<script src="${webRoot}/js/jquery-1.10.2.min.js"></script>
+<script src="http://localhost:8083/hxyActiviti/js/jquery-2.0.3.min.js"></script>
+<script src="http://localhost:8083/hxyActiviti/js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript">
     window.jQuery || document.write("<script src='${webRoot}/js/jquery-2.0.3.min.js'>" + "<" + "script>");
 </script>
