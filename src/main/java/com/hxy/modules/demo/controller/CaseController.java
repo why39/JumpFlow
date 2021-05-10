@@ -18,8 +18,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-//import com.hxy.dp.Suggestion;
+import com.hxy.dq.Suggestion;
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * 类的功能描述.
@@ -68,15 +71,21 @@ public class CaseController {
         Page<CaseEntity> page = caseService.findPage(caseEntity, pageNum);
         model.addAttribute("page", page);
         model.addAttribute("case", caseEntity);
-        return "demo/dataquality";
+        return "demo/dataquality_tb";
     }
 
     @RequestMapping(value = "dealquality", method = RequestMethod.POST)
     @RequiresPermissions("act:model:all")
     @ResponseBody
-    public Result dealquality(String id) {
-//        Suggestion.deal(id + "");
-        return Result.ok("分析成功");
+    public Result dealquality(String tb_name) {
+        Map<String,Object> result = null;
+        if ("tb_dq_fzxyr".equals(tb_name)) {
+            result = Suggestion.dealXYR(UUID.randomUUID().toString());
+        } else {
+            result = Suggestion.dealAKX(UUID.randomUUID().toString());
+        }
+
+        return Result.ok(result);
     }
 
     /**
@@ -90,7 +99,6 @@ public class CaseController {
     @RequestMapping("info")
     @RequiresPermissions("act:model:all")
     public String info(Model model, String id, HttpServletRequest request) {
-        System.out.println("wxp>>>>>>>>>>>> : info");
         if (!StringUtils.isEmpty(id)) {
             CaseEntity caseEntity = caseService.queryObject(id);
             model.addAttribute("case", caseEntity);

@@ -25,7 +25,7 @@ object Suggestion {
     print(result)
   }
 
-  def deal(dF: DataFrame, check: Check, outputname: String): util.HashMap[String,String] = {
+  def deal(dF: DataFrame, check: Check, outputname: String): util.HashMap[String,Object] = {
     val spark = SparkSession.builder
       .appName("Deequ")
       .master("local[*]")
@@ -65,7 +65,7 @@ object Suggestion {
 
       .run()
 
-    var resultMap = new util.HashMap[String,String]()
+    var resultMap = new util.HashMap[String,Object]()
 
     if (verificationResult.status == CheckStatus.Success) {
       println("The data passed the test, everything is fine!")
@@ -96,7 +96,7 @@ object Suggestion {
   }
 
   //嫌疑人表
-  def dealXYR(outputname: String):  util.HashMap[String,String] = {
+  def dealXYR(outputname: String):  util.HashMap[String,Object] = {
 
 
     val properties = new Properties()
@@ -137,7 +137,7 @@ object Suggestion {
 
 
   //嫌疑人表
-  def dealAKX(outputname: String):  util.HashMap[String,String] = {
+  def dealAKX(outputname: String):  util.HashMap[String,Object] = {
 
 
     val properties = new Properties()
