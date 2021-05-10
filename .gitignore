@@ -1,14 +1,8 @@
-.iml
-.idea/
-*/.iml
 .DS_Store
 */.DS_Store
-.idea/
 target/
 classes/
 build/
 log/
 /case
-hxyFrame-activiti-boot.iml
-pom.xml
 
