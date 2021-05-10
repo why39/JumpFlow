@@ -51,7 +51,6 @@
                 </tr>
                 </tbody>
             </table>
-            <sys:page page="${page}"></sys:page>
         </div>
     </div>
 </div>
@@ -74,53 +73,23 @@
         confirm('确定检测数据质量？', function () {
             $.post(url, "tb_name=" + tb_name, function (r) {
                 console.log(r)
-                if (r!=null && r["code"] == 0){
-                    var content = "";
-                    for(var key in r){
-                        if (key != "code") {
-                            console.log("属性：" + key + ",值：" + r[key]);
-                            content=content+key+":"+r[key]+"\r";
-                        }
-                        
-                    }
-                    console.log(content)
-                    if (content.length>0) {
-                        alert(content,null,null);
-                    } else {
-                        alert("检测成功，没有错误",null,null);
-                    }
-                    
-                }
+                var url="${webRoot}/demo/case/dataquality_res";
+                //弹框层
+                layer.open({
+
+                scrollbar: true,
+                type: 2,
+                title : ["数据质量检测结果" , true],
+                area: ['100%', '100%'], //宽高
+                content: [url,'no'],
+                shadeClose : false,
+                });
+
+
             });
         });
     }
 
-    function logDelete(bmsah) {
-        var url = "${webRoot}/demo/gj/deletelog";
-        confirm('确定删除世系数据？', function () {
-            $.post(url, "bmsah=" + bmsah, function (r) {
-                $("#search-from").submit();
-            });
-        });
-    }
-
-    function testCases() {
-        var url = "${webRoot}/demo/gj/parselog-test";
-        confirm('开始测试？', function () {
-            $.post(url, "count=" + $("#test-count").val(), function (r) {
-                $("#search-from").submit();
-            });
-        });
-    }
-
-    function deleteTestCases() {
-        var url = "${webRoot}/demo/gj/delete-test";
-        confirm('确认删除？', function () {
-            $.post(url, "count=" + $("#test-count").val(), function (r) {
-                $("#search-from").submit();
-            });
-        });
-    }
 
 </script>
 

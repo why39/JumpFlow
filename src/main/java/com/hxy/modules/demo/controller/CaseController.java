@@ -7,6 +7,7 @@ import com.hxy.modules.common.utils.ShiroUtils;
 import com.hxy.modules.common.utils.StringUtils;
 import com.hxy.modules.demo.entity.CaseEntity;
 import com.hxy.modules.demo.service.CaseService;
+import com.hxy.provenance.logparser.DqResEntity;
 import com.hxy.provenance.neo4j.CaseDataBean;
 import com.hxy.provenance.neo4j.Neo4jFinalUtil;
 import com.hxy.provenance.neo4j.json.JSONObject;
@@ -19,10 +20,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.hxy.dq.Suggestion;
+
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * 类的功能描述.
@@ -60,32 +62,54 @@ public class CaseController {
      * 案件质量
      *
      * @param model
-     * @param caseEntity
      * @param request
      * @return
      */
     @RequestMapping("dataquality")
     @RequiresPermissions("act:model:all")
-    public String dataquality(Model model, CaseEntity caseEntity, HttpServletRequest request) {
-        int pageNum = CommUtils.parseInt(request.getParameter("pageNum"), 1);
-        Page<CaseEntity> page = caseService.findPage(caseEntity, pageNum);
-        model.addAttribute("page", page);
-        model.addAttribute("case", caseEntity);
+    public String dataquality(Model model, HttpServletRequest request) {
         return "demo/dataquality_tb";
     }
+
+    List<DqResEntity> dqResEntityList = new ArrayList<>();
 
     @RequestMapping(value = "dealquality", method = RequestMethod.POST)
     @RequiresPermissions("act:model:all")
     @ResponseBody
-    public Result dealquality(String tb_name) {
-        Map<String,Object> result = null;
+    public Result dealquality(Model model, String tb_name, HttpServletRequest request) {
+        Map<String, Object> result = null;
+        dqResEntityList.clear();
+
         if ("tb_dq_fzxyr".equals(tb_name)) {
-            result = Suggestion.dealXYR("case/"+UUID.randomUUID().toString());
+            result = Suggestion.dealXYR("case/" + UUID.randomUUID().toString());
         } else {
-            result = Suggestion.dealAKX("case/"+UUID.randomUUID().toString());
+            result = Suggestion.dealAKX("case/" + UUID.randomUUID().toString());
         }
 
+        Set<Map.Entry<String, Object>> entrys = result.entrySet();
+        for (Map.Entry<String, Object> entry : entrys) {
+            if (!"code".equals(entry.getKey())) {
+                dqResEntityList.add(new DqResEntity(entry.getKey(), entry.getValue().toString()));
+            }
+        }
+
+        if (dqResEntityList.size() > 0) {
+            model.addAttribute("dq_res", dqResEntityList);
+        } else {
+            model.addAttribute("dq_res", null);
+        }
         return Result.ok(result);
+    }
+
+    @RequestMapping("dataquality_res")
+    @RequiresPermissions("act:model:all")
+    public String dataqualityRes(Model model, HttpServletRequest request) {
+        if (dqResEntityList.size() > 0) {
+            model.addAttribute("dq_res", dqResEntityList);
+        } else {
+            model.addAttribute("dq_res", null);
+        }
+        return "demo/dataquality_res";
     }
 
     /**
