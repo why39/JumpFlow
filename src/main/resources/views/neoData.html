@@ -730,8 +730,8 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
                             if(graph.nodes[item]["CN_KEY"]==name) {
                                 var str_time = (graph.nodes[item]["创建时间"]).toString().substring(0,20)
                                 var str_div = graph.nodes[item][graph.nodes[item].label];
-                                //s_name = "操作人:" + (graph.nodes[item]["操作人"]).toString();
-                                s_name = "韩信";
+                                s_name = "操作人:" + (graph.nodes[item]["操作人"]).toString();
+                                //s_name = "韩信";
                                 s_alter = "";
                                 if(str_div != ""){
                                     document.getElementById("timelineId").innerHTML +=
