@@ -53,7 +53,9 @@
         #{TYSAH},
         #{AJMC},
         #{CBDW_MC},
-        #{AJLB_MC}
+        #{AJLB_MC},
+        #{CJSJ},
+        #{IS_COMPLETE}
         )
     </insert>
 
