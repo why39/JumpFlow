@@ -34,7 +34,11 @@ spring:
         static-locations: classpath:/statics/,classpath:/views/
     redis:
         database: 1
+<<<<<<< HEAD
         hostName: 127.0.0.1 #127.0.0.1
+=======
+        hostName: localhost #127.0.0.1
+>>>>>>> d5b0d7ce6b68f300a61bb8906298a66b90fb0184
         port: 6379
         #password:       # 密码（默认为空）
         timeout: 6000  # 连接超时时长（毫秒）

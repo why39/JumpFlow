@@ -57,7 +57,7 @@ public class ScheduleJobController {
 	/**
 	 * 保存定时任务
 	 */
-	@RequestMapping("/saveAJ")
+	@RequestMapping("/save")
 	@RequiresPermissions("sys:schedule:update")
 	@SysLog("新增定时任务")
 	public Result save(@RequestBody ScheduleJobEntity scheduleJob){

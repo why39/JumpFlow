@@ -59,4 +59,6 @@ public class GJRZEntity {
     public void setZHXGSJ(String ZHXGSJ) {
         this.ZHXGSJ = ZHXGSJ;
     }
+
+
 }
