@@ -2,6 +2,7 @@ package com.hxy.dq
 
 import org.apache.spark.sql.{DataFrame, SparkSession}
 import java.io._
+import java.util
 import java.util.{Properties, UUID}
 
 import com.amazon.deequ.VerificationResult.checkResultsAsDataFrame
@@ -20,10 +21,11 @@ object Suggestion {
   import spark.implicits._
 
   def main(args: Array[String]) {
-    dealAKX(path + "res_" + UUID.randomUUID())
+    var result = dealAKX(path + "res_" + UUID.randomUUID())
+    print(result)
   }
 
-  def deal(dF: DataFrame, check: Check, outputname: String): Unit = {
+  def deal(dF: DataFrame, check: Check, outputname: String): util.HashMap[String,String] = {
     val spark = SparkSession.builder
       .appName("Deequ")
       .master("local[*]")
@@ -63,6 +65,8 @@ object Suggestion {
 
       .run()
 
+    var resultMap = new util.HashMap[String,String]()
+
     if (verificationResult.status == CheckStatus.Success) {
       println("The data passed the test, everything is fine!")
     } else {
@@ -75,7 +79,9 @@ object Suggestion {
         .filter {
           _.status != ConstraintStatus.Success
         }
-        .foreach { result => println(s"${result.constraint}: ${result.message.get}") }
+        .foreach { result => resultMap.put(result.constraint.toString,result.message.get)
+//          (s"${result.constraint}: ${result.message.get}")
+         }
     }
     val resultDataFrame = checkResultsAsDataFrame(spark, verificationResult)
     resultDataFrame.coalesce(1).write.format("csv")
@@ -86,10 +92,11 @@ object Suggestion {
       .option("header", "true")
       .option("timestampFormat", "yyyy/MM/dd HH:mm:ss ZZ")
       .mode("Append").json(outputname)
+    return resultMap
   }
 
   //嫌疑人表
-  def dealXYR(outputname: String): Unit = {
+  def dealXYR(outputname: String):  util.HashMap[String,String] = {
 
 
     val properties = new Properties()
@@ -124,13 +131,13 @@ object Suggestion {
       .isContainedIn("xb", Array("male", "female"))
       .hasDataType("xb", ConstrainableDataTypes.String)
 
-    deal(dF, check, outputname)
+    return deal(dF, check, outputname)
 
   }
 
 
   //嫌疑人表
-  def dealAKX(outputname: String): Unit = {
+  def dealAKX(outputname: String):  util.HashMap[String,String] = {
 
 
     val properties = new Properties()
@@ -171,7 +178,7 @@ object Suggestion {
       .hasDataType("AY_DM", ConstrainableDataTypes.Integral)
 
 
-    deal(dF, check, outputname)
+    return deal(dF, check, outputname)
 
   }
 }
