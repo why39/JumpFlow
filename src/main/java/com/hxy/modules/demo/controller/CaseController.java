@@ -80,9 +80,9 @@ public class CaseController {
     public Result dealquality(String tb_name) {
         Map<String,Object> result = null;
         if ("tb_dq_fzxyr".equals(tb_name)) {
-            result = Suggestion.dealXYR(UUID.randomUUID().toString());
+            result = Suggestion.dealXYR("case/"+UUID.randomUUID().toString());
         } else {
-            result = Suggestion.dealAKX(UUID.randomUUID().toString());
+            result = Suggestion.dealAKX("case/"+UUID.randomUUID().toString());
         }
 
         return Result.ok(result);
