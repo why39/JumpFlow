@@ -290,29 +290,6 @@
             </path>
             <path>
               <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JumpFlow" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JumpFlow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JumpFlow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JumpFlow" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hxyFrame-activiti-boot" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -441,12 +418,12 @@
       <workItem from="1619765365893" duration="2242000" />
       <workItem from="1620226893477" duration="5867000" />
       <workItem from="1620374180539" duration="944000" />
-      <workItem from="1620610633179" duration="4441000" />
+      <workItem from="1620610633179" duration="4689000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="188419000" />
+    <option name="totallyTimeSpent" value="188667000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="50" y="23" width="1230" height="777" extended-state="6" />
@@ -466,9 +443,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.5270073" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.5270073" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49915397" weight="0.68175185" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49915397" visible="true" weight="0.68175185" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.500846" side_tool="true" weight="0.329927" />
       <window_info anchor="bottom" id="Spring" order="12" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.329927" />
