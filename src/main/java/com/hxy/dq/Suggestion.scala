@@ -84,14 +84,14 @@ object Suggestion {
          }
     }
     val resultDataFrame = checkResultsAsDataFrame(spark, verificationResult)
-    resultDataFrame.coalesce(1).write.format("csv")
-      .option("header", "false")
-      .option("timestampFormat", "yyyy/MM/dd HH:mm:ss ZZ")
-      .mode("Append").save(outputname)
-    resultDataFrame.coalesce(1).write
-      .option("header", "true")
-      .option("timestampFormat", "yyyy/MM/dd HH:mm:ss ZZ")
-      .mode("Append").json(outputname)
+//    resultDataFrame.coalesce(1).write.format("csv")
+//      .option("header", "false")
+//      .option("timestampFormat", "yyyy/MM/dd HH:mm:ss ZZ")
+//      .mode("Append").save(outputname)
+//    resultDataFrame.coalesce(1).write
+//      .option("header", "true")
+//      .option("timestampFormat", "yyyy/MM/dd HH:mm:ss ZZ")
+//      .mode("Append").json(outputname)
     return resultMap
   }
 
