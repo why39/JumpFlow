@@ -2,6 +2,8 @@ package com.hxy.provenance.logparser;
 
 import com.hxy.modules.activiti.annotation.ActTable;
 
+import javax.validation.constraints.NotNull;
+
 @ActTable(tableName = "RZ_YX_RZ", pkName = "ID")
 public class GJRZEntity {
     private String ID;
@@ -9,6 +11,7 @@ public class GJRZEntity {
     private String RZMS; //日志明细
     private String CZRM; //人名
     private String ZHXGSJ; //最后修改使劲
+    @NotNull
     private String EJFL; //日志类别，TYYW_LCBA_YW_BL_LC_XXX:流程节点信息。
     public static final String LC_PREFIX = "TYYW_LCBA_YW_BL_LC_";
 

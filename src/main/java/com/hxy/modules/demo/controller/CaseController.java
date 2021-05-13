@@ -1,5 +1,6 @@
 package com.hxy.modules.demo.controller;
 
+import com.hxy.dq.Suggestion;
 import com.hxy.modules.common.page.Page;
 import com.hxy.modules.common.utils.CommUtils;
 import com.hxy.modules.common.utils.Result;
@@ -7,9 +8,7 @@ import com.hxy.modules.common.utils.ShiroUtils;
 import com.hxy.modules.common.utils.StringUtils;
 import com.hxy.modules.demo.entity.CaseEntity;
 import com.hxy.modules.demo.service.CaseService;
-import com.hxy.provenance.logparser.DqResEntity;
-import com.hxy.provenance.neo4j.CaseDataBean;
-import com.hxy.provenance.neo4j.Neo4jFinalUtil;
+import com.hxy.provenance.logparser.*;
 import com.hxy.provenance.neo4j.json.JSONObject;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +18,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.hxy.dq.Suggestion;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * 类的功能描述.
@@ -39,6 +40,13 @@ public class CaseController {
 
     @Autowired
     CaseService caseService;
+
+    @Autowired
+    GJAJDao gjajDao;
+
+    @Autowired
+    GJRZDao gjrzDao;
+
 
     /**
      * 案件列表
@@ -157,16 +165,27 @@ public class CaseController {
      * @param caseEntity
      */
     public void addCase(CaseEntity caseEntity) {
-        CaseDataBean caseDataBean = new CaseDataBean();
-        caseDataBean.setCase_category("监督办");
-        caseDataBean.setCase_id(caseEntity.getId());
-        caseDataBean.setCase_name(caseEntity.getTitle());
-        caseDataBean.setDepartment_id("0");
-        caseDataBean.setDepartment_name("监督办");
-        caseDataBean.setUser_id(ShiroUtils.getUserEntity().getId());
-        caseDataBean.setUser_name(ShiroUtils.getUserEntity().getUserName());
+        GJAJEntity caseDataBean = new GJAJEntity();
+        caseDataBean.setAJLB_MC("测试分类");
+        caseDataBean.setBMSAH(caseEntity.getId());
+        caseDataBean.setAJMC(caseEntity.getTitle());
+        caseDataBean.setCJSJ(java.util.Date.from(Instant.now()));
 
-        Neo4jFinalUtil.addCase(caseDataBean);
+//        caseDataBean.setDepartment_name("监督办");
+//        caseDataBean.setUser_id(ShiroUtils.getUserEntity().getId());
+//        caseDataBean.setUser_name(ShiroUtils.getUserEntity().getUserName());
+
+//        GJNeo4jUtil.addCase(caseDataBean);
+        gjajDao.save(caseDataBean);
+
+        GJRZEntity gjrzEntity = new GJRZEntity();
+        gjrzEntity.setID(UUID.randomUUID().toString());
+        gjrzEntity.setBMSAH(caseEntity.getId());
+        gjrzEntity.setCZRM(ShiroUtils.getUserEntity().getUserName());
+        gjrzEntity.setRZMS("创建案件");
+        gjrzEntity.setEJFL("property_head");
+        gjrzEntity.setZHXGSJ(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date().getTime()));
+        gjrzDao.save(gjrzEntity);
     }
 
     /**
