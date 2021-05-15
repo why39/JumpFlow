@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="JumpFlow" />
+        <module name="hxyFrame-activiti-boot" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="hxyFrame-activiti-boot" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

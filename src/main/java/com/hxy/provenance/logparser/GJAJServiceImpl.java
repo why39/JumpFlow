@@ -171,6 +171,7 @@ public class GJAJServiceImpl implements GJAJService {
         //2. 从RZ_YX_RZ中查询该BMSAH所有的日志
         List<GJRZEntity> rzlist = logDao.queryList(BMSAH); //按时间升序排列
         List<Map<String, Object>> taskList = new ArrayList<>();
+        String czrm = "";
         try {
             //2.1 先添加流程信息：
             for (GJRZEntity lcrz : rzlist) {
@@ -181,6 +182,11 @@ public class GJAJServiceImpl implements GJAJService {
                         Map<String, Object> map = new HashMap<>();
                         map.put(NeoConstants.KEY_LAST_NODE_ID, caseNodeId);
                         map.put("name", LCRZMS);
+                        if (!StringUtils.isEmpty(lcrz.getCZRM())) {
+                            czrm = lcrz.getCZRM();
+                        } else {
+                            lcrz.setCZRM(czrm);
+                        }
                         map.put("操作人", lcrz.getCZRM());
                         map.put("日志ID", lcrz.getID());
                         String zhxgsj = LocalDateTime.parse(lcrz.getZHXGSJ(), zhxgsjFormatter1).format(zhxgsjFormatter2);
@@ -219,6 +225,9 @@ public class GJAJServiceImpl implements GJAJService {
                                 par.put("CaseNodeId", caseNodeId);
                                 par.put("name", showKey);
                                 par.put("最后修改时间", (String) rz.getZHXGSJ());
+                                if (StringUtils.isEmpty(rz.getCZRM())) {
+                                    rz.setCZRM(czrm);
+                                }
                                 par.put("操作人", rz.getCZRM());
                                 par.put("日志ID", rz.getID());
 
@@ -261,6 +270,9 @@ public class GJAJServiceImpl implements GJAJService {
                                 par.put("CaseNodeId", caseNodeId);
                                 par.put("name", showKey);
                                 par.put("最后修改时间", (String) rz.getZHXGSJ());
+                                if (StringUtils.isEmpty(rz.getCZRM())) {
+                                    rz.setCZRM(czrm);
+                                }
                                 par.put("操作人", rz.getCZRM());
                                 par.put("日志ID", rz.getID());
 
@@ -328,5 +340,4 @@ public class GJAJServiceImpl implements GJAJService {
         caseDao.queryCompleted(ajlb);
         return PageHelper.endPage();
     }
-
 }

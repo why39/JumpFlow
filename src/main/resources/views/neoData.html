@@ -86,9 +86,9 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
 <table style = "" id = "anka_table_data">
     <thead>
     <tr>
-        <th id = "anka_table_data_ren">人员相关</th>
-        <th id = "anka_table_data_anjian">案件相关</th>
-        <th id = "anka_table_data_other">其他</th>
+        <th id = "anka_table_data_ren">（案卡项变化）人员相关</th>
+        <th id = "anka_table_data_anjian">（案卡项变化）案件相关</th>
+        <th id = "anka_table_data_other">（案卡项变化）其他</th>
     </tr>
     </thead>
     <tbody id="J_TbData">
@@ -233,6 +233,7 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
 
 <script type="text/javascript">
     var neod3 = new Neod3Renderer();
+    var neod3_1 = new Neod3Renderer1();
     var connection = function () {
         configStr = localStorage.getItem("neoconfig");
         configJSON = JSON.parse(configStr)
@@ -357,7 +358,7 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
     function execute1(content,node_id) {
         var neo = new Neo(connection);
         try {
-            var query = content;
+            var query = "match (n) where ID(n) = "+node_id+" with n match p = (n) - [r:相关] ->(m) return p";
             console.log("Executing Query", query);
             neo.executeQuery(query, {}, function (err, res) {
                 res = res || {}
@@ -366,50 +367,55 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
                 if (graph) {
                     var c = $("#graph");
                     c.empty();
-                    neod3.render("graph", c, graph);
-                } else {
-                    if (err) {
-                        if (err.length > 0) {
-                        } else {
+                    neod3_1.render("graph", c, graph);
+                    window.setTimeout(function(){
+                        try{
+                            neo.executeQuery(query, {}, function (err, res1) {
+                                var node = document.getElementsByClassName("layer nodes")[0];
+                                var graph_node = res1.graph.nodes;
+                                var list_node = node.children;
+                                table_data(node_id);
+                                var map = new Map();
+                                var keys = map.keys();
+                                var values = map.values();
+
+                                var key = new Array();
+                                var value = new Array();
+                                for(var i = 0;i < graph_node.length;i++){
+                                   // console.log(graph_node[i].name);
+                                    if(graph_node[i].name.indexOf("编码") == -1){
+                                        if(graph_node[i].name.indexOf("代码") == -1){
+                                            var str = graph_node[i].name.substring(0,3);
+                                            if(map.has(str)){
+                                                map.set(str,map.get(str) + 1);
+                                            }
+                                            else {
+                                                map.set(str,0);
+                                            }
+                                        }
+
+                                    }
+                                }
+                                for(var i = 0;i < map.size;i++){
+                                    key[i] = keys.next().value;
+                                    value[i] = values.next().value + 1;
+                                  //   console.log(key[i] + "...." + value[i]);
+                                }
+                                for(var i = 0;i < list_node.length;i++){
+                                    if(key.includes(list_node[i].children[1].innerHTML)){
+                                        list_node[i].children[0].r.baseVal.value = 30 + 5 * (map.get(list_node[i].children[1].innerHTML) - 1);
+                                    }
+                                }
+                            });
+                        }catch(e){
+
                         }
-                    }
+                    },500);
+                } else {
                 }
             });
         } catch (e) {
         }
-        window.setTimeout(function(){
-            var relation = document.getElementsByClassName('layer relationships')[0];
-            var list_relation = relation.children;
-            var node = document.getElementsByClassName("layer nodes")[0];
-            var list_node = node.children;
-            var map = new Map();
-            for(var i = 0;i < list_node.length;i++){
-                var str = list_node[i].children[1].innerHTML;
-                if(map.has(str)){
-                    map.set(str,map.get(str) + 1);
-                }
-                else {
-                    map.set(str,0);
-                }
-            }
-            var common = [];
-            for(var i = 0;i < list_node.length;i++){
-                if(common.includes(list_node[i].children[1].innerHTML)){
-                    //list_node[i].style.display = "none";
-                    //list_relation[i].style.display = "none";
-
-                }
-                else {
-                    common.push(list_node[i].children[1].innerHTML);
-                }
-            }
-            table_data(node_id)
-            for(var i = 0;i < list_node.length;i++){
-                if(map.get(list_node[i].children[1].innerHTML)){
-                    list_node[i].children[0].r.baseVal.value = 30;
-                }
-            }
-        },500);
     }
 
     //查找人名涉及的案件
@@ -498,7 +504,6 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
         }
 
         clearNodeInfo();
-        console.log("gggggg");
         execute(query);
         }
 
@@ -604,6 +609,7 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
         other_data = [];
         var graph_node = [];
         var neo = new Neo(connection);
+        var map = new Map();
         try {
             var query = "match (n) where ID(n) = "+node_id+" with n match p = (n) - [r:相关] ->(m) return p";
             neo.executeQuery(query, {}, function (err, res) {
@@ -611,9 +617,6 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
                 var graph = res.graph;
                 if (graph) {
                     graph_node = graph.nodes;
-                    /*for(var i = 0;i < node.length;i++){
-                        console.log(node[i].CN_KEY);
-                    }*/
                 }
                 $.ajax({
                     type: "get",
@@ -621,7 +624,6 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
                     url: "/hxyActiviti/demo/ak/aklb",
                     success: function (res) {
                         if (res) {
-                            var map = new Map();
                             for(var i = 0;i < graph_node.length;i++){
                                 var str = graph_node[i].CN_KEY;
                                 if(map.has(str)){
@@ -639,7 +641,6 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
                             for(var i = 0;i < map.size;i++){
                                 key[i] = keys.next().value;
                                 value[i] = values.next().value + 1;
-                                console.log(key[i]);
                             }
                             for(var i = key.length - 1;i < graph_node.length;i++){
                                 key[i] = "z";
@@ -650,27 +651,46 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
                                     if (res[i].cn == graph_node[k].CN_KEY) {
                                         if (res[i].category == '其他' && !other_data.includes(res[i].cn)) {
                                             for(var aa = 0;aa < key.length;aa++){
-                                                if(res[i].cn == key[aa] && !other_data.includes(res[i].cn + "--" + value[aa])){
-                                                    other_data.push(res[i].cn + "--" + value[aa]);
+                                                if(res[i].cn == key[aa] && !other_data.includes("(" + value[aa] + ")" + key[aa])
+                                                    && res[i].cn.indexOf("编码") == -1 && res[i].cn.indexOf("代码") == -1 && res[i].cn.indexOf("编号") == -1){
+                                                    other_data.push("(" + value[aa] + ")" + res[i].cn);
                                                 }
                                             }
                                         }
                                         if (res[i].category == '案件相关' && !case_data.includes(res[i].cn)) {
                                             for(var aa = 0;aa < key.length;aa++){
-                                                if(res[i].cn == key[aa] && !case_data.includes(res[i].cn + "--" + value[aa])){
-                                                    case_data.push(res[i].cn + "--" + value[aa])
+                                                if(res[i].cn == key[aa] && !case_data.includes("(" + value[aa] + ")" + key[aa])
+                                                    && res[i].cn.indexOf("编码") == -1 && res[i].cn.indexOf("代码") == -1 && res[i].cn.indexOf("编号") == -1){
+                                                    case_data.push("(" + value[aa] + ")" + res[i].cn)
                                                 }
                                             }
                                         }
                                         if (res[i].category == '人员相关' && !name_data.includes(res[i].cn)) {
                                             for(var aa = 0;aa < key.length;aa++){
-                                                if(res[i].cn == key[aa] && !name_data.includes(res[i].cn + "--" + value[aa])){
-                                                    name_data.push(res[i].cn + "--" + value[aa])
+                                                if(res[i].cn == key[aa] && !name_data.includes("(" + value[aa] + ")" + res[i].cn)
+                                                    && res[i].cn.indexOf("编码") == -1 && res[i].cn.indexOf("代码") == -1 && res[i].cn.indexOf("编号") == -1){
+                                                    name_data.push("(" + value[aa] + ")" + res[i].cn)
                                                 }
                                             }
 
                                         }
                                     }
+                                }
+                            }
+                            for(var aa = 0;aa < key.length;aa++){
+                                if(!other_data.includes("(" + value[aa] + ")" + key[aa]) && !case_data.includes("(" + value[aa] + ")" + key[aa])
+                                    && !name_data.includes("(" + value[aa] + ")" + key[aa])){
+                                    if(key[aa] != undefined) {
+                                        if(key[aa].indexOf("编码") == -1){
+                                            if(key[aa].indexOf("代码") == -1) {
+                                                if(key[aa].indexOf("编号") == -1){
+                                                    if(key[aa] != "z")  name_data.push("(" + value[aa] + ")" + key[aa])
+                                                }
+
+                                            }
+                                        }
+                                    }
+
                                 }
                             }
                             for(i = 0;i < other_data.length;i++) {
@@ -697,6 +717,7 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
             });
         } catch (e) {
         }
+        return map;
     }
     function table_data_ren(name){
         table_data_ececute(name);
@@ -710,7 +731,7 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
     function table_data_ececute(name){
         var neo = new Neo(connection);
         try {
-            name = name.substring(0,name.indexOf("-"));
+            name = name.substring(name.indexOf(")") + 1,name.length);
             var query = "match (n) where n.CN_KEY='"+name+"' and n.caseId='"+jiema()+"' WITH n OPTIONAL MATCH (n)-[r:变化]-(m)  return r,n,m  order by m.创建时间";
             console.log(query);
             if(document.getElementById("tableData")){
@@ -726,20 +747,38 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
                 var graph = res.graph;
                 if (graph) {
                     if (graph.nodes) {
+                        var str_month = (graph.nodes[0]["创建时间"]).toString().substring(5,7)
                         for(var item = 0;item < graph.nodes.length;item++) {
                             if(graph.nodes[item]["CN_KEY"]==name) {
                                 var str_time = (graph.nodes[item]["创建时间"]).toString().substring(0,20)
                                 var str_div = graph.nodes[item][graph.nodes[item].label];
-                                //s_name = "操作人:" + (graph.nodes[item]["操作人"]).toString();
-                                s_name = "韩信";
+                                var name_index_0 = graph.nodes[item]["所属环节"].indexOf(" ",0);
+                                var name_index_1 = graph.nodes[item]["所属环节"].substring(name_index_0 + 1,
+                                    graph.nodes[item]["所属环节"].length).indexOf(" ",1);
+                                s_name = "操作人:" + graph.nodes[item]["所属环节"].substring(name_index_0 + 1,name_index_1 + name_index_0 + 1)
                                 s_alter = "";
-                                if(str_div != ""){
-                                    document.getElementById("timelineId").innerHTML +=
-                                        "<li><div class = \"time\">"+str_time+"</div> <div class = \"version\">"+s_alter+"</div> " +
-                                        "<div class = \"timeBananName\">"+s_name+"</div> <div class = \"number\"></div>" +
-                                        " <div class = \"content\">" +
-                                        "<div class = \"divCount\"> "+str_div+"<br /></div></div></li>";
-                                    console.log(document.getElementById("timelineId").innerHTML);
+                                if(str_div == "") str_div = "创建";
+                                if(true){
+                                    if(item == graph.nodes.length - 1) {
+                                        if(graph.nodes.length > 2){
+                                            str_month = "12";
+                                        }
+                                    }
+                                    if(str_time.substring(5,7) == str_month){
+                                        document.getElementById("timelineId").innerHTML +=
+                                            "<li><div class = \"time\">"+str_time+"</div> <div class = \"version\">"+s_alter+"</div> " +
+                                            "<div class = \"timeBananName\">"+s_name+"</div> <div class = \"number\"></div>" +
+                                            " <div class = \"content\">" +
+                                            "<div class = \"divCount\"> "+str_div+"<br /></div></div></li>";
+                                    }
+                                    if(str_time.substring(5,7) != str_month) {
+                                        str_time = str_time.substring(0,5) + "12" + str_time.substring(7,str_time.length);
+                                        document.getElementById("timelineId").innerHTML +=
+                                            "<li><div class = \"time\">"+str_time+"</div> <div class = \"version\">"+s_alter+"</div> " +
+                                            "<div class = \"timeBananName\">"+s_name+"</div> <div class = \"number\"></div>" +
+                                            " <div class = \"content\">" +
+                                            "<div style = \" background-color: red\" class = \"divCount\"> "+str_div+"<br /></div></div></li>";
+                                    }
                                     $(".number").click(function(){
                                         var $divcount = $(this).parent().find(".divCount");
                                         var $divimg = $(this).find(".hand_img");
