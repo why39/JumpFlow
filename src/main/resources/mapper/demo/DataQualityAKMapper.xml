@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hxy.provenance.logparser.DqAKDao">
+    <resultMap type="com.hxy.provenance.logparser.DqAKEntity" id="dqAKEntity">
+        <result property="id" column="id"/>
+        <result property="AFD_MC" column="AFD_MC"/>
+        <result property="CBDW_MC" column="CBDW_MC"/>
+        <result property="CBDW_BM" column="CBDW_BM"/>
+        <result property="AJLB_MC" column="AJLB_MC"/>
+        <result property="AJLB_BM" column="AJLB_BM"/>
+        <result property="AY_MC" column="AY_MC"/>
+        <result property="AY_DM" column="AY_DM"/>
+        <result property="BMSAH" column="BMSAH"/>
+
+    </resultMap>
+
+    <sql id="cols">
+		AFD_MC,
+		BMSAH,
+		CBDW_MC,
+		CBDW_BM,
+		AJLB_MC,
+		AJLB_BM,
+		AY_MC,
+		AY_DM
+    </sql>
+
+
+    <insert id="save" parameterType="com.hxy.provenance.logparser.DqAKEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into tb_dq_ak
+        (
+        <include refid="cols"/>
+        )
+        values
+        (
+        #{BMSAH},
+        #{AFD_MC},
+        #{CBDW_MC},
+        #{CBDW_BM},
+        #{AJLB_MC},
+        #{AJLB_BM},
+        #{AY_MC},
+        #{AY_DM}
+        )
+
+    </insert>
+
+
+</mapper>

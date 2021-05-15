@@ -3,6 +3,7 @@ package com.hxy.modules.activiti.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.hxy.modules.activiti.dto.ProcessNodeDto;
 import com.hxy.modules.activiti.dto.ProcessTaskDto;
 import com.hxy.modules.activiti.entity.ExtendActFlowbusEntity;
@@ -16,6 +17,8 @@ import com.hxy.modules.common.utils.*;
 import com.hxy.modules.demo.entity.CaseEntity;
 import com.hxy.modules.demo.service.CaseService;
 import com.hxy.modules.sys.entity.UserEntity;
+import com.hxy.provenance.logparser.GJRZDao;
+import com.hxy.provenance.logparser.GJRZEntity;
 import com.hxy.provenance.neo4j.CaseDataNodeBean;
 import com.hxy.provenance.neo4j.Neo4jFinalUtil;
 import okhttp3.*;
@@ -37,6 +40,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /**
@@ -74,6 +80,10 @@ public class ExtendActDealController {
 
     @Autowired
     CaseService caseService;
+
+
+    @Autowired
+    GJRZDao gjrzDao;
 
     /**
      * 列表
@@ -454,17 +464,28 @@ public class ExtendActDealController {
      * @param processTaskDto
      */
     public void createCaseNode(ProcessTaskDto processTaskDto) {
-        CaseDataNodeBean caseDataNodeBean = new CaseDataNodeBean();
-        caseDataNodeBean.setCaseId(processTaskDto.getBusId());
-        caseDataNodeBean.setNodeCreateUser(new CaseDataNodeBean.NodeUserBean(ShiroUtils.getUserEntity().getId(), ShiroUtils.getUserEntity().getUserName()));
-        caseDataNodeBean.setCaseDetailUrl("null");
-        caseDataNodeBean.setCaseName(processTaskDto.getTaskName());
-        String curTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-        caseDataNodeBean.setNodeCreateTime(curTime);
-        caseDataNodeBean.setNodeName(processTaskDto.getTaskName());
-        caseDataNodeBean.setRemark(processTaskDto.getRemark());
-        caseDataNodeBean.setTaskId(processTaskDto.getTaskId());
-        Neo4jFinalUtil.addCaseNode(caseDataNodeBean);
+//        CaseDataNodeBean caseDataNodeBean = new CaseDataNodeBean();
+//        caseDataNodeBean.setCaseId(processTaskDto.getBusId());
+//        caseDataNodeBean.setNodeCreateUser(new CaseDataNodeBean.NodeUserBean(ShiroUtils.getUserEntity().getId(), ShiroUtils.getUserEntity().getUserName()));
+//        caseDataNodeBean.setCaseDetailUrl("null");
+//        caseDataNodeBean.setCaseName(processTaskDto.getTaskName());
+//        String curTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+//        caseDataNodeBean.setNodeCreateTime(curTime);
+//        caseDataNodeBean.setNodeName(processTaskDto.getTaskName());
+//        caseDataNodeBean.setRemark(processTaskDto.getRemark());
+//        caseDataNodeBean.setTaskId(processTaskDto.getTaskId());
+//        Neo4jFinalUtil.addCaseNode(caseDataNodeBean);
+
+        GJRZEntity gjrzEntity = new GJRZEntity();
+        gjrzEntity.setCZRM(ShiroUtils.getUserEntity().getUserName());
+        gjrzEntity.setBMSAH(processTaskDto.getBusId());
+        gjrzEntity.setEJFL("测试分类");
+        gjrzEntity.setZHXGSJ(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date().getTime()));
+        gjrzEntity.setEJFL(GJRZEntity.LC_PREFIX + "_flow_system");
+        gjrzEntity.setID(UUID.randomUUID().toString());
+        gjrzEntity.setRZMS(processTaskDto.getTaskName());
+        gjrzDao.save(gjrzEntity);
+
     }
 
 
@@ -475,18 +496,33 @@ public class ExtendActDealController {
     public void createPropertyNode(Map<String, Object> params) {
         String caseId = params.get("busId").toString();
 
+        JsonObject jsonObject = new JsonObject();
+        GJRZEntity gjrzEntity = new GJRZEntity();
+        gjrzEntity.setCZRM(ShiroUtils.getUserEntity().getUserName());
+        gjrzEntity.setBMSAH(caseId);
+        gjrzEntity.setEJFL("测试分类");
+        gjrzEntity.setZHXGSJ(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date().getTime()));
+        gjrzEntity.setEJFL("property_flow_system");
+        gjrzEntity.setID(UUID.randomUUID().toString());
+
         for (String key : params.keySet()) {
             if (key.startsWith("prop_") || key.startsWith("file_") || key.startsWith("rule_")) {
                 Map<String, Object> juv = new HashMap<>();
                 juv.put("name", CaseEntity.kvMap.get(key) + "_" + params.get(key).toString());
                 juv.put(("案件节点办理人员"), ShiroUtils.getUserEntity().getUserName());
                 juv.put(("案件节点名称"), params.get("nodeName"));
-                if(CaseEntity.kvMap.get(key) != null){
+                if (CaseEntity.kvMap.get(key) != null) {
                     juv.put(CaseEntity.kvMap.get(key), params.get(key).toString());
-                    Neo4jFinalUtil.addKVs(caseId, key, "change", false, juv);
+                    jsonObject.addProperty(key, params.get(key).toString());
+//                    Neo4jFinalUtil.addKVs(caseId, key, "change", false, juv);
                 }
             }
         }
+        String jsonStr = jsonObject.toString();
+        gjrzEntity.setRZMS(jsonObject.toString());
+
+
+        gjrzDao.save(gjrzEntity);
 
     }
 
@@ -629,7 +665,7 @@ public class ExtendActDealController {
                 model.addAttribute(key, parameterMap.get(key)[0]);//更新案卡信息
             }
             String actId = (String) params.get("actId");
-            jumpService.jumpEndActivity(params,processTaskDto.getDefId(), processTaskDto, processTaskDto.getInstanceId(), actId);
+            jumpService.jumpEndActivity(params, processTaskDto.getDefId(), processTaskDto, processTaskDto.getInstanceId(), actId);
             result = Result.ok("任务跳转成功");
             params.put("nodeName", processTaskDto.getTaskName());
             createPropertyNode(params);
