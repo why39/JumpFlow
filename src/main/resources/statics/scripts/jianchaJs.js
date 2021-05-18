@@ -122,19 +122,24 @@ function executeNode() {
                         }
                     }
                     if (res.table) {
-                        for (index in res.table) {
-                            if(flag == 0) {
+                        if(flag == 0) {
+                            for(index in res.table) {
                                 if(res.table[index]["n.operator"] == user_name){
                                     str = "<li class=\"list-group-item\" style=\"height: 45px;\"><span style=\"float: left;margin-top:-2px;width:250px;text-align:left;\">" + res.table[index]["n.operator"] + "</span> "
                                         + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + res.table[index]["n.operator"] + "\')\">" + "世系查询" + "</button> ";
                                     document.getElementById("caseList").innerHTML += str;
                                 }
                             }
-                            if(flag == 1) {
-                                str = "<li class=\"list-group-item\" style=\"height: 45px;\"><span style=\"float: left;margin-top:-2px;width:250px;text-align:left;\">" + res.table[index]["n.operator"] + "</span> "
-                                    + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + res.table[index]["n.operator"] + "\')\">" + "世系查询" + "</button> ";
-                                document.getElementById("caseList").innerHTML += str;
+                        }
+                        if(flag == 1) {
+                            for(var i = 0;i < ajax_res.length;i++){
+                                if(ajax_res[i].group != "超级管理员"){
+                                    str = "<li class=\"list-group-item\" style=\"height: 45px;\"><span style=\"float: left;margin-top:-2px;width:250px;text-align:left;\">" + ajax_res[i].group + "</span> "
+                                        + "<button style=\"margin-left: 6px;float: right;margin-top:-6px\" type=\"button\" class=\"btn btn-primary\" onclick=\"lineageSelect1(\'" + ajax_res[i].group + "\')\">" + "世系查询" + "</button> ";
+                                    document.getElementById("caseList").innerHTML += str;
+                                }
                             }
+
                         }
                         var zz = getzz();
                         change(1, zz);
@@ -301,7 +306,7 @@ function toFIXED(num, n) {
 }
 
 function lineageSelect1(name){
-    window.location.href="http://localhost:8083/hxyActiviti/group.html?name=" + encodeURI(name);
+    window.location.href="http://143.176.22.84:8083/hxyActiviti/group.html?name=" + encodeURI(name);
 }
 
 

@@ -20,10 +20,50 @@ public class GJAJEntity {
     private String AJMC;    //案件名称
     private String AJLB_MC; // 案件类别名称
     private String CBDW_MC;
-    private int IS_COMPLETE = 0;
-
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date CJSJ;
+    //20210517 Guizhou
+    private String YWMC;    //业务部门
+    private String CBJCG;   //承办检察官
+    private String CBJCGSF; //承办检察官身份
+    private String BATDMC;  //办案团队名称
+
+    private int IS_COMPLETE = 0;
+
+    public String getYWMC() {
+        return YWMC;
+    }
+
+    public void setYWMC(String YWMC) {
+        this.YWMC = YWMC;
+    }
+
+    public String getCBJCG() {
+        return CBJCG;
+    }
+
+    public void setCBJCG(String CBJCG) {
+        this.CBJCG = CBJCG;
+    }
+
+    public String getCBJCGSF() {
+        return CBJCGSF;
+    }
+
+    public void setCBJCGSF(String CBJCGSF) {
+        this.CBJCGSF = CBJCGSF;
+    }
+
+    public String getBATDMC() {
+        return BATDMC;
+    }
+
+    public void setBATDMC(String BATDMC) {
+        this.BATDMC = BATDMC;
+    }
+
+
+
 
     public String getAJLB_MC() {
         return AJLB_MC;
@@ -88,6 +128,10 @@ public class GJAJEntity {
                 ", AJMC='" + AJMC + '\'' +
                 ", AJLB_MC='" + AJLB_MC + '\'' +
                 ", CBDW_MC='" + CBDW_MC + '\'' +
+                ", YWMC='" + YWMC + '\'' +
+                ", CBJCG='" + CBJCG + '\'' +
+                ", CBJCGSF='" + CBJCGSF + '\'' +
+                ", BATDMC='" + BATDMC + '\'' +
                 ", IS_COMPLETE=" + IS_COMPLETE +
                 ", CJSJ=" + CJSJ +
                 '}';

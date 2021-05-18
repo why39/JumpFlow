@@ -431,10 +431,11 @@ function look_anka(value){
             var graph = res.graph;
             if (graph) {
                 if (graph.nodes) {
-                    var str_month = (graph.nodes[0]["创建时间"]).toString().substring(5,7)
+
                     for(var item = 0;item < graph.nodes.length;item++) {
                         if(graph.nodes[item]["label"].toUpperCase()==label) {
-                            var str_time = (graph.nodes[item]["创建时间"]).toString().substring(0,20)
+                            var str_month = (graph.nodes[item]["最后修改时间"]).toString().substring(5,7)
+                            var str_time = (graph.nodes[item]["最后修改时间"]).toString().substring(0,20)
                             var str_div = graph.nodes[item][graph.nodes[item].label];
                             var name_index_0 = graph.nodes[item]["所属环节"].indexOf(" ",0);
                             var name_index_1 = graph.nodes[item]["所属环节"].substring(name_index_0 + 1,

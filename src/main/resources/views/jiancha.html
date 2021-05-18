@@ -81,10 +81,10 @@
 <div style="border-top: 8px solid lightgray; margin-top: 5px;">
 
     <div class="col-xl-9" style = "display:inline-block">
-        <div class="card" style = "width:580px;height: 400px">
+        <div class="card" style = "width:640px;height: 400px">
             <div class="card-body">
                 <h4 class="mt-0 header-title mb-5" style = "display: inline">检察官办结案件数</h4>
-                <div class="checkbox" style = "display: inline">
+                <div class="checkbox" style = "display: inline;">
                     <select class = "select_class" id = "banan_time_id">
                         <option>查看本周内统计信息</option>
                         <option>查看本月内统计信息</option>
@@ -99,7 +99,7 @@
     </div>
 
     <div class="col-xl-9" style = "display:inline-block">
-        <div class="card" style = "width:580px;height: 400px">
+        <div class="card" style = "width:640px;height: 400px">
             <div class="card-body">
                 <h4 class="mt-0 header-title mb-5" style = "display: inline">检察官办结案件总耗时/小时</h4>
                 <div class="checkbox" style = "display: inline">
@@ -139,17 +139,17 @@
 <script src="scripts/cy2neod3.js"></script>
 <script src="scripts/jquery.dataTables.min.js"></script>
 <script src="scripts/cypher.datatable.js"></script>
-<script src="scripts/jianchaJs.js">
-<script src="http://localhost:8083/hxyActiviti/scripts/bootstrap.bundle.min.js"></script>
-<script src="http://localhost:8083/hxyActiviti/scripts/modernizr.min.js"></script>
-<script src="http://localhost:8083/hxyActiviti/scripts/metisMenu.min.js"></script>
-<script src="http://localhost:8083/hxyActiviti/scripts/jquery.slimscroll.js"></script>
-<script src="http://localhost:8083/hxyActiviti/scripts/waves.js"></script>
-<script src="http://localhost:8083/hxyActiviti/scripts/jquery.peity.min.js"></script>
+<script src="scripts/jianchaJs.js"></script>>
+<script src="http://143.176.22.84:8083/hxyActiviti/scripts/bootstrap.bundle.min.js"></script>
+<script src="http://143.176.22.84:8083/hxyActiviti/scripts/modernizr.min.js"></script>
+<script src="http://143.176.22.84:8083/hxyActiviti/scripts/metisMenu.min.js"></script>
+<script src="http://143.176.22.84:8083/hxyActiviti/scripts/jquery.slimscroll.js"></script>
+<script src="http://143.176.22.84:8083/hxyActiviti/scripts/waves.js"></script>
+<script src="http://143.176.22.84:8083/hxyActiviti/scripts/jquery.peity.min.js"></script>
 <script src="scripts/morris.min.js"></script>
-<script src="http://localhost:8083/hxyActiviti/scripts/raphael-min.js"></script>
+<script src="http://143.176.22.84:8083/hxyActiviti/scripts/raphael-min.js"></script>
 <script src="scripts/dashboard.js"></script>
-<script src="http://localhost:8083/hxyActiviti/scripts/app.js"></script>
+<script src="http://143.176.22.84:8083/hxyActiviti/scripts/app.js"></script>
 
 <script type="text/javascript">
 
@@ -248,6 +248,16 @@
                                     }
                                 }
                             }
+
+                            if(name_list.length < 10 && count_list.length){
+                                for(var i = name_list.length;i < 10;i++){
+                                    name_list[i] = "·";
+                                }
+                                for(var i = count_list.length;i < 10;i++){
+                                    count_list[i] = 0;
+                                }
+                            }
+
                             Dashboard.prototype.init = function () {
                                 var $stckedData  = [
                                 ];

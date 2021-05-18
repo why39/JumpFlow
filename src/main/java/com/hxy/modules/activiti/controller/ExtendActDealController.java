@@ -544,7 +544,7 @@ public class ExtendActDealController {
         jsonObject.put("type", processTaskDto.getInstanceId());
         RequestBody body = RequestBody.create(mediaType, jsonObject.toJSONString());
         Request request = new Request.Builder()
-                .url("http://localhost:8081/save")
+                .url("http://143.176.22.84:8081/save")
                 .post(body)
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Cache-Control", "no-cache")

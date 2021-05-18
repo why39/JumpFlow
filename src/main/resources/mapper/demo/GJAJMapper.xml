@@ -39,7 +39,11 @@
 		CBDW_MC,
 		AJLB_MC,
 		CJSJ,
-		IS_COMPLETE
+		IS_COMPLETE,
+		YWMC,
+        CBJCG,
+        CBJCGSF,
+        BATDMC
     </sql>
 
     <insert id="save" parameterType="com.hxy.provenance.logparser.GJAJEntity">
@@ -55,7 +59,11 @@
         #{CBDW_MC},
         #{AJLB_MC},
         #{CJSJ},
-        #{IS_COMPLETE}
+        #{IS_COMPLETE},
+        #{YWMC},
+        #{CBJCG},
+        #{CBJCGSF},
+        #{BATDMC}
         )
     </insert>
 

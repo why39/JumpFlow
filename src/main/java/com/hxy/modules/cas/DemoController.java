@@ -23,7 +23,7 @@ public class DemoController {
     public String logout(HttpSession session) {
         session.invalidate();
         ShiroUtils.logout();
-        return "redirect:http://localhost:8080/cas/logout?service=http://localhost:8080/cas";
+        return "redirect:http://143.176.22.84:8080/cas/logout?service=http://143.176.22.84:8080/cas";
     }
 }
 

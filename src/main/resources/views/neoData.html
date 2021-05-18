@@ -78,7 +78,7 @@
 
 </div>
 <div>
-<div id = "huanjie_detail" style="position: absolute;z-index: 101">▶</div>
+<div id = "huanjie_detail" style="position: absolute;z-index: 101;display: none">▶</div>
 <div id="gantt_here" style='width:100%; height:90%;position: absolute;float:right;z-index: 100;display: none' ></div>
 
 <div id = "anka_table" style = "overflow:auto;width:325px;
@@ -86,9 +86,9 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
 <table style = "" id = "anka_table_data">
     <thead>
     <tr>
-        <th id = "anka_table_data_ren">（案卡项变化）人员相关</th>
-        <th id = "anka_table_data_anjian">（案卡项变化）案件相关</th>
-        <th id = "anka_table_data_other">（案卡项变化）其他</th>
+        <th id = "anka_table_data_ren">（案卡项修改次数）人员相关</th>
+        <th id = "anka_table_data_anjian">（案卡项修改次数）案件相关</th>
+        <th id = "anka_table_data_other">（案卡项修改次数）其他</th>
     </tr>
     </thead>
     <tbody id="J_TbData">
@@ -548,7 +548,7 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
     });
 
     function BanAnRen() {
-        window.location.href="http://localhost:8083/hxyActiviti/neoBan.html?bmsah="+localStorage.getItem("LeiBieName");;
+        window.location.href="http://143.176.22.84:8083/hxyActiviti/neoBan.html?bmsah="+localStorage.getItem("LeiBieName");;
     }
 
 
@@ -747,10 +747,10 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
                 var graph = res.graph;
                 if (graph) {
                     if (graph.nodes) {
-                        var str_month = (graph.nodes[0]["创建时间"]).toString().substring(5,7)
                         for(var item = 0;item < graph.nodes.length;item++) {
                             if(graph.nodes[item]["CN_KEY"]==name) {
-                                var str_time = (graph.nodes[item]["创建时间"]).toString().substring(0,20)
+                                var str_month = (graph.nodes[item]["最后修改时间"]).toString().substring(5,7)
+                                var str_time = (graph.nodes[item]["最后修改时间"]).toString().substring(0,20)
                                 var str_div = graph.nodes[item][graph.nodes[item].label];
                                 var name_index_0 = graph.nodes[item]["所属环节"].indexOf(" ",0);
                                 var name_index_1 = graph.nodes[item]["所属环节"].substring(name_index_0 + 1,

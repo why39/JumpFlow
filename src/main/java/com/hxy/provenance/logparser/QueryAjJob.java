@@ -37,7 +37,7 @@ public class QueryAjJob implements Job {
         if (caseDao.openJob().get(0).get("count_man") == 1) {
 
             logger.info("EXECUTE...QueryAjJob");
-            LocalDate date = LocalDate.parse("2018-01-01");
+            LocalDate date = LocalDate.parse("2021-03-10");
             try {
                 String dateStr = redisUtil.getString(REDIS_KEY);
                 if (!StringUtils.isEmpty(dateStr)) {

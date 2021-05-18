@@ -183,6 +183,11 @@ public class GJAJController {
         gjajEntity.setCBDW_MC(oldAj.getCBDW_MC());
         gjajEntity.setAJLB_MC(oldAj.getAJLB_MC());
         gjajEntity.setCJSJ(oldAj.getCJSJ());
+        //20210517 Guizhou
+        gjajEntity.setYWMC(oldAj.getYWMC());
+        gjajEntity.setCBJCG(oldAj.getCBJCG());
+        gjajEntity.setCBJCGSF(oldAj.getCBJCGSF());
+        gjajEntity.setBATDMC(oldAj.getBATDMC());
         gjajEntity.setIS_COMPLETE(1);
 
         caseService.saveAJ(gjajEntity);

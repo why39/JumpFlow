@@ -2,36 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5d3e316-15cc-4526-8b76-82abdb011926" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/sql/dataquality/tb_dq.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hxy/dq/Testapp.scala" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/DqAKDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/DqAKEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/DqFZXYRDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/DqFZXYREntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/DqResEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/demo/DataQualityAKMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/demo/DataQualityFXXYRMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/demo/dataquality_res.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/demo/dataquality_tb.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/dp/Suggestion.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/config/ShiroCasConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/config/ShiroCasConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/dq/Suggestion.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/dq/Suggestion.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/modules/activiti/controller/ExtendActDealController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/modules/cas/DemoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/modules/cas/DemoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/modules/demo/controller/CaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/modules/demo/controller/CaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/GJAJServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/GJAJServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/GJRZEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/GJRZEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/KVCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/KVCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/DataPlatformAJEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/DataPlatformAJEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/DataPlatformService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/DataPlatformService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/GJAJController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/GJAJController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/GJAJEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/GJAJEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/QueryAjJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/QueryAjJob.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/demo/GJAJMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/demo/GJAJMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/scripts/jianchaJs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/scripts/jianchaJs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/scripts/neo4d3.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/scripts/neo4d3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/statics/scripts/neod3-visualization.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/statics/scripts/neod3-visualization.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/group.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/group.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/index_suyuan.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/index_suyuan.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/jiancha.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/jiancha.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/neoBan.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/neoBan.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/views/neoData.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/neoData.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/neod.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/neod.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/suyuan.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/suyuan.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/demo/gjajlb.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/demo/gjajlb.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/common/commonJS.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/common/commonJS.jsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
   </component>
   <component name="CompilerWorkspaceConfiguration">
     <option name="MAKE_PROJECT_ON_SAVE" value="true" />
@@ -53,6 +58,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
   <component name="ProjectId" id="1sKRwrvANOzXZXpXGGeUVjRpbdb" />
   <component name="PropertiesComponent">
     <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
@@ -66,8 +74,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../JumpFlow" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -114,7 +122,8 @@
       <option name="presentableId" value="Default" />
       <updated>1620619536062</updated>
       <workItem from="1620619541141" duration="9670000" />
-      <workItem from="1621055812690" duration="2744000" />
+      <workItem from="1621055812690" duration="2904000" />
+      <workItem from="1621082653128" duration="61324000" />
     </task>
     <servers />
   </component>

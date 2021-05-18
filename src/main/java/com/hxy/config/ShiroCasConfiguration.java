@@ -44,13 +44,13 @@ import java.util.Map;
 public class ShiroCasConfiguration {
 
     // cas server地址
-    public static final String casServerUrlPrefix = "https://localhost:8080/cas";
+    public static final String casServerUrlPrefix = "https://143.176.22.84:8080/cas";
     // Cas登录页面地址
     public static final String casLoginUrl = casServerUrlPrefix + "/login";
     // Cas登出页面地址
     public static final String casLogoutUrl = casServerUrlPrefix + "/logout";
     // 当前工程对外提供的服务地址
-    public static final String shiroServerUrlPrefix = "http://localhost:8083";
+    public static final String shiroServerUrlPrefix = "http://143.176.22.84:8083";
     // casFilter UrlPattern
     public static final String casFilterUrlPattern = "/cas";
     // 登录地址

@@ -57,6 +57,8 @@ public class DataPlatformService {
                 .build();
 
         String params = "queryStartDate=" + start + "&queryEndDate=" + end;
+        logger.info("params",params);
+        System.out.println("params" + params);
         String signature = MD5.MD5Encode((params + "&" + DATA_RANDOM_STR + "&" + DATA_API_KEY).replace(" ", "%20"));
 
 //        HttpUtils.sendGet(DATA_URL + "/api/proc/aj",)
@@ -71,14 +73,20 @@ public class DataPlatformService {
                 .addHeader("accept", "*/*")
                 .addHeader("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)")
                 .build();
-
+        logger.info("api-id",DATA_API_ID);
+        System.out.println("api-id" + DATA_API_ID);
+        logger.info("api-temp",DATA_RANDOM_STR);
+        System.out.println("api-temp" + DATA_RANDOM_STR);
+        logger.info("api-sign",signature);
+        System.out.println("api-sign" + signature);
         try {
             Response response = client.newCall(request).execute();
-            System.out.println("fuck" + response.toString());
-            System.out.println("fuck" + response.isSuccessful());
+
             if (response.isSuccessful()) {
                 DataPlatformAJEntity resultEntity = Json.decode(response.body().string(), DataPlatformAJEntity.class);
-                logger.info("fuck",resultEntity);
+                //logger.info("response body",response.body().string());
+                //System.out.println("response body" + response.body().string());
+                //logger.info("fuck",resultEntity);
                 if (resultEntity != null && !CollectionUtils.isEmpty(resultEntity.data)) {
                     for (DataPlatformAJEntity.Item entity : resultEntity.data) {
                         GJAJEntity gjajEntity = new GJAJEntity();
@@ -89,6 +97,19 @@ public class DataPlatformService {
                         gjajEntity.setCBDW_MC(entity.getCbdwmc());
                         gjajEntity.setCJSJ(entity.getCjsj());
                         gjajEntity.setAJLB_MC(entity.getAjlbmc());
+                        //20210517 Guizhou
+                        gjajEntity.setYWMC(entity.getYwmc());
+                        gjajEntity.setCBJCG(entity.getCbjcg());
+                        gjajEntity.setCBJCGSF(entity.getCbjcgsf());
+                        gjajEntity.setBATDMC(entity.getBatdmc());
+                        System.out.println("ywmc" + entity.getYwmc());
+                        logger.info("ywmc" + entity.getYwmc());
+                        System.out.println("cbjcg" + entity.getCbjcg());
+                        logger.info("cbjcg" + entity.getCbjcg());
+                        System.out.println("cbjcgsf" + entity.getCbjcgsf());
+                        logger.info("cbjcgsf" + entity.getCbjcgsf());
+                        System.out.println("batdmc" + entity.getBatdmc());
+                        logger.info("batdmc" + entity.getBatdmc());
                         gjajEntity.setIS_COMPLETE(0);
 
                         caseService.saveAJ(gjajEntity);

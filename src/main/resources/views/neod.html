@@ -88,7 +88,7 @@
 
 <div style="border-top: 8px solid lightgray; margin-top: 5px;">
     <div class="col-xl-9" style = "display:inline-block" >
-        <div class="card" style = "width:580px;height: 400px" id = "barId1">
+        <div class="card" style = "width:640px;height: 400px" id = "barId1">
             <div class="card-body">
                 <h4 class="mt-0 header-title mb-5" id="bar_label1" style = "display: inline"></h4>
                 <div class="checkbox" style = "display: inline">
@@ -106,7 +106,7 @@
     </div>
 
     <div class="col-xl-9" style = "display:inline-block" >
-        <div class="card" style = "width:580px;height: 400px" id = "barId2">
+        <div class="card" style = "width:640px;height: 400px" id = "barId2">
             <div class="card-body">
                 <h4 class="mt-0 header-title mb-5" id="bar_label2" style = "display: inline"></h4>
                 <div class="checkbox" style = "display: inline">
@@ -416,7 +416,9 @@
                         if (bmsah == null) {
                             bmsah = '汉东检刑诉受[2019]980000100216号';
                         }
-                        var timeStr = res[i].cjsj.toString();
+
+                        var timeStr = new Date(parseFloat(res[i].cjsj.toString())).toLocaleString();
+
                         var is_complete = res[i].is_complete;
                         console.log(timeStr);
 
@@ -547,8 +549,8 @@
         document.getElementById("relevantCase").style.visibility = "visible";
         var ss = document.getElementById("xieshizhixing_a").innerHTML + "案件";
         var ll = document.getElementById("xieshizhixing_a").innerHTML;
-        document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "案件办理耗时（平均/小时）";
+        document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（降序）";
+        document.getElementById("bar_label2").innerHTML = ll + "业务案卡项修改次数（升序）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "刑事执行" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -591,8 +593,8 @@
         document.getElementById("relevantCase").style.visibility = "visible";
         var ss = document.getElementById("gongsu_a").innerHTML + "案件";
         var ll = document.getElementById("gongsu_a").innerHTML;
-        document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "案件办理耗时（平均/小时）";
+        document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（降序）";
+        document.getElementById("bar_label2").innerHTML = ll + "业务案卡项修改次数（升序）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "公益诉讼" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -636,8 +638,8 @@
         document.getElementById("relevantCase").style.visibility = "visible";
         var ss = document.getElementById("minshi_a").innerHTML + "案件";
         var ll = document.getElementById("minshi_a").innerHTML;
-        document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "案件办理耗时（平均/小时）";
+        document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（降序）";
+        document.getElementById("bar_label2").innerHTML = ll + "业务案卡项修改次数（升序）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "民事" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -680,8 +682,8 @@
         document.getElementById("relevantCase").style.visibility = "visible";
         var ss = document.getElementById("xinzheng_a").innerHTML + "案件";
         var ll = document.getElementById("xinzheng_a").innerHTML;
-        document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "案件办理耗时（平均/小时）";
+        document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（降序）";
+        document.getElementById("bar_label2").innerHTML = ll + "业务案卡项修改次数（升序）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "行政" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -724,8 +726,8 @@
         document.getElementById("relevantCase").style.visibility = "visible";
         var ss = document.getElementById("weijian_a").innerHTML + "案件";
         var ll = document.getElementById("weijian_a").innerHTML;
-        document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "案件办理耗时（平均/小时）";
+        document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（降序）";
+        document.getElementById("bar_label2").innerHTML = ll + "业务案卡项修改次数（升序）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "未检业务" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -768,8 +770,8 @@
         document.getElementById("relevantCase").style.visibility = "visible";
         var ss = document.getElementById("konggao_a").innerHTML + "案件";
         var ll = document.getElementById("konggao_a").innerHTML;
-        document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "案件办理耗时（平均/小时）";
+        document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（降序）";
+        document.getElementById("bar_label2").innerHTML = ll + "业务案卡项修改次数（升序）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "控告申诉" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -812,8 +814,8 @@
         document.getElementById("relevantCase").style.visibility = "visible";
         var ss = document.getElementById("jianwei_a").innerHTML + "案件";
         var ll = document.getElementById("jianwei_a").innerHTML;
-        document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "案件办理耗时（平均/小时）";
+        document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（降序）";
+        document.getElementById("bar_label2").innerHTML = ll + "业务案卡项修改次数（升序）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "检委办" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -856,8 +858,8 @@
         document.getElementById("relevantCase").style.visibility = "visible";
         var ss = document.getElementById("duitai_a").innerHTML + "案件";
         var ll = document.getElementById("duitai_a").innerHTML;
-        document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "案件办理耗时（平均/小时）";
+        document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（降序）";
+        document.getElementById("bar_label2").innerHTML = ll + "业务案卡项修改次数（升序）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "对台业务" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -900,8 +902,8 @@
         document.getElementById("relevantCase").style.visibility = "visible";
         var ss = document.getElementById("anguan_a").innerHTML + "案件";
         var ll = document.getElementById("anguan_a").innerHTML;
-        document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "案件办理耗时（平均/小时）";
+        document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（降序）";
+        document.getElementById("bar_label2").innerHTML = ll + "业务案卡项修改次数（升序）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "案管" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();
@@ -944,8 +946,8 @@
         document.getElementById("relevantCase").style.visibility = "visible";
         var ss = document.getElementById("sifa_a").innerHTML + "案件";
         var ll = document.getElementById("sifa_a").innerHTML;
-        document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（平均）";
-        document.getElementById("bar_label2").innerHTML = ll + "案件办理耗时（平均/小时）";
+        document.getElementById("bar_label1").innerHTML = ll + "业务案卡项修改次数（降序）";
+        document.getElementById("bar_label2").innerHTML = ll + "业务案卡项修改次数（升序）";
         var query = null;
         query = "MATCH (n:BALB) WHERE n.class=\'" + "司法协助" + "\' WITH n MATCH p = (n) - [*1] -> (m) RETURN m,p,n";
         clearNodeInfo();

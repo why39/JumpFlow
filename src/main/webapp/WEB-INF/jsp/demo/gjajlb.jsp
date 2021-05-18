@@ -23,7 +23,7 @@
                     <button class="layui-btn layui-btn-warm" type="button" id="refresh">重 置</button>
 <%--                    <button class="layui-btn layui-btn-warm" type="button" onclick="testCases()">测试</button>--%>
 <%--                    <button class="layui-btn layui-btn-warm" type="button" onclick="deleteTestCases()">清空测试</button>--%>
-                        <button class="layui-btn layui-btn-warm" type="button" onclick="jumpfuse()">并案处理</button>
+<%--                        <button class="layui-btn layui-btn-warm" type="button" onclick="jumpfuse()">并案处理</button>--%>
 
                 </div>
             </form>
@@ -45,8 +45,9 @@
                 <c:forEach items="${page.result}" var="leave" varStatus="i">
                     <tr id="leave_${leave.BMSAH }">
                         <td>${i.index+1 }</td>
-                    <td>${leave.BMSAH}</td>
-                    <td>${leave.AJLB_MC}</td>
+                       <td>${leave.BMSAH}</td>
+                       <td>${leave.AJLB_MC}</td>
+                     <%-- <td>${leave.YWMC}</td>--%>
                     <td>${leave.AJMC}</td>
                         <td>
                             <div class=" btn-group ">

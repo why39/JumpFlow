@@ -1,7 +1,7 @@
 function Neo(urlSource) {
 	function txUrl() {
 		var connection = urlSource();
-		var url = (connection.url || "http://localhost:7474").replace(/\/db\/data.*/,"");
+		var url = (connection.url || "http://143.176.22.83:7474").replace(/\/db\/data.*/,"");
 		return url + "/db/data/transaction/commit";
 	}
 	var me = {

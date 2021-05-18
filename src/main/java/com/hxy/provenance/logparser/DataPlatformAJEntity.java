@@ -41,6 +41,44 @@ public class DataPlatformAJEntity {
         private String cbdwmc;
         private Date cjsj;
 
+        //20210517 Guizhou
+        private String ywmc;    //业务部门
+        private String cbjcg;   //承办检察官
+        private String cbjcgsf; //承办检察官身份
+        private String batdmc;  //办案团队名称
+        public String getYwmc() {
+            return ywmc;
+        }
+
+        public void setYwmc(String ywmc) {
+            this.ywmc = ywmc;
+        }
+
+        public String getCbjcg() {
+            return cbjcg;
+        }
+
+        public void setCbjcg(String cbjcg) {
+            this.cbjcg = cbjcg;
+        }
+
+        public String getCbjcgsf() {
+            return cbjcgsf;
+        }
+
+        public void setCbjcgsf(String cbjcgsf) {
+            this.cbjcgsf = cbjcgsf;
+        }
+
+        public String getBatdmc() {
+            return batdmc;
+        }
+
+        public void setBatdmc(String batdmc) {
+            this.batdmc = batdmc;
+        }
+
+
         public Object getSearchValue() {
             return searchValue;
         }

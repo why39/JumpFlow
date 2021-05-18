@@ -1,6 +1,6 @@
 package com.hxy.modules.demo.controller;
 
-import com.hxy.dq.Suggestion;
+//import com.hxy.dq.Suggestion;
 import com.hxy.modules.common.page.Page;
 import com.hxy.modules.common.utils.CommUtils;
 import com.hxy.modules.common.utils.Result;
@@ -81,33 +81,33 @@ public class CaseController {
 
     List<DqResEntity> dqResEntityList = new ArrayList<>();
 
-    @RequestMapping(value = "dealquality", method = RequestMethod.POST)
-    @RequiresPermissions("act:model:all")
-    @ResponseBody
-    public Result dealquality(Model model, String tb_name, HttpServletRequest request) {
-        Map<String, Object> result = null;
-        dqResEntityList.clear();
-
-        if ("tb_dq_fzxyr".equals(tb_name)) {
-            result = Suggestion.dealXYR("case/" + UUID.randomUUID().toString());
-        } else {
-            result = Suggestion.dealAKX("case/" + UUID.randomUUID().toString());
-        }
-
-        Set<Map.Entry<String, Object>> entrys = result.entrySet();
-        for (Map.Entry<String, Object> entry : entrys) {
-            if (!"code".equals(entry.getKey())) {
-                dqResEntityList.add(new DqResEntity(entry.getKey(), entry.getValue().toString()));
-            }
-        }
-
-        if (dqResEntityList.size() > 0) {
-            model.addAttribute("dq_res", dqResEntityList);
-        } else {
-            model.addAttribute("dq_res", null);
-        }
-        return Result.ok(result);
-    }
+//    @RequestMapping(value = "dealquality", method = RequestMethod.POST)
+//    @RequiresPermissions("act:model:all")
+//    @ResponseBody
+//    public Result dealquality(Model model, String tb_name, HttpServletRequest request) {
+//        Map<String, Object> result = null;
+//        dqResEntityList.clear();
+//
+//        if ("tb_dq_fzxyr".equals(tb_name)) {
+//            result = Suggestion.dealXYR("case/" + UUID.randomUUID().toString());
+//        } else {
+//            result = Suggestion.dealAKX("case/" + UUID.randomUUID().toString());
+//        }
+//
+//        Set<Map.Entry<String, Object>> entrys = result.entrySet();
+//        for (Map.Entry<String, Object> entry : entrys) {
+//            if (!"code".equals(entry.getKey())) {
+//                dqResEntityList.add(new DqResEntity(entry.getKey(), entry.getValue().toString()));
+//            }
+//        }
+//
+//        if (dqResEntityList.size() > 0) {
+//            model.addAttribute("dq_res", dqResEntityList);
+//        } else {
+//            model.addAttribute("dq_res", null);
+//        }
+//        return Result.ok(result);
+//    }
 
     @RequestMapping("dataquality_res")
     @RequiresPermissions("act:model:all")
