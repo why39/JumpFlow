@@ -35,7 +35,7 @@ public class GJRZService {
 
         List<GJRZEntity> taskNodeList = new ArrayList<>();
         taskNodeList1.stream()
-                .collect(Collectors.collectingAndThen(Collectors.toCollection(() -> new TreeSet<GJRZEntity>(Comparator.comparing(f -> f.getBMSAH() + f.getEJFL() + f.getRZMS()))), ArrayList::new))
+                .collect(Collectors.collectingAndThen(Collectors.toCollection(() -> new TreeSet<GJRZEntity>(Comparator.comparing(f -> f.getRZMS()))), ArrayList::new))
                 .forEach(e -> taskNodeList.add(e));
 
         //1. 插入一条mysql数据
@@ -43,10 +43,10 @@ public class GJRZService {
         GJAJEntity oldAj2 = caseService.queryObject(bmsah2);
 
         String newBMSAH = bmsah + "_" + bmsah2;
-
+        String newTYSAH = oldAj1.getTYSAH().substring(0, 9) + oldAj2.getTYSAH().substring(0, 6);
         GJAJEntity gjajEntity = new GJAJEntity();
         gjajEntity.setBMSAH(newBMSAH);
-        gjajEntity.setTYSAH(oldAj1.getTYSAH().substring(0, 9) + oldAj2.getTYSAH().substring(0, 6));
+        gjajEntity.setTYSAH(newTYSAH);
         gjajEntity.setAJMC(oldAj1.getAJMC() + "2");
         gjajEntity.setCBDW_MC(oldAj1.getCBDW_MC());
         gjajEntity.setAJLB_MC(oldAj1.getAJLB_MC());
@@ -75,7 +75,9 @@ public class GJRZService {
 
         //再插入其他类型的日志
         rzlist1.stream().forEach(e->{
-            if (!taskNodeList1.contains(e.getID())) {
+
+            long contains = taskNodeList1.stream().filter(a -> a.getID().equals(e.getID())).count();
+            if (contains == 0) {
                 GJRZEntity gjrzEntity = new GJRZEntity();
                 gjrzEntity.setCZRM(e.getCZRM());
                 gjrzEntity.setBMSAH(newBMSAH);
@@ -87,5 +89,6 @@ public class GJRZService {
             }
         });
 
+        caseService.parseLog(newBMSAH);
     }
 }
