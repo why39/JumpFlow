@@ -38,7 +38,7 @@ public class GJAJController {
     DataPlatformService dataPlatformService;
 
     @Autowired
-    GJAJService gjajService;
+    GJRZService gjrzService;
 
     @RequestMapping("gjajlb")
     @RequiresPermissions("act:model:all")
@@ -94,14 +94,14 @@ public class GJAJController {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }*/
-        List<GJAJEntity> gjajEntity = (List<GJAJEntity>) gjajService.queryObject2(ajlb);
+        List<GJAJEntity> gjajEntity = (List<GJAJEntity>) caseService.queryObject2(ajlb);
         return gjajEntity;
     }
 
     @RequestMapping(value = "count-ajlb")
     @ResponseBody
     public List<Map<String, Object>> countAJLB() {
-        return gjajService.countAJLB();
+        return caseService.countAJLB();
     }
 
     @RequestMapping(value = "count-type-fields")
@@ -172,28 +172,7 @@ public class GJAJController {
     @PostMapping("dofuse")
     @RequiresPermissions("act:model:all")
     public String dofuse(@RequestParam(name = "bmsah") String bmsah, @RequestParam(name = "bmsah2") String bmsah2) {
-        //1. 插入一条mysql数据
-        GJAJEntity oldAj = caseService.queryObject(bmsah);
-        GJAJEntity oldAj2 = caseService.queryObject(bmsah2);
-
-        GJAJEntity gjajEntity = new GJAJEntity();
-        gjajEntity.setBMSAH(bmsah + "+" + bmsah2);
-        gjajEntity.setTYSAH(oldAj.getTYSAH().substring(0,9)+oldAj.getTYSAH().substring(0,6));
-        gjajEntity.setAJMC(oldAj.getAJMC() + "2");
-        gjajEntity.setCBDW_MC(oldAj.getCBDW_MC());
-        gjajEntity.setAJLB_MC(oldAj.getAJLB_MC());
-        gjajEntity.setCJSJ(oldAj.getCJSJ());
-        //20210517 Guizhou
-        gjajEntity.setYWMC(oldAj.getYWMC());
-        gjajEntity.setCBJCG(oldAj.getCBJCG());
-        gjajEntity.setCBJCGSF(oldAj.getCBJCGSF());
-        gjajEntity.setBATDMC(oldAj.getBATDMC());
-        gjajEntity.setIS_COMPLETE(1);
-
-        caseService.saveAJ(gjajEntity);
-
-        //2. 插入一条neo4j数据
-
+        gjrzService.fuse(bmsah, bmsah2);
         return "demo/gjajlb";
 
     }

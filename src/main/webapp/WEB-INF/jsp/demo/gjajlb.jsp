@@ -23,7 +23,7 @@
                     <button class="layui-btn layui-btn-warm" type="button" id="refresh">重 置</button>
 <%--                    <button class="layui-btn layui-btn-warm" type="button" onclick="testCases()">测试</button>--%>
 <%--                    <button class="layui-btn layui-btn-warm" type="button" onclick="deleteTestCases()">清空测试</button>--%>
-<%--                        <button class="layui-btn layui-btn-warm" type="button" onclick="jumpfuse()">并案处理</button>--%>
+                        <button class="layui-btn layui-btn-warm" type="button" onclick="jumpfuse()">并案处理</button>
 
                 </div>
             </form>
