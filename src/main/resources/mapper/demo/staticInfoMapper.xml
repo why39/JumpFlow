@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hxy.provenance.staticcompile.staticInfoDao">
+    <resultMap type="com.hxy.provenance.staticcompile.staticInfoEntity" id="staticMap">
+        <result property="category" column="CATEGORY"/>
+        <result property="nid" column="NID"/>
+        <result property="type" column="TYPE"/>
+        <result property="pid" column="PID"/>
+        <result property="name" column="NAME"/>
+        <result property="info" column="INFO"/>
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+		CATEGORY,
+		NID,
+		TYPE,
+		PID,
+		NAME,
+		INFO
+    </sql>
+
+    <select id ="querySingleInfo" resultType="com.hxy.provenance.staticcompile.staticInfoEntity" resultMap="staticMap">
+        select
+        <include refid="Base_Column_List" />
+        from static_info
+        where NID = #{nid}
+        order by nid asc
+    </select>
+
+    <select id ="queryCategoryInfo" resultType="com.hxy.provenance.staticcompile.staticInfoEntity" resultMap="staticMap">
+        select
+        <include refid="Base_Column_List" />
+        from static_info
+        where CATEGORY = #{category}
+        order by nid asc
+    </select>
+</mapper>

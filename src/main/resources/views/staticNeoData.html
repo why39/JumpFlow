@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>世系数据</title>
+    <link rel="stylesheet" href="styles/dhtmlxgantt.css?v=7.0.11">
+    <link rel="stylesheet" href="styles/codemirror.css">
+    <link rel="stylesheet" href="styles/codemirror-neo.css">
+    <link rel="stylesheet" href="styles/cy2neo.css">
+
+    <link rel="stylesheet" href="styles/datatable.css">
+    <link rel="stylesheet" href="styles/vendor.css"> <!-- bootstrap-->
+    <link rel="stylesheet" href="styles/sweet-alert.css">
+    <link rel="stylesheet" href="styles/gh-fork-ribbon.css">
+    <link rel="stylesheet" href="styles/TimeLine.css">
+    <style>
+
+    </style>
+</head>
+<body>
+
+    <div id = "huanjie_detail" style="position: absolute;z-index: 101;display: none">▶</div>
+    <div id="gantt_here" style='width:100%; height:90%;position: absolute;float:right;z-index: 100;display: none' ></div>
+
+
+    <div role="tabpanel">
+        <div class="tab-content" style="
+    position:absolute;height: 620px;border:3px solid lightgray;width:1210px">
+            <div id="displayLabel" style = "float: right;position: relative;display:none" class = "displayLabelCLass">
+                <p id = "displayLeiBie"
+                   style = "margin-top:10px;margin-right: 10px;font-weight: bold;
+           color: #187526;font-size: 14px;font-family: 'Arial Black'">123</p>
+                <p id = "displayCaseId"
+                   style = "margin-top:10px;margin-right: 10px;font-weight: bold;
+           color: #187526;font-size: 14px;font-family: 'Arial Black'">456</p>
+            </div>
+            <div role="tabpanel" id="tableData" class="tab-pane active" style="height: 610px">
+                <div class="tab-pane active" id="graph" style="height: 600px">&nbsp;</div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="table">
+                <div id="datatable"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="scripts/dhtmlxgantt_neodata.js?v=7.0.11"></script>
+    <script src="scripts/testdata.js?v=7.0.11"></script>
+
+    <script src="scripts/codemirror.js"></script>
+    <script src="scripts/codemirror-cypher.js"></script>
+    <script src="scripts/vendor.js"></script>
+    <script src="scripts/neod3.js"></script>
+    <script src="scripts/neod3-visualization.js"></script>
+    <script src="scripts/neo4d3.js"></script>
+    <script src="scripts/cy2neod3.js"></script>
+    <script src="scripts/jquery.dataTables.min.js"></script>
+    <script src="scripts/cypher.datatable.js"></script>
+    <script src="scripts/sweet.js"></script>
+
+    <script src="scripts/jquery.masonry.min.js"></script>
+    <script src="scripts/jquery.rotate.js"></script>
+    <script src="scripts/top.js"></script>
+
+    <script type="text/javascript">
+        var neod3 = new Neod3Renderer();
+        var neod3_1 = new Neod3Renderer1();
+        var connection = function () {
+            configStr = localStorage.getItem("neoconfig");
+            configJSON = JSON.parse(configStr)
+            console.log(configJSON.NEO_SERVER_URL, configJSON.NEO_SERVER_USER, configJSON.NEO_SERVER_PSW)
+            config = {
+                url: "http://" + configJSON.NEO_SERVER_URL + ":7474",
+                user: configJSON.NEO_SERVER_USER,
+                pass: configJSON.NEO_SERVER_PSW
+            };
+            return config;
+        }
+
+
+        function execute(content) {
+            var neo = new Neo(connection);
+            try {
+                var query = content;
+                console.log("Executing Query", query);
+                neo.executeQuery(query, {}, function (err, res) {
+                    res = res || {}
+                    console.log("Executing Query res: ", res);
+                    var graph = res.graph;
+                    if (graph) {
+                        var c = $("#graph");
+                        c.empty();
+                        neod3.render("graph", c, graph);
+                    } else {
+                        if (err) {
+                            if (err.length > 0) {
+                            } else {
+                            }
+                        }
+                    }
+                });
+            } catch (e) {
+            }
+        }
+
+
+
+
+        function clearNodeInfo() {
+            //neo pane区域
+            $(".nodeId").text("");
+            $(".caseId").text("");
+            $(".nodeName").text("");
+        }
+
+
+
+        function jiema() {
+            var url = window.location.href;//得到页面的url
+            var URL_decode = decodeURI(decodeURI(url));//对含有中文的url进行解码,注意是两次解码
+            var index_1 = URL_decode.indexOf("=");
+            str_1 = URL_decode.substring(index_1 + 1);
+            var index_2 = str_1.indexOf("=")
+            str_2 = str_1.substring(index_2 + 1);
+            return str_2
+            //return "东检刑诉受[2019]770000101702号";
+        }
+        window.onload = (function () {
+            var query = null;
+            document.getElementById("displayCaseId").innerHTML = jiema();
+            document.getElementById("displayLeiBie").innerHTML = localStorage.getItem("LeiBieName");
+            query = "match(n:静态) where n.bmsah = \'" + jiema() + "\' with n match p = (n) - [*] ->(m:静态) RETURN p";
+            // document.getElementById("label_spread").onclick = function(){
+            //     if(document.getElementById("table_select").style.display == "none") {
+            //         document.getElementById("table_select").style.display = "block"
+            //     }
+            //     else{
+            //         document.getElementById("table_select").style.display = "none"
+            //     }
+            // }
+            clearNodeInfo();
+            execute(query);
+        });
+
+        function BanAnRen() {
+            window.location.href="http://143.176.22.84:8083/hxyActiviti/neoBan.html?bmsah="+localStorage.getItem("LeiBieName");;
+        }
+
+
+    </script>
+
+    <script>
+
+        gantt.config.static_background = true;
+        gantt.config.date_format = "%Y-%m-%d %H:%i:%s";
+        gantt.config.columns = [
+            {name: "text", tree: true, width: 150, resize: true},
+            {name: "start_date", align: "center", width: 80, resize: true},
+            {name: "duration", width: 50, align: "center"},
+            {name: "add", width: 44}
+        ];
+
+        var mainGridConfig = {
+            scale_height: 0
+        };
+        var mainTimelineConfig = {
+            scale_height: 0
+        };
+
+        gantt.config.scale_height = 60;
+        gantt.config.layout = {
+            css: "gantt_container",
+            cols: [
+                {
+                    rows: [
+                        {
+                            css: "no-scale",
+                            cols: [
+                                {
+                                    view: "grid",
+                                    group: "grids",
+                                    config: mainGridConfig,
+                                    scrollY: "scrollVer"
+                                },
+                                {
+                                    view: "timeline",
+                                    config: mainTimelineConfig,
+                                    scrollX: "scrollHor",
+                                    scrollY: "scrollVer"
+                                }
+                            ]
+                        },
+                        {
+                            height: gantt.config.scale_height,
+                            cols: [
+                                {
+                                    view: "grid",
+                                    group: "grids",
+                                    bind: "task"
+                                },
+                                {
+                                    view: "timeline",
+                                    scrollX: "scrollHor",
+                                    bind: null,
+                                    bindLinks: null
+                                }
+                            ]
+                        },
+                        {view: "scrollbar", id: "scrollHor"}
+                    ]
+                },
+                {view: "scrollbar", id: "scrollVer"}]
+        };
+
+
+        gantt.init("gantt_here");
+        gantt.parse(generateData(3, new Date(2017, 11, 15), new Date(2018, 1, 1)));
+        document.getElementById("huanjie_detail").onclick = function() {
+            if(document.getElementById("gantt_here").style.display == 'none'){
+                document.getElementById("gantt_here").style.display = "block";
+            }
+            else {
+                document.getElementById("gantt_here").style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

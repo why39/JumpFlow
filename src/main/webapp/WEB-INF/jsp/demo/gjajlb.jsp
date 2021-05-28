@@ -39,6 +39,7 @@
                     <th>业务名称</th>
                     <th>案件名称</th>
                     <th>世系数据操作</th>
+                    <th>静态编译世系</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -69,6 +70,14 @@
 
                             </div>
                         </td>
+                        <td>
+                            <button class="layui-btn layui-btn-small" type="button"
+                                    onclick="staticGen('${leave.AJLB_MC}','${leave.BMSAH}')">编译分析
+                            </button>
+                            <button class="layui-btn layui-btn-small" type="button"
+                                    onclick="staticRead('${leave.BMSAH}')">查看
+                            </button>
+                        </td>>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -134,6 +143,20 @@
         });
 
         }
+
+    function staticGen(category,bmsah) {
+        var url = "${webRoot}/static/staticCompile/staticGen";
+        confirm('确定生成静态世系数据？', function () {
+            $.post(url, {category:category,bmsah:bmsah}, function (r) {
+                $("#search-from").submit();
+            });
+        });
+
+    }
+
+    function staticRead(bmsah) {
+        window.location.href="${webRoot}/staticNeoData.html?bmsah="+encodeURI(bmsah);
+    }
 
 </script>
 

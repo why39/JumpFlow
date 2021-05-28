@@ -45,8 +45,8 @@ public class Neo4jFinalUtil {
         System.out.println("init >>>>>>>>>>>>>>>>> finalUtil.caseDataMapper : " + finalUtil.caseDataMapper);
 
     }
-
-    private static Driver createDrive() {
+    //private static Driver createDrive() Needed in staticInfoServiceImpl.java
+    public static Driver createDrive() {
         if (driver == null) {
             synchronized (Neo4jFinalUtil.class) {
                 if (driver == null) {
