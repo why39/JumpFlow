@@ -1,3 +1,38 @@
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : 127
+ Source Server Type    : MySQL
+ Source Server Version : 50724
+ Source Host           : localhost:3306
+ Source Schema         : hxyframe_activiti
+
+ Target Server Type    : MySQL
+ Target Server Version : 50724
+ File Encoding         : 65001
+
+ Date: 30/05/2021 15:07:02
+*/
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for static_info
+-- ----------------------------
+DROP TABLE IF EXISTS `static_info`;
+CREATE TABLE `static_info`  (
+  `CATEGORY` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `NID` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `TYPE` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `PID` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `NAME` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `INFO` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`NID`) USING BTREE,
+  UNIQUE INDEX `NID`(`NID`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+
 INSERT INTO `static_info` (`CATEGORY`, `NID`, `TYPE`, `PID`, `NAME`, `INFO`) VALUES ('刑事检察', '10001', '活动', NULL, '受理', NULL);
 INSERT INTO `static_info` (`CATEGORY`, `NID`, `TYPE`, `PID`, `NAME`, `INFO`) VALUES ('刑事检察', '10002', '数据', '10001', '人民监督员监督案件受理登记表', NULL);
 INSERT INTO `static_info` (`CATEGORY`, `NID`, `TYPE`, `PID`, `NAME`, `INFO`) VALUES ('刑事检察', '10003', '活动', '10001', '审查', '对受理后的材料进行审查办理');
