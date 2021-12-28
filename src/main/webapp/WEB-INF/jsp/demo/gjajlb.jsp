@@ -19,7 +19,7 @@
                         <input type="text" name="title" id="test-count" value="${leave.title}" placeholder="请输入案件标题"
                                class="layui-input">
                     </div>
-                    <button class="layui-btn" id="searchSubmit"><i class="layui-icon">&#xe615;</i>搜 索</button>
+                    <button class="layui-btn" type="button" id="searchSubmitCase" onclick="searchCase()"><i class="layui-icon">&#xe615;</i>搜 索</button>
                     <button class="layui-btn layui-btn-warm" type="button" id="refresh">重 置</button>
                     <button class="layui-btn layui-btn-warm" type="button" onclick="testCases()">测试</button>
                     <button class="layui-btn layui-btn-warm" type="button" onclick="deleteTestCases()">清空测试</button>
@@ -40,9 +40,9 @@
                     <th>世系数据操作</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="my_tbody">
                 <c:forEach items="${page.result}" var="leave" varStatus="i">
-                    <tr id="leave_${leave.BMSAH }">
+                    <tr id="leave_${leave.BMSAH }" >
                         <td>${i.index+1 }</td>
                     <td>${leave.BMSAH}</td>
                     <td>${leave.AJLB_MC}</td>
@@ -108,6 +108,18 @@
                 $("#search-from").submit();
             });
         });
+    }
+
+    function searchCase() {
+       //alert(document.getElementById("test-count").value);
+        var jia_tbody = document.getElementById("my_tbody");
+        var array_tr = jia_tbody.getElementsByTagName("tr");
+        for(var i = 0; i < array_tr.length; i++) {
+            var array_td = array_tr[i].getElementsByTagName("td");
+            if(array_td[1].innerHTML != document.getElementById("test-count").value){
+                array_tr[i].style.display = "none";
+            }
+        }
     }
 
     function deleteTestCases() {

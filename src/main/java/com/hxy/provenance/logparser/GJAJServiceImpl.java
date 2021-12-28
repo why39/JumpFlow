@@ -163,14 +163,13 @@ public class GJAJServiceImpl implements GJAJService {
         if (!StringUtils.isEmpty(GJNeo4jUtil.queryCase(gjajEntity))) {
             return Result.ok();
         }
-
         String caseNodeId = GJNeo4jUtil.addCase(gjajEntity);
 
         //2. 从RZ_YX_RZ中查询该BMSAH所有的日志
         List<GJRZEntity> rzlist = logDao.queryList(BMSAH); //按时间升序排列
         List<Map<String, Object>> taskList = new ArrayList<>();
         try {
-            //2.1 先添加流程信息：
+           //2.1 先添加流程信息：
             for (GJRZEntity lcrz : rzlist) {
                 String LCRZMS = lcrz.getRZMS();
                 if (LCRZMS != null && LCRZMS.length() > 0) {
@@ -220,6 +219,7 @@ public class GJAJServiceImpl implements GJAJService {
                                 par.put("操作人", rz.getCZRM());
                                 par.put("日志ID", rz.getID());
 
+                                //根据修该时间判断流程节点
                                 int relatedTaskId = taskList.size() - 1;
                                 for (int i = 0; i < taskList.size(); i++) {
                                     Map<String, Object> task = taskList.get(i);

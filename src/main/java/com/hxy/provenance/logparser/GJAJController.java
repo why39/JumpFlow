@@ -47,9 +47,6 @@ public class GJAJController {
         Page<GJAJEntity> page = caseService.findPage(caseEntity, pageNum);
         model.addAttribute("page", page);
         model.addAttribute("case", caseEntity);
-
-//        dataPlatformService.queryAJ("2019-11-08 15:10:42", "2019-11-08 23:10:42");
-
         return "demo/gjajlb";
     }
 

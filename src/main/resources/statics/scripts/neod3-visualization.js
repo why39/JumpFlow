@@ -443,7 +443,8 @@ function look_anka(value){
                             var str_time = (graph.nodes[item]["创建时间"]).toString().substring(0,20)
                             var str_div = graph.nodes[item][graph.nodes[item].label];
                             //s_name = "操作人:"+str_name[item];
-                            s_name = "操作人:" + (graph.nodes[item]["操作人"]).toString()
+                            //s_name = "操作人:" + (graph.nodes[item]["操作人"]).toString()
+                            s_name = "操作人:" + "金海燕";
                             //s_alter = "修改者:"+"案管人员"
                             s_alter = "";
                             if(true){
