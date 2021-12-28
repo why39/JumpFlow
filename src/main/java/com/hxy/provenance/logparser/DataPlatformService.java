@@ -162,4 +162,60 @@ public class DataPlatformService {
 
     }
 
+    /**
+     * 查询流程环节
+     * @param start 2019-11-08 15:10:42
+     * @param end
+     * @return
+     */
+    public List<GJRZEntity> queryLCHJ(String start, String end) {
+        List<GJRZEntity> gjrzEntityList = new ArrayList<>();
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .build();
+
+        String params = "queryStartDate=" + start + "&queryEndDate=" + end;
+        String signature = MD5.MD5Encode((params + "&" + DATA_RANDOM_STR + "&" + DATA_API_KEY).replace(" ", "%20"));
+
+        Request request = new Request.Builder()
+                .url(DATA_URL + "/api/proc/inst/nodes?" + params)
+                .get()
+                .addHeader("X-Api-Id", DATA_API_ID)
+                .addHeader("X-Api-Temp", DATA_RANDOM_STR)
+                .addHeader("X-Api-Signature", signature)
+                .addHeader("Content-Type", "application/x-www-form-urlencoded")
+                .addHeader("cache-control", "no-cache")
+                .addHeader("accept", "*/*")
+                .addHeader("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)")
+                .build();
+
+        try {
+            Response response = client.newCall(request).execute();
+            if (response.isSuccessful()) {
+                DataPlatformRZEntity resultEntity = Json.decode(response.body().string(), DataPlatformRZEntity.class);
+                if (resultEntity != null && !CollectionUtils.isEmpty(resultEntity.data)) {
+                    for (DataPlatformRZEntity.Item entity : resultEntity.data) {
+                        GJRZEntity gjrzEntity = new GJRZEntity();
+                        gjrzEntity.setBMSAH(entity.getBmsah());
+                        gjrzEntity.setCZRM(entity.getJdzxzxm());
+                        gjrzEntity.setEJFL("TYYW_LCBA_YW_BL_LC_JD_TABLE"); //从其他表中导入
+                        gjrzEntity.setID(entity.getId());
+                        gjrzEntity.setRZMS(entity.getRzms());
+                        gjrzEntity.setZHXGSJ(entity.getJdjrsj());
+                        caseService.saveRZ(gjrzEntity);
+                        gjrzEntityList.add(gjrzEntity);
+                    }
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            logger.info("DATAPlatform...." + gjrzEntityList.size());
+            return gjrzEntityList;
+        }
+
+    }
 }

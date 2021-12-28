@@ -6,10 +6,7 @@ import com.hxy.modules.common.utils.RedisUtil;
 import com.hxy.modules.common.utils.StringUtils;
 import com.hxy.modules.sys.dao.CodeDao;
 import com.hxy.modules.sys.entity.CodeEntity;
-import com.hxy.provenance.logparser.ConfigCache;
-import com.hxy.provenance.logparser.GJAJDao;
-import com.hxy.provenance.logparser.QueryAjJob;
-import com.hxy.provenance.logparser.QueryRZJob;
+import com.hxy.provenance.logparser.*;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 import org.slf4j.Logger;
@@ -65,20 +62,34 @@ public class WebAppListener implements ApplicationListener<ContextRefreshedEvent
 
     public void createQueryAJAndRZJob() {
         //1创建job(任务)对象——做什么事
-        JobDetail ajjob = JobBuilder.newJob(QueryAjJob.class).build();
-        //2创建Trigger(触发器)对象——什么时间做  repeatSecondlyForever每秒执行一次—
-        Trigger ajtrigger = TriggerBuilder.newTrigger().withSchedule(SimpleScheduleBuilder.repeatSecondlyForever(30)).build();
-        //3创建Scheduler(任务调度)对象
-        try {
-            Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
-            scheduler.scheduleJob(ajjob, ajtrigger);
-            scheduler.start();
-        } catch (SchedulerException e) {
-            e.printStackTrace();
-        }
+//        JobDetail ajjob = JobBuilder.newJob(QueryAjJob.class).build();
+//        //2创建Trigger(触发器)对象——什么时间做  repeatSecondlyForever每秒执行一次—
+//        Trigger ajtrigger = TriggerBuilder.newTrigger().withSchedule(SimpleScheduleBuilder.repeatSecondlyForever(30)).build();
+//        //3创建Scheduler(任务调度)对象
+//        try {
+//            Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
+//            scheduler.scheduleJob(ajjob, ajtrigger);
+//            scheduler.start();
+//        } catch (SchedulerException e) {
+//            e.printStackTrace();
+//        }
+//
+//        //1创建job(任务)对象——做什么事
+//        JobDetail rzjob = JobBuilder.newJob(QueryRZJob.class).build();
+//        //2创建Trigger(触发器)对象——什么时间做  repeatSecondlyForever每秒执行一次—
+//        Trigger rztrigger = TriggerBuilder.newTrigger().withSchedule(SimpleScheduleBuilder.repeatSecondlyForever(30)).build();
+//        //3创建Scheduler(任务调度)对象
+//        try {
+//            Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
+//            scheduler.scheduleJob(rzjob, rztrigger);
+//            scheduler.start();
+//        } catch (SchedulerException e) {
+//            e.printStackTrace();
+//        }
+//
 
         //1创建job(任务)对象——做什么事
-        JobDetail rzjob = JobBuilder.newJob(QueryRZJob.class).build();
+        JobDetail rzjob = JobBuilder.newJob(QueryJDJob.class).build();
         //2创建Trigger(触发器)对象——什么时间做  repeatSecondlyForever每秒执行一次—
         Trigger rztrigger = TriggerBuilder.newTrigger().withSchedule(SimpleScheduleBuilder.repeatSecondlyForever(30)).build();
         //3创建Scheduler(任务调度)对象
@@ -89,7 +100,6 @@ public class WebAppListener implements ApplicationListener<ContextRefreshedEvent
         } catch (SchedulerException e) {
             e.printStackTrace();
         }
-
     }
 
     /**
