@@ -131,6 +131,11 @@ public class GJAJServiceImpl implements GJAJService {
     }
 
     @Override
+    public List<GJAJEntity> searchList(String content) {
+        return caseDao.searchList(content);
+    }
+
+    @Override
     public Result parseLogForTest(int count) {
         long start = System.currentTimeMillis();
         PageHelper.startPage(1, count);
@@ -169,7 +174,7 @@ public class GJAJServiceImpl implements GJAJService {
         List<GJRZEntity> rzlist = logDao.queryList(BMSAH); //按时间升序排列
         List<Map<String, Object>> taskList = new ArrayList<>();
         try {
-           //2.1 先添加流程信息：
+            //2.1 先添加流程信息：
             for (GJRZEntity lcrz : rzlist) {
                 String LCRZMS = lcrz.getRZMS();
                 if (LCRZMS != null && LCRZMS.length() > 0) {

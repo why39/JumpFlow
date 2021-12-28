@@ -40,5 +40,8 @@ public interface GJAJService {
 
     Result deleteTest(int count);
 
-    List<Map<String,Object>> countFields(String caseType,int size);
+    List<Map<String, Object>> countFields(String caseType, int size);
+
+    List<GJAJEntity> searchList(String content);
+
 }

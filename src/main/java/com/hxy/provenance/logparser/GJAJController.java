@@ -50,6 +50,13 @@ public class GJAJController {
         return "demo/gjajlb";
     }
 
+    @RequestMapping(value = "search-aj")
+    @ResponseBody
+    public List<GJAJEntity> SearchAJ(@RequestParam String content) {
+        List<GJAJEntity> gjajEntity = (List<GJAJEntity>) gjajService.searchList(content);
+        return gjajEntity;
+    }
+
     @RequestMapping(value = "parselog", method = RequestMethod.POST)
     @RequiresPermissions("act:model:all")
     @ResponseBody
