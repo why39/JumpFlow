@@ -62,40 +62,40 @@ public class WebAppListener implements ApplicationListener<ContextRefreshedEvent
 
     public void createQueryAJAndRZJob() {
         //1创建job(任务)对象——做什么事
-//        JobDetail ajjob = JobBuilder.newJob(QueryAjJob.class).build();
-//        //2创建Trigger(触发器)对象——什么时间做  repeatSecondlyForever每秒执行一次—
-//        Trigger ajtrigger = TriggerBuilder.newTrigger().withSchedule(SimpleScheduleBuilder.repeatSecondlyForever(30)).build();
-//        //3创建Scheduler(任务调度)对象
-//        try {
-//            Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
-//            scheduler.scheduleJob(ajjob, ajtrigger);
-//            scheduler.start();
-//        } catch (SchedulerException e) {
-//            e.printStackTrace();
-//        }
-//
-//        //1创建job(任务)对象——做什么事
-//        JobDetail rzjob = JobBuilder.newJob(QueryRZJob.class).build();
-//        //2创建Trigger(触发器)对象——什么时间做  repeatSecondlyForever每秒执行一次—
-//        Trigger rztrigger = TriggerBuilder.newTrigger().withSchedule(SimpleScheduleBuilder.repeatSecondlyForever(30)).build();
-//        //3创建Scheduler(任务调度)对象
-//        try {
-//            Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
-//            scheduler.scheduleJob(rzjob, rztrigger);
-//            scheduler.start();
-//        } catch (SchedulerException e) {
-//            e.printStackTrace();
-//        }
-//
+        JobDetail ajjob = JobBuilder.newJob(QueryAjJob.class).build();
+        //2创建Trigger(触发器)对象——什么时间做  repeatSecondlyForever每秒执行一次—
+        Trigger ajtrigger = TriggerBuilder.newTrigger().withSchedule(SimpleScheduleBuilder.repeatSecondlyForever(30)).build();
+        //3创建Scheduler(任务调度)对象
+        try {
+            Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
+            scheduler.scheduleJob(ajjob, ajtrigger);
+            scheduler.start();
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+        }
 
         //1创建job(任务)对象——做什么事
-        JobDetail rzjob = JobBuilder.newJob(QueryJDJob.class).build();
+        JobDetail rzjob = JobBuilder.newJob(QueryRZJob.class).build();
         //2创建Trigger(触发器)对象——什么时间做  repeatSecondlyForever每秒执行一次—
         Trigger rztrigger = TriggerBuilder.newTrigger().withSchedule(SimpleScheduleBuilder.repeatSecondlyForever(30)).build();
         //3创建Scheduler(任务调度)对象
         try {
             Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
             scheduler.scheduleJob(rzjob, rztrigger);
+            scheduler.start();
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+        }
+
+
+        //1创建job(任务)对象——做什么事
+        JobDetail jdJobDetail = JobBuilder.newJob(QueryJDJob.class).build();
+        //2创建Trigger(触发器)对象——什么时间做  repeatSecondlyForever每秒执行一次—
+        Trigger jdtrigger = TriggerBuilder.newTrigger().withSchedule(SimpleScheduleBuilder.repeatSecondlyForever(30)).build();
+        //3创建Scheduler(任务调度)对象
+        try {
+            Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
+            scheduler.scheduleJob(jdJobDetail, jdtrigger);
             scheduler.start();
         } catch (SchedulerException e) {
             e.printStackTrace();
