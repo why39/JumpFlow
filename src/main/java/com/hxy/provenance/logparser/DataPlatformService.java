@@ -202,6 +202,8 @@ public class DataPlatformService {
         try {
             Response response = client.newCall(request).execute();
             if (response.isSuccessful()) {
+                logger.info("DATAPlatform....queryLCHJ success : " + response.body().string());
+
                 DataPlatformRZEntity resultEntity = Json.decode(response.body().string(), DataPlatformRZEntity.class);
                 if (resultEntity != null && !CollectionUtils.isEmpty(resultEntity.data)) {
                     for (DataPlatformRZEntity.Item entity : resultEntity.data) {
@@ -214,9 +216,12 @@ public class DataPlatformService {
                         gjrzEntity.setZHXGSJ(entity.getJdjrsj());
                         caseService.saveRZ(gjrzEntity);
                         gjrzEntityList.add(gjrzEntity);
-                        logger.info("DATAPlatform....saveLCHJ failed : " + gjrzEntity.getID());
+                        logger.info("DATAPlatform....saveLCHJ : " + gjrzEntity.getID());
 
                     }
+                } else {
+                    logger.info("DATAPlatform....queryLCHJ data is empty : " + response.body().string());
+
                 }
             } else {
                 logger.info("DATAPlatform....queryLCHJ failed : " + response.body().string());
