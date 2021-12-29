@@ -57,7 +57,7 @@ public class DataPlatformService {
                 .build();
 
         String params = "queryStartDate=" + start + "&queryEndDate=" + end;
-        logger.info("params",params);
+        logger.info("params", params);
         System.out.println("params" + params);
         String signature = MD5.MD5Encode((params + "&" + DATA_RANDOM_STR + "&" + DATA_API_KEY).replace(" ", "%20"));
 
@@ -73,11 +73,11 @@ public class DataPlatformService {
                 .addHeader("accept", "*/*")
                 .addHeader("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)")
                 .build();
-        logger.info("api-id",DATA_API_ID);
+        logger.info("api-id", DATA_API_ID);
         System.out.println("api-id" + DATA_API_ID);
-        logger.info("api-temp",DATA_RANDOM_STR);
+        logger.info("api-temp", DATA_RANDOM_STR);
         System.out.println("api-temp" + DATA_RANDOM_STR);
-        logger.info("api-sign",signature);
+        logger.info("api-sign", signature);
         System.out.println("api-sign" + signature);
         try {
             Response response = client.newCall(request).execute();
@@ -115,13 +115,16 @@ public class DataPlatformService {
                         caseService.saveAJ(gjajEntity);
                         gjajEntityList.add(gjajEntity);
                     }
+                }else {
+                    logger.info("queryAJ----------------------response body is empty");
                 }
             }
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            logger.info("DATAPlatform....queryAJ error" + e.toString());
         } finally {
-            logger.info("DATAPlatform...." + gjajEntityList.size());
+            logger.info("DATAPlatform....queryAJ" + gjajEntityList.size());
             return gjajEntityList;
         }
 
@@ -159,10 +162,9 @@ public class DataPlatformService {
             Response response = client.newCall(request).execute();
             if (response.isSuccessful()) {
                 DataPlatformRZEntity resultEntity = Json.decode(response.body().string(), DataPlatformRZEntity.class);
-                logger.info("rz ----------------------response body",response.body().string());
-                logger.info("DATAPlatform1111....querRZ resultEntitydata : " + resultEntity.data);
+
                 if (resultEntity != null && !CollectionUtils.isEmpty(resultEntity.data)) {
-                    logger.info("DATAPlatform1111....querRZ resultEntity : " +resultEntity.data);
+                    logger.info("DATAPlatform1111....querRZ resultEntity : " + resultEntity.data);
                     for (DataPlatformRZEntity.Item entity : resultEntity.data) {
                         GJRZEntity gjrzEntity = new GJRZEntity();
                         gjrzEntity.setBMSAH(entity.getBmsah());
@@ -174,6 +176,8 @@ public class DataPlatformService {
                         caseService.saveRZ(gjrzEntity);
                         gjrzEntityList.add(gjrzEntity);
                     }
+                } else {
+                    logger.info("queryRZ----------------------response body is empty");
                 }
             }
 
@@ -181,7 +185,7 @@ public class DataPlatformService {
             logger.info("DATAPlatform1111....querRZ resultEntity : " + e.toString());
             e.printStackTrace();
         } finally {
-            logger.info("DATAPlatform...." + gjrzEntityList.size());
+            logger.info("DATAPlatform....queryRZ" + gjrzEntityList.size());
             return gjrzEntityList;
         }
 
@@ -221,38 +225,37 @@ public class DataPlatformService {
             Response response = client.newCall(request).execute();
             if (response.isSuccessful()) {
 
-                logger.info("DATAPlatform2222....queryLCHJ success : " + response.body().string());
+                logger.info("DATAPlatform queryLCHJ....queryLCHJ success : " + response.body().string());
 
                 DataPlatformJDEntity resultEntity = Json.decode(response.body().string(), DataPlatformJDEntity.class);
-                logger.info("DATAPlatform2222....queryLCHJ resultEntity : " +resultEntity.data);
+                logger.info("DATAPlatform queryLCHJ....queryLCHJ resultEntity : " + resultEntity.data);
                 if (resultEntity != null && !CollectionUtils.isEmpty(resultEntity.data)) {
                     logger.info("DATAPlatform....queryLCHJ -------datadatadata : " + resultEntity.data);
                     for (DataPlatformJDEntity.Item entity : resultEntity.data) {
                         GJRZEntity gjrzEntity = new GJRZEntity();
                         gjrzEntity.setBMSAH(entity.getBmsah());
-                        gjrzEntity.setCZRM(entity.getJdzxxzxm());
+                        gjrzEntity.setCZRM(entity.getJdzxzxm());
                         gjrzEntity.setEJFL("TYYW_LCBA_YW_BL_LC_JD_TABLE"); //从其他表中导入
                         gjrzEntity.setID(entity.getBmsah() + "-" + entity.getLcjdbh());
                         gjrzEntity.setRZMS(entity.getLcjdmc());
                         gjrzEntity.setZHXGSJ(entity.getJdjrsj());
                         caseService.saveRZ(gjrzEntity);
                         gjrzEntityList.add(gjrzEntity);
-                        logger.info("DATAPlatform2222....saveLCHJ : " + gjrzEntity.getID());
+                        logger.info("DATAPlatform queryLCHJ....saveLCHJ : " + gjrzEntity.getID());
 
                     }
                 } else {
-                    logger.info("DATAPlatform2222....queryLCHJ data is empty : " + response.body().string());
-
+                    logger.info("DATAPlatform queryLCHJ....queryLCHJ data is empty");
                 }
             } else {
-                logger.info("DATAPlatform2222....queryLCHJ failed : " + response.body().string());
+                logger.info("DATAPlatform queryLCHJ....queryLCHJ failed : " + response.body().string());
             }
 
         } catch (Exception e) {
             e.printStackTrace();
-            logger.info("DATAPlatform2222....queryLCHJ error : " + e.toString());
+            logger.info("DATAPlatform queryLCHJ....queryLCHJ error : " + e.toString());
         } finally {
-            logger.info("DATAPlatform2222...." + gjrzEntityList.size());
+            logger.info("DATAPlatform queryLCHJ...." + gjrzEntityList.size());
             return gjrzEntityList;
         }
     }
