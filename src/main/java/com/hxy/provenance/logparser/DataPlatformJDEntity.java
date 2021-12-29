@@ -9,34 +9,6 @@ public class DataPlatformJDEntity {
 
     public static class Item {
 
-        /**
-         * bmsah : null
-         * cfcs : null
-         * cjsj : 2019-11-08 15:10:49
-         * cssj : 2019-11-08 15:10:49
-         * czrm : null
-         * ejfl : TYYW_LCBA_YW_BL_WSRJ_QDLC
-         * fwbb : null
-         * fwmc : null
-         * fwxh : null
-         * id : c613abcb-3c3c-4d1e-8cad-210737b77c0a
-         * khdip : null
-         * rzjb : null
-         * rzms : {"YXSLBH":"84C5E8D737B34478AADF441CC3C6B0F2","LCSLBH":"","DWBM":"980100","XXZTBH":"","XXLX":"01","TYSAH":"","XXNR":"{'WSMBBM':'100000030200','WSMC':'刑事抗诉书（二审程序适用）','WSCZLX':'003','ZRRBH':'','CZSJ':'2019-11-08','CZR':'测试账号0101','CZRYBM':'9801000005'}","XXSM":"《刑事抗诉书（二审程序适用）》已入卷"}
-         * rzxh : null
-         * rzzid : a470a6c8-d62b-4c91-a1a6-7da4ce5b2919
-         * sfsc : N
-         * sjbsbh : 5134606E776E0AEB085C13A000007EE8
-         * sjly : null
-         * xgffm : null
-         * xglm : null
-         * yclm : null
-         * ycxx : null
-         * yjfl : 普通业务日志
-         * ywsx : null
-         * zhxgsj : 2019-11-08 15:10:49
-         */
-
         private String cjsj;
         private String dwbm;
         private String jdjrsj;
@@ -51,7 +23,7 @@ public class DataPlatformJDEntity {
         private String lcjdmc;
         private String lcjdbm;
         private String lcslbh;
-        private String lcsljdxh;
+        private Integer lcsljdxh;
         private String lczt;
         private String sfsc;
         private String sjly;
@@ -171,11 +143,11 @@ public class DataPlatformJDEntity {
             this.lcslbh = lcslbh;
         }
 
-        public String getLcsljdxh() {
+        public Integer getLcsljdxh() {
             return lcsljdxh;
         }
 
-        public void setLcsljdxh(String lcsljdxh) {
+        public void setLcsljdxh(Integer lcsljdxh) {
             this.lcsljdxh = lcsljdxh;
         }
 

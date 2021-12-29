@@ -202,9 +202,10 @@ public class DataPlatformService {
         try {
             Response response = client.newCall(request).execute();
             if (response.isSuccessful()) {
-                logger.info("DATAPlatform....queryLCHJ success : " + response.body().string());
-
+                logger.info("DATAPlatform2222....queryLCHJ success : " + response.body().string());
                 DataPlatformJDEntity resultEntity = Json.decode(response.body().string(), DataPlatformJDEntity.class);
+                logger.info("DATAPlatform2222....queryLCHJ resultEntity : " +resultEntity.data);
+
                 if (resultEntity != null && !CollectionUtils.isEmpty(resultEntity.data)) {
                     for (DataPlatformJDEntity.Item entity : resultEntity.data) {
                         GJRZEntity gjrzEntity = new GJRZEntity();
@@ -216,22 +217,21 @@ public class DataPlatformService {
                         gjrzEntity.setZHXGSJ(entity.getJdjrsj());
                         caseService.saveRZ(gjrzEntity);
                         gjrzEntityList.add(gjrzEntity);
-                        logger.info("DATAPlatform....saveLCHJ : " + gjrzEntity.getID());
+                        logger.info("DATAPlatform2222....saveLCHJ : " + gjrzEntity.getID());
 
                     }
                 } else {
-                    logger.info("DATAPlatform....queryLCHJ data is empty : " + response.body().string());
-
+                    logger.info("DATAPlatform.2222...queryLCHJ data is empty : " + response.body().string());
                 }
             } else {
-                logger.info("DATAPlatform....queryLCHJ failed : " + response.body().string());
+                logger.info("DATAPlatform2222....queryLCHJ failed : " + response.body().string());
             }
 
         } catch (IOException e) {
             e.printStackTrace();
-            logger.info("DATAPlatform....queryLCHJ error : " + e.toString());
+            logger.info("DATAPlatform2222....queryLCHJ error : " + e.toString());
         } finally {
-            logger.info("DATAPlatform...." + gjrzEntityList.size());
+            logger.info("DATAPlatform22222...." + gjrzEntityList.size());
             return gjrzEntityList;
         }
     }
