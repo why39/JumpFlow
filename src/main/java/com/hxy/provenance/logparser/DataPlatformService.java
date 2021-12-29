@@ -1,5 +1,6 @@
 package com.hxy.provenance.logparser;
 
+import com.hxy.modules.common.utils.CommUtils;
 import com.hxy.modules.common.utils.JsonUtil;
 import com.hxy.modules.common.utils.MD5;
 import com.hxy.provenance.neo4j.utils.http.HttpUtils;
@@ -91,6 +92,7 @@ public class DataPlatformService {
                         gjajEntity.setAJMC(entity.getAjmc());
                         gjajEntity.setTYSAH(entity.getTysah());
                         gjajEntity.setCBDW_MC(entity.getCbdwmc());
+                        gjajEntity.setIS_COMPLETE(0);
                         caseService.saveAJ(gjajEntity);
                         gjajEntityList.add(gjajEntity);
                     }
@@ -144,7 +146,7 @@ public class DataPlatformService {
                         gjrzEntity.setBMSAH(entity.getBmsah());
                         gjrzEntity.setCZRM(entity.getCzrm());
                         gjrzEntity.setEJFL(entity.getEjfl());
-                        gjrzEntity.setID(entity.getId());
+                        gjrzEntity.setID(CommUtils.uuid());
                         gjrzEntity.setRZMS(entity.getRzms());
                         gjrzEntity.setZHXGSJ(entity.getZhxgsj());
                         caseService.saveRZ(gjrzEntity);
