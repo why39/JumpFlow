@@ -204,15 +204,15 @@ public class DataPlatformService {
             if (response.isSuccessful()) {
                 logger.info("DATAPlatform....queryLCHJ success : " + response.body().string());
 
-                DataPlatformRZEntity resultEntity = Json.decode(response.body().string(), DataPlatformRZEntity.class);
+                DataPlatformJDEntity resultEntity = Json.decode(response.body().string(), DataPlatformJDEntity.class);
                 if (resultEntity != null && !CollectionUtils.isEmpty(resultEntity.data)) {
-                    for (DataPlatformRZEntity.Item entity : resultEntity.data) {
+                    for (DataPlatformJDEntity.Item entity : resultEntity.data) {
                         GJRZEntity gjrzEntity = new GJRZEntity();
                         gjrzEntity.setBMSAH(entity.getBmsah());
-                        gjrzEntity.setCZRM(entity.getJdzxzxm());
+                        gjrzEntity.setCZRM(entity.getJdzxxzxm());
                         gjrzEntity.setEJFL("TYYW_LCBA_YW_BL_LC_JD_TABLE"); //从其他表中导入
                         gjrzEntity.setID(entity.getBmsah() + "-" + entity.getLcjdbh());
-                        gjrzEntity.setRZMS(entity.getRzms());
+                        gjrzEntity.setRZMS(entity.getLcjdmc());
                         gjrzEntity.setZHXGSJ(entity.getJdjrsj());
                         caseService.saveRZ(gjrzEntity);
                         gjrzEntityList.add(gjrzEntity);
