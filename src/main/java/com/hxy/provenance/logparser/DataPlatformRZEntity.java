@@ -64,6 +64,8 @@ public class DataPlatformRZEntity {
         private String zhxgsj;
         private String jdjrsj;
         private String jdzxzxm;
+        private String lcjdbh;
+
 
         public String getBmsah() {
             return bmsah;
@@ -279,6 +281,14 @@ public class DataPlatformRZEntity {
 
         public void setJdzxzxm(String jdzxzxm) {
             this.jdzxzxm = jdzxzxm;
+        }
+
+        public String getLcjdbh() {
+            return lcjdbh;
+        }
+
+        public void setLcjdbh(String lcjdbh) {
+            this.lcjdbh = lcjdbh;
         }
     }
 }

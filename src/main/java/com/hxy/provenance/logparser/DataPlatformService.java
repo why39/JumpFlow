@@ -137,6 +137,7 @@ public class DataPlatformService {
         try {
             Response response = client.newCall(request).execute();
             if (response.isSuccessful()) {
+                logger.info("DATAPlatform....queryRZ success : " + response.body().string());
                 DataPlatformRZEntity resultEntity = Json.decode(response.body().string(), DataPlatformRZEntity.class);
                 if (resultEntity != null && !CollectionUtils.isEmpty(resultEntity.data)) {
                     for (DataPlatformRZEntity.Item entity : resultEntity.data) {
@@ -144,17 +145,21 @@ public class DataPlatformService {
                         gjrzEntity.setBMSAH(entity.getBmsah());
                         gjrzEntity.setCZRM(entity.getCzrm());
                         gjrzEntity.setEJFL(entity.getEjfl());
-                        gjrzEntity.setID(entity.getId());
+                        gjrzEntity.setID(entity.getBmsah()+"-"+entity.getLcjdbh());
                         gjrzEntity.setRZMS(entity.getRzms());
                         gjrzEntity.setZHXGSJ(entity.getZhxgsj());
                         caseService.saveRZ(gjrzEntity);
                         gjrzEntityList.add(gjrzEntity);
+                        logger.info("DATAPlatform....queryRZ saveRZ : " + gjrzEntity.getID());
                     }
                 }
+            } else {
+                logger.info("DATAPlatform....queryRZ failed : " + response.body().string());
             }
 
         } catch (IOException e) {
             e.printStackTrace();
+            logger.info("DATAPlatform....queryRZ error : " + e.toString());
         } finally {
             logger.info("DATAPlatform...." + gjrzEntityList.size());
             return gjrzEntityList;
