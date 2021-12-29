@@ -91,8 +91,8 @@ function Neod3Renderer() {
                 ""+selectNode.caseId+"&nbsp&nbsp&nbsp&nbsp环节名称:"+selectNode.copy_name+"</p>";
             swal({
                 title: selectNode["copy_name"],
-                text: "开始时间：2020年10月20日"+"\n"+
-                    "结束时间：2020年12月18日",
+                text: "开始时间：2021年05月20日"+"\n"+
+                    "结束时间：2021年12月18日",
                 icon: "success",
                 buttons: {
                     cancel: "取消",
@@ -440,7 +440,8 @@ function look_anka(value){
                             var name_index_0 = graph.nodes[item]["所属环节"].indexOf(" ",0);
                             var name_index_1 = graph.nodes[item]["所属环节"].substring(name_index_0 + 1,
                                 graph.nodes[item]["所属环节"].length).indexOf(" ",1);
-                            s_name = "操作人:" + graph.nodes[item]["所属环节"].substring(name_index_0 + 1,name_index_1 + name_index_0 + 1)
+                            s_name = "操作人：" + "金海燕";
+                            //s_name = "操作人:" + graph.nodes[item]["所属环节"].substring(name_index_0 + 1,name_index_1 + name_index_0 + 1)
                             s_alter = "";
                             if(str_div == "") str_div = "创建";
                             if(true){

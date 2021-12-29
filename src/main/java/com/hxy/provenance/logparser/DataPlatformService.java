@@ -159,7 +159,10 @@ public class DataPlatformService {
             Response response = client.newCall(request).execute();
             if (response.isSuccessful()) {
                 DataPlatformRZEntity resultEntity = Json.decode(response.body().string(), DataPlatformRZEntity.class);
+                logger.info("rz ----------------------response body",response.body().string());
+                logger.info("DATAPlatform1111....querRZ resultEntitydata : " + resultEntity.data);
                 if (resultEntity != null && !CollectionUtils.isEmpty(resultEntity.data)) {
+                    logger.info("DATAPlatform1111....querRZ resultEntity : " +resultEntity.data);
                     for (DataPlatformRZEntity.Item entity : resultEntity.data) {
                         GJRZEntity gjrzEntity = new GJRZEntity();
                         gjrzEntity.setBMSAH(entity.getBmsah());
@@ -174,7 +177,8 @@ public class DataPlatformService {
                 }
             }
 
-        } catch (IOException e) {
+        } catch (Exception e) {
+            logger.info("DATAPlatform1111....querRZ resultEntity : " + e.toString());
             e.printStackTrace();
         } finally {
             logger.info("DATAPlatform...." + gjrzEntityList.size());
@@ -244,7 +248,7 @@ public class DataPlatformService {
                 logger.info("DATAPlatform2222....queryLCHJ failed : " + response.body().string());
             }
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             logger.info("DATAPlatform2222....queryLCHJ error : " + e.toString());
         } finally {
