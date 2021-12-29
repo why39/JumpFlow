@@ -135,6 +135,6 @@
 
     <select id="searchList"  resultType="com.hxy.provenance.logparser.GJAJEntity" resultMap="caseMap">
         select * from aj_yx_aj
-        where BMSAH like #{arg0}
+        where BMSAH like concat('%',#{arg0},'%')
     </select>
 </mapper>

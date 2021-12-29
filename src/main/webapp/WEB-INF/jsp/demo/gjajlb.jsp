@@ -16,7 +16,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label" style="width:10%;">案件标题:</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="title" id="test-count" value="${leave.title}" placeholder="请输入案件标题"
+                        <input type="text" name="title" id="test-count" value="${leave.AJLB_MC}" placeholder="请输入案件标题"
                                class="layui-input">
                     </div>
                     <button class="layui-btn" type="button" id="searchSubmitCase" onclick="searchCase()"><i class="layui-icon">&#xe615;</i>搜 索</button>
@@ -42,7 +42,7 @@
                 </thead>
                 <tbody id="my_tbody">
                 <c:forEach items="${page.result}" var="leave" varStatus="i">
-                    <tr id="leave_${leave.BMSAH }" >
+                    <tr id="leave_${leave.BMSAH}" >
                         <td>${i.index+1 }</td>
                     <td>${leave.BMSAH}</td>
                     <td>${leave.AJLB_MC}</td>
@@ -112,14 +112,16 @@
 
     function searchCase() {
        //alert(document.getElementById("test-count").value);
-        var jia_tbody = document.getElementById("my_tbody");
-        var array_tr = jia_tbody.getElementsByTagName("tr");
-        for(var i = 0; i < array_tr.length; i++) {
+        //var jia_tbody = document.getElementById("my_tbody");
+        //var array_tr = jia_tbody.getElementsByTagName("tr");
+        /*for(var i = 0; i < array_tr.length; i++) {
             var array_td = array_tr[i].getElementsByTagName("td");
             if(array_td[1].innerHTML != document.getElementById("test-count").value){
                 array_tr[i].style.display = "none";
             }
-        }
+        }*/
+        document.getElementById("search-from").action="${webRoot}/demo/gj/search-aj?id=" + document.getElementById("test-count").value;
+        document.getElementById("search-from").submit();
     }
 
     function deleteTestCases() {

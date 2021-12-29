@@ -45,16 +45,23 @@ public class GJAJController {
     public String gjajlb(Model model, GJAJEntity caseEntity, HttpServletRequest request) {
         int pageNum = CommUtils.parseInt(request.getParameter("pageNum"), 1);
         Page<GJAJEntity> page = caseService.findPage(caseEntity, pageNum);
+        //List<GJAJEntity> gjajEntity = (List<GJAJEntity>) gjajService.searchList("");
+        //page.setResult(gjajEntity);
         model.addAttribute("page", page);
         model.addAttribute("case", caseEntity);
         return "demo/gjajlb";
     }
-
+//@RequestParam String content
     @RequestMapping(value = "search-aj")
-    @ResponseBody
-    public List<GJAJEntity> SearchAJ(@RequestParam String content) {
-        List<GJAJEntity> gjajEntity = (List<GJAJEntity>) gjajService.searchList(content);
-        return gjajEntity;
+    public String SearchAJ(Model model, GJAJEntity caseEntity, HttpServletRequest request) {
+        int pageNum = CommUtils.parseInt(request.getParameter("pageNum"), 1);
+        Page<GJAJEntity> page = caseService.findPage(caseEntity, pageNum);
+        String id=request.getParameter("title");
+        List<GJAJEntity> gjajEntity = (List<GJAJEntity>) gjajService.searchList(id);
+        page.setResult(gjajEntity);
+        model.addAttribute("page", page);
+        model.addAttribute("case", caseEntity);
+        return "demo/gjajlb";
     }
 
     @RequestMapping(value = "parselog", method = RequestMethod.POST)
