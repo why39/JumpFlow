@@ -183,4 +183,74 @@ public class DataPlatformService {
 
     }
 
+    /**
+     * 查询流程环节
+     *
+     * @param start 2019-11-08 15:10:42
+     * @param end
+     * @return
+     */
+    public List<GJRZEntity> queryLCHJ(String start, String end) {
+        List<GJRZEntity> gjrzEntityList = new ArrayList<>();
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .build();
+
+        String params = "queryStartDate=" + start + "&queryEndDate=" + end;
+        String signature = MD5.MD5Encode((params + "&" + DATA_RANDOM_STR + "&" + DATA_API_KEY).replace(" ", "%20"));
+
+        Request request = new Request.Builder()
+                .url(DATA_URL + "/api/proc/inst/nodes?" + params)
+                .get()
+                .addHeader("X-Api-Id", DATA_API_ID)
+                .addHeader("X-Api-Temp", DATA_RANDOM_STR)
+                .addHeader("X-Api-Signature", signature)
+                .addHeader("Content-Type", "application/x-www-form-urlencoded")
+                .addHeader("cache-control", "no-cache")
+                .addHeader("accept", "*/*")
+                .addHeader("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)")
+                .build();
+
+        try {
+            Response response = client.newCall(request).execute();
+            if (response.isSuccessful()) {
+
+                logger.info("DATAPlatform2222....queryLCHJ success : " + response.body().string());
+
+                DataPlatformJDEntity resultEntity = Json.decode(response.body().string(), DataPlatformJDEntity.class);
+                logger.info("DATAPlatform2222....queryLCHJ resultEntity : " +resultEntity.data);
+                if (resultEntity != null && !CollectionUtils.isEmpty(resultEntity.data)) {
+                    logger.info("DATAPlatform....queryLCHJ -------datadatadata : " + resultEntity.data);
+                    for (DataPlatformJDEntity.Item entity : resultEntity.data) {
+                        GJRZEntity gjrzEntity = new GJRZEntity();
+                        gjrzEntity.setBMSAH(entity.getBmsah());
+                        gjrzEntity.setCZRM(entity.getJdzxxzxm());
+                        gjrzEntity.setEJFL("TYYW_LCBA_YW_BL_LC_JD_TABLE"); //从其他表中导入
+                        gjrzEntity.setID(entity.getBmsah() + "-" + entity.getLcjdbh());
+                        gjrzEntity.setRZMS(entity.getLcjdmc());
+                        gjrzEntity.setZHXGSJ(entity.getJdjrsj());
+                        caseService.saveRZ(gjrzEntity);
+                        gjrzEntityList.add(gjrzEntity);
+                        logger.info("DATAPlatform2222....saveLCHJ : " + gjrzEntity.getID());
+
+                    }
+                } else {
+                    logger.info("DATAPlatform2222....queryLCHJ data is empty : " + response.body().string());
+
+                }
+            } else {
+                logger.info("DATAPlatform2222....queryLCHJ failed : " + response.body().string());
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            logger.info("DATAPlatform2222....queryLCHJ error : " + e.toString());
+        } finally {
+            logger.info("DATAPlatform2222...." + gjrzEntityList.size());
+            return gjrzEntityList;
+        }
+    }
+
 }

@@ -44,4 +44,6 @@ public interface GJAJService {
 
     Page<GJAJEntity> queryCompleted(String ajlb, int pageNum, int pageSize);
 
+    List<GJAJEntity> searchList(String content);
+
 }

@@ -46,6 +46,9 @@ public class DataPlatformAJEntity {
         private String cbjcg;   //承办检察官
         private String cbjcgsf; //承办检察官身份
         private String batdmc;  //办案团队名称
+
+        private String jdjrsj;
+        private String jdzxzxm;
         public String getYwmc() {
             return ywmc;
         }
@@ -192,6 +195,21 @@ public class DataPlatformAJEntity {
 
         public void setCjsj(Date cjsj) {
             this.cjsj = cjsj;
+        }
+        public String getJdjrsj() {
+            return jdjrsj;
+        }
+
+        public void setJdjrsj(String jdjrsj) {
+            this.jdjrsj = jdjrsj;
+        }
+
+        public String getJdzxzxm() {
+            return jdzxzxm;
+        }
+
+        public void setJdzxzxm(String jdzxzxm) {
+            this.jdzxzxm = jdzxzxm;
         }
     }
 

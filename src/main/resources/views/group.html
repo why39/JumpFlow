@@ -659,13 +659,13 @@ document.getElementById("huadongId").onclick = function() {
 
             Dashboard.prototype.init = function () {
                 var $stckedData  = [
-                    { y: '审查起诉书',c: 180 },
-                    { y: '没收违法所得意见书',c: 56 },
-                    { y: '委托鉴定书',c: 120 },
-                    { y: '扣押通知书',c: 100 },
-                    { y: '解除查封通知书',c: 85 },
-                    { y: '督促纠正违法通知书', c: 52 },
-                    { y: '决定释放通知书', c: 77 }
+                    { y: '通知书',c: 15 },
+                    { y: '附条件不起诉决定书',c: 5 },
+                    { y: '涉未成年人案件审查报告',c: 2 },
+                    { y: '合并（拆分）案件审批表',c: 2 },
+                    { y: '起诉书（自然人犯罪案件适用）',c: 7},
+                    { y: '受理案件登记表', c: 6 },
+                    { y: '起诉书', c: 13 }
                 ];
                 this.createStackedChart('morris-bar-stacked2', $stckedData, 'y', ['c'], ['处理文书的数量'], ['#f28515']);
             },

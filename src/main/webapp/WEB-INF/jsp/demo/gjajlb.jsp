@@ -16,14 +16,13 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label" style="width:10%;">案件标题:</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="title" id="test-count" value="${leave.title}" placeholder="请输入案件标题"
+                        <input type="text" name="title" id="test-count" value="${leave.AJLB_MC}" placeholder="请输入案件标题"
                                class="layui-input">
                     </div>
-                    <button class="layui-btn" id="searchSubmit"><i class="layui-icon">&#xe615;</i>搜 索</button>
+                    <button class="layui-btn" type="button" id="searchSubmitCase" onclick="searchCase()"><i class="layui-icon">&#xe615;</i>搜 索</button>
                     <button class="layui-btn layui-btn-warm" type="button" id="refresh">重 置</button>
-<%--                    <button class="layui-btn layui-btn-warm" type="button" onclick="testCases()">测试</button>--%>
-<%--                    <button class="layui-btn layui-btn-warm" type="button" onclick="deleteTestCases()">清空测试</button>--%>
-                        <button class="layui-btn layui-btn-warm" type="button" onclick="jumpfuse()">并案处理</button>
+                    <button class="layui-btn layui-btn-warm" type="button" onclick="testCases()">测试</button>
+                    <button class="layui-btn layui-btn-warm" type="button" onclick="deleteTestCases()">清空测试</button>
 
                 </div>
             </form>
@@ -39,17 +38,15 @@
                     <th>业务名称</th>
                     <th>案件名称</th>
                     <th>世系数据操作</th>
-                    <th>静态编译世系</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="my_tbody">
                 <c:forEach items="${page.result}" var="leave" varStatus="i">
-                    <tr id="leave_${leave.BMSAH }">
+                    <tr id="leave_${leave.BMSAH}" >
                         <td>${i.index+1 }</td>
-                       <td>${leave.BMSAH}</td>
-                       <td>${leave.AJLB_MC}</td>
-                     <%-- <td>${leave.YWMC}</td>--%>
-                    <td>${leave.AJMC}</td>
+                        <td>${leave.BMSAH}</td>
+                        <td>${leave.AJLB_MC}</td>
+                        <td>${leave.AJMC}</td>
                         <td>
                             <div class=" btn-group ">
                                 <c:if test="${leave.IS_COMPLETE == 0}">
@@ -62,22 +59,14 @@
                                     <button class="layui-btn layui-btn-small" type="button"
                                             onclick="logRead('${leave.BMSAH}')">查看
                                     </button>
-<%--                                    <button class="layui-btn layui-btn-small" type="button"--%>
-<%--                                            onclick="logDelete('${leave.BMSAH}')">删除--%>
-<%--                                    </button>--%>
+                                    <%--                                    <button class="layui-btn layui-btn-small" type="button"--%>
+                                    <%--                                            onclick="logDelete('${leave.BMSAH}')">删除--%>
+                                    <%--                                    </button>--%>
 
                                 </c:if>
 
                             </div>
                         </td>
-                        <td>
-                            <button class="layui-btn layui-btn-small" type="button"
-                                    onclick="staticGen('${leave.AJLB_MC}','${leave.BMSAH}')">编译分析
-                            </button>
-                            <button class="layui-btn layui-btn-small" type="button"
-                                    onclick="staticRead('${leave.BMSAH}')">查看
-                            </button>
-                        </td>>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -121,6 +110,20 @@
         });
     }
 
+    function searchCase() {
+        //alert(document.getElementById("test-count").value);
+        //var jia_tbody = document.getElementById("my_tbody");
+        //var array_tr = jia_tbody.getElementsByTagName("tr");
+        /*for(var i = 0; i < array_tr.length; i++) {
+            var array_td = array_tr[i].getElementsByTagName("td");
+            if(array_td[1].innerHTML != document.getElementById("test-count").value){
+                array_tr[i].style.display = "none";
+            }
+        }*/
+        document.getElementById("search-from").action="${webRoot}/demo/gj/search-aj?id=" + document.getElementById("test-count").value;
+        document.getElementById("search-from").submit();
+    }
+
     function deleteTestCases() {
         var url = "${webRoot}/demo/gj/delete-test";
         confirm('确认删除？', function () {
@@ -128,34 +131,6 @@
                 $("#search-from").submit();
             });
         });
-    }
-
-        function jumpfuse() {
-        var url="${webRoot}/demo/gj/fuse";
-        //弹框层
-        layer.open({
-        scrollbar: true,
-        type: 2,
-        title : ["世系融合" , true],
-        area: ['100%', '100%'], //宽高
-        content: [url,'no'],
-        shadeClose : false,
-        });
-
-        }
-
-    function staticGen(category,bmsah) {
-        var url = "${webRoot}/static/staticCompile/staticGen";
-        confirm('确定生成静态世系数据？', function () {
-            $.post(url, {category:category,bmsah:bmsah}, function (r) {
-                $("#search-from").submit();
-            });
-        });
-
-    }
-
-    function staticRead(bmsah) {
-        window.location.href="${webRoot}/staticNeoData.html?bmsah="+encodeURI(bmsah);
     }
 
 </script>

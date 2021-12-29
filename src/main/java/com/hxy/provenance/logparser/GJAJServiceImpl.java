@@ -139,6 +139,10 @@ public class GJAJServiceImpl implements GJAJService {
     }
 
     @Override
+    public List<GJAJEntity> searchList(String content) {
+        return caseDao.searchList(content);
+    }
+    @Override
     public Result parseLogForTest(int count) {
         long start = System.currentTimeMillis();
         PageHelper.startPage(1, count);

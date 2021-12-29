@@ -52,4 +52,7 @@ public interface GJAJDao extends BaseDao<GJAJEntity> {
     int countField(@Param("case_type") String case_type, @Param("field") String field);
 
     List<Map<String, Integer>> openJob();
+
+    List<GJAJEntity> searchList(String content);
+
 }

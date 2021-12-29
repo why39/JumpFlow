@@ -40,6 +40,9 @@ public class GJAJController {
     @Autowired
     GJRZService gjrzService;
 
+    @Autowired
+    GJAJService gjajService;
+
     @RequestMapping("gjajlb")
     @RequiresPermissions("act:model:all")
     public String gjajlb(Model model, GJAJEntity caseEntity, HttpServletRequest request) {
@@ -50,6 +53,18 @@ public class GJAJController {
 
 //        dataPlatformService.queryAJ("2019-11-08 15:10:42", "2019-11-08 23:10:42");
 
+        return "demo/gjajlb";
+    }
+
+    @RequestMapping(value = "search-aj")
+    public String SearchAJ(Model model, GJAJEntity caseEntity, HttpServletRequest request) {
+        int pageNum = CommUtils.parseInt(request.getParameter("pageNum"), 1);
+        Page<GJAJEntity> page = caseService.findPage(caseEntity, pageNum);
+        String id=request.getParameter("title");
+        List<GJAJEntity> gjajEntity = (List<GJAJEntity>) gjajService.searchList(id);
+        page.setResult(gjajEntity);
+        model.addAttribute("page", page);
+        model.addAttribute("case", caseEntity);
         return "demo/gjajlb";
     }
 
