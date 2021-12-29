@@ -76,7 +76,7 @@ public class DataPlatformService {
         try {
             Response response = client.newCall(request).execute();
             System.out.println("re" + request);
-            System.out.println("reh"+ request.header("X-Api-Id"));
+            System.out.println("reh" + request.header("X-Api-Id"));
             System.out.println("fuck" + response.toString());
             System.out.println("fuck" + response.isSuccessful());
             if (response.isSuccessful()) {
@@ -147,7 +147,7 @@ public class DataPlatformService {
                         gjrzEntity.setBMSAH(entity.getBmsah());
                         gjrzEntity.setCZRM(entity.getCzrm());
                         gjrzEntity.setEJFL(entity.getEjfl());
-                        gjrzEntity.setID(entity.getBmsah()+"-"+entity.getLcjdbh());
+                        gjrzEntity.setID(entity.getId());
                         gjrzEntity.setRZMS(entity.getRzms());
                         gjrzEntity.setZHXGSJ(entity.getZhxgsj());
                         caseService.saveRZ(gjrzEntity);
@@ -171,6 +171,7 @@ public class DataPlatformService {
 
     /**
      * 查询流程环节
+     *
      * @param start 2019-11-08 15:10:42
      * @param end
      * @return
@@ -208,21 +209,25 @@ public class DataPlatformService {
                         gjrzEntity.setBMSAH(entity.getBmsah());
                         gjrzEntity.setCZRM(entity.getJdzxzxm());
                         gjrzEntity.setEJFL("TYYW_LCBA_YW_BL_LC_JD_TABLE"); //从其他表中导入
-                        gjrzEntity.setID(entity.getId());
+                        gjrzEntity.setID(entity.getBmsah() + "-" + entity.getLcjdbh());
                         gjrzEntity.setRZMS(entity.getRzms());
                         gjrzEntity.setZHXGSJ(entity.getJdjrsj());
                         caseService.saveRZ(gjrzEntity);
                         gjrzEntityList.add(gjrzEntity);
+                        logger.info("DATAPlatform....saveLCHJ failed : " + gjrzEntity.getID());
+
                     }
                 }
+            } else {
+                logger.info("DATAPlatform....queryLCHJ failed : " + response.body().string());
             }
 
         } catch (IOException e) {
             e.printStackTrace();
+            logger.info("DATAPlatform....queryLCHJ error : " + e.toString());
         } finally {
             logger.info("DATAPlatform...." + gjrzEntityList.size());
             return gjrzEntityList;
         }
-
     }
 }
