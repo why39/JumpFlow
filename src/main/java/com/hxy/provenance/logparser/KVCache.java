@@ -68,6 +68,27 @@ public class KVCache {
         preLoad("BCRXM", "补充人姓名", "人员相关");
         preLoad("BCRBH", "补充人编号", "人员相关");
         preLoad("YJDQRQ", "移交日期", "其他");
+
+
+        preLoad("DQCZSJ", "当前创建时间", "其他");
+        preLoad("TXZDJSRQ", "填写自动检索日期", "其他");
+        preLoad("XXDYZJ", "信息对应证据", "案件相关");
+        preLoad("TXZDKSRQ", "填写字段抗诉日期", "其他");
+        preLoad("TXR", "填写人", "人员相关");
+        preLoad("DQSJ", "当前时间", "其他");
+        preLoad("SFKQ", "身份考勤", "人员相关");
+        preLoad("TXRYBM", "填写人员编码", "人员相关");
+        preLoad("TXDWBM", "填写单位编码", "案件相关");
+        preLoad("FQDWBM", "发起单位编码", "案件相关");
+
+        preLoad("YSAYDM", "移送案由代码", "案件相关");
+        preLoad("SFSJSPAQFZ", "是否涉及食品安全犯罪", "案件相关");
+        preLoad("SFSJSYNCPAQFZ", "是否涉及农产品安全犯罪", "案件相关");
+        preLoad("XZZFJGLBDM", "行政执法机关类别代码", "其他");
+        preLoad("SFDBAJ", "是否督办案件", "案件相关");
+        preLoad("SFBHRDW", "是否被害人单位", "人员相关");
+        preLoad("SFBMSBWCN", "是否不满18未成年", "人员相关");
+        preLoad("SFBMSSWCN", "是否不满14未成年", "人员相关");
     }
 
     @PreDestroy
