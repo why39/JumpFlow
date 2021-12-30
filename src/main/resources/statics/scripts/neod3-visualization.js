@@ -953,7 +953,7 @@ function Neod3Renderer1() {
                 }
             }
         }
-        var svg = serializer(element);
+          var svg = serializer(element);
         svg = svg.replace('<svg ', '<svg height="' + $container.height() + '" width="' + $container.width() + '" ')
             .replace(/<g/, '\n' + svgStyling + '\n<g');
         return svg;
