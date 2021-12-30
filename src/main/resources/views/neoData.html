@@ -403,7 +403,10 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
                                 }
                                 for(var i = 0;i < list_node.length;i++){
                                     if(key.includes(list_node[i].children[1].innerHTML)){
-                                        list_node[i].children[0].r.baseVal.value = 30 + 5 * (map.get(list_node[i].children[1].innerHTML) - 1);
+                                        list_node[i].children[0].r.baseVal.value = 25 + 2 * (map.get(list_node[i].children[1].innerHTML) - 1);
+                                        if(list_node[i].children[0].r.baseVal.value > 35){
+                                            list_node[i].children[ 0].r.baseVal.value = 35;
+                                        }
                                     }
                                 }
                             });
@@ -748,6 +751,9 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
                 if (graph) {
                     if (graph.nodes) {
                         for(var item = 0;item < graph.nodes.length;item++) {
+                            console.log("zzzzzzz");
+                            console.log(name)
+                            console.log(graph.nodes[item]);
                             if(graph.nodes[item]["CN_KEY"]==name) {
                                 var str_month = (graph.nodes[item]["最后修改时间"]).toString().substring(5,7)
                                 var str_time = (graph.nodes[item]["最后修改时间"]).toString().substring(0,20)

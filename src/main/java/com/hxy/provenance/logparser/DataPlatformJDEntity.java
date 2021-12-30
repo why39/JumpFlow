@@ -1,62 +1,67 @@
 package com.hxy.provenance.logparser;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
+
+
+
 public class DataPlatformJDEntity {
+
     public String retCode;
     public String retMsg;
     public List<Item> data;
 
+
     public static class Item {
 
-        /**
-         * bmsah : null
-         * cfcs : null
-         * cjsj : 2019-11-08 15:10:49
-         * cssj : 2019-11-08 15:10:49
-         * czrm : null
-         * ejfl : TYYW_LCBA_YW_BL_WSRJ_QDLC
-         * fwbb : null
-         * fwmc : null
-         * fwxh : null
-         * id : c613abcb-3c3c-4d1e-8cad-210737b77c0a
-         * khdip : null
-         * rzjb : null
-         * rzms : {"YXSLBH":"84C5E8D737B34478AADF441CC3C6B0F2","LCSLBH":"","DWBM":"980100","XXZTBH":"","XXLX":"01","TYSAH":"","XXNR":"{'WSMBBM':'100000030200','WSMC':'刑事抗诉书（二审程序适用）','WSCZLX':'003','ZRRBH':'','CZSJ':'2019-11-08','CZR':'测试账号0101','CZRYBM':'9801000005'}","XXSM":"《刑事抗诉书（二审程序适用）》已入卷"}
-         * rzxh : null
-         * rzzid : a470a6c8-d62b-4c91-a1a6-7da4ce5b2919
-         * sfsc : N
-         * sjbsbh : 5134606E776E0AEB085C13A000007EE8
-         * sjly : null
-         * xgffm : null
-         * xglm : null
-         * yclm : null
-         * ycxx : null
-         * yjfl : 普通业务日志
-         * ywsx : null
-         * zhxgsj : 2019-11-08 15:10:49
-         */
 
+        @JsonProperty("cjsj")
         private String cjsj;
+        @JsonProperty("dwbm")
         private String dwbm;
+        @JsonProperty("jdjrsj")
         private String jdjrsj;
+        @JsonProperty("jdlksj")
         private String jdlksj;
+        @JsonProperty("jdjryy")
         private String jdjryy;
+        @JsonProperty("jdlx")
         private String jdlx;
-        private String jdzxxzbm;
-        private String jdzxxzxm;
+        @JsonProperty("jdsxh")
+        private Object jdsxh;
+        @JsonProperty("jdzxzbm")
+        private String jdzxzbm;
+        @JsonProperty("jdzxzxm")
+        private String jdzxzxm;
+        @JsonProperty("sjbsbh")
         private String sjbsbh;
+        @JsonProperty("jdzxzt")
         private String jdzxzt;
+        @JsonProperty("lcjdbh")
         private String lcjdbh;
+        @JsonProperty("lcjdmc")
         private String lcjdmc;
-        private String lcjdbm;
+        @JsonProperty("lcmbbm")
+        private String lcmbbm;
+        @JsonProperty("lcslbh")
         private String lcslbh;
+        @JsonProperty("lcsljdbh")
+        private String lcsljdbh;
+        @JsonProperty("lcsljdxh")
         private Integer lcsljdxh;
-        private String lczt;
+        @JsonProperty("lczt")
+        private Object lczt;
+        @JsonProperty("sfsc")
         private String sfsc;
+        @JsonProperty("sjly")
         private String sjly;
-        private String tysah;
+        @JsonProperty("tysah")
+        private Object tysah;
+        @JsonProperty("bmsah")
         private String bmsah;
+        @JsonProperty("zhxgsj")
         private String zhxgsj;
 
         public String getCjsj() {
@@ -107,20 +112,28 @@ public class DataPlatformJDEntity {
             this.jdlx = jdlx;
         }
 
-        public String getJdzxxzbm() {
-            return jdzxxzbm;
+        public Object getJdsxh() {
+            return jdsxh;
         }
 
-        public void setJdzxxzbm(String jdzxxzbm) {
-            this.jdzxxzbm = jdzxxzbm;
+        public void setJdsxh(Object jdsxh) {
+            this.jdsxh = jdsxh;
         }
 
-        public String getJdzxxzxm() {
-            return jdzxxzxm;
+        public String getJdzxzbm() {
+            return jdzxzbm;
         }
 
-        public void setJdzxxzxm(String jdzxxzxm) {
-            this.jdzxxzxm = jdzxxzxm;
+        public void setJdzxzbm(String jdzxzbm) {
+            this.jdzxzbm = jdzxzbm;
+        }
+
+        public String getJdzxzxm() {
+            return jdzxzxm;
+        }
+
+        public void setJdzxzxm(String jdzxzxm) {
+            this.jdzxzxm = jdzxzxm;
         }
 
         public String getSjbsbh() {
@@ -155,12 +168,12 @@ public class DataPlatformJDEntity {
             this.lcjdmc = lcjdmc;
         }
 
-        public String getLcjdbm() {
-            return lcjdbm;
+        public String getLcmbbm() {
+            return lcmbbm;
         }
 
-        public void setLcjdbm(String lcjdbm) {
-            this.lcjdbm = lcjdbm;
+        public void setLcmbbm(String lcmbbm) {
+            this.lcmbbm = lcmbbm;
         }
 
         public String getLcslbh() {
@@ -171,6 +184,14 @@ public class DataPlatformJDEntity {
             this.lcslbh = lcslbh;
         }
 
+        public String getLcsljdbh() {
+            return lcsljdbh;
+        }
+
+        public void setLcsljdbh(String lcsljdbh) {
+            this.lcsljdbh = lcsljdbh;
+        }
+
         public Integer getLcsljdxh() {
             return lcsljdxh;
         }
@@ -179,11 +200,11 @@ public class DataPlatformJDEntity {
             this.lcsljdxh = lcsljdxh;
         }
 
-        public String getLczt() {
+        public Object getLczt() {
             return lczt;
         }
 
-        public void setLczt(String lczt) {
+        public void setLczt(Object lczt) {
             this.lczt = lczt;
         }
 
@@ -203,11 +224,11 @@ public class DataPlatformJDEntity {
             this.sjly = sjly;
         }
 
-        public String getTysah() {
+        public Object getTysah() {
             return tysah;
         }
 
-        public void setTysah(String tysah) {
+        public void setTysah(Object tysah) {
             this.tysah = tysah;
         }
 

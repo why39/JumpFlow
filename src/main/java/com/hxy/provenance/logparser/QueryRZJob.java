@@ -36,10 +36,11 @@ public class QueryRZJob implements Job {
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
 
-        if (caseDao.openJob().get(0).get("count_man") == 1) {
+        if (caseDao.openJob().get(0).get("count_man") == 0) {
+            return;
+        }
 
-
-            logger.info("EXECUTE...QueryRZJob");
+            logger.info("EXECUTE...。。。。。。。QueryRZJob");
             LocalDate date = LocalDate.parse("2018-01-01");
             try {
                 String dateStr = redisUtil.getString(REDIS_KEY);
@@ -58,5 +59,4 @@ public class QueryRZJob implements Job {
                 e.printStackTrace();
             }
         }
-    }
 }

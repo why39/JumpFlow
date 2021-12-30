@@ -1445,6 +1445,9 @@ neo.utils.measureText = (function() {
       });
       circles.attr({
         r: function(node) {
+          if(node.radius > 20){
+            node.radius = 30;
+          }
           return node.radius;
         },
         fill: function(node) {
