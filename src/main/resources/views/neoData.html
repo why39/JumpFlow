@@ -372,6 +372,7 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
                         try{
                             neo.executeQuery(query, {}, function (err, res1) {
                                 var node = document.getElementsByClassName("layer nodes")[0];
+                                console.log("--------" + node);
                                 var graph_node = res1.graph.nodes;
                                 var list_node = node.children;
                                 table_data(node_id);
@@ -629,6 +630,7 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
                         if (res) {
                             for(var i = 0;i < graph_node.length;i++){
                                 var str = graph_node[i].CN_KEY;
+
                                 if(map.has(str)){
                                     map.set(str,map.get(str) + 1);
                                 }
@@ -655,7 +657,7 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
                                         if (res[i].category == '其他' && !other_data.includes(res[i].cn)) {
                                             for(var aa = 0;aa < key.length;aa++){
                                                 if(res[i].cn == key[aa] && !other_data.includes("(" + value[aa] + ")" + key[aa])
-                                                    && res[i].cn.indexOf("编码") == -1 && res[i].cn.indexOf("代码") == -1 && res[i].cn.indexOf("编号") == -1){
+                                                    && res[i].cn.indexOf("编码") == -1 && res[i].cn.indexOf("编号") == -1){
                                                     other_data.push("(" + value[aa] + ")" + res[i].cn);
                                                 }
                                             }
@@ -663,7 +665,7 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
                                         if (res[i].category == '案件相关' && !case_data.includes(res[i].cn)) {
                                             for(var aa = 0;aa < key.length;aa++){
                                                 if(res[i].cn == key[aa] && !case_data.includes("(" + value[aa] + ")" + key[aa])
-                                                    && res[i].cn.indexOf("编码") == -1 && res[i].cn.indexOf("代码") == -1 && res[i].cn.indexOf("编号") == -1){
+                                                    && res[i].cn.indexOf("编码") == -1 && res[i].cn.indexOf("编号") == -1){
                                                     case_data.push("(" + value[aa] + ")" + res[i].cn)
                                                 }
                                             }
@@ -671,7 +673,7 @@ height: 320px;position:absolute; margin-top:4px;z-index: 10;margin-left:3px;disp
                                         if (res[i].category == '人员相关' && !name_data.includes(res[i].cn)) {
                                             for(var aa = 0;aa < key.length;aa++){
                                                 if(res[i].cn == key[aa] && !name_data.includes("(" + value[aa] + ")" + res[i].cn)
-                                                    && res[i].cn.indexOf("编码") == -1 && res[i].cn.indexOf("代码") == -1 && res[i].cn.indexOf("编号") == -1){
+                                                    && res[i].cn.indexOf("编码") == -1 && res[i].cn.indexOf("编号") == -1){
                                                     name_data.push("(" + value[aa] + ")" + res[i].cn)
                                                 }
                                             }

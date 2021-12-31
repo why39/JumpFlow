@@ -89,6 +89,21 @@ public class KVCache {
         preLoad("SFBHRDW", "是否被害人单位", "人员相关");
         preLoad("SFBMSBWCN", "是否不满18未成年", "人员相关");
         preLoad("SFBMSSWCN", "是否不满14未成年", "人员相关");
+
+        preLoad("BJTS", "办结通诉", "人员相关");
+        preLoad("CQYJTS", "超期案件通诉", "人员相关");
+        preLoad("YWID", "业务ID", "人员相关");
+        preLoad("GARWLXDM", "个案任务类型代码", "人员相关");
+        preLoad("MESSAGE", "消息", "人员相关");
+        preLoad("OPERATORID", "操作员ID", "人员相关");
+        preLoad("OPERATORDWBM", "操作员单位部门","相关");
+        preLoad("DQDLRYXM", "当前登录人员姓名", "人员相关");
+        preLoad("DQDLDWMC", "当前登录单位名称", "人员相关");
+        preLoad("OPERATORDWMC", "操作员单位名称", "人员相关");
+        preLoad("DQDLDWBM", "当前登录单位部门", "人员相关");
+        preLoad("SFKS", "身份抗诉", "人员相关");
+        preLoad("RWNR", "任务内容", "人员相关");
+        preLoad("GARWLXMC", "个案任务类型名称", "人员相关");
     }
 
     @PreDestroy
