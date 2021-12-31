@@ -5,24 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90c288f3-cfd5-40d8-94f3-588849ed6a72" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/DataPlatformJDEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/QueryJDJob.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_janino_janino_2_7_8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/InsertAjjdJob.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/component/listener/WebAppListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/component/listener/WebAppListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/DataPlatformAJEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/DataPlatformAJEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/DataPlatformRZEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/DataPlatformRZEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/DataPlatformService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/DataPlatformService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/GJAJController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/GJAJController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/GJAJDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/GJAJDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/GJAJService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/GJAJService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/GJAJServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hxy/provenance/logparser/GJAJServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/demo/GJAJMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/demo/GJAJMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/group.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/group.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/demo/gjajlb.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/demo/gjajlb.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

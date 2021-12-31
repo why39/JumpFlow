@@ -124,6 +124,19 @@ public class WebAppListener implements ApplicationListener<ContextRefreshedEvent
         } catch (SchedulerException e) {
             e.printStackTrace();
         }
+
+        JobDetail InsertAjjdJobDetail = JobBuilder.newJob(InsertAjjdJob.class).build();
+        //2创建Trigger(触发器)对象——什么时间做  repeatSecondlyForever每秒执行一次—
+        Trigger InsertAjjdJobtrigger = TriggerBuilder.newTrigger().withSchedule(SimpleScheduleBuilder.repeatSecondlyForever(3)).build();
+        //3创建Scheduler(任务调度)对象
+        try {
+            Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
+            scheduler.scheduleJob(InsertAjjdJobDetail, InsertAjjdJobtrigger);
+            scheduler.start();
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**
