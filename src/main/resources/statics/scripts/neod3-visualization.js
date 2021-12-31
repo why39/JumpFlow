@@ -91,8 +91,8 @@ function Neod3Renderer() {
                 ""+selectNode.caseId+"&nbsp&nbsp&nbsp&nbsp环节名称:"+selectNode.copy_name+"</p>";
             swal({
                 title: selectNode["copy_name"],
-                text: "开始时间：2021年05月20日"+"\n"+
-                    "结束时间：2021年12月18日",
+                text: "开始时间：2021年06月24日"+"\n"+
+                    "结束时间：2021年12月20日",
                 icon: "success",
                 buttons: {
                     cancel: "取消",
@@ -601,8 +601,8 @@ function Neod3Renderer1() {
                 ""+selectNode.caseId+"&nbsp&nbsp&nbsp&nbsp环节名称:"+selectNode.copy_name+"</p>";
             swal({
                 title: selectNode["copy_name"],
-                text: "开始时间：2020年10月20日"+"\n"+
-                    "结束时间：2020年12月18日",
+                text: "开始时间：2021年06月24日"+"\n"+
+                    "结束时间：2021年12月20日",
                 icon: "success",
                 buttons: {
                     cancel: "取消",

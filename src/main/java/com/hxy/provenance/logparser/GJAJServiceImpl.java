@@ -223,6 +223,7 @@ public class GJAJServiceImpl implements GJAJService {
 
                             //正则匹配键值对，字符型的值
                             Pattern r1 = Pattern.compile("\"(\\w+)\":\"{1}(.*?)\"{1}");
+
                             Matcher m1 = r1.matcher(RZMS);
                             while (m1.find()) {
                                 String key = m1.group(1);

@@ -68,6 +68,42 @@ public class KVCache {
         preLoad("BCRXM", "补充人姓名", "人员相关");
         preLoad("BCRBH", "补充人编号", "人员相关");
         preLoad("YJDQRQ", "移交日期", "其他");
+
+
+        preLoad("DQCZSJ", "当前创建时间", "其他");
+        preLoad("TXZDJSRQ", "填写自动检索日期", "其他");
+        preLoad("XXDYZJ", "信息对应证据", "案件相关");
+        preLoad("TXZDKSRQ", "填写字段抗诉日期", "其他");
+        preLoad("TXR", "填写人", "人员相关");
+        preLoad("DQSJ", "当前时间", "其他");
+        preLoad("SFKQ", "身份考勤", "人员相关");
+        preLoad("TXRYBM", "填写人员编码", "人员相关");
+        preLoad("TXDWBM", "填写单位编码", "案件相关");
+        preLoad("FQDWBM", "发起单位编码", "案件相关");
+
+        preLoad("YSAYDM", "移送案由代码", "案件相关");
+        preLoad("SFSJSPAQFZ", "是否涉及食品安全犯罪", "案件相关");
+        preLoad("SFSJSYNCPAQFZ", "是否涉及农产品安全犯罪", "案件相关");
+        preLoad("XZZFJGLBDM", "行政执法机关类别代码", "其他");
+        preLoad("SFDBAJ", "是否督办案件", "案件相关");
+        preLoad("SFBHRDW", "是否被害人单位", "人员相关");
+        preLoad("SFBMSBWCN", "是否不满18未成年", "人员相关");
+        preLoad("SFBMSSWCN", "是否不满14未成年", "人员相关");
+
+        preLoad("BJTS", "办结通诉", "人员相关");
+        preLoad("CQYJTS", "超期案件通诉", "人员相关");
+        preLoad("YWID", "业务ID", "人员相关");
+        preLoad("GARWLXDM", "个案任务类型代码", "人员相关");
+        preLoad("MESSAGE", "消息", "人员相关");
+        preLoad("OPERATORID", "操作员ID", "人员相关");
+        preLoad("OPERATORDWBM", "操作员单位部门","相关");
+        preLoad("DQDLRYXM", "当前登录人员姓名", "人员相关");
+        preLoad("DQDLDWMC", "当前登录单位名称", "人员相关");
+        preLoad("OPERATORDWMC", "操作员单位名称", "人员相关");
+        preLoad("DQDLDWBM", "当前登录单位部门", "人员相关");
+        preLoad("SFKS", "身份抗诉", "人员相关");
+        preLoad("RWNR", "任务内容", "人员相关");
+        preLoad("GARWLXMC", "个案任务类型名称", "人员相关");
     }
 
     @PreDestroy
